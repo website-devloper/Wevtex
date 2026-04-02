@@ -1,0 +1,40 @@
+{
+    "kind": "collectionType",
+    "collectionName": "services",
+    "info": {
+        "singularName": "service",
+        "pluralName": "services",
+        "displayName": "Service",
+        "description": "IT Agency Services"
+    },
+    "options": {
+        "draftAndPublish": true
+    },
+    "pluginOptions": {},
+    "attributes": {
+        "title": {
+            "type": "string",
+            "required": true
+        },
+        "slug": {
+            "type": "uid",
+            "targetField": "title",
+            "required": true
+        },
+        "summary": {
+            "type": "text"
+        },
+        "features": {
+            "type": "json"
+        },
+        "icon": {
+            "type": "media",
+            "multiple": false,
+            "required": false,
+            "allowedTypes": [
+                "images",
+                "files"
+            ]
+        }
+    }
+}
