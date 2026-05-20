@@ -22,21 +22,21 @@ const aboutItems: AboutItem[] = [
     icon: aIcon1,
     heading: 'About us',
     content:
-      'Innomax IT Services provides innovative, scalable solutions to drive business growth and efficiency. Our expert team ensures your business remains competitive with tailored IT services and reliable support for long-term success.',
+      'Wevtex helps businesses in Morocco and the MENA region grow online by building high-converting websites, web applications, desktop software, and digital strategies that get clients, sell products, and streamline operations.',
   },
   {
     img: about2,
     icon: aIcon2,
     heading: 'Our mission',
     content:
-      'To deliver cutting-edge IT solutions that drive business growth, boost productivity, and ensure long-term helping competitiveness. We are dedicated to scalable, reliable technology and exceptional support.',
+      'To deliver cutting-edge digital solutions that drive business growth, boost productivity, and ensure long-term competitiveness. We are dedicated to scalable, reliable technology and exceptional support — faster and smarter than anyone else.',
   },
   {
     img: about3,
     icon: aIcon3,
     heading: 'Our vision',
     content:
-      'Our Vision is to empower businesses with innovative IT solutions that drive growth, efficiency, and long-term success. We deliver scalable technology to keep you competitive and ready for the future.',
+      'To be the only agency in Casablanca combining web development, desktop applications, and SaaS under one brand — empowering every business with professional digital products that deliver real results.',
   },
 ];
 

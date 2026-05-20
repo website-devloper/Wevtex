@@ -17,10 +17,10 @@ interface Project {
 const projects: Project[] = [
     { id: 1, title: 'Bloom Studio', category: 'web-development', categoryLabel: 'Web Development', industry: 'Interior Design', result: '200% increase in consultation requests', color: '#2A5F3B' },
     { id: 2, title: 'NexCart', category: 'e-commerce', categoryLabel: 'E-Commerce', industry: 'Fashion & Apparel', result: 'Launch-ready store in 3 weeks', color: '#4A2D6B' },
-    { id: 3, title: 'FlowBot Pro', category: 'ai-automation', categoryLabel: 'AI Automation', industry: 'Marketing Agency', result: '18 hours saved per week', color: '#1B3A5C' },
+    { id: 3, title: 'FinanceDesk POS', category: 'desktop-applications', categoryLabel: 'Desktop App', industry: 'Retail & Restaurant', result: '4 hours saved daily on operations', color: '#1B3A5C' },
     { id: 4, title: 'Saveur Locale', category: 'web-development', categoryLabel: 'Web Development', industry: 'Food & Restaurant', result: 'Fully booked weekends after launch', color: '#5C3A1B' },
     { id: 5, title: 'ShopEasy', category: 'e-commerce', categoryLabel: 'E-Commerce', industry: 'Home & Living', result: '3x conversion rate improvement', color: '#3B2A5F' },
-    { id: 6, title: 'AutoLeads AI', category: 'ai-automation', categoryLabel: 'AI Automation', industry: 'Real Estate', result: 'Zero missed leads since automation', color: '#1C3D2F' },
+    { id: 6, title: 'ClinicManager Desktop', category: 'desktop-applications', categoryLabel: 'Desktop App', industry: 'Healthcare', result: 'Full offline patient management', color: '#1C3D2F' },
 ];
 
 interface PortfolioGridProps {

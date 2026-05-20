@@ -53,7 +53,7 @@ const ServicePage: React.FC = () => {
                   Everything Your Business Needs to Grow Online
                 </h1>
                 <p style={{ color: 'rgba(250,250,250,0.7)', fontSize: '20px', maxWidth: '750px', lineHeight: 1.6, marginBottom: '40px' }}>
-                  From stunning websites to intelligent automation — we build the digital infrastructure that powers your growth.
+                  From stunning websites to powerful desktop applications — we build the digital infrastructure that powers your growth.
                 </p>
                 <div className="d-flex flex-wrap gap-4 mt-20">
                   <Link
@@ -111,15 +111,15 @@ const ServicePage: React.FC = () => {
           />
 
           <ServiceDetail
-            title="AI Automation"
-            description="We eliminate repetitive work by building intelligent automation systems that save your team hours every day. From lead capture to content generation — we automate it all."
+            title="Desktop Applications"
+            description="We build cross-platform desktop software using Electron and Tauri that runs natively on Windows and macOS. CRMs, POS systems, dashboards — custom-built for your operations."
             features={[
-              "n8n workflow automation",
-              "AI-powered content pipelines",
-              "CRM and email automation",
-              "Social media scheduling"
+              "Cross-platform: Windows & macOS",
+              "Offline-first architecture",
+              "Custom CRM, ERP & POS systems",
+              "Auto-update & installer included"
             ]}
-            roiStat={{ label: "Average Impact", value: "Saves 15+ hours per week" }}
+            roiStat={{ label: "Average Impact", value: "Saves 4+ hours daily" }}
             image="/images/bg/parallax.jpg"
             reverse={true}
           />

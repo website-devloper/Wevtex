@@ -57,7 +57,9 @@ const menus: MenuItem[] = [
     link: '/service',
     submenu: [
       { id: 51, title: 'Web Development', link: '/services/web-development' },
-      { id: 52, title: 'AI Automation', link: '/services/ai-automation' },
+      { id: 52, title: 'Desktop Applications', link: '/services/desktop-applications' },
+      { id: 53, title: 'E-Commerce Solutions', link: '/services/ecommerce-solutions' },
+      { id: 54, title: 'SEO & GEO Optimization', link: '/services/seo-geo-optimization' },
     ],
   },
   {

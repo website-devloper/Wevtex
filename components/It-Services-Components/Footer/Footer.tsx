@@ -1,13 +1,9 @@
 "use client";
 
 import React, { FormEvent } from "react";
-import Marquee from "react-fast-marquee";
 import Link from "next/link";
 import Image from "next/image";
-
-import Bg from '@/public/images/bg/footer-glassisom.png';
-import icon1 from '@/public/images/icon/email.png';
-import icon2 from '@/public/images/icon/sms.svg';
+import logoWhite from "@/public/images/logo/logo-white.png";
 
 const Footer = () => {
   const SubmitHandler = (e: FormEvent<HTMLFormElement>) => {
@@ -16,106 +12,107 @@ const Footer = () => {
   };
 
   return (
-    <footer className="footer pos-rel mt-80" style={{ backgroundColor: "#111112" }}>
+    <footer className="footer pos-rel mt-80" style={{ backgroundColor: "#1C1C1E", color: "#FAFAFA", padding: "80px 0 40px" }}>
       <div className="container">
-        <div className="row pb-95">
-          <div className="col-lg-4">
-            <div className="xb-newslatter">
-              <div className="xb-item--icon">
-                <Image src={icon1} alt="Email icon" />
+        <div className="row">
+          {/* Column 1: Brand */}
+          <div className="col-lg-3 col-md-6 mb-40">
+            <div className="footer-widget">
+              <Link href="/" className="footer-logo mb-25" style={{ display: "block" }}>
+                <Image src={logoWhite} alt="Wevtex Logo" width={150} height={40} style={{ objectFit: 'contain' }} />
+              </Link>
+              <p style={{ color: "rgba(250, 250, 250, 0.7)", lineHeight: "1.8" }}>
+                Building the web, one pixel at a time. High-performance websites and apps for modern businesses.
+              </p>
+              <div className="social-links mt-30 ul_li">
+                <Link href="/" className="me-3" style={{ color: "#FAFAFA" }}><i className="fab fa-linkedin-in"></i></Link>
+                <Link href="/" className="me-3" style={{ color: "#FAFAFA" }}><i className="fab fa-instagram"></i></Link>
+                <Link href="/" style={{ color: "#FAFAFA" }}><i className="fab fa-github"></i></Link>
               </div>
-              <h2 className="xb-item--title">Subscribe us</h2>
-              <span className="xb-item--content">
-                Get weekly tips on AI and web development. Sign up for Wevtex updates.
-              </span>
-              <form className="xb-item--contact mt-35" onSubmit={SubmitHandler}>
-                <div className="xb-item--input_field pos-rel">
-                  <input
-                    type="email"
-                    name="gmail"
-                    id="text6"
-                    placeholder="enter your email"
-                    required
-                  />
-                  <div className="img">
-                    <Image src={icon2} alt="SMS icon" />
-                  </div>
-                </div>
-                <button type="submit" className="xb-item--button btn-effect_2">
-                  Subscribe us
-                </button>
-                <span className="xb-item--text">Don&apos;t worry about spam. We hate it too!</span>
-              </form>
             </div>
           </div>
 
-          <div className="col-lg-8">
-            <div className="xb-footer is-footer ml-75">
-              <ul className="footer-nav list-unstyled ul_li">
-                <li><Link href="/home">Home</Link></li>
-                <li><Link href="/about">About</Link></li>
-                <li>
-                  <Link href="/career">Career</Link>
-                  <span>we’re hiring</span>
-                </li>
-                <li><Link href="/blog">News & media.</Link></li>
-                <li><Link href="/contact">Get in touch.</Link></li>
+          {/* Column 2: Pages */}
+          <div className="col-lg-2 col-md-6 mb-40">
+            <div className="footer-widget">
+              <h4 className="widget-title mb-30" style={{ color: "#FAFAFA", fontSize: "18px", fontWeight: "600" }}>Pages</h4>
+              <ul className="footer-nav list-unstyled" style={{ padding: 0 }}>
+                <li className="mb-2"><Link href="/" style={{ color: "rgba(250, 250, 250, 0.7)", textDecoration: "none" }}>Home</Link></li>
+                <li className="mb-2"><Link href="/about" style={{ color: "rgba(250, 250, 250, 0.7)", textDecoration: "none" }}>About</Link></li>
+                <li className="mb-2"><Link href="/service" style={{ color: "rgba(250, 250, 250, 0.7)", textDecoration: "none" }}>Services</Link></li>
+                <li className="mb-2"><Link href="/portfolio" style={{ color: "rgba(250, 250, 250, 0.7)", textDecoration: "none" }}>Portfolio</Link></li>
+                <li className="mb-2"><Link href="/blog" style={{ color: "rgba(250, 250, 250, 0.7)", textDecoration: "none" }}>Blog</Link></li>
+                <li><Link href="/contact" style={{ color: "rgba(250, 250, 250, 0.7)", textDecoration: "none" }}>Contact</Link></li>
               </ul>
-              <div className="footer-inner mt-50 ul_li_between align-items-start">
-                <div className="footer-widget">
-                  <span className="xb-item--sub-title">Information</span>
-                  <ul className="xb-item--holder list-unstyled">
-                    <li className="xb-item--list"><Link href="/service">Our services</Link></li>
-                    <li className="xb-item--list"><Link href="/casestudy">Case studies</Link></li>
-                    <li className="xb-item--list"><Link href="/pricing">Our pricing</Link></li>
-                    <li className="xb-item--list"><Link href="/">our partners</Link></li>
-                  </ul>
-                </div>
-                <div className="footer-widget">
-                  <span className="xb-item--sub-title">Office address</span>
-                  <ul className="xb-item--holder list-unstyled">
-                    <li className="xb-item--list"><Link href="/">Wevtex HQ</Link></li>
-                    <li className="xb-item--list"><Link href="/">Casablanca Hub</Link></li>
-                    <li className="xb-item--list"><Link href="/">Casablanca</Link></li>
-                    <li className="xb-item--list"><Link href="/">Morocco</Link></li>
-                  </ul>
-                </div>
-                <div className="footer-info footer-widget">
-                  <span className="xb-item--sub-title">Email us</span>
-                  <h4 className="xb-item--email">contact@wevtex.com</h4>
-                  <span className="xb-item--sub-title">WhatsApp us</span>
-                  <h4 className="xb-item--number">+212 123 456 789</h4>
-                </div>
-              </div>
-              <div className="footer-copyright mt-50 ul_li_between">
-                <p className="copyright mt-20">
-                  Copyright © 2025 <Link href="/">Wevtex</Link>. All rights reserved.
-                </p>
-                <ul className="footer-links ul_li mt-20">
-                  <li><Link href="/terms-conditions">Terms of Up</Link></li>
-                  <li><Link href="/privacy-policy">Privacy Policy</Link></li>
-                </ul>
-              </div>
+            </div>
+          </div>
+
+          {/* Column 3: Services */}
+          <div className="col-lg-3 col-md-6 mb-40">
+            <div className="footer-widget">
+              <h4 className="widget-title mb-30" style={{ color: "#FAFAFA", fontSize: "18px", fontWeight: "600" }}>Services</h4>
+              <ul className="footer-nav list-unstyled" style={{ padding: 0 }}>
+                <li className="mb-2"><Link href="/services/web-development" style={{ color: "rgba(250, 250, 250, 0.7)", textDecoration: "none" }}>Web Development</Link></li>
+                <li className="mb-2"><Link href="/services/desktop-applications" style={{ color: "rgba(250, 250, 250, 0.7)", textDecoration: "none" }}>Desktop App Development</Link></li>
+                <li className="mb-2"><Link href="/service" style={{ color: "rgba(250, 250, 250, 0.7)", textDecoration: "none" }}>Landing Pages</Link></li>
+                <li><Link href="/service" style={{ color: "rgba(250, 250, 250, 0.7)", textDecoration: "none" }}>E-commerce Websites</Link></li>
+              </ul>
+            </div>
+          </div>
+
+          {/* Column 4: Newsletter */}
+          <div className="col-lg-4 col-md-6 mb-40">
+            <div className="footer-widget">
+              <h4 className="widget-title mb-30" style={{ color: "#FAFAFA", fontSize: "18px", fontWeight: "600" }}>Newsletter</h4>
+              <p className="mb-25" style={{ color: "rgba(250, 250, 250, 0.7)" }}>Subscribe to get latest updates and news.</p>
+              <form onSubmit={SubmitHandler} className="pos-rel">
+                <input
+                  type="email"
+                  placeholder="Your email address"
+                  className="w-100"
+                  style={{
+                    backgroundColor: "#252525",
+                    border: "1px solid #333",
+                    padding: "12px 20px",
+                    color: "#FAFAFA",
+                    borderRadius: "4px"
+                  }}
+                  required
+                />
+                <button
+                  type="submit"
+                  className="mt-15 w-100"
+                  style={{
+                    backgroundColor: "#E85D04",
+                    color: "#FAFAFA",
+                    border: "none",
+                    padding: "12px",
+                    fontWeight: "600",
+                    borderRadius: "4px",
+                    cursor: "pointer"
+                  }}
+                >
+                  Subscribe
+                </button>
+              </form>
             </div>
           </div>
         </div>
-      </div>
-      <div
-        className="footer-bottom pos-rel bg_img o-hidden"
-        style={{ backgroundImage: `url(${Bg.src})` }}
-      >
-        <Link href="/contact" className="title marquee-left" data-cursor-text="say hi!">
-          <div className="marquee">
-            <div className="marquee-content">
-              <Marquee speed={50} gradient={false}>
-                Let’s discuss today. Are you interested?
-                Let’s discuss today. Are you interested?
-                Let’s discuss today. Are you interested?
-                Let’s discuss today. Are you interested?
-              </Marquee>
+
+        {/* Bottom Bar */}
+        <div className="footer-bottom mt-50 pt-30" style={{ borderTop: "1px solid #333" }}>
+          <div className="row align-items-center">
+            <div className="col-md-6 text-center text-md-start">
+              <p className="mb-0" style={{ color: "rgba(250, 250, 250, 0.5)", fontSize: "14px" }}>
+                © 2025 Wevtex. All rights reserved.
+              </p>
+            </div>
+            <div className="col-md-6 text-center text-md-end mt-15 mt-md-0">
+              <span className="me-4" style={{ color: "rgba(250, 250, 250, 0.7)", fontSize: "14px" }}>hello@wevtex.com</span>
+              <span style={{ color: "rgba(250, 250, 250, 0.7)", fontSize: "14px" }}>WhatsApp: +212 600 000 000</span>
             </div>
           </div>
-        </Link>
+        </div>
       </div>
     </footer>
   );

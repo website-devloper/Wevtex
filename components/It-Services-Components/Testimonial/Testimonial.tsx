@@ -150,6 +150,19 @@ const Testimonial: React.FC = () => {
     >
       <div className="tes-heading text-center mb-60">
         <Fade direction="up" triggerOnce={false} duration={1000} delay={9}>
+          <span
+            style={{
+              color: 'var(--color-burnt-orange, #e2481e)',
+              fontWeight: 700,
+              fontSize: '14px',
+              letterSpacing: '2px',
+              textTransform: 'uppercase',
+              display: 'inline-block',
+              marginBottom: '20px',
+            }}
+          >
+            Client Success
+          </span>
           <h2
             className="title wow fadeInDown"
             data-wow-delay="100ms"
@@ -165,7 +178,7 @@ const Testimonial: React.FC = () => {
           modules={[Navigation, Pagination, Autoplay]}
           spaceBetween={30}
           slidesPerView={3}
-          loop={true}
+          loop={testimonials.length > 3}
           speed={400}
           autoplay={{
             delay: 6000,

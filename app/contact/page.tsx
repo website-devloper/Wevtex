@@ -1,249 +1,231 @@
-'use client';
+"use client";
 
-import React, { useState, useRef } from 'react';
-import Header2 from '../../components/Header2/Header2';
-import Footer from '../../components/It-Services-Components/Footer/Footer';
-import Scrollbar from '../../components/scrollbar/scrollbar';
-import icon from '@/public/images/icon/music-icon.svg';
-import bImg1 from '@/public/images/hero/contact-img.png';
-import bImg2 from '@/public/images/shape/brd_shape.png';
-import Image from 'next/image';
-import SimpleReactValidator from 'simple-react-validator';
-import { Fade } from 'react-awesome-reveal';
+/** Wevtex — Contact. Ported from .design-wevtex/project/contact.html */
 
-const ContactPage: React.FC = () => {
-  const [forms, setForms] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    subject: '',
-    message: '',
-  });
+import { useState } from "react";
+import "../wevtex-home.css";
+import { SiteHeader } from "../../components/wevtex/SiteHeader";
+import { SiteFooter } from "../../components/wevtex/SiteFooter";
+import { useReveal } from "../../components/wevtex/useReveal";
 
-  const [, forceUpdate] = useState(0);
+const FAQS = [
+  { q: "How quickly can you start?", a: "We're currently booking projects for Q3. If your project is urgent (under 4 weeks lead time) we have a rapid-response retainer that can pull people in — let us know in the brief and we'll see what's possible." },
+  { q: "Do you work with US/EU clients despite being in Morocco?", a: "~70% of our clients are in the US or EU. We work in GMT+1 with overlap with both. All contracts in English, payment in USD or EUR, invoicing through Stripe." },
+  { q: "What's the smallest engagement you'll take?", a: "Project minimum is MAD 10K (~$1,000) for a focused one-off (a landing page rebuild, a performance audit, a Stripe integration). Retainers start at MAD 300/mo. We don't do hourly." },
+  { q: "Who owns the code at the end?", a: "You do — fully, contractually, from day one. We commit straight to your GitHub org, with your engineers added if you want. No vendor lock-in, no licensing tricks, no maintenance hostage." },
+  { q: "Can you work with our existing team?", a: "Yes — that's how most of our engagements work. We embed alongside in-house engineers, run daily standups in your Slack, follow your conventions, and hand things off cleanly." },
+  { q: "What does post-launch support look like?", a: "Every project includes 30 days of post-launch support free. After that, most clients move to a retainer (MAD 300 — 5,000/mo) for ongoing dev, monitoring & growth work. We never abandon a project." },
+  { q: "What if it doesn't work out?", a: "Project contracts have a 14-day kill clause — if the engagement isn't clicking in the first two weeks, either side can exit, and we refund anything not yet billed. Retainers cancel any month, no questions." },
+];
 
-  const validator = useRef(
-    new SimpleReactValidator({
-      className: 'errorMessage',
-      messages: {
-        required: 'This field is required',
-        email: 'Invalid email address',
-        alpha_space: 'Only letters and spaces allowed',
-        phone: 'Invalid phone number',
-      },
-    })
-  );
-
-  const changeHandler = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setForms({ ...forms, [e.target.name]: e.target.value });
-    if (validator.current.allValid()) {
-      validator.current.hideMessages();
-      forceUpdate((x) => x + 1);
-    }
-  };
-
-  const submitHandler = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (validator.current.allValid()) {
-      validator.current.hideMessages();
-      console.log('Form submitted', forms);
-      setForms({ name: '', email: '', phone: '', subject: '', message: '' });
-      alert("Message sent successfully!");
-    } else {
-      validator.current.showMessages();
-      forceUpdate((x) => x + 1);
-    }
-  };
+export default function ContactPage() {
+  useReveal();
+  const [sent, setSent] = useState(false);
+  const [open, setOpen] = useState<Record<number, boolean>>({ 0: true });
+  const toggle = (i: number) => setOpen((o) => ({ ...o, [i]: !o[i] }));
 
   return (
-    <>
-      <div className="body_wrap it-services">
-        <Header2 />
-        <section
-          className="page-title pt-200 pos-rel bg_img"
-          style={{ backgroundImage: `url('/images/bg/page_bg01.jpg')`, backgroundColor: 'var(--color-charcoal)' }}
-        >
-          <div className="container">
-            <div className="page-title-wrap sd-title-wrap">
-              <div className="row mt-none-30 align-items-end">
-                <div className="col-lg-9 mt-30">
-                  <div className="page-title-box">
-                    <span className="sub-title">
-                      <Image src={icon} alt="Contact Icon" /> Contact us
-                    </span>
-                    <h2 className="title" style={{ color: 'var(--color-soft-white)' }}>
-                      Connect with our team for <br />
-                      innovative solutions and <br />
-                      your digital success
-                    </h2>
-                  </div>
-                </div>
-                <div className="col-lg-3 mt-30">
-                  <div className="sd-right-img pos-rel">
-                    <Image src={bImg1} alt="Contact Illustration" />
-                    <div className="sd-arrow-shape style-3">
-                      <Image className="xbzoominzoomup" src={bImg2} alt="Arrow Decoration" />
-                    </div>
-                  </div>
-                </div>
-              </div>
+    <div className="wevtex">
+      <SiteHeader current="contact" />
+
+      {/* HERO */}
+      <section className="theme-dark page-hero">
+        <div className="hero-wash"></div>
+        <div className="hero-grid-bg"></div>
+        <div className="container">
+          <div className="reveal">
+            <div className="crumb"><a href="/" style={{ color: "inherit" }}>Home</a> &nbsp;/&nbsp; Contact</div>
+            <h1>Let&apos;s build<br />something <em>together.</em></h1>
+            <p className="lead">
+              Tell us about the project. We&apos;ll come back within four hours during business hours with a rough scope, a quote, and a calendar invite.
+            </p>
+            <div className="page-hero-meta">
+              <div><span className="label">Response time</span><div className="val">4h 12m average</div></div>
+              <div><span className="label">Booking</span><div className="val">Q3 · 14 slots open</div></div>
+              <div><span className="label">Locations</span><div className="val">Casablanca · Lisbon · Remote</div></div>
+              <div><span className="label">Hours</span><div className="val">Mon–Fri · 09–18 GMT+1</div></div>
             </div>
           </div>
-        </section>
+        </div>
+      </section>
 
-        <section className="contact-form-section pt-120 pb-120 bg-white">
-          <div className="container">
-            <div className="row align-items-center">
-              {/* Contact Information */}
-              <div className="col-lg-5 mb-5 mb-lg-0">
-                <div className="contact-info-wrapper pr-lg-5">
-                  <h3 className="mb-4" style={{ fontSize: '36px', fontWeight: 'bold' }}>Let's Build Something Great Together.</h3>
-                  <p className="mb-5" style={{ fontSize: '18px', color: 'var(--color-default)' }}>
-                    Reach out to our engineering team to discuss how we can scale your business with robust IT architecture.
-                  </p>
-                  <ul className="list-unstyled contact-details">
-                    <li className="d-flex align-items-center mb-4">
-                      <div className="icon-wrapper mr-3" style={{ width: '50px', height: '50px', backgroundColor: 'var(--color-peach-tint)', borderRadius: '50%', display: 'flex', justifyContent: 'center', alignItems: 'center', color: 'var(--color-burnt-orange)', fontSize: '20px' }}>
-                        <i className="fas fa-map-marker-alt"></i>
-                      </div>
-                      <div>
-                        <h5 className="mb-1" style={{ fontWeight: 'bold' }}>Headquarters</h5>
-                        <p className="mb-0">123 Innovation Drive, Tech City</p>
-                      </div>
-                    </li>
-                    <li className="d-flex align-items-center mb-4">
-                      <div className="icon-wrapper mr-3" style={{ width: '50px', height: '50px', backgroundColor: 'var(--color-peach-tint)', borderRadius: '50%', display: 'flex', justifyContent: 'center', alignItems: 'center', color: 'var(--color-burnt-orange)', fontSize: '20px' }}>
-                        <i className="fas fa-envelope"></i>
-                      </div>
-                      <div>
-                        <h5 className="mb-1" style={{ fontWeight: 'bold' }}>Email Us</h5>
-                        <p className="mb-0">hello@agency.com</p>
-                      </div>
-                    </li>
-                    <li className="d-flex align-items-center">
-                      <div className="icon-wrapper mr-3" style={{ width: '50px', height: '50px', backgroundColor: 'var(--color-peach-tint)', borderRadius: '50%', display: 'flex', justifyContent: 'center', alignItems: 'center', color: 'var(--color-burnt-orange)', fontSize: '20px' }}>
-                        <i className="fas fa-phone-alt"></i>
-                      </div>
-                      <div>
-                        <h5 className="mb-1" style={{ fontWeight: 'bold' }}>Call Us</h5>
-                        <p className="mb-0">+1 (800) 123-4567</p>
-                      </div>
-                    </li>
-                  </ul>
-                </div>
+      {/* CONTACT */}
+      <section className="theme-cream contact">
+        <div className="container">
+          <div className="contact-grid">
+            <div className="contact-info reveal">
+              <span className="eyebrow">// Get in touch</span>
+              <h2 className="h-section" style={{ marginTop: 24 }}>Send a brief —<br />we&apos;ll <span className="serif" style={{ color: "var(--accent)" }}>reply in 24h.</span></h2>
+              <p className="lead">
+                Email is fine, the form is faster, and if you want to skip ahead just grab a slot on the calendar — we keep three open every week for first meetings.
+              </p>
+              <div className="contact-row">
+                <div className="contact-line"><span className="label">Email</span><span className="val">hello@wevtex.co</span></div>
+                <div className="contact-line"><span className="label">Phone</span><span className="val">+1 (415) 555-0142</span></div>
+                <div className="contact-line"><span className="label">Calendar</span><span className="val">cal.com/wevtex/intro</span></div>
+                <div className="contact-line"><span className="label">Press</span><span className="val">press@wevtex.co</span></div>
+                <div className="contact-line"><span className="label">Careers</span><span className="val">careers@wevtex.co</span></div>
               </div>
-
-              {/* Enhanced Contact Form */}
-              <div className="col-lg-7">
-                <Fade direction="up" triggerOnce={false} duration={800}>
-                  <div
-                    className="contact-form-wrapper"
-                    style={{
-                      backgroundColor: '#ffffff',
-                      padding: '50px',
-                      borderRadius: '15px',
-                      boxShadow: '0 20px 60px rgba(0,0,0,0.08)'
-                    }}
-                  >
-                    <h3 style={{ marginBottom: '30px', color: '#1a1a1a', fontSize: '28px', fontWeight: 'bold' }}>Send a Message</h3>
-                    <form className="contact-form" onSubmit={submitHandler} noValidate>
-                      <div className="row">
-                        <div className="col-md-6 mb-4">
-                          <div className="input-field pos-rel">
-                            <input
-                              value={forms.name}
-                              type="text"
-                              name="name"
-                              className="form-control"
-                              onBlur={changeHandler}
-                              onChange={changeHandler}
-                              placeholder="Your Name"
-                              style={{ backgroundColor: '#f4f5f8', border: 'none', borderRadius: '8px', padding: '18px 20px', width: '100%', outline: 'none' }}
-                            />
-                            {validator.current.message('name', forms.name, 'required|alpha_space')}
-                          </div>
-                        </div>
-                        <div className="col-md-6 mb-4">
-                          <div className="input-field pos-rel">
-                            <input
-                              value={forms.email}
-                              type="email"
-                              name="email"
-                              className="form-control"
-                              onBlur={changeHandler}
-                              onChange={changeHandler}
-                              placeholder="Your Email"
-                              style={{ backgroundColor: '#f4f5f8', border: 'none', borderRadius: '8px', padding: '18px 20px', width: '100%', outline: 'none' }}
-                            />
-                            {validator.current.message('email', forms.email, 'required|email')}
-                          </div>
-                        </div>
-                        <div className="col-md-6 mb-4">
-                          <div className="input-field pos-rel">
-                            <input
-                              value={forms.phone}
-                              type="tel"
-                              name="phone"
-                              className="form-control"
-                              onBlur={changeHandler}
-                              onChange={changeHandler}
-                              placeholder="Phone Number"
-                              style={{ backgroundColor: '#f4f5f8', border: 'none', borderRadius: '8px', padding: '18px 20px', width: '100%', outline: 'none' }}
-                            />
-                            {validator.current.message('phone', forms.phone, 'required|phone')}
-                          </div>
-                        </div>
-                        <div className="col-md-6 mb-4">
-                          <div className="input-field pos-rel">
-                            <input
-                              value={forms.subject}
-                              type="text"
-                              name="subject"
-                              className="form-control"
-                              onBlur={changeHandler}
-                              onChange={changeHandler}
-                              placeholder="Subject"
-                              style={{ backgroundColor: '#f4f5f8', border: 'none', borderRadius: '8px', padding: '18px 20px', width: '100%', outline: 'none' }}
-                            />
-                            {validator.current.message('subject', forms.subject, 'required')}
-                          </div>
-                        </div>
-                        <div className="col-lg-12 mb-4">
-                          <div className="input-field text-field pos-rel">
-                            <textarea
-                              value={forms.message}
-                              name="message"
-                              className="form-control"
-                              placeholder="Your Message..."
-                              onBlur={changeHandler}
-                              onChange={changeHandler}
-                              style={{ backgroundColor: '#f4f5f8', border: 'none', borderRadius: '8px', padding: '18px 20px', width: '100%', minHeight: '150px', outline: 'none' }}
-                            />
-                            {validator.current.message('message', forms.message, 'required')}
-                          </div>
-                        </div>
-                        <div className="col-lg-12">
-                          <button
-                            type="submit"
-                            className="thm-btn"
-                            style={{ width: '100%', display: 'block', textAlign: 'center', padding: '20px', backgroundColor: 'var(--color-burnt-orange)', color: '#fff', borderRadius: '8px', border: 'none', fontWeight: 'bold', fontSize: '18px' }}
-                          >
-                            Send Message
-                          </button>
-                        </div>
-                      </div>
-                    </form>
-                  </div>
-                </Fade>
+              <div className="contact-ratings">
+                <div className="rating-chip"><strong>4.8</strong> Clutch</div>
+                <div className="rating-chip"><strong>5.0</strong> Google</div>
+                <div className="rating-chip"><strong>4.9</strong> DesignRush</div>
               </div>
             </div>
+
+            <form className="form reveal" data-delay="2" onSubmit={(e) => { e.preventDefault(); setSent(true); }}>
+              <div className="form-eyebrow">// Project brief</div>
+              <h3>Tell us about your <em>project.</em></h3>
+              <div className="form-grid">
+                <div className="field"><label>Full name</label><input type="text" placeholder="Jane Smith" /></div>
+                <div className="field"><label>Work email</label><input type="email" placeholder="jane@company.com" /></div>
+                <div className="field"><label>Company</label><input type="text" placeholder="Your company" /></div>
+                <div className="field"><label>Phone (optional)</label><input type="tel" placeholder="+1 234 567 890" /></div>
+                <div className="field">
+                  <label>Project type</label>
+                  <select defaultValue="">
+                    <option value="">Select type</option>
+                    <option>E-commerce</option>
+                    <option>SaaS</option>
+                    <option>Booking system</option>
+                    <option>Desktop software</option>
+                    <option>Marketing site</option>
+                    <option>Migration</option>
+                    <option>Not sure yet</option>
+                  </select>
+                </div>
+                <div className="field">
+                  <label>Budget range</label>
+                  <select defaultValue="">
+                    <option value="">Select budget</option>
+                    <option>MAD 3K — 10K</option>
+                    <option>MAD 10K — 25K</option>
+                    <option>MAD 25K — 50K</option>
+                    <option>MAD 50K+</option>
+                    <option>Not sure yet</option>
+                  </select>
+                </div>
+                <div className="field">
+                  <label>Timeline</label>
+                  <select defaultValue="">
+                    <option value="">Select timeline</option>
+                    <option>ASAP</option>
+                    <option>Within 1 month</option>
+                    <option>1—3 months</option>
+                    <option>3+ months</option>
+                    <option>Just exploring</option>
+                  </select>
+                </div>
+                <div className="field">
+                  <label>How&apos;d you find us?</label>
+                  <select defaultValue="">
+                    <option value="">Select source</option>
+                    <option>Google</option>
+                    <option>Referral</option>
+                    <option>Clutch / DesignRush</option>
+                    <option>Social</option>
+                    <option>Other</option>
+                  </select>
+                </div>
+                <div className="field full">
+                  <label>Project brief</label>
+                  <textarea placeholder="What are you trying to build? What's the deadline? What's keeping you up at night?" style={{ minHeight: 140 }}></textarea>
+                </div>
+              </div>
+              <button type="submit" className="btn btn-primary">
+                {sent ? (
+                  "Sent ✓ — we'll reply within 24h"
+                ) : (
+                  <>
+                    Send Message
+                    <svg className="arrow" width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" strokeWidth="1.6"><path d="M2 7l10-5-3 12-2-5-5-2z" /></svg>
+                  </>
+                )}
+              </button>
+            </form>
           </div>
-        </section>
-      </div>
-      <Footer />
-      <Scrollbar />
-    </>
+        </div>
+      </section>
+
+      {/* LOCATIONS */}
+      <section className="theme-dark" style={{ padding: "140px 0" }}>
+        <div className="container">
+          <div className="about-head reveal">
+            <div>
+              <span className="eyebrow">// Studios</span>
+              <h2 className="h-section" style={{ marginTop: 24 }}>Two cities.<br /><span className="serif" style={{ color: "var(--accent-hot)" }}>One team.</span></h2>
+            </div>
+            <p className="lead">
+              We have desks in Casablanca and Lisbon, and folks working from twelve more places. Whichever timezone you&apos;re in, someone here is up.
+            </p>
+          </div>
+          <div className="locations reveal">
+            <div className="location-card">
+              <div className="label">// HQ</div>
+              <h4>Casablanca</h4>
+              <p>Boulevard d&apos;Anfa 142<br />20330 · Casablanca, Morocco</p>
+              <div className="time">Local time · 14:32 GMT+1</div>
+            </div>
+            <div className="location-card">
+              <div className="label">// Studio</div>
+              <h4>Lisbon</h4>
+              <p>Rua da Boavista 28<br />1200-068 · Lisbon, Portugal</p>
+              <div className="time">Local time · 13:32 GMT</div>
+            </div>
+            <div className="location-card">
+              <div className="label">// Remote</div>
+              <h4>Everywhere</h4>
+              <p>Twelve more humans across<br />Berlin, Mexico City, Bangalore &amp; more</p>
+              <div className="time">Always-on async</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ */}
+      <section className="theme-cream" style={{ padding: "140px 0" }}>
+        <div className="container">
+          <div className="about-head reveal">
+            <div>
+              <span className="eyebrow">// FAQ</span>
+              <h2 className="h-section" style={{ marginTop: 24 }}>Common<br /><span className="serif" style={{ color: "var(--accent)" }}>questions.</span></h2>
+            </div>
+            <p className="lead">
+              The seven things people ask before signing. If you&apos;ve got a different one, just ask — we&apos;ll add it to the list.
+            </p>
+          </div>
+          <div className="faq-list reveal">
+            {FAQS.map((f, i) => (
+              <div className={open[i] ? "faq-item open" : "faq-item"} key={i}>
+                <button className="faq-q" onClick={() => toggle(i)}>
+                  <span>{f.q}</span>
+                  <span className="icon">+</span>
+                </button>
+                <div className="faq-a">{f.a}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="theme-dark cta">
+        <div className="container">
+          <div className="reveal">
+            <span className="eyebrow accent">// Just go for it</span>
+            <h2 style={{ marginTop: 28 }}>Send the<br /><em>brief.</em></h2>
+            <p className="lead">
+              It doesn&apos;t have to be polished. Three lines and a screenshot is enough — we&apos;ll figure the rest out together.
+            </p>
+            <div className="cta-ctas">
+              <a href="#" className="btn btn-primary">Email Us Directly →</a>
+              <a href="/portfolio" className="btn btn-outline">See Our Work First</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <SiteFooter />
+    </div>
   );
-};
-
-export default ContactPage;
+}

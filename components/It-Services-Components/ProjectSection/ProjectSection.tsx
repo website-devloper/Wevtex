@@ -10,6 +10,7 @@ import { Fade } from 'react-awesome-reveal';
 import Image, { StaticImageData } from 'next/image';
 import { fetchAPI, getStrapiURL } from '../../../utils/api';
 
+
 interface ProjectType {
   slug: string;
   title: string;
@@ -28,18 +29,18 @@ const ProjectSection: React.FC = () => {
       title: 'Enterprise SaaS Platform',
       description: 'Automated user onboarding flow with custom Next.js integrations, reducing drop-off by 43%.',
       rtext1: 'Web Development',
-      rtext2: 'AI Automation',
+      rtext2: 'Desktop App',
       rtext3: 'React',
       icon: StaticProjects[4].icon,
       pImg: StaticProjects[4].pImg,
     },
     {
-      slug: 'ai-analytics-dashboard',
-      title: 'AI Analytics Dashboard',
-      description: 'Implemented n8n pipelines to aggregate real-time metrics, accelerating reporting by 10x.',
-      rtext1: 'Digital Strategy',
-      rtext2: 'n8n',
-      rtext3: 'Data',
+      slug: 'desktop-crm-platform',
+      title: 'Desktop CRM Platform',
+      description: 'Built a cross-platform Electron desktop app for a finance firm, cutting daily admin time by 4 hours.',
+      rtext1: 'Desktop Application',
+      rtext2: 'Electron',
+      rtext3: 'CRM',
       icon: StaticProjects[5].icon,
       pImg: StaticProjects[5].pImg,
     },
@@ -56,22 +57,32 @@ const ProjectSection: React.FC = () => {
   ]);
 
   return (
-    <section className="project pb-140 o-hidden">
+    <section className="project pt-120 pb-120 o-hidden" style={{ backgroundColor: '#ffffff' }}>
       <div className="container">
-        <div className="pro-top ul_li_between mb-65">
+        <div className="pro-top ul_li_between mb-65" style={{ alignItems: 'flex-end' }}>
           <div className="sec-title">
-            <Fade direction="up" triggerOnce duration={1000} delay={9}>
-              <div>
-                <h2 className="title mb-15">Recent works</h2>
-              </div>
-            </Fade>
-            <Fade direction="up" triggerOnce duration={1000} delay={9}>
-              <div>
-                <span className="content">Featured case studies showcasing real AI and Web Creation results.</span>
-              </div>
-            </Fade>
+            <span
+              style={{
+                color: 'var(--color-burnt-orange, #e2481e)',
+                fontWeight: 700,
+                fontSize: '14px',
+                letterSpacing: '2px',
+                textTransform: 'uppercase',
+                display: 'block',
+                marginBottom: '20px',
+                background: 'transparent'
+              }}
+            >
+              Featured Work
+            </span>
+            <h2 className="title" style={{ letterSpacing: '-1.5px', fontSize: '48px' }}>
+              Recent Projects
+            </h2>
+            <p style={{ color: '#49515b', maxWidth: '600px', margin: '20px 0 0', fontSize: '18px' }}>
+              Featured case studies showcasing real Web & Desktop Application results.
+            </p>
           </div>
-          <div className="xb-btn text-center mb-30">
+          <div className="xb-btn text-center">
             <Fade direction="right" triggerOnce duration={1000} delay={9}>
               <div>
                 <Link href="/portfolio" className="thm-btn thm-btn--fill_icon thm-btn--strock">

@@ -32,7 +32,7 @@ const Process: ProcessItem[] = [
   {
     id: '02',
     title: 'Design',
-    subTitle: 'Our architects draft seamless, premium interfaces and AI workflows.',
+    subTitle: 'Our architects draft seamless, premium interfaces and user experiences.',
     icon: sIcon2,
     direction: 'two',
   },
@@ -62,6 +62,19 @@ const WorkProcess: React.FC = () => {
               <div className="sec-title">
                 <Fade direction="down" triggerOnce duration={1000} delay={9}>
                   <div>
+                    <span
+                      style={{
+                        color: 'var(--color-burnt-orange, #e2481e)',
+                        fontWeight: 700,
+                        fontSize: '14px',
+                        letterSpacing: '2px',
+                        textTransform: 'uppercase',
+                        display: 'block',
+                        marginBottom: '20px',
+                      }}
+                    >
+                      How We Work
+                    </span>
                     <h2 className="title mb-40 wow fadeInUp" data-wow-duration="600ms">
                       Process Overview
                     </h2>
@@ -74,9 +87,9 @@ const WorkProcess: React.FC = () => {
                       data-wow-delay="200ms"
                       data-wow-duration="600ms"
                     >
-                      Wevtex executes a meticulous 4-step framework. From deep intelligence discovery
+                      Wevtex executes a meticulous 4-step framework. From deep discovery
                       to scalable deployment, our agile delivery model ensures premium quality web
-                      and AI creation at unprecedented speeds.
+                      and desktop application creation at unprecedented speeds.
                     </span>
                   </div>
                 </Fade>

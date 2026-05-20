@@ -10,15 +10,19 @@ interface Service {
   slug: string;
   sIcon: StaticImageData | string;
   sImg: StaticImageData | string;
+  bgImg: StaticImageData | string;
 }
 
 const ServiceSection: React.FC = () => {
   const [activeIndex, setActiveIndex] = useState(0);
-  const servicesToShow: Service[] = [
-    { title: 'Web Development', slug: 'web-development', sIcon: StaticServices[0]?.sIcon || '', sImg: StaticServices[0]?.sImg || '' },
-    { title: 'AI Automation', slug: 'ai-automation', sIcon: StaticServices[1]?.sIcon || '', sImg: StaticServices[1]?.sImg || '' },
-    { title: 'Digital Strategy', slug: 'digital-strategy', sIcon: StaticServices[2]?.sIcon || '', sImg: StaticServices[2]?.sImg || '' },
-  ];
+  // We pull the core 4 capabilities for the homepage snapshot
+  const servicesToShow: Service[] = StaticServices.slice(0, 4).map(service => ({
+    title: service.title,
+    slug: service.slug,
+    sIcon: service.sIcon || '',
+    sImg: service.sImg || StaticServices[0].sImg || '',
+    bgImg: service.bgImg || service.sImg || StaticServices[0].sImg || ''
+  }));
 
   const activeBgRef = useRef<HTMLDivElement | null>(null);
   const serviceListRef = useRef<HTMLDivElement | null>(null);
@@ -61,7 +65,7 @@ const ServiceSection: React.FC = () => {
           <div
             key={index}
             className={`service-image-item ${activeIndex === index ? 'active' : ''}`}
-            style={{ backgroundImage: `url(${typeof service.sImg === 'string' ? service.sImg : service.sImg.src})` }}
+            style={{ backgroundImage: `url(${typeof service.bgImg === 'string' ? service.bgImg : service.bgImg.src})` }}
           />
         ))}
       </div>

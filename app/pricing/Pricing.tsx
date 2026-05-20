@@ -273,22 +273,22 @@ const PricingSection: React.FC = () => {
                 <Col lg="4" md="6" className="mt-40">
                   <Fade direction="up" triggerOnce duration={800}>
                     <Card
-                      tier="Starter"
-                      price="2,999 MAD"
-                      description="For validating concepts."
+                      tier="Landing & Brand"
+                      price="800 MAD+"
+                      description="High-conversion launchpads."
                       isPopular={false}
                       features={[
-                        "Landing page securely built",
-                        "Mobile responsive layout",
-                        "Contact form integration",
-                        "Basic Technical SEO",
-                        "1 revision round"
+                        "Custom Landing Page build",
+                        "Copywriting & Call To Actions",
+                        "Lead generation form setup",
+                        "Mobile responsive design",
+                        "Basic Technical SEO"
                       ]}
                       deactivatedFeatures={[
-                        "AI automation setup",
-                        "Ongoing monthly support"
+                        "Complex booking systems",
+                        "Custom web applications"
                       ]}
-                      btnLabel="Choose Starter"
+                      btnLabel="Start Project"
                       btnStyle="wevtex-btn-outline"
                     />
                   </Fade>
@@ -297,19 +297,19 @@ const PricingSection: React.FC = () => {
                 <Col lg="4" md="6" className="mt-40">
                   <Fade direction="up" triggerOnce duration={800} delay={100}>
                     <Card
-                      tier="Growth"
-                      price="7,999 MAD"
-                      description="For scaling businesses."
+                      tier="E-commerce & Booking"
+                      price="4,000 MAD+"
+                      description="For generating direct sales."
                       isPopular={true}
                       features={[
-                        "Multi-page scalable website",
-                        "Custom AI automation setup",
-                        "Advanced Custom Analytics",
-                        "High speed optimization",
-                        "3 revision rounds",
-                        "1 month active support"
+                        "Shopify or Custom Next.js Store",
+                        "Payment Gateway Integration",
+                        "Inventory & Product Management",
+                        "Advanced reservations logic",
+                        "Email & WhatsApp notifications",
+                        "High speed optimization"
                       ]}
-                      btnLabel="Choose Growth"
+                      btnLabel="Start Selling Options"
                       btnStyle="wevtex-btn-solid"
                     />
                   </Fade>
@@ -318,19 +318,19 @@ const PricingSection: React.FC = () => {
                 <Col lg="4" md="6" className="mt-40">
                   <Fade direction="up" triggerOnce duration={800} delay={200}>
                     <Card
-                      tier="Enterprise"
-                      price="Custom"
-                      description="For complex operations."
+                      tier="SaaS & Desktop App"
+                      price="15k MAD+"
+                      description="Complex logic and custom tools."
                       isPopular={false}
                       features={[
-                        "Full custom solution infrastructure",
-                        "Dedicated engineering team",
-                        "Unlimited bespoke integrations",
-                        "Enterprise-grade security",
-                        "Priority 24/7 SLA block",
-                        "Ongoing monthly retainer"
+                        "Native Desktop tools (Windows/Mac)",
+                        "Custom CRMs, Dashboards, ERPs",
+                        "SaaS MVP and Platform builds",
+                        "Unlimited bespoke API integrations",
+                        "Enterprise-grade scaling",
+                        "Offline capability (Desktop)"
                       ]}
-                      btnLabel="Contact Us"
+                      btnLabel="Consult With Us"
                       btnStyle="wevtex-btn-outline"
                     />
                   </Fade>
@@ -344,20 +344,21 @@ const PricingSection: React.FC = () => {
                 <Col lg="4" md="6" className="mt-40">
                   <Fade direction="up" triggerOnce duration={800}>
                     <Card
-                      tier="Starter"
-                      price="600 MAD"
-                      description="For validating concepts."
+                      tier="Basic Support"
+                      price="300 MAD"
+                      description="Keep it running smoothly."
                       isPopular={false}
                       features={[
-                        "Full site maintenance",
-                        "Basic uptime monitoring",
-                        "Weekly backup storage",
-                        "Performance reporting"
+                        "Strict Security updates",
+                        "Scheduled backups",
+                        "Hosting setup & management",
+                        "Uptime monitoring 24/7"
                       ]}
                       deactivatedFeatures={[
-                        "Custom feature integration"
+                        "Content updates",
+                        "SEO Optimization"
                       ]}
-                      btnLabel="Choose Starter"
+                      btnLabel="Secure Your Site"
                       btnStyle="wevtex-btn-outline"
                     />
                   </Fade>
@@ -366,18 +367,18 @@ const PricingSection: React.FC = () => {
                 <Col lg="4" md="6" className="mt-40">
                   <Fade direction="up" triggerOnce duration={800} delay={100}>
                     <Card
-                      tier="Growth"
-                      price="1,500 MAD"
-                      description="For scaling businesses."
+                      tier="Growth & SEO"
+                      price="2,000 MAD"
+                      description="Scale your organic traffic."
                       isPopular={true}
                       features={[
-                        "Complete site management",
-                        "Ongoing SEO optimization",
-                        "Monthly new feature design",
-                        "Real-time error monitoring",
-                        "24/7 priority support channel"
+                        "All Basic Support features",
+                        "Frequent content updates",
+                        "Strategic Blog posts generation",
+                        "Backlinking & Site Ranking",
+                        "Social Media scheduling (3 platforms)"
                       ]}
-                      btnLabel="Choose Growth"
+                      btnLabel="Select Growth"
                       btnStyle="wevtex-btn-solid"
                     />
                   </Fade>
@@ -386,18 +387,18 @@ const PricingSection: React.FC = () => {
                 <Col lg="4" md="6" className="mt-40">
                   <Fade direction="up" triggerOnce duration={800} delay={200}>
                     <Card
-                      tier="Enterprise"
-                      price="Custom"
-                      description="For complex operations."
+                      tier="Full Care"
+                      price="5,000 MAD"
+                      description="We handle absolutely everything."
                       isPopular={false}
                       features={[
-                        "Full custom team deployment",
-                        "Immediate security patching",
-                        "Unlimited bespoke integrations",
-                        "Infrastructure scaling",
-                        "Continuous workflow automation"
+                        "All Growth & SEO features",
+                        "Priority immediate dev support",
+                        "Custom integrations updates",
+                        "Detailed monthly performance reports",
+                        "Infrastructure scaling consulting"
                       ]}
-                      btnLabel="Contact Us"
+                      btnLabel="Get Full Care"
                       btnStyle="wevtex-btn-outline"
                     />
                   </Fade>

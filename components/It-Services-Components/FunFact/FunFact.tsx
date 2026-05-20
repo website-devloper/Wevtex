@@ -78,35 +78,99 @@ const FunFact: FunFactItem[] = [
 
 const FunFactSection: React.FC = () => {
   return (
-    <section className="fanfact o-hidden pt-140 pb-145">
+    <section className="fanfact o-hidden pt-120 pb-120" style={{ backgroundColor: '#0f0f0f' }}>
       <div className="container">
-        <div className="row mt-none-40 justify-content-center">
+        <div className="row justify-content-center g-4">
           {FunFact.map((funfact, index) => (
-            <div className="col-lg-3 col-md-6 mt-40" key={index}>
-              <Fade direction="up" triggerOnce duration={funfact.duration} delay={6}>
-                <div>
-                  <div className="fanfact-item wow fadeInUp" data-wow-delay="300ms" data-wow-duration="600ms">
-                    <div className="xb-item--holder pos-rel z-1">
-                      <h5 className="xb-item--title">{funfact.title}</h5>
-                      <p className="xb-item--content">{funfact.subTitle}</p>
-                      <span className="xb-item--number">
-                        <CountUp end={Number(funfact.number)} enableScrollSpy />
-                        {funfact.symbol}
-                      </span>
-                      <span className="xb-item--text">{funfact.text}</span>
+            <div className="col-lg-3 col-md-6" key={index}>
+              <Fade direction="up" triggerOnce duration={funfact.duration} delay={index * 100}>
+                <div
+                  className="stat-bento-card"
+                  style={{
+                    backgroundColor: '#1c1c1e',
+                    padding: '40px 30px',
+                    borderRadius: '24px',
+                    border: '1px solid rgba(255, 255, 255, 0.05)',
+                    height: '100%',
+                    transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
+                    position: 'relative',
+                    overflow: 'hidden',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    textAlign: 'center'
+                  }}
+                >
+                  {/* Subtle Accent Glow */}
+                  <div style={{
+                    position: 'absolute',
+                    top: '-50%',
+                    left: '-50%',
+                    width: '200%',
+                    height: '200%',
+                    background: 'radial-gradient(circle, rgba(226, 72, 30, 0.03) 0%, transparent 70%)',
+                    pointerEvents: 'none'
+                  }}></div>
+
+                  <div className="xb-item--holder pos-rel z-1">
+                    <div className="mb-4" style={{ position: 'relative', width: '60px', height: '60px', margin: '0 auto' }}>
+                      <Image
+                        src={funfact.icon}
+                        alt={funfact.title}
+                        style={{ filter: 'brightness(0) invert(1) sepia(1) saturate(5) hue-rotate(-15deg)' }}
+                      />
                     </div>
-                    <div className={`fanfact-icon ${funfact.style ?? ''}`}>
-                      <div className="icon icon--one">
-                        <Image src={funfact.funImg1} alt="" />
-                      </div>
-                      <div className="icon icon--two">
-                        <Image src={funfact.funImg2} alt="" />
-                      </div>
-                      <div className="icon icon--three">
-                        <Image src={funfact.icon} alt="" />
-                      </div>
-                    </div>
+
+                    <span
+                      className="xb-item--number d-block mb-2"
+                      style={{
+                        fontSize: '48px',
+                        fontWeight: '800',
+                        color: '#ffffff',
+                        lineHeight: '1',
+                        letterSpacing: '-1px'
+                      }}
+                    >
+                      <CountUp end={Number(funfact.number)} enableScrollSpy duration={2.5} />
+                      <span style={{ color: '#e2481e' }}>{funfact.symbol}</span>
+                    </span>
+
+                    <h5
+                      className="xb-item--title mb-2"
+                      style={{
+                        fontSize: '18px',
+                        fontWeight: '700',
+                        color: '#ffffff',
+                        textTransform: 'uppercase',
+                        letterSpacing: '1px'
+                      }}
+                    >
+                      {funfact.text}
+                    </h5>
+
+                    <p
+                      className="xb-item--content"
+                      style={{
+                        fontSize: '14px',
+                        color: 'rgba(255, 255, 255, 0.5)',
+                        lineHeight: '1.4',
+                        maxWidth: '200px',
+                        margin: '0 auto'
+                      }}
+                    >
+                      {funfact.subTitle}
+                    </p>
                   </div>
+
+                  <style jsx>{`
+                    .stat-bento-card:hover {
+                      transform: translateY(-8px);
+                      border-color: rgba(226, 72, 30, 0.3);
+                      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+                      background-color: #242426;
+                    }
+                  `}</style>
                 </div>
               </Fade>
             </div>

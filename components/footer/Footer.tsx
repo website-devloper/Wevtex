@@ -9,7 +9,7 @@ import icon3 from '@/public/images/icon/location.svg';
 import icon4 from '@/public/images/icon/sms02.svg';
 import Services from '../../api/service';
 
-interface FooterProps {}
+interface FooterProps { }
 
 const SubmitHandler = (e: FormEvent<HTMLFormElement>) => {
   e.preventDefault();

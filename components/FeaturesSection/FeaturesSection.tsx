@@ -2,7 +2,7 @@ import React from 'react';
 import { Fade } from "react-awesome-reveal";
 import check from '@/public/images/icon/check.svg';
 import error from '@/public/images/icon/erorr.svg';
-import logo from '@/public/images/logo/logo-white.svg';
+import logo from '@/public/images/logo/logo-white.png';
 import star from '@/public/images/icon/star.svg';
 import Image from 'next/image';
 

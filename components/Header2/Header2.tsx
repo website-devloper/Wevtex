@@ -3,8 +3,8 @@
 import React, { useState, useEffect, FC } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import logoWhite from "@/public/images/logo/logo-white.svg";
-import logoBlack from "@/public/images/logo/logo-black02.svg";
+import logoWhite from "@/public/images/logo/logo-white.png";
+import logoBlack from "@/public/images/logo/logo-black.png";
 import MobileMenu from "../MobileMenu/MobileMenu";
 import MegaMenu1 from "./MegaMenu1";
 import MegaMenu2 from "./MegaMenu2";
@@ -34,10 +34,10 @@ const Header2: FC = () => {
             {/* Logo */}
             <div className="header-logo">
               <Link href="/" className="logo01" style={{ textDecoration: 'none' }}>
-                <h2 style={{ color: '#fff', margin: 0, fontWeight: 900, fontSize: '28px', letterSpacing: '-1px' }}>Wevtex<span style={{ color: 'var(--color-burnt-orange)' }}>.</span></h2>
+                <Image src={logoWhite} alt="Wevtex Logo" width={180} height={60} style={{ width: "auto", height: "auto" }} />
               </Link>
               <Link href="/" className="logo02" style={{ textDecoration: 'none' }}>
-                <h2 style={{ color: 'var(--color-charcoal)', margin: 0, fontWeight: 900, fontSize: '28px', letterSpacing: '-1px' }}>Wevtex<span style={{ color: 'var(--color-burnt-orange)' }}>.</span></h2>
+                <Image src={logoBlack} alt="Wevtex Logo" width={180} height={60} style={{ width: "auto", height: "auto" }} />
               </Link>
             </div>
 
@@ -45,42 +45,27 @@ const Header2: FC = () => {
             <div className="main-menu__wrap ul_li navbar navbar-expand-xl">
               <nav className="main-menu collapse navbar-collapse">
                 <ul>
-                  <li> {/* <li className="menu-item-has-children"> */}
+                  <li>
                     <Link href="/"><span>Home</span></Link>
-                    {/* <ul className="submenu">
-                      <li><Link href="/"><span>SEO Agency</span></Link></li>
-                      <li><Link href="/home-2"><span>IT Services</span></Link></li>
-                      <li><Link href="/home-3"><span>AI & Data Solutions</span></Link></li>
-                      <li><Link href="/home-4"><span>Cyber Security</span></Link></li>
-                      <li><Link href="/home-5"><span>Cloud and DevOps</span></Link></li>
-                      <li><Link href="/home-6"><span>Help Desk SaaS</span></Link></li>
-                    </ul> */}
                   </li>
-                  <li> {/* <li className="menu-item-has-children megamenu"> */}
-                    <Link href="/about"><span>About Us</span></Link>
-                    {/* <MegaMenu1 /> */}
+                  <li>
+                    <Link href="/about"><span>About</span></Link>
                   </li>
                   <li className="menu-item-has-children">
                     <Link href="/service"><span>Services</span></Link>
                     <ul className="submenu">
                       <li><Link href="/services/web-development"><span>Web Development</span></Link></li>
-                      <li><Link href="/services/ai-automation"><span>AI Automation</span></Link></li>
+                      <li><Link href="/services/desktop-applications"><span>Desktop Applications</span></Link></li>
+                      <li><Link href="/services/ecommerce-solutions"><span>E-Commerce Solutions</span></Link></li>
+                      <li><Link href="/services/seo-geo-optimization"><span>SEO & GEO Optimization</span></Link></li>
                     </ul>
                   </li>
-                  <li> {/* <li className="menu-item-has-children"> */}
+                  <li>
                     <Link href="/portfolio"><span>Portfolio</span></Link>
-                    {/* <ul className="submenu">
-                      <li><Link href="/casestudy"><span>Case Study</span></Link></li>
-                      <li><Link href="/casestudy-details"><span>Case Study Details</span></Link></li>
-                    </ul> */}
                   </li>
-                  {/* <li className="menu-item-has-children">
+                  <li>
                     <Link href="/blog"><span>Blog</span></Link>
-                    <ul className="submenu">
-                      <li><Link href="/blog"><span>Blog</span></Link></li>
-                      <li><Link href="/blog-single"><span>Blog Details</span></Link></li>
-                    </ul>
-                  </li> */}
+                  </li>
                   <li>
                     <Link href="/contact"><span>Contact</span></Link>
                   </li>
@@ -95,7 +80,7 @@ const Header2: FC = () => {
 
                     <div className="xb-logo-mobile xb-hide-xl">
                       <Link href="/" rel="home" style={{ textDecoration: 'none' }}>
-                        <h2 style={{ color: '#fff', margin: 0, fontWeight: 900, fontSize: '24px', letterSpacing: '-1px' }}>Wevtex<span style={{ color: 'var(--color-burnt-orange)' }}>.</span></h2>
+                        <Image src={logoWhite} alt="Wevtex Logo" width={150} height={50} style={{ width: "auto", height: "auto" }} />
                       </Link>
                     </div>
 

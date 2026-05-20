@@ -10,9 +10,9 @@ interface StatCard {
 }
 
 const stats: StatCard[] = [
-    { value: '18hrs', label: 'Saved Weekly' },
-    { value: '100%', label: 'Lead Capture Rate' },
-    { value: '3x', label: 'Team Productivity' },
+    { value: '4hrs', label: 'Saved Daily' },
+    { value: '100%', label: 'Offline Uptime' },
+    { value: '2x', label: 'Faster Operations' },
 ];
 
 const FeaturedCaseStudy: React.FC = () => {
@@ -39,7 +39,7 @@ const FeaturedCaseStudy: React.FC = () => {
                                         <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="rgba(28,28,30,0.2)" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round">
                                             <path d="M13 10V3L4 14h7v7l9-11h-7z" />
                                         </svg>
-                                        <p style={{ color: 'rgba(28,28,30,0.4)', fontSize: '14px', marginTop: '15px', fontWeight: 600 }}>FlowBot Pro Dashboard</p>
+                                        <p style={{ color: 'rgba(28,28,30,0.4)', fontSize: '14px', marginTop: '15px', fontWeight: 600 }}>FinanceDesk POS Dashboard</p>
                                     </div>
                                 </div>
                                 {/* Orange accent corner */}
@@ -76,7 +76,7 @@ const FeaturedCaseStudy: React.FC = () => {
                                 </span>
 
                                 <h2 style={{ fontSize: '52px', fontWeight: 800, color: 'var(--color-charcoal, #1a1a1a)', letterSpacing: '-1px', marginBottom: '15px', lineHeight: 1.15 }}>
-                                    FlowBot Pro
+                                    FinanceDesk POS
                                 </h2>
 
                                 <span style={{
@@ -88,13 +88,13 @@ const FeaturedCaseStudy: React.FC = () => {
                                     padding: '5px 14px',
                                     borderRadius: '20px',
                                     marginBottom: '30px'
-                                }}>AI Automation</span>
+                                }}>Desktop Application</span>
 
                                 <p style={{ color: 'rgba(28, 28, 30, 0.65)', fontSize: '18px', lineHeight: '1.7', marginBottom: '12px' }}>
-                                    <strong style={{ color: 'var(--color-charcoal, #1a1a1a)' }}>Challenge:</strong> A growing marketing agency spending 20+ hours weekly on repetitive manual tasks with no scalable system in place.
+                                    <strong style={{ color: 'var(--color-charcoal, #1a1a1a)' }}>Challenge:</strong> A retail chain spending 4+ hours daily on manual inventory, invoicing, and stock management with no offline-capable system.
                                 </p>
                                 <p style={{ color: 'rgba(28, 28, 30, 0.65)', fontSize: '18px', lineHeight: '1.7', marginBottom: '45px' }}>
-                                    <strong style={{ color: 'var(--color-charcoal, #1a1a1a)' }}>Solution:</strong> Custom n8n automation workflow connecting CRM, email, social scheduling, and reporting into one seamless pipeline.
+                                    <strong style={{ color: 'var(--color-charcoal, #1a1a1a)' }}>Solution:</strong> Custom Electron desktop POS application with barcode scanning, receipt printing, real-time stock management, and full offline capability.
                                 </p>
 
                                 {/* Stat Cards */}

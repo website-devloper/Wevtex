@@ -6662,6 +6662,16 @@ body[data-aos-easing=ease] [data-aos] {
   transition-delay: .2s;
 }
 
+.about-item.active .xb-item--holder {
+  background: rgba(28, 28, 30, 0.4);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  padding: 25px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+}
+
 .about-item.active .xb-item--title {
   transition-delay: .1s;
 }

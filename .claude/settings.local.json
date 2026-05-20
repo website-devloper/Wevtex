@@ -1,0 +1,24 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npx tsc *)",
+      "Bash(npm run *)",
+      "Bash(tasklist /FI \"IMAGENAME eq node.exe\")",
+      "PowerShell(Get-Process node -ErrorAction SilentlyContinue)",
+      "PowerShell(Stop-Process -Id 11196 -Force -ErrorAction SilentlyContinue; Get-Process node -ErrorAction SilentlyContinue | Where-Object { $_.CPU -gt 30 } | Select-Object Id, CPU, WorkingSet64)",
+      "Bash(curl -s -o /dev/null -w \"HTTP %{http_code} | time=%{time_total}s | TTFB=%{time_starttransfer}s\\\\n\" http://localhost:3000/)",
+      "Read(//tmp/**)",
+      "PowerShell(Get-Process node -ErrorAction SilentlyContinue | Where-Object { $_.CPU -gt 5 } | Stop-Process -Force -ErrorAction SilentlyContinue; Start-Sleep -Seconds 2; Get-Process node -ErrorAction SilentlyContinue | Select-Object Id, CPU, WorkingSet64 | Format-Table -AutoSize)",
+      "Bash(curl -s -o /tmp/home2.html -w \"HTTP %{http_code} | size=%{size_download}B | time=%{time_total}s | TTFB=%{time_starttransfer}s\\\\n\" --max-time 60 http://localhost:3000/)",
+      "Bash(curl -s -o /dev/null -w \"warm: HTTP %{http_code} | time=%{time_total}s | TTFB=%{time_starttransfer}s\\\\n\" http://localhost:3000/)",
+      "Bash(curl -s -o /dev/null -w \"load: HTTP %{http_code} | time=%{time_total}s | TTFB=%{time_starttransfer}s\\\\n\" http://localhost:3000/)",
+      "Bash(curl -s -o /dev/null -w \"load: HTTP %{http_code} | time=%{time_total}s | TTFB=%{time_starttransfer}s\\\\n\" --max-time 90 http://localhost:3000/)",
+      "Bash(curl -s -o /tmp/home3.html -w \"HTTP %{http_code} | time=%{time_total}s | TTFB=%{time_starttransfer}s\\\\n\" --max-time 90 http://localhost:3000/)",
+      "Bash(npm uninstall *)",
+      "PowerShell(Get-Process node -ErrorAction SilentlyContinue | Where-Object { $_.CPU -gt 5 } | Stop-Process -Force -ErrorAction SilentlyContinue; Start-Sleep -Seconds 2; Get-Process node -ErrorAction SilentlyContinue | Where-Object { $_.CPU -gt 5 } | Measure-Object | Select-Object -ExpandProperty Count)",
+      "Bash(curl -s -o /tmp/home_revert.html -w \"HTTP %{http_code} | time=%{time_total}s | TTFB=%{time_starttransfer}s | size=%{size_download}\\\\n\" --max-time 60 http://localhost:3000/)",
+      "WebFetch(domain:api.anthropic.com)",
+      "Bash(tar -xzf pkg.gz)"
+    ]
+  }
+}

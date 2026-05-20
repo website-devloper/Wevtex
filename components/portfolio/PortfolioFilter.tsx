@@ -10,7 +10,7 @@ interface PortfolioFilterProps {
 const filters = [
     { id: 'all', label: 'All' },
     { id: 'web-development', label: 'Web Development' },
-    { id: 'ai-automation', label: 'AI Automation' },
+    { id: 'desktop-applications', label: 'Desktop Applications' },
     { id: 'e-commerce', label: 'E-Commerce' },
 ];
 

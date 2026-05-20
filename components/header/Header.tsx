@@ -52,7 +52,7 @@ const Header: React.FC = () => {
             {/* Logo */}
             <div className="header-logo">
               <Link href="/">
-                <Image src="/images/logo/logo-black.svg" alt="Texpo Logo" width={150} height={50} />
+                <Image src="/images/logo/logo-black.png" alt="Texpo Logo" width={150} height={50} />
               </Link>
             </div>
 
@@ -111,7 +111,7 @@ const Header: React.FC = () => {
                     <div className="xb-menu-close xb-hide-xl xb-close" onClick={() => setMobailState(!mobailActive)} />
                     <div className="xb-logo-mobile xb-hide-xl">
                       <Link href="/" rel="home">
-                        <Image src="/images/logo/logo-black.svg" alt="Mobile Logo" width={150} height={50} />
+                        <Image src="/images/logo/logo-black.png" alt="Mobile Logo" width={150} height={50} />
                       </Link>
                     </div>
                     <div className="xb-header-mobile-search xb-hide-xl">
