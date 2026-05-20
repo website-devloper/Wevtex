@@ -1,12 +1,4 @@
 import type { Metadata } from "next";
-import "bootstrap/dist/css/bootstrap.min.css";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
-import "../styles/fontawesome.css";
-import "../styles/themify-icons.css";
-import "../styles/animate.css";
-import "../styles/custom-font.css";
-import "../styles/main.css";
 import { MagneticCursor } from "../components/aura/MagneticCursor";
 
 export const metadata: Metadata = {

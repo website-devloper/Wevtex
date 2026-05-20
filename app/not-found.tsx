@@ -1,81 +1,37 @@
-import React, { Fragment } from 'react';
-import Header2 from '../components/Header2/Header2';
-import Scrollbar from '../components/scrollbar/scrollbar';
-import Footer from '../components/It-Services-Components/Footer/Footer';
-import icon from '@/public/images/icon/music-icon.svg';
-import bImg1 from '@/public/images/hero/contact-img.png';
-import bImg2 from '@/public/images/shape/brd_shape.png';
-import Image from 'next/image';
-import Link from 'next/link';
+"use client";
 
-const ErrorPage: React.FC = () => {
+import "./wevtex-home.css";
+import { SiteHeader } from "../components/wevtex/SiteHeader";
+import { SiteFooter } from "../components/wevtex/SiteFooter";
+
+export default function NotFound() {
   return (
-    <Fragment>
-      <div className="body_wrap it-services">
-        <Header2 />
-        <section
-          className="page-title pt-200 pos-rel bg_img"
-          style={{ backgroundImage: `url('/images/bg/page_bg01.jpg')`, backgroundColor: 'var(--color-charcoal)' }}
-        >
-          <div className="container">
-            <div className="page-title-wrap sd-title-wrap">
-              <div className="row mt-none-30 align-items-end">
-                <div className="col-lg-9 mt-30">
-                  <div className="page-title-box">
-                    <span className="sub-title">
-                      <Image src={icon} alt="Music Icon" /> 404 Error
-                    </span>
-                    <h2 className="title" style={{ color: 'var(--color-soft-white)' }}>
-                      Hi Sorry We Can’t <br /> Find That Page
-                    </h2>
-                  </div>
-                </div>
-                <div className="col-lg-3 mt-30">
-                  <div className="sd-right-img pos-rel">
-                    <Image src={bImg1} alt="Contact Illustration" />
-                    <div className="sd-arrow-shape style-3">
-                      <Image className="xbzoominzoomup" src={bImg2} alt="Decorative Shape" />
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
+    <div className="wevtex">
+      <SiteHeader />
 
-        <div className="error-page">
-          <div className="container not-found-content">
-            <div className="row justify-content-center">
-              <div className="col-lg-12">
-                <div className="contant-wrapper text-center">
-                  <div className="error-page__text">
-                    <h2>404</h2>
-                  </div>
-                  <div className="error-page__content mb-50">
-                    <h2>Hi Sorry We Can’t Find That Page!</h2>
-                    <p>
-                      Oops! The page you are looking for does not exist. It might have been moved or deleted.
-                    </p>
-
-                    <div className="error-page-button">
-                      <Link href="/" className="thm-btn thm-btn--aso thm-btn--aso_yellow">
-                        <span className="btn_label" data-text="Go Back Home">
-                          Go Back Home
-                        </span>
-                      </Link>
-                    </div>
-                  </div>
-                </div>
-              </div>
+      <section className="theme-dark page-hero" style={{ minHeight: "60vh", display: "flex", alignItems: "center", justifyContent: "center" }}>
+        <div className="hero-wash"></div>
+        <div className="hero-grid-bg"></div>
+        <div className="container" style={{ textAlign: "center" }}>
+          <div className="reveal in">
+            <div style={{ fontFamily: "var(--font-mono)", fontSize: 14, letterSpacing: "0.2em", color: "var(--accent)", marginBottom: 24 }}>// 404 ERROR</div>
+            <h1 style={{ fontSize: "5rem", marginBottom: 20 }}>Page not <em>found.</em></h1>
+            <p className="lead" style={{ maxWidth: 600, margin: "0 auto 40px" }}>
+              The instrument or surface you are looking for does not exist or has been moved. Let&apos;s get you back on track.
+            </p>
+            <div>
+              <a href="/" className="btn btn-primary">
+                Go Back Home
+                <svg className="arrow" viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="1.6">
+                  <path d="M3 9L9 3M9 3H4M9 3V8" />
+                </svg>
+              </a>
             </div>
           </div>
         </div>
+      </section>
 
-        <Footer />
-        <Scrollbar />
-      </div>
-    </Fragment>
+      <SiteFooter />
+    </div>
   );
-};
-
-export default ErrorPage;
+}
