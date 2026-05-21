@@ -8,9 +8,13 @@
  */
 
 import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
 import "./wevtex-home.css";
 import { SiteHeader } from "../components/wevtex/SiteHeader";
 import { SiteFooter } from "../components/wevtex/SiteFooter";
+import { ScrollRevealText } from "../components/wevtex/ScrollRevealText";
+import { WaveBackground } from "../components/wevtex/WaveBackground";
+import { HeroReviews } from "../components/wevtex/HeroReviews";
 
 const ARROW = (
   <svg className="arrow" viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="1.6">
@@ -27,13 +31,6 @@ const IND2 = [
   "Crypto", "Travel", "Beauty", "Fitness", "Coaching", "Marketplace",
   "Studios", "Photography", "Music", "Film", "Agencies", "Non-profit",
   "Government", "Startups", "Energy", "Retail", "Pharma",
-];
-
-const HERO_WORDS: { text: string; cls?: string }[][] = [
-  [{ text: "We" }, { text: "build" }],
-  [{ text: "high-converting" }],
-  [{ text: "web", cls: "serif-em" }, { text: "&" }, { text: "mobile" }],
-  [{ text: "applications." }],
 ];
 
 function IndustryChips({ list }: { list: string[] }) {
@@ -75,55 +72,7 @@ export default function HomePage() {
     root.querySelectorAll(".reveal, .reveal-words").forEach((r) => io.observe(r));
     cleanups.push(() => io.disconnect());
 
-    /* Word-by-word staggered reveal on hero h1 */
-    const h1 = root.querySelector<HTMLElement>("#heroH1");
-    if (h1) {
-      h1.querySelectorAll<HTMLElement>(".word").forEach((w, i) => {
-        w.style.transitionDelay = 0.12 + i * 0.09 + "s";
-      });
-    }
-
-    /* Hero aurora — mouse parallax on the orb stage */
-    const stage = root.querySelector<HTMLElement>("#auroraStage");
-    if (stage) {
-      let tx = 0, ty = 0, cx = 0, cy = 0, raf = 0;
-      const onMove = (e: MouseEvent) => {
-        const r = stage.getBoundingClientRect();
-        tx = ((e.clientX - r.left) / r.width - 0.5) * 16;
-        ty = ((e.clientY - r.top) / r.height - 0.5) * 16;
-      };
-      const onLeave = () => { tx = 0; ty = 0; };
-      stage.addEventListener("mousemove", onMove);
-      stage.addEventListener("mouseleave", onLeave);
-      const tick = () => {
-        cx += (tx - cx) * 0.06;
-        cy += (ty - cy) * 0.06;
-        stage.style.transform = `translate3d(${cx * -0.4}px, ${cy * -0.4}px, 0)`;
-        raf = requestAnimationFrame(tick);
-      };
-      tick();
-      cleanups.push(() => {
-        stage.removeEventListener("mousemove", onMove);
-        stage.removeEventListener("mouseleave", onLeave);
-        cancelAnimationFrame(raf);
-      });
-    }
-
-    /* Aurora floating particles */
-    const host = root.querySelector<HTMLElement>("#auroraParticles");
-    if (host && host.childElementCount === 0) {
-      for (let i = 0; i < 16; i++) {
-        const s = document.createElement("span");
-        s.style.left = Math.random() * 100 + "%";
-        s.style.top = 60 + Math.random() * 40 + "%";
-        s.style.animationDuration = 4 + Math.random() * 6 + "s";
-        s.style.animationDelay = -Math.random() * 8 + "s";
-        const sz = 1.5 + Math.random() * 2;
-        s.style.width = sz + "px";
-        s.style.height = sz + "px";
-        host.appendChild(s);
-      }
-    }
+    /* Vanilla JS animations for hero section removed as they are now handled by Framer Motion & Spline */
 
     /* Capabilities — switch on hover */
     const capItems = root.querySelectorAll<HTMLElement>("#capItems .cap-item");
@@ -289,35 +238,24 @@ export default function HomePage() {
       <SiteHeader />
 
       {/* ===================== HERO ===================== */}
-      <section className="theme-dark hero" id="hero">
-        <div className="hero-wash"></div>
-        <div className="hero-grid-bg"></div>
+      <section className="theme-dark hero" id="hero" style={{ position: 'relative' }}>
+        {/* Animated flowing-waves background */}
+        <WaveBackground />
 
-        <div className="container">
-          <div className="hero-grid">
-            <div className="hero-content reveal">
-              <div className="hero-meta">
-                <span><span className="pulse"></span>v26.5</span>
-                <span>EST. 2019</span>
-                <span>240+ shipped</span>
-                <span>40+ industries</span>
-              </div>
-              <h1 className="reveal-words" id="heroH1">
-                {HERO_WORDS.map((line, li) => (
-                  <span className="line" key={li}>
-                    {line.map((w, wi) => (
-                      <span className="word" key={wi}>
-                        <span className={w.cls ? `inner ${w.cls}` : "inner"}>{w.text}</span>
-                        {wi < line.length - 1 ? " " : null}
-                      </span>
-                    ))}
-                    {li === HERO_WORDS.length - 1 ? <span className="caret"></span> : null}
-                    {li < HERO_WORDS.length - 1 ? <br /> : null}
-                  </span>
-                ))}
-              </h1>
-              <p className="hero-sub">
-                From scalable web and mobile applications to advanced SEO/GEO targeting and secure IT support. We engineer digital infrastructure that accelerates growth for businesses in the US, UK, and worldwide.
+        <div className="hero-wash"></div>
+
+        <div className="container" style={{ position: 'relative', zIndex: 2 }}>
+          <div className="hero-centered">
+            <div className="hero-content" style={{ width: '100%' }}>
+              <ScrollRevealText
+                as="h1"
+                mode="load"
+                em={["web"]}
+                emClassName="serif-em"
+                text={"We build high-converting\nweb & mobile applications."}
+              />
+              <p className="hero-sub" style={{ margin: '0 auto 40px auto' }}>
+                We build web, mobile and desktop products — plus the SEO, hosting and infrastructure that make them grow.
               </p>
               <div className="hero-ctas">
                 <a href="/contact" className="btn btn-primary">
@@ -326,73 +264,7 @@ export default function HomePage() {
                 </a>
                 <a href="/services" className="btn btn-outline">Explore Capabilities</a>
               </div>
-              <div className="hero-stats">
-                <div>
-                  <div className="num">240<em>+</em></div>
-                  <span className="label">Products shipped</span>
-                </div>
-                <div>
-                  <div className="num">4.9<em>★</em></div>
-                  <span className="label">Average client score</span>
-                </div>
-                <div>
-                  <div className="num">4<em>h</em></div>
-                  <span className="label">Average reply time</span>
-                </div>
-              </div>
-            </div>
-
-            <div className="hero-right reveal" data-delay="2">
-              <div className="aurora-stage" id="auroraStage">
-                <div className="aurora-halo"></div>
-                <div className="aurora-particles" id="auroraParticles"></div>
-
-                <div className="aurora-ring r1"><span className="pip"></span></div>
-                <div className="aurora-ring r2"><span className="pip"></span></div>
-                <div className="aurora-ring r3"><span className="pip"></span></div>
-
-                <div className="aurora-orb"></div>
-
-                <div className="satellite s1">
-                  <div className="icon">
-                    <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.4"><rect x="2" y="3" width="12" height="10" rx="1.5" /><path d="M2 6h12" /></svg>
-                  </div>
-                  <div>
-                    <span className="label">01 / Service</span>
-                    <span className="name">Web Development</span>
-                  </div>
-                </div>
-                <div className="satellite s2">
-                  <div className="icon">
-                    <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.4"><rect x="4" y="2" width="8" height="12" rx="2" /><path d="M8 12h.01" /></svg>
-                  </div>
-                  <div>
-                    <span className="label">02 / Service</span>
-                    <span className="name">App Development</span>
-                  </div>
-                </div>
-                <div className="satellite s3">
-                  <div className="icon">
-                    <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round"><path d="M11 2L4 9h5l-2 5 7-7H9l2-5z" /></svg>
-                  </div>
-                  <div>
-                    <span className="label">03 / Service</span>
-                    <span className="name">SEO &amp; GEO</span>
-                  </div>
-                </div>
-                <div className="satellite s4">
-                  <div className="icon">
-                    <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.4"><path d="M4 4h8v8H4z" /><path d="M8 4V1M8 15v-3M1 8h3M12 8h3" /></svg>
-                  </div>
-                  <div>
-                    <span className="label">04 / Service</span>
-                    <span className="name">IT Support &amp; Hosting</span>
-                  </div>
-                </div>
-
-                <div className="aurora-chip c1"><span className="dot"></span>99 / 100 LIVE</div>
-                <div className="aurora-chip c2"><span className="dot"></span>EDGE · &lt;50ms</div>
-              </div>
+              <HeroReviews />
             </div>
           </div>
         </div>
@@ -403,43 +275,25 @@ export default function HomePage() {
         <div className="container">
           <div className="manifesto-grid reveal">
             <div className="manifesto-meta">
-              <span className="eyebrow">// 01 — Manifesto</span>
-              <div className="num">2019</div>
-              <span className="caption">Independent studio<br />since founding</span>
-
-              <div className="manifesto-stamp">
-                <svg viewBox="0 0 170 170">
-                  <defs>
-                    <path id="stamp-path" d="M 85, 85 m -68, 0 a 68,68 0 1,1 136,0 a 68,68 0 1,1 -136,0" />
-                  </defs>
-                  <text fontFamily="Geist Mono" fontSize="9" letterSpacing="2.5" fill="#1c1410">
-                    <textPath href="#stamp-path">EST · MMXIX · INDEPENDENT · CASABLANCA · STUDIO · </textPath>
-                  </text>
-                </svg>
-                <div className="core">
-                  <span className="word">Wevtex</span>
-                  <span className="star">·</span>
-                  <span className="meta">Studio of 14</span>
+              <figure className="manifesto-photo">
+                <div className="manifesto-photo-frame">
+                  <Image
+                    className="manifesto-photo-img"
+                    src="/images/manifesto-studio.jpg"
+                    alt="Wevtex Studio"
+                    width={720}
+                    height={900}
+                  />
                 </div>
-              </div>
+              </figure>
             </div>
-            <h2>
-              We don&apos;t build websites.<br />
-              We build <em>instruments</em><br />
-              that compound — for<br />
-              operators who measure<br />
-              in revenue, retention,<br />
-              and pipeline.
-            </h2>
+            <ScrollRevealText
+              as="h2"
+              em={["instruments"]}
+              text="We don’t build websites. We build instruments that compound — for operators who measure in revenue, retention, and pipeline."
+            />
           </div>
 
-          <div className="manifesto-marks">
-            <span>Est. 2019</span>
-            <span>240+ ships</span>
-            <span>40+ industries</span>
-            <span>14 humans</span>
-            <span>4 continents</span>
-          </div>
         </div>
       </section>
 
@@ -447,96 +301,51 @@ export default function HomePage() {
       <section className="theme-dark features">
         <div className="container">
           <div className="feature-row reveal">
-            <div className="feature-cell">
-              <div className="feature-num"><span>01 / Delivery</span><span className="indicator"></span></div>
+            <div className="feature-card">
+              <span className="feature-icon">
+                <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinejoin="round" strokeLinecap="round">
+                  <path d="M13 2 4 14h6l-1 8 9-12h-7z" />
+                </svg>
+              </span>
               <h4>Fast <em>delivery</em>.</h4>
-              <p>Sprint-based shipping with weekly demos. Most MVPs live in 4–6 weeks.</p>
-              <div className="feature-ticker">
-                <span>Last ship</span>
-                <strong>12 days ago</strong>
-              </div>
+              <p>Sprint-based shipping with weekly demos — most MVPs go live in 4–6 weeks.</p>
             </div>
-            <div className="feature-cell">
-              <div className="feature-num"><span>02 / AI native</span><span className="indicator"></span></div>
+            <div className="feature-card">
+              <span className="feature-icon">
+                <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinejoin="round">
+                  <path d="M12 3l1.7 6.3L20 11l-6.3 1.7L12 19l-1.7-6.3L4 11l6.3-1.7z" />
+                </svg>
+              </span>
               <h4>AI-powered.</h4>
               <p>Modern AI embedded into your stack — search, support, automation.</p>
-              <div className="feature-ticker">
-                <span>Models shipped</span>
-                <strong>18 LLM stacks</strong>
-              </div>
             </div>
-            <div className="feature-cell">
-              <div className="feature-num"><span>03 / Pricing</span><span className="indicator"></span></div>
+            <div className="feature-card">
+              <span className="feature-icon">
+                <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinejoin="round">
+                  <path d="M3 11V5a2 2 0 0 1 2-2h6l9 9a2 2 0 0 1 0 2.8l-5.2 5.2a2 2 0 0 1-2.8 0z" />
+                  <circle cx="8" cy="8" r="1.7" />
+                </svg>
+              </span>
               <h4>Honestly priced.</h4>
               <p>Transparent retainers from MAD 300/mo. No hidden line items, ever.</p>
-              <div className="feature-ticker">
-                <span>Starting from</span>
-                <strong>MAD 300/mo</strong>
-              </div>
             </div>
-            <div className="feature-cell">
-              <div className="feature-num"><span>04 / Support</span><span className="indicator"></span></div>
+            <div className="feature-card">
+              <span className="feature-icon">
+                <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinejoin="round">
+                  <path d="M4 5h16a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H10l-5 4v-4H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z" />
+                </svg>
+              </span>
               <h4>Humans on Slack.</h4>
-              <p>Real-time monitoring, dedicated channel, &amp; incident response 24/7.</p>
-              <div className="feature-ticker">
-                <span>Avg. reply</span>
-                <strong>4h 12m</strong>
-              </div>
+              <p>Real-time monitoring, a dedicated channel, and incident response 24/7.</p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* ===================== ABOUT ===================== */}
-      <section className="theme-cream about" id="about">
-        <div className="container">
-          <div className="about-head reveal">
-            <div>
-              <span className="eyebrow">// 02 — About</span>
-              <h2 className="h-section" style={{ marginTop: 24 }}>A studio built for<br /><span className="serif" style={{ color: "var(--accent)" }}>ambitious operators.</span></h2>
-            </div>
-            <p className="lead">
-              We&apos;re a tight-knit team of engineers, designers and strategists obsessed with shipping software that compounds. Founded in 2019 — independent, profitable, remote-first.
-            </p>
-          </div>
 
-          <div className="about-cards">
-            <div className="about-card reveal" data-delay="1">
-              <div>
-                <div className="label">The agency</div>
-                <h3>Senior product engineers and designers — formerly at scale, now at your service.</h3>
-              </div>
-              <div className="footer-row">
-                <span>14 humans</span>
-                <span>4 continents</span>
-              </div>
-            </div>
-            <div className="about-card reveal" data-delay="2">
-              <div>
-                <div className="label">Our mission</div>
-                <h3>Make digital actually convert. Beautiful is table stakes — revenue is the metric.</h3>
-              </div>
-              <div className="footer-row">
-                <span>Avg. uplift</span>
-                <span>+47% conv.</span>
-              </div>
-            </div>
-            <div className="about-card dark reveal" data-delay="3">
-              <div>
-                <div className="label">Our vision</div>
-                <h3>Building a workshop, not a factory. Craftsmanship at <em>internet scale.</em></h3>
-              </div>
-              <div className="footer-row">
-                <span>Engagements / yr</span>
-                <span>12 — by design</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* ===================== CAPABILITIES ===================== */}
-      <section className="theme-dark capabilities" id="capabilities">
+      <section className="theme-cream capabilities" id="capabilities">
         <div className="container">
           <div className="cap-head reveal">
             <div>
@@ -565,104 +374,19 @@ export default function HomePage() {
               <span className="preview-label">// In production</span>
 
               <div className="frame active">
-                <svg viewBox="0 0 420 360" width="78%">
-                  <rect x="20" y="20" width="380" height="320" rx="10" fill="#fbf6ec" stroke="rgba(0,0,0,0.08)" />
-                  <rect x="20" y="20" width="380" height="32" fill="rgba(28,20,16,0.04)" />
-                  <circle cx="38" cy="36" r="3.5" fill="rgba(28,20,16,0.16)" />
-                  <circle cx="50" cy="36" r="3.5" fill="rgba(28,20,16,0.16)" />
-                  <circle cx="62" cy="36" r="3.5" fill="rgba(28,20,16,0.16)" />
-                  <rect x="80" y="30" width="200" height="12" rx="2" fill="rgba(28,20,16,0.06)" />
-                  <text x="38" y="100" fontFamily="Geist" fontSize="28" fontWeight="500" fill="#1c1410">We build</text>
-                  <text x="38" y="132" fontFamily="Newsreader" fontStyle="italic" fontSize="28" fontWeight="400" fill="#d94a1a">world-class.</text>
-                  <rect x="38" y="156" width="200" height="6" rx="2" fill="rgba(28,20,16,0.18)" />
-                  <rect x="38" y="168" width="160" height="6" rx="2" fill="rgba(28,20,16,0.18)" />
-                  <rect x="38" y="196" width="100" height="32" rx="16" fill="#d94a1a" />
-                  <text x="62" y="216" fontFamily="Geist" fontSize="12" fill="#fff">Start →</text>
-                  <rect x="146" y="196" width="100" height="32" rx="16" fill="none" stroke="rgba(28,20,16,0.4)" />
-                  <text x="170" y="216" fontFamily="Geist" fontSize="12" fill="#1c1410">Explore</text>
-                  <rect x="280" y="80" width="100" height="140" rx="8" fill="#1c1410" />
-                  <rect x="290" y="100" width="80" height="6" rx="2" fill="rgba(255,255,255,0.5)" />
-                  <rect x="290" y="112" width="50" height="5" rx="2" fill="rgba(255,255,255,0.25)" />
-                  <rect x="290" y="172" width="80" height="20" rx="4" fill="#d94a1a" />
-                  <rect x="38" y="252" width="100" height="68" rx="6" fill="#1c1410" />
-                  <rect x="148" y="252" width="100" height="68" rx="6" fill="rgba(28,20,16,0.08)" />
-                  <rect x="258" y="252" width="120" height="68" rx="6" fill="#d94a1a" />
-                </svg>
+                <div style={{ width: '100%', height: '100%', borderRadius: 12, background: 'rgba(0,0,0,0.02)' }} />
               </div>
 
               <div className="frame">
-                <svg viewBox="0 0 420 360" width="78%">
-                  <rect x="20" y="40" width="380" height="280" rx="12" fill="#1c1714" stroke="rgba(255,220,200,0.14)" />
-                  <rect x="20" y="40" width="380" height="22" rx="12" fill="rgba(255,255,255,0.04)" />
-                  <circle cx="34" cy="52" r="3" fill="#d94a1a" />
-                  <circle cx="46" cy="52" r="3" fill="rgba(255,255,255,0.18)" />
-                  <circle cx="58" cy="52" r="3" fill="rgba(255,255,255,0.18)" />
-                  <text x="76" y="55" fontFamily="Geist Mono" fontSize="9" fill="rgba(255,255,255,0.4)">~/wevtex-desktop</text>
-                  <rect x="20" y="62" width="100" height="258" fill="rgba(255,255,255,0.02)" />
-                  <text x="34" y="86" fontFamily="Geist Mono" fontSize="9" fill="rgba(255,255,255,0.4)" letterSpacing="1">PROJECTS</text>
-                  <rect x="30" y="100" width="80" height="22" rx="4" fill="rgba(217,74,26,0.15)" />
-                  <text x="40" y="115" fontFamily="Geist" fontSize="10" fill="#fdf7f3">★ globale</text>
-                  <text x="40" y="140" fontFamily="Geist" fontSize="10" fill="rgba(255,255,255,0.5)">reserve.co</text>
-                  <text x="40" y="160" fontFamily="Geist" fontSize="10" fill="rgba(255,255,255,0.5)">arc-desktop</text>
-                  <text x="40" y="180" fontFamily="Geist" fontSize="10" fill="rgba(255,255,255,0.5)">studio v2</text>
-                  <text x="140" y="90" fontFamily="Geist" fontSize="20" fontWeight="500" fill="#fdf7f3">Build target</text>
-                  <rect x="140" y="106" width="240" height="38" rx="6" fill="rgba(217,74,26,0.12)" stroke="rgba(217,74,26,0.3)" />
-                  <text x="156" y="130" fontFamily="Geist Mono" fontSize="11" fill="#f0631f">$ build --target=darwin-arm64</text>
-                  <rect x="140" y="156" width="240" height="6" rx="2" fill="rgba(255,255,255,0.1)" />
-                  <rect x="140" y="156" width="180" height="6" rx="2" fill="#d94a1a" />
-                  <text x="140" y="184" fontFamily="Geist Mono" fontSize="10" fill="rgba(255,255,255,0.5)">75% · 12.4s · 4.8mb</text>
-                  <rect x="140" y="208" width="116" height="80" rx="6" fill="rgba(255,255,255,0.04)" />
-                  <rect x="264" y="208" width="116" height="80" rx="6" fill="rgba(217,74,26,0.1)" stroke="rgba(217,74,26,0.2)" />
-                  <text x="280" y="252" fontFamily="Geist" fontSize="20" fontWeight="500" fill="#f0631f">99</text>
-                  <text x="300" y="270" fontFamily="Geist Mono" fontSize="9" fill="rgba(255,255,255,0.5)">/ 100</text>
-                </svg>
+                <div style={{ width: '100%', height: '100%', borderRadius: 12, background: 'rgba(0,0,0,0.02)' }} />
               </div>
 
               <div className="frame">
-                <svg viewBox="0 0 420 360" width="78%">
-                  <defs>
-                    <linearGradient id="perfFill" x1="0" y1="0" x2="0" y2="1">
-                      <stop offset="0" stopColor="#d94a1a" stopOpacity="0.4" />
-                      <stop offset="1" stopColor="#d94a1a" stopOpacity="0" />
-                    </linearGradient>
-                  </defs>
-                  <rect x="20" y="40" width="380" height="280" rx="12" fill="#1c1714" stroke="rgba(255,220,200,0.12)" />
-                  <text x="40" y="78" fontFamily="Geist Mono" fontSize="10" letterSpacing="2" fill="rgba(255,220,200,0.5)">PERFORMANCE / LCP</text>
-                  <text x="40" y="124" fontFamily="Geist" fontSize="44" fontWeight="400" fill="#fdf7f3">0.8</text>
-                  <text x="106" y="124" fontFamily="Geist" fontSize="18" fill="rgba(255,220,200,0.5)">s</text>
-                  <text x="40" y="146" fontFamily="Geist Mono" fontSize="10" fill="#f0631f">↓ 78% vs baseline</text>
-                  <line x1="40" y1="280" x2="380" y2="280" stroke="rgba(255,220,200,0.1)" />
-                  <line x1="40" y1="220" x2="380" y2="220" stroke="rgba(255,220,200,0.06)" />
-                  <line x1="40" y1="180" x2="380" y2="180" stroke="rgba(255,220,200,0.06)" />
-                  <polyline points="40,250 80,240 120,210 160,220 200,180 240,190 280,150 320,140 360,130 380,120" fill="url(#perfFill)" opacity="0.5" transform="translate(0 0)" />
-                  <polyline points="40,250 80,240 120,210 160,220 200,180 240,190 280,150 320,140 360,130 380,120" fill="none" stroke="#d94a1a" strokeWidth="2" />
-                  <circle cx="380" cy="120" r="4" fill="#d94a1a" />
-                  <circle cx="380" cy="120" r="9" fill="none" stroke="#d94a1a" opacity="0.5" />
-                  <text x="40" y="304" fontFamily="Geist Mono" fontSize="9" fill="rgba(255,220,200,0.4)">7 DAYS</text>
-                  <text x="370" y="304" fontFamily="Geist Mono" fontSize="9" fill="rgba(255,220,200,0.4)" textAnchor="end">TODAY</text>
-                </svg>
+                <div style={{ width: '100%', height: '100%', borderRadius: 12, background: 'rgba(0,0,0,0.02)' }} />
               </div>
 
               <div className="frame">
-                <svg viewBox="0 0 420 360" width="78%">
-                  <rect x="20" y="40" width="380" height="280" rx="12" fill="#1c1714" stroke="rgba(255,220,200,0.12)" />
-                  <text x="40" y="80" fontFamily="Geist Mono" fontSize="10" letterSpacing="2" fill="rgba(255,220,200,0.5)">KEYWORD RANKINGS</text>
-                  <g fontFamily="Geist" fontSize="13" fill="rgba(255,220,200,0.85)">
-                    <rect x="40" y="96" width="340" height="34" rx="6" fill="rgba(217,74,26,0.12)" stroke="rgba(217,74,26,0.25)" />
-                    <text x="56" y="118">saas booking system</text>
-                    <text x="358" y="118" fill="#f0631f" textAnchor="end" fontFamily="Geist Mono">#1 ↑</text>
-                    <rect x="40" y="136" width="340" height="34" rx="6" fill="rgba(255,255,255,0.03)" />
-                    <text x="56" y="158">desktop software agency</text>
-                    <text x="358" y="158" fill="#f0631f" textAnchor="end" fontFamily="Geist Mono">#3 ↑</text>
-                    <rect x="40" y="176" width="340" height="34" rx="6" fill="rgba(255,255,255,0.03)" />
-                    <text x="56" y="198">ecommerce conversion</text>
-                    <text x="358" y="198" fill="rgba(255,220,200,0.7)" textAnchor="end" fontFamily="Geist Mono">#7 ↑</text>
-                    <rect x="40" y="216" width="340" height="34" rx="6" fill="rgba(255,255,255,0.03)" />
-                    <text x="56" y="238">hire web developer</text>
-                    <text x="358" y="238" fill="rgba(255,220,200,0.7)" textAnchor="end" fontFamily="Geist Mono">#9 ↑</text>
-                  </g>
-                  <text x="40" y="292" fontFamily="Geist Mono" fontSize="10" letterSpacing="1" fill="rgba(255,220,200,0.5)">CTR +218% · BOUNCE -34% · LCP 0.8s</text>
-                </svg>
+                <div style={{ width: '100%', height: '100%', borderRadius: 12, background: 'rgba(0,0,0,0.02)' }} />
               </div>
 
               <div className="preview-meta">
@@ -1003,45 +727,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ===================== ECOSYSTEM ===================== */}
-      <section className="theme-cream ecosystem">
-        <div className="container">
-          <div className="eco-grid">
-            <div className="eco-canvas reveal">
-              <div className="eco-ring"></div>
-              <div className="eco-ring r2"></div>
-              <div className="eco-center">W</div>
-              <div className="eco-node n1">Web<span className="sub">Next · Astro</span></div>
-              <div className="eco-node n2">iOS<span className="sub">Swift</span></div>
-              <div className="eco-node n3">Android<span className="sub">Kotlin</span></div>
-              <div className="eco-node n4">Desktop<span className="sub">Tauri · Electron</span></div>
-              <div className="eco-node n5">CLI<span className="sub">Rust · Node</span></div>
-              <div className="eco-node n6">API<span className="sub">Edge · TS</span></div>
-            </div>
-            <div className="eco-content reveal" data-delay="2">
-              <span className="eyebrow">// 10 — Cross-platform</span>
-              <h2 className="h-section" style={{ marginTop: 24 }}>Build anything.<br /><span className="serif" style={{ color: "var(--accent)" }}>Ship everywhere.</span></h2>
-              <p className="lead" style={{ marginTop: 24 }}>
-                Our stack is platform-agnostic. We write once, render anywhere — from edge functions to native binaries — using shared design tokens, shared logic, shared deploy pipeline.
-              </p>
-              <div className="eco-stats">
-                <div>
-                  <div className="num">&lt; 50<em>ms</em></div>
-                  <span className="label">Edge latency</span>
-                </div>
-                <div>
-                  <div className="num">10<em>×</em></div>
-                  <span className="label">Faster ship cycles</span>
-                </div>
-                <div>
-                  <div className="num">100<em>%</em></div>
-                  <span className="label">Code reuse</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+
 
       {/* ===================== CTA ===================== */}
       <section className="theme-dark cta">
