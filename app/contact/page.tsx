@@ -9,9 +9,9 @@ import { SiteFooter } from "../../components/wevtex/SiteFooter";
 import { useReveal } from "../../components/wevtex/useReveal";
 
 const FAQS = [
-  { q: "How quickly can you start?", a: "We're currently booking projects for Q3. If your project is urgent (under 4 weeks lead time) we have a rapid-response retainer that can pull people in — let us know in the brief and we'll see what's possible." },
-  { q: "Do you work with US/EU clients despite being in Morocco?", a: "~70% of our clients are in the US or EU. We work in GMT+1 with overlap with both. All contracts in English, payment in USD or EUR, invoicing through Stripe." },
-  { q: "What's the smallest engagement you'll take?", a: "Project minimum is MAD 10K (~$1,000) for a focused one-off (a landing page rebuild, a performance audit, a Stripe integration). Retainers start at MAD 300/mo. We don't do hourly." },
+  { q: "How quickly can you start?", a: "We're currently booking projects. If your project is urgent (under 4 weeks lead time) let us know in the brief and we'll see what's possible." },
+  { q: "Do you work with US/EU clients despite being in Morocco?", a: "Yes. In fact, our primary target audience is the USA and UK. We work seamlessly across time zones, with all contracts in English and invoicing through standard secure channels." },
+  { q: "What's the smallest engagement you'll take?", a: "We offer customized project and retainer pricing based on your specific needs, whether it's a small app feature or enterprise SEO." },
   { q: "Who owns the code at the end?", a: "You do — fully, contractually, from day one. We commit straight to your GitHub org, with your engineers added if you want. No vendor lock-in, no licensing tricks, no maintenance hostage." },
   { q: "Can you work with our existing team?", a: "Yes — that's how most of our engagements work. We embed alongside in-house engineers, run daily standups in your Slack, follow your conventions, and hand things off cleanly." },
   { q: "What does post-launch support look like?", a: "Every project includes 30 days of post-launch support free. After that, most clients move to a retainer (MAD 300 — 5,000/mo) for ongoing dev, monitoring & growth work. We never abandon a project." },
@@ -39,12 +39,12 @@ export default function ContactPage() {
             <p className="lead">
               Tell us about the project. We&apos;ll come back within four hours during business hours with a rough scope, a quote, and a calendar invite.
             </p>
-            <div className="page-hero-meta">
-              <div><span className="label">Response time</span><div className="val">4h 12m average</div></div>
-              <div><span className="label">Booking</span><div className="val">Q3 · 14 slots open</div></div>
-              <div><span className="label">Locations</span><div className="val">Casablanca · Lisbon · Remote</div></div>
-              <div><span className="label">Hours</span><div className="val">Mon–Fri · 09–18 GMT+1</div></div>
-            </div>
+              <div className="page-hero-meta">
+                <div><span className="label">Response time</span><div className="val">4h 12m average</div></div>
+                <div><span className="label">Target</span><div className="val">USA, UK &amp; Worldwide</div></div>
+                <div><span className="label">Locations</span><div className="val">Casablanca · Remote</div></div>
+                <div><span className="label">Focus</span><div className="val">Web, Apps, SEO &amp; IT</div></div>
+              </div>
           </div>
         </div>
       </section>
@@ -61,7 +61,7 @@ export default function ContactPage() {
               </p>
               <div className="contact-row">
                 <div className="contact-line"><span className="label">Email</span><span className="val">hello@wevtex.co</span></div>
-                <div className="contact-line"><span className="label">Phone</span><span className="val">+1 (415) 555-0142</span></div>
+                <div className="contact-line"><span className="label">Phone</span><span className="val">+212 7 83180806</span></div>
                 <div className="contact-line"><span className="label">Calendar</span><span className="val">cal.com/wevtex/intro</span></div>
                 <div className="contact-line"><span className="label">Press</span><span className="val">press@wevtex.co</span></div>
                 <div className="contact-line"><span className="label">Careers</span><span className="val">careers@wevtex.co</span></div>
@@ -156,7 +156,7 @@ export default function ContactPage() {
               <h2 className="h-section" style={{ marginTop: 24 }}>Two cities.<br /><span className="serif" style={{ color: "var(--accent-hot)" }}>One team.</span></h2>
             </div>
             <p className="lead">
-              We have desks in Casablanca and Lisbon, and folks working from twelve more places. Whichever timezone you&apos;re in, someone here is up.
+              We operate out of Casablanca, Morocco, serving clients worldwide — primarily in the USA and UK. Wherever you are, we're ready to build.
             </p>
           </div>
           <div className="locations reveal">
@@ -167,10 +167,10 @@ export default function ContactPage() {
               <div className="time">Local time · 14:32 GMT+1</div>
             </div>
             <div className="location-card">
-              <div className="label">// Studio</div>
-              <h4>Lisbon</h4>
-              <p>Rua da Boavista 28<br />1200-068 · Lisbon, Portugal</p>
-              <div className="time">Local time · 13:32 GMT</div>
+              <div className="label">// Target</div>
+              <h4>USA &amp; UK</h4>
+              <p>Specialized in scaling<br />North American &amp; British businesses.</p>
+              <div className="time">Seamless overlap</div>
             </div>
             <div className="location-card">
               <div className="label">// Remote</div>

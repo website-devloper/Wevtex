@@ -116,7 +116,7 @@ export default function PortfolioPage() {
             <span className="eyebrow accent">// Yours next?</span>
             <h2 style={{ marginTop: 28 }}>Let&apos;s put your<br />name on this <em>list.</em></h2>
             <p className="lead">
-              We&apos;re booking projects for Q3. Average response time on briefs: 4 hours.
+              We&apos;re accepting new projects globally. Average response time on briefs: 4 hours.
             </p>
             <div className="cta-ctas">
               <a href="/contact" className="btn btn-primary">Start a Project →</a>

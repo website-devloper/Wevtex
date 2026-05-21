@@ -183,7 +183,7 @@ export default function CaseStudyPage() {
             <span className="eyebrow accent">// Your project</span>
             <h2 style={{ marginTop: 28 }}>Got a brief<br />like <em>this one?</em></h2>
             <p className="lead">
-              We&apos;re booking projects for Q3. Send the rough shape — we&apos;ll come back within 4 hours.
+              We&apos;re accepting new projects globally. Send the rough shape — we&apos;ll come back within 4 hours.
             </p>
             <div className="cta-ctas">
               <a href="/contact" className="btn btn-primary">Start a Project →</a>

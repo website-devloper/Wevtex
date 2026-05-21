@@ -31,8 +31,8 @@ const IND2 = [
 
 const HERO_WORDS: { text: string; cls?: string }[][] = [
   [{ text: "We" }, { text: "build" }],
-  [{ text: "world-class" }],
-  [{ text: "web", cls: "serif-em" }, { text: "&" }, { text: "desktop" }],
+  [{ text: "high-converting" }],
+  [{ text: "web", cls: "serif-em" }, { text: "&" }, { text: "mobile" }],
   [{ text: "applications." }],
 ];
 
@@ -129,7 +129,7 @@ export default function HomePage() {
     const capItems = root.querySelectorAll<HTMLElement>("#capItems .cap-item");
     const frames = root.querySelectorAll<HTMLElement>("#capPreview .frame");
     const capLabel = root.querySelector<HTMLElement>("#capLabel");
-    const capNames = ["web development", "desktop software", "performance & speed", "seo & cro"];
+    const capNames = ["web development", "app development", "seo & geo targeting", "hosting & it support"];
     capItems.forEach((it, i) => {
       const go = () => {
         capItems.forEach((x) => x.classList.remove("active"));
@@ -317,7 +317,7 @@ export default function HomePage() {
                 ))}
               </h1>
               <p className="hero-sub">
-                From high-converting e-commerce stores and powerful SaaS booking systems to native desktop software — we engineer digital products that scale your business.
+                From scalable web and mobile applications to advanced SEO/GEO targeting and secure IT support. We engineer digital infrastructure that accelerates growth for businesses in the US, UK, and worldwide.
               </p>
               <div className="hero-ctas">
                 <a href="/contact" className="btn btn-primary">
@@ -364,11 +364,11 @@ export default function HomePage() {
                 </div>
                 <div className="satellite s2">
                   <div className="icon">
-                    <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.4"><rect x="2" y="2" width="12" height="9" rx="1" /><path d="M5 14h6M8 11v3" /></svg>
+                    <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.4"><rect x="4" y="2" width="8" height="12" rx="2" /><path d="M8 12h.01" /></svg>
                   </div>
                   <div>
                     <span className="label">02 / Service</span>
-                    <span className="name">Desktop Apps</span>
+                    <span className="name">App Development</span>
                   </div>
                 </div>
                 <div className="satellite s3">
@@ -377,16 +377,16 @@ export default function HomePage() {
                   </div>
                   <div>
                     <span className="label">03 / Service</span>
-                    <span className="name">Performance</span>
+                    <span className="name">SEO &amp; GEO</span>
                   </div>
                 </div>
                 <div className="satellite s4">
                   <div className="icon">
-                    <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.4"><circle cx="7" cy="7" r="4" /><path d="M10 10l3.5 3.5" /></svg>
+                    <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.4"><path d="M4 4h8v8H4z" /><path d="M8 4V1M8 15v-3M1 8h3M12 8h3" /></svg>
                   </div>
                   <div>
                     <span className="label">04 / Service</span>
-                    <span className="name">SEO &amp; CRO</span>
+                    <span className="name">IT Support &amp; Hosting</span>
                   </div>
                 </div>
 
@@ -550,7 +550,7 @@ export default function HomePage() {
 
           <div className="cap-wrap reveal">
             <div className="cap-items" id="capItems">
-              {["Web Development", "Desktop Software", "Performance & Speed", "SEO & CRO"].map((name, i) => (
+              {["Web Development", "App Development", "SEO & GEO Targeting", "Hosting & IT Support"].map((name, i) => (
                 <div className={i === 0 ? "cap-item active" : "cap-item"} data-i={i} key={i}>
                   <span className="num">{String(i + 1).padStart(2, "0")}</span>
                   <span className="name">{name}</span>

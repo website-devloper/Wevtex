@@ -27,9 +27,9 @@ const TEAM = [
 
 const TIMELINE = [
   { y: "2019", h: "Founded", p: "Three operators, one shared frustration with template agencies. First three engagements that year." },
-  { y: "2021", h: "First Desktop Ship", p: "Expanded into native software — Tauri & Electron — to serve clients beyond the browser." },
-  { y: "2023", h: "100 Ships", p: "Crossed 100 production launches. Started capping engagements to twelve a year." },
-  { y: "2025", h: "Studio of 14", p: "Team grows. Remote-first formalized. Process documented and published openly." },
+  { y: "2021", h: "Global Expansion", p: "Expanded our reach to serve high-growth businesses specifically in the USA and UK markets." },
+  { y: "2023", h: "Full-Stack IT Services", p: "Introduced advanced SEO/GEO targeting and robust IT hosting to our core development offerings." },
+  { y: "2025", h: "Studio of 14", p: "Team grows across 4 continents. Remote-first workflows optimized for seamless global delivery." },
   { y: "2026", h: "Today", p: "240+ ships. 40+ industries. Profitable. Independent. Still here for the work." },
 ];
 
@@ -48,13 +48,13 @@ export default function AboutPage() {
             <div className="crumb"><a href="/" style={{ color: "inherit" }}>Home</a> &nbsp;/&nbsp; About</div>
             <h1>A workshop —<br />not a <em>factory.</em></h1>
             <p className="lead">
-              Wevtex is a tight-knit studio of senior product engineers, designers and strategists. Independent since 2019. Remote-first by design. We take on twelve engagements a year — never more — so each one gets the team&apos;s full attention.
+              Wevtex is a global IT agency of senior engineers, designers, and strategists. We specialize in building scalable web and mobile applications, advanced SEO, and enterprise IT support for businesses across the US, UK, and worldwide.
             </p>
             <div className="page-hero-meta">
               <div><span className="label">Founded</span><div className="val">2019 · Casablanca</div></div>
               <div><span className="label">Team</span><div className="val">14 humans · 4 continents</div></div>
-              <div><span className="label">Ownership</span><div className="val">Independent · profitable</div></div>
-              <div><span className="label">Engagements / yr</span><div className="val">12 — by design</div></div>
+              <div><span className="label">Focus</span><div className="val">Web, Apps, SEO, IT</div></div>
+              <div><span className="label">Target Markets</span><div className="val">USA, UK &amp; Worldwide</div></div>
             </div>
           </div>
         </div>
@@ -161,7 +161,7 @@ export default function AboutPage() {
             <span className="eyebrow accent" style={{ color: "var(--accent)" }}>// 05 — Work with us</span>
             <h2 style={{ marginTop: 28, color: "var(--ink-on-cream)" }}>Let&apos;s build<br />your <em>next thing.</em></h2>
             <p className="lead" style={{ color: "var(--ink-on-cream-2)" }}>
-              We&apos;re booking projects for Q3. If you&apos;ve got a brief that needs senior craft and honest measurement, we&apos;d love to hear it.
+              We&apos;re ready to partner with ambitious businesses worldwide. If you&apos;ve got a project that needs senior craft and honest measurement, we&apos;d love to hear it.
             </p>
             <div className="cta-ctas">
               <a href="/contact" className="btn btn-primary">

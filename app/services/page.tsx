@@ -78,27 +78,27 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      {/* SERVICE 02 — DESKTOP */}
+      {/* SERVICE 02 — APP DEVELOPMENT */}
       <section className="theme-dark service-block">
         <div className="container">
           <div className="service-row reverse reveal">
             <div className="service-text">
               <div className="num">02</div>
-              <span className="eyebrow">// Desktop Software</span>
-              <h2 style={{ marginTop: 14 }}>Native apps for<br />macOS, Windows &amp; <em>Linux.</em></h2>
+              <span className="eyebrow">// App Development</span>
+              <h2 style={{ marginTop: 14 }}>Native &amp; cross-platform<br /><em>mobile experiences.</em></h2>
               <p className="lead">
-                Web is amazing — until you need filesystem access, system tray, native notifications, or just better performance. That&apos;s when desktop wins.
+                Build apps that users actually want to keep. We engineer high-performance mobile applications for iOS and Android that scale natively.
               </p>
               <ul className="service-checks">
-                <li data-num="01">Tauri-based — Rust core, web frontend, native binary at &lt;10MB.</li>
-                <li data-num="02">Electron when needed — for complex Node-based ecosystems.</li>
-                <li data-num="03">Auto-update, code signing, App Store / Microsoft Store distribution.</li>
-                <li data-num="04">Cross-platform with shared logic — write once, ship to three OSes.</li>
+                <li data-num="01">React Native &amp; Flutter — fast development, shared logic across platforms.</li>
+                <li data-num="02">Native iOS/Android — when you need ultimate performance and hardware access.</li>
+                <li data-num="03">App Store Optimization (ASO) &amp; full deployment pipeline management.</li>
+                <li data-num="04">Backend integrations — seamless connection to your existing databases and APIs.</li>
               </ul>
-              <a href="/contact" className="btn btn-primary">Discuss Desktop Project →</a>
+              <a href="/contact" className="btn btn-primary">Discuss App Project →</a>
             </div>
             <div className="service-visual">
-              <span className="label">// Desktop</span>
+              <span className="label">// Mobile Apps</span>
               <svg viewBox="0 0 320 280" width="100%" style={{ maxWidth: 400 }}>
                 <rect x="20" y="40" width="280" height="220" rx="8" fill="#100b0a" stroke="rgba(255,220,200,0.16)" />
                 <rect x="20" y="40" width="280" height="22" fill="rgba(255,255,255,0.04)" />
@@ -107,47 +107,47 @@ export default function ServicesPage() {
                 <circle cx="60" cy="51" r="3" fill="rgba(255,220,200,0.2)" />
                 <rect x="20" y="62" width="80" height="198" fill="rgba(255,255,255,0.02)" />
                 <rect x="30" y="80" width="60" height="18" rx="4" fill="rgba(217,74,26,0.16)" />
-                <text x="38" y="92" fontFamily="Geist" fontSize="9" fill="#fdf7f3">★ globale</text>
-                <text x="36" y="116" fontFamily="Geist" fontSize="9" fill="rgba(255,220,200,0.5)">reserve.co</text>
-                <text x="36" y="132" fontFamily="Geist" fontSize="9" fill="rgba(255,220,200,0.5)">arc-desk</text>
-                <text x="36" y="148" fontFamily="Geist" fontSize="9" fill="rgba(255,220,200,0.5)">studio v2</text>
+                <text x="38" y="92" fontFamily="Geist" fontSize="9" fill="#fdf7f3">★ iOS Build</text>
+                <text x="36" y="116" fontFamily="Geist" fontSize="9" fill="rgba(255,220,200,0.5)">Android APK</text>
+                <text x="36" y="132" fontFamily="Geist" fontSize="9" fill="rgba(255,220,200,0.5)">Backend API</text>
+                <text x="36" y="148" fontFamily="Geist" fontSize="9" fill="rgba(255,255,255,0.5)">UI Kit</text>
                 <text x="116" y="84" fontFamily="Geist" fontSize="14" fill="#fdf7f3">Build target</text>
                 <rect x="116" y="98" width="170" height="32" rx="6" fill="rgba(217,74,26,0.14)" stroke="rgba(217,74,26,0.3)" />
-                <text x="126" y="118" fontFamily="Geist Mono" fontSize="9" fill="#f0631f">$ build --target=darwin-arm64</text>
+                <text x="126" y="118" fontFamily="Geist Mono" fontSize="9" fill="#f0631f">$ expo build:ios --production</text>
                 <rect x="116" y="140" width="170" height="5" rx="2" fill="rgba(255,255,255,0.1)" />
                 <rect x="116" y="140" width="130" height="5" rx="2" fill="#d94a1a" />
-                <text x="116" y="162" fontFamily="Geist Mono" fontSize="8" fill="rgba(255,220,200,0.5)">75% · 12.4s · 4.8mb</text>
+                <text x="116" y="162" fontFamily="Geist Mono" fontSize="8" fill="rgba(255,220,200,0.5)">75% · 42.4s · 18.2mb</text>
                 <rect x="116" y="180" width="80" height="64" rx="6" fill="rgba(255,255,255,0.04)" />
                 <rect x="206" y="180" width="80" height="64" rx="6" fill="rgba(217,74,26,0.12)" stroke="rgba(217,74,26,0.25)" />
-                <text x="226" y="218" fontFamily="Geist" fontSize="20" fontWeight="500" fill="#f0631f">99</text>
-                <text x="226" y="232" fontFamily="Geist Mono" fontSize="7" fill="rgba(255,220,200,0.5)">/ 100</text>
+                <text x="226" y="218" fontFamily="Geist" fontSize="20" fontWeight="500" fill="#f0631f">5.0</text>
+                <text x="226" y="232" fontFamily="Geist Mono" fontSize="7" fill="rgba(255,220,200,0.5)">/ 5.0 RATING</text>
               </svg>
             </div>
           </div>
         </div>
       </section>
 
-      {/* SERVICE 03 — PERFORMANCE */}
+      {/* SERVICE 03 — SEO & GEO */}
       <section className="theme-cream service-block">
         <div className="container">
           <div className="service-row reveal">
             <div className="service-text">
               <div className="num">03</div>
-              <span className="eyebrow">// Performance &amp; Speed</span>
-              <h2 style={{ marginTop: 14 }}>Sub-second sites.<br />Real-world <em>fast.</em></h2>
+              <span className="eyebrow">// SEO &amp; GEO Targeting</span>
+              <h2 style={{ marginTop: 14 }}>Dominate search<br />in the <em>US &amp; UK.</em></h2>
               <p className="lead">
-                Page speed is a conversion lever — we treat it like one. Real-user metrics, not lab scores. Median improvement: 3.2s → 0.8s LCP.
+                Traffic is half the story. We pair advanced technical SEO with precise GEO-targeting to attract high-intent customers from your key markets.
               </p>
               <ul className="service-checks">
-                <li data-num="01">Audit using real-user data — CrUX, RUM, server logs — not synthetic scores.</li>
-                <li data-num="02">Edge rendering — Vercel, Cloudflare Workers, Fly. Sub-50ms global TTFB.</li>
-                <li data-num="03">Image, font, script &amp; CSS budgets enforced in CI on every PR.</li>
-                <li data-num="04">Monitoring &amp; budgets — Sentry, Datadog, custom dashboards.</li>
+                <li data-num="01">International SEO — hreflang tags, localized content, and regional indexing.</li>
+                <li data-num="02">Technical SEO audits, Schema.org (JSON-LD), and programmatic content systems.</li>
+                <li data-num="03">GEO-targeting strategies — delivering localized experiences based on user IP.</li>
+                <li data-num="04">CRO sprints — turning that high-quality traffic into actual revenue.</li>
               </ul>
-              <a href="/contact" className="btn btn-dark">Speed Up My Site →</a>
+              <a href="/contact" className="btn btn-dark">Grow My Traffic →</a>
             </div>
             <div className="service-visual">
-              <span className="label">// Performance</span>
+              <span className="label">// SEO &amp; GEO</span>
               <svg viewBox="0 0 320 280" width="100%" style={{ maxWidth: 400 }}>
                 <defs>
                   <linearGradient id="pf" x1="0" y1="0" x2="0" y2="1">
@@ -156,18 +156,18 @@ export default function ServicesPage() {
                   </linearGradient>
                 </defs>
                 <rect x="20" y="20" width="280" height="240" rx="10" fill="#fbf6ec" stroke="rgba(28,20,16,0.14)" />
-                <text x="40" y="60" fontFamily="Geist Mono" fontSize="9" letterSpacing="2" fill="rgba(28,20,16,0.5)">PERFORMANCE / LCP</text>
-                <text x="40" y="100" fontFamily="Geist" fontSize="36" fontWeight="400" fill="#1c1410">0.8</text>
-                <text x="90" y="100" fontFamily="Geist" fontSize="16" fill="rgba(28,20,16,0.5)">s</text>
-                <text x="40" y="120" fontFamily="Geist Mono" fontSize="9" fill="#d94a1a">↓ 78% vs baseline</text>
+                <text x="40" y="60" fontFamily="Geist Mono" fontSize="9" letterSpacing="2" fill="rgba(28,20,16,0.5)">GLOBAL TRAFFIC / US &amp; UK</text>
+                <text x="40" y="100" fontFamily="Geist" fontSize="36" fontWeight="400" fill="#1c1410">+340</text>
+                <text x="130" y="100" fontFamily="Geist" fontSize="16" fill="rgba(28,20,16,0.5)">%</text>
+                <text x="40" y="120" fontFamily="Geist Mono" fontSize="9" fill="#d94a1a">↑ 340% vs baseline</text>
                 <line x1="40" y1="220" x2="280" y2="220" stroke="rgba(28,20,16,0.1)" />
                 <line x1="40" y1="180" x2="280" y2="180" stroke="rgba(28,20,16,0.06)" />
                 <line x1="40" y1="150" x2="280" y2="150" stroke="rgba(28,20,16,0.06)" />
-                <polyline points="40,200 80,190 120,160 160,170 200,140 240,130 280,110" fill="url(#pf)" opacity="0.6" />
-                <polyline points="40,200 80,190 120,160 160,170 200,140 240,130 280,110" fill="none" stroke="#d94a1a" strokeWidth="2" />
-                <circle cx="280" cy="110" r="4" fill="#d94a1a" />
-                <circle cx="280" cy="110" r="9" fill="none" stroke="#d94a1a" opacity="0.4" />
-                <text x="40" y="246" fontFamily="Geist Mono" fontSize="8" fill="rgba(28,20,16,0.4)">7 DAYS</text>
+                <polyline points="40,200 80,190 120,160 160,170 200,140 240,110 280,70" fill="url(#pf)" opacity="0.6" />
+                <polyline points="40,200 80,190 120,160 160,170 200,140 240,110 280,70" fill="none" stroke="#d94a1a" strokeWidth="2" />
+                <circle cx="280" cy="70" r="4" fill="#d94a1a" />
+                <circle cx="280" cy="70" r="9" fill="none" stroke="#d94a1a" opacity="0.4" />
+                <text x="40" y="246" fontFamily="Geist Mono" fontSize="8" fill="rgba(28,20,16,0.4)">90 DAYS</text>
                 <text x="270" y="246" fontFamily="Geist Mono" fontSize="8" fill="rgba(28,20,16,0.4)" textAnchor="end">TODAY</text>
               </svg>
             </div>
@@ -175,43 +175,43 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      {/* SERVICE 04 — SEO & CRO */}
+      {/* SERVICE 04 — HOSTING & IT SUPPORT */}
       <section className="theme-dark service-block">
         <div className="container">
           <div className="service-row reverse reveal">
             <div className="service-text">
               <div className="num">04</div>
-              <span className="eyebrow">// SEO &amp; CRO</span>
-              <h2 style={{ marginTop: 14 }}>Get found.<br />Then <em>convert.</em></h2>
+              <span className="eyebrow">// Hosting &amp; IT Support</span>
+              <h2 style={{ marginTop: 14 }}>Secure hosting &amp;<br /><em>IT management.</em></h2>
               <p className="lead">
-                Traffic is half the story. We pair technical SEO with rigorous CRO experiments to make sure that traffic translates to revenue.
+                We don't just build your platform, we maintain it. Enterprise-grade hosting, continuous monitoring, and dedicated IT support so you never worry about uptime.
               </p>
               <ul className="service-checks">
-                <li data-num="01">Technical SEO audits, Schema.org, programmatic content systems.</li>
-                <li data-num="02">Content strategy — keyword research, topic clusters, editorial calendar.</li>
-                <li data-num="03">CRO sprints — hypothesis → A/B test → measurement → ship the winner.</li>
-                <li data-num="04">Funnel analytics — Mixpanel, Posthog, segment, with weekly reports.</li>
+                <li data-num="01">High-availability cloud hosting (AWS, GCP, Vercel) optimized for scale.</li>
+                <li data-num="02">Continuous security auditing, SSL management, and automated backups.</li>
+                <li data-num="03">Dedicated IT Support — technical triage, bug fixing, and architecture scaling.</li>
+                <li data-num="04">SLA guarantees — 99.99% uptime and rapid incident response teams.</li>
               </ul>
-              <a href="/contact" className="btn btn-primary">Grow My Traffic →</a>
+              <a href="/contact" className="btn btn-primary">Get Secure Support →</a>
             </div>
             <div className="service-visual">
-              <span className="label">// SEO &amp; CRO</span>
+              <span className="label">// IT Support</span>
               <svg viewBox="0 0 320 280" width="100%" style={{ maxWidth: 400 }}>
                 <rect x="20" y="20" width="280" height="240" rx="10" fill="#100b0a" stroke="rgba(255,220,200,0.14)" />
-                <text x="36" y="56" fontFamily="Geist Mono" fontSize="9" letterSpacing="2" fill="rgba(255,220,200,0.5)">KEYWORD RANKINGS</text>
+                <text x="36" y="56" fontFamily="Geist Mono" fontSize="9" letterSpacing="2" fill="rgba(255,220,200,0.5)">SYSTEM STATUS</text>
                 <rect x="36" y="68" width="248" height="28" rx="6" fill="rgba(217,74,26,0.14)" stroke="rgba(217,74,26,0.3)" />
-                <text x="48" y="86" fontFamily="Geist" fontSize="11" fill="#fdf7f3">saas booking system</text>
-                <text x="266" y="86" fontFamily="Geist Mono" fontSize="11" fill="#f0631f" textAnchor="end">#1 ↑</text>
+                <text x="48" y="86" fontFamily="Geist" fontSize="11" fill="#fdf7f3">US-East Server Cluster</text>
+                <text x="266" y="86" fontFamily="Geist Mono" fontSize="11" fill="#f0631f" textAnchor="end">99.99%</text>
                 <rect x="36" y="102" width="248" height="28" rx="6" fill="rgba(255,220,200,0.03)" />
-                <text x="48" y="120" fontFamily="Geist" fontSize="11" fill="rgba(255,220,200,0.85)">desktop agency</text>
-                <text x="266" y="120" fontFamily="Geist Mono" fontSize="11" fill="#f0631f" textAnchor="end">#3 ↑</text>
+                <text x="48" y="120" fontFamily="Geist" fontSize="11" fill="rgba(255,220,200,0.85)">UK-London Edge Node</text>
+                <text x="266" y="120" fontFamily="Geist Mono" fontSize="11" fill="#f0631f" textAnchor="end">99.98%</text>
                 <rect x="36" y="136" width="248" height="28" rx="6" fill="rgba(255,220,200,0.03)" />
-                <text x="48" y="154" fontFamily="Geist" fontSize="11" fill="rgba(255,220,200,0.85)">ecommerce conv.</text>
-                <text x="266" y="154" fontFamily="Geist Mono" fontSize="11" fill="rgba(255,220,200,0.6)" textAnchor="end">#7 ↑</text>
+                <text x="48" y="154" fontFamily="Geist" fontSize="11" fill="rgba(255,220,200,0.85)">Database Replicas</text>
+                <text x="266" y="154" fontFamily="Geist Mono" fontSize="11" fill="rgba(255,220,200,0.6)" textAnchor="end">Healthy</text>
                 <rect x="36" y="170" width="248" height="28" rx="6" fill="rgba(255,220,200,0.03)" />
-                <text x="48" y="188" fontFamily="Geist" fontSize="11" fill="rgba(255,220,200,0.85)">hire web dev</text>
-                <text x="266" y="188" fontFamily="Geist Mono" fontSize="11" fill="rgba(255,220,200,0.6)" textAnchor="end">#9 ↑</text>
-                <text x="36" y="232" fontFamily="Geist Mono" fontSize="8" letterSpacing="1" fill="rgba(255,220,200,0.5)">CTR +218% · BOUNCE -34% · LCP 0.8s</text>
+                <text x="48" y="188" fontFamily="Geist" fontSize="11" fill="rgba(255,220,200,0.85)">Support SLA</text>
+                <text x="266" y="188" fontFamily="Geist Mono" fontSize="11" fill="rgba(255,220,200,0.6)" textAnchor="end">4h 12m</text>
+                <text x="36" y="232" fontFamily="Geist Mono" fontSize="8" letterSpacing="1" fill="rgba(255,220,200,0.5)">ALL SYSTEMS OPERATIONAL · 24/7 MONITORING</text>
               </svg>
             </div>
           </div>

@@ -23,7 +23,7 @@ export function SiteHeader({ current }: { current?: Current }) {
         </ul>
       </nav>
       <div className="nav-cta">
-        <span className="status-pill"><span className="pulse"></span>Booking Q3 · 14 slots</span>
+        <span className="status-pill"><span className="pulse"></span>Accepting Global Projects</span>
         <a href="/contact" className="btn btn-primary">
           Let&apos;s Talk
           <svg className="arrow" viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="1.6">
