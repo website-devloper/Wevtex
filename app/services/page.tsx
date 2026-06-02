@@ -1,20 +1,25 @@
 "use client";
 
+
+import { useTheme } from "@/app/ThemeContext";
 /** Wevtex — Services. Ported from .design-wevtex/project/services.html */
 
 import "../wevtex-home.css";
 import { SiteHeader } from "../../components/wevtex/SiteHeader";
 import { SiteFooter } from "../../components/wevtex/SiteFooter";
+import { ProcessSection } from "../../components/wevtex/ProcessSection";
 import { useReveal } from "../../components/wevtex/useReveal";
 
 export default function ServicesPage() {
+  const { isDark } = useTheme();
+
   useReveal();
   return (
-    <div className="wevtex">
+    <div className={`wevtex ${isDark ? 'mode-dark' : 'mode-light'}`}>
       <SiteHeader current="services" />
 
       {/* HERO */}
-      <section className="theme-dark page-hero">
+      <section className={`${isDark ? "theme-dark" : "theme-cream"} page-hero`}>
         <div className="hero-wash"></div>
         <div className="hero-grid-bg"></div>
         <div className="container">
@@ -35,7 +40,7 @@ export default function ServicesPage() {
       </section>
 
       {/* SERVICE 01 — WEB DEVELOPMENT */}
-      <section className="theme-cream service-block">
+      <section className={`${isDark ? "theme-dark" : "theme-cream"} service-block`}>
         <div className="container">
           <div className="service-row reveal">
             <div className="service-text">
@@ -79,7 +84,7 @@ export default function ServicesPage() {
       </section>
 
       {/* SERVICE 02 — APP DEVELOPMENT */}
-      <section className="theme-dark service-block">
+      <section className={`${isDark ? "theme-dark" : "theme-cream"} service-block`}>
         <div className="container">
           <div className="service-row reverse reveal">
             <div className="service-text">
@@ -128,7 +133,7 @@ export default function ServicesPage() {
       </section>
 
       {/* SERVICE 03 — SEO & GEO */}
-      <section className="theme-cream service-block">
+      <section className={`${isDark ? "theme-dark" : "theme-cream"} service-block`}>
         <div className="container">
           <div className="service-row reveal">
             <div className="service-text">
@@ -176,7 +181,7 @@ export default function ServicesPage() {
       </section>
 
       {/* SERVICE 04 — HOSTING & IT SUPPORT */}
-      <section className="theme-dark service-block">
+      <section className={`${isDark ? "theme-dark" : "theme-cream"} service-block`}>
         <div className="container">
           <div className="service-row reverse reveal">
             <div className="service-text">
@@ -218,8 +223,46 @@ export default function ServicesPage() {
         </div>
       </section>
 
+      {/* WEBSITE TYPES */}
+      <section className={`${isDark ? "theme-dark" : "theme-cream"} types service-block`}>
+        <div className="container">
+          <div className="types-head reveal">
+            <div>
+              <span className="eyebrow">// What we build</span>
+              <h2 className="h-section" style={{ marginTop: 24 }}>Every type of website.<br /><span className="serif" style={{ color: "var(--accent)" }}>One expert team.</span></h2>
+            </div>
+          </div>
+
+          <div className="types-grid">
+            {[
+              { n: "01 / Marketing", h: "Landing Page", p: "High-converting pages tuned for ad campaigns and product launches.", pr: "4,900", d: 1 },
+              { n: "02 / Marketing", h: "Product Portal", p: "Marketing & docs sites for SaaS — fast, structured, infinitely scalable.", pr: "9,000", d: 2 },
+              { n: "03 / Commerce", h: "E-commerce", p: "Headless Shopify, Medusa or custom stacks. Wins on speed and conversion.", pr: "16,000", d: 3 },
+              { n: "04 / Product", h: "Web App", p: "Multi-tenant SaaS — auth, billing, dashboards, integrations.", pr: "28,000", d: 4 },
+              { n: "05 / Vertical", h: "Booking Website", p: "Calendars, payments, reminders. Built for restaurants, clinics & studios.", pr: "11,000", d: 1 },
+              { n: "06 / Community", h: "Membership Portal", p: "Gated content, communities, course delivery. Stripe-native subscriptions.", pr: "14,000", d: 2 },
+              { n: "07 / Vertical", h: "Restaurant & Menu", p: "Reservation, menu, online order. Showcases the food, drives the booking.", pr: "8,000", d: 3 },
+              { n: "08 / Vertical", h: "Real Estate Listing", p: "Map search, MLS feeds, lead capture, agent CRM hooks.", pr: "12,000", d: 4 },
+            ].map((t, i) => (
+              <a className="type-card reveal" data-delay={t.d} href="/contact" key={i}>
+                <span className="num">{t.n}</span>
+                <div>
+                  <span className="type-price">From {t.pr} MAD</span>
+                  <h4>{t.h}</h4>
+                  <p>{t.p}</p>
+                </div>
+                <svg className="arrow" width="14" height="14" viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="1.8"><path d="M3 9L9 3M9 3H4M9 3V8" /></svg>
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* HOW IT WORKS */}
+      <ProcessSection />
+
       {/* PRICING SUMMARY */}
-      <section className="theme-cream pricing">
+      <section className={`${isDark ? "theme-dark" : "theme-cream"} pricing`}>
         <div className="container">
           <div className="pricing-head reveal">
             <div>
@@ -268,7 +311,7 @@ export default function ServicesPage() {
       </section>
 
       {/* CTA */}
-      <section className="theme-dark cta">
+      <section className={`${isDark ? "theme-dark" : "theme-cream"} cta`}>
         <div className="container">
           <div className="reveal">
             <span className="eyebrow accent">// Ready?</span>

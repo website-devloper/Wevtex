@@ -1,5 +1,7 @@
 "use client";
 
+
+import { useTheme } from "@/app/ThemeContext";
 /** Wevtex — Portfolio. Ported from .design-wevtex/project/portfolio.html */
 
 import { useState } from "react";
@@ -49,14 +51,16 @@ function Mockup({ style2 }: { style2?: boolean }) {
 }
 
 export default function PortfolioPage() {
+  const { isDark } = useTheme();
+
   useReveal();
   const [active, setActive] = useState(0);
   return (
-    <div className="wevtex">
+    <div className={`wevtex ${isDark ? 'mode-dark' : 'mode-light'}`}>
       <SiteHeader current="work" />
 
       {/* HERO */}
-      <section className="theme-dark page-hero">
+      <section className={`${isDark ? "theme-dark" : "theme-cream"} page-hero`}>
         <div className="hero-wash"></div>
         <div className="hero-grid-bg"></div>
         <div className="container">
@@ -77,7 +81,7 @@ export default function PortfolioPage() {
       </section>
 
       {/* FILTERS + GRID */}
-      <section className="theme-cream" style={{ padding: "100px 0 140px" }}>
+      <section className={isDark ? "theme-dark" : "theme-cream"} style={{ padding: "100px 0 140px" }}>
         <div className="container">
           <div className="portfolio-filters reveal">
             {FILTERS.map((f, i) => (
@@ -110,7 +114,7 @@ export default function PortfolioPage() {
       </section>
 
       {/* CTA */}
-      <section className="theme-dark cta">
+      <section className={`${isDark ? "theme-dark" : "theme-cream"} cta`}>
         <div className="container">
           <div className="reveal">
             <span className="eyebrow accent">// Yours next?</span>

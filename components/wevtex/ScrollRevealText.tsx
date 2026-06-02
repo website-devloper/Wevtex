@@ -16,8 +16,8 @@ function splitLines(text: string) {
     .map((line) => line.trim().split(/\s+/).filter(Boolean));
 }
 
-function Em({ word, emClassName }: { word: string; emClassName?: string }) {
-  return <em className={emClassName}>{word}</em>;
+function Em({ word, emClassName, emStyle }: { word: string; emClassName?: string; emStyle?: React.CSSProperties }) {
+  return <em className={emClassName} style={emStyle}>{word}</em>;
 }
 
 /* ---- scroll-linked word: opacity follows scroll progress ---- */
@@ -25,19 +25,21 @@ function ScrollWord({
   word,
   em,
   emClassName,
+  emStyle,
   progress,
   range,
 }: {
   word: string;
   em: boolean;
   emClassName?: string;
+  emStyle?: React.CSSProperties;
   progress: MotionValue<number>;
   range: [number, number];
 }) {
   const opacity = useTransform(progress, range, [DIM, 1]);
   return (
     <motion.span className="srt-word" style={{ opacity }}>
-      {em ? <Em word={word} emClassName={emClassName} /> : word}
+      {em ? <Em word={word} emClassName={emClassName} emStyle={emStyle} /> : word}
     </motion.span>
   );
 }
@@ -56,8 +58,10 @@ export function ScrollRevealText({
   text,
   em = [],
   emClassName,
+  emStyle,
   as = "p",
   className,
+  style,
   mode = "scroll",
 }: {
   text: string;
@@ -65,8 +69,11 @@ export function ScrollRevealText({
   em?: string[];
   /** Class applied to emphasized words. */
   emClassName?: string;
+  /** Style applied to emphasized words. */
+  emStyle?: React.CSSProperties;
   as?: Tag;
   className?: string;
+  style?: React.CSSProperties;
   /** "scroll" ties brightness to scroll position; "load" plays once on enter. */
   mode?: "scroll" | "load";
 }) {
@@ -95,7 +102,7 @@ export function ScrollRevealText({
             {line.map((w, wi) => (
               <span key={wi}>
                 <motion.span className="srt-word" variants={loadWordVariants}>
-                  {isEm(w) ? <Em word={w} emClassName={emClassName} /> : w}
+                  {isEm(w) ? <Em word={w} emClassName={emClassName} emStyle={emStyle} /> : w}
                 </motion.span>
                 {wi < line.length - 1 ? " " : null}
               </span>
@@ -110,7 +117,7 @@ export function ScrollRevealText({
   const Tag = as;
   let idx = -1;
   return (
-    <Tag className={className}>
+    <Tag className={className} style={style}>
       <span ref={ref} style={{ display: "inline" }}>
         {lines.map((line, li) => (
           <span className="srt-line" key={li}>
@@ -122,6 +129,7 @@ export function ScrollRevealText({
                     word={w}
                     em={isEm(w)}
                     emClassName={emClassName}
+                    emStyle={emStyle}
                     progress={scrollYProgress}
                     range={[idx / total, (idx + 1) / total]}
                   />

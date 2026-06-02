@@ -1,14 +1,14 @@
 "use client";
 
+
+import { useTheme } from "@/app/ThemeContext";
 /**
- * Wevtex homepage — implementation of the Claude Design handoff
- * (.design-wevtex/project/index.html). Markup ported to JSX, the prototype's
- * inline <script> ported to the effect below, styling lives in the scoped
- * ./wevtex-home.css (every rule prefixed with `.wevtex`).
+ * Wevtex homepage — a lean conversion funnel:
+ * Hero → Services → Process → Proof → Pricing → Add-ons → Work → FAQ → CTA → Contact.
+ * Primary actions everywhere are WhatsApp and email.
  */
 
 import { useEffect, useRef, useState } from "react";
-import Image from "next/image";
 import "./wevtex-home.css";
 import { SiteHeader } from "../components/wevtex/SiteHeader";
 import { SiteFooter } from "../components/wevtex/SiteFooter";
@@ -16,37 +16,196 @@ import { ScrollRevealText } from "../components/wevtex/ScrollRevealText";
 import { WaveBackground } from "../components/wevtex/WaveBackground";
 import { HeroReviews } from "../components/wevtex/HeroReviews";
 
+/* Contact channels — used by every call to action */
+const WHATSAPP_URL = "https://wa.me/212687633774";
+const EMAIL = "hello@wevtex.co";
+const EMAIL_URL = "mailto:hello@wevtex.co";
+
 const ARROW = (
   <svg className="arrow" viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="1.6">
     <path d="M3 9L9 3M9 3H4M9 3V8" />
   </svg>
 );
 
-const IND1 = [
-  "E-Commerce", "Hotels", "Real Estate", "SaaS", "Booking", "Restaurants",
-  "Logistics", "Fintech", "Healthcare", "Education", "Insurance",
-  "Manufacturing", "Construction", "Legal", "Consulting", "Media",
-];
-const IND2 = [
-  "Crypto", "Travel", "Beauty", "Fitness", "Coaching", "Marketplace",
-  "Studios", "Photography", "Music", "Film", "Agencies", "Non-profit",
-  "Government", "Startups", "Energy", "Retail", "Pharma",
+const WHATSAPP = (
+  <svg viewBox="0 0 24 24" width="17" height="17" fill="currentColor" aria-hidden style={{ marginRight: 2 }}>
+    <path d="M17.5 14.4c-.3-.15-1.74-.86-2-.96-.27-.1-.46-.15-.65.15-.2.29-.75.95-.92 1.15-.17.2-.34.22-.63.07-1.7-.85-2.82-1.52-3.94-3.44-.3-.51.3-.48.85-1.58.1-.2.05-.36-.02-.5-.08-.15-.65-1.58-.9-2.16-.23-.56-.47-.48-.65-.49h-.55c-.2 0-.5.07-.77.36-.26.29-1 .98-1 2.4 0 1.41 1.03 2.78 1.17 2.97.15.2 2.03 3.1 4.92 4.35 2.88 1.24 2.88.83 3.4.78.52-.05 1.69-.69 1.93-1.36.24-.67.24-1.24.17-1.36-.07-.12-.26-.19-.55-.34zM12 2.1A9.9 9.9 0 0 0 3.5 17l-1.32 4.82 4.94-1.3A9.9 9.9 0 1 0 12 2.1z" />
+  </svg>
+);
+
+/* Service cards */
+const INDUSTRIES = [
+  {
+    icon: <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><path d="M3 9l1-4h16l1 4"></path><path d="M3 9v11a1 1 0 001 1h16a1 1 0 001-1V9"></path><path d="M9 21V13h6v8"></path></svg>,
+    head: "E-Commerce & Retail",
+    body: "Fashion, beauty, home decor, and local groceries. Complete with shopping carts, secure checkout, and inventory management."
+  },
+  {
+    icon: <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><path d="M2 4v16"></path><path d="M2 8h18a2 2 0 012 2v10"></path><path d="M2 17h20"></path><path d="M6 8v3"></path></svg>,
+    head: "Tourism & Hospitality",
+    body: "Hotels, resorts, and travel agencies. Features direct booking engines, availability calendars, and virtual tours."
+  },
+  {
+    icon: <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"></path></svg>,
+    head: "Professional Services",
+    body: "Law firms, accounting, real estate, and consulting. We build trust-driven sites to capture leads and schedule appointments."
+  },
+  {
+    icon: <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0016.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 002 8.5c0 2.3 1.5 4.05 3 5.5l7 7z"></path></svg>,
+    head: "Healthcare & Wellness",
+    body: "Clinics, fitness gyms, and therapists. Secure patient intake forms, class scheduling, and service directories."
+  },
+  {
+    icon: <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><path d="M2 20a2 2 0 002 2h16a2 2 0 002-2V8l-7 5V8l-7 5V4a2 2 0 00-2-2H4a2 2 0 00-2 2z"></path></svg>,
+    head: "Industry & Logistics",
+    body: "Construction, manufacturing, and transport. Showcase your fleet, portfolio, and easily generate B2B quote requests."
+  },
+  {
+    icon: <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>,
+    head: "Education & E-Learning",
+    body: "Schools, online courses, and training centers. Integrated student portals, video hosting, and certification modules."
+  },
+  {
+    icon: <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><path d="M12 19l7-7 3 3-7 7-3-3z"></path><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"></path><path d="M2 2l7.586 7.586"></path><circle cx="11" cy="11" r="2"></circle></svg>,
+    head: "Creative, Media & Tech",
+    body: "SaaS startups, marketing agencies, and artisans. High-performance, animated landing pages to convert early adopters."
+  },
+  {
+    icon: <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>,
+    head: "Public Sector & NGOs",
+    body: "Charities, foundations, and public institutions. Accessible design, donation processing, and community engagement."
+  }
 ];
 
-function IndustryChips({ list }: { list: string[] }) {
-  return (
-    <>
-      {[...list, ...list].map((x, i) => (
-        <span className="industry-chip" key={i}>
-          <span className="num">{String((i % list.length) + 1).padStart(2, "0")}</span>
-          {x}
-        </span>
-      ))}
-    </>
-  );
-}
+const SERVICES = [
+  {
+    icon: (
+      <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+        <polyline points="16 18 22 12 16 6" />
+        <polyline points="8 6 2 12 8 18" />
+      </svg>
+    ),
+    head: <>Web <em>Development</em>.</>,
+    body: "High-performance web apps with React, Next.js and TypeScript. Modern, scalable architecture.",
+    tags: ["React", "Next.js", "TypeScript", "API"],
+  },
+  {
+    icon: (
+      <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+        <circle cx="12" cy="12" r="9" />
+        <path d="M3 12h18" />
+        <path d="M12 3c2.5 2.5 3.8 5.6 3.8 9s-1.3 6.5-3.8 9c-2.5-2.5-3.8-5.6-3.8-9s1.3-6.5 3.8-9z" />
+      </svg>
+    ),
+    head: <><em>WordPress</em> sites.</>,
+    body: "Custom showcase and corporate sites. Bespoke themes, optimized performance, maintenance included.",
+    tags: ["WordPress", "Custom", "SEO", "Starter"],
+  },
+  {
+    icon: (
+      <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+        <ellipse cx="12" cy="5" rx="8" ry="3" />
+        <path d="M4 5v14c0 1.66 3.58 3 8 3s8-1.34 8-3V5" />
+        <path d="M4 12c0 1.66 3.58 3 8 3s8-1.34 8-3" />
+      </svg>
+    ),
+    head: <>ERP & <em>Management</em>.</>,
+    body: "Centralize your business: invoicing, stock and CRM. Custom Dolibarr and Odoo solutions.",
+    tags: ["Dolibarr", "Odoo", "CRM", "Invoicing"],
+  },
+  {
+    icon: (
+      <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+        <circle cx="9" cy="21" r="1" />
+        <circle cx="20" cy="21" r="1" />
+        <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" />
+      </svg>
+    ),
+    head: <><em>E-commerce</em>.</>,
+    body: "Turnkey online stores. Stripe payments, product management and order tracking.",
+    tags: ["WooCommerce", "Stripe", "Payments", "Stock"],
+  },
+  {
+    icon: (
+      <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+        <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
+      </svg>
+    ),
+    head: <><em>Automation</em>.</>,
+    body: "Automate your repetitive tasks. Smart workflows that connect all your tools together.",
+    tags: ["n8n", "Workflows", "API", "Webhooks"],
+  },
+  {
+    icon: (
+      <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+        <rect x="3" y="3" width="7" height="7" />
+        <rect x="14" y="3" width="7" height="7" />
+        <rect x="14" y="14" width="7" height="7" />
+        <rect x="3" y="14" width="7" height="7" />
+      </svg>
+    ),
+    head: <>Business <em>Apps</em>.</>,
+    body: "Custom software for your unique processes. Dashboards and dedicated internal tools.",
+    tags: ["Custom", "Dashboard", "SaaS", "Internal"],
+  },
+  {
+    icon: (
+      <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+      </svg>
+    ),
+    head: <>AI <em>Chatbots</em>.</>,
+    body: "Smart chatbots that automate customer service. Available 24/7 on WhatsApp, Messenger and web.",
+    tags: ["OpenAI", "WhatsApp", "NLP", "24/7"],
+  },
+  {
+    icon: (
+      <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M12 19l7-7 3 3-7 7-3-3z" />
+        <path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z" />
+        <path d="M2 2l7.586 7.586" />
+        <circle cx="11" cy="11" r="2" />
+      </svg>
+    ),
+    head: <>UX/UI <em>Design</em>.</>,
+    body: "Intuitive, beautiful interfaces that convert. Wireframes, prototypes and design systems.",
+    tags: ["Figma", "Prototype", "Design System", "Mobile"],
+  },
+];
+
+/* Add-on cards */
+const ADDONS = [
+  { h: "Extra pages", p: "Add more pages to any package as you grow.", pr: "300 DH / page" },
+  { h: "Multilingual", p: "Serve your customers in a second language.", pr: "800 DH" },
+  { h: "Blog setup", p: "A blog to publish news and boost your SEO.", pr: "1,000 DH" },
+  { h: "SEO boost", p: "Deeper optimization to climb higher on Google.", pr: "from 1,000 DH" },
+  { h: "Booking system", p: "Let customers book appointments online.", pr: "1,500 DH" },
+  { h: "Google Business", p: "Get found on Google Maps and local search.", pr: "from 500 DH" },
+  { h: "Social media setup", p: "Branded social accounts, ready to post.", pr: "500 DH" },
+  { h: "Store module", p: "Add a shop and checkout to an existing site.", pr: "from 2,000 DH" },
+];
+
+/* Process steps */
+const STEPS = [
+  { n: "01", h: "Discover", p: "A quick call to understand your business, your customers and your goals. You get a clear plan before anything starts.", d: "1–2 days" },
+  { n: "02", h: "Design", p: "We design your site in the browser and refine it with you — so what you approve is exactly what gets built.", d: "3–5 days" },
+  { n: "03", h: "Build", p: "We build a fast, secure, mobile-ready site, with updates every week so you always know where things stand.", d: "1–3 weeks" },
+  { n: "04", h: "Launch", p: "We put your site live, test everything, connect analytics and hand it over — with support continuing after launch.", d: "1–2 days" },
+];
+
+/* FAQ */
+const FAQS = [
+  { q: "How long does a website take?", a: "Most business sites go live in 2–4 weeks; online stores in 4–8. You get a firm timeline with your quote, before anything starts." },
+  { q: "How does payment work?", a: "A fixed price for a fixed scope, split into milestones. You approve each stage before it's invoiced — nothing is due until you're happy with it." },
+  { q: "Will my website show up on Google?", a: "Yes. Every site is built SEO-ready, and we can take it further with our SEO and GEO services so customers find you on Google and AI search." },
+  { q: "Who owns the finished website?", a: "You do — completely. Code, content, domain and every account are handed over in your name. No lock-in, ever." },
+  { q: "Do you handle hosting and domains?", a: "Yes. We set up fast, secure hosting and your domain, and can keep managing them — or hand everything over if you'd rather run it yourself." },
+  { q: "What happens after launch?", a: "Every build includes post-launch support. After that, an optional care plan keeps your site monitored, updated and backed up." },
+];
 
 export default function HomePage() {
+  const { isDark } = useTheme();
+
   const [contactSent, setContactSent] = useState(false);
   const rootRef = useRef<HTMLDivElement>(null);
 
@@ -72,48 +231,22 @@ export default function HomePage() {
     root.querySelectorAll(".reveal, .reveal-words").forEach((r) => io.observe(r));
     cleanups.push(() => io.disconnect());
 
-    /* Vanilla JS animations for hero section removed as they are now handled by Framer Motion & Spline */
-
-    /* Capabilities — switch on hover */
-    const capItems = root.querySelectorAll<HTMLElement>("#capItems .cap-item");
-    const frames = root.querySelectorAll<HTMLElement>("#capPreview .frame");
-    const capLabel = root.querySelector<HTMLElement>("#capLabel");
-    const capNames = ["web development", "app development", "seo & geo targeting", "hosting & it support"];
-    capItems.forEach((it, i) => {
-      const go = () => {
-        capItems.forEach((x) => x.classList.remove("active"));
-        frames.forEach((x) => x.classList.remove("active"));
-        it.classList.add("active");
-        if (frames[i]) frames[i].classList.add("active");
-        if (capLabel) capLabel.textContent = capNames[i];
-      };
-      it.addEventListener("mouseenter", go);
-      it.addEventListener("click", go);
-      cleanups.push(() => {
-        it.removeEventListener("mouseenter", go);
-        it.removeEventListener("click", go);
-      });
-    });
-
     /* Process — scroll-driven step */
     const steps = root.querySelectorAll<HTMLElement>(".process-step");
     const processH = root.querySelector<HTMLElement>("#processH");
     const processP = root.querySelector<HTMLElement>("#processP");
     const processProgress = root.querySelector<HTMLElement>("#processProgress");
-    const labels = [
-      { h: "Discover", p: "We start every engagement with a Discovery Sprint — interviewing your team, auditing your data, mapping the competitive landscape." },
-      { h: "Design", p: "Wireframes, prototypes and brand surfaces — designed in the browser so what you approve is what gets shipped." },
-      { h: "Build", p: "Weekly demos. Production from day one. Tests, CI, analytics, hardening — all baked in as we go." },
-      { h: "Launch", p: "Go-live runbook, monitoring dashboards, 30-day post-launch retainer. Then we hand over the keys." },
-    ];
     const setActive = (i: number) => {
       steps.forEach((s) => s.classList.remove("active"));
       if (steps[i]) steps[i].classList.add("active");
-      if (labels[i] && processH && processP) {
-        processH.textContent = labels[i].h;
-        processP.textContent = labels[i].p;
+      if (STEPS[i] && processH && processP) {
+        processH.textContent = STEPS[i].h;
+        processP.textContent = STEPS[i].p;
       }
-      if (processProgress) processProgress.style.height = ((i + 1) / steps.length) * 100 + "%";
+      if (processProgress && steps[i]) {
+        const cur = steps[i];
+        processProgress.style.height = cur.offsetTop + cur.offsetHeight + "px";
+      }
     };
     const stepIO = new IntersectionObserver(
       (entries) => {
@@ -233,36 +366,45 @@ export default function HomePage() {
   }, []);
 
   return (
-    <div className="wevtex" ref={rootRef}>
+    <div className={`wevtex ${isDark ? 'mode-dark' : 'mode-light'}`} ref={rootRef}>
       {/* ===================== HEADER ===================== */}
       <SiteHeader />
 
       {/* ===================== HERO ===================== */}
-      <section className="theme-dark hero" id="hero" style={{ position: 'relative' }}>
-        {/* Animated flowing-waves background */}
+      <section className={`${isDark ? "theme-dark" : "theme-cream"} hero`} id="hero" style={{ position: "relative" }}>
         <WaveBackground />
-
         <div className="hero-wash"></div>
 
-        <div className="container" style={{ position: 'relative', zIndex: 2 }}>
+        <div className="container" style={{ position: "relative", zIndex: 2 }}>
           <div className="hero-centered">
-            <div className="hero-content" style={{ width: '100%' }}>
+            <div className="hero-content" style={{ width: "100%" }}>
+              <span className="status-pill" style={{ marginBottom: 24 }}>
+                <span className="pulse"></span>Available for new projects
+              </span>
               <ScrollRevealText
                 as="h1"
                 mode="load"
-                em={["web"]}
+                em={["digital", "solutions"]}
                 emClassName="serif-em"
-                text={"We build high-converting\nweb & mobile applications."}
+                text={"Custom digital solutions\nfor businesses worldwide"}
               />
-              <p className="hero-sub" style={{ margin: '0 auto 40px auto' }}>
-                We build web, mobile and desktop products — plus the SEO, hosting and infrastructure that make them grow.
+              <p className="hero-sub" style={{ margin: "0 auto 40px auto" }}>
+                Business applications, ERP, websites and automation. We transform
+                your business with tools that work for you.
               </p>
               <div className="hero-ctas">
-                <a href="/contact" className="btn btn-primary">
-                  Start Your Project
-                  {ARROW}
+                <a href={WHATSAPP_URL} className="btn btn-primary" target="_blank" rel="noopener">
+                  Start a project
+                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden style={{ marginLeft: 2 }}>
+                    <path d="M5 12h14M13 6l6 6-6 6" />
+                  </svg>
                 </a>
-                <a href="/services" className="btn btn-outline">Explore Capabilities</a>
+                <a href={EMAIL_URL} className="btn btn-outline">
+                  See our work
+                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden style={{ marginLeft: 2 }}>
+                    <path d="M5 12h14M13 6l6 6-6 6" />
+                  </svg>
+                </a>
               </div>
               <HeroReviews />
             </div>
@@ -270,265 +412,110 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ===================== MANIFESTO ===================== */}
-      <section className="theme-cream manifesto">
-        <div className="container">
-          <div className="manifesto-grid reveal">
-            <div className="manifesto-meta">
-              <figure className="manifesto-photo">
-                <div className="manifesto-photo-frame">
-                  <Image
-                    className="manifesto-photo-img"
-                    src="/images/manifesto-studio.jpg"
-                    alt="Wevtex Studio"
-                    width={720}
-                    height={900}
-                  />
-                </div>
-              </figure>
-            </div>
-            <ScrollRevealText
-              as="h2"
-              em={["instruments"]}
-              text="We don’t build websites. We build instruments that compound — for operators who measure in revenue, retention, and pipeline."
-            />
-          </div>
-
-        </div>
-      </section>
-
-      {/* ===================== FEATURES ===================== */}
-      <section className="theme-dark features">
-        <div className="container">
-          <div className="feature-row reveal">
-            <div className="feature-card">
-              <span className="feature-icon">
-                <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinejoin="round" strokeLinecap="round">
-                  <path d="M13 2 4 14h6l-1 8 9-12h-7z" />
-                </svg>
-              </span>
-              <h4>Fast <em>delivery</em>.</h4>
-              <p>Sprint-based shipping with weekly demos — most MVPs go live in 4–6 weeks.</p>
-            </div>
-            <div className="feature-card">
-              <span className="feature-icon">
-                <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinejoin="round">
-                  <path d="M12 3l1.7 6.3L20 11l-6.3 1.7L12 19l-1.7-6.3L4 11l6.3-1.7z" />
-                </svg>
-              </span>
-              <h4>AI-powered.</h4>
-              <p>Modern AI embedded into your stack — search, support, automation.</p>
-            </div>
-            <div className="feature-card">
-              <span className="feature-icon">
-                <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinejoin="round">
-                  <path d="M3 11V5a2 2 0 0 1 2-2h6l9 9a2 2 0 0 1 0 2.8l-5.2 5.2a2 2 0 0 1-2.8 0z" />
-                  <circle cx="8" cy="8" r="1.7" />
-                </svg>
-              </span>
-              <h4>Honestly priced.</h4>
-              <p>Transparent retainers from MAD 300/mo. No hidden line items, ever.</p>
-            </div>
-            <div className="feature-card">
-              <span className="feature-icon">
-                <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinejoin="round">
-                  <path d="M4 5h16a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H10l-5 4v-4H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z" />
-                </svg>
-              </span>
-              <h4>Humans on Slack.</h4>
-              <p>Real-time monitoring, a dedicated channel, and incident response 24/7.</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-
-
-      {/* ===================== CAPABILITIES ===================== */}
-      <section className="theme-cream capabilities" id="capabilities">
+      {/* ===================== SERVICES ===================== */}
+      <section className={`${isDark ? "theme-dark" : "theme-cream"} features`} id="services">
         <div className="container">
           <div className="cap-head reveal">
             <div>
-              <span className="eyebrow">// 03 — What we do</span>
-              <h2 className="h-section" style={{ marginTop: 24 }}>Four capabilities.<br />Built around <span className="serif" style={{ color: "var(--accent-hot)" }}>your product.</span></h2>
-            </div>
-            <p className="lead">
-              Hover any track to see it in motion. Each practice is battle-tested across e-commerce, SaaS, fintech and bookings.
-            </p>
-          </div>
-
-          <div className="cap-wrap reveal">
-            <div className="cap-items" id="capItems">
-              {["Web Development", "App Development", "SEO & GEO Targeting", "Hosting & IT Support"].map((name, i) => (
-                <div className={i === 0 ? "cap-item active" : "cap-item"} data-i={i} key={i}>
-                  <span className="num">{String(i + 1).padStart(2, "0")}</span>
-                  <span className="name">{name}</span>
-                  <span className="arrow">
-                    <svg width="14" height="14" viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="1.8"><path d="M3 9L9 3M9 3H4M9 3V8" /></svg>
-                  </span>
-                </div>
-              ))}
-            </div>
-
-            <div className="cap-preview" id="capPreview">
-              <span className="preview-label">// In production</span>
-
-              <div className="frame active">
-                <div style={{ width: '100%', height: '100%', borderRadius: 12, background: 'rgba(0,0,0,0.02)' }} />
-              </div>
-
-              <div className="frame">
-                <div style={{ width: '100%', height: '100%', borderRadius: 12, background: 'rgba(0,0,0,0.02)' }} />
-              </div>
-
-              <div className="frame">
-                <div style={{ width: '100%', height: '100%', borderRadius: 12, background: 'rgba(0,0,0,0.02)' }} />
-              </div>
-
-              <div className="frame">
-                <div style={{ width: '100%', height: '100%', borderRadius: 12, background: 'rgba(0,0,0,0.02)' }} />
-              </div>
-
-              <div className="preview-meta">
-                <span>// shipped 14 may 2026</span>
-                <span id="capLabel">web development</span>
-              </div>
+              <span className="eyebrow">Services</span>
+              <ScrollRevealText
+                as="h2"
+                className="h-section"
+                style={{ marginTop: 24 }}
+                text={"Everything to grow\nyour business online."}
+                em={["online"]}
+                emClassName="serif"
+                emStyle={{ color: "var(--accent)" }}
+              />
             </div>
           </div>
-        </div>
-      </section>
 
-      {/* ===================== WEBSITE TYPES ===================== */}
-      <section className="theme-cream types">
-        <div className="container">
-          <div className="types-head reveal">
-            <div>
-              <span className="eyebrow">// 04 — What we build</span>
-              <h2 className="h-section" style={{ marginTop: 24 }}>Every type of website.<br /><span className="serif" style={{ color: "var(--accent)" }}>One expert team.</span></h2>
-            </div>
-            <p className="lead">
-              We&apos;ve shipped across most surfaces of the modern web. Pick the closest match — or let&apos;s invent something new together.
-            </p>
-          </div>
-
-          <div className="types-grid">
-            {[
-              { n: "01 / Marketing", h: "Landing Page", p: "High-converting pages tuned for ad campaigns and product launches.", d: 1 },
-              { n: "02 / Marketing", h: "Product Portal", p: "Marketing & docs sites for SaaS — fast, structured, infinitely scalable.", d: 2 },
-              { n: "03 / Commerce", h: "E-commerce", p: "Headless Shopify, Medusa or custom stacks. Wins on speed and conversion.", d: 3 },
-              { n: "04 / Product", h: "Web App", p: "Multi-tenant SaaS — auth, billing, dashboards, integrations.", d: 4 },
-              { n: "05 / Vertical", h: "Booking Website", p: "Calendars, payments, reminders. Built for restaurants, clinics & studios.", d: 1 },
-              { n: "06 / Community", h: "Membership Portal", p: "Gated content, communities, course delivery. Stripe-native subscriptions.", d: 2 },
-              { n: "07 / Vertical", h: "Restaurant & Menu", p: "Reservation, menu, online order. Showcases the food, drives the booking.", d: 3 },
-              { n: "08 / Vertical", h: "Real Estate Listing", p: "Map search, MLS feeds, lead capture, agent CRM hooks.", d: 4 },
-            ].map((t, i) => (
-              <a className="type-card reveal" data-delay={t.d} href="/services" key={i}>
-                <span className="num">{t.n}</span>
-                <div>
-                  <h4>{t.h}</h4>
-                  <p>{t.p}</p>
-                </div>
-                <svg className="arrow" width="14" height="14" viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="1.8"><path d="M3 9L9 3M9 3H4M9 3V8" /></svg>
-              </a>
+          <div className="feature-row reveal">
+            {SERVICES.map((s, i) => (
+              <div className="feature-card" key={i}>
+                <span className="feature-icon">{s.icon}</span>
+                <h4>{s.head}</h4>
+                <p>{s.body}</p>
+              </div>
             ))}
           </div>
-
-          <div style={{ display: "flex", justifyContent: "center", marginTop: 60 }} className="reveal">
-            <a href="/services" className="btn btn-dark">
-              Discover All Services
-              <svg className="arrow" width="14" height="14" viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="1.6"><path d="M3 9L9 3M9 3H4M9 3V8" /></svg>
-            </a>
-          </div>
         </div>
       </section>
 
-      {/* ===================== PROCESS ===================== */}
-      <section className="theme-dark process">
+      {/* ===================== INDUSTRIES ===================== */}
+      <section className={`${isDark ? "theme-dark" : "theme-paper"} industries`} id="industries">
         <div className="container">
-          <div className="process-head reveal">
+          <div className="industries-head reveal">
             <div>
-              <span className="eyebrow">// 05 — How we work</span>
-              <h2 className="h-section" style={{ marginTop: 24 }}>Process<br /><span className="serif" style={{ color: "var(--accent-hot)" }}>overview.</span></h2>
+              <span className="eyebrow">Industries we serve</span>
+              <ScrollRevealText
+                as="h2"
+                className="h-section"
+                style={{ marginTop: 24 }}
+                text={"Built for your\nspecific sector."}
+                em={["specific", "sector"]}
+                emClassName="serif"
+                emStyle={{ color: "var(--accent)" }}
+              />
             </div>
             <p className="lead">
-              Most agencies start coding day one. We start two weeks earlier — with research, mapping, and a clear thesis on what will make this thing win.
+              Every industry has unique needs. Whether you&apos;re selling products, taking bookings, or generating leads, we build solutions tailored to your business model.
             </p>
           </div>
 
-          <div className="process-wrap">
-            <div className="process-sticky reveal">
-              <div className="process-preview">
-                <div className="preview-kicker">// Active phase</div>
-                <h3 id="processH">Discover</h3>
-                <p id="processP">We start every engagement with a Discovery Sprint — interviewing your team, auditing your data, mapping the competitive landscape.</p>
+          <div className="industries-grid reveal">
+            {INDUSTRIES.map((ind, i) => (
+              <div className="ind-card" key={i}>
+                <div className="ind-icon">{ind.icon}</div>
+                <h4>{ind.head}</h4>
+                <p>{ind.body}</p>
               </div>
-            </div>
-
-            <div className="process-steps">
-              <div className="process-progress"><div className="process-progress-fill" id="processProgress"></div></div>
-              {[
-                { n: "01", h: "Discover", p: "Interviews with your team and customers. Funnel audit. Competitive map. The output: a one-page thesis on where the leverage is hiding.", d: "1–2 wks" },
-                { n: "02", h: "Design", p: "Wireframes, prototypes, brand surfaces. We design in the browser so what you approve is what gets shipped — no Figma-to-code gap.", d: "2–3 wks" },
-                { n: "03", h: "Build", p: "Weekly demos. Production from day one. Tests, CI, analytics, hardening — all baked in as we go.", d: "4–8 wks" },
-                { n: "04", h: "Launch", p: "Go-live runbook. Monitoring dashboards. 30-day post-launch retainer. Then we hand over the keys — or stick around for round two.", d: "1 wk" },
-              ].map((s, i) => (
-                <div className={i === 0 ? "process-step active reveal" : "process-step reveal"} data-i={i} data-delay={i || undefined} key={i}>
-                  <div className="num">{s.n}</div>
-                  <div>
-                    <h4>{s.h}</h4>
-                    <p>{s.p}</p>
-                  </div>
-                  <div className="duration">{s.d}</div>
-                </div>
-              ))}
-            </div>
+            ))}
           </div>
         </div>
       </section>
 
       {/* ===================== PROJECTS ===================== */}
-      <section className="theme-cream projects" id="projects">
+      <section className={`${isDark ? "theme-dark" : "theme-cream"} projects`} id="work">
         <div className="container">
           <div className="projects-head reveal">
             <div>
-              <span className="eyebrow">// 06 — Selected work</span>
-              <h2 className="h-section" style={{ marginTop: 24 }}>Recent<br /><span className="serif" style={{ color: "var(--accent)" }}>projects.</span></h2>
+              <span className="eyebrow">Our work</span>
+              <ScrollRevealText
+                as="h2"
+                className="h-section"
+                style={{ marginTop: 24 }}
+                text={"Recent projects."}
+                em={["projects"]}
+                emClassName="serif"
+                emStyle={{ color: "var(--accent)" }}
+              />
             </div>
-            <p className="lead">
-              A small slice of the 240+ products we&apos;ve shipped — chosen because the story is more interesting than the deliverable.
-            </p>
           </div>
 
-          <a className="project-feature reveal" href="/portfolio">
-            <div className="project-feature-meta">
-              <div>
-                <h3>Global E-Commerce<br /><em>platform.</em></h3>
-              </div>
-              <div className="meta-block">
-                <span>2025</span>
-                <span>E-Commerce · Headless</span>
-                <span>50K SKUs · +47% conv</span>
-              </div>
-            </div>
-            <div className="project-visual">
-              <div className="mockup">
-                <div className="topbar"><span></span><span></span><span></span></div>
-                <div className="body">
-                  <div className="row1"><div></div><div></div><div></div></div>
-                  <h4></h4>
-                  <p></p>
-                  <div className="grid">
-                    <div className="tile"></div>
-                    <div className="tile"></div>
-                    <div className="tile"></div>
+          <div className="projects-grid">
+            <a className="project-small reveal" data-delay="1" href="/portfolio">
+              <div className="project-visual">
+                <div className="mockup">
+                  <div className="topbar"><span></span><span></span><span></span></div>
+                  <div className="body">
+                    <div className="row1"><div></div><div></div><div></div></div>
+                    <h4></h4>
+                    <p></p>
+                    <div className="grid">
+                      <div className="tile"></div>
+                      <div className="tile"></div>
+                      <div className="tile"></div>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          </a>
-
-          <div className="projects-row">
-            <a className="project-small reveal" data-delay="1" href="/portfolio">
+              <div className="small-meta">
+                <h4>Global E-Commerce</h4>
+                <span className="tag">E-Commerce · Headless</span>
+              </div>
+            </a>
+            <a className="project-small reveal" data-delay="2" href="/portfolio">
               <div className="project-visual style2">
                 <div className="mockup">
                   <div className="topbar"><span></span><span></span><span></span></div>
@@ -549,7 +536,7 @@ export default function HomePage() {
                 <span className="tag">Booking · SaaS</span>
               </div>
             </a>
-            <a className="project-small reveal" data-delay="2" href="/portfolio">
+            <a className="project-small reveal" data-delay="3" href="/portfolio">
               <div className="project-visual">
                 <div className="mockup">
                   <div className="topbar"><span></span><span></span><span></span></div>
@@ -570,58 +557,136 @@ export default function HomePage() {
                 <span className="tag">Desktop · Electron</span>
               </div>
             </a>
+            <a className="project-small reveal" data-delay="1" href="/portfolio">
+              <div className="project-visual">
+                <div className="mockup">
+                  <div className="topbar"><span></span><span></span><span></span></div>
+                  <div className="body">
+                    <div className="row1"><div></div><div></div><div></div></div>
+                    <h4></h4>
+                    <p></p>
+                    <div className="grid">
+                      <div className="tile"></div>
+                      <div className="tile"></div>
+                      <div className="tile"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="small-meta">
+                <h4>Lumen Studio</h4>
+                <span className="tag">Branding · Web</span>
+              </div>
+            </a>
+            <a className="project-small reveal" data-delay="2" href="/portfolio">
+              <div className="project-visual style2">
+                <div className="mockup">
+                  <div className="topbar"><span></span><span></span><span></span></div>
+                  <div className="body">
+                    <div className="row1"><div></div><div></div><div></div></div>
+                    <h4></h4>
+                    <p></p>
+                    <div className="grid">
+                      <div className="tile"></div>
+                      <div className="tile"></div>
+                      <div className="tile"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="small-meta">
+                <h4>Northbound</h4>
+                <span className="tag">SEO · Growth</span>
+              </div>
+            </a>
+            <a className="project-small reveal" data-delay="3" href="/portfolio">
+              <div className="project-visual">
+                <div className="mockup">
+                  <div className="topbar"><span></span><span></span><span></span></div>
+                  <div className="body">
+                    <div className="row1"><div></div><div></div><div></div></div>
+                    <h4></h4>
+                    <p></p>
+                    <div className="grid">
+                      <div className="tile"></div>
+                      <div className="tile"></div>
+                      <div className="tile"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="small-meta">
+                <h4>Marlow &amp; Co.</h4>
+                <span className="tag">E-Commerce · Retail</span>
+              </div>
+            </a>
           </div>
 
           <div style={{ display: "flex", justifyContent: "center", marginTop: 60 }} className="reveal">
-            <a href="/portfolio" className="btn btn-dark">
-              View All Case Studies
+            <a href="/portfolio" className="btn btn-outline">
+              See all our work
               <svg className="arrow" width="14" height="14" viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="1.6"><path d="M3 9L9 3M9 3H4M9 3V8" /></svg>
             </a>
           </div>
         </div>
       </section>
 
-      {/* ===================== INDUSTRIES ===================== */}
-      <section className="theme-dark marquee-section">
+      {/* ===================== FAQ ===================== */}
+      <section className={`${isDark ? "theme-dark" : "theme-cream"} faq`} id="faq">
         <div className="container">
-          <div className="marquee-head reveal">
-            <div>
-              <span className="eyebrow">// 07 — Industries</span>
-              <h2 className="h-section" style={{ marginTop: 24 }}>We&apos;ve shipped for<br /><span className="serif" style={{ color: "var(--accent-hot)" }}>40+ industries.</span></h2>
-            </div>
-            <p className="lead" style={{ maxWidth: "38ch" }}>
-              Different domains, same playbook — research, design, build, measure, iterate.
-            </p>
+          <div className="faq-head reveal">
+            <span className="eyebrow">FAQ</span>
+            <ScrollRevealText
+              as="h2"
+              className="h-section"
+              style={{ marginTop: 24 }}
+              text={"Questions, answered."}
+              em={["answered"]}
+              emClassName="serif"
+              emStyle={{ color: "var(--accent)" }}
+            />
           </div>
-        </div>
-        <div className="marquee">
-          <div className="marquee-track" id="track1"><IndustryChips list={IND1} /></div>
-          <div className="marquee-track r2" id="track2"><IndustryChips list={IND2} /></div>
+          <div className="faq-list reveal">
+            {FAQS.map((f, i) => (
+              <details className="faq-item" key={i}>
+                <summary>
+                  <span>{f.q}</span>
+                  <span className="faq-icon" aria-hidden></span>
+                </summary>
+                <p>{f.a}</p>
+              </details>
+            ))}
+          </div>
         </div>
       </section>
 
       {/* ===================== TESTIMONIALS ===================== */}
-      <section className="theme-cream testimonials" id="testimonials">
+      <section className={`${isDark ? "theme-dark" : "theme-cream"} testimonials`} id="testimonials">
         <div className="container">
           <div className="testimonials-head reveal">
             <div>
-              <span className="eyebrow">// 08 — Client voices</span>
-              <h2 className="h-section" style={{ marginTop: 24 }}>Thousands of customers<br /><span className="serif" style={{ color: "var(--accent)" }}>can&apos;t be wrong.</span></h2>
+              <span className="eyebrow">Client reviews</span>
+              <ScrollRevealText
+                as="h2"
+                className="h-section"
+                style={{ marginTop: 24 }}
+                text={"Businesses that\ntrust us."}
+                em={["trust", "us"]}
+                emClassName="serif"
+                emStyle={{ color: "var(--accent)" }}
+              />
             </div>
-            <p className="lead">
-              Our clients ship faster, convert higher, and sleep better. Here&apos;s what they say in their own words — slide through.
-            </p>
           </div>
 
           <div className="t-carousel reveal">
             <div className="t-track" id="tTrack">
               {[
-                { featured: true, q: "Wevtex made our entire e-commerce stack feel built for us, not bought off a shelf. Conversion is up 47% and the team is genuinely fun to work with — that almost never happens.", a: "S", n: "Saadia Vence", r: "Founder · Lumen Studio" },
-                { q: "Senior engineers who actually act like senior engineers. We've been able to bring our digital ambitions in record time — the new platform feels like a flagship.", a: "G", n: "Gareth Morris", r: "CEO · Business Co." },
-                { q: "Post-launch support was the differentiator. Six months in they're still treating us like the day we signed. Best agency we've worked with, by a long shot.", a: "N", n: "Naomi Reyes", r: "CMO · Marlow & Co." },
-                { q: "They started with research, not Figma. By week two we already knew what we were really building — and why. The shipped product reflects that clarity.", a: "T", n: "Theo Lindahl", r: "Head of Product · Northbound" },
-                { q: "We came for a website redesign and got a thinking partner. They pushed back on the brief in the right ways, and the result is dramatically better than what we asked for.", a: "A", n: "Amélie Roux", r: "VP Marketing · Verbena" },
-                { q: 'Native desktop is hard. They made it look easy. The app loads instantly, handles huge files, and our customers stopped asking for a "web version" — which says it all.', a: "D", n: "David Park", r: "Founder · Atlas Desktop" },
+                { featured: true, q: "Wevtex rebuilt our site and the calls started coming in. It loads fast, looks the part, and customers finally find us on Google. Worth every dirham.", a: "S", n: "Saadia Vence", r: "Founder · Lumen Studio" },
+                { q: "They explained everything in plain language, kept to the timeline, and the price never moved. Easiest project we've run.", a: "G", n: "Gareth Morris", r: "Manager · Atlas Trading" },
+                { q: "Our online store went live in three weeks and we took our first order the same day. Support has been quick every time we've reached out.", a: "N", n: "Naomi Reyes", r: "Owner · Marlow & Co." },
+                { q: "We went from invisible to page one for our main keywords. The SEO work paid for itself within a couple of months.", a: "T", n: "Theo Lindahl", r: "Director · Northbound" },
+                { q: "A real team that picks up the phone. They handle our hosting so we never think about it — the site just works.", a: "A", n: "Amélie Roux", r: "Manager · Verbena" },
+                { q: "Professional from the first call to launch. The new website looks far more expensive than what we paid.", a: "D", n: "David Park", r: "Founder · Atlas Desktop" },
               ].map((t, i) => (
                 <div className={t.featured ? "t-slide featured" : "t-slide"} key={i}>
                   <span className="quote-mark">&ldquo;</span>
@@ -655,139 +720,216 @@ export default function HomePage() {
       </section>
 
       {/* ===================== PRICING ===================== */}
-      <section className="theme-dark pricing" id="pricing">
+      <section className={`${isDark ? "theme-dark" : "theme-cream"} pricing`} id="pricing">
         <div className="container">
           <div className="pricing-head reveal">
             <div>
-              <span className="eyebrow">// 09 — Engagement plans</span>
-              <h2 className="h-section" style={{ marginTop: 24 }}>Scalable plans<br /><span className="serif" style={{ color: "var(--accent-hot)" }}>for any stage.</span></h2>
+              <span className="eyebrow">Pricing</span>
+              <ScrollRevealText
+                as="h2"
+                className="h-section"
+                style={{ marginTop: 24 }}
+                text={"Clear pricing.\nNo surprises."}
+                em={["No", "surprises"]}
+                emClassName="serif"
+                emStyle={{ color: "var(--accent-hot)" }}
+              />
             </div>
             <p className="lead">
-              Transparent retainers, no procurement back-and-forth. Cancel any month. Upgrade anytime.
+              One fixed price for a fixed scope, agreed before we start. You pay in milestones, and
+              nothing is due until you&apos;re happy with the work in front of you.
             </p>
           </div>
 
           <div className="pricing-grid">
             <div className="plan reveal" data-delay="1">
-              <div className="plan-num">Plan 01 — Basic Support</div>
-              <h3>For early-stage teams shipping their first product.</h3>
+              <div className="plan-num">Package 01 — One Page</div>
+              <h3>A single, polished page to get your business online fast.</h3>
               <div className="plan-price">
-                <span className="amount">300</span>
-                <span className="currency">MAD</span>
-                <span className="per">/ month</span>
+                <span className="amount">990</span>
+                <span className="currency">DH</span>
+                <span className="per">one-time</span>
               </div>
               <ul className="plan-features">
-                <li>Production hosting &amp; monitoring</li>
-                <li>4 hours of dev work / month</li>
-                <li>Email support · 48h response</li>
-                <li>Quarterly strategy review</li>
-                <li>Performance &amp; SEO baseline audit</li>
+                <li>One professional page</li>
+                <li>Fully responsive design</li>
+                <li>Content writing included</li>
+                <li>Premium images</li>
+                <li>Contact form &amp; WhatsApp</li>
+                <li>SSL security</li>
               </ul>
-              <a href="/contact" className="btn btn-outline">Get Started</a>
+              <a href={WHATSAPP_URL} className="btn btn-outline" target="_blank" rel="noopener">Get started</a>
             </div>
 
             <div className="plan featured reveal" data-delay="2">
-              <div className="plan-num">Plan 02 — Most Popular</div>
-              <h3>Growth &amp; SEO — the sweet spot for scaling teams.</h3>
+              <div className="plan-num">Package 02 — Corporate</div>
+              <h3>Six professional pages to present your company in full.</h3>
               <div className="plan-price">
-                <span className="amount">2,000</span>
-                <span className="currency">MAD</span>
-                <span className="per">/ month</span>
+                <span className="amount">2,900</span>
+                <span className="currency">DH</span>
+                <span className="per">one-time</span>
               </div>
               <ul className="plan-features">
-                <li>Everything in Basic Support</li>
-                <li>20 hours of dev work / month</li>
-                <li>Slack channel · 4h response</li>
-                <li>Monthly SEO &amp; CRO sprint</li>
-                <li>A/B testing &amp; reporting</li>
-                <li>Dedicated growth strategist</li>
+                <li>Six professional pages</li>
+                <li>Modern, responsive design</li>
+                <li>Content writing for every page</li>
+                <li>Premium stock images</li>
+                <li>WhatsApp integration</li>
+                <li>SSL security</li>
               </ul>
-              <a href="/contact" className="btn">Select Growth →</a>
+              <a href={WHATSAPP_URL} className="btn" target="_blank" rel="noopener">Choose Corporate →</a>
             </div>
 
             <div className="plan reveal" data-delay="3">
-              <div className="plan-num">Plan 03 — Full Care</div>
-              <h3>The whole studio, embedded with your team.</h3>
+              <div className="plan-num">Package 03 — E-commerce</div>
+              <h3>A complete online store, ready to take orders.</h3>
               <div className="plan-price">
-                <span className="amount">5,000</span>
-                <span className="currency">MAD</span>
-                <span className="per">/ month</span>
+                <span className="amount">7,900</span>
+                <span className="currency">DH</span>
+                <span className="per">one-time</span>
               </div>
               <ul className="plan-features">
-                <li>Everything in Growth &amp; SEO</li>
-                <li>60 hours of dev/design / month</li>
-                <li>Dedicated PM &amp; tech lead</li>
-                <li>Weekly executive review</li>
-                <li>Priority incident response 24/7</li>
-                <li>Quarterly product roadmapping</li>
+                <li>Up to 20 product pages</li>
+                <li>Shopping cart &amp; checkout</li>
+                <li>Order management system</li>
+                <li>Product catalog system</li>
+                <li>Conversion-focused design</li>
+                <li>SSL security</li>
               </ul>
-              <a href="/contact" className="btn btn-outline">Talk to Sales</a>
+              <a href={WHATSAPP_URL} className="btn btn-outline" target="_blank" rel="noopener">Start a store</a>
             </div>
           </div>
         </div>
       </section>
 
+      {/* ===================== PROMISE / RISK REVERSAL ===================== */}
+      <section className={`${isDark ? "theme-dark" : "theme-cream"} promise`}>
+        <div className="container">
+          <div className="promise-banner reveal">
+            <div>
+              <span className="promise-banner-kicker">Our promise</span>
+              <h3>No payment until you&apos;re fully satisfied.</h3>
+            </div>
+            <a href={WHATSAPP_URL} className="btn btn-primary" target="_blank" rel="noopener">
+              Start a project
+              <svg className="arrow" width="14" height="14" viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="1.6"><path d="M3 9L9 3M9 3H4M9 3V8" /></svg>
+            </a>
+          </div>
+        </div>
+      </section>
 
+      {/* ===================== ADD-ONS ===================== */}
+      <section className={`${isDark ? "theme-dark" : "theme-cream"} addons`} id="addons">
+        <div className="container">
+          <div className="cap-head reveal">
+            <div>
+              <span className="eyebrow">Add-ons</span>
+              <ScrollRevealText
+                as="h2"
+                className="h-section"
+                style={{ marginTop: 24 }}
+                text={"Make it yours\nwith add-ons."}
+                em={["with", "add-ons"]}
+                emClassName="serif"
+                emStyle={{ color: "var(--accent-hot)" }}
+              />
+            </div>
+          </div>
+
+          <div className="addon-grid reveal">
+            {ADDONS.map((a, i) => (
+              <div className="addon-card" key={i}>
+                <span className="addon-price">{a.pr}</span>
+                <h4>{a.h}</h4>
+                <p>{a.p}</p>
+              </div>
+            ))}
+          </div>
+
+          <div className="addon-foot reveal">
+            <span>Not sure what you need? Tell us your goal and we&apos;ll put together the right mix.</span>
+            <a href={WHATSAPP_URL} className="btn btn-primary" target="_blank" rel="noopener">
+              {WHATSAPP}
+              Ask on WhatsApp
+            </a>
+          </div>
+        </div>
+      </section>
 
       {/* ===================== CTA ===================== */}
-      <section className="theme-dark cta">
+      <section className={`${isDark ? "theme-dark" : "theme-cream"} cta`}>
         <div className="container">
           <div className="reveal">
-            <span className="eyebrow accent">// 11 — Final scene</span>
-            <h2 style={{ marginTop: 28 }}>Ready to grow<br />your <em>business?</em></h2>
+            <span className="eyebrow accent">Let&apos;s talk</span>
+            <ScrollRevealText
+              as="h2"
+              style={{ marginTop: 28 }}
+              text={"Ready to grow\nyour business?"}
+              em={["business"]}
+            />
             <p className="lead">
-              Partner with Wevtex to build high-converting websites, web applications, and desktop software tailored to your unique requirements.
+              Tell us what you need on WhatsApp or by email. We reply within a few hours — with
+              honest advice and a clear price, no obligation.
             </p>
             <div className="cta-ctas">
-              <a href="/contact" className="btn btn-primary">
-                Get a Quote
-                {ARROW}
+              <a href={WHATSAPP_URL} className="btn btn-primary" target="_blank" rel="noopener">
+                Start a project
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden style={{ marginLeft: 2 }}>
+                  <path d="M5 12h14M13 6l6 6-6 6" />
+                </svg>
               </a>
-              <a href="/services" className="btn btn-outline">View Services</a>
-            </div>
-            <div className="cta-meta">
-              <span>Booking Q3 · 14 slots</span>
-              <span>Avg. reply 4h 12m</span>
-              <span>Casablanca · Lisbon · Remote</span>
+              <a href={EMAIL_URL} className="btn btn-outline">
+                See our work
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden style={{ marginLeft: 2 }}>
+                  <path d="M5 12h14M13 6l6 6-6 6" />
+                </svg>
+              </a>
             </div>
           </div>
         </div>
       </section>
 
       {/* ===================== CONTACT ===================== */}
-      <section className="theme-cream contact" id="contact">
+      <section className={`${isDark ? "theme-dark" : "theme-cream"} contact`} id="contact">
         <div className="container">
           <div className="contact-grid">
             <div className="contact-info reveal">
-              <span className="eyebrow">// 12 — Get in touch</span>
-              <h2 className="h-section" style={{ marginTop: 24 }}>Send us a message —<br />we&apos;ll <span className="serif" style={{ color: "var(--accent)" }}>reply in 24h.</span></h2>
+              <span className="eyebrow">Get in touch</span>
+              <ScrollRevealText
+                as="h2"
+                className="h-section"
+                style={{ marginTop: 24 }}
+                text={"Let’s start with\na quick message."}
+                em={["quick", "message"]}
+                emClassName="serif"
+                emStyle={{ color: "var(--accent)" }}
+              />
               <p className="lead">
-                Tell us about the project. We&apos;ll come back with a tailored quote, rough scope, and a calendar invite.
+                The fastest way to reach us is WhatsApp — send your idea and we&apos;ll reply with a
+                clear plan and price. Prefer email or the form? That works too.
               </p>
+
+              <div className="contact-actions">
+                <a href={WHATSAPP_URL} className="btn btn-primary" target="_blank" rel="noopener">
+                  {WHATSAPP}
+                  Chat on WhatsApp
+                </a>
+                <a href={EMAIL_URL} className="btn btn-outline">Email us</a>
+              </div>
 
               <div className="contact-row">
                 <div className="contact-line">
-                  <span className="label">Email</span>
-                  <span className="val">hello@wevtex.co</span>
+                  <span className="label">Mon – Fri</span>
+                  <span className="val">09:00 – 19:00</span>
                 </div>
                 <div className="contact-line">
-                  <span className="label">Phone</span>
-                  <span className="val">+1 (415) 555-0142</span>
+                  <span className="label">Saturday</span>
+                  <span className="val">09:00 – 19:00</span>
                 </div>
                 <div className="contact-line">
-                  <span className="label">Studio</span>
-                  <span className="val">Casablanca · MA — Remote-first</span>
+                  <span className="label">Sunday</span>
+                  <span className="val">10:00 – 16:00</span>
                 </div>
-                <div className="contact-line">
-                  <span className="label">Hours</span>
-                  <span className="val">Mon–Fri · 09:00–18:00 GMT+1</span>
-                </div>
-              </div>
-
-              <div className="contact-ratings">
-                <div className="rating-chip"><strong>4.8</strong> Clutch</div>
-                <div className="rating-chip"><strong>5.0</strong> Google</div>
-                <div className="rating-chip"><strong>4.9</strong> DesignRush</div>
               </div>
             </div>
 
@@ -796,42 +938,43 @@ export default function HomePage() {
               data-delay="2"
               onSubmit={(e) => { e.preventDefault(); setContactSent(true); }}
             >
-              <div className="form-eyebrow">// Quick brief</div>
-              <h3>Discuss your <em>project</em> with us.</h3>
+              <div className="form-eyebrow">Quick brief</div>
+              <h3>Tell us about your <em>project</em>.</h3>
               <div className="form-grid">
                 <div className="field">
                   <label>Full name</label>
-                  <input type="text" placeholder="Jane Smith" />
+                  <input type="text" placeholder="Your name" />
                 </div>
                 <div className="field">
-                  <label>Work email</label>
-                  <input type="email" placeholder="jane@company.com" />
+                  <label>WhatsApp or email</label>
+                  <input type="text" placeholder="So we can reply" />
                 </div>
                 <div className="field">
-                  <label>Company</label>
-                  <input type="text" placeholder="Your company" />
+                  <label>Business name</label>
+                  <input type="text" placeholder="Your business" />
                 </div>
                 <div className="field">
-                  <label>Budget range</label>
+                  <label>What do you need?</label>
                   <select defaultValue="">
-                    <option value="">Select budget</option>
-                    <option>MAD 3K — 10K</option>
-                    <option>MAD 10K — 25K</option>
-                    <option>MAD 25K — 50K</option>
-                    <option>MAD 50K+</option>
+                    <option value="">Select a service</option>
+                    <option>A new website</option>
+                    <option>An online store</option>
+                    <option>SEO / Google ranking</option>
+                    <option>GEO / AI search</option>
+                    <option>Hosting &amp; support</option>
                   </select>
                 </div>
                 <div className="field full">
-                  <label>Project brief</label>
-                  <textarea placeholder="What are you trying to build? What's the deadline? What's keeping you up at night?"></textarea>
+                  <label>Your message</label>
+                  <textarea placeholder="Tell us what you'd like to build and when you'd like it live."></textarea>
                 </div>
               </div>
               <button type="submit" className="btn btn-primary">
                 {contactSent ? (
-                  "Sent ✓ — we'll reply within 24h"
+                  "Sent ✓ — we'll reply within a few hours"
                 ) : (
                   <>
-                    Send Message
+                    Send message
                     <svg className="arrow" width="14" height="14" viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="1.6"><path d="M3 9L9 3M9 3H4M9 3V8" /></svg>
                   </>
                 )}

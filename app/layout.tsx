@@ -1,6 +1,6 @@
 import type { Metadata, Viewport } from "next";
-import { MagneticCursor } from "../components/aura/MagneticCursor";
 import { SmoothScroll } from "../components/wevtex/SmoothScroll";
+import { ThemeProvider } from "./ThemeContext";
 
 export const viewport: Viewport = {
   width: 'device-width',
@@ -106,9 +106,10 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
-        <MagneticCursor />
         <SmoothScroll>
-          {children}
+          <ThemeProvider>
+            {children}
+          </ThemeProvider>
         </SmoothScroll>
       </body>
     </html>

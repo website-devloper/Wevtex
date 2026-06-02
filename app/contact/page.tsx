@@ -1,5 +1,7 @@
 "use client";
 
+
+import { useTheme } from "@/app/ThemeContext";
 /** Wevtex — Contact. Ported from .design-wevtex/project/contact.html */
 
 import { useState } from "react";
@@ -19,17 +21,19 @@ const FAQS = [
 ];
 
 export default function ContactPage() {
+  const { isDark } = useTheme();
+
   useReveal();
   const [sent, setSent] = useState(false);
   const [open, setOpen] = useState<Record<number, boolean>>({ 0: true });
   const toggle = (i: number) => setOpen((o) => ({ ...o, [i]: !o[i] }));
 
   return (
-    <div className="wevtex">
+    <div className={`wevtex ${isDark ? 'mode-dark' : 'mode-light'}`}>
       <SiteHeader current="contact" />
 
       {/* HERO */}
-      <section className="theme-dark page-hero">
+      <section className={`${isDark ? "theme-dark" : "theme-cream"} page-hero`}>
         <div className="hero-wash"></div>
         <div className="hero-grid-bg"></div>
         <div className="container">
@@ -50,7 +54,7 @@ export default function ContactPage() {
       </section>
 
       {/* CONTACT */}
-      <section className="theme-cream contact">
+      <section className={`${isDark ? "theme-dark" : "theme-cream"} contact`}>
         <div className="container">
           <div className="contact-grid">
             <div className="contact-info reveal">
@@ -148,7 +152,7 @@ export default function ContactPage() {
       </section>
 
       {/* LOCATIONS */}
-      <section className="theme-dark" style={{ padding: "140px 0" }}>
+      <section className={isDark ? "theme-dark" : "theme-cream"} style={{ padding: "140px 0" }}>
         <div className="container">
           <div className="about-head reveal">
             <div>
@@ -183,7 +187,7 @@ export default function ContactPage() {
       </section>
 
       {/* FAQ */}
-      <section className="theme-cream" style={{ padding: "140px 0" }}>
+      <section className={isDark ? "theme-dark" : "theme-cream"} style={{ padding: "140px 0" }}>
         <div className="container">
           <div className="about-head reveal">
             <div>
@@ -209,7 +213,7 @@ export default function ContactPage() {
       </section>
 
       {/* CTA */}
-      <section className="theme-dark cta">
+      <section className={`${isDark ? "theme-dark" : "theme-cream"} cta`}>
         <div className="container">
           <div className="reveal">
             <span className="eyebrow accent">// Just go for it</span>

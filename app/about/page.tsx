@@ -1,5 +1,7 @@
 "use client";
 
+
+import { useTheme } from "@/app/ThemeContext";
 /** Wevtex — About. Ported from .design-wevtex/project/about.html */
 
 import "../wevtex-home.css";
@@ -34,13 +36,15 @@ const TIMELINE = [
 ];
 
 export default function AboutPage() {
+  const { isDark } = useTheme();
+
   useReveal();
   return (
-    <div className="wevtex">
+    <div className={`wevtex ${isDark ? 'mode-dark' : 'mode-light'}`}>
       <SiteHeader current="about" />
 
       {/* HERO */}
-      <section className="theme-dark page-hero">
+      <section className={`${isDark ? "theme-dark" : "theme-cream"} page-hero`}>
         <div className="hero-wash"></div>
         <div className="hero-grid-bg"></div>
         <div className="container">
@@ -61,7 +65,7 @@ export default function AboutPage() {
       </section>
 
       {/* MANIFESTO */}
-      <section className="theme-cream manifesto">
+      <section className={`${isDark ? "theme-dark" : "theme-cream"} manifesto`}>
         <div className="container">
           <div className="manifesto-grid reveal">
             <div className="manifesto-meta">
@@ -80,7 +84,7 @@ export default function AboutPage() {
       </section>
 
       {/* VALUES */}
-      <section className="theme-dark" style={{ padding: "140px 0" }}>
+      <section className={isDark ? "theme-dark" : "theme-cream"} style={{ padding: "140px 0" }}>
         <div className="container">
           <div className="about-head reveal">
             <div>
@@ -104,7 +108,7 @@ export default function AboutPage() {
       </section>
 
       {/* TEAM */}
-      <section className="theme-cream" style={{ padding: "140px 0" }}>
+      <section className={isDark ? "theme-dark" : "theme-cream"} style={{ padding: "140px 0" }}>
         <div className="container">
           <div className="about-head reveal">
             <div>
@@ -133,7 +137,7 @@ export default function AboutPage() {
       </section>
 
       {/* TIMELINE */}
-      <section className="theme-dark" style={{ padding: "140px 0" }}>
+      <section className={isDark ? "theme-dark" : "theme-cream"} style={{ padding: "140px 0" }}>
         <div className="container">
           <div className="about-head reveal">
             <div>
@@ -155,7 +159,7 @@ export default function AboutPage() {
       </section>
 
       {/* CTA */}
-      <section className="theme-cream cta" style={{ color: "var(--ink-on-cream)" }}>
+      <section className={`${isDark ? "theme-dark" : "theme-cream"} cta`} style={{ color: "var(--ink-on-cream)" }}>
         <div className="container">
           <div className="reveal">
             <span className="eyebrow accent" style={{ color: "var(--accent)" }}>// 05 — Work with us</span>

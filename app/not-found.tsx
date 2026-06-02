@@ -1,15 +1,19 @@
 "use client";
 
+
+import { useTheme } from "@/app/ThemeContext";
 import "./wevtex-home.css";
 import { SiteHeader } from "../components/wevtex/SiteHeader";
 import { SiteFooter } from "../components/wevtex/SiteFooter";
 
 export default function NotFound() {
+  const { isDark } = useTheme();
+
   return (
-    <div className="wevtex">
+    <div className={`wevtex ${isDark ? 'mode-dark' : 'mode-light'}`}>
       <SiteHeader />
 
-      <section className="theme-dark page-hero" style={{ minHeight: "60vh", display: "flex", alignItems: "center", justifyContent: "center" }}>
+      <section className={`${isDark ? "theme-dark" : "theme-cream"} page-hero`} style={{ minHeight: "60vh", display: "flex", alignItems: "center", justifyContent: "center" }}>
         <div className="hero-wash"></div>
         <div className="hero-grid-bg"></div>
         <div className="container" style={{ textAlign: "center" }}>

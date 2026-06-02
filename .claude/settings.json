@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell($dest = \".claude\\\\skills\"; New-Item -ItemType Directory -Force -Path $dest | Out-Null; Add-Type -AssemblyName System.IO.Compression.FileSystem; $src = \\(Resolve-Path \"website-standards.skill\"\\).Path; $out = \\(Resolve-Path $dest\\).Path; [System.IO.Compression.ZipFile]::ExtractToDirectory\\($src, $out\\); Get-ChildItem -Recurse $dest\\\\website-standards | Select-Object FullName)",
+      "PowerShell($m = Get-Command magick -ErrorAction SilentlyContinue; if \\($m\\) { \"magick: $\\($m.Source\\)\" } else { \"no-magick\" }; $c = Get-Command convert -ErrorAction SilentlyContinue; if \\($c\\) { \"convert: $\\($c.Source\\)\" } else { \"no-convert\" })"
+    ]
+  }
+}
