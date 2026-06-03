@@ -30,6 +30,35 @@ const esc = (s: string) =>
     ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c] as string)
   );
 
+/**
+ * Best-effort in-memory rate limit: max RATE_MAX submissions per IP per window.
+ * Note: serverless instances each have their own memory, so this is a first
+ * layer, not a global guarantee. For strict limits use a shared store (Vercel
+ * KV / Upstash Redis). Combined with the honeypot it stops most form spam.
+ */
+const RATE_MAX = 5;
+const RATE_WINDOW_MS = 10 * 60 * 1000; // 10 minutes
+const hits = new Map<string, number[]>();
+
+function isRateLimited(ip: string): boolean {
+  const now = Date.now();
+  const recent = (hits.get(ip) || []).filter((t) => now - t < RATE_WINDOW_MS);
+  recent.push(now);
+  hits.set(ip, recent);
+  // Occasional cleanup so the map can't grow unbounded.
+  if (hits.size > 5000) {
+    for (const [k, v] of hits) {
+      if (v.every((t) => now - t >= RATE_WINDOW_MS)) hits.delete(k);
+    }
+  }
+  return recent.length > RATE_MAX;
+}
+
+function clientIp(req: Request): string {
+  const fwd = req.headers.get("x-forwarded-for");
+  return (fwd ? fwd.split(",")[0].trim() : "") || "unknown";
+}
+
 async function sendEmail(opts: {
   apiKey: string;
   from: string;
@@ -69,6 +98,14 @@ export async function POST(req: Request) {
   // Honeypot — pretend success so bots don't retry.
   if (body.company_url && body.company_url.trim() !== "") {
     return NextResponse.json({ ok: true });
+  }
+
+  // Rate limit by IP (after honeypot so bots are cheap to reject).
+  if (isRateLimited(clientIp(req))) {
+    return NextResponse.json(
+      { error: "Too many attempts. Please wait a few minutes, or message us on WhatsApp." },
+      { status: 429 }
+    );
   }
 
   const name = (body.name || "").trim();
