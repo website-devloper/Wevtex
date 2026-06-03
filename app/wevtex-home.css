@@ -2448,6 +2448,13 @@
   position: relative;
 }
 
+.wevtex .footer-logo {
+  width: clamp(220px, 38vw, 520px);
+  height: auto;
+  display: block;
+  margin: 0 auto 44px;
+}
+
 .wevtex .footer-massive {
   font-size: clamp(80px, 18vw, 280px);
   font-weight: 400;
@@ -2480,6 +2487,9 @@
 }
 
 .wevtex .footer-col h5 {
+  display: flex;
+  align-items: center;
+  gap: 8px;
   font-family: var(--font-mono);
   font-size: 11px;
   letter-spacing: 0.14em;
@@ -2489,15 +2499,40 @@
   font-weight: 400;
 }
 
+.wevtex .footer-col h5::before {
+  content: "";
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
 .wevtex .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 12px; }
 
 .wevtex .footer-col a {
+  position: relative;
   font-size: 14px;
   color: var(--ink-on-dark-2);
-  transition: color 0.2s;
+  display: inline-block;
+  transition: color 0.2s var(--ease-out);
 }
 
-.wevtex .footer-col a:hover { color: var(--ink-on-dark); }
+.wevtex .footer-col a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -3px;
+  width: 100%;
+  height: 1px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.28s var(--ease-out);
+}
+
+.wevtex .footer-col a:hover { color: var(--accent-hot); }
+
+.wevtex .footer-col a:hover::after { transform: scaleX(1); }
 
 .wevtex .footer-brand .lead {
   margin-top: 18px;
@@ -2514,7 +2549,10 @@
   max-width: 360px;
   align-items: center;
   margin-top: 24px;
+  transition: border-color 0.2s var(--ease-out);
 }
+
+.wevtex .footer-news:focus-within { border-color: var(--accent); }
 
 .wevtex .footer-news input {
   flex: 1;
@@ -2536,7 +2574,11 @@
   color: #fff;
   font-weight: 500;
   font-size: 12px;
+  cursor: pointer;
+  transition: background-color 0.2s var(--ease-out);
 }
+
+.wevtex .footer-news button:hover { background: var(--accent-hot); }
 
 .wevtex .footer-bottom {
   display: flex;
@@ -2560,10 +2602,16 @@
   border-radius: 50%;
   border: 1px solid var(--hairline-d);
   color: var(--ink-on-dark-2);
-  transition: color 0.2s, border-color 0.2s;
+  transition: color 0.2s var(--ease-out), border-color 0.2s var(--ease-out),
+    background-color 0.2s var(--ease-out), transform 0.2s var(--ease-out);
 }
 
-.wevtex .footer-bottom .social a:hover { color: var(--ink-on-dark); border-color: var(--ink-on-dark); }
+.wevtex .footer-bottom .social a:hover {
+  color: #fff;
+  background: var(--accent);
+  border-color: var(--accent);
+  transform: translateY(-2px);
+}
 
 .wevtex .reveal-words .word {
   display: inline-block;
@@ -4294,6 +4342,48 @@
 }
 
 
+/* ---- STATS BAND ---- */
+.wevtex .stats-band {
+  padding: 40px 0;
+}
+
+.wevtex .stats-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  padding: 52px 0;
+  border-top: 1px solid var(--hairline-c-strong);
+  border-bottom: 1px solid var(--hairline-c-strong);
+}
+
+.wevtex .stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  text-align: center;
+}
+
+.wevtex .stat strong {
+  font-size: clamp(40px, 5vw, 66px);
+  font-weight: 400;
+  letter-spacing: -0.035em;
+  line-height: 1;
+  color: var(--ink-on-cream);
+}
+
+.wevtex .stat span {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-on-cream-3);
+}
+
+@media (max-width: 720px) {
+  .wevtex .stats-row { grid-template-columns: 1fr 1fr; gap: 40px 24px; }
+}
+
 /* ---- INDUSTRIES SECTION ---- */
 .wevtex .industries {
   padding: 140px 0;
@@ -4433,3 +4523,92 @@
   -webkit-text-fill-color: transparent;
   color: transparent;
 }
+
+/* ===================== Problem section ===================== */
+.wevtex .problem { padding: 120px 0 90px; }
+
+/* ===================== Process (4-step grid) ===================== */
+.wevtex .proc-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  margin-top: 56px;
+}
+
+@media (max-width: 980px) { .wevtex .proc-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 560px) { .wevtex .proc-grid { grid-template-columns: 1fr; } }
+
+.wevtex .proc-card {
+  border: 1px solid var(--hairline-d);
+  border-radius: var(--radius-md);
+  padding: 28px 24px 24px;
+  background: linear-gradient(180deg, var(--bg-1), var(--bg-0));
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  transition: border-color 0.25s var(--ease-out), transform 0.25s var(--ease-out);
+}
+
+.wevtex .proc-card:hover {
+  border-color: var(--accent);
+  transform: translateY(-3px);
+}
+
+.wevtex .proc-num {
+  font-family: var(--font-serif, serif);
+  font-style: italic;
+  font-size: 34px;
+  line-height: 1;
+  color: var(--accent-hot);
+  margin-bottom: 6px;
+}
+
+.wevtex .proc-card h4 {
+  font-size: 20px;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+}
+
+.wevtex .proc-card p {
+  font-size: 14px;
+  line-height: 1.55;
+  color: var(--ink-on-dark-2);
+  flex: 1;
+}
+
+.wevtex .proc-dur {
+  font-family: var(--font-mono, monospace);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-on-dark-3);
+  margin-top: 6px;
+}
+
+.wevtex.mode-light .proc-card p { color: var(--ink-on-cream-2, rgba(28, 20, 16, 0.7)); }
+.wevtex.mode-light .proc-dur { color: var(--ink-on-cream-3, rgba(28, 20, 16, 0.5)); }
+
+/* ===================== Honest placeholder note ===================== */
+.wevtex .sample-note {
+  display: inline-block;
+  margin-top: 18px;
+  font-family: var(--font-mono, monospace);
+  font-size: 11.5px;
+  letter-spacing: 0.04em;
+  color: var(--ink-on-dark-3);
+  border: 1px dashed var(--hairline-d);
+  border-radius: 999px;
+  padding: 6px 14px;
+  opacity: 0.85;
+}
+
+.wevtex.mode-light .sample-note { color: var(--ink-on-cream-3, rgba(28, 20, 16, 0.5)); }
+
+/* Review badges are now links — keep them looking like badges, not links. */
+.wevtex a.review-badge {
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+  transition: opacity 0.2s var(--ease-out);
+}
+.wevtex a.review-badge:hover { opacity: 0.8; }

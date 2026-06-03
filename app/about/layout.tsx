@@ -1,12 +1,13 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "About Wevtex | Global IT Agency & Development Studio",
-  description: "Learn about Wevtex, a global IT agency building high-performance web applications, mobile apps, and delivering enterprise SEO and IT support worldwide.",
+  title: "About Wevtex | Casablanca Web & App Development Agency",
+  description: "Learn about Wevtex, a Casablanca-based web & app development agency building fast websites, online stores, SEO and automation for businesses across Morocco and worldwide.",
+  alternates: { canonical: "/about" },
   openGraph: {
-    title: "About Wevtex | Global IT Agency & Development Studio",
-    description: "Learn about Wevtex, a global IT agency building high-performance web applications, mobile apps, and delivering enterprise SEO and IT support worldwide.",
-    url: 'https://wevtex.com/about',
+    title: "About Wevtex | Casablanca Web & App Development Agency",
+    description: "A Casablanca-based web & app development agency serving clients across Morocco and worldwide.",
+    url: "/about",
   },
 };
 

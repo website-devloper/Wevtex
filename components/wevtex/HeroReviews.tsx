@@ -41,10 +41,24 @@ function Stars({ tone }: { tone: "gold" | "green" }) {
   return <span className={`rv-stars rv-stars-${tone}`}>★★★★★</span>;
 }
 
+/**
+ * Review profile links and figures.
+ * TODO: replace with your real review-profile URLs and verified rating/count
+ * before launch. Unlinked or fabricated review numbers hurt trust more than help.
+ */
+const GOOGLE_REVIEWS_URL = "https://www.google.com/search?q=Wevtex+reviews";
+const TRUSTPILOT_URL = "https://www.trustpilot.com/review/wevtex.co";
+
 export function HeroReviews() {
   return (
     <div className="hero-reviews">
-      <div className="review-badge">
+      <a
+        className="review-badge"
+        href={GOOGLE_REVIEWS_URL}
+        target="_blank"
+        rel="noopener nofollow"
+        aria-label="Read our Google reviews"
+      >
         <span className="rv-brand">
           <GoogleMark />
           Google
@@ -54,9 +68,15 @@ export function HeroReviews() {
           <strong>5.0</strong>
         </span>
         <span className="rv-count">94 Google reviews</span>
-      </div>
+      </a>
 
-      <div className="review-badge">
+      <a
+        className="review-badge"
+        href={TRUSTPILOT_URL}
+        target="_blank"
+        rel="noopener nofollow"
+        aria-label="Read our Trustpilot reviews"
+      >
         <span className="rv-brand">
           <TrustpilotMark />
           Trustpilot
@@ -66,7 +86,7 @@ export function HeroReviews() {
           <strong>4.9</strong>
         </span>
         <span className="rv-count">128 reviews</span>
-      </div>
+      </a>
     </div>
   );
 }

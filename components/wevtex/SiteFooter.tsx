@@ -1,14 +1,23 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
+import { useTheme } from "../../app/ThemeContext";
 
 /** Wevtex site footer — shared across the homepage and all inner pages. */
 export function SiteFooter() {
   const [subscribed, setSubscribed] = useState(false);
+  const { isDark } = useTheme();
   return (
     <footer className="theme-dark footer">
       <div className="container wide">
-        <div className="footer-massive">Wev<em>tex.</em></div>
+        <Image
+          className="footer-logo"
+          src={isDark ? "/images/logo/wevtex-logo.png" : "/images/logo/wevtex-logo-dark.png"}
+          alt="Wevtex"
+          width={1181}
+          height={160}
+        />
 
         <div className="footer-grid">
           <div className="footer-col footer-brand">
@@ -30,28 +39,31 @@ export function SiteFooter() {
             <ul>
               <li><a href="/">Home</a></li>
               <li><a href="/about">About</a></li>
-              <li><a href="/services">Services</a></li>
-              <li><a href="/portfolio">Portfolio</a></li>
+              <li><a href="/portfolio">Work</a></li>
               <li><a href="/contact">Contact</a></li>
+              <li><a href="/privacy">Privacy Policy</a></li>
+              <li><a href="/legal">Legal Notice</a></li>
             </ul>
           </div>
           <div className="footer-col">
             <h5>Services</h5>
             <ul>
               <li><a href="/services">Web Development</a></li>
-              <li><a href="/services">App Development</a></li>
-              <li><a href="/services">SEO & GEO Targeting</a></li>
-              <li><a href="/services">Hosting Services</a></li>
-              <li><a href="/services">IT Support</a></li>
+              <li><a href="/services">WordPress</a></li>
+              <li><a href="/services">E-commerce</a></li>
+              <li><a href="/services">ERP &amp; Management</a></li>
+              <li><a href="/services">Automation</a></li>
+              <li><a href="/services">UX/UI Design</a></li>
             </ul>
           </div>
           <div className="footer-col">
-            <h5>Newsroom</h5>
+            <h5>Secteurs</h5>
             <ul>
-              <li><a href="#">Latest updates</a></li>
-              <li><a href="/portfolio">Case studies</a></li>
-              <li><a href="#">Engineering blog</a></li>
-              <li><a href="#">Career openings</a></li>
+              <li><a href="/#industries">E-Commerce &amp; Retail</a></li>
+              <li><a href="/#industries">Tourism &amp; Hospitality</a></li>
+              <li><a href="/#industries">Healthcare &amp; Wellness</a></li>
+              <li><a href="/#industries">Professional Services</a></li>
+              <li><a href="/#industries">Education &amp; E-Learning</a></li>
             </ul>
           </div>
         </div>

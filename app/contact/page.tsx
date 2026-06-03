@@ -65,7 +65,7 @@ export default function ContactPage() {
               </p>
               <div className="contact-row">
                 <div className="contact-line"><span className="label">Email</span><span className="val">hello@wevtex.co</span></div>
-                <div className="contact-line"><span className="label">Phone</span><span className="val">+212 7 83180806</span></div>
+                <div className="contact-line"><span className="label">Phone</span><span className="val">+212 687 633 774</span></div>
                 <div className="contact-line"><span className="label">Calendar</span><span className="val">cal.com/wevtex/intro</span></div>
                 <div className="contact-line"><span className="label">Press</span><span className="val">press@wevtex.co</span></div>
                 <div className="contact-line"><span className="label">Careers</span><span className="val">careers@wevtex.co</span></div>

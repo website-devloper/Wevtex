@@ -23,7 +23,7 @@ export function SiteHeader({ current }: { current?: Current }) {
         <a href="/" className="brand" aria-label="Wevtex — home">
           <Image
             className="brand-logo"
-            src="/images/logo/wevtex-logo.png"
+            src={isDark ? "/images/logo/wevtex-logo.png" : "/images/logo/wevtex-logo-dark.png"}
             alt="Wevtex"
             width={1181}
             height={160}
@@ -41,14 +41,14 @@ export function SiteHeader({ current }: { current?: Current }) {
               <div className="mega-dropdown">
                 <div className="mega-cols">
                   <div className="mega-col">
-                    <div className="mega-head">DEVELOPPEMENT</div>
+                    <div className="mega-head">DEVELOPMENT</div>
                     <a href="/services" className="mega-item">
                       <div className="mega-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg></div>
-                      <div><strong>Developpement Web</strong><span>React, Next.js, TypeScript</span></div>
+                      <div><strong>Web Development</strong><span>React, Next.js, TypeScript</span></div>
                     </a>
                     <a href="/services" className="mega-item">
                       <div className="mega-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="9"></circle><path d="M3 12h18"></path><path d="M12 3c2.5 2.5 3.8 5.6 3.8 9s-1.3 6.5-3.8 9c-2.5-2.5-3.8-5.6-3.8-9s1.3-6.5 3.8-9z"></path></svg></div>
-                      <div><strong>WordPress</strong><span>Sites web sur mesure</span></div>
+                      <div><strong>WordPress</strong><span>Custom websites</span></div>
                     </a>
                     <a href="/services" className="mega-item">
                       <div className="mega-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6"></path></svg></div>
@@ -56,26 +56,26 @@ export function SiteHeader({ current }: { current?: Current }) {
                     </a>
                     <a href="/services" className="mega-item">
                       <div className="mega-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 19l7-7 3 3-7 7-3-3z"></path><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"></path><path d="M2 2l7.586 7.586"></path><circle cx="11" cy="11" r="2"></circle></svg></div>
-                      <div><strong>UX/UI Design</strong><span>Interfaces sur mesure</span></div>
+                      <div><strong>UX/UI Design</strong><span>Custom interfaces</span></div>
                     </a>
                   </div>
                   <div className="mega-col">
                     <div className="mega-head">SOLUTIONS</div>
                     <a href="/services" className="mega-item">
                       <div className="mega-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path></svg></div>
-                      <div><strong>ERP &amp; Gestion</strong><span>Dolibarr, Odoo, sur mesure</span></div>
+                      <div><strong>ERP &amp; Management</strong><span>Dolibarr, Odoo, custom</span></div>
                     </a>
                     <a href="/services" className="mega-item">
                       <div className="mega-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg></div>
-                      <div><strong>Automatisation</strong><span>n8n, workflows, API</span></div>
+                      <div><strong>Automation</strong><span>n8n, workflows, API</span></div>
                     </a>
                     <a href="/services" className="mega-item">
                       <div className="mega-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg></div>
-                      <div><strong>Applications Metier</strong><span>Solutions personnalisees</span></div>
+                      <div><strong>Business Apps</strong><span>Custom solutions</span></div>
                     </a>
                     <a href="/services" className="mega-item">
                       <div className="mega-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"></path></svg></div>
-                      <div><strong>Chat Bot IA</strong><span>Chatbots intelligents</span></div>
+                      <div><strong>AI Chatbots</strong><span>Smart chatbots</span></div>
                     </a>
                   </div>
                 </div>
@@ -83,11 +83,11 @@ export function SiteHeader({ current }: { current?: Current }) {
             </li>
             <li className="has-mega">
               <span className="nav-label">
-                Secteurs
+                Industries
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="chevron"><path d="M6 9l6 6 6-6" /></svg>
               </span>
               <div className="mega-dropdown secteurs-dropdown">
-                <div className="mega-head">SECTEURS D'ACTIVITE</div>
+                <div className="mega-head">INDUSTRIES WE SERVE</div>
                 <div className="mega-grid">
                   <a href="#industries" className="mega-item">
                     <div className="mega-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M3 9l1-4h16l1 4"></path><path d="M3 9v11a1 1 0 001 1h16a1 1 0 001-1V9"></path><path d="M9 21V13h6v8"></path></svg></div>

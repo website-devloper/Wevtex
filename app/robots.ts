@@ -1,13 +1,14 @@
 import { MetadataRoute } from 'next';
+import { SITE_URL } from '@/lib/seo';
 
 export default function robots(): MetadataRoute.Robots {
-  const baseUrl = 'https://wevtex.com';
-
   return {
     rules: {
       userAgent: '*',
       allow: '/',
+      disallow: ['/api/', '/thank-you'],
     },
-    sitemap: `${baseUrl}/sitemap.xml`,
+    sitemap: `${SITE_URL}/sitemap.xml`,
+    host: SITE_URL,
   };
 }

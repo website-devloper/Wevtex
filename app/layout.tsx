@@ -1,6 +1,10 @@
 import type { Metadata, Viewport } from "next";
+import { GoogleAnalytics } from "@next/third-parties/google";
 import { SmoothScroll } from "../components/wevtex/SmoothScroll";
 import { ThemeProvider } from "./ThemeContext";
+import { SITE_URL, abs } from "@/lib/seo";
+
+const GA_ID = process.env.NEXT_PUBLIC_GA_ID;
 
 export const viewport: Viewport = {
   width: 'device-width',
@@ -9,17 +13,17 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://wevtex.com'),
+  metadataBase: new URL(SITE_URL),
   title: {
-    default: "Wevtex | Enterprise Web & App Development Agency USA & UK",
+    default: "Wevtex | Web & App Development Agency — Casablanca, Morocco & Worldwide",
     template: "%s | Wevtex IT Agency",
   },
-  description: "Wevtex is a global IT agency specializing in high-performance web development, mobile apps, advanced SEO/GEO, secure hosting, and IT support for businesses in the US, UK, and worldwide.",
-  keywords: ["web development agency", "mobile app development", "enterprise SEO services", "GEO targeting", "secure hosting", "IT support", "USA", "UK", "global IT agency", "Wevtex"],
+  description: "Wevtex is a Casablanca-based web & app development agency building fast websites, online stores, SEO/GEO and automation for businesses across Morocco and worldwide.",
+  keywords: ["agence web Maroc", "création site web Casablanca", "web development agency", "site web Maroc prix", "e-commerce Maroc", "mobile app development", "SEO services", "GEO targeting", "secure hosting", "Wevtex"],
   openGraph: {
-    title: "Wevtex | Enterprise Web & App Development Agency USA & UK",
-    description: "Global IT agency delivering scalable web apps, mobile solutions, SEO/GEO, and managed IT support for businesses scaling in the US and UK.",
-    url: 'https://wevtex.com',
+    title: "Wevtex | Web & App Development Agency — Casablanca, Morocco & Worldwide",
+    description: "Casablanca-based agency delivering fast websites, online stores, SEO/GEO and automation for businesses across Morocco and worldwide.",
+    url: SITE_URL,
     siteName: 'Wevtex Agency',
     images: [
       {
@@ -34,8 +38,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: "Wevtex | Enterprise Web & App Development Agency USA & UK",
-    description: "Global IT agency delivering scalable web apps, mobile solutions, SEO/GEO, and managed IT support for businesses scaling in the US and UK.",
+    title: "Wevtex | Web & App Development Agency — Casablanca, Morocco & Worldwide",
+    description: "Casablanca-based agency delivering fast websites, online stores, SEO/GEO and automation for businesses across Morocco and worldwide.",
     images: ['/images/og-image.jpg'],
   },
   robots: {
@@ -68,13 +72,13 @@ export default function RootLayout({
 }>) {
   const jsonLd = {
     "@context": "https://schema.org",
-    "@type": "ITUtility",
+    "@type": ["Organization", "ProfessionalService"],
     "name": "Wevtex",
-    "url": "https://wevtex.com",
-    "logo": "https://wevtex.com/images/logo/favicon.png",
-    "image": "https://wevtex.com/images/og-image.jpg",
-    "description": "Global IT agency delivering scalable web apps, mobile solutions, SEO/GEO, and managed IT support for businesses scaling in the US and UK.",
-    "telephone": "+212783180806",
+    "url": SITE_URL,
+    "logo": abs("/images/logo/favicon.png"),
+    "image": abs("/images/og-image.jpg"),
+    "description": "Casablanca-based web & app development agency building fast websites, online stores, SEO/GEO and automation for businesses across Morocco and worldwide.",
+    "telephone": "+212687633774",
     "address": {
       "@type": "PostalAddress",
       "addressLocality": "Casablanca",
@@ -83,7 +87,7 @@ export default function RootLayout({
     "sameAs": [
       "https://www.instagram.com/wevtex.agency/"
     ],
-    "areaServed": ["US", "GB", "Worldwide"],
+    "areaServed": ["MA", "US", "GB", "Worldwide"],
     "priceRange": "$$$"
   };
 
@@ -112,6 +116,7 @@ export default function RootLayout({
           </ThemeProvider>
         </SmoothScroll>
       </body>
+      {GA_ID ? <GoogleAnalytics gaId={GA_ID} /> : null}
     </html>
   );
 }
