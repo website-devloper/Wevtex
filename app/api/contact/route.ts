@@ -8,8 +8,8 @@ import { NextResponse } from "next/server";
  *
  * Required env vars (see .env.example):
  *   RESEND_API_KEY     – your Resend API key
- *   LEAD_NOTIFY_EMAIL  – inbox that receives new leads (e.g. leads@wevtex.co)
- *   LEAD_FROM_EMAIL    – verified Resend sender, e.g. "Wevtex <hello@wevtex.co>"
+ *   LEAD_NOTIFY_EMAIL  – inbox that receives new leads (e.g. leads@wevtex.com)
+ *   LEAD_FROM_EMAIL    – verified Resend sender, e.g. "Wevtex <hello@wevtex.com>"
  */
 
 export const runtime = "nodejs";
@@ -142,7 +142,7 @@ export async function POST(req: Request) {
   const visitorIsEmail = EMAIL_RE.test(contact);
 
   const adminHtml = `
-    <h2>New lead from wevtex.co</h2>
+    <h2>New lead from wevtex.com</h2>
     <table cellpadding="6" style="border-collapse:collapse;font-family:system-ui,sans-serif">
       <tr><td><b>Name</b></td><td>${esc(name)}</td></tr>
       <tr><td><b>Contact</b></td><td>${esc(contact)}</td></tr>

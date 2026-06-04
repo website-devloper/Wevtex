@@ -19,7 +19,7 @@ import { FAQS } from "./homeContent";
 
 /* Contact channels — used by every call to action */
 const WHATSAPP_URL = "https://wa.me/212687633774";
-const EMAIL_URL = "mailto:hello@wevtex.co";
+const EMAIL_URL = "mailto:hello@wevtex.com";
 
 const WHATSAPP = (
   <svg viewBox="0 0 24 24" width="17" height="17" fill="currentColor" aria-hidden style={{ marginRight: 2 }}>

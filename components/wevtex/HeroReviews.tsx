@@ -47,7 +47,7 @@ function Stars({ tone }: { tone: "gold" | "green" }) {
  * before launch. Unlinked or fabricated review numbers hurt trust more than help.
  */
 const GOOGLE_REVIEWS_URL = "https://www.google.com/search?q=Wevtex+reviews";
-const TRUSTPILOT_URL = "https://www.trustpilot.com/review/wevtex.co";
+const TRUSTPILOT_URL = "https://www.trustpilot.com/review/wevtex.com";
 
 export function HeroReviews() {
   return (

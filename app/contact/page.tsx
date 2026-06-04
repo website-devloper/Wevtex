@@ -64,11 +64,11 @@ export default function ContactPage() {
                 Email is fine, the form is faster, and if you want to skip ahead just grab a slot on the calendar — we keep three open every week for first meetings.
               </p>
               <div className="contact-row">
-                <div className="contact-line"><span className="label">Email</span><span className="val">hello@wevtex.co</span></div>
+                <div className="contact-line"><span className="label">Email</span><span className="val">hello@wevtex.com</span></div>
                 <div className="contact-line"><span className="label">Phone</span><span className="val">+212 687 633 774</span></div>
                 <div className="contact-line"><span className="label">Calendar</span><span className="val">cal.com/wevtex/intro</span></div>
-                <div className="contact-line"><span className="label">Press</span><span className="val">press@wevtex.co</span></div>
-                <div className="contact-line"><span className="label">Careers</span><span className="val">careers@wevtex.co</span></div>
+                <div className="contact-line"><span className="label">Press</span><span className="val">press@wevtex.com</span></div>
+                <div className="contact-line"><span className="label">Careers</span><span className="val">careers@wevtex.com</span></div>
               </div>
               <div className="contact-ratings">
                 <div className="rating-chip"><strong>4.8</strong> Clutch</div>
