@@ -4612,3 +4612,11 @@
   transition: opacity 0.2s var(--ease-out);
 }
 .wevtex a.review-badge:hover { opacity: 0.8; }
+
+/* Service / industry cards that link to detail pages — no link underline. */
+.wevtex a.feature-card,
+.wevtex a.ind-card {
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+}

@@ -26,6 +26,12 @@ const WHATSAPP = (
   </svg>
 );
 
+/* Maps each industry card (in order) to its detail page at /industries/[slug]. */
+const INDUSTRY_LINKS = [
+  "ecommerce-retail", "tourism-hospitality", "professional-services", "healthcare-wellness",
+  "industry-logistics", "education-elearning", "creative-media-tech", "public-sector-ngos",
+];
+
 /* Service cards */
 const INDUSTRIES = [
   {
@@ -68,6 +74,12 @@ const INDUSTRIES = [
     head: "Public Sector & NGOs",
     body: "Charities, foundations, and public institutions. Accessible design, donation processing, and community engagement."
   }
+];
+
+/* Maps each service card (in order) to its detail page at /services/[slug]. */
+const SERVICE_LINKS = [
+  "web-development", "wordpress", "erp-management", "ecommerce",
+  "automation", "business-apps", "ai-chatbots", "ux-ui-design",
 ];
 
 const SERVICES = [
@@ -427,11 +439,11 @@ export function HomeClient() {
 
           <div className="feature-row reveal">
             {SERVICES.map((s, i) => (
-              <div className="feature-card" key={i}>
+              <a className="feature-card" href={`/services/${SERVICE_LINKS[i]}`} key={i}>
                 <span className="feature-icon">{s.icon}</span>
                 <h4>{s.head}</h4>
                 <p>{s.body}</p>
-              </div>
+              </a>
             ))}
           </div>
 
@@ -468,11 +480,11 @@ export function HomeClient() {
 
           <div className="industries-grid reveal">
             {INDUSTRIES.map((ind, i) => (
-              <div className="ind-card" key={i}>
+              <a className="ind-card" href={`/industries/${INDUSTRY_LINKS[i]}`} key={i}>
                 <div className="ind-icon">{ind.icon}</div>
                 <h4>{ind.head}</h4>
                 <p>{ind.body}</p>
-              </div>
+              </a>
             ))}
           </div>
         </div>
