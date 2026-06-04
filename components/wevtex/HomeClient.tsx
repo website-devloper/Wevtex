@@ -13,7 +13,6 @@ import { SiteHeader } from "./SiteHeader";
 import { SiteFooter } from "./SiteFooter";
 import { ScrollRevealText } from "./ScrollRevealText";
 import { WaveBackground } from "./WaveBackground";
-import { HeroReviews } from "./HeroReviews";
 import { ContactForm } from "./ContactForm";
 import { FAQS } from "./homeContent";
 
@@ -378,7 +377,6 @@ export function HomeClient() {
                   </svg>
                 </a>
               </div>
-              <HeroReviews />
             </div>
           </div>
         </div>
