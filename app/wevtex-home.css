@@ -37,9 +37,9 @@
   --accent-deep: #8a2d08;
 
   
-  --font-sans: "Geist", -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
-  --font-mono: "Geist Mono", "JetBrains Mono", ui-monospace, monospace;
-  --font-serif: "Newsreader", "Times New Roman", serif;
+  --font-sans: var(--font-geist), -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
+  --font-mono: var(--font-geist-mono), "JetBrains Mono", ui-monospace, monospace;
+  --font-serif: var(--font-newsreader), "Times New Roman", serif;
 
   
   --container: 1280px;

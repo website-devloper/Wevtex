@@ -1,10 +1,23 @@
 import type { Metadata, Viewport } from "next";
+import { Geist, Geist_Mono, Newsreader } from "next/font/google";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import { SmoothScroll } from "../components/wevtex/SmoothScroll";
 import { ThemeProvider } from "./ThemeContext";
 import { SITE_URL, abs } from "@/lib/seo";
 
 const GA_ID = process.env.NEXT_PUBLIC_GA_ID;
+
+// Self-hosted via next/font (no render-blocking Google Fonts request, no layout shift).
+const geist = Geist({ subsets: ["latin"], variable: "--font-geist", display: "swap" });
+const geistMono = Geist_Mono({ subsets: ["latin"], variable: "--font-geist-mono", display: "swap" });
+const newsreader = Newsreader({
+  subsets: ["latin"],
+  weight: ["400", "500"],
+  style: ["normal", "italic"],
+  variable: "--font-newsreader",
+  display: "swap",
+});
+const fontVars = `${geist.variable} ${geistMono.variable} ${newsreader.variable}`;
 
 export const viewport: Viewport = {
   width: 'device-width',
@@ -95,19 +108,7 @@ export default function RootLayout({
   };
 
   return (
-    <html lang="en">
-      <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,100..900;1,100..900&family=Red+Hat+Display:ital,wght@0,300..900;1,300..900&display=swap"
-          rel="stylesheet"
-        />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600&family=Geist+Mono:wght@400;500&family=Newsreader:ital,opsz,wght@1,6..72,400;1,6..72,500&display=swap"
-          rel="stylesheet"
-        />
-      </head>
+    <html lang="en" className={fontVars}>
       <body id='scrool'>
         <script
           type="application/ld+json"

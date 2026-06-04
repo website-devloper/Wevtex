@@ -1,9 +1,17 @@
 "use client";
 
-import { useRef } from "react";
-import { motion, useScroll, useTransform, type MotionValue } from "framer-motion";
+import { motion } from "framer-motion";
 
-/** Opacity of a word before it is "revealed". */
+/**
+ * Staggered word reveal. Two modes:
+ *  - "load":   plays once on mount (use for the hero).
+ *  - "scroll": plays once when scrolled into view (use for sections).
+ *
+ * Implemented with whileInView/animate variants — no per-word useScroll/
+ * MotionValue. That keeps client JS light (better INP) and avoids framer-motion's
+ * "target ref is defined but not hydrated" error from scroll-linked refs.
+ */
+
 const DIM = 0.14;
 const EASE = [0.16, 1, 0.3, 1] as const;
 
@@ -20,36 +28,11 @@ function Em({ word, emClassName, emStyle }: { word: string; emClassName?: string
   return <em className={emClassName} style={emStyle}>{word}</em>;
 }
 
-/* ---- scroll-linked word: opacity follows scroll progress ---- */
-function ScrollWord({
-  word,
-  em,
-  emClassName,
-  emStyle,
-  progress,
-  range,
-}: {
-  word: string;
-  em: boolean;
-  emClassName?: string;
-  emStyle?: React.CSSProperties;
-  progress: MotionValue<number>;
-  range: [number, number];
-}) {
-  const opacity = useTransform(progress, range, [DIM, 1]);
-  return (
-    <motion.span className="srt-word" style={{ opacity }}>
-      {em ? <Em word={word} emClassName={emClassName} emStyle={emStyle} /> : word}
-    </motion.span>
-  );
-}
-
-/* ---- load-triggered word: brightens once when scrolled into view ---- */
-const loadWordVariants = {
+const wordVariants = {
   hidden: { opacity: DIM },
   visible: { opacity: 1, transition: { duration: 0.5, ease: EASE } },
 };
-const loadContainerVariants = {
+const containerVariants = {
   hidden: {},
   visible: { transition: { staggerChildren: 0.08, delayChildren: 0.1 } },
 };
@@ -67,80 +50,38 @@ export function ScrollRevealText({
   text: string;
   /** Words to render emphasized (matched ignoring punctuation). */
   em?: string[];
-  /** Class applied to emphasized words. */
   emClassName?: string;
-  /** Style applied to emphasized words. */
   emStyle?: React.CSSProperties;
   as?: Tag;
   className?: string;
   style?: React.CSSProperties;
-  /** "scroll" ties brightness to scroll position; "load" plays once on enter. */
+  /** "scroll" plays when scrolled into view; "load" plays once on mount. */
   mode?: "scroll" | "load";
 }) {
-  const ref = useRef<HTMLSpanElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start 0.85", "start 0.3"],
-  });
-
   const lines = splitLines(text);
-  const total = lines.reduce((n, l) => n + l.length, 0);
   const isEm = (w: string) => em.includes(w.replace(/[.,—–'’&]/g, ""));
+  const MotionTag = motion[as];
 
-  if (mode === "load") {
-    const MotionTag = motion[as];
-    return (
-      <MotionTag
-        className={className}
-        variants={loadContainerVariants}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.3 }}
-      >
-        {lines.map((line, li) => (
-          <span className="srt-line" key={li}>
-            {line.map((w, wi) => (
-              <span key={wi}>
-                <motion.span className="srt-word" variants={loadWordVariants}>
-                  {isEm(w) ? <Em word={w} emClassName={emClassName} emStyle={emStyle} /> : w}
-                </motion.span>
-                {wi < line.length - 1 ? " " : null}
-              </span>
-            ))}
-            {li < lines.length - 1 ? <br /> : null}
-          </span>
-        ))}
-      </MotionTag>
-    );
-  }
+  const animProps =
+    mode === "load"
+      ? { initial: "hidden" as const, animate: "visible" as const }
+      : { initial: "hidden" as const, whileInView: "visible" as const, viewport: { once: true, amount: 0.3 } };
 
-  const Tag = as;
-  let idx = -1;
   return (
-    <Tag className={className} style={style}>
-      <span ref={ref} style={{ display: "inline" }}>
-        {lines.map((line, li) => (
-          <span className="srt-line" key={li}>
-            {line.map((w, wi) => {
-              idx++;
-              return (
-                <span key={wi}>
-                  <ScrollWord
-                    word={w}
-                    em={isEm(w)}
-                    emClassName={emClassName}
-                    emStyle={emStyle}
-                    progress={scrollYProgress}
-                    range={[idx / total, (idx + 1) / total]}
-                  />
-                  {wi < line.length - 1 ? " " : null}
-                </span>
-              );
-            })}
-            {li < lines.length - 1 ? <br /> : null}
-          </span>
-        ))}
-      </span>
-    </Tag>
+    <MotionTag className={className} style={style} variants={containerVariants} {...animProps}>
+      {lines.map((line, li) => (
+        <span className="srt-line" key={li}>
+          {line.map((w, wi) => (
+            <span key={wi}>
+              <motion.span className="srt-word" variants={wordVariants}>
+                {isEm(w) ? <Em word={w} emClassName={emClassName} emStyle={emStyle} /> : w}
+              </motion.span>
+              {wi < line.length - 1 ? " " : null}
+            </span>
+          ))}
+          {li < lines.length - 1 ? <br /> : null}
+        </span>
+      ))}
+    </MotionTag>
   );
 }
