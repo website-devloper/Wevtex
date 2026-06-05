@@ -5,6 +5,7 @@ import "../../app/wevtex-home.css";
 import { SiteHeader } from "./SiteHeader";
 import { SiteFooter } from "./SiteFooter";
 import { ScrollRevealText } from "./ScrollRevealText";
+import { WaveBackground } from "./WaveBackground";
 import { useReveal } from "./useReveal";
 import type { Industry } from "../../lib/industries-data";
 
@@ -19,33 +20,31 @@ export function IndustryDetail({ industry }: { industry: Industry }) {
     <div className={`wevtex ${isDark ? "mode-dark" : "mode-light"}`}>
       <SiteHeader />
 
-      {/* HERO */}
-      <section className={`${theme} page-hero`}>
+      {/* HERO — matches the home hero */}
+      <section className={`${theme} hero`} style={{ position: "relative" }}>
+        <WaveBackground />
         <div className="hero-wash"></div>
-        <div className="hero-grid-bg"></div>
-        <div className="container">
-          <div className="reveal">
-            <div className="crumb">
-              <a href="/" style={{ color: "inherit" }}>Home</a> &nbsp;/&nbsp;{" "}
-              <a href="/#industries" style={{ color: "inherit" }}>Industries</a> &nbsp;/&nbsp; {industry.name}
-            </div>
-            <ScrollRevealText
-              as="h1"
-              mode="load"
-              text={industry.h1}
-              em={industry.h1Em}
-              emClassName="serif"
-              emStyle={{ color: "var(--accent)" }}
-            />
-            <p className="lead">{industry.intro}</p>
-            <div className="hero-ctas">
-              <a href={WHATSAPP_URL} className="btn btn-primary" target="_blank" rel="noopener">
-                Get a free quote
-                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden style={{ marginLeft: 2 }}>
-                  <path d="M5 12h14M13 6l6 6-6 6" />
-                </svg>
-              </a>
-              <a href="/portfolio" className="btn btn-outline">See our work</a>
+        <div className="container" style={{ position: "relative", zIndex: 2 }}>
+          <div className="hero-centered">
+            <div className="hero-content" style={{ width: "100%" }}>
+              <span className="status-pill" style={{ marginBottom: 24 }}>{industry.eyebrow}</span>
+              <ScrollRevealText
+                as="h1"
+                mode="load"
+                text={industry.h1}
+                em={industry.h1Em}
+                emClassName="serif-em"
+              />
+              <p className="hero-sub" style={{ margin: "0 auto 36px auto" }}>{industry.intro}</p>
+              <div className="hero-ctas">
+                <a href={WHATSAPP_URL} className="btn btn-primary" target="_blank" rel="noopener">
+                  Get a free quote
+                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden style={{ marginLeft: 2 }}>
+                    <path d="M5 12h14M13 6l6 6-6 6" />
+                  </svg>
+                </a>
+                <a href="/portfolio" className="btn btn-outline">See our work</a>
+              </div>
             </div>
           </div>
         </div>

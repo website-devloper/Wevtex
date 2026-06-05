@@ -5,6 +5,7 @@ import "../../app/wevtex-home.css";
 import { SiteHeader } from "./SiteHeader";
 import { SiteFooter } from "./SiteFooter";
 import { ScrollRevealText } from "./ScrollRevealText";
+import { WaveBackground } from "./WaveBackground";
 import { useReveal } from "./useReveal";
 import type { Service } from "../../lib/services-data";
 
@@ -25,38 +26,36 @@ export function ServiceDetail({ service }: { service: Service }) {
     <div className={`wevtex ${isDark ? "mode-dark" : "mode-light"}`}>
       <SiteHeader current="services" />
 
-      {/* HERO */}
-      <section className={`${theme} page-hero`}>
+      {/* HERO — matches the home hero */}
+      <section className={`${theme} hero`} style={{ position: "relative" }}>
+        <WaveBackground />
         <div className="hero-wash"></div>
-        <div className="hero-grid-bg"></div>
-        <div className="container">
-          <div className="reveal">
-            <div className="crumb">
-              <a href="/" style={{ color: "inherit" }}>Home</a> &nbsp;/&nbsp;{" "}
-              <a href="/services" style={{ color: "inherit" }}>Services</a> &nbsp;/&nbsp; {service.name}
-            </div>
-            <ScrollRevealText
-              as="h1"
-              mode="load"
-              text={service.h1}
-              em={service.h1Em}
-              emClassName="serif"
-              emStyle={{ color: "var(--accent)" }}
-            />
-            <p className="lead">{service.intro}</p>
-            <div className="hero-ctas">
-              <a href={WHATSAPP_URL} className="btn btn-primary" target="_blank" rel="noopener">
-                Get a free quote
-                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden style={{ marginLeft: 2 }}>
-                  <path d="M5 12h14M13 6l6 6-6 6" />
-                </svg>
-              </a>
-              <a href="/portfolio" className="btn btn-outline">See our work</a>
-            </div>
-            <div className="service-tags" style={{ marginTop: 28, display: "flex", flexWrap: "wrap", gap: 8 }}>
-              {service.tags.map((t) => (
-                <span key={t} className="tag">{t}</span>
-              ))}
+        <div className="container" style={{ position: "relative", zIndex: 2 }}>
+          <div className="hero-centered">
+            <div className="hero-content" style={{ width: "100%" }}>
+              <span className="status-pill" style={{ marginBottom: 24 }}>{service.eyebrow}</span>
+              <ScrollRevealText
+                as="h1"
+                mode="load"
+                text={service.h1}
+                em={service.h1Em}
+                emClassName="serif-em"
+              />
+              <p className="hero-sub" style={{ margin: "0 auto 36px auto" }}>{service.intro}</p>
+              <div className="hero-ctas">
+                <a href={WHATSAPP_URL} className="btn btn-primary" target="_blank" rel="noopener">
+                  Get a free quote
+                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden style={{ marginLeft: 2 }}>
+                    <path d="M5 12h14M13 6l6 6-6 6" />
+                  </svg>
+                </a>
+                <a href="/portfolio" className="btn btn-outline">See our work</a>
+              </div>
+              <div className="service-tags" style={{ display: "flex", flexWrap: "wrap", gap: 8, justifyContent: "center" }}>
+                {service.tags.map((t) => (
+                  <span key={t} className="tag">{t}</span>
+                ))}
+              </div>
             </div>
           </div>
         </div>
@@ -71,19 +70,13 @@ export function ServiceDetail({ service }: { service: Service }) {
               <h2 className="h-section" style={{ marginTop: 18 }}>{service.demo.title}</h2>
               {service.demo.subtitle && <p className="lead" style={{ margin: "14px auto 0" }}>{service.demo.subtitle}</p>}
             </div>
-            <div className="svc-demo-mock reveal">
-              <div className="mockup">
-                <div className="topbar"><span></span><span></span><span></span></div>
-                <div className="body">
-                  <div className="row1"><div></div><div></div><div></div></div>
-                  <h4></h4>
-                  <p></p>
-                  <div className="grid">
-                    <div className="tile"></div>
-                    <div className="tile"></div>
-                    <div className="tile"></div>
-                  </div>
-                </div>
+            <div className="svc-demo-frame reveal">
+              <div className="svc-demo-bar"><i></i><i></i><i></i></div>
+              <div className="svc-demo-screen">
+                <div className="l w2"></div>
+                <div className="l w1"></div>
+                <div className="l w3"></div>
+                <div className="svc-demo-tiles"><span></span><span></span><span></span></div>
               </div>
             </div>
             {service.demo.caption && <p className="svc-demo-caption reveal">{service.demo.caption}</p>}

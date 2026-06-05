@@ -4693,3 +4693,102 @@
 @media (max-width: 760px) { .wevtex .sector-wrap { grid-template-columns: 1fr; } }
 .wevtex .sector-group { border: 1px solid var(--hairline-d); border-radius: var(--radius-md); padding: 24px; }
 .wevtex .sector-label { font-size: 16px; font-weight: 500; letter-spacing: -0.02em; display: block; margin-bottom: 14px; }
+
+/* ===================== Detail pages — match home card styling ===================== */
+/* Cards: transparent bg + theme-aware hairline + faint hover (like .feature-card). */
+.wevtex .svc-feature-card,
+.wevtex .tech-group,
+.wevtex .sector-group {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 16px;
+  padding: 30px 28px;
+  transition: background 0.2s var(--ease-out), border-color 0.2s var(--ease-out);
+}
+.wevtex .svc-feature-card:hover,
+.wevtex .tech-group:hover,
+.wevtex .sector-group:hover { background: rgba(255, 255, 255, 0.04); }
+.wevtex .theme-cream .svc-feature-card,
+.wevtex .theme-cream .tech-group,
+.wevtex .theme-cream .sector-group { border-color: var(--hairline-c-strong); }
+.wevtex .theme-cream .svc-feature-card:hover,
+.wevtex .theme-cream .tech-group:hover,
+.wevtex .theme-cream .sector-group:hover { background: rgba(0, 0, 0, 0.03); }
+
+/* Card text — theme aware */
+.wevtex .svc-feature-card h4,
+.wevtex .sector-label { color: var(--ink-on-dark); }
+.wevtex .theme-cream .svc-feature-card h4,
+.wevtex .theme-cream .sector-label { color: var(--ink-on-cream); }
+.wevtex .svc-feature-card > p { color: var(--ink-on-dark-2); }
+.wevtex .theme-cream .svc-feature-card > p { color: var(--ink-on-cream-2); }
+.wevtex .svc-section-head .lead { color: var(--ink-on-dark-2); }
+.wevtex .theme-cream .svc-section-head .lead { color: var(--ink-on-cream-2); }
+
+/* Checklists — theme aware, accent ticks */
+.wevtex .svc-checklist li,
+.wevtex .proc-checks li,
+.wevtex .sector-cases li { color: var(--ink-on-dark-2); }
+.wevtex .theme-cream .svc-checklist li,
+.wevtex .theme-cream .proc-checks li,
+.wevtex .theme-cream .sector-cases li { color: var(--ink-on-cream-2); }
+.wevtex .svc-checklist li svg,
+.wevtex .proc-checks li svg,
+.wevtex .sector-cases li svg { color: var(--accent-hot); }
+
+/* Outcomes (.ind-card) on the theme-cream detail sections */
+.wevtex .theme-cream .ind-card { border-color: var(--hairline-c-strong); }
+.wevtex .theme-cream .ind-card:hover { background: rgba(0, 0, 0, 0.03); }
+.wevtex .theme-cream .ind-card h4 { color: var(--ink-on-cream); }
+.wevtex .theme-cream .ind-card p { color: var(--ink-on-cream-2); }
+
+/* Process cards — transparent + theme-aware (override earlier dark gradient) */
+.wevtex .proc-card {
+  background: transparent;
+  border-color: rgba(255, 255, 255, 0.18);
+}
+.wevtex .theme-cream .proc-card { border-color: var(--hairline-c-strong); }
+.wevtex .theme-cream .proc-card h4 { color: var(--ink-on-cream); }
+.wevtex .theme-cream .proc-card:hover { border-color: var(--accent); }
+
+/* Tag chips — hero tags + tech-stack tags */
+.wevtex .service-tags .tag,
+.wevtex .tech-tags .tag {
+  display: inline-flex; align-items: center;
+  font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.03em;
+  text-transform: none;
+  padding: 6px 11px; border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: var(--ink-on-dark-2);
+}
+.wevtex .theme-cream .service-tags .tag,
+.wevtex .theme-cream .tech-tags .tag,
+.wevtex.mode-light .service-tags .tag {
+  border-color: var(--hairline-c-strong);
+  color: var(--ink-on-cream-2);
+}
+
+/* Demo "in action" frame — self-contained, theme aware */
+.wevtex .svc-demo { padding: 100px 0; }
+.wevtex .svc-demo-frame {
+  max-width: 760px; margin: 0 auto; border-radius: 14px; overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.18); background: rgba(255, 255, 255, 0.02);
+}
+.wevtex .theme-cream .svc-demo-frame { border-color: var(--hairline-c-strong); background: rgba(0, 0, 0, 0.015); }
+.wevtex .svc-demo-bar {
+  display: flex; align-items: center; gap: 7px; padding: 0 16px; height: 38px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+.wevtex .theme-cream .svc-demo-bar { border-bottom-color: var(--hairline-c-strong); }
+.wevtex .svc-demo-bar i { width: 10px; height: 10px; border-radius: 50%; background: rgba(255, 255, 255, 0.22); display: block; }
+.wevtex .theme-cream .svc-demo-bar i { background: rgba(28, 22, 16, 0.18); }
+.wevtex .svc-demo-screen { padding: 28px; display: flex; flex-direction: column; gap: 14px; min-height: 300px; }
+.wevtex .svc-demo-screen .l { height: 11px; border-radius: 6px; background: linear-gradient(90deg, rgba(240, 99, 31, 0.55), rgba(240, 99, 31, 0.08)); }
+.wevtex .svc-demo-screen .l.w1 { width: 38%; }
+.wevtex .svc-demo-screen .l.w2 { width: 68%; }
+.wevtex .svc-demo-screen .l.w3 { width: 52%; }
+.wevtex .svc-demo-tiles { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: auto; }
+.wevtex .svc-demo-tiles span { height: 70px; border-radius: 10px; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.08); }
+.wevtex .theme-cream .svc-demo-tiles span { background: rgba(0, 0, 0, 0.03); border-color: var(--hairline-c-strong); }
+.wevtex .svc-demo-caption { text-align: center; margin-top: 18px; font-family: var(--font-mono); font-size: 12px; color: var(--ink-on-dark-3); }
+.wevtex .theme-cream .svc-demo-caption { color: var(--ink-on-cream-3); }
