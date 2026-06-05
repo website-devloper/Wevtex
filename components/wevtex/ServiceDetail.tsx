@@ -10,6 +10,12 @@ import type { Service } from "../../lib/services-data";
 
 const WHATSAPP_URL = "https://wa.me/212687633774";
 
+const Check = () => (
+  <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+    <path d="M20 6L9 17l-5-5" />
+  </svg>
+);
+
 export function ServiceDetail({ service }: { service: Service }) {
   const { isDark } = useTheme();
   useReveal();
@@ -56,22 +62,34 @@ export function ServiceDetail({ service }: { service: Service }) {
         </div>
       </section>
 
-      {/* WHAT'S INCLUDED */}
-      <section className={`${theme} service-block`}>
-        <div className="container">
-          <div className="reveal">
-            <span className="eyebrow">What&apos;s included</span>
-            <h2 className="h-section" style={{ marginTop: 24, marginBottom: 32 }}>
-              Everything in {service.name}.
-            </h2>
-            <ul className="service-checks">
-              {service.includes.map((c, i) => (
-                <li key={i} data-num={String(i + 1).padStart(2, "0")}>{c}</li>
-              ))}
-            </ul>
+      {/* DEMO / IN ACTION */}
+      {service.demo && (
+        <section className={`${theme} svc-demo`}>
+          <div className="container">
+            <div className="svc-section-head center reveal">
+              <span className="eyebrow">Demo</span>
+              <h2 className="h-section" style={{ marginTop: 18 }}>{service.demo.title}</h2>
+              {service.demo.subtitle && <p className="lead" style={{ margin: "14px auto 0" }}>{service.demo.subtitle}</p>}
+            </div>
+            <div className="svc-demo-mock reveal">
+              <div className="mockup">
+                <div className="topbar"><span></span><span></span><span></span></div>
+                <div className="body">
+                  <div className="row1"><div></div><div></div><div></div></div>
+                  <h4></h4>
+                  <p></p>
+                  <div className="grid">
+                    <div className="tile"></div>
+                    <div className="tile"></div>
+                    <div className="tile"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            {service.demo.caption && <p className="svc-demo-caption reveal">{service.demo.caption}</p>}
           </div>
-        </div>
-      </section>
+        </section>
+      )}
 
       {/* OUTCOMES */}
       <section className={`${theme} industries`}>
@@ -92,6 +110,157 @@ export function ServiceDetail({ service }: { service: Service }) {
           </div>
         </div>
       </section>
+
+      {/* FEATURE SECTIONS (rich) — or fallback to a simple "what's included" list */}
+      {service.featureSections ? (
+        service.featureSections.map((fs, si) => (
+          <section className={`${theme} svc-features-block`} key={si}>
+            <div className="container">
+              <div className="svc-section-head reveal">
+                <span className="eyebrow">{fs.eyebrow}</span>
+                <ScrollRevealText
+                  as="h2"
+                  className="h-section"
+                  style={{ marginTop: 18 }}
+                  text={fs.title}
+                  em={fs.titleEm || []}
+                  emClassName="serif"
+                  emStyle={{ color: "var(--accent)" }}
+                />
+                {fs.subtitle && <p className="lead" style={{ marginTop: 14 }}>{fs.subtitle}</p>}
+              </div>
+              <div className="svc-features reveal">
+                {fs.cards.map((c, ci) => (
+                  <div className="svc-feature-card" key={ci}>
+                    <h4>{c.title}</h4>
+                    <p>{c.desc}</p>
+                    <ul className="svc-checklist">
+                      {c.checks.map((ch, chi) => (
+                        <li key={chi}><Check />{ch}</li>
+                      ))}
+                    </ul>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+        ))
+      ) : (
+        <section className={`${theme} service-block`}>
+          <div className="container">
+            <div className="reveal">
+              <span className="eyebrow">What&apos;s included</span>
+              <h2 className="h-section" style={{ marginTop: 24, marginBottom: 32 }}>Everything in {service.name}.</h2>
+              <ul className="service-checks">
+                {service.includes.map((c, i) => (
+                  <li key={i} data-num={String(i + 1).padStart(2, "0")}>{c}</li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* TECH STACK */}
+      {service.tech && (
+        <section className={`${theme} svc-tech`}>
+          <div className="container">
+            <div className="svc-section-head reveal">
+              <span className="eyebrow">Technology</span>
+              <ScrollRevealText
+                as="h2"
+                className="h-section"
+                style={{ marginTop: 18 }}
+                text={service.tech.title}
+                em={service.tech.titleEm || []}
+                emClassName="serif"
+                emStyle={{ color: "var(--accent)" }}
+              />
+              {service.tech.subtitle && <p className="lead" style={{ marginTop: 14 }}>{service.tech.subtitle}</p>}
+            </div>
+            <div className="tech-wrap reveal">
+              {service.tech.groups.map((g, i) => (
+                <div className="tech-group" key={i}>
+                  <span className="tech-group-label">{g.label}</span>
+                  <div className="tech-tags">
+                    {g.items.map((it) => (
+                      <span className="tag" key={it}>{it}</span>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* PROCESS / METHODOLOGY */}
+      {service.process && (
+        <section className={`${theme} process`}>
+          <div className="container">
+            <div className="svc-section-head reveal">
+              <span className="eyebrow">How it works</span>
+              <ScrollRevealText
+                as="h2"
+                className="h-section"
+                style={{ marginTop: 18 }}
+                text={service.process.title}
+                em={service.process.titleEm || []}
+                emClassName="serif"
+                emStyle={{ color: "var(--accent)" }}
+              />
+              {service.process.subtitle && <p className="lead" style={{ marginTop: 14 }}>{service.process.subtitle}</p>}
+            </div>
+            <div className="proc-grid reveal">
+              {service.process.steps.map((s, i) => (
+                <div className="proc-card" key={i}>
+                  <div className="proc-num">{s.n}</div>
+                  <h4>{s.h}</h4>
+                  <ul className="proc-checks">
+                    {s.checks.map((ch, ci) => (
+                      <li key={ci}><Check />{ch}</li>
+                    ))}
+                  </ul>
+                  <span className="proc-dur">{s.d}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* SECTORS / USE CASES */}
+      {service.sectors && (
+        <section className={`${theme} svc-sectors`}>
+          <div className="container">
+            <div className="svc-section-head reveal">
+              <span className="eyebrow">By sector</span>
+              <ScrollRevealText
+                as="h2"
+                className="h-section"
+                style={{ marginTop: 18 }}
+                text={service.sectors.title}
+                em={service.sectors.titleEm || []}
+                emClassName="serif"
+                emStyle={{ color: "var(--accent)" }}
+              />
+              {service.sectors.subtitle && <p className="lead" style={{ marginTop: 14 }}>{service.sectors.subtitle}</p>}
+            </div>
+            <div className="sector-wrap reveal">
+              {service.sectors.groups.map((g, i) => (
+                <div className="sector-group" key={i}>
+                  <span className="sector-label">{g.label}</span>
+                  <ul className="sector-cases">
+                    {g.cases.map((c, ci) => (
+                      <li key={ci}><Check />{c}</li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* FAQ */}
       {service.faqs.length > 0 && (

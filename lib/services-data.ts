@@ -4,6 +4,12 @@
  * One entry per service = one SEO-targeted page (/services/[slug]).
  */
 
+export type FeatureCard = { title: string; desc: string; checks: string[] };
+export type FeatureSection = { eyebrow: string; title: string; titleEm?: string[]; subtitle?: string; cards: FeatureCard[] };
+export type TechGroup = { label: string; items: string[] };
+export type ProcessStep = { n: string; h: string; checks: string[]; d: string };
+export type SectorGroup = { label: string; cases: string[] };
+
 export type Service = {
   slug: string;
   /** Short label for cards/nav. */
@@ -23,6 +29,12 @@ export type Service = {
   outcomes: { h: string; p: string }[];
   tags: string[];
   faqs: { q: string; a: string }[];
+  // Rich detail sections — pages render them only when present.
+  demo?: { title: string; subtitle?: string; caption?: string };
+  featureSections?: FeatureSection[];
+  tech?: { title: string; titleEm?: string[]; subtitle?: string; groups: TechGroup[] };
+  process?: { title: string; titleEm?: string[]; subtitle?: string; steps: ProcessStep[] };
+  sectors?: { title: string; titleEm?: string[]; subtitle?: string; groups: SectorGroup[] };
 };
 
 export const SERVICES: Service[] = [
@@ -54,6 +66,71 @@ export const SERVICES: Service[] = [
       { q: "How long does a custom website take?", a: "Most business sites go live in 2–4 weeks; larger web apps take longer. You get a firm timeline with your quote." },
       { q: "Do I own the code?", a: "Yes — completely. Code, content and every account are handed over in your name." },
     ],
+    demo: {
+      title: "Web development in action",
+      subtitle: "A fast, modern build — from a marketing site to a full web app.",
+      caption: "Illustration of a Next.js build: fast, accessible and SEO-ready.",
+    },
+    featureSections: [
+      {
+        eyebrow: "What we build",
+        title: "Everything in modern\nweb development.",
+        titleEm: ["web", "development."],
+        subtitle: "Custom builds engineered for speed, security and conversion.",
+        cards: [
+          { title: "Marketing sites & landing pages", desc: "Pages that load fast and turn visitors into customers.", checks: ["Mobile-first design", "SEO-ready structure", "Fast Core Web Vitals", "Easy content editing"] },
+          { title: "Web applications", desc: "Dashboards, portals and internal tools that scale.", checks: ["Authentication & roles", "Billing & subscriptions", "Custom dashboards", "Admin panels"] },
+          { title: "Headless e-commerce", desc: "Online stores built to convert and scale.", checks: ["Stripe payments", "Product management", "Cart & checkout", "Order tracking"] },
+          { title: "Performance & SEO", desc: "Built so Google and users both love it.", checks: ["Core Web Vitals tuning", "Schema / JSON-LD", "Clean, semantic URLs", "Analytics wired in"] },
+        ],
+      },
+      {
+        eyebrow: "Built right",
+        title: "On a solid\nfoundation.",
+        titleEm: ["solid", "foundation."],
+        subtitle: "Modern tools, secure by default, and entirely yours.",
+        cards: [
+          { title: "Modern stack", desc: "Current, well-supported technology — no legacy debt.", checks: ["React & Next.js", "TypeScript", "Tailwind CSS", "Component systems"] },
+          { title: "Secure by default", desc: "Security baked in from the first commit.", checks: ["HTTPS & HSTS", "Server-side validation", "Security headers", "Dependency audits"] },
+          { title: "Hosting & CI/CD", desc: "Fast global hosting with automated deploys.", checks: ["Edge / CDN hosting", "ISR caching", "Automated deploys", "Uptime monitoring"] },
+          { title: "Yours to own", desc: "Full ownership handed over — no lock-in.", checks: ["Code handover", "Domain & accounts", "No vendor lock-in", "Documentation"] },
+        ],
+      },
+    ],
+    tech: {
+      title: "The web stack\nwe build on.",
+      titleEm: ["build", "on."],
+      subtitle: "Proven, modern tools chosen for performance and longevity.",
+      groups: [
+        { label: "Frontend", items: ["React", "Next.js", "TypeScript", "Tailwind"] },
+        { label: "Backend & APIs", items: ["Node.js", "REST", "GraphQL", "Prisma"] },
+        { label: "Commerce", items: ["Stripe", "WooCommerce", "Medusa"] },
+        { label: "Infra & SEO", items: ["Vercel", "ISR", "JSON-LD", "Analytics"] },
+      ],
+    },
+    process: {
+      title: "How we work\ntogether.",
+      titleEm: ["work", "together."],
+      subtitle: "No mystery — you always know what's happening and what's next.",
+      steps: [
+        { n: "01", h: "Discover", d: "1–2 days", checks: ["Goals & audience", "Scope & quote", "Clear plan"] },
+        { n: "02", h: "Design", d: "3–5 days", checks: ["In-browser design", "Your feedback", "Approved look"] },
+        { n: "03", h: "Build", d: "1–3 weeks", checks: ["Fast, secure code", "Weekly updates", "Mobile-ready"] },
+        { n: "04", h: "Launch", d: "1–2 days", checks: ["Full testing", "Analytics setup", "Go live"] },
+        { n: "05", h: "Support", d: "ongoing", checks: ["Post-launch help", "Care plan", "Improvements"] },
+      ],
+    },
+    sectors: {
+      title: "Web development\nfor every sector.",
+      titleEm: ["every", "sector."],
+      subtitle: "We tailor the build to how your customers actually buy.",
+      groups: [
+        { label: "E-commerce & Retail", cases: ["Online stores", "Checkout optimization", "Inventory sync"] },
+        { label: "Professional Services", cases: ["Lead capture", "Appointment booking", "Trust-building sites"] },
+        { label: "SaaS & Tech", cases: ["Landing pages", "Web apps", "Dashboards"] },
+        { label: "Hospitality", cases: ["Direct booking", "Multilingual sites", "Rich galleries"] },
+      ],
+    },
   },
   {
     slug: "wordpress",
