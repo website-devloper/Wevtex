@@ -68,7 +68,7 @@ export function IndustryDetail({ industry }: { industry: Industry }) {
       </section>
 
       {/* OUTCOMES */}
-      <section className={`${theme} industries`}>
+      <section className={`${theme} industries svc-outcomes`}>
         <div className="container">
           <div className="industries-head reveal">
             <div>
@@ -79,6 +79,7 @@ export function IndustryDetail({ industry }: { industry: Industry }) {
           <div className="industries-grid reveal">
             {industry.outcomes.map((o, i) => (
               <div className="ind-card" key={i}>
+                <span className="svc-num">{String(i + 1).padStart(2, "0")}</span>
                 <h4>{o.h}</h4>
                 <p>{o.p}</p>
               </div>

@@ -85,7 +85,7 @@ export function ServiceDetail({ service }: { service: Service }) {
       )}
 
       {/* OUTCOMES */}
-      <section className={`${theme} industries`}>
+      <section className={`${theme} industries svc-outcomes`}>
         <div className="container">
           <div className="industries-head reveal">
             <div>
@@ -96,6 +96,7 @@ export function ServiceDetail({ service }: { service: Service }) {
           <div className="industries-grid reveal">
             {service.outcomes.map((o, i) => (
               <div className="ind-card" key={i}>
+                <span className="svc-num">{String(i + 1).padStart(2, "0")}</span>
                 <h4>{o.h}</h4>
                 <p>{o.p}</p>
               </div>
@@ -125,6 +126,7 @@ export function ServiceDetail({ service }: { service: Service }) {
               <div className="svc-features reveal">
                 {fs.cards.map((c, ci) => (
                   <div className="svc-feature-card" key={ci}>
+                    <span className="svc-num">{String(ci + 1).padStart(2, "0")}</span>
                     <h4>{c.title}</h4>
                     <p>{c.desc}</p>
                     <ul className="svc-checklist">

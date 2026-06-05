@@ -4792,3 +4792,61 @@
 .wevtex .theme-cream .svc-demo-tiles span { background: rgba(0, 0, 0, 0.03); border-color: var(--hairline-c-strong); }
 .wevtex .svc-demo-caption { text-align: center; margin-top: 18px; font-family: var(--font-mono); font-size: 12px; color: var(--ink-on-dark-3); }
 .wevtex .theme-cream .svc-demo-caption { color: var(--ink-on-cream-3); }
+
+/* ===================== Detail pages — creative polish ===================== */
+/* Editorial serif-italic index numbers (matches the home serif accent). */
+.wevtex .svc-num {
+  display: block;
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 30px;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: var(--accent-hot);
+  margin-bottom: 16px;
+}
+.wevtex .svc-feature-card .svc-num { font-size: 26px; margin-bottom: 14px; }
+
+/* Hover: gentle lift + accent border across detail cards. */
+.wevtex .svc-feature-card,
+.wevtex .svc-outcomes .ind-card,
+.wevtex .tech-group,
+.wevtex .sector-group {
+  transition: background 0.22s var(--ease-out), border-color 0.22s var(--ease-out), transform 0.22s var(--ease-out);
+  will-change: transform;
+}
+.wevtex .svc-feature-card:hover,
+.wevtex .svc-outcomes .ind-card:hover,
+.wevtex .tech-group:hover,
+.wevtex .sector-group:hover {
+  border-color: rgba(240, 99, 31, 0.5);
+  transform: translateY(-5px);
+}
+.wevtex .theme-cream .svc-feature-card:hover,
+.wevtex .theme-cream .svc-outcomes .ind-card:hover,
+.wevtex .theme-cream .tech-group:hover,
+.wevtex .theme-cream .sector-group:hover {
+  border-color: rgba(217, 74, 26, 0.45);
+  background: rgba(217, 74, 26, 0.03);
+}
+
+/* Outcomes cards: number on top, a touch more breathing room. */
+.wevtex .svc-outcomes .ind-card { padding: 32px 30px 36px; }
+
+/* Tech group: accent dot + hover label colour. */
+.wevtex .tech-group-label::before {
+  content: ""; display: inline-block; width: 6px; height: 6px; border-radius: 50%;
+  background: var(--accent-hot); margin-right: 8px; vertical-align: middle;
+}
+
+/* Sector group: accent dot before the label. */
+.wevtex .sector-label::before {
+  content: ""; display: inline-block; width: 7px; height: 7px; border-radius: 50%;
+  background: var(--accent-hot); margin-right: 9px; vertical-align: middle;
+}
+
+/* Tech chips: subtle accent on hover of the group. */
+.wevtex .tech-group:hover .tech-group-label { color: var(--accent-hot); }
+
+/* Demo screen: a faint accent glow to feel more "alive". */
+.wevtex .svc-demo-frame { box-shadow: 0 30px 80px -40px rgba(217, 74, 26, 0.35); }
