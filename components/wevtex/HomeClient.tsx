@@ -428,15 +428,11 @@ export function HomeClient() {
       <section className="problem-band" id="problem">
         <div className="problem-motif" aria-hidden></div>
         <div className="container">
-          <div className="problem-inner reveal">
-            <ScrollRevealText
-              as="h2"
-              mode="load"
-              className="problem-h"
-              text={"Most business websites\ndon't bring in customers"}
-              em={["bring", "in"]}
-              emClassName="hl-em hl-underline"
-            />
+          <div className="problem-inner">
+            <h2 className="problem-h">
+              Most business websites<br />
+              don&apos;t <em className="hl-em hl-underline">bring in</em> customers
+            </h2>
             <p className="problem-sub">
               They look nice, but they&apos;re slow, confusing, and hard to update.<br />
               We build websites and apps that actually work —<br />
