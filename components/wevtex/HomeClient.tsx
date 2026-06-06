@@ -368,7 +368,7 @@ export function HomeClient() {
                 mode="load"
                 em={["customers"]}
                 emClassName="hl-em"
-                text={"Websites & apps that turn\nvisitors into customers."}
+                text={"Websites & apps that\nturn visitors into\ncustomers."}
               />
               <p className="hero-sub">
                 From first idea to launch in weeks — custom websites, online stores and
@@ -424,26 +424,22 @@ export function HomeClient() {
         </div>
       </section>
 
-      {/* ===================== PROBLEM ===================== */}
-      <section className={`${isDark ? "theme-dark" : "theme-paper"} problem`} id="problem">
+      {/* ===================== PROBLEM (mockup 2 — dark band) ===================== */}
+      <section className="problem-band" id="problem">
+        <div className="problem-motif" aria-hidden></div>
         <div className="container">
-          <div className="industries-head reveal">
-            <div>
-              <span className="eyebrow">The problem</span>
-              <ScrollRevealText
-                as="h2"
-                className="h-section"
-                style={{ marginTop: 24 }}
-                text={"Most business websites\ndon't bring in customers."}
-                em={["don't", "bring", "in", "customers."]}
-                emClassName="serif"
-                emStyle={{ color: "var(--accent)" }}
-              />
-            </div>
-            <p className="lead">
-              They load slowly, hide on page five of Google, and look nothing like the business behind
-              them — so visitors leave and buy elsewhere. We fix that: fast, findable sites built
-              around how your customers actually decide.
+          <div className="problem-inner reveal">
+            <ScrollRevealText
+              as="h2"
+              className="problem-h"
+              text={"Most business websites\ndon't bring in customers"}
+              em={["bring", "in"]}
+              emClassName="hl-em hl-underline"
+            />
+            <p className="problem-sub">
+              They look nice, but they&apos;re slow, confusing, and hard to update.<br />
+              We build websites and apps that actually work —<br />
+              so you get more leads, more sales, and more time back.
             </p>
           </div>
         </div>
