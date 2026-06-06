@@ -12,7 +12,6 @@ import "../../app/wevtex-home.css";
 import { SiteHeader } from "./SiteHeader";
 import { SiteFooter } from "./SiteFooter";
 import { ScrollRevealText } from "./ScrollRevealText";
-import { WaveBackground } from "./WaveBackground";
 import { ContactForm } from "./ContactForm";
 import { FAQS } from "./homeContent";
 
@@ -353,25 +352,25 @@ export function HomeClient() {
       {/* ===================== HEADER ===================== */}
       <SiteHeader />
 
-      {/* ===================== HERO ===================== */}
-      <section className={`${isDark ? "theme-dark" : "theme-cream"} hero`} id="hero" style={{ position: "relative" }}>
-        <WaveBackground />
-        <div className="hero-wash"></div>
+      {/* ===================== HERO (mockup 1 — split) ===================== */}
+      <section className={`${isDark ? "theme-dark" : "theme-cream"} hero hero-split`} id="hero">
+        <div className="hero-motif" aria-hidden></div>
+        <div className="hero-arc" aria-hidden></div>
 
-        <div className="container" style={{ position: "relative", zIndex: 2 }}>
-          <div className="hero-centered">
-            <div className="hero-content" style={{ width: "100%" }}>
-              <span className="status-pill" style={{ marginBottom: 24 }}>
+        <div className="container">
+          <div className="hero-grid">
+            <div className="hero-content">
+              <span className="status-pill">
                 <span className="pulse"></span>Available for new projects
               </span>
               <ScrollRevealText
                 as="h1"
                 mode="load"
                 em={["customers"]}
-                emClassName="serif-em"
+                emClassName="hl-em"
                 text={"Websites & apps that turn\nvisitors into customers."}
               />
-              <p className="hero-sub" style={{ margin: "0 auto 40px auto" }}>
+              <p className="hero-sub">
                 From first idea to launch in weeks — custom websites, online stores and
                 automation, built to bring your business more customers.
               </p>
@@ -388,6 +387,37 @@ export function HomeClient() {
                     <path d="M5 12h14M13 6l6 6-6 6" />
                   </svg>
                 </a>
+              </div>
+            </div>
+
+            <div className="hero-visual" aria-hidden>
+              <div className="hero-browser">
+                <div className="hb-bar"><i></i><i></i><i></i><span className="hb-url">zahra.store</span></div>
+                <div className="hb-body">
+                  <div className="hb-nav">
+                    <span className="hb-logo">ZAHRA</span>
+                    <span className="hb-links"><b></b><b></b><b></b><b></b></span>
+                  </div>
+                  <div className="hb-hero">
+                    <div className="hb-copy">
+                      <span className="hb-h"></span>
+                      <span className="hb-h sm"></span>
+                      <span className="hb-p"></span>
+                      <span className="hb-p sm"></span>
+                      <span className="hb-btn">Shop collection</span>
+                    </div>
+                    <div className="hb-art"><span></span><span></span><span></span></div>
+                  </div>
+                </div>
+              </div>
+              <div className="hero-phone">
+                <span className="hp-cam"></span>
+                <div className="hp-screen">
+                  <div className="hp-img"></div>
+                  <span className="hp-h"></span>
+                  <span className="hp-p"></span>
+                  <span className="hp-p sm"></span>
+                </div>
               </div>
             </div>
           </div>
