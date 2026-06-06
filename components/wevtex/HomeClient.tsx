@@ -431,6 +431,7 @@ export function HomeClient() {
           <div className="problem-inner reveal">
             <ScrollRevealText
               as="h2"
+              mode="load"
               className="problem-h"
               text={"Most business websites\ndon't bring in customers"}
               em={["bring", "in"]}
