@@ -4990,3 +4990,8 @@
 /* ===================== Consistent heading sizes (match hero) ===================== */
 .wevtex .h-section { font-size: clamp(34px, 4.2vw, 56px); line-height: 1.1; }
 .wevtex .problem-h { font-size: clamp(34px, 4.2vw, 56px); line-height: 1.12; }
+
+/* Force light text on the dark problem band (beats mode-light heading color) */
+.wevtex .problem-band .problem-h { color: #fdf7f3 !important; }
+.wevtex .problem-band .problem-h .hl-em { color: var(--vermilion) !important; }
+.wevtex .problem-band .problem-sub { color: rgba(253, 247, 243, 0.74) !important; }
