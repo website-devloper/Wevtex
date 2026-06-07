@@ -442,40 +442,46 @@ export function HomeClient() {
         </div>
       </section>
 
-      {/* ===================== SERVICES ===================== */}
-      <section className={`${isDark ? "theme-dark" : "theme-cream"} features`} id="services">
+      {/* ===================== SERVICES (mockup 3 — bento) ===================== */}
+      <section className={`${isDark ? "theme-dark" : "theme-cream"} services-bento`} id="services">
         <div className="container">
-          <div className="cap-head reveal">
-            <div>
-              <span className="eyebrow">Services</span>
-              <ScrollRevealText
-                as="h2"
-                className="h-section"
-                style={{ marginTop: 24 }}
-                text={"Everything to grow\nyour business online."}
-                em={["online"]}
-                emClassName="serif"
-                emStyle={{ color: "var(--accent)" }}
-              />
+          <div className="bento-head reveal">
+            <div className="bento-head-left">
+              <span className="eyebrow line-eyebrow">Services</span>
+              <h2 className="h-section" style={{ marginTop: 16 }}>
+                Everything you need<br />
+                to <em className="hl-em">grow, scale</em> &amp; <em className="hl-em">automate</em>
+              </h2>
             </div>
+            <p className="bento-head-right">
+              From powerful websites to smart automation, we build digital solutions that help your
+              business grow faster and run smoother.
+            </p>
           </div>
 
-          <div className="feature-row reveal">
-            {SERVICES.map((s, i) => (
-              <a className="feature-card" href={`/services/${SERVICE_LINKS[i]}`} key={i}>
-                <span className="feature-icon">{s.icon}</span>
-                <h4>{s.head}</h4>
-                <p>{s.body}</p>
+          <div className="bento-grid reveal">
+            {[
+              { i: 0, slug: "web-development", name: "Web Development", desc: "Fast, secure, and scalable websites built to perform.", variant: "feature" },
+              { i: 1, slug: "wordpress", name: "WordPress", desc: "Flexible, easy to manage sites with WordPress.", variant: "" },
+              { i: 2, slug: "erp-management", name: "ERP", desc: "Custom ERP systems to streamline operations.", variant: "" },
+              { i: 4, slug: "automation", name: "Automation", desc: "Automate workflows and save valuable time.", variant: "vermilion" },
+              { i: 3, slug: "ecommerce", name: "E-commerce", desc: "Online stores that convert visitors into customers.", variant: "feature ochre" },
+              { i: 5, slug: "business-apps", name: "Business Apps", desc: "Powerful web apps tailored to your business needs.", variant: "" },
+              { i: 6, slug: "ai-chatbots", name: "AI Chatbots", desc: "Intelligent bots that engage and support customers.", variant: "" },
+              { i: 7, slug: "ux-ui-design", name: "UX/UI Design", desc: "Beautiful, intuitive designs that users love.", variant: "" },
+            ].map((b) => (
+              <a key={b.slug} href={`/services/${b.slug}`} className={`bento-card ${b.variant}`}>
+                <span className="bento-motif" aria-hidden></span>
+                <span className="bento-icon">{SERVICES[b.i].icon}</span>
+                <div className="bento-card-body">
+                  <h4>{b.name}</h4>
+                  <p>{b.desc}</p>
+                  <span className="bento-arrow">
+                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+                  </span>
+                </div>
               </a>
             ))}
-          </div>
-
-          <div className="addon-foot reveal">
-            <span>Not sure which service fits? Tell us your goal and we&apos;ll recommend the right setup — free, no obligation.</span>
-            <a href={WHATSAPP_URL} className="btn btn-primary" target="_blank" rel="noopener">
-              {WHATSAPP}
-              Get a free quote
-            </a>
           </div>
         </div>
       </section>
