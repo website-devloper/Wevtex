@@ -884,8 +884,7 @@ export function HomeClient() {
                 <circle cx="100" cy="100" r="70" fill="none" stroke="#e5501e" strokeWidth="1" strokeDasharray="2 5" opacity="0.7" />
                 <text fill="#e5501e" fontSize="13"><textPath href="#psTop" startOffset="50%" textAnchor="middle">SATISFACTION</textPath></text>
                 <text fill="#e5501e" fontSize="13"><textPath href="#psBot" startOffset="50%" textAnchor="middle">GUARANTEED</textPath></text>
-                <text x="100" y="112" textAnchor="middle" fontSize="34" fontWeight="500" fill="#e5501e">100%</text>
-                <path d="M68 100l3-3 3 3-3 3z" fill="#e5501e" /><path d="M126 100l3-3 3 3-3 3z" fill="#e5501e" />
+                <text className="ps-num" x="100" y="112" textAnchor="middle" fontSize="34" fontWeight="500" fill="#e5501e">100%</text>
               </svg>
               <a href={WHATSAPP_URL} className="promise-btn" target="_blank" rel="noopener">
                 Get a free quote
