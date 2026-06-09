@@ -576,17 +576,27 @@ export function HomeClient() {
         </div>
       </section>
 
-      {/* ===================== STATS ===================== */}
-      <section className={`${isDark ? "theme-dark" : "theme-cream"} stats-band`}>
+      {/* ===================== STATS (mockup 6 — clay band) ===================== */}
+      {/* TODO: replace with verified figures before launch. */}
+      <section className="stats-band-v2">
+        <span className="sb-motif tl" aria-hidden></span>
+        <span className="sb-motif br" aria-hidden></span>
         <div className="container">
-          {/* TODO: replace with verified figures before launch. */}
-          <div className="stats-row reveal">
-            <div className="stat"><strong>200+</strong><span>Projects shipped</span></div>
-            <div className="stat"><strong>5.0</strong><span>Average rating</span></div>
-            <div className="stat"><strong>4</strong><span>Continents served</span></div>
-            <div className="stat"><strong>98%</strong><span>Clients who return</span></div>
+          <div className="sb-grid reveal">
+            {[
+              { num: "200+", label: "Projects delivered", desc: "Successful websites, apps and automation systems launched." },
+              { num: "5.0", label: "Average rating", desc: "Based on client reviews across platforms." },
+              { num: "4", label: "Years experience", desc: "Helping businesses grow with smart digital solutions." },
+              { num: "98%", label: "Client satisfaction", desc: "Clients who recommend us and come back." },
+            ].map((s) => (
+              <div className="sb-item" key={s.label}>
+                <div className="sb-num">{s.num}</div>
+                <div className="sb-label">{s.label}</div>
+                <span className="sb-rule"></span>
+                <p className="sb-desc">{s.desc}</p>
+              </div>
+            ))}
           </div>
-          <p className="sample-note reveal">Sample figures — to be confirmed with verified numbers before launch.</p>
         </div>
       </section>
 
