@@ -863,18 +863,40 @@ export function HomeClient() {
         </div>
       </section>
 
-      {/* ===================== PROMISE / RISK REVERSAL ===================== */}
-      <section className={`${isDark ? "theme-dark" : "theme-cream"} promise`}>
+      {/* ===================== PROMISE (mockup — dark card + stamp) ===================== */}
+      <section className="promise-v2">
         <div className="container">
-          <div className="promise-banner reveal">
-            <div>
-              <span className="promise-banner-kicker">Our promise</span>
-              <h3>No payment until you&apos;re fully satisfied.</h3>
+          <div className="promise-card reveal">
+            <span className="promise-motif tl" aria-hidden></span>
+            <span className="promise-motif br" aria-hidden></span>
+            <div className="promise-left">
+              <span className="eyebrow line-eyebrow">Our promise</span>
+              <h2 className="promise-h">No payment<br />until you&apos;re <em className="hl-em">fully satisfied</em></h2>
+              <p className="promise-p">We stand behind our work and your success. That&apos;s why you won&apos;t pay a thing until you&apos;re completely happy with the results.</p>
             </div>
-            <a href={WHATSAPP_URL} className="btn btn-primary" target="_blank" rel="noopener">
-              Get a free quote
-              <svg className="arrow" width="14" height="14" viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="1.6"><path d="M3 9L9 3M9 3H4M9 3V8" /></svg>
-            </a>
+            <div className="promise-right">
+              <svg className="promise-stamp" viewBox="0 0 200 200" aria-hidden>
+                <defs>
+                  <path id="psTop" d="M 36 100 A 64 64 0 0 1 164 100" />
+                  <path id="psBot" d="M 36 100 A 64 64 0 0 0 164 100" />
+                </defs>
+                <circle cx="100" cy="100" r="82" fill="none" stroke="#e5501e" strokeWidth="1.5" opacity="0.55" />
+                <circle cx="100" cy="100" r="70" fill="none" stroke="#e5501e" strokeWidth="1" strokeDasharray="2 5" opacity="0.7" />
+                <text fill="#e5501e" fontSize="13"><textPath href="#psTop" startOffset="50%" textAnchor="middle">SATISFACTION</textPath></text>
+                <text fill="#e5501e" fontSize="13"><textPath href="#psBot" startOffset="50%" textAnchor="middle">GUARANTEED</textPath></text>
+                <text x="100" y="112" textAnchor="middle" fontSize="34" fontWeight="500" fill="#e5501e">100%</text>
+                <path d="M68 100l3-3 3 3-3 3z" fill="#e5501e" /><path d="M126 100l3-3 3 3-3 3z" fill="#e5501e" />
+              </svg>
+              <a href={WHATSAPP_URL} className="promise-btn" target="_blank" rel="noopener">
+                Get a free quote
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+              </a>
+              <div className="promise-trust">
+                <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z" /></svg>No risk</span>
+                <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><rect x="4" y="11" width="16" height="9" rx="2" /><path d="M8 11V7a4 4 0 0 1 8 0v4" /></svg>Secure</span>
+                <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="9" /><path d="M8 12l3 3 5-6" /></svg>Hassle-free</span>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -927,33 +949,27 @@ export function HomeClient() {
         </div>
       </section>
 
-      {/* ===================== CTA ===================== */}
-      <section className={`${isDark ? "theme-dark" : "theme-cream"} cta`}>
+      {/* ===================== CTA (mockup — vermilion band) ===================== */}
+      <section className="cta-v2">
+        <span className="cta-motif tr" aria-hidden></span>
+        <span className="cta-motif bl" aria-hidden></span>
         <div className="container">
-          <div className="reveal">
-            <span className="eyebrow accent">Let&apos;s talk</span>
-            <ScrollRevealText
-              as="h2"
-              style={{ marginTop: 28 }}
-              text={"Ready to grow\nyour business?"}
-              em={["business"]}
-            />
-            <p className="lead">
-              Tell us what you need on WhatsApp or by email. We reply within a few hours — with
-              honest advice and a clear price, no obligation.
+          <div className="cta-inner reveal">
+            <span className="cta-eyebrow">Let&apos;s talk</span>
+            <span className="cta-line"><span className="dot"></span></span>
+            <h2 className="cta-h">Ready to grow <em className="cta-em">your business?</em></h2>
+            <p className="cta-p">
+              Let&apos;s build something great together. Tell us about your project<br />
+              and we&apos;ll get back to you within 24 hours.
             </p>
-            <div className="cta-ctas">
-              <a href={WHATSAPP_URL} className="btn btn-primary" target="_blank" rel="noopener">
+            <div className="cta-btns">
+              <a href={WHATSAPP_URL} className="cta-btn solid" target="_blank" rel="noopener">
                 Get a free quote
-                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden style={{ marginLeft: 2 }}>
-                  <path d="M5 12h14M13 6l6 6-6 6" />
-                </svg>
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden><path d="M5 12h14M13 6l6 6-6 6" /></svg>
               </a>
-              <a href="/portfolio" className="btn btn-outline">
+              <a href="/portfolio" className="cta-btn outline">
                 See our work
-                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden style={{ marginLeft: 2 }}>
-                  <path d="M5 12h14M13 6l6 6-6 6" />
-                </svg>
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden><path d="M5 12h14M13 6l6 6-6 6" /></svg>
               </a>
             </div>
           </div>
