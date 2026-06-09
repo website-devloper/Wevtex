@@ -5212,3 +5212,5 @@
 .wevtex .pj-card.solid .pj-meta h4 { color: #fff; }
 .wevtex .pj-card.solid .pj-meta span { color: rgba(255, 255, 255, 0.85); }
 .wevtex .pj-card.solid .pj-ext { color: #fff; }
+
+.wevtex .pj-more { display: flex; justify-content: center; margin-top: 38px; }

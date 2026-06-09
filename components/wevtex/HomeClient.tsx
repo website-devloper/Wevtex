@@ -675,6 +675,13 @@ export function HomeClient() {
               </a>
             ))}
           </div>
+
+          <div className="pj-more reveal">
+            <a href="/portfolio" className="btn btn-primary">
+              View more projects
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden style={{ marginLeft: 4 }}><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+            </a>
+          </div>
         </div>
       </section>
 
