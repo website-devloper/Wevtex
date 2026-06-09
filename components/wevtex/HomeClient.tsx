@@ -347,6 +347,44 @@ export function HomeClient() {
     return () => cleanups.forEach((fn) => fn());
   }, []);
 
+  /* Count-up animation for the stats band when it scrolls into view. */
+  useEffect(() => {
+    const root = rootRef.current;
+    if (!root) return;
+    const nums = Array.from(root.querySelectorAll<HTMLElement>(".sb-num"));
+    if (!nums.length) return;
+
+    const animate = (el: HTMLElement) => {
+      const to = parseFloat(el.dataset.to || "0");
+      const dec = parseInt(el.dataset.dec || "0", 10);
+      const suffix = el.dataset.suffix || "";
+      const dur = 1500;
+      const start = performance.now();
+      const tick = (now: number) => {
+        const t = Math.min(1, (now - start) / dur);
+        const eased = 1 - Math.pow(1 - t, 3); // ease-out cubic
+        el.textContent = (to * eased).toFixed(dec) + suffix;
+        if (t < 1) requestAnimationFrame(tick);
+        else el.textContent = to.toFixed(dec) + suffix;
+      };
+      requestAnimationFrame(tick);
+    };
+
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) {
+            animate(e.target as HTMLElement);
+            io.unobserve(e.target);
+          }
+        });
+      },
+      { threshold: 0.4 }
+    );
+    nums.forEach((n) => io.observe(n));
+    return () => io.disconnect();
+  }, []);
+
   return (
     <div className={`wevtex ${isDark ? 'mode-dark' : 'mode-light'}`} ref={rootRef}>
       {/* ===================== HEADER ===================== */}
@@ -584,13 +622,13 @@ export function HomeClient() {
         <div className="container">
           <div className="sb-grid reveal">
             {[
-              { num: "200+", label: "Projects delivered", desc: "Successful websites, apps and automation systems launched." },
-              { num: "5.0", label: "Average rating", desc: "Based on client reviews across platforms." },
-              { num: "4", label: "Years experience", desc: "Helping businesses grow with smart digital solutions." },
-              { num: "98%", label: "Client satisfaction", desc: "Clients who recommend us and come back." },
+              { to: 200, dec: 0, suffix: "+", label: "Projects delivered", desc: "Successful websites, apps and automation systems launched." },
+              { to: 5, dec: 1, suffix: "", label: "Average rating", desc: "Based on client reviews across platforms." },
+              { to: 4, dec: 0, suffix: "", label: "Years experience", desc: "Helping businesses grow with smart digital solutions." },
+              { to: 98, dec: 0, suffix: "%", label: "Client satisfaction", desc: "Clients who recommend us and come back." },
             ].map((s) => (
               <div className="sb-item" key={s.label}>
-                <div className="sb-num">{s.num}</div>
+                <div className="sb-num" data-to={s.to} data-dec={s.dec} data-suffix={s.suffix}>{`0${s.suffix}`}</div>
                 <div className="sb-label">{s.label}</div>
                 <span className="sb-rule"></span>
                 <p className="sb-desc">{s.desc}</p>
