@@ -5160,3 +5160,55 @@
 }
 .wevtex .sb-motif.tl { top: 0; left: 0; -webkit-mask-image: radial-gradient(circle at 0 0, #000, transparent 72%); mask-image: radial-gradient(circle at 0 0, #000, transparent 72%); }
 .wevtex .sb-motif.br { bottom: 0; right: 0; -webkit-mask-image: radial-gradient(circle at 100% 100%, #000, transparent 72%); mask-image: radial-gradient(circle at 100% 100%, #000, transparent 72%); }
+
+/* ===================== PROJECTS — mockup 7 (browser-frame cards) ===================== */
+.wevtex .projects-v2 { padding: clamp(80px, 12vh, 130px) 0; }
+.wevtex .pj-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 28px; margin-bottom: 40px; flex-wrap: wrap; }
+.wevtex .pj-head .ic-sub { color: var(--ink-on-cream-2); line-height: 1.6; font-size: 15px; max-width: 40ch; }
+.wevtex.mode-dark .pj-head .ic-sub { color: var(--ink-on-dark-2); }
+.wevtex .pj-viewall { flex-shrink: 0; }
+
+.wevtex .pj-grid { display: grid; grid-template-columns: repeat(12, 1fr); grid-auto-rows: minmax(150px, 1fr); gap: 18px; }
+.wevtex .pj-luxora { grid-column: span 5; grid-row: span 2; }
+.wevtex .pj-dar { grid-column: span 4; }
+.wevtex .pj-well { grid-column: span 3; }
+.wevtex .pj-petro { grid-column: span 3; }
+.wevtex .pj-edu { grid-column: span 4; }
+@media (max-width: 900px) {
+  .wevtex .pj-grid { grid-template-columns: repeat(2, 1fr); grid-auto-rows: 230px; }
+  .wevtex .pj-luxora { grid-column: span 2; grid-row: span 1; }
+  .wevtex .pj-dar, .wevtex .pj-well, .wevtex .pj-petro, .wevtex .pj-edu { grid-column: span 1; }
+}
+@media (max-width: 560px) { .wevtex .pj-grid { grid-template-columns: 1fr; } .wevtex .pj-grid > * { grid-column: span 1 !important; } }
+
+.wevtex .pj-card {
+  display: flex; flex-direction: column; overflow: hidden; text-decoration: none;
+  background: var(--card); border: 1px solid var(--hairline-c-strong); border-radius: 16px;
+  box-shadow: 0 20px 44px -34px rgba(27, 23, 20, 0.42);
+  transition: transform 0.2s var(--ease-out), box-shadow 0.2s var(--ease-out);
+}
+.wevtex .pj-card:hover { transform: translateY(-4px); box-shadow: 0 28px 54px -30px rgba(27, 23, 20, 0.46); }
+.wevtex .pj-frame { flex: 1; display: flex; flex-direction: column; min-height: 0; }
+.wevtex .pj-bar { display: flex; align-items: center; gap: 6px; height: 32px; padding: 0 12px; background: rgba(0, 0, 0, 0.035); border-bottom: 1px solid var(--hairline-c-strong); flex-shrink: 0; }
+.wevtex .pj-bar i { width: 8px; height: 8px; border-radius: 50%; background: rgba(0, 0, 0, 0.18); }
+.wevtex .pj-bar i:nth-child(1) { background: #e5664d; }
+.wevtex .pj-bar i:nth-child(2) { background: #e3b341; }
+.wevtex .pj-bar i:nth-child(3) { background: #6bbf73; }
+.wevtex .pj-url { margin-left: 8px; font-family: var(--font-mono); font-size: 10px; color: var(--ink-on-cream-3); background: #fff; padding: 3px 9px; border-radius: 5px; }
+.wevtex .pj-shot { flex: 1; min-height: 96px; }
+.wevtex .pj-shot.g0 { background: linear-gradient(160deg, #cbb699, #8c7256); }
+.wevtex .pj-shot.g1 { background: linear-gradient(160deg, #7c4a30, #341f15); }
+.wevtex .pj-shot.g2 { background: linear-gradient(160deg, #dfe3da, #aab097); }
+.wevtex .pj-shot.g3 { background: linear-gradient(160deg, #f3efe6, #d6cdbb); }
+.wevtex .pj-shot.solid { background: linear-gradient(160deg, #e5501e, #b5431a); }
+.wevtex .pj-meta { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 14px 16px; }
+.wevtex .pj-meta h4 { font-size: 15px; font-weight: 500; letter-spacing: -0.01em; color: var(--ink-on-cream); }
+.wevtex .pj-meta span { font-size: 12px; color: var(--ink-on-cream-2); }
+.wevtex .pj-ext { color: var(--ink-on-cream-3); flex-shrink: 0; }
+
+.wevtex .pj-card.solid { background: var(--vermilion); border-color: transparent; }
+.wevtex .pj-card.solid .pj-bar { background: rgba(255, 255, 255, 0.12); border-bottom-color: rgba(255, 255, 255, 0.18); }
+.wevtex .pj-card.solid .pj-url { background: rgba(255, 255, 255, 0.18); color: #fff; }
+.wevtex .pj-card.solid .pj-meta h4 { color: #fff; }
+.wevtex .pj-card.solid .pj-meta span { color: rgba(255, 255, 255, 0.85); }
+.wevtex .pj-card.solid .pj-ext { color: #fff; }

@@ -638,56 +638,42 @@ export function HomeClient() {
         </div>
       </section>
 
-      {/* ===================== PROJECTS ===================== */}
-      <section className={`${isDark ? "theme-dark" : "theme-cream"} projects`} id="work">
+      {/* ===================== PROJECTS (mockup 7 — browser-frame cards) ===================== */}
+      <section className={`${isDark ? "theme-dark" : "theme-cream"} projects-v2`} id="work">
         <div className="container">
-          <div className="projects-head reveal">
+          <div className="pj-head reveal">
             <div>
-              <span className="eyebrow">Our work</span>
-              <ScrollRevealText
-                as="h2"
-                className="h-section"
-                style={{ marginTop: 24 }}
-                text={"Recent projects."}
-                em={["projects"]}
-                emClassName="serif"
-                emStyle={{ color: "var(--accent)" }}
-              />
+              <span className="eyebrow line-eyebrow">Our work</span>
+              <h2 className="h-section" style={{ marginTop: 14 }}>Recent <em className="hl-em">projects</em></h2>
+              <p className="ic-sub" style={{ marginTop: 14, textAlign: "left" }}>
+                A selection of websites, apps, and digital platforms we&apos;ve crafted for businesses like yours.
+              </p>
             </div>
-            <p className="sample-note">Sample concepts shown for layout — real client case studies coming soon.</p>
+            <a href="/portfolio" className="btn btn-outline pj-viewall">
+              View all projects
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+            </a>
           </div>
 
-          <div className="projects-grid">
-            {PROJECTS.map((p, i) => (
-              <a className="project-small reveal" data-delay={(i % 3) + 1} href="/portfolio" key={i}>
-                <div className={`project-visual ${p.style}`}>
-                  <div className="mockup">
-                    <div className="topbar"><span></span><span></span><span></span></div>
-                    <div className="body">
-                      <div className="row1"><div></div><div></div><div></div></div>
-                      <h4></h4>
-                      <p></p>
-                      <div className="grid">
-                        <div className="tile"></div>
-                        <div className="tile"></div>
-                        <div className="tile"></div>
-                      </div>
-                    </div>
-                  </div>
+          <div className="pj-grid reveal">
+            {[
+              { cls: "pj-luxora", title: "Luxora Interiors", type: "E-commerce Website", url: "luxora.store", shot: "g0", variant: "" },
+              { cls: "pj-dar", title: "Dar Essaada Hotel", type: "Hospitality Website", url: "daressaada.com", shot: "g1", variant: "" },
+              { cls: "pj-well", title: "Wellcare Clinic", type: "Healthcare Website", url: "wellcare.ma", shot: "g2", variant: "" },
+              { cls: "pj-petro", title: "Petrocore Solutions", type: "Corporate Website", url: "petrocore.com", shot: "solid", variant: "solid" },
+              { cls: "pj-edu", title: "Eduflow Platform", type: "SaaS Dashboard", url: "eduflow.app", shot: "g3", variant: "" },
+            ].map((p) => (
+              <a key={p.cls} href="/portfolio" className={`pj-card ${p.cls} ${p.variant}`}>
+                <div className="pj-frame">
+                  <div className="pj-bar"><i></i><i></i><i></i><span className="pj-url">{p.url}</span></div>
+                  <div className={`pj-shot ${p.shot}`}></div>
                 </div>
-                <div className="small-meta">
-                  <h4>{p.h}</h4>
-                  <span className="tag">{p.tag}</span>
+                <div className="pj-meta">
+                  <div><h4>{p.title}</h4><span>{p.type}</span></div>
+                  <svg className="pj-ext" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M7 17L17 7M9 7h8v8" /></svg>
                 </div>
               </a>
             ))}
-          </div>
-
-          <div style={{ display: "flex", justifyContent: "center", marginTop: 60 }} className="reveal">
-            <a href="/portfolio" className="btn btn-outline">
-              See all our work
-              <svg className="arrow" width="14" height="14" viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="1.6"><path d="M3 9L9 3M9 3H4M9 3V8" /></svg>
-            </a>
           </div>
         </div>
       </section>
