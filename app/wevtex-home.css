@@ -5470,3 +5470,6 @@
 /* Bigger satisfaction stamp */
 .wevtex .promise-stamp { width: 210px; height: 210px; }
 @media (max-width: 820px) { .wevtex .promise-stamp { width: 180px; height: 180px; } }
+
+.wevtex .promise-stamp { width: 240px !important; height: 240px !important; }
+@media (max-width: 820px) { .wevtex .promise-stamp { width: 190px !important; height: 190px !important; } }
