@@ -5103,3 +5103,40 @@
 .wevtex .ic-dots { display: flex; gap: 8px; }
 .wevtex .ic-dots span { width: 8px; height: 8px; border-radius: 50%; background: var(--hairline-c-strong); }
 .wevtex .ic-dots span.on { background: var(--vermilion); width: 22px; border-radius: 5px; }
+
+/* ===================== PROCESS — mockup 5 (timeline) ===================== */
+.wevtex .process-timeline { padding: clamp(80px, 12vh, 130px) 0; }
+.wevtex.mode-light .process-timeline { background: var(--sand); }
+.wevtex .pt-head { text-align: center; max-width: 740px; margin: 0 auto 70px; }
+.wevtex .pt-head .ic-sub { margin-top: 18px; color: var(--ink-on-cream-2); line-height: 1.7; font-size: 16px; }
+
+.wevtex .pt-track { position: relative; display: grid; grid-template-columns: repeat(4, 1fr); }
+.wevtex .pt-track::before {
+  content: ""; position: absolute; top: 32px; left: 12.5%; right: 12.5%; height: 1.5px;
+  background: rgba(229, 80, 30, 0.4);
+}
+.wevtex .pt-step { display: flex; flex-direction: column; align-items: center; text-align: center; padding: 0 16px; }
+.wevtex .pt-num {
+  width: 64px; height: 64px; border-radius: 50%; background: var(--vermilion); color: #fff;
+  display: grid; place-items: center; font-size: 22px; font-weight: 500; position: relative; z-index: 2;
+  box-shadow: 0 0 0 6px var(--sand), 0 0 0 7px rgba(229, 80, 30, 0.25);
+}
+.wevtex .pt-icon {
+  margin-top: 36px; width: 64px; height: 64px; border-radius: 50%;
+  border: 1px solid var(--hairline-c-strong); display: grid; place-items: center; color: var(--olive);
+}
+.wevtex .pt-icon svg { width: 26px; height: 26px; }
+.wevtex .pt-step h4 { margin-top: 20px; font-size: 24px; font-weight: 500; letter-spacing: -0.02em; color: var(--ink-on-cream); }
+.wevtex .pt-step p { margin-top: 10px; font-size: 14px; line-height: 1.55; color: var(--ink-on-cream-2); max-width: 24ch; }
+
+.wevtex .pt-dur { position: absolute; top: 32px; transform: translate(-50%, -50%); z-index: 1; display: grid; place-items: center; }
+.wevtex .pt-dur .node { width: 11px; height: 11px; border-radius: 50%; background: var(--sand); border: 1.5px solid var(--vermilion); }
+.wevtex .pt-dur .lbl { position: absolute; bottom: 16px; white-space: nowrap; font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.04em; color: var(--vermilion); }
+
+@media (max-width: 760px) {
+  .wevtex .pt-track { grid-template-columns: repeat(2, 1fr); row-gap: 44px; }
+  .wevtex .pt-track::before { display: none; }
+  .wevtex .pt-dur { display: none; }
+  .wevtex .pt-num { box-shadow: none; }
+}
+@media (max-width: 440px) { .wevtex .pt-track { grid-template-columns: 1fr; } }

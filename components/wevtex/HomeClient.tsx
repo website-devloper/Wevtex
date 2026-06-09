@@ -538,36 +538,39 @@ export function HomeClient() {
         </div>
       </section>
 
-      {/* ===================== PROCESS ===================== */}
-      <section className={`${isDark ? "theme-dark" : "theme-cream"} process`} id="process">
+      {/* ===================== PROCESS (mockup 5 — timeline) ===================== */}
+      <section className={`${isDark ? "theme-dark" : "theme-cream"} process-timeline`} id="process">
         <div className="container">
-          <div className="cap-head reveal">
-            <div>
-              <span className="eyebrow">How it works</span>
-              <ScrollRevealText
-                as="h2"
-                className="h-section"
-                style={{ marginTop: 24 }}
-                text={"From idea to launch\nin four clear steps."}
-                em={["four", "clear", "steps."]}
-                emClassName="serif"
-                emStyle={{ color: "var(--accent)" }}
-              />
-            </div>
-            <p className="lead">
-              No mystery, no jargon. You always know what&apos;s happening, what&apos;s next, and when
-              your site goes live.
+          <div className="pt-head reveal">
+            <span className="eyebrow line-eyebrow-center">How it works</span>
+            <h2 className="h-section" style={{ marginTop: 16, justifyContent: "center" }}>
+              A clear process. <em className="hl-em">Real results.</em>
+            </h2>
+            <p className="ic-sub">
+              From first conversation to final launch, we keep things simple,<br />
+              transparent, and focused on your goals.
             </p>
           </div>
 
-          <div className="proc-grid reveal">
-            {STEPS.map((s, i) => (
-              <div className="proc-card" key={i}>
-                <div className="proc-num">{s.n}</div>
+          <div className="pt-track reveal">
+            {[
+              { n: "01", h: "Discover", p: "We learn about your business, audience, and goals.", icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="7" /><path d="M21 21l-4.3-4.3" /></svg> },
+              { n: "02", h: "Design", p: "We plan the structure and craft a beautiful, intuitive experience.", icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><path d="M12 20h9" /><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z" /></svg> },
+              { n: "03", h: "Build", p: "We develop your solution with clean code and reliable functionality.", icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><polyline points="16 18 22 12 16 6" /><polyline points="8 6 2 12 8 18" /></svg> },
+              { n: "04", h: "Launch", p: "We launch, test, and support you for long-term success.", icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><path d="M4.5 16.5c-1.5 1.3-2 5-2 5s3.7-.5 5-2c.7-.9.7-2.2-.1-3a2.1 2.1 0 0 0-2.9 0z" /><path d="M12 15l-3-3a16 16 0 0 1 9-9 6 6 0 0 1-9 9z" /><path d="M9 12H4s.5-3 2-4 5 0 5 0" /></svg> },
+            ].map((s) => (
+              <div className="pt-step" key={s.n}>
+                <span className="pt-num">{s.n}</span>
+                <span className="pt-icon">{s.icon}</span>
                 <h4>{s.h}</h4>
                 <p>{s.p}</p>
-                <span className="proc-dur">{s.d}</span>
               </div>
+            ))}
+            {["1–2 days", "3–5 days", "1–3 weeks"].map((d, i) => (
+              <span className="pt-dur" style={{ left: `${25 * (i + 1)}%` }} key={d}>
+                <span className="node"></span>
+                <span className="lbl">{d}</span>
+              </span>
             ))}
           </div>
         </div>
