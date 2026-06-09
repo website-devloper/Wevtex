@@ -5477,3 +5477,158 @@
 .wevtex .cta-btn { border-radius: 999px; padding: 16px 30px; }
 
 .wevtex .promise-stamp .ps-num { letter-spacing: 0.02em; }
+/* ============================================================
+   GLOBAL INTERACTION SYSTEM — clean, restrained, consistent.
+   easing: var(--ease-out) = cubic-bezier(0.16, 1, 0.3, 1)
+   durations: 160ms links/buttons/icons · 240ms cards · 500ms image zoom
+   ============================================================ */
+
+/* cursor + focus-visible (keyboard mirrors hover) */
+.wevtex a, .wevtex button, .wevtex summary, .wevtex [role="button"], .wevtex .ic-dots span { cursor: pointer; }
+.wevtex a:focus-visible, .wevtex button:focus-visible, .wevtex summary:focus-visible,
+.wevtex [role="button"]:focus-visible, .wevtex input:focus-visible,
+.wevtex select:focus-visible, .wevtex textarea:focus-visible,
+.footer-v2 a:focus-visible, .footer-v2 button:focus-visible, .footer-v2 input:focus-visible {
+  outline: 2px solid rgba(229, 80, 30, 0.55); outline-offset: 2px; border-radius: 8px;
+}
+
+/* arrow nudge — one signature, reused on every CTA/link with an arrow */
+.wevtex .btn svg, .wevtex .btn .arrow, .wevtex .cta-btn svg, .wevtex .pr-btn svg,
+.wevtex .promise-btn svg, .wevtex .wa-btn svg, .wevtex .ao-foot a svg,
+.wevtex .pj-viewall svg, .wevtex .pj-more .btn svg, .wevtex .cs-card > svg,
+.wevtex .bento-arrow, .wevtex .pj-ext, .wevtex .testi-controls .btn svg {
+  transition: transform 160ms var(--ease-out);
+}
+.wevtex .btn:hover svg, .wevtex .btn:hover .arrow, .wevtex .cta-btn:hover svg,
+.wevtex .pr-btn:hover svg, .wevtex .promise-btn:hover svg, .wevtex .wa-btn:hover svg,
+.wevtex .ao-foot a:hover svg, .wevtex .pj-viewall:hover svg, .wevtex .pj-more .btn:hover svg,
+.wevtex .testi-controls .btn:hover svg { transform: translateX(3px); }
+
+/* solid vermilion buttons -> clay (no movement) */
+.wevtex .btn-primary { transition: background 160ms var(--ease-out); }
+.wevtex .btn-primary:hover, .wevtex .promise-btn:hover { background: var(--clay); }
+
+/* outline buttons: faint sand fill + border darken */
+.wevtex .btn-outline { transition: background 160ms var(--ease-out), border-color 160ms var(--ease-out); }
+.wevtex .btn-outline:hover { background: rgba(28, 22, 16, 0.045); border-color: rgba(28, 22, 16, 0.4); }
+
+/* ---- Header / nav ---- */
+.site-header .nav-label { position: relative; }
+.site-header .nav-label::after { content: ""; position: absolute; left: 0; bottom: -5px; height: 2px; width: 100%; background: var(--vermilion); transform: scaleX(0); transform-origin: left; transition: transform 160ms var(--ease-out); }
+.site-header li:hover > .nav-label::after, .site-header a.nav-label:hover::after { transform: scaleX(1); }
+.site-header .mega-item { transition: background 160ms var(--ease-out); border-radius: 10px; }
+.site-header .mega-item:hover { background: var(--sand); }
+.site-header .mega-item:hover strong { color: var(--vermilion); }
+.site-header .brand-logo { transition: opacity 160ms var(--ease-out); }
+.site-header .brand:hover .brand-logo { opacity: 0.85; }
+
+/* ---- Cards: single -4px lift + warm shadow (services, projects, testimonials) ---- */
+.wevtex .bento-card, .wevtex .pj-card, .wevtex .testi-card {
+  transition: transform 240ms var(--ease-out), box-shadow 240ms var(--ease-out), border-color 240ms var(--ease-out);
+}
+.wevtex .bento-card:hover, .wevtex .pj-card:hover, .wevtex .testi-card:hover {
+  transform: translateY(-4px); box-shadow: 0 12px 28px -10px rgba(27, 23, 20, 0.18);
+}
+.wevtex .bento-card:hover:not(.vermilion):not(.ochre) { border-color: rgba(28, 22, 16, 0.32); }
+.wevtex .bento-arrow { transition: transform 160ms var(--ease-out); }
+.wevtex .bento-card:hover .bento-arrow { transform: translateX(4px); }
+
+/* ---- Projects: screenshot zoom + arrow nudge ---- */
+.wevtex .pj-shot { transition: transform 500ms var(--ease-out); }
+.wevtex .pj-card:hover .pj-shot { transform: scale(1.03); }
+.wevtex .pj-ext { transition: transform 160ms var(--ease-out), color 160ms var(--ease-out); }
+.wevtex .pj-card:hover .pj-ext { transform: translateX(3px); color: var(--vermilion); }
+
+/* ---- Industries carousel: overlay darken + icon fills vermilion ---- */
+.wevtex .ic-card { transition: transform 240ms var(--ease-out); }
+.wevtex .ic-overlay { transition: background 240ms var(--ease-out); }
+.wevtex .ic-card:hover .ic-overlay { background: linear-gradient(180deg, transparent 24%, rgba(18, 12, 9, 0.9)); }
+.wevtex .ic-badge { transition: background 240ms var(--ease-out), color 240ms var(--ease-out); }
+.wevtex .ic-card:hover .ic-badge { background: var(--vermilion); color: #fff; }
+.wevtex .ic-arrow { transition: background 160ms var(--ease-out), border-color 160ms var(--ease-out), color 160ms var(--ease-out); }
+.wevtex .ic-arrow:hover { background: rgba(28, 22, 16, 0.05); border-color: rgba(28, 22, 16, 0.4); color: var(--ink-on-cream); }
+.wevtex .ic-dots span { transition: transform 160ms var(--ease-out), background 160ms var(--ease-out); }
+.wevtex .ic-dots span:hover { transform: scale(1.4); }
+
+/* ---- Process timeline: node ring + icon vermilion ---- */
+.wevtex .pt-num, .wevtex .pt-icon { transition: box-shadow 240ms var(--ease-out), color 240ms var(--ease-out), border-color 240ms var(--ease-out); }
+.wevtex .pt-step:hover .pt-icon { color: var(--vermilion); border-color: var(--vermilion); }
+.wevtex .pt-step:hover .pt-num { box-shadow: 0 0 0 6px var(--sand), 0 0 0 8px var(--vermilion); }
+
+/* ---- FAQ: row tint, question + plus vermilion, + rotates to × ---- */
+.wevtex .faq-item-v2 summary { transition: background 160ms var(--ease-out); border-radius: 8px; }
+.wevtex .faq-item-v2 summary:hover { background: rgba(229, 80, 30, 0.05); }
+.wevtex .faq-item-v2 summary span:first-child { transition: color 160ms var(--ease-out); }
+.wevtex .faq-item-v2 summary:hover > span:first-child { color: var(--vermilion); }
+.wevtex .faq-plus { transition: transform 200ms var(--ease-out); }
+.wevtex .faq-plus::before, .wevtex .faq-plus::after { transition: background 160ms var(--ease-out); }
+.wevtex .faq-item-v2 summary:hover .faq-plus::before, .wevtex .faq-item-v2 summary:hover .faq-plus::after { background: var(--vermilion); }
+.wevtex .faq-item-v2[open] .faq-plus { transform: rotate(45deg); }
+.wevtex .faq-item-v2[open] .faq-plus::after { opacity: 1; transform: none; }
+
+/* WhatsApp card faint lift + button */
+.wevtex .wa-card { transition: transform 240ms var(--ease-out); }
+.wevtex .wa-card:hover { transform: translateY(-3px); }
+.wevtex .wa-btn { transition: transform 150ms var(--ease-out); }
+.wevtex .wa-btn:hover { transform: translateY(-2px); }
+
+/* ---- Testimonials dots ---- */
+.wevtex .testi-dots span:hover { transform: scale(1.4); }
+
+/* ---- Pricing ---- */
+.wevtex .pr-card { transition: transform 240ms var(--ease-out), box-shadow 240ms var(--ease-out), border-color 240ms var(--ease-out); }
+.wevtex .pr-card:not(.featured):hover { transform: translateY(-4px); border-color: rgba(229, 80, 30, 0.5); box-shadow: 0 12px 28px -10px rgba(27, 23, 20, 0.18); }
+.wevtex .pr-card.featured:hover { transform: translateY(-6px); box-shadow: 0 26px 48px -22px rgba(229, 80, 30, 0.5); }
+
+/* ---- Add-ons rows: tint + icon fills + chip faint fill (no lift) ---- */
+.wevtex .ao-row { transition: background 160ms var(--ease-out); border-radius: 10px; }
+.wevtex .ao-icon, .wevtex .ao-price { transition: background 160ms var(--ease-out), color 160ms var(--ease-out), border-color 160ms var(--ease-out); }
+.wevtex .ao-row:hover { background: rgba(229, 80, 30, 0.05); }
+.wevtex .ao-row:hover .ao-icon { background: var(--vermilion); color: #fff; border-color: transparent; }
+.wevtex .ao-row:hover .ao-price.v { background: rgba(229, 80, 30, 0.1); }
+.wevtex .ao-row:hover .ao-price.o { background: rgba(216, 155, 63, 0.14); }
+.wevtex .ao-foot a { position: relative; }
+.wevtex .ao-foot a::after { content: ""; position: absolute; left: 0; bottom: -2px; height: 1.5px; width: 100%; background: var(--vermilion); transform: scaleX(0); transform-origin: left; transition: transform 160ms var(--ease-out); }
+.wevtex .ao-foot a:hover::after { transform: scaleX(1); }
+.wevtex .ao-foot a svg { transition: transform 160ms var(--ease-out); }
+.wevtex .ao-foot a:hover svg { transform: translateX(3px); }
+
+/* ---- CTA band buttons ---- */
+.wevtex .cta-btn { transition: background 160ms var(--ease-out), border-color 160ms var(--ease-out); }
+.wevtex .cta-btn.outline:hover { background: rgba(255, 255, 255, 0.12); border-color: rgba(255, 255, 255, 0.85); }
+
+/* ---- Contact: inputs focus ring, cards ---- */
+.wevtex .form input, .wevtex .form select, .wevtex .form textarea,
+.footer-v2 .footer-news-v2 input {
+  transition: border-color 160ms var(--ease-out), box-shadow 160ms var(--ease-out);
+}
+.wevtex .form input:hover, .wevtex .form select:hover, .wevtex .form textarea:hover { border-color: rgba(28, 22, 16, 0.4); }
+.wevtex .form input:focus, .wevtex .form select:focus, .wevtex .form textarea:focus {
+  outline: none; border-color: var(--vermilion); box-shadow: 0 0 0 2px rgba(229, 80, 30, 0.22);
+}
+.wevtex .cs-card { transition: background 160ms var(--ease-out); }
+.wevtex .cs-card.wa:hover { background: var(--clay); }
+.wevtex .cs-card:not(.wa):hover { background: rgba(255, 255, 255, 0.12); }
+.wevtex .cs-card:hover > svg { transform: translateX(3px); }
+
+/* ---- Footer ---- */
+.footer-v2 .footer-col-v2 a { transition: color 160ms var(--ease-out), transform 160ms var(--ease-out); }
+.footer-v2 .footer-col-v2 a:hover { color: #fff; transform: translateX(2px); }
+.footer-v2 .footer-news-v2 input:focus { outline: none; border-color: var(--vermilion); box-shadow: 0 0 0 2px rgba(229, 80, 30, 0.3); }
+.footer-v2 .footer-news-v2 button { transition: background 160ms var(--ease-out); }
+.footer-v2 .footer-news-v2 button:hover { background: var(--clay); }
+.footer-v2 .footer-social a { transition: background 160ms var(--ease-out), border-color 160ms var(--ease-out), color 160ms var(--ease-out); }
+.footer-v2 .footer-social a:hover { background: var(--vermilion); border-color: var(--vermilion); color: #fbf8f2; }
+.footer-v2 .footer-wordmark { transition: opacity 160ms var(--ease-out); }
+.footer-v2 .footer-wordmark:hover { opacity: 0.9; }
+
+/* ---- detail-page cards reuse the same lift ---- */
+.wevtex .svc-feature-card, .wevtex .tech-group, .wevtex .sector-group, .wevtex .ind-card {
+  transition: transform 240ms var(--ease-out), box-shadow 240ms var(--ease-out), border-color 240ms var(--ease-out);
+}
+
+/* ---- prefers-reduced-motion: keep colour, drop movement ---- */
+@media (prefers-reduced-motion: reduce) {
+  .wevtex *:hover, .footer-v2 *:hover { transform: none !important; }
+  .wevtex .pj-shot { transition: none !important; }
+}
