@@ -685,31 +685,49 @@ export function HomeClient() {
         </div>
       </section>
 
-      {/* ===================== FAQ ===================== */}
-      <section className={`${isDark ? "theme-dark" : "theme-cream"} faq`} id="faq">
+      {/* ===================== FAQ (mockup 8 — FAQ + WhatsApp card) ===================== */}
+      <section className={`${isDark ? "theme-dark" : "theme-cream"} faq-split`} id="faq">
         <div className="container">
-          <div className="faq-head reveal">
-            <span className="eyebrow">FAQ</span>
-            <ScrollRevealText
-              as="h2"
-              className="h-section"
-              style={{ marginTop: 24 }}
-              text={"Questions, answered."}
-              em={["answered"]}
-              emClassName="serif"
-              emStyle={{ color: "var(--accent)" }}
-            />
-          </div>
-          <div className="faq-list reveal">
-            {FAQS.map((f, i) => (
-              <details className="faq-item" key={i}>
-                <summary>
-                  <span>{f.q}</span>
-                  <span className="faq-icon" aria-hidden></span>
-                </summary>
-                <p>{f.a}</p>
-              </details>
-            ))}
+          <div className="faq-grid">
+            <div className="faq-left reveal">
+              <span className="eyebrow line-eyebrow">FAQ</span>
+              <h2 className="h-section" style={{ marginTop: 14 }}>Questions, <em className="hl-em">answered</em></h2>
+              <p className="ic-sub" style={{ marginTop: 14, textAlign: "left" }}>
+                Here are some common questions about our process, services, and how we help your business grow.
+              </p>
+              <div className="faq-list-v2">
+                {FAQS.map((f, i) => (
+                  <details className="faq-item-v2" key={i}>
+                    <summary>
+                      <span>{f.q}</span>
+                      <span className="faq-plus" aria-hidden></span>
+                    </summary>
+                    <p>{f.a}</p>
+                  </details>
+                ))}
+              </div>
+            </div>
+
+            <div className="faq-right reveal">
+              <div className="wa-card">
+                <span className="wa-card-motif" aria-hidden></span>
+                <span className="wa-icon">{WHATSAPP}</span>
+                <h3>Still have questions?<br /><em>Chat on WhatsApp</em></h3>
+                <span className="wa-rule"></span>
+                <p>We&apos;re here to help. Reach out anytime and we&apos;ll get back to you as soon as possible.</p>
+                <a href={WHATSAPP_URL} className="wa-btn" target="_blank" rel="noopener">
+                  {WHATSAPP}
+                  Chat on WhatsApp
+                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+                </a>
+              </div>
+              <div className="wa-privacy">
+                <span className="wa-lock">
+                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><rect x="4" y="11" width="16" height="9" rx="2" /><path d="M8 11V7a4 4 0 0 1 8 0v4" /></svg>
+                </span>
+                Your information is safe with us. We respect your privacy.
+              </div>
+            </div>
           </div>
         </div>
       </section>

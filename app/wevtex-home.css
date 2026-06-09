@@ -5214,3 +5214,39 @@
 .wevtex .pj-card.solid .pj-ext { color: #fff; }
 
 .wevtex .pj-more { display: flex; justify-content: center; margin-top: 38px; }
+
+/* ===================== FAQ — mockup 8 (FAQ + WhatsApp card) ===================== */
+.wevtex .faq-split { padding: clamp(80px, 12vh, 130px) 0; }
+.wevtex .faq-grid { display: grid; grid-template-columns: 1.5fr 1fr; gap: 54px; align-items: start; }
+@media (max-width: 900px) { .wevtex .faq-grid { grid-template-columns: 1fr; gap: 40px; } }
+.wevtex .faq-left .ic-sub { color: var(--ink-on-cream-2); line-height: 1.6; font-size: 15px; max-width: 46ch; }
+.wevtex.mode-dark .faq-left .ic-sub { color: var(--ink-on-dark-2); }
+
+.wevtex .faq-list-v2 { margin-top: 36px; }
+.wevtex .faq-item-v2 { border-top: 1px solid var(--hairline-c-strong); }
+.wevtex .faq-item-v2:last-child { border-bottom: 1px solid var(--hairline-c-strong); }
+.wevtex .faq-item-v2 summary { list-style: none; cursor: pointer; display: flex; align-items: center; justify-content: space-between; gap: 18px; padding: 22px 4px; font-size: 17px; color: var(--ink-on-cream); }
+.wevtex.mode-dark .faq-item-v2 summary { color: var(--ink-on-dark); }
+.wevtex .faq-item-v2 summary::-webkit-details-marker { display: none; }
+.wevtex .faq-plus { position: relative; width: 16px; height: 16px; flex-shrink: 0; }
+.wevtex .faq-plus::before, .wevtex .faq-plus::after { content: ""; position: absolute; background: var(--ink-on-cream-2); }
+.wevtex .faq-plus::before { top: 7px; left: 0; width: 16px; height: 2px; }
+.wevtex .faq-plus::after { left: 7px; top: 0; width: 2px; height: 16px; transition: transform 0.2s, opacity 0.2s; }
+.wevtex .faq-item-v2[open] .faq-plus::after { transform: rotate(90deg); opacity: 0; }
+.wevtex .faq-item-v2 > p { padding: 0 4px 22px; font-size: 14.5px; line-height: 1.65; color: var(--ink-on-cream-2); max-width: 62ch; }
+.wevtex.mode-dark .faq-item-v2 > p { color: var(--ink-on-dark-2); }
+
+.wevtex .wa-card { position: relative; overflow: hidden; background: var(--vermilion); color: #fff; border-radius: 22px; padding: 36px; }
+.wevtex .wa-card-motif { position: absolute; inset: 0; background-image: url("/images/motif.svg"); background-size: 62px 62px; opacity: 0.12; -webkit-mask-image: radial-gradient(58% 70% at 100% 0%, #000, transparent 70%); mask-image: radial-gradient(58% 70% at 100% 0%, #000, transparent 70%); }
+.wevtex .wa-icon { position: relative; z-index: 1; width: 54px; height: 54px; border-radius: 50%; border: 1px solid rgba(255, 255, 255, 0.5); display: grid; place-items: center; color: #fff; margin-bottom: 26px; }
+.wevtex .wa-icon svg { width: 24px; height: 24px; }
+.wevtex .wa-card h3 { position: relative; z-index: 1; font-size: clamp(26px, 3vw, 34px); font-weight: 400; letter-spacing: -0.02em; line-height: 1.18; }
+.wevtex .wa-card h3 em { font-family: var(--font-serif); font-style: italic; }
+.wevtex .wa-rule { display: block; position: relative; z-index: 1; width: 38px; height: 2px; background: rgba(255, 255, 255, 0.75); margin: 20px 0; }
+.wevtex .wa-card > p { position: relative; z-index: 1; font-size: 14.5px; line-height: 1.6; color: rgba(255, 255, 255, 0.9); max-width: 34ch; margin-bottom: 28px; }
+.wevtex .wa-btn { position: relative; z-index: 1; display: inline-flex; align-items: center; gap: 10px; background: #fff; color: #1b1714; padding: 13px 22px; border-radius: 999px; font-weight: 500; font-size: 14px; text-decoration: none; transition: transform 0.15s; }
+.wevtex .wa-btn:hover { transform: translateY(-2px); }
+.wevtex .wa-btn svg { width: 17px; height: 17px; }
+.wevtex .wa-privacy { display: flex; align-items: center; gap: 12px; margin-top: 22px; font-size: 13px; color: var(--ink-on-cream-2); }
+.wevtex.mode-dark .wa-privacy { color: var(--ink-on-dark-2); }
+.wevtex .wa-lock { width: 38px; height: 38px; border-radius: 50%; border: 1px solid var(--hairline-c-strong); display: grid; place-items: center; color: var(--ink-on-cream-3); flex-shrink: 0; }
