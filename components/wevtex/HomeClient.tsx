@@ -7,7 +7,7 @@ import { useTheme } from "../../app/ThemeContext";
  * Primary actions everywhere are WhatsApp and email.
  */
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import "../../app/wevtex-home.css";
 import { SiteHeader } from "./SiteHeader";
 import { SiteFooter } from "./SiteFooter";
@@ -219,8 +219,24 @@ const TESTIMONIALS = [
   { q: "Professional from the first call to launch. The new website looks far more expensive than what we paid.", a: "D", n: "Sample client", r: "Founder · Sample Desktop" },
 ];
 
+const TPOOL = [
+  { q: "The new website not only looks great but has significantly increased our leads. The team was responsive, professional, and a pleasure to work with.", name: "James Carter", role: "Director, Luxora Interiors", a: "J" },
+  { q: "From day one, they understood our goals and delivered beyond our expectations. Our online sales have ", em: "doubled.", name: "Sarah Mitchell", role: "CEO, Petrocore Solutions", a: "S" },
+  { q: "Their automation solution saved us over 20 hours a week. Everything works seamlessly and the support has been excellent.", name: "Daniel Rahman", role: "Operations Manager, Wellcare Clinic", a: "D" },
+  { q: "They explained everything in plain language, kept to the timeline, and the price never moved. Easiest project we've run.", name: "Gareth Morris", role: "Manager, Atlas Trading", a: "G" },
+  { q: "Our store went live in three weeks and we took our first order the same day. Support has been quick every time.", name: "Naomi Reyes", role: "Owner, Marlow & Co.", a: "N" },
+  { q: "We went from invisible to page one for our main keywords. The SEO work paid for itself within a couple of months.", name: "Theo Lindahl", role: "Director, Northbound", a: "T" },
+];
+
 export function HomeClient() {
   const { isDark } = useTheme();
+  const [ti, setTi] = useState(0);
+
+  /* Auto-rotate testimonials. */
+  useEffect(() => {
+    const id = window.setInterval(() => setTi((p) => (p + 1) % TPOOL.length), 6000);
+    return () => clearInterval(id);
+  }, []);
 
   const rootRef = useRef<HTMLDivElement>(null);
 
@@ -747,45 +763,39 @@ export function HomeClient() {
           </div>
 
           <div className="testi-grid reveal">
-            {/* Left */}
-            <div className="testi-card">
-              <span className="testi-mark">&ldquo;</span>
-              <p className="testi-q">The new website not only looks great but has significantly increased our leads. The team was responsive, professional, and a pleasure to work with.</p>
-              <span className="testi-rule"></span>
-              <div className="testi-person">
-                <span className="testi-avatar">J</span>
-                <div><div className="testi-name">James Carter</div><div className="testi-role">Director, Luxora Interiors</div></div>
-              </div>
-              <span className="testi-bigquote" aria-hidden>&rdquo;</span>
-            </div>
-
-            {/* Featured (center, dark) */}
-            <div className="testi-card featured">
-              <div className="stars">★★★★★</div>
-              <p className="testi-q">&ldquo;From day one, they understood our goals and delivered beyond our expectations. Our online sales have <em className="hl-em">doubled.</em>&rdquo;</p>
-              <div className="testi-person">
-                <span className="testi-avatar">S</span>
-                <div><div className="testi-name">Sarah Mitchell</div><div className="testi-role">CEO, Petrocore Solutions</div></div>
-              </div>
-              <span className="testi-bigquote" aria-hidden>&rdquo;</span>
-            </div>
-
-            {/* Right */}
-            <div className="testi-card">
-              <span className="testi-mark">&ldquo;</span>
-              <p className="testi-q">Their automation solution saved us over 20 hours a week. Everything works seamlessly and the support has been excellent.</p>
-              <span className="testi-rule"></span>
-              <div className="testi-person">
-                <span className="testi-avatar">D</span>
-                <div><div className="testi-name">Daniel Rahman</div><div className="testi-role">Operations Manager, Wellcare Clinic</div></div>
-              </div>
-              <span className="testi-bigquote" aria-hidden>&rdquo;</span>
-            </div>
+            {[0, 1, 2].map((off) => {
+              const t = TPOOL[(ti + off) % TPOOL.length];
+              const featured = off === 1;
+              return (
+                <div className={featured ? "testi-card featured" : "testi-card"} key={off}>
+                  {featured ? <div className="stars">★★★★★</div> : <span className="testi-mark">&ldquo;</span>}
+                  <p className="testi-q">
+                    {featured && "“"}{t.q}{t.em ? <em className="hl-em">{t.em}</em> : null}{featured && "”"}
+                  </p>
+                  {!featured && <span className="testi-rule"></span>}
+                  <div className="testi-person">
+                    <span className="testi-avatar">{t.a}</span>
+                    <div><div className="testi-name">{t.name}</div><div className="testi-role">{t.role}</div></div>
+                  </div>
+                  <span className="testi-bigquote" aria-hidden>&rdquo;</span>
+                </div>
+              );
+            })}
           </div>
 
           <div className="testi-controls reveal">
-            <div className="ic-dots" aria-hidden><span className="on"></span><span></span><span></span></div>
-            <a href="/portfolio" className="btn btn-outline">
+            <button className="ic-arrow" aria-label="Previous reviews" onClick={() => setTi((p) => (p - 1 + TPOOL.length) % TPOOL.length)}>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M15 18l-6-6 6-6" /></svg>
+            </button>
+            <div className="ic-dots testi-dots">
+              {TPOOL.map((_, d) => (
+                <span key={d} className={d === ti ? "on" : ""} onClick={() => setTi(d)} role="button" aria-label={`Go to review ${d + 1}`}></span>
+              ))}
+            </div>
+            <button className="ic-arrow" aria-label="Next reviews" onClick={() => setTi((p) => (p + 1) % TPOOL.length)}>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M9 18l6-6-6-6" /></svg>
+            </button>
+            <a href="/portfolio" className="btn btn-outline" style={{ marginLeft: 8 }}>
               See more reviews
               <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden style={{ marginLeft: 4 }}><path d="M5 12h14M13 6l6 6-6 6" /></svg>
             </a>
