@@ -803,85 +803,62 @@ export function HomeClient() {
         </div>
       </section>
 
-      {/* ===================== PRICING ===================== */}
-      <section className={`${isDark ? "theme-dark" : "theme-cream"} pricing`} id="pricing">
+      {/* ===================== PRICING (mockup 10) ===================== */}
+      <section className={`${isDark ? "theme-dark" : "theme-cream"} pricing-v2`} id="pricing">
         <div className="container">
-          <div className="pricing-head reveal">
-            <div>
-              <span className="eyebrow">Pricing</span>
-              <ScrollRevealText
-                as="h2"
-                className="h-section"
-                style={{ marginTop: 24 }}
-                text={"Clear pricing.\nNo surprises."}
-                em={["No", "surprises"]}
-                emClassName="serif"
-                emStyle={{ color: "var(--accent-hot)" }}
-              />
-            </div>
-            <p className="lead">
-              One fixed price for a fixed scope, agreed before we start. You pay in milestones, and
-              nothing is due until you&apos;re happy with the work in front of you.
+          <div className="ic-head reveal">
+            <span className="eyebrow line-eyebrow-center">Pricing</span>
+            <h2 className="h-section" style={{ marginTop: 16, justifyContent: "center" }}>
+              Clear pricing. <em className="hl-em">No surprises.</em>
+            </h2>
+            <p className="ic-sub">
+              Choose the plan that fits your goals. All plans include expert support<br />
+              and a commitment to your success.
             </p>
           </div>
 
-          <div className="pricing-grid">
-            <div className="plan reveal" data-delay="1">
-              <div className="plan-num">Package 01 — One Page</div>
-              <h3>A single, polished page to get your business online fast.</h3>
-              <div className="plan-price">
-                <span className="amount">990</span>
-                <span className="currency">DH</span>
-                <span className="per">one-time</span>
+          <div className="pr-grid reveal">
+            {[
+              { name: "Start", sub: "Perfect for small businesses", price: "990", featured: false,
+                icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M11 20A7 7 0 0 1 4 13c0-5 4-9 9-9 0 5-1 11-2 16z" /><path d="M11 20c0-4 2-8 6-10" /></svg>,
+                features: ["Up to 5 Pages Website", "Responsive Design", "Basic SEO Setup", "Contact Form", "1 Month Support"] },
+              { name: "Grow", sub: "Ideal for growing businesses", price: "2,900", featured: true,
+                icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M4.5 16.5c-1.5 1.3-2 5-2 5s3.7-.5 5-2c.7-.9.7-2.2-.1-3a2.1 2.1 0 0 0-2.9 0z" /><path d="M12 15l-3-3a16 16 0 0 1 9-9 6 6 0 0 1-9 9z" /><path d="M9 12H4s.5-3 2-4 5 0 5 0" /></svg>,
+                features: ["Up to 15 Pages Website", "Advanced SEO", "Speed Optimization", "Blog/News Section", "3 Months Support", "Performance Analytics"] },
+              { name: "Scale", sub: "For established businesses", price: "7,900", featured: false,
+                icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M3 8l4 3 5-6 5 6 4-3-2 11H5L3 8z" /></svg>,
+                features: ["Unlimited Pages", "Advanced SEO & Schema", "Custom Integrations", "Priority Support", "6 Months Support", "Monthly Performance Reports"] },
+            ].map((p) => (
+              <div className={p.featured ? "pr-card featured" : "pr-card"} key={p.name}>
+                {p.featured && (
+                  <span className="pr-badge">
+                    <svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor" aria-hidden><path d="M12 2l2.9 6.3 6.9.6-5.2 4.6 1.6 6.7L12 17.3 5.8 20.8l1.6-6.7L2.2 8.9l6.9-.6z" /></svg>
+                    Most Popular
+                  </span>
+                )}
+                <div className="pr-top">
+                  <span className="pr-icon">{p.icon}</span>
+                  <div>
+                    <div className="pr-name">{p.name}</div>
+                    <div className="pr-sub">{p.sub}</div>
+                  </div>
+                </div>
+                <div className="pr-divider"><span className="dot"></span></div>
+                <div className="pr-price">{p.price}<span className="cur">DH</span></div>
+                <ul className="pr-feats">
+                  {p.features.map((f) => (
+                    <li key={f}>
+                      <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><path d="M20 6L9 17l-5-5" /></svg>
+                      {f}
+                    </li>
+                  ))}
+                </ul>
+                <a href={WHATSAPP_URL} className={`pr-btn${p.featured ? " solid" : ""}`} target="_blank" rel="noopener">
+                  Get Started
+                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden style={{ marginLeft: 4 }}><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+                </a>
               </div>
-              <ul className="plan-features">
-                <li>One professional page</li>
-                <li>Fully responsive design</li>
-                <li>Content writing included</li>
-                <li>Premium images</li>
-                <li>Contact form &amp; WhatsApp</li>
-                <li>SSL security</li>
-              </ul>
-              <a href={WHATSAPP_URL} className="btn btn-outline" target="_blank" rel="noopener">Get started</a>
-            </div>
-
-            <div className="plan featured reveal" data-delay="2">
-              <div className="plan-num">Package 02 — Corporate</div>
-              <h3>Six professional pages to present your company in full.</h3>
-              <div className="plan-price">
-                <span className="amount">2,900</span>
-                <span className="currency">DH</span>
-                <span className="per">one-time</span>
-              </div>
-              <ul className="plan-features">
-                <li>Six professional pages</li>
-                <li>Modern, responsive design</li>
-                <li>Content writing for every page</li>
-                <li>Premium stock images</li>
-                <li>WhatsApp integration</li>
-                <li>SSL security</li>
-              </ul>
-              <a href={WHATSAPP_URL} className="btn" target="_blank" rel="noopener">Choose Corporate →</a>
-            </div>
-
-            <div className="plan reveal" data-delay="3">
-              <div className="plan-num">Package 03 — E-commerce</div>
-              <h3>A complete online store, ready to take orders.</h3>
-              <div className="plan-price">
-                <span className="amount">7,900</span>
-                <span className="currency">DH</span>
-                <span className="per">one-time</span>
-              </div>
-              <ul className="plan-features">
-                <li>Up to 20 product pages</li>
-                <li>Shopping cart &amp; checkout</li>
-                <li>Order management system</li>
-                <li>Product catalog system</li>
-                <li>Conversion-focused design</li>
-                <li>SSL security</li>
-              </ul>
-              <a href={WHATSAPP_URL} className="btn btn-outline" target="_blank" rel="noopener">Start a store</a>
-            </div>
+            ))}
           </div>
         </div>
       </section>
