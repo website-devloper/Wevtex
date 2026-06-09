@@ -486,35 +486,54 @@ export function HomeClient() {
         </div>
       </section>
 
-      {/* ===================== INDUSTRIES ===================== */}
-      <section className={`${isDark ? "theme-dark" : "theme-paper"} industries`} id="industries">
+      {/* ===================== INDUSTRIES (mockup 4 — carousel) ===================== */}
+      <section className={`${isDark ? "theme-dark" : "theme-paper"} industries-carousel`} id="industries">
         <div className="container">
-          <div className="industries-head reveal">
-            <div>
-              <span className="eyebrow">Industries we serve</span>
-              <ScrollRevealText
-                as="h2"
-                className="h-section"
-                style={{ marginTop: 24 }}
-                text={"Built for your\nspecific sector."}
-                em={["specific", "sector"]}
-                emClassName="serif"
-                emStyle={{ color: "var(--accent)" }}
-              />
-            </div>
-            <p className="lead">
-              Every sector sells differently. Whether you take orders, bookings, or leads, we build a site tuned to how your customers actually buy — so more of them do.
+          <div className="ic-head reveal">
+            <span className="eyebrow line-eyebrow-center">Industries we serve</span>
+            <h2 className="h-section" style={{ marginTop: 16 }}>
+              Built for your <em className="hl-em">specific sector</em>
+            </h2>
+            <p className="ic-sub">
+              We understand that every industry has unique challenges.<br />
+              Our solutions are tailored to help you grow in your world.
             </p>
           </div>
 
-          <div className="industries-grid reveal">
-            {INDUSTRIES.map((ind, i) => (
-              <a className="ind-card" href={`/industries/${INDUSTRY_LINKS[i]}`} key={i}>
-                <div className="ind-icon">{ind.icon}</div>
-                <h4>{ind.head}</h4>
-                <p>{ind.body}</p>
+          <div className="ic-track reveal">
+            {[
+              { i: 0, label: "Retail", desc: "Solutions that drive footfall and boost online sales." },
+              { i: 1, label: "Hospitality", desc: "Beautiful digital experiences that delight your guests.", featured: true },
+              { i: 3, label: "Healthcare", desc: "Secure, compliant systems for better patient care." },
+              { i: 5, label: "Education", desc: "Digital tools that empower students and educators." },
+              { i: 4, label: "Logistics", desc: "Streamlined operations that keep business moving." },
+              { i: 2, label: "Professional Services", desc: "Trust-driven sites that capture qualified leads." },
+              { i: 6, label: "Creative & Tech", desc: "High-performance sites for startups and creators." },
+              { i: 7, label: "Public & NGOs", desc: "Accessible sites that inform and inspire action." },
+            ].map((it, idx) => (
+              <a key={it.i} href={`/industries/${INDUSTRY_LINKS[it.i]}`} className={`ic-card g${idx % 5}${it.featured ? " featured" : ""}`}>
+                <span className="ic-overlay" aria-hidden></span>
+                <span className="ic-card-inner">
+                  <span className="ic-badge">{INDUSTRIES[it.i].icon}</span>
+                  <span className="ic-card-text">
+                    <span className="ic-card-h">{it.label}</span>
+                    <span className="ic-card-p">{it.desc}</span>
+                  </span>
+                </span>
               </a>
             ))}
+          </div>
+
+          <div className="ic-controls reveal">
+            <button className="ic-arrow" aria-label="Previous industries" onClick={(e) => { const t = e.currentTarget.closest(".industries-carousel")?.querySelector(".ic-track") as HTMLElement | null; t?.scrollBy({ left: -340, behavior: "smooth" }); }}>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M15 18l-6-6 6-6" /></svg>
+            </button>
+            <div className="ic-dots" aria-hidden>
+              <span className="on"></span><span></span><span></span><span></span><span></span>
+            </div>
+            <button className="ic-arrow" aria-label="Next industries" onClick={(e) => { const t = e.currentTarget.closest(".industries-carousel")?.querySelector(".ic-track") as HTMLElement | null; t?.scrollBy({ left: 340, behavior: "smooth" }); }}>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M9 18l6-6-6-6" /></svg>
+            </button>
           </div>
         </div>
       </section>
