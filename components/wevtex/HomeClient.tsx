@@ -879,39 +879,49 @@ export function HomeClient() {
         </div>
       </section>
 
-      {/* ===================== ADD-ONS ===================== */}
-      <section className={`${isDark ? "theme-dark" : "theme-cream"} addons`} id="addons">
+      {/* ===================== ADD-ONS (mockup 11 — list) ===================== */}
+      <section className={`${isDark ? "theme-dark" : "theme-cream"} addons-v2`} id="addons">
         <div className="container">
-          <div className="cap-head reveal">
-            <div>
-              <span className="eyebrow">Add-ons</span>
-              <ScrollRevealText
-                as="h2"
-                className="h-section"
-                style={{ marginTop: 24 }}
-                text={"Make it yours\nwith add-ons."}
-                em={["with", "add-ons"]}
-                emClassName="serif"
-                emStyle={{ color: "var(--accent-hot)" }}
-              />
-            </div>
+          <div className="ao-head reveal">
+            <span className="eyebrow line-eyebrow">Add-ons</span>
+            <h2 className="h-section" style={{ marginTop: 14 }}>Make it yours <em className="hl-em">with add-ons</em></h2>
+            <p className="ic-sub" style={{ marginTop: 14, textAlign: "left" }}>
+              Enhance your solution with powerful features and services.<br />Only pay for what you need.
+            </p>
           </div>
 
-          <div className="addon-grid reveal">
-            {ADDONS.map((a, i) => (
-              <div className="addon-card" key={i}>
-                <span className="addon-price">{a.pr}</span>
-                <h4>{a.h}</h4>
-                <p>{a.p}</p>
+          <div className="ao-grid reveal">
+            {[
+              { name: "Additional Page", desc: "Add extra pages to your website.", price: "300 DH/page", tone: "v", icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><circle cx="12" cy="12" r="9" /><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18" /></svg> },
+              { name: "Custom Feature", desc: "Tailored functionality built for your needs.", price: "1,000 DH+", tone: "o", icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4"><circle cx="12" cy="12" r="3" /><path d="M19 12a7 7 0 0 0-.1-1l2-1.5-2-3.5-2.3 1a7 7 0 0 0-1.7-1l-.3-2.5h-4l-.3 2.5a7 7 0 0 0-1.7 1l-2.3-1-2 3.5 2 1.5a7 7 0 0 0 0 2l-2 1.5 2 3.5 2.3-1a7 7 0 0 0 1.7 1l.3 2.5h4l.3-2.5a7 7 0 0 0 1.7-1l2.3 1 2-3.5-2-1.5a7 7 0 0 0 .1-1z" /></svg> },
+              { name: "E-commerce Setup", desc: "Full online store setup and configuration.", price: "1,500 DH", tone: "o", icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="9" cy="21" r="1" /><circle cx="20" cy="21" r="1" /><path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6" /></svg> },
+              { name: "Content Writing", desc: "Professional copywriting for your pages.", price: "500 DH/page", tone: "v", icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M12 20h9" /><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z" /></svg> },
+              { name: "Multi-language", desc: "Add additional languages to your site.", price: "800 DH", tone: "v", icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M4 5h7M9 3v2c0 4-2 7-6 8" /><path d="M5 9c0 3 3 5 6 6" /><path d="M13 21l4-9 4 9M14.5 18h5" /></svg> },
+              { name: "Custom Design", desc: "Premium UI/UX design enhancements.", price: "2,000 DH", tone: "o", icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="4" width="18" height="16" rx="2" /><circle cx="8.5" cy="9" r="1.5" /><path d="M21 16l-5-5L5 20" /></svg> },
+              { name: "Speed Optimization", desc: "Improve loading speed and performance.", price: "1,000 DH", tone: "o", icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M12 14a8 8 0 1 1 8-8" opacity="0" /><circle cx="12" cy="13" r="8" /><path d="M12 13l4-3" /><path d="M9 3h6" /></svg> },
+              { name: "Cloud Backup", desc: "Automatic daily backups and recovery.", price: "800 DH/year", tone: "o", icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M6 18a4 4 0 0 1 0-8 6 6 0 0 1 11.5-1.5A4 4 0 0 1 18 18z" /><path d="M12 12v5M9.5 14.5L12 12l2.5 2.5" /></svg> },
+              { name: "SSL Certificate", desc: "Secure your website with SSL.", price: "300 DH/year", tone: "v", icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z" /><path d="M9 12l2 2 4-4" /></svg> },
+              { name: "Priority Support", desc: "Faster response and priority handling.", price: "1,000 DH/month", tone: "o", icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M4 14v-2a8 8 0 0 1 16 0v2" /><rect x="3" y="14" width="4" height="6" rx="1.5" /><rect x="17" y="14" width="4" height="6" rx="1.5" /><path d="M20 19a3 3 0 0 1-3 3h-2" /></svg> },
+            ].map((a) => (
+              <div className="ao-row" key={a.name}>
+                <span className="ao-icon">{a.icon}</span>
+                <div className="ao-info">
+                  <div className="ao-name">{a.name}</div>
+                  <div className="ao-desc">{a.desc}</div>
+                </div>
+                <span className={`ao-price ${a.tone}`}>{a.price}</span>
               </div>
             ))}
           </div>
 
-          <div className="addon-foot reveal">
-            <span>Not sure what you need? Tell us your goal and we&apos;ll put together the right mix.</span>
-            <a href={WHATSAPP_URL} className="btn btn-primary" target="_blank" rel="noopener">
-              {WHATSAPP}
-              Ask on WhatsApp
+          <div className="ao-foot reveal">
+            <span className="ao-info-icon">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="9" /><path d="M12 16v-4M12 8h.01" /></svg>
+            </span>
+            <span>Need something specific?</span>
+            <a href={WHATSAPP_URL} target="_blank" rel="noopener">
+              Let&apos;s talk about your project
+              <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden><path d="M5 12h14M13 6l6 6-6 6" /></svg>
             </a>
           </div>
         </div>
