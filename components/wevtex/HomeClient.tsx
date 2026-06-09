@@ -960,52 +960,50 @@ export function HomeClient() {
         </div>
       </section>
 
-      {/* ===================== CONTACT ===================== */}
-      <section className={`${isDark ? "theme-dark" : "theme-cream"} contact`} id="contact">
-        <div className="container">
-          <div className="contact-grid">
-            <div className="contact-info reveal">
-              <span className="eyebrow">Get in touch</span>
-              <ScrollRevealText
-                as="h2"
-                className="h-section"
-                style={{ marginTop: 24 }}
-                text={"Let’s start with\na quick message."}
-                em={["quick", "message"]}
-                emClassName="serif"
-                emStyle={{ color: "var(--accent)" }}
-              />
-              <p className="lead">
-                The fastest way to reach us is WhatsApp — send your idea and we&apos;ll reply with a
-                clear plan and price. Prefer email or the form? That works too.
-              </p>
-
-              <div className="contact-actions">
-                <a href={WHATSAPP_URL} className="btn btn-primary" target="_blank" rel="noopener">
-                  {WHATSAPP}
-                  Chat on WhatsApp
-                </a>
-                <a href={EMAIL_URL} className="btn btn-outline">Email us</a>
-              </div>
-
-              <div className="contact-row">
-                <div className="contact-line">
-                  <span className="label">Mon – Fri</span>
-                  <span className="val">09:00 – 19:00</span>
-                </div>
-                <div className="contact-line">
-                  <span className="label">Saturday</span>
-                  <span className="val">09:00 – 19:00</span>
-                </div>
-                <div className="contact-line">
-                  <span className="label">Sunday</span>
-                  <span className="val">10:00 – 16:00</span>
-                </div>
-              </div>
+      {/* ===================== CONTACT (mockup 12 — split) ===================== */}
+      <section className="contact-split" id="contact">
+        <div className="cs-left">
+          <span className="cs-motif" aria-hidden></span>
+          <div className="cs-inner reveal">
+            <span className="eyebrow cs-eyebrow">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" aria-hidden><path d="M12 3v18M3 12h18M5.6 5.6l12.8 12.8M18.4 5.6L5.6 18.4" /></svg>
+              We&apos;d love to hear from you
+            </span>
+            <h2 className="cs-h">Let&apos;s start with<br />a quick <em className="hl-em">message</em></h2>
+            <span className="cs-rule"></span>
+            <p className="cs-p">
+              Have a project in mind or just want to say hello?<br />
+              We&apos;ll get back to you as soon as possible.
+            </p>
+            <div className="cs-cards">
+              <a className="cs-card wa" href={WHATSAPP_URL} target="_blank" rel="noopener">
+                <span className="cs-card-ic">{WHATSAPP}</span>
+                <span className="cs-card-tx"><b>Chat on WhatsApp</b><span>Quick responses</span></span>
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+              </a>
+              <a className="cs-card" href={EMAIL_URL}>
+                <span className="cs-card-ic">
+                  <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="5" width="18" height="14" rx="2" /><path d="M3 7l9 6 9-6" /></svg>
+                </span>
+                <span className="cs-card-tx"><b>Send an Email</b><span>hello@wevtex.com</span></span>
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+              </a>
             </div>
-
-            <ContactForm />
+            <div className="cs-hours">
+              <span className="cs-hours-head">
+                <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="9" /><path d="M12 7v5l3 2" /></svg>
+                Opening hours
+              </span>
+              <div className="cs-hour"><span>Monday – Friday</span><span>09:00 – 18:00</span></div>
+              <div className="cs-hour"><span>Saturday</span><span>10:00 – 14:00</span></div>
+              <div className="cs-hour"><span>Sunday</span><span>Closed</span></div>
+              <p className="cs-reply"><span className="dot"></span>We usually reply within a few hours.</p>
+            </div>
           </div>
+        </div>
+        <div className="cs-right">
+          <span className="cs-right-motif" aria-hidden></span>
+          <ContactForm />
         </div>
       </section>
 
