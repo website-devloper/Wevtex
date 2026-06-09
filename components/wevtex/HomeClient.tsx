@@ -732,57 +732,63 @@ export function HomeClient() {
         </div>
       </section>
 
-      {/* ===================== TESTIMONIALS ===================== */}
-      <section className={`${isDark ? "theme-dark" : "theme-cream"} testimonials`} id="testimonials">
+      {/* ===================== TESTIMONIALS (mockup 9 — featured + 2) ===================== */}
+      <section className={`${isDark ? "theme-dark" : "theme-cream"} testi-v2`} id="testimonials">
         <div className="container">
-          <div className="testimonials-head reveal">
-            <div>
-              <span className="eyebrow">Client reviews</span>
-              <ScrollRevealText
-                as="h2"
-                className="h-section"
-                style={{ marginTop: 24 }}
-                text={"Businesses that\ntrust us."}
-                em={["trust", "us"]}
-                emClassName="serif"
-                emStyle={{ color: "var(--accent)" }}
-              />
-            </div>
-            <p className="sample-note">
-              Sample reviews shown for layout — real, attributed client testimonials coming soon.
+          <div className="ic-head reveal">
+            <span className="eyebrow line-eyebrow-center">Client testimonials</span>
+            <h2 className="h-section" style={{ marginTop: 16, justifyContent: "center" }}>
+              Businesses that <em className="hl-em">trust us</em>
+            </h2>
+            <p className="ic-sub">
+              We take pride in the relationships we build and the results we deliver.<br />
+              Here&apos;s what our clients have to say.
             </p>
           </div>
 
-          <div className="t-carousel reveal">
-            <div className="t-track" id="tTrack">
-              {TESTIMONIALS.map((t, i) => (
-                <div className={t.featured ? "t-slide featured" : "t-slide"} key={i}>
-                  <span className="quote-mark">&ldquo;</span>
-                  <div className="stars">★★★★★</div>
-                  <p className="big-q">{t.q}</p>
-                  <div className="person">
-                    <div className="avatar">{t.a}</div>
-                    <div className="person-meta">
-                      <div className="name">{t.n}</div>
-                      <div className="role">{t.r}</div>
-                    </div>
-                  </div>
-                </div>
-              ))}
+          <div className="testi-grid reveal">
+            {/* Left */}
+            <div className="testi-card">
+              <span className="testi-mark">&ldquo;</span>
+              <p className="testi-q">The new website not only looks great but has significantly increased our leads. The team was responsive, professional, and a pleasure to work with.</p>
+              <span className="testi-rule"></span>
+              <div className="testi-person">
+                <span className="testi-avatar">J</span>
+                <div><div className="testi-name">James Carter</div><div className="testi-role">Director, Luxora Interiors</div></div>
+              </div>
+              <span className="testi-bigquote" aria-hidden>&rdquo;</span>
             </div>
 
-            <div className="t-controls">
-              <span className="t-counter"><strong id="tCurrent">01</strong> / <span id="tTotal">06</span></span>
-              <div className="t-progress"><div className="t-progress-bar" id="tProgress"></div></div>
-              <div className="t-nav">
-                <button id="tPrev" aria-label="Previous">
-                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.8"><path d="M10 4L6 8l4 4" /></svg>
-                </button>
-                <button id="tNext" aria-label="Next">
-                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.8"><path d="M6 4l4 4-4 4" /></svg>
-                </button>
+            {/* Featured (center, dark) */}
+            <div className="testi-card featured">
+              <div className="stars">★★★★★</div>
+              <p className="testi-q">&ldquo;From day one, they understood our goals and delivered beyond our expectations. Our online sales have <em className="hl-em">doubled.</em>&rdquo;</p>
+              <div className="testi-person">
+                <span className="testi-avatar">S</span>
+                <div><div className="testi-name">Sarah Mitchell</div><div className="testi-role">CEO, Petrocore Solutions</div></div>
               </div>
+              <span className="testi-bigquote" aria-hidden>&rdquo;</span>
             </div>
+
+            {/* Right */}
+            <div className="testi-card">
+              <span className="testi-mark">&ldquo;</span>
+              <p className="testi-q">Their automation solution saved us over 20 hours a week. Everything works seamlessly and the support has been excellent.</p>
+              <span className="testi-rule"></span>
+              <div className="testi-person">
+                <span className="testi-avatar">D</span>
+                <div><div className="testi-name">Daniel Rahman</div><div className="testi-role">Operations Manager, Wellcare Clinic</div></div>
+              </div>
+              <span className="testi-bigquote" aria-hidden>&rdquo;</span>
+            </div>
+          </div>
+
+          <div className="testi-controls reveal">
+            <div className="ic-dots" aria-hidden><span className="on"></span><span></span><span></span></div>
+            <a href="/portfolio" className="btn btn-outline">
+              See more reviews
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden style={{ marginLeft: 4 }}><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+            </a>
           </div>
         </div>
       </section>
