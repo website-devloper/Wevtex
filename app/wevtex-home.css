@@ -5701,3 +5701,13 @@
 /* Industries: featured highlight (vermilion outline) on hover only */
 .wevtex .ic-card { transition: transform 240ms var(--ease-out), outline-color 240ms var(--ease-out); outline: 3px solid transparent; outline-offset: -3px; }
 .wevtex .ic-card:hover { outline-color: var(--vermilion); }
+
+/* Services bento: no border change on hover (keep tint + arrow only) */
+.wevtex .services-bento .bento-card.bx-web-development:hover,
+.wevtex .services-bento .bento-card.bx-wordpress:hover,
+.wevtex .services-bento .bento-card.bx-erp-management:hover,
+.wevtex .services-bento .bento-card.bx-business-apps:hover,
+.wevtex .services-bento .bento-card.bx-ai-chatbots:hover,
+.wevtex .services-bento .bento-card.bx-ux-ui-design:hover {
+  border-color: var(--hairline-c-strong);
+}
