@@ -46,7 +46,9 @@ const Check = () => (
   </span>
 );
 
-const Eyebrow = ({ children }: { children: React.ReactNode }) => <span className="sd-eyebrow">{children}</span>;
+const Eyebrow = ({ children, light = false }: { children: React.ReactNode; light?: boolean }) => (
+  <span className={`sd-eyebrow${light ? " light" : ""}`}><span className="sd-eb-dot" /><span className="sd-eb-line" />{children}</span>
+);
 
 function Heading({ as = "h2", text, em = [], className = "" }: { as?: "h1" | "h2"; text: string; em?: string[]; className?: string }) {
   const Tag = as;
@@ -162,15 +164,26 @@ export function ServiceDetail({ service }: { service: Service }) {
               </div>
               <div className="sd-grid-2 reveal">
                 {fs.cards.map((c, ci) => (
-                  <div className="sd-card sd-feature" key={ci}>
-                    <div className="sd-feature-head">
-                      {numbered && <div className="sd-num sm">{String(ci + 1).padStart(2, "0")}</div>}
-                      <span className="sd-icon-box">{FEATURE[(si * 4 + ci) % FEATURE.length]}</span>
-                      <h4>{c.title}</h4>
-                    </div>
-                    <ul className="sd-checks">
-                      {c.checks.map((ch, chi) => (<li key={chi}><Check />{ch}</li>))}
-                    </ul>
+                  <div className={`sd-card ${numbered ? "sd-mcard" : "sd-fcard"}`} key={ci}>
+                    {numbered ? (
+                      <>
+                        <div className="sd-num lg">{String(ci + 1).padStart(2, "0")}</div>
+                        <div className="sd-card-body">
+                          <div className="sd-fhead"><span className="sd-plain-icon">{FEATURE[(si * 4 + ci) % FEATURE.length]}</span><h4>{c.title}</h4></div>
+                          <span className="sd-divider"></span>
+                          <ul className="sd-checks">{c.checks.map((ch, chi) => (<li key={chi}><Check />{ch}</li>))}</ul>
+                        </div>
+                      </>
+                    ) : (
+                      <>
+                        <span className="sd-icon-circle">{FEATURE[(si * 4 + ci) % FEATURE.length]}</span>
+                        <div className="sd-card-body">
+                          <h4>{c.title}</h4>
+                          <p className="sd-card-desc">{c.desc}</p>
+                          <ul className="sd-checks">{c.checks.map((ch, chi) => (<li key={chi}><Check />{ch}</li>))}</ul>
+                        </div>
+                      </>
+                    )}
                   </div>
                 ))}
               </div>
@@ -193,7 +206,7 @@ export function ServiceDetail({ service }: { service: Service }) {
                 <div className="sd-card sd-techcard" key={i}>
                   <div className="sd-techcard-top">
                     <div className="sd-num sm">{String(i + 1).padStart(2, "0")}</div>
-                    <span className="sd-icon-box">{TECH[i % TECH.length]}</span>
+                    <span className="sd-plain-icon">{TECH[i % TECH.length]}</span>
                   </div>
                   <span className="sd-techcard-label">{g.label}</span>
                   <div className="sd-chips">
@@ -246,14 +259,13 @@ export function ServiceDetail({ service }: { service: Service }) {
             </div>
             <div className="sd-grid-2 reveal">
               {service.sectors.groups.map((g, i) => (
-                <div className="sd-card sd-feature" key={i}>
-                  <div className="sd-feature-head">
-                    <span className="sd-icon-box">{SECTOR[i % SECTOR.length]}</span>
+                <div className="sd-card sd-scard" key={i}>
+                  <span className="sd-icon-circle lg">{SECTOR[i % SECTOR.length]}</span>
+                  <div className="sd-card-body">
                     <h4>{g.label}</h4>
+                    <span className="sd-divider"></span>
+                    <ul className="sd-checks">{g.cases.map((c, ci) => (<li key={ci}><Check />{c}</li>))}</ul>
                   </div>
-                  <ul className="sd-checks">
-                    {g.cases.map((c, ci) => (<li key={ci}><Check />{c}</li>))}
-                  </ul>
                 </div>
               ))}
             </div>
@@ -287,7 +299,7 @@ export function ServiceDetail({ service }: { service: Service }) {
         <span className="sd-motif sd-motif-bl light" aria-hidden></span>
         <div className="container">
           <div className="sd-cta-inner reveal">
-            <div className="sd-eyebrow-wrap center"><span className="sd-eyebrow light">Let&apos;s talk</span></div>
+            <div className="sd-eyebrow-wrap center"><Eyebrow light>Let&apos;s talk</Eyebrow></div>
             <Heading text={`Ready to start your\n${service.name.toLowerCase()} project?`} em={["project?"]} className="light" />
             <p className="sd-sub light">Tell us what you need on WhatsApp or by email. We reply within a few hours — with honest advice and a clear price, no obligation.</p>
             <div className="sd-hero-btns center">

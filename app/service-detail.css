@@ -160,3 +160,46 @@
 .sd .sd-cta { position: relative; overflow: hidden; background: #1b1714; color: #fff; padding: clamp(90px, 14vh, 150px) 0; text-align: center; }
 .sd .sd-cta-inner { max-width: 800px; margin: 0 auto; position: relative; z-index: 2; }
 .sd .sd-cta .sd-h { font-size: clamp(34px, 4.6vw, 58px); }
+
+/* ===== refinements to match mockups closely ===== */
+/* buttons = rounded rectangles; outline = vermilion */
+.sd .sd-btn { border-radius: 12px; }
+.sd .sd-btn.outline { border-color: rgba(229, 80, 30, 0.4); color: var(--vermilion); }
+.sd .sd-btn.outline:hover { background: rgba(229, 80, 30, 0.06); border-color: var(--vermilion); }
+
+/* eyebrow = dot + line + text */
+.sd .sd-eyebrow { gap: 0; }
+.sd .sd-eyebrow::before, .sd .sd-eyebrow::after { display: none; }
+.sd .sd-eb-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--vermilion); margin-right: 12px; flex-shrink: 0; }
+.sd .sd-eb-line { width: 30px; height: 1px; background: rgba(229, 80, 30, 0.45); margin-right: 12px; }
+.sd .sd-eyebrow.light .sd-eb-dot { background: #ff8a5e; }
+.sd .sd-eyebrow.light .sd-eb-line { background: rgba(255, 138, 94, 0.5); }
+
+/* tags = rounded rect */
+.sd .sd-tag { border-radius: 12px; }
+
+/* icon treatments */
+.sd .sd-icon-circle { width: 56px; height: 56px; border-radius: 50%; background: rgba(229, 80, 30, 0.08); display: grid; place-items: center; color: var(--vermilion); flex-shrink: 0; }
+.sd .sd-icon-circle svg { width: 26px; height: 26px; }
+.sd .sd-icon-circle.lg { width: 74px; height: 74px; }
+.sd .sd-icon-circle.lg svg { width: 32px; height: 32px; }
+.sd .sd-plain-icon { color: var(--vermilion); display: inline-grid; place-items: center; }
+.sd .sd-plain-icon svg { width: 24px; height: 24px; }
+
+/* horizontal feature / sector / maintained cards */
+.sd .sd-fcard, .sd .sd-scard, .sd .sd-mcard { display: flex; gap: 22px; align-items: flex-start; }
+.sd .sd-card-body { flex: 1; min-width: 0; }
+.sd .sd-fcard h4, .sd .sd-scard h4, .sd .sd-mcard h4 { font-size: 19px; }
+.sd .sd-card-desc { font-size: 14px; line-height: 1.6; color: var(--muted); margin: 8px 0 16px; }
+.sd .sd-fhead { display: flex; align-items: center; gap: 12px; }
+.sd .sd-divider { display: block; height: 1px; background: rgba(229, 80, 30, 0.22); margin: 14px 0 16px; }
+.sd .sd-mcard .sd-num.lg { font-size: 40px; line-height: 1; }
+.sd .sd-scard .sd-card-body h4 { margin-bottom: 0; }
+
+/* outcome icon = faint circle; number line ends in a diamond */
+.sd .sd-card-icon { width: 48px; height: 48px; border-radius: 50%; background: rgba(229, 80, 30, 0.08); display: grid; place-items: center; }
+.sd .sd-card-icon svg { width: 24px; height: 24px; }
+.sd .sd-outcome.accent .sd-card-icon { background: rgba(255, 255, 255, 0.18); }
+.sd .sd-outcome .sd-num-line { position: relative; }
+.sd .sd-outcome .sd-num-line::after { content: ""; position: absolute; right: -3px; top: 50%; transform: translateY(-50%) rotate(45deg); width: 6px; height: 6px; background: rgba(229, 80, 30, 0.6); }
+.sd .sd-outcome.accent .sd-num-line::after { background: rgba(255, 255, 255, 0.7); }
