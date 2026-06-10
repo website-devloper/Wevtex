@@ -5675,3 +5675,25 @@
 
 /* Bento: no upward lift on hover (keep colour + arrow only) */
 .wevtex .bento-card:hover { transform: none; box-shadow: 0 18px 40px -32px rgba(27,23,20,0.4); }
+
+/* ===================== Bento hover — unified, on-brand (override per-card colours) ===================== */
+.wevtex .services-bento .bento-card.bx-web-development:hover,
+.wevtex .services-bento .bento-card.bx-wordpress:hover,
+.wevtex .services-bento .bento-card.bx-erp-management:hover,
+.wevtex .services-bento .bento-card.bx-business-apps:hover,
+.wevtex .services-bento .bento-card.bx-ai-chatbots:hover,
+.wevtex .services-bento .bento-card.bx-ux-ui-design:hover {
+  background: rgba(229, 80, 30, 0.05);
+  border-color: rgba(229, 80, 30, 0.35);
+}
+.wevtex .services-bento .bento-card.bx-web-development:hover .bento-arrow,
+.wevtex .services-bento .bento-card.bx-wordpress:hover .bento-arrow,
+.wevtex .services-bento .bento-card.bx-erp-management:hover .bento-arrow,
+.wevtex .services-bento .bento-card.bx-business-apps:hover .bento-arrow,
+.wevtex .services-bento .bento-card.bx-ai-chatbots:hover .bento-arrow,
+.wevtex .services-bento .bento-card.bx-ux-ui-design:hover .bento-arrow {
+  background: var(--vermilion); color: #fff; border-color: transparent;
+}
+/* Filled cards just deepen slightly */
+.wevtex .services-bento .bento-card.bx-automation:hover { background: var(--clay); }
+.wevtex .services-bento .bento-card.bx-ecommerce:hover { background: #c98a2f; }
