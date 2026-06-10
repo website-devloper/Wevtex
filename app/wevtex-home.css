@@ -5697,3 +5697,7 @@
 /* Filled cards just deepen slightly */
 .wevtex .services-bento .bento-card.bx-automation:hover { background: var(--clay); }
 .wevtex .services-bento .bento-card.bx-ecommerce:hover { background: #c98a2f; }
+
+/* Industries: featured highlight (vermilion outline) on hover only */
+.wevtex .ic-card { transition: transform 240ms var(--ease-out), outline-color 240ms var(--ease-out); outline: 3px solid transparent; outline-offset: -3px; }
+.wevtex .ic-card:hover { outline-color: var(--vermilion); }

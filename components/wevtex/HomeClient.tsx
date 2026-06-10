@@ -584,7 +584,7 @@ export function HomeClient() {
           <div className="ic-track reveal">
             {[
               { i: 0, label: "Retail", desc: "Solutions that drive footfall and boost online sales." },
-              { i: 1, label: "Hospitality", desc: "Beautiful digital experiences that delight your guests.", featured: true },
+              { i: 1, label: "Hospitality", desc: "Beautiful digital experiences that delight your guests." },
               { i: 3, label: "Healthcare", desc: "Secure, compliant systems for better patient care." },
               { i: 5, label: "Education", desc: "Digital tools that empower students and educators." },
               { i: 4, label: "Logistics", desc: "Streamlined operations that keep business moving." },
@@ -592,7 +592,7 @@ export function HomeClient() {
               { i: 6, label: "Creative & Tech", desc: "High-performance sites for startups and creators." },
               { i: 7, label: "Public & NGOs", desc: "Accessible sites that inform and inspire action." },
             ].map((it, idx) => (
-              <a key={it.i} href={`/industries/${INDUSTRY_LINKS[it.i]}`} className={`ic-card g${idx % 5}${it.featured ? " featured" : ""}`}>
+              <a key={it.i} href={`/industries/${INDUSTRY_LINKS[it.i]}`} className={`ic-card g${idx % 5}`}>
                 <span className="ic-overlay" aria-hidden></span>
                 <span className="ic-card-inner">
                   <span className="ic-badge">{INDUSTRIES[it.i].icon}</span>
@@ -719,12 +719,6 @@ export function HomeClient() {
             ))}
           </div>
 
-          <div className="pj-more reveal">
-            <a href="/portfolio" className="btn btn-primary">
-              View more projects
-              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden style={{ marginLeft: 4 }}><path d="M5 12h14M13 6l6 6-6 6" /></svg>
-            </a>
-          </div>
         </div>
       </section>
 
