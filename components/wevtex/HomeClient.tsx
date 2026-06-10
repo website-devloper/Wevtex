@@ -360,6 +360,33 @@ export function HomeClient() {
     });
     cleanups.push(() => anchorHandlers.forEach(([a, h]) => a.removeEventListener("click", h)));
 
+    /* Industries carousel — sync dots with scroll position + make them clickable */
+    const icTrack = root.querySelector<HTMLElement>(".industries-carousel .ic-track");
+    const icDots = Array.from(root.querySelectorAll<HTMLElement>(".industries-carousel .ic-dots span"));
+    if (icTrack && icDots.length) {
+      const syncDots = () => {
+        const max = icTrack.scrollWidth - icTrack.clientWidth;
+        const frac = max > 0 ? icTrack.scrollLeft / max : 0;
+        const active = Math.round(frac * (icDots.length - 1));
+        icDots.forEach((d, i) => d.classList.toggle("on", i === active));
+      };
+      icTrack.addEventListener("scroll", syncDots, { passive: true });
+      window.addEventListener("resize", syncDots);
+      icDots.forEach((d, i) => {
+        const onClick = () => {
+          const max = icTrack.scrollWidth - icTrack.clientWidth;
+          icTrack.scrollTo({ left: (i / (icDots.length - 1)) * max, behavior: "smooth" });
+        };
+        d.addEventListener("click", onClick);
+        cleanups.push(() => d.removeEventListener("click", onClick));
+      });
+      syncDots();
+      cleanups.push(() => {
+        icTrack.removeEventListener("scroll", syncDots);
+        window.removeEventListener("resize", syncDots);
+      });
+    }
+
     return () => cleanups.forEach((fn) => fn());
   }, []);
 
