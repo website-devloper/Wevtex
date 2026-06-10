@@ -385,6 +385,26 @@ export function HomeClient() {
         icTrack.removeEventListener("scroll", syncDots);
         window.removeEventListener("resize", syncDots);
       });
+
+      /* Auto-advance (pauses on hover, loops back at the end) */
+      const carousel = icTrack.closest(".industries-carousel");
+      const advance = () => {
+        const max = icTrack.scrollWidth - icTrack.clientWidth;
+        const first = icTrack.firstElementChild as HTMLElement | null;
+        const step = first ? first.getBoundingClientRect().width + 18 : 260;
+        if (icTrack.scrollLeft >= max - 6) icTrack.scrollTo({ left: 0, behavior: "smooth" });
+        else icTrack.scrollBy({ left: step, behavior: "smooth" });
+      };
+      let auto = window.setInterval(advance, 3500);
+      const stopAuto = () => clearInterval(auto);
+      const startAuto = () => { clearInterval(auto); auto = window.setInterval(advance, 3500); };
+      carousel?.addEventListener("mouseenter", stopAuto);
+      carousel?.addEventListener("mouseleave", startAuto);
+      cleanups.push(() => {
+        clearInterval(auto);
+        carousel?.removeEventListener("mouseenter", stopAuto);
+        carousel?.removeEventListener("mouseleave", startAuto);
+      });
     }
 
     return () => cleanups.forEach((fn) => fn());
