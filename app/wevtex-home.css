@@ -5632,3 +5632,43 @@
   .wevtex *:hover, .footer-v2 *:hover { transform: none !important; }
   .wevtex .pj-shot { transition: none !important; }
 }
+
+/* ===================== Bento — circular arrow + per-card hover colour ===================== */
+.wevtex .bento-arrow {
+  width: 40px; height: 40px; border-radius: 50%;
+  border: 1px solid var(--hairline-c-strong);
+  display: inline-grid; place-items: center;
+  color: var(--vermilion);
+  transition: background 200ms var(--ease-out), color 200ms var(--ease-out), border-color 200ms var(--ease-out);
+}
+.wevtex .bento-arrow svg { width: 16px; height: 16px; }
+.wevtex .bento-card.vermilion .bento-arrow,
+.wevtex .bento-card.ochre .bento-arrow { border-color: rgba(255, 255, 255, 0.55); color: #fff; }
+/* circular arrow shouldn't slide — fill is the effect */
+.wevtex .bento-card:hover .bento-arrow { transform: none; }
+
+/* Light cards: faint per-card tint + arrow circle fills its accent */
+.wevtex .bx-web-development:hover { background: rgba(229, 80, 30, 0.07); }
+.wevtex .bx-web-development:hover .bento-arrow { background: var(--vermilion); color: #fff; border-color: transparent; }
+
+.wevtex .bx-wordpress:hover { background: rgba(110, 115, 85, 0.1); }
+.wevtex .bx-wordpress:hover .bento-arrow { background: var(--olive); color: #fff; border-color: transparent; }
+
+.wevtex .bx-erp-management:hover { background: rgba(181, 67, 26, 0.08); }
+.wevtex .bx-erp-management:hover .bento-arrow { background: var(--clay); color: #fff; border-color: transparent; }
+
+.wevtex .bx-business-apps:hover { background: rgba(216, 155, 63, 0.13); }
+.wevtex .bx-business-apps:hover .bento-arrow { background: var(--ochre); color: #fff; border-color: transparent; }
+
+.wevtex .bx-ai-chatbots:hover { background: rgba(110, 115, 85, 0.1); }
+.wevtex .bx-ai-chatbots:hover .bento-arrow { background: var(--olive); color: #fff; border-color: transparent; }
+
+.wevtex .bx-ux-ui-design:hover { background: rgba(181, 67, 26, 0.08); }
+.wevtex .bx-ux-ui-design:hover .bento-arrow { background: var(--clay); color: #fff; border-color: transparent; }
+
+/* Already-filled cards: darken on hover + arrow circle goes white */
+.wevtex .bx-automation:hover { background: var(--clay); }
+.wevtex .bx-automation:hover .bento-arrow { background: #fff; color: var(--vermilion); border-color: transparent; }
+
+.wevtex .bx-ecommerce:hover { background: #c98a2f; }
+.wevtex .bx-ecommerce:hover .bento-arrow { background: #fff; color: var(--clay); border-color: transparent; }

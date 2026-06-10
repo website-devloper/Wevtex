@@ -524,7 +524,7 @@ export function HomeClient() {
               { i: 6, slug: "ai-chatbots", name: "AI Chatbots", desc: "Intelligent bots that engage and support customers.", variant: "" },
               { i: 7, slug: "ux-ui-design", name: "UX/UI Design", desc: "Beautiful, intuitive designs that users love.", variant: "" },
             ].map((b) => (
-              <a key={b.slug} href={`/services/${b.slug}`} className={`bento-card ${b.variant}`}>
+              <a key={b.slug} href={`/services/${b.slug}`} className={`bento-card ${b.variant} bx-${b.slug}`}>
                 <span className="bento-motif" aria-hidden></span>
                 <span className="bento-icon">{SERVICES[b.i].icon}</span>
                 <div className="bento-card-body">
