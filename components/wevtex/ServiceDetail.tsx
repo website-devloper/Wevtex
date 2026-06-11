@@ -88,8 +88,8 @@ export function ServiceDetail({ service }: { service: Service }) {
             <Heading as="h1" text={service.h1} em={service.h1Em} />
             <p className="sd-sub">{service.intro}</p>
             <div className="sd-hero-btns">
-              <a href={WHATSAPP_URL} className="sd-btn primary" target="_blank" rel="noopener">Get a free quote <ArrowR /></a>
-              <a href="/portfolio" className="sd-btn outline">See our work <ArrowR /></a>
+              <a href={WHATSAPP_URL} className="btn btn-primary" target="_blank" rel="noopener">Get a free quote <ArrowR /></a>
+              <a href="/portfolio" className="btn btn-outline">See our work <ArrowR /></a>
             </div>
             <div className="sd-tags">
               {service.tags.map((t) => (
@@ -294,7 +294,7 @@ export function ServiceDetail({ service }: { service: Service }) {
       )}
 
       {/* FINAL CTA */}
-      <section className="sd-cta">
+      <section className="sd-cta theme-dark">
         <span className="sd-motif sd-motif-tr light" aria-hidden></span>
         <span className="sd-motif sd-motif-bl light" aria-hidden></span>
         <div className="container">
@@ -303,8 +303,8 @@ export function ServiceDetail({ service }: { service: Service }) {
             <Heading text={`Ready to start your\n${service.name.toLowerCase()} project?`} em={["project?"]} className="light" />
             <p className="sd-sub light">Tell us what you need on WhatsApp or by email. We reply within a few hours — with honest advice and a clear price, no obligation.</p>
             <div className="sd-hero-btns center">
-              <a href={WHATSAPP_URL} className="sd-btn light-solid" target="_blank" rel="noopener">Get a free quote <ArrowR /></a>
-              <a href="/services" className="sd-btn light-outline">All services <ArrowR /></a>
+              <a href={WHATSAPP_URL} className="btn btn-primary" target="_blank" rel="noopener">Get a free quote <ArrowR /></a>
+              <a href="/services" className="btn btn-outline">All services <ArrowR /></a>
             </div>
           </div>
         </div>

@@ -203,3 +203,18 @@
 .sd .sd-outcome .sd-num-line { position: relative; }
 .sd .sd-outcome .sd-num-line::after { content: ""; position: absolute; right: -3px; top: 50%; transform: translateY(-50%) rotate(45deg); width: 6px; height: 6px; background: rgba(229, 80, 30, 0.6); }
 .sd .sd-outcome.accent .sd-num-line::after { background: rgba(255, 255, 255, 0.7); }
+
+/* ===== align service pages to the homepage design system ===== */
+/* headings: weight 400 + same tracking as .h-section */
+.sd .sd-h { font-weight: 400; letter-spacing: -0.035em; }
+
+/* eyebrow: muted text + square vermilion dot (exactly like homepage .eyebrow) */
+.sd .sd-eyebrow { color: var(--ink-on-cream-2); }
+.sd .sd-eb-dot { width: 6px; height: 6px; border-radius: 2px; }
+.sd .sd-eyebrow.light { color: rgba(255, 255, 255, 0.72); }
+.sd .sd-eyebrow.light .sd-eb-dot { background: var(--vermilion); }
+.sd .sd-eyebrow.light .sd-eb-line { background: rgba(255, 255, 255, 0.32); }
+
+/* dark CTA text stays light even with theme-dark */
+.sd .sd-cta .sd-h.light { color: #fbf8f2; }
+.sd .sd-cta .sd-sub.light { color: rgba(255, 255, 255, 0.8); }
