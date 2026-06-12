@@ -16,10 +16,10 @@ export function ServiceHero({ service }: { service: Service }) {
           <Heading as="h1" text={service.h1} em={service.h1Em} />
           <p className="sd-sub">{service.intro}</p>
           <div className="sd-hero-btns">
-            <a href={WHATSAPP_URL} className="sd-btn primary" target="_blank" rel="noopener">
+            <a href={WHATSAPP_URL} className="btn btn-primary" target="_blank" rel="noopener">
               Get a free quote <ArrowR />
             </a>
-            <a href="/portfolio" className="sd-btn outline">
+            <a href="/portfolio" className="btn btn-outline">
               See our work <ArrowR />
             </a>
           </div>
