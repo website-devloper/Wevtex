@@ -208,12 +208,12 @@ export const SERVICES: Service[] = [
     tech: {
       title: "The WordPress\nstack.",
       titleEm: ["stack."],
-      subtitle: "Reliable tools for a fast, maintainable site.",
+      subtitle: "A modern, flexible foundation built on open source technologies we know inside and out.",
       groups: [
-        { label: "Core", desc: "The solid foundation that powers every site — secure, reliable, and built to scale.", items: ["WordPress", "PHP", "MySQL"] },
-        { label: "Build", desc: "Flexible tooling to craft custom layouts and content blocks editors actually enjoy.", items: ["Custom theme", "ACF", "Gutenberg"] },
-        { label: "Commerce", desc: "Everything you need to sell — products, payments, and checkout that converts.", items: ["WooCommerce", "Stripe"] },
-        { label: "Speed & SEO", desc: "Performance and search foundations baked in from day one, not bolted on later.", items: ["Caching", "WebP", "RankMath", "Schema"] },
+        { label: "Core", desc: "The solid foundation that powers every site. Secure, reliable, and built to scale.", items: ["WordPress", "PHP", "MySQL"] },
+        { label: "Build", desc: "Flexible tooling to build custom experiences tailored to your content and workflow.", items: ["Custom Theme", "ACF"] },
+        { label: "Commerce", desc: "Powerful commerce capabilities to sell products, subscriptions, and digital services.", items: ["WooCommerce", "Stripe"] },
+        { label: "Design", desc: "Intentional design and seamless front-end experiences that elevate your brand.", items: ["Figma"] },
       ],
     },
     process: STANDARD_PROCESS,

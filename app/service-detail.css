@@ -66,23 +66,25 @@
 
 .sd .sd-num { display: flex; align-items: center; gap: 14px; font-size: 40px; font-weight: 600; letter-spacing: -0.02em; line-height: 1; color: var(--vermilion); }
 .sd .sd-num-line { height: 1px; flex: 1; background: rgba(229, 80, 30, 0.35); }
-.sd .sd-num.sm { font-size: 22px; gap: 0; }
+.sd .sd-num.sm { font-size: 22px; gap: 14px; }
 
 .sd .sd-icon-box { width: 44px; height: 44px; border-radius: 12px; border: 1px solid rgba(229, 80, 30, 0.3); display: grid; place-items: center; color: var(--vermilion); flex-shrink: 0; }
 .sd .sd-icon-box svg { width: 22px; height: 22px; }
 
 .sd .sd-checks { list-style: none; display: flex; flex-direction: column; gap: 11px; }
-.sd .sd-checks li { display: flex; align-items: center; gap: 9px; font-size: 14px; line-height: 1.4; color: var(--muted); }
-.sd .sd-check { width: 18px; height: 18px; border-radius: 50%; background: rgba(229, 80, 30, 0.1); color: var(--vermilion); display: grid; place-items: center; flex-shrink: 0; }
+.sd .sd-checks li { display: flex; align-items: flex-start; gap: 9px; font-size: 14px; line-height: 1.4; color: var(--muted); }
+.sd .sd-check { width: 18px; height: 18px; border-radius: 50%; background: rgba(229, 80, 30, 0.1); color: var(--vermilion); display: grid; place-items: center; flex-shrink: 0; margin-top: 1px; }
 
 /* grids */
 .sd .sd-grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
 .sd .sd-grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
-.sd .sd-grid-4, .sd .sd-grid-process { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
-@media (max-width: 980px) { .sd .sd-grid-4, .sd .sd-grid-process { grid-template-columns: repeat(2, 1fr); } }
+.sd .sd-grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+.sd .sd-grid-process { display: grid; grid-template-columns: repeat(5, 1fr); gap: 18px; }
+@media (max-width: 1080px) { .sd .sd-grid-process { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 980px) { .sd .sd-grid-4 { grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: 900px) { .sd .sd-grid-3 { grid-template-columns: 1fr; } }
-@media (max-width: 760px) { .sd .sd-grid-2 { grid-template-columns: 1fr; } }
-@media (max-width: 520px) { .sd .sd-grid-4, .sd .sd-grid-process { grid-template-columns: 1fr; } }
+@media (max-width: 760px) { .sd .sd-grid-2, .sd .sd-grid-process { grid-template-columns: 1fr; } }
+@media (max-width: 520px) { .sd .sd-grid-4 { grid-template-columns: 1fr; } }
 
 /* ---- 3. OUTCOMES ---- */
 .sd .sd-outcome { display: flex; flex-direction: column; min-height: 240px; gap: 14px; }
@@ -101,10 +103,18 @@
 .sd .sd-feature-head .sd-num.sm { color: var(--vermilion); }
 
 /* ---- 6. TECH ---- */
+.sd .sd-tech { position: relative; overflow: hidden; }
+.sd .sd-tech-bg { position: absolute; top: -100px; right: -80px; width: 600px; height: 600px; pointer-events: none; color: var(--vermilion); opacity: 0.5; z-index: 0; }
+.sd .sd-tech .container { position: relative; z-index: 1; }
+.sd .sd-techcard { display: flex; flex-direction: column; }
 .sd .sd-techcard-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 18px; }
-.sd .sd-techcard-label { font-size: 17px; font-weight: 600; color: var(--ink); display: block; margin-bottom: 16px; }
-.sd .sd-chips { display: flex; flex-wrap: wrap; gap: 8px; }
-.sd .sd-chip { font-size: 12px; padding: 6px 11px; border-radius: 8px; background: rgba(27, 23, 20, 0.04); border: 1px solid rgba(27, 23, 20, 0.08); color: rgba(27, 23, 20, 0.72); }
+.sd .sd-techcard-label { font-size: 20px; font-weight: 700; color: var(--ink); display: block; margin-bottom: 8px; }
+.sd .sd-techcard-desc { font-size: 14px; line-height: 1.6; color: var(--muted); margin-bottom: 20px; flex: 1; }
+.sd .sd-chips { display: flex; flex-wrap: wrap; gap: 10px; margin-top: auto; }
+.sd .sd-chip { display: inline-flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 500; padding: 8px 14px; border-radius: 10px; background: rgba(27, 23, 20, 0.035); border: 1px solid rgba(27, 23, 20, 0.07); color: rgba(27, 23, 20, 0.78); transition: border-color 160ms var(--ease-out), background 160ms var(--ease-out); }
+.sd .sd-chip:hover { border-color: rgba(229, 80, 30, 0.3); background: rgba(229, 80, 30, 0.04); }
+.sd .sd-chip-ic { width: 20px; height: 20px; display: flex; align-items: center; justify-content: center; color: var(--vermilion); flex-shrink: 0; }
+.sd .sd-chip-ic svg { width: 20px; height: 20px; }
 
 /* ---- 7. PROCESS ---- */
 .sd .sd-step { display: flex; flex-direction: column; min-height: 240px; }
@@ -123,24 +133,7 @@
 .sd .sd-win-bar i:nth-child(2) { background: #e3b341; }
 .sd .sd-win-bar i:nth-child(3) { background: #6bbf73; }
 .sd .sd-win-url { margin-left: 10px; font-family: var(--font-mono); font-size: 11px; color: rgba(27, 23, 20, 0.5); background: #fff; padding: 4px 12px; border-radius: 6px; }
-.sd .sd-win-pill { margin-left: auto; width: 64px; height: 20px; border-radius: 6px; background: var(--vermilion); }
 .sd .sd-win-body { background: #fdf9f2; }
-.sd .sd-win-nav { display: flex; align-items: center; justify-content: space-between; padding: 16px 26px; }
-.sd .sd-win-logo { font-weight: 700; letter-spacing: 0.12em; font-size: 13px; color: var(--ink); }
-.sd .sd-win-links { display: flex; gap: 14px; }
-.sd .sd-win-links b { width: 34px; height: 7px; border-radius: 4px; background: rgba(27, 23, 20, 0.12); display: block; }
-.sd .sd-win-btn { width: 66px; height: 24px; border-radius: 6px; background: var(--vermilion); }
-.sd .sd-win-hero { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; padding: 14px 26px 30px; align-items: center; }
-.sd .sd-win-copy { display: flex; flex-direction: column; gap: 11px; }
-.sd .sd-win-h { width: 78%; height: 18px; border-radius: 5px; background: rgba(27, 23, 20, 0.82); }
-.sd .sd-win-h.accent { width: 52%; background: var(--vermilion); }
-.sd .sd-win-p { width: 92%; height: 7px; border-radius: 4px; background: rgba(27, 23, 20, 0.14); margin-top: 4px; }
-.sd .sd-win-p.short { width: 68%; }
-.sd .sd-win-actions { display: flex; gap: 10px; margin-top: 10px; }
-.sd .sd-win-actions .filled { width: 96px; height: 30px; border-radius: 8px; background: var(--vermilion); }
-.sd .sd-win-actions .ghost { width: 84px; height: 30px; border-radius: 8px; border: 1px solid rgba(27, 23, 20, 0.2); }
-.sd .sd-win-img { aspect-ratio: 4 / 3; border-radius: 12px; background: linear-gradient(155deg, #d9c4a3, #9c7e57); }
-@media (max-width: 680px) { .sd .sd-win-hero { grid-template-columns: 1fr; } .sd .sd-win-img { aspect-ratio: 16 / 9; } .sd .sd-win-links { display: none; } }
 
 /* ---- FAQ ---- */
 .sd .sd-faq-list { max-width: 860px; }
@@ -272,11 +265,9 @@
 .sd .sd-icon-circle { background: rgba(229, 80, 30, 0.07); border: 1px solid rgba(229, 80, 30, 0.1); }
 .sd .sd-icon-circle.num { font-size: 20px; font-weight: 600; letter-spacing: -0.02em; color: var(--vermilion); }
 
-/* §6 tech card — divider under header + supporting description */
-.sd .sd-techcard-top { margin-bottom: 0; }
+/* §6 tech card — bigger header icon, divider, card description */
+.sd .sd-techcard-top .sd-plain-icon svg { width: 36px; height: 36px; }
 .sd .sd-techcard .sd-divider { margin: 16px 0 14px; }
-.sd .sd-techcard-label { margin-bottom: 8px; }
-.sd .sd-techcard-desc { font-size: 13.5px; line-height: 1.6; color: var(--muted); margin: 0 0 16px; }
 
 /* §3 outcomes — short accent line ending in the diamond (mockup), not full-width */
 .sd .sd-outcome .sd-num { gap: 16px; }
@@ -287,3 +278,12 @@
 .sd .sd-step .sd-divider { margin: 16px 0 14px; }
 .sd .sd-dur { display: inline-flex; align-items: center; gap: 6px; margin-top: 18px; padding: 6px 12px; border-radius: 999px; background: rgba(229, 80, 30, 0.07); border: 1px solid rgba(229, 80, 30, 0.12); color: var(--vermilion); font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.04em; text-transform: uppercase; }
 .sd .sd-dur svg { width: 13px; height: 13px; flex-shrink: 0; }
+
+/* checklist checks — thin circle outline (matches §4/§5 mockups) */
+.sd .sd-check { background: transparent; border: 1.5px solid rgba(229, 80, 30, 0.5); }
+
+/* §5 Maintained — number | vertical divider | content (icon+title, checklist) */
+.sd .sd-mcard { gap: 24px; align-items: flex-start; }
+.sd .sd-mcard .sd-num.lg { font-size: 42px; flex: 0 0 auto; align-self: flex-start; }
+.sd .sd-mcard-body { flex: 1; min-width: 0; border-left: 1px solid rgba(229, 80, 30, 0.18); padding-left: 24px; }
+.sd .sd-mcard-body .sd-fhead { margin-bottom: 16px; }
