@@ -71,7 +71,9 @@ const Eyebrow = ({ children, light = false }: { children: React.ReactNode; light
 
 function Heading({ as = "h2", text, em = [], className = "" }: { as?: "h1" | "h2"; text: string; em?: string[]; className?: string }) {
   const Tag = as;
-  const isEm = (w: string) => em.includes(w.replace(/[.,—–'’&]/g, ""));
+  const norm = (w: string) => w.replace(/[.,—–'’&]/g, "");
+  const emSet = new Set(em.map(norm));
+  const isEm = (w: string) => emSet.has(norm(w));
   return (
     <Tag className={`sd-h ${className}`}>
       {text.split("\n").map((line, li, lines) => (
@@ -210,11 +212,7 @@ export function ServiceDetail({ service }: { service: Service }) {
                       </>
                     ) : (
                       <>
-                        {ci < 2 ? (
-                          <span className="sd-icon-circle">{FEATURE[(si * 4 + ci) % FEATURE.length]}</span>
-                        ) : (
-                          <span className="sd-icon-circle num">{String(ci + 1).padStart(2, "0")}</span>
-                        )}
+                        <span className="sd-icon-circle num">{String(ci + 1).padStart(2, "0")}</span>
                         <div className="sd-card-body">
                           <h4>{c.title}</h4>
                           <p className="sd-card-desc">{c.desc}</p>
