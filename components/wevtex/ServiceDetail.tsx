@@ -59,13 +59,13 @@ const TAG_ICON = (t: string, i: number) => {
 /* pick an icon that matches a feature card by its title + checklist keywords */
 const FEATURE_ICON = (title: string, checks: string[], i: number) => {
   const k = (title + " " + checks.join(" ")).toLowerCase();
-  if (/(theme|design|brand|bespoke|layout|figma|ui|ux)/.test(k)) return ICON.pen;
+  if (/woocommerce/.test(k)) return ICON.woo;
+  if (/(theme|design|brand|bespoke|layout|figma)/.test(k)) return ICON.pen;
   if (/(perform|fast|speed|caching|web vital|optimis|optimiz|load)/.test(k)) return ICON.rocket;
   if (/(secur|ssl|firewall|malware|protect)/.test(k)) return ICON.shield;
   if (/(backup|restore|version|copy|copies)/.test(k)) return ICON.layers;
   if (/(host|server|cdn|uptime|infrastructure|staging)/.test(k)) return ICON.cube;
   if (/(support|care|help|priority|response)/.test(k)) return ICON.headset;
-  if (/(woocommerce|woo )/.test(k)) return ICON.woo;
   if (/(commerce|shop|cart|checkout|product|payment|store|coupon|order)/.test(k)) return ICON.cart;
   if (/(edit|content|dashboard|cms|media|publish)/.test(k)) return ICON.edit;
   if (/(seo|rank|search|traffic|keyword)/.test(k)) return ICON.chart;
