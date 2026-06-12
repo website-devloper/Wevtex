@@ -278,6 +278,10 @@
 .sd .sd-techcard-label { margin-bottom: 8px; }
 .sd .sd-techcard-desc { font-size: 13.5px; line-height: 1.6; color: var(--muted); margin: 0 0 16px; }
 
+/* §3 outcomes — short accent line ending in the diamond (mockup), not full-width */
+.sd .sd-outcome .sd-num { gap: 16px; }
+.sd .sd-outcome .sd-num-line { flex: 0 0 auto; width: clamp(90px, 46%, 150px); }
+
 /* §7 process card — divider under header + duration chip with clock */
 .sd .sd-step-top { margin-bottom: 0; }
 .sd .sd-step .sd-divider { margin: 16px 0 14px; }
