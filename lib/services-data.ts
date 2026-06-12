@@ -6,7 +6,7 @@
 
 export type FeatureCard = { title: string; desc: string; checks: string[] };
 export type FeatureSection = { eyebrow: string; title: string; titleEm?: string[]; subtitle?: string; cards: FeatureCard[] };
-export type TechGroup = { label: string; items: string[] };
+export type TechGroup = { label: string; items: string[]; desc?: string };
 export type ProcessStep = { n: string; h: string; checks: string[]; d: string };
 export type SectorGroup = { label: string; cases: string[] };
 
@@ -210,10 +210,10 @@ export const SERVICES: Service[] = [
       titleEm: ["stack."],
       subtitle: "Reliable tools for a fast, maintainable site.",
       groups: [
-        { label: "Core", items: ["WordPress", "PHP", "MySQL"] },
-        { label: "Build", items: ["Custom theme", "ACF", "Gutenberg"] },
-        { label: "Commerce", items: ["WooCommerce", "Stripe"] },
-        { label: "Speed & SEO", items: ["Caching", "WebP", "RankMath", "Schema"] },
+        { label: "Core", desc: "The solid foundation that powers every site — secure, reliable, and built to scale.", items: ["WordPress", "PHP", "MySQL"] },
+        { label: "Build", desc: "Flexible tooling to craft custom layouts and content blocks editors actually enjoy.", items: ["Custom theme", "ACF", "Gutenberg"] },
+        { label: "Commerce", desc: "Everything you need to sell — products, payments, and checkout that converts.", items: ["WooCommerce", "Stripe"] },
+        { label: "Speed & SEO", desc: "Performance and search foundations baked in from day one, not bolted on later.", items: ["Caching", "WebP", "RankMath", "Schema"] },
       ],
     },
     process: STANDARD_PROCESS,

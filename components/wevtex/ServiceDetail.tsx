@@ -40,6 +40,25 @@ const TECH = [ICON.cube, ICON.wrench, ICON.cart, ICON.pen];
 const PROCESS = [ICON.search, ICON.pen, ICON.code, ICON.rocket, ICON.headset];
 const SECTOR = [ICON.building, ICON.blog, ICON.store, ICON.cart];
 
+/* pick a meaningful icon for a hero tag pill, falling back to position */
+const TAG_ICON = (t: string, i: number) => {
+  const k = t.toLowerCase();
+  if (k.includes("wordpress")) return ICON.cube;
+  if (k.includes("theme") || k.includes("design") || k.includes("ui") || k.includes("figma")) return ICON.layers;
+  if (k.includes("seo") || k.includes("rank") || k.includes("chart")) return ICON.chart;
+  if (k.includes("maint") || k.includes("support") || k.includes("care") || k.includes("24")) return ICON.wrench;
+  if (k.includes("commerce") || k.includes("shop") || k.includes("store") || k.includes("payment") || k.includes("stripe") || k.includes("invent")) return ICON.cart;
+  if (k.includes("speed") || k.includes("fast") || k.includes("perf") || k.includes("starter")) return ICON.rocket;
+  if (k.includes("secur") || k.includes("shield")) return ICON.shield;
+  if (k.includes("code") || k.includes("api") || k.includes("dev") || k.includes("next") || k.includes("react") || k.includes("type")) return ICON.code;
+  if (k.includes("crm") || k.includes("dashboard") || k.includes("internal") || k.includes("saas")) return ICON.layers;
+  return [ICON.spark, ICON.target, ICON.code, ICON.pen][i % 4];
+};
+
+const Clock = () => (
+  <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden><circle cx="12" cy="12" r="9" /><path d="M12 7.5V12l3 2" /></svg>
+);
+
 const Check = () => (
   <span className="sd-check" aria-hidden>
     <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round"><path d="M20 6L9 17l-5-5" /></svg>
@@ -88,12 +107,12 @@ export function ServiceDetail({ service }: { service: Service }) {
             <Heading as="h1" text={service.h1} em={service.h1Em} />
             <p className="sd-sub">{service.intro}</p>
             <div className="sd-hero-btns">
-              <a href={WHATSAPP_URL} className="btn btn-primary" target="_blank" rel="noopener">Get a free quote <ArrowR /></a>
-              <a href="/portfolio" className="btn btn-outline">See our work <ArrowR /></a>
+              <a href={WHATSAPP_URL} className="sd-btn primary" target="_blank" rel="noopener">Get a free quote <ArrowR /></a>
+              <a href="/portfolio" className="sd-btn outline">See our work <ArrowR /></a>
             </div>
             <div className="sd-tags">
-              {service.tags.map((t) => (
-                <span className="sd-tag" key={t}><span className="sd-tag-dot"></span>{t}</span>
+              {service.tags.map((t, ti) => (
+                <span className="sd-tag" key={t}><span className="sd-tag-ic">{TAG_ICON(t, ti)}</span>{t}</span>
               ))}
             </div>
           </div>
@@ -191,7 +210,11 @@ export function ServiceDetail({ service }: { service: Service }) {
                       </>
                     ) : (
                       <>
-                        <span className="sd-icon-circle">{FEATURE[(si * 4 + ci) % FEATURE.length]}</span>
+                        {ci < 2 ? (
+                          <span className="sd-icon-circle">{FEATURE[(si * 4 + ci) % FEATURE.length]}</span>
+                        ) : (
+                          <span className="sd-icon-circle num">{String(ci + 1).padStart(2, "0")}</span>
+                        )}
                         <div className="sd-card-body">
                           <h4>{c.title}</h4>
                           <p className="sd-card-desc">{c.desc}</p>
@@ -223,7 +246,9 @@ export function ServiceDetail({ service }: { service: Service }) {
                     <div className="sd-num sm">{String(i + 1).padStart(2, "0")}</div>
                     <span className="sd-plain-icon">{TECH[i % TECH.length]}</span>
                   </div>
+                  <span className="sd-divider"></span>
                   <span className="sd-techcard-label">{g.label}</span>
+                  {g.desc && <p className="sd-techcard-desc">{g.desc}</p>}
                   <div className="sd-chips">
                     {g.items.map((it) => (<span className="sd-chip" key={it}>{it}</span>))}
                   </div>
@@ -251,11 +276,12 @@ export function ServiceDetail({ service }: { service: Service }) {
                     <div className="sd-num sm">{s.n}</div>
                     <span className="sd-step-icon">{PROCESS[i % PROCESS.length]}</span>
                   </div>
+                  <span className="sd-divider"></span>
                   <h4>{s.h}</h4>
                   <ul className="sd-checks">
                     {s.checks.map((ch, ci) => (<li key={ci}><Check />{ch}</li>))}
                   </ul>
-                  <span className="sd-dur">{s.d}</span>
+                  <span className="sd-dur"><Clock />{s.d}</span>
                 </div>
               ))}
             </div>

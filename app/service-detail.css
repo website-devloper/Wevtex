@@ -260,3 +260,26 @@
   .sd .sd-win-hero { grid-template-columns: 1fr; gap: 20px; }
   .sd .sd-win-feats { grid-template-columns: 1fr; }
 }
+
+/* ---- mockup-precision refinements (hero tags, §4 number circles, tech desc, process chip) ---- */
+
+/* hero tag pills — small icon instead of a dot */
+.sd .sd-tag { padding: 9px 15px; font-weight: 500; }
+.sd .sd-tag-ic { display: inline-flex; color: var(--vermilion); }
+.sd .sd-tag-ic svg { width: 15px; height: 15px; }
+
+/* §4 faint circles — soft warm tint + number variant for cards 3-4 */
+.sd .sd-icon-circle { background: rgba(229, 80, 30, 0.07); border: 1px solid rgba(229, 80, 30, 0.1); }
+.sd .sd-icon-circle.num { font-family: var(--font-mono); font-size: 21px; font-weight: 600; letter-spacing: -0.01em; color: var(--vermilion); }
+
+/* §6 tech card — divider under header + supporting description */
+.sd .sd-techcard-top { margin-bottom: 0; }
+.sd .sd-techcard .sd-divider { margin: 16px 0 14px; }
+.sd .sd-techcard-label { margin-bottom: 8px; }
+.sd .sd-techcard-desc { font-size: 13.5px; line-height: 1.6; color: var(--muted); margin: 0 0 16px; }
+
+/* §7 process card — divider under header + duration chip with clock */
+.sd .sd-step-top { margin-bottom: 0; }
+.sd .sd-step .sd-divider { margin: 16px 0 14px; }
+.sd .sd-dur { display: inline-flex; align-items: center; gap: 6px; margin-top: 18px; padding: 6px 12px; border-radius: 999px; background: rgba(229, 80, 30, 0.07); border: 1px solid rgba(229, 80, 30, 0.12); color: var(--vermilion); font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.04em; text-transform: uppercase; }
+.sd .sd-dur svg { width: 13px; height: 13px; flex-shrink: 0; }
