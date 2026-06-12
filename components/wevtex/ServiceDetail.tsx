@@ -33,6 +33,7 @@ const ICON = {
   building: svg(<><rect x="4" y="3" width="16" height="18" rx="1" /><path d="M9 21v-4h6v4M8 7h.01M12 7h.01M16 7h.01M8 11h.01M12 11h.01M16 11h.01" /></>),
   blog: svg(<><rect x="3" y="4" width="18" height="16" rx="2" /><path d="M7 8h10M7 12h10M7 16h6" /></>),
   store: svg(<><path d="M3 9l1.5-5h15L21 9" /><path d="M3 9v11h18V9" /><path d="M3 9a2.5 2.5 0 0 0 5 0 2.5 2.5 0 0 0 5 0 2.5 2.5 0 0 0 5 0M9 20v-6h6v6" /></>),
+  woo: svg(<><path d="M2.5 5h19a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1h-8.4l-3.6 3v-3H2.5a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z" /><path d="M5 8.6l1.3 4 1.5-3.3 1.5 3.3 1.3-4" /><path d="M13 8.6l1.3 4 1.5-3.3 1.5 3.3 1.3-4" /></>),
 };
 const OUTCOME = [ICON.edit, ICON.shield, ICON.chart];
 const FEATURE = [ICON.target, ICON.code, ICON.edit, ICON.cart, ICON.layers, ICON.shield, ICON.spark, ICON.cube];
@@ -53,6 +54,26 @@ const TAG_ICON = (t: string, i: number) => {
   if (k.includes("code") || k.includes("api") || k.includes("dev") || k.includes("next") || k.includes("react") || k.includes("type")) return ICON.code;
   if (k.includes("crm") || k.includes("dashboard") || k.includes("internal") || k.includes("saas")) return ICON.layers;
   return [ICON.spark, ICON.target, ICON.code, ICON.pen][i % 4];
+};
+
+/* pick an icon that matches a feature card by its title + checklist keywords */
+const FEATURE_ICON = (title: string, checks: string[], i: number) => {
+  const k = (title + " " + checks.join(" ")).toLowerCase();
+  if (/(theme|design|brand|bespoke|layout|figma|ui|ux)/.test(k)) return ICON.pen;
+  if (/(perform|fast|speed|caching|web vital|optimis|optimiz|load)/.test(k)) return ICON.rocket;
+  if (/(secur|ssl|firewall|malware|protect)/.test(k)) return ICON.shield;
+  if (/(backup|restore|version|copy|copies)/.test(k)) return ICON.layers;
+  if (/(host|server|cdn|uptime|infrastructure|staging)/.test(k)) return ICON.cube;
+  if (/(support|care|help|priority|response)/.test(k)) return ICON.headset;
+  if (/(woocommerce|woo )/.test(k)) return ICON.woo;
+  if (/(commerce|shop|cart|checkout|product|payment|store|coupon|order)/.test(k)) return ICON.cart;
+  if (/(edit|content|dashboard|cms|media|publish)/.test(k)) return ICON.edit;
+  if (/(seo|rank|search|traffic|keyword)/.test(k)) return ICON.chart;
+  if (/(analyt|report|data|insight|metric)/.test(k)) return ICON.chart;
+  if (/(code|dev|api|integrat|build|custom develop)/.test(k)) return ICON.code;
+  if (/(strateg|goal|convert|conversion|target|focus)/.test(k)) return ICON.target;
+  if (/(workflow|automat|maintain|update)/.test(k)) return ICON.wrench;
+  return FEATURE[i % FEATURE.length];
 };
 
 const Clock = () => (
@@ -205,14 +226,14 @@ export function ServiceDetail({ service }: { service: Service }) {
                       <>
                         <div className="sd-num lg">{String(ci + 1).padStart(2, "0")}</div>
                         <div className="sd-card-body">
-                          <div className="sd-fhead"><span className="sd-plain-icon">{FEATURE[(si * 4 + ci) % FEATURE.length]}</span><h4>{c.title}</h4></div>
+                          <div className="sd-fhead"><span className="sd-plain-icon">{FEATURE_ICON(c.title, c.checks, si * 4 + ci)}</span><h4>{c.title}</h4></div>
                           <span className="sd-divider"></span>
                           <ul className="sd-checks">{c.checks.map((ch, chi) => (<li key={chi}><Check />{ch}</li>))}</ul>
                         </div>
                       </>
                     ) : (
                       <>
-                        <span className="sd-icon-circle num">{String(ci + 1).padStart(2, "0")}</span>
+                        <span className="sd-icon-circle">{FEATURE_ICON(c.title, c.checks, si * 4 + ci)}</span>
                         <div className="sd-card-body">
                           <h4>{c.title}</h4>
                           <p className="sd-card-desc">{c.desc}</p>
