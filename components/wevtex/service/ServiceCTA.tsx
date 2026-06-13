@@ -6,7 +6,7 @@ const WHATSAPP_URL = "https://wa.me/212687633774";
 
 export function ServiceCTA({ service }: { service: Service }) {
   return (
-    <section className="sd-cta theme-dark">
+    <section className="sd-cta">
       <span className="sd-motif sd-motif-tr light" aria-hidden></span>
       <span className="sd-motif sd-motif-bl light" aria-hidden></span>
       <div className="container">

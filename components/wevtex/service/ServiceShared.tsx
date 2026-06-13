@@ -172,10 +172,43 @@ export const FEATURE_ICON = (title: string, checks: string[], i: number) => {
   return FEATURE[i % FEATURE.length];
 };
 
+/* brand-only lookup — card headers only; concept-icon chips must not pollute the header */
+const TECH_BRAND_ICON = (chip: string) => {
+  const k = chip.toLowerCase();
+  if (k.includes("wordpress")) return ICON.wordpressCircle;
+  if (k.includes("woocommerce") || k === "woo") return ICON.woo;
+  if (k.includes("php")) return ICON.phpBox;
+  if (k.includes("mysql")) return ICON.db;
+  if (k.includes("next")) return ICON.nextjs;
+  if (k.includes("node")) return ICON.nodejs;
+  if (k.includes("react")) return ICON.react;
+  if (k.includes("typescript")) return ICON.typescript;
+  if (k.includes("tailwind")) return ICON.tailwind;
+  if (k.includes("graphql")) return ICON.graphql;
+  if (k.includes("prisma")) return ICON.prisma;
+  if (k.includes("vercel")) return ICON.vercel;
+  if (k.includes("docker")) return ICON.docker;
+  if (k.includes("shopify")) return ICON.shopify;
+  if (k.includes("paypal")) return ICON.paypal;
+  if (k.includes("stripe")) return ICON.stripeBox;
+  if (k.includes("openai") || k.includes("gpt")) return ICON.openai;
+  if (k.includes("zapier")) return ICON.zapier;
+  if (k.includes("slack")) return ICON.slack;
+  if (k.includes("airtable")) return ICON.airtable;
+  if (k.includes("framer")) return ICON.framer;
+  if (k.includes("storybook")) return ICON.storybook;
+  if (k.includes("sketch")) return ICON.sketch;
+  if (k.includes("odoo")) return ICON.odoo;
+  if (k.includes("figma")) return ICON.figma;
+  if (k.includes("whatsapp")) return ICON.whatsapp;
+  if (k.includes("messenger")) return ICON.messenger;
+  return null;
+};
+
 /* tech-stack card header — real brand logo from the group's items, else a concept icon by label */
 export const TECH_GROUP_ICON = (label: string, items: string[]) => {
   for (const it of items) {
-    const b = TECH_CHIP_ICON(it);
+    const b = TECH_BRAND_ICON(it);
     if (b) return b;
   }
   const k = label.toLowerCase();
