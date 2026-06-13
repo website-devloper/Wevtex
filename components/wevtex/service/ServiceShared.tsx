@@ -140,7 +140,8 @@ export const TAG_ICON = (t: string, i: number) => {
   const brand = TECH_CHIP_ICON(t);
   if (brand) return brand;
   if (k.includes("design") || k.includes("ui") || k.includes("ux")) return ICON.pen;
-  if (k.includes("commerce") || k.includes("shop") || k.includes("store") || k.includes("payment") || k.includes("invent") || k.includes("cart")) return ICON.cart;
+  if (k.includes("invent") || k.includes("stock") || k.includes("catalog") || k.includes("warehouse")) return ICON.layers;
+  if (k.includes("commerce") || k.includes("shop") || k.includes("store") || k.includes("payment") || k.includes("cart")) return ICON.cart;
   if (k.includes("invoic") || k.includes("report") || k.includes("analyt")) return ICON.chart;
   if (k.includes("secur") || k.includes("shield")) return ICON.shield;
   if (k.includes("api") || k.includes("webhook") || k.includes("integrat") || k.includes("dev")) return ICON.code;
@@ -154,21 +155,51 @@ export const TAG_ICON = (t: string, i: number) => {
 };
 
 export const FEATURE_ICON = (title: string, checks: string[], i: number) => {
+  const t = title.toLowerCase();
   const k = (title + " " + checks.join(" ")).toLowerCase();
   if (/woocommerce/.test(k)) return ICON.woo;
-  if (/(theme|design|brand|bespoke|layout|figma)/.test(k)) return ICON.pen;
-  if (/(perform|fast|speed|caching|web vital|optimis|optimiz|load)/.test(k)) return ICON.rocket;
+
+  // Title-first: the card title is the most reliable signal for the right icon
+  if (/(perform|speed|fast|web vital|caching|optim)/.test(t)) return ICON.rocket;
+  if (/(seo|search engine|sitemap|meta|keyword|rank)/.test(t)) return ICON.search;
+  if (/(trust|review|rating|proof|badge|creden)/.test(t)) return ICON.shield;
+  if (/(secur|ssl|firewall|protect|malware|safety)/.test(t)) return ICON.shield;
+  if (/(market|advertis|campaign|ads |ad pixel|promote|growth)/.test(t)) return ICON.target;
+  if (/(design|theme|brand|bespoke|layout|ui|ux|style|visual)/.test(t)) return ICON.pen;
+  if (/(storefront|website|site|landing|blog|front)/.test(t)) return ICON.window;
+  if (/(catalog|inventory|invent|stock|warehouse)/.test(t)) return ICON.layers;
+  if (/(order|fulfilm|dispatch|deliver|ship)/.test(t)) return ICON.edit;
+  if (/(checkout|payment|pay|cash|transact)/.test(t)) return ICON.cart;
+  if (/(support|care|help|mainten|training|post.?launch)/.test(t)) return ICON.headset;
+  if (/(backup|restore|versio|snapshot|copy)/.test(t)) return ICON.layers;
+  if (/(host|server|cdn|uptime|infrastructure|staging)/.test(t)) return ICON.cube;
+  if (/(analyt|report|insight|data|dashboard|metric|bi)/.test(t)) return ICON.chart;
+  if (/(invoic|quot|bill)/.test(t)) return ICON.edit;
+  if (/(account|finance|ledger|tax|payroll)/.test(t)) return ICON.chart;
+  if (/(crm|pipeline|customer|lead|contact)/.test(t)) return ICON.target;
+  if (/(content|cms|media|publish|post)/.test(t)) return ICON.edit;
+  if (/(integrat|api|webhook|connect|sync|custom)/.test(t)) return ICON.code;
+  if (/(automat|workflow|trigger|flow)/.test(t)) return ICON.refresh;
+  if (/(ecommerce|e-commerce|commerce|shop|store|sell)/.test(t)) return ICON.cart;
+  if (/(research|audit|discover|user test|usabilit)/.test(t)) return ICON.search;
+  if (/(wireframe|prototype|mockup|concept|sketch)/.test(t)) return ICON.pen;
+  if (/(chatbot|bot|ai |nlp|ml |model|gpt|llm)/.test(t)) return ICON.spark;
+  if (/(channel|chat|messag|widget|embed)/.test(t)) return ICON.headset;
+  if (/(build|develop|code|module|feature|implement)/.test(t)) return ICON.code;
+  if (/(strateg|goal|convert|target|result)/.test(t)) return ICON.target;
+  if (/(secur|protect)/.test(t)) return ICON.shield;
+
+  // Full-content fallback (title alone didn't give a clear answer)
+  if (/(perform|fast|speed|caching|web vital|optimis)/.test(k)) return ICON.rocket;
   if (/(secur|ssl|firewall|malware|protect)/.test(k)) return ICON.shield;
-  if (/(backup|restore|version|copy|copies)/.test(k)) return ICON.layers;
-  if (/(host|server|cdn|uptime|infrastructure|staging)/.test(k)) return ICON.cube;
-  if (/(support|care|help|priority|response)/.test(k)) return ICON.headset;
-  if (/(commerce|shop|cart|checkout|product|payment|store|coupon|order)/.test(k)) return ICON.cart;
-  if (/(edit|content|dashboard|cms|media|publish)/.test(k)) return ICON.edit;
-  if (/(seo|rank|search|traffic|keyword)/.test(k)) return ICON.chart;
+  if (/(backup|restore|versio|snapshot)/.test(k)) return ICON.layers;
+  if (/(host|server|cdn|uptime|infrastructure)/.test(k)) return ICON.cube;
+  if (/(support|care|help|priority)/.test(k)) return ICON.headset;
+  if (/(design|theme|brand|bespoke|layout)/.test(k)) return ICON.pen;
   if (/(analyt|report|data|insight|metric)/.test(k)) return ICON.chart;
-  if (/(code|dev|api|integrat|build|custom develop)/.test(k)) return ICON.code;
-  if (/(strateg|goal|convert|conversion|target|focus)/.test(k)) return ICON.target;
-  if (/(workflow|automat|maintain|update)/.test(k)) return ICON.wrench;
+  if (/(code|dev|api|integrat)/.test(k)) return ICON.code;
+  if (/(automat|workflow)/.test(k)) return ICON.refresh;
+  if (/(convert|strateg|goal|target)/.test(k)) return ICON.target;
   return FEATURE[i % FEATURE.length];
 };
 
@@ -229,16 +260,18 @@ export const TECH_GROUP_ICON = (label: string, items: string[]) => {
 export const SECTOR_ICON = (label: string) => {
   const k = label.toLowerCase();
   if (/(content|blog|news|magazine|media|publish|editorial)/.test(k)) return ICON.blog;
-  if (/(fashion|home|decor|furnitur|shop|store|retail|ecommerce|e-commerce|product|catalog)/.test(k)) return ICON.cart;
-  if (/(food|grocery|restaurant|cafe|delivery)/.test(k)) return ICON.store;
-  if (/(small|local|clinic)/.test(k)) return ICON.store;
-  if (/(health|medical|wellness)/.test(k)) return ICON.shield;
-  if (/(finance|invoic|account|trading|bank)/.test(k)) return ICON.chart;
-  if (/(saas|software|app|dashboard|startup|tech)/.test(k)) return ICON.layers;
+  if (/(fashion|apparel|cloth|beauty|cosmetic|style)/.test(k)) return ICON.cart;
+  if (/(home|decor|furnitur|interior)/.test(k)) return ICON.cube;
+  if (/(retail|ecommerce|e-commerce|product|catalog|shop|store)/.test(k)) return ICON.cart;
+  if (/(food|grocery|restaurant|cafe|delivery|bakery)/.test(k)) return ICON.store;
+  if (/(small|local|clinic|pharmacy)/.test(k)) return ICON.store;
+  if (/(health|medical|wellness|gym|fitness|spa)/.test(k)) return ICON.shield;
+  if (/(finance|invoic|account|trading|bank|insurance)/.test(k)) return ICON.chart;
+  if (/(digital|software|saas|app|tech|startup|it )/.test(k)) return ICON.layers;
   if (/(sales|crm|pipeline|market|landing|brand|campaign)/.test(k)) return ICON.target;
-  if (/(manufactur|logistics|field|operation|warehouse|supply)/.test(k)) return ICON.cube;
-  if (/(corporate|company|professional|agenc|b2b|enterprise|hospitalit|tourism|hotel)/.test(k)) return ICON.building;
-  if (/(service|booking)/.test(k)) return ICON.store;
+  if (/(manufactur|logistics|field|operation|warehouse|supply|industri)/.test(k)) return ICON.cube;
+  if (/(corporate|company|professional|agenc|b2b|enterprise|hospitalit|tourism|hotel|consult)/.test(k)) return ICON.building;
+  if (/(service|booking|subscript|freelance|download)/.test(k)) return ICON.wrench;
   return ICON.building;
 };
 
