@@ -14,7 +14,7 @@ export function ServiceFeatures({
       {featureSections.map((fs, si) => {
         const numbered = si === 1; // "Maintained & secure" style
         return (
-          <section className={`sd-section sd-features${numbered ? " numbered" : ""}`} key={si}>
+          <section className={`sd-section sd-features${numbered ? " numbered" : ""}${si === 0 ? " bg-paper" : ""}`} key={si}>
             <span className="sd-motif sd-motif-tr soft" aria-hidden></span>
             <div className="container">
               <div className="sd-head reveal">

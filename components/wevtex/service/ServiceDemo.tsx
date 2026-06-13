@@ -6,7 +6,7 @@ export function ServiceDemo({ service }: { service: Service }) {
   if (!service.demo) return null;
 
   return (
-    <section className="sd-section sd-demo">
+    <section className="sd-section sd-demo bg-paper">
       <span className="sd-motif sd-motif-bl" aria-hidden></span>
       <div className="container">
         <div className="sd-head center reveal">

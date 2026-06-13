@@ -6,7 +6,7 @@ export function ServiceSectors({ service }: { service: Service }) {
   if (!service.sectors) return null;
 
   return (
-    <section className="sd-section sd-sectors">
+    <section className="sd-section sd-sectors bg-paper">
       <div className="container">
         <div className="sd-head reveal">
           <div className="sd-eyebrow-wrap">

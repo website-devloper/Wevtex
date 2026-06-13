@@ -27,7 +27,7 @@
 /* headings */
 .sd .sd-h { font-size: clamp(30px, 4vw, 50px); font-weight: 600; letter-spacing: -0.025em; line-height: 1.12; color: var(--ink); }
 .sd .sd-h.light { color: #fbf8f2; }
-.sd .sd-em { font-family: var(--font-serif); font-style: italic; font-weight: 500; color: var(--vermilion); letter-spacing: -0.01em; }
+.sd .sd-em { font-family: var(--font-sans); font-style: italic; font-weight: 500; color: var(--vermilion); letter-spacing: -0.01em; }
 .sd .sd-sub { margin-top: 16px; font-size: 16px; line-height: 1.7; color: var(--muted); max-width: 60ch; }
 .sd .sd-sub.light { color: rgba(255, 255, 255, 0.8); }
 .sd .sd-head { margin-bottom: 48px; }
@@ -300,3 +300,85 @@
 .sd .sd-mcard .sd-num.lg { font-size: 42px; flex: 0 0 auto; align-self: flex-start; }
 .sd .sd-mcard-body { flex: 1; min-width: 0; border-left: 1px solid rgba(229, 80, 30, 0.18); padding-left: 24px; }
 .sd .sd-mcard-body .sd-fhead { margin-bottom: 16px; }
+
+/* ===================================================================
+   BACKGROUND RHYTHM — alternating section backgrounds
+   hero=sand · demo=paper · outcomes=sand · features[0]=paper
+   features[1]=sand · tech=dark · process=sand · sectors=paper · cta=vermilion
+   =================================================================== */
+
+/* Off-white / card-paper sections */
+.sd .sd-section.bg-paper { background: var(--card); }
+
+/* Subtle warm glow on the hero (echoes homepage sand hero) */
+.sd .sd-hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background:
+    radial-gradient(60% 50% at 50% 0%, rgba(229, 80, 30, 0.07), transparent 70%),
+    radial-gradient(30% 40% at 88% 15%, rgba(229, 80, 30, 0.05), transparent 60%);
+}
+
+/* ---- Tech stack dark section (warm ink #1b1714) ---- */
+.sd .sd-section.bg-dark { background: #1b1714; }
+
+/* Typography */
+.sd .sd-section.bg-dark .sd-h         { color: #fdf7f3; }
+.sd .sd-section.bg-dark .sd-sub       { color: rgba(253, 247, 243, 0.65); }
+.sd .sd-section.bg-dark .sd-eyebrow   { color: rgba(253, 247, 243, 0.4); }
+.sd .sd-section.bg-dark .sd-eb-dot    { background: var(--vermilion); }
+.sd .sd-section.bg-dark .sd-eb-line   { background: rgba(255, 220, 200, 0.2); }
+
+/* Cards */
+.sd .sd-section.bg-dark .sd-card {
+  background: rgba(253, 247, 243, 0.04);
+  border-color: rgba(255, 220, 200, 0.09);
+  box-shadow: none;
+}
+.sd .sd-section.bg-dark .sd-card h4     { color: #fdf7f3; }
+.sd .sd-section.bg-dark .sd-card p      { color: rgba(253, 247, 243, 0.58); }
+.sd .sd-section.bg-dark .sd-card:not(.accent):hover {
+  background: rgba(253, 247, 243, 0.07);
+  border-color: rgba(255, 220, 200, 0.14);
+  box-shadow: none;
+}
+
+/* Tech card specifics */
+.sd .sd-section.bg-dark .sd-techcard-label { color: #fdf7f3; }
+.sd .sd-section.bg-dark .sd-techcard-desc  { color: rgba(253, 247, 243, 0.55); }
+
+/* Chips */
+.sd .sd-section.bg-dark .sd-chip {
+  background: rgba(253, 247, 243, 0.05);
+  border-color: rgba(255, 220, 200, 0.1);
+  color: rgba(253, 247, 243, 0.7);
+}
+.sd .sd-section.bg-dark .sd-chip-ic { color: var(--vermilion); }
+
+/* Structural elements */
+.sd .sd-section.bg-dark .sd-divider    { background: rgba(255, 220, 200, 0.12); }
+.sd .sd-section.bg-dark .sd-num        { color: var(--vermilion); }
+.sd .sd-section.bg-dark .sd-plain-icon { color: var(--vermilion); }
+
+/* Decorative tech SVG — slightly more visible on dark */
+.sd .sd-section.bg-dark .sd-tech-bg { opacity: 0.7; }
+
+/* Warm ambient glow at corners (mirrors .theme-dark::after on homepage) */
+.sd .sd-section.bg-dark::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background:
+    radial-gradient(42% 35% at 8% 15%, rgba(217, 74, 26, 0.13), transparent 65%),
+    radial-gradient(36% 28% at 92% 85%, rgba(217, 74, 26, 0.10), transparent 60%);
+}
+
+/* Reduce motion */
+@media (prefers-reduced-motion: reduce) {
+  .sd .sd-card { transition: none; }
+}
