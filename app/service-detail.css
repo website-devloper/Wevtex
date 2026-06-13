@@ -27,7 +27,7 @@
 /* headings */
 .sd .sd-h { font-size: clamp(30px, 4vw, 50px); font-weight: 600; letter-spacing: -0.025em; line-height: 1.12; color: var(--ink); }
 .sd .sd-h.light { color: #fbf8f2; }
-.sd .sd-em { font-family: var(--font-sans); font-style: italic; font-weight: 500; color: var(--vermilion); letter-spacing: -0.01em; }
+.sd .sd-em { font-family: var(--font-serif); font-style: italic; font-weight: 500; color: var(--vermilion); letter-spacing: -0.01em; }
 .sd .sd-sub { margin-top: 16px; font-size: 16px; line-height: 1.7; color: var(--muted); max-width: 60ch; }
 .sd .sd-sub.light { color: rgba(255, 255, 255, 0.8); }
 .sd .sd-head { margin-bottom: 48px; }
