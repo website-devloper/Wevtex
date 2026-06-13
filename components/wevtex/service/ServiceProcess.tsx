@@ -1,6 +1,6 @@
 import React from "react";
 import type { Service } from "../../../lib/services-data";
-import { Eyebrow, Heading, Check, Clock, PROCESS } from "./ServiceShared";
+import { Eyebrow, Heading, Check, Clock, PROCESS_ICON } from "./ServiceShared";
 
 export function ServiceProcess({ service }: { service: Service }) {
   if (!service.process) return null;
@@ -21,7 +21,7 @@ export function ServiceProcess({ service }: { service: Service }) {
             <div className="sd-card sd-step" key={i}>
               <div className="sd-step-top">
                 <div className="sd-num sm">{s.n}</div>
-                <span className="sd-step-icon">{PROCESS[i % PROCESS.length]}</span>
+                <span className="sd-step-icon">{PROCESS_ICON(s.h, i)}</span>
               </div>
               <span className="sd-divider"></span>
               <h4>{s.h}</h4>

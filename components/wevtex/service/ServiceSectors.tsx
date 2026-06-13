@@ -1,6 +1,6 @@
 import React from "react";
 import type { Service } from "../../../lib/services-data";
-import { Eyebrow, Heading, Check, SECTOR } from "./ServiceShared";
+import { Eyebrow, Heading, Check, SECTOR_ICON } from "./ServiceShared";
 
 export function ServiceSectors({ service }: { service: Service }) {
   if (!service.sectors) return null;
@@ -18,7 +18,7 @@ export function ServiceSectors({ service }: { service: Service }) {
         <div className="sd-grid-2 reveal">
           {service.sectors.groups.map((g, i) => (
             <div className="sd-card sd-scard" key={i}>
-              <span className="sd-icon-circle lg">{SECTOR[i % SECTOR.length]}</span>
+              <span className="sd-icon-circle lg">{SECTOR_ICON(g.label)}</span>
               <div className="sd-card-body">
                 <h4>{g.label}</h4>
                 <span className="sd-divider"></span>

@@ -1,6 +1,6 @@
 import React from "react";
 import type { Service } from "../../../lib/services-data";
-import { Eyebrow, Heading, OUTCOME } from "./ServiceShared";
+import { Eyebrow, Heading, OUTCOME_ICON } from "./ServiceShared";
 
 export function ServiceOutcomes({ service }: { service: Service }) {
   if (!service.outcomes || service.outcomes.length === 0) return null;
@@ -24,7 +24,7 @@ export function ServiceOutcomes({ service }: { service: Service }) {
               </div>
               <h4>{o.h}</h4>
               <p>{o.p}</p>
-              <span className="sd-card-icon">{OUTCOME[i % OUTCOME.length]}</span>
+              <span className="sd-card-icon">{OUTCOME_ICON(o.h, o.p, i)}</span>
             </div>
           ))}
         </div>

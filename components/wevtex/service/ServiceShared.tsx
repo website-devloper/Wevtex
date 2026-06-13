@@ -102,16 +102,24 @@ export const SECTOR = [ICON.building, ICON.blog, ICON.store, ICON.cart];
 
 export const TAG_ICON = (t: string, i: number) => {
   const k = t.toLowerCase();
-  if (k.includes("wordpress")) return ICON.wordpressCircle;
+  // concept overrides that should differ from the chip mapper
   if (k.includes("theme") || k.includes("layout")) return ICON.window;
-  if (k.includes("design") || k.includes("ui") || k.includes("figma")) return ICON.layers;
-  if (k.includes("seo") || k.includes("rank") || k.includes("chart")) return ICON.chart;
-  if (k.includes("maint") || k.includes("support") || k.includes("care") || k.includes("24")) return ICON.refresh;
-  if (k.includes("commerce") || k.includes("shop") || k.includes("store") || k.includes("payment") || k.includes("stripe") || k.includes("invent")) return ICON.cart;
-  if (k.includes("speed") || k.includes("fast") || k.includes("perf") || k.includes("starter")) return ICON.rocket;
+  if (k.includes("maint") || k.includes("care")) return ICON.refresh;
+  if (k.includes("seo") || k.includes("rank")) return ICON.chart;
+  // real brand logo when the tag is a brand (React, Stripe, Figma, Odoo, …)
+  const brand = TECH_CHIP_ICON(t);
+  if (brand) return brand;
+  if (k.includes("design") || k.includes("ui") || k.includes("ux")) return ICON.pen;
+  if (k.includes("commerce") || k.includes("shop") || k.includes("store") || k.includes("payment") || k.includes("invent") || k.includes("cart")) return ICON.cart;
+  if (k.includes("invoic") || k.includes("report") || k.includes("analyt")) return ICON.chart;
   if (k.includes("secur") || k.includes("shield")) return ICON.shield;
-  if (k.includes("code") || k.includes("api") || k.includes("dev") || k.includes("next") || k.includes("react") || k.includes("type")) return ICON.code;
-  if (k.includes("crm") || k.includes("dashboard") || k.includes("internal") || k.includes("saas")) return ICON.layers;
+  if (k.includes("api") || k.includes("webhook") || k.includes("integrat") || k.includes("dev")) return ICON.code;
+  if (k.includes("workflow") || k.includes("automat")) return ICON.refresh;
+  if (k.includes("nlp") || k.includes("ml")) return ICON.spark;
+  if (k.includes("dashboard") || k.includes("saas") || k.includes("crm") || k.includes("internal") || k.includes("tool")) return ICON.layers;
+  if (k.includes("mobile") || k.includes("prototype")) return ICON.window;
+  if (k.includes("support") || k.includes("24")) return ICON.headset;
+  if (k.includes("speed") || k.includes("fast") || k.includes("perf") || k.includes("starter")) return ICON.rocket;
   return [ICON.spark, ICON.target, ICON.code, ICON.pen][i % 4];
 };
 
@@ -132,6 +140,69 @@ export const FEATURE_ICON = (title: string, checks: string[], i: number) => {
   if (/(strateg|goal|convert|conversion|target|focus)/.test(k)) return ICON.target;
   if (/(workflow|automat|maintain|update)/.test(k)) return ICON.wrench;
   return FEATURE[i % FEATURE.length];
+};
+
+/* tech-stack card header — real brand logo from the group's items, else a concept icon by label */
+export const TECH_GROUP_ICON = (label: string, items: string[]) => {
+  for (const it of items) {
+    const b = TECH_CHIP_ICON(it);
+    if (b) return b;
+  }
+  const k = label.toLowerCase();
+  if (/(report|analyt|seo|market|growth|insight)/.test(k)) return ICON.chart;
+  if (/(front|interface|client)/.test(k)) return ICON.window;
+  if (/(design|prototype|brand)/.test(k)) return ICON.pen;
+  if (/(channel|support|chat|messag)/.test(k)) return ICON.headset;
+  if (/(secur|auth)/.test(k)) return ICON.shield;
+  if (/(workflow|automat|connect)/.test(k)) return ICON.refresh;
+  if (/(ai|nlp|ml|model)/.test(k)) return ICON.spark;
+  if (/(research|test|audit)/.test(k)) return ICON.search;
+  if (/(commerce|platform|payment|shop|sell|store)/.test(k)) return ICON.cart;
+  if (/(handoff|build|dev|code|integrat)/.test(k)) return ICON.code;
+  return ICON.cube;
+};
+
+/* by-sector card — concept icon chosen from the sector label */
+export const SECTOR_ICON = (label: string) => {
+  const k = label.toLowerCase();
+  if (/(content|blog|news|magazine|media|publish|editorial)/.test(k)) return ICON.blog;
+  if (/(fashion|home|decor|furnitur|shop|store|retail|ecommerce|e-commerce|product|catalog)/.test(k)) return ICON.cart;
+  if (/(food|grocery|restaurant|cafe|delivery)/.test(k)) return ICON.store;
+  if (/(small|local|clinic)/.test(k)) return ICON.store;
+  if (/(health|medical|wellness)/.test(k)) return ICON.shield;
+  if (/(finance|invoic|account|trading|bank)/.test(k)) return ICON.chart;
+  if (/(saas|software|app|dashboard|startup|tech)/.test(k)) return ICON.layers;
+  if (/(sales|crm|pipeline|market|landing|brand|campaign)/.test(k)) return ICON.target;
+  if (/(manufactur|logistics|field|operation|warehouse|supply)/.test(k)) return ICON.cube;
+  if (/(corporate|company|professional|agenc|b2b|enterprise|hospitalit|tourism|hotel)/.test(k)) return ICON.building;
+  if (/(service|booking)/.test(k)) return ICON.store;
+  return ICON.building;
+};
+
+/* outcomes card — concept icon chosen from the outcome text */
+export const OUTCOME_ICON = (h: string, p: string, i: number) => {
+  const k = (h + " " + p).toLowerCase();
+  if (/(edit|update|manage|control|yourself|content|dashboard|own)/.test(k)) return ICON.edit;
+  if (/(secur|safe|reliable|protect|stable|trust|robust)/.test(k)) return ICON.shield;
+  if (/(fast|speed|perform|quick|load)/.test(k)) return ICON.rocket;
+  if (/(seo|rank|found|search|visib|traffic)/.test(k)) return ICON.chart;
+  if (/(grow|scale|convert|sale|revenue|lead|roi)/.test(k)) return ICON.target;
+  if (/(save|time|efficien|automat|productiv|hours)/.test(k)) return ICON.spark;
+  if (/(support|help|care|hand)/.test(k)) return ICON.headset;
+  if (/(design|brand|beautiful|look|experience|polish)/.test(k)) return ICON.pen;
+  if (/(insight|report|data|analyt|decision)/.test(k)) return ICON.chart;
+  return [ICON.edit, ICON.shield, ICON.chart][i % 3];
+};
+
+/* process step — concept icon chosen from the step title */
+export const PROCESS_ICON = (h: string, i: number) => {
+  const k = h.toLowerCase();
+  if (/(discover|research|audit|plan|scope|goal|kickoff)/.test(k)) return ICON.search;
+  if (/(design|wireframe|prototype|ux|ui|concept)/.test(k)) return ICON.pen;
+  if (/(build|develop|code|implement|integrat)/.test(k)) return ICON.code;
+  if (/(launch|deploy|go.?live|release|ship)/.test(k)) return ICON.rocket;
+  if (/(support|maintain|care|grow|optimi|train)/.test(k)) return ICON.headset;
+  return [ICON.search, ICON.pen, ICON.code, ICON.rocket, ICON.headset][i % 5];
 };
 
 export const Clock = () => (

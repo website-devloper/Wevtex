@@ -1,6 +1,6 @@
 import React from "react";
 import type { Service } from "../../../lib/services-data";
-import { Eyebrow, Heading, TECH, TECH_CHIP_ICON } from "./ServiceShared";
+import { Eyebrow, Heading, TECH_GROUP_ICON, TECH_CHIP_ICON } from "./ServiceShared";
 
 export function ServiceTech({ service }: { service: Service }) {
   if (!service.tech) return null;
@@ -26,7 +26,7 @@ export function ServiceTech({ service }: { service: Service }) {
             <div className="sd-card sd-techcard" key={i}>
               <div className="sd-techcard-top">
                 <div className="sd-num sm">{String(i + 1).padStart(2, "0")}</div>
-                <span className="sd-plain-icon">{TECH[i % TECH.length]}</span>
+                <span className="sd-plain-icon">{TECH_GROUP_ICON(g.label, g.items)}</span>
               </div>
               <span className="sd-divider"></span>
               <span className="sd-techcard-label">{g.label}</span>
