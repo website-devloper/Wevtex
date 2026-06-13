@@ -4133,6 +4133,9 @@
   background-color: rgba(253, 247, 243, 0.06);
 }
 
+/* keep the chevron inline now that .nav-label is an <a> (beats `.nav-links a { display:block }`) */
+.wevtex .nav-links a.nav-label { display: flex; align-items: center; gap: 4px; }
+
 .wevtex .has-mega .chevron {
   transition: transform 0.2s;
 }

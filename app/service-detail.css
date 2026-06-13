@@ -282,6 +282,13 @@
 /* checklist checks — thin circle outline (matches §4/§5 mockups) */
 .sd .sd-check { background: transparent; border: 1.5px solid rgba(229, 80, 30, 0.5); }
 
+/* card hover — minimal & clean: smooth transition to a faint vermilion wash, no lift
+   (mirrors the home .feature-card behaviour, in the brand colour) */
+.sd .sd-card { transition: background-color 200ms var(--ease-out), border-color 200ms var(--ease-out), box-shadow 200ms var(--ease-out); }
+.sd .sd-card:hover { transform: none; box-shadow: 0 18px 40px -30px rgba(27, 23, 20, 0.2); }
+.sd .sd-card:not(.accent):hover { background: rgba(229, 80, 30, 0.06); border-color: rgba(229, 80, 30, 0.25); }
+.sd .sd-outcome.accent:hover { background: var(--vermilion); }
+
 /* §5 Maintained — number | vertical divider | content (icon+title, checklist) */
 .sd .sd-mcard { gap: 24px; align-items: flex-start; }
 .sd .sd-mcard .sd-num.lg { font-size: 42px; flex: 0 0 auto; align-self: flex-start; }
