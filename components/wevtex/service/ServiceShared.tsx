@@ -59,6 +59,11 @@ export const ICON = {
   storybook: svgF("M16.71.243l-.12 2.71a.18.18 0 00.29.15l1.06-.8.9.7a.18.18 0 00.28-.14l-.1-2.76 1.33-.1a1.2 1.2 0 011.279 1.2v21.596a1.2 1.2 0 01-1.26 1.2l-16.096-.72a1.2 1.2 0 01-1.15-1.16l-.75-19.797a1.2 1.2 0 011.13-1.27L16.7.222zM13.64 9.3c0 .47 3.16.24 3.59-.08 0-3.2-1.72-4.89-4.859-4.89-3.15 0-4.899 1.72-4.899 4.29 0 4.45 5.999 4.53 5.999 6.959 0 .7-.32 1.1-1.05 1.1-.96 0-1.35-.49-1.3-2.16 0-.36-3.649-.48-3.769 0-.27 4.03 2.23 5.2 5.099 5.2 2.79 0 4.969-1.49 4.969-4.18 0-4.77-6.099-4.64-6.099-6.999 0-.97.72-1.1 1.13-1.1.45 0 1.25.07 1.19 1.87z"),
   sketch: svgF("M12 1.25l6.75 6.637V2L12 1.25zm0 0l-6.05 7h12.1l-6.05-7zm0 0L5.25 2v5.887L12 1.25zM5.25 2L0 9l4.416-.68L5.25 2zM0 9l11.959 13.703.008-.014L4.443 9H0zm18.75-7l.834 6.32L24 9l-5.25-7zM24 9h-4.506l-7.523 13.69.029.06L24 9zM12 22.75l-.031-.057-.008.012.039.045zM5.436 9l6.533 13.686L18.564 9H5.436Z"),
   odoo: svgF("M21.1002 15.7957c-1.6015 0-2.8997-1.2983-2.8997-2.8998s1.2983-2.8997 2.8997-2.8997c1.6015 0 2.8998 1.2982 2.8998 2.8997 0 1.5999-1.2979 2.8998-2.8998 2.8998zm0-1.2c.9388.0006 1.7003-.7601 1.7008-1.6989.0004-.9388-.7602-1.7003-1.699-1.7007h-.0018c-.9388.0004-1.6994.7619-1.699 1.7007.0005.9381.761 1.6985 1.699 1.699zm-6.0655 1.2c-1.6014 0-2.8997-1.2983-2.8997-2.8998s1.2983-2.8997 2.8997-2.8997c1.6015 0 2.8998 1.2982 2.8998 2.8997 0 1.5999-1.2999 2.8998-2.8998 2.8998zm0-1.2c.9389.0006 1.7003-.7601 1.7008-1.6989.0005-.9388-.7602-1.7003-1.699-1.7007h-.0018c-.9388.0004-1.6994.7619-1.699 1.7007.0005.9381.761 1.6985 1.699 1.699zM11.865 12.858c0 1.6199-1.2979 2.9378-2.8977 2.9378s-2.8998-1.314-2.8998-2.9358 1.1799-2.8597 2.8998-2.8597c.6359 0 1.2239.134 1.6998.484v-1.68a.6.6 0 0 1 1.2 0v4.0537h-.002zm-2.8977 1.7399c.9388.0005 1.7002-.7602 1.7007-1.699.0005-.9388-.7602-1.7003-1.699-1.7007h-.0017c-.9389.0004-1.6995.7619-1.699 1.7007.0004.9381.7608 1.6985 1.699 1.699zm-6.0675 1.1979C1.2983 15.7957 0 14.4974 0 12.8959s1.2983-2.8997 2.8998-2.8997 2.8997 1.2982 2.8997 2.8997c0 1.5999-1.2999 2.8998-2.8997 2.8998zm0-1.2c.9388.0006 1.7002-.7601 1.7007-1.699.0005-.9387-.7602-1.7002-1.699-1.7006h-.0017c-.9388.0004-1.6995.7619-1.699 1.7007.0004.9381.7608 1.6985 1.699 1.699z"),
+  mail: svg(<><rect x="2" y="4" width="20" height="16" rx="2" /><path d="M2 7l10 7 10-7" /></>),
+  calendar: svg(<><rect x="3" y="4" width="18" height="18" rx="2" /><path d="M16 2v4M8 2v4M3 10h18" /></>),
+  download: svg(<><path d="M12 3v12M7 12l5 5 5-5M3 19v2h18v-2" /></>),
+  whatsapp: svgF("M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"),
+  messenger: svgF("M12 0C5.373 0 0 4.974 0 11.111c0 3.498 1.744 6.614 4.469 8.654V24l4.088-2.242c1.092.301 2.246.465 3.443.465 6.627 0 12-4.975 12-11.112C24 4.974 18.627 0 12 0zm1.191 14.963l-3.055-3.26-5.963 3.26L10.732 8l3.131 3.26L19.752 8l-6.561 6.963z"),
 };
 
 export const OUTCOME = [ICON.edit, ICON.shield, ICON.chart];
@@ -67,8 +72,9 @@ export const TECH = [ICON.wordpressCircle, ICON.cubes, ICON.cart, ICON.pen];
 
 export const TECH_CHIP_ICON = (chip: string) => {
   const k = chip.toLowerCase();
+  // Real brand logos
   if (k.includes("wordpress")) return ICON.wordpressCircle;
-  if (k.includes("woo")) return ICON.woo;
+  if (k.includes("woocommerce") || k === "woo") return ICON.woo;
   if (k.includes("php")) return ICON.phpBox;
   if (k.includes("mysql")) return ICON.db;
   if (k.includes("next")) return ICON.nextjs;
@@ -92,8 +98,32 @@ export const TECH_CHIP_ICON = (chip: string) => {
   if (k.includes("sketch")) return ICON.sketch;
   if (k.includes("odoo")) return ICON.odoo;
   if (k.includes("figma")) return ICON.figma;
+  if (k.includes("whatsapp")) return ICON.whatsapp;
+  if (k.includes("messenger")) return ICON.messenger;
   if (k.includes("theme")) return ICON.brush;
   if (k.includes("acf")) return ICON.acfGrid;
+  // Concept icons for non-brand tech terms
+  if (k.includes("postgres") || k.includes("postgresql")) return ICON.db;
+  if (k.includes("dolibarr")) return ICON.building;
+  if (k.includes("medusa")) return ICON.cart;
+  if (k.includes("n8n")) return ICON.spark;
+  if (k.includes("make") || k.includes("integromat")) return ICON.refresh;
+  if (k.includes("hubspot")) return ICON.building;
+  if (k.includes("adobe")) return ICON.pen;
+  if (k.includes("claude") || k.includes("anthropic")) return ICON.spark;
+  if (k.includes("calendly")) return ICON.calendar;
+  if (k.includes("email") || k.includes("mail")) return ICON.mail;
+  if (k.includes("rest") || k.includes("webhook") || k.includes("json") || k.includes("schema") || k.includes("api")) return ICON.code;
+  if (k.includes("isr") || k.includes("cache")) return ICON.refresh;
+  if (k.includes("analyt") || k.includes("monitor") || k.includes("hotjar") || k.includes("export") || k === "bi") return ICON.chart;
+  if (k.includes("sheet") || k.includes("dashboard") || k.includes("vector") || k.includes("rag")) return ICON.layers;
+  if (k.includes("cloud") || k.includes("hosting") || k.includes("server")) return ICON.cube;
+  if (k.includes("auth") || k.includes("rbac")) return ICON.shield;
+  if (k.includes("widget") || k.includes("web widget")) return ICON.window;
+  if (k.includes("maze") || k.includes("useberry") || k.includes("hotjar") || k.includes("research")) return ICON.search;
+  if (k.includes("local pay") || (k.includes("local") && k.includes("pay"))) return ICON.cart;
+  if (k.includes("token") || k.includes("protopie")) return ICON.pen;
+  if (k.includes("custom")) return ICON.wrench;
   return null;
 };
 
