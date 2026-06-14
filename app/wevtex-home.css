@@ -5681,11 +5681,10 @@
 /* Bento: no upward lift on hover (keep colour + arrow only) */
 .wevtex .bento-card:hover { transform: none; box-shadow: 0 18px 40px -32px rgba(27,23,20,0.4); }
 
-/* ===== Services bento hover — simple lift, no border change ===== */
-.wevtex .services-bento .bento-card { transition: transform 220ms var(--ease-out), box-shadow 220ms var(--ease-out); }
-.wevtex .services-bento .bento-card:hover { transform: translateY(-4px); box-shadow: 0 16px 36px -18px rgba(27, 23, 20, 0.22); }
-.wevtex .services-bento .bento-card.bx-automation:hover { background: var(--clay); }
-.wevtex .services-bento .bento-card.bx-ecommerce:hover { background: #c98a2f; }
+/* ===== Services bento hover — unified: very light tint, no lift, no border change ===== */
+.wevtex .services-bento .bento-card { transition: background-color 200ms var(--ease-out); }
+.wevtex .services-bento .bento-card:hover { transform: none; box-shadow: none; }
+.wevtex .services-bento .bento-card:hover:not(.vermilion):not(.ochre) { background: rgba(229, 80, 30, 0.04); border-color: rgba(27, 23, 20, 0.08); }
 
 /* Industries: vermilion outline on hover */
 .wevtex .ic-card { transition: transform 240ms var(--ease-out), outline-color 240ms var(--ease-out); outline: 3px solid transparent; outline-offset: -3px; }
