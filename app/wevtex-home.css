@@ -5548,6 +5548,8 @@
 .wevtex .ic-card:hover .ic-overlay { background: linear-gradient(180deg, transparent 24%, rgba(18, 12, 9, 0.9)); }
 .wevtex .ic-badge { transition: background 240ms var(--ease-out), color 240ms var(--ease-out); }
 .wevtex .ic-card:hover .ic-badge { background: var(--vermilion); color: #fff; }
+.wevtex .ic-card-h { transition: color 240ms var(--ease-out); }
+.wevtex .ic-card:hover .ic-card-h { color: var(--vermilion); }
 .wevtex .ic-arrow { transition: background 160ms var(--ease-out), border-color 160ms var(--ease-out), color 160ms var(--ease-out); }
 .wevtex .ic-arrow:hover { background: rgba(28, 22, 16, 0.05); border-color: rgba(28, 22, 16, 0.4); color: var(--ink-on-cream); }
 .wevtex .ic-dots span { transition: transform 160ms var(--ease-out), background 160ms var(--ease-out); }
