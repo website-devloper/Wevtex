@@ -8,6 +8,7 @@ import { useTheme } from "../../app/ThemeContext";
  */
 
 import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
 import "../../app/wevtex-home.css";
 import { SiteHeader } from "./SiteHeader";
 import { SiteFooter } from "./SiteFooter";
@@ -29,6 +30,18 @@ const WHATSAPP = (
 const INDUSTRY_LINKS = [
   "ecommerce-retail", "tourism-hospitality", "professional-services", "healthcare-wellness",
   "industry-logistics", "education-elearning", "creative-media-tech", "public-sector-ngos",
+];
+
+/* Background photo for each industry card — indexed by the same position as INDUSTRY_LINKS. */
+const IC_IMAGES = [
+  "/images/industries/retails websites.png",          // 0 E-Commerce & Retail
+  "/images/industries/ryadh websites.png",             // 1 Tourism & Hospitality
+  "/images/industries/professional websites.png",      // 2 Professional Services
+  "/images/industries/HealthCare websites.png",        // 3 Healthcare & Wellness
+  "/images/industries/Logistic websites.png",          // 4 Industry & Logistics
+  "/images/industries/Learning website.png",           // 5 Education & E-Learning
+  "/images/industries/creative websites.png",          // 6 Creative, Media & Tech
+  "/images/industries/public and ngo website.png",     // 7 Public Sector & NGOs
 ];
 
 /* Service cards */
@@ -613,6 +626,13 @@ export function HomeClient() {
               { i: 7, label: "Public & NGOs", desc: "Accessible sites that inform and inspire action." },
             ].map((it, idx) => (
               <a key={it.i} href={`/industries/${INDUSTRY_LINKS[it.i]}`} className={`ic-card g${idx % 5}`}>
+                <Image
+                  src={IC_IMAGES[it.i]}
+                  alt={it.label}
+                  fill
+                  style={{ objectFit: "cover", objectPosition: "center top" }}
+                  sizes="(max-width: 768px) 80vw, 25vw"
+                />
                 <span className="ic-overlay" aria-hidden></span>
                 <span className="ic-card-inner">
                   <span className="ic-badge">{INDUSTRIES[it.i].icon}</span>
