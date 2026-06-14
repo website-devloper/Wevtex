@@ -5681,15 +5681,11 @@
 /* Bento: no upward lift on hover (keep colour + arrow only) */
 .wevtex .bento-card:hover { transform: none; box-shadow: 0 18px 40px -32px rgba(27,23,20,0.4); }
 
-/* ===== Services bento hover — simple & clear =====
-   Light cards: subtle lift + arrow fills orange.
-   Filled (red/ochre) cards: background deepens slightly.
-   No background wash, no border animation. */
-.wevtex .services-bento .bento-card { transition: transform 220ms var(--ease-out), box-shadow 220ms var(--ease-out); }
-.wevtex .services-bento .bento-card:not(.vermilion):not(.ochre):hover { transform: translateY(-3px); box-shadow: 0 10px 28px -14px rgba(27, 23, 20, 0.18); }
-.wevtex .services-bento .bento-card:not(.vermilion):not(.ochre):hover .bento-arrow { background: var(--vermilion); color: #fff; border-color: transparent; }
-.wevtex .services-bento .bento-card.bx-automation:hover { background: var(--clay); }
-.wevtex .services-bento .bento-card.bx-ecommerce:hover { background: #c98a2f; }
+/* ===== Services bento hover — matches service-detail .sd-card hover =====
+   No lift, no border change, near-invisible vermilion tint. Unified for all cards. */
+.wevtex .services-bento .bento-card { transition: background-color 200ms var(--ease-out), box-shadow 200ms var(--ease-out); }
+.wevtex .services-bento .bento-card:hover { transform: none; box-shadow: 0 18px 40px -30px rgba(27, 23, 20, 0.2); }
+.wevtex .services-bento .bento-card:not(.vermilion):not(.ochre):hover { background: rgba(229, 80, 30, 0.012); }
 
 /* Industries: vermilion outline on hover */
 .wevtex .ic-card { transition: transform 240ms var(--ease-out), outline-color 240ms var(--ease-out); outline: 3px solid transparent; outline-offset: -3px; }
