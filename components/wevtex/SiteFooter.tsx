@@ -4,8 +4,8 @@ import { useState } from "react";
 
 /** Wevtex site footer — shared across the homepage and all inner pages. */
 const PAGES: [string, string][] = [
-  ["Home", "/"], ["About us", "/about"], ["Our work", "/portfolio"], ["How it works", "/#process"],
-  ["Pricing", "/#pricing"], ["Add-ons", "/#addons"], ["Blog", "/blog"], ["Contact", "/contact"],
+  ["Home", "/"], ["About us", "/about"], ["Our work", "/portfolio"], ["How it works", "/services#process"],
+  ["Pricing", "/#pricing"], ["Add-ons", "/services#addons"], ["Blog", "/blog"], ["Contact", "/contact"],
 ];
 const SERVICES: [string, string][] = [
   ["Web Design", "/services/ux-ui-design"], ["Web Development", "/services/web-development"],

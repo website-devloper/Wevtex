@@ -4,6 +4,7 @@
 import { useTheme } from "@/app/ThemeContext";
 /** Wevtex — About. Ported from .design-wevtex/project/about.html */
 
+import Image from "next/image";
 import "../wevtex-home.css";
 import { SiteHeader } from "../../components/wevtex/SiteHeader";
 import { SiteFooter } from "../../components/wevtex/SiteFooter";
@@ -14,6 +15,16 @@ const VALUES = [
   { n: "ii", h: <>Senior people<br />only.</>, p: "No juniors handed your account. The team that pitches you is the team that ships. Average tenure on staff: 8 years. Average years in the industry: 12. That seniority is the product." },
   { n: "iii", h: <>Twelve engagements<br />a year. <em>Never more.</em></>, p: "We cap engagements deliberately. It's the only way to keep response times under four hours, demo cycles weekly, and the team fresh enough to do their best work for you." },
   { n: "iv", h: <>Independent. Profitable.<br />Not for sale.</>, p: "No outside investors. No exit pressure. We answer to two stakeholders: our clients and our team. That structure lets us say no to bad-fit projects and yes to the right ones." },
+];
+
+/* Why a studio beats the two alternatives buyers actually weigh us against. */
+const COMPARISON_ROWS = [
+  { label: "Timeline", us: "2–4 weeks, fixed", agency: "2–4 months", free: "Open-ended" },
+  { label: "Price", us: "Fixed, published", agency: "Quote on request", free: "Hourly, variable" },
+  { label: "Who builds it", us: "The team you met", agency: "Junior or outsourced", free: "One person" },
+  { label: "After launch", us: "Support included", agency: "Retainer required", free: "Often unreachable" },
+  { label: "Speed & SEO", us: "Built in from day one", agency: "Paid add-on", free: "Rarely covered" },
+  { label: "Code ownership", us: "Yours, fully", agency: "Locked to their CMS", free: "Undocumented" },
 ];
 
 const TEAM = [
@@ -136,6 +147,33 @@ export default function AboutPage() {
         </div>
       </section>
 
+      {/* WHO YOU WORK WITH — moved off the homepage; it belongs with the team story. */}
+      {/* People buy from people — a face and a name before the final ask. */}
+      <section className={`${isDark ? "theme-dark" : "theme-paper"} founder-v2`}>
+        <div className="container">
+          <div className="fd-inner reveal">
+            <div className="fd-photo">
+              <Image src="/images/team/founder.png" alt="Founder of Wevtex" width={640} height={800} sizes="(max-width: 820px) 60vw, 320px" />
+            </div>
+            <div className="fd-body">
+              <span className="eyebrow line-eyebrow">Who you work with</span>
+              <h2 className="h-section" style={{ marginTop: 16 }}>
+                You will talk to the<br />people who <em className="hl-em">build it</em>
+              </h2>
+              <p className="fd-p">
+                No account managers and no handover to a team you never met. You brief us
+                directly, and the same people write the code and stay reachable after launch.
+              </p>
+              <p className="fd-sign">Wevtex — Morocco</p>
+              <a href="/contact" className="btn btn-outline">
+                Message us directly
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* TIMELINE */}
       <section className={isDark ? "theme-dark" : "theme-cream"} style={{ padding: "140px 0" }}>
         <div className="container">
@@ -154,6 +192,45 @@ export default function AboutPage() {
                 <p style={{ color: "var(--ink-on-dark-2)" }}>{t.p}</p>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* COMPARISON — moved off the homepage; vetting material belongs on About. */}
+      {/* Answers "why not cheaper" before the visitor sees a price. */}
+      <section className={`${isDark ? "theme-dark" : "theme-cream"} compare-v2`} id="compare">
+        <div className="container">
+          <div className="cmp-head reveal">
+            <span className="eyebrow line-eyebrow">Why Wevtex</span>
+            <h2 className="h-section" style={{ marginTop: 16 }}>
+              How we compare to<br />the <em className="hl-em">usual options</em>
+            </h2>
+          </div>
+          <div className="cmp-scroll reveal">
+            <table className="cmp-table">
+              <caption>Wevtex compared with a typical agency and a freelancer</caption>
+              <thead>
+                <tr>
+                  <th scope="col"><span className="cmp-hidden">Criteria</span></th>
+                  <th scope="col" className="cmp-us">Wevtex</th>
+                  <th scope="col">Typical agency</th>
+                  <th scope="col">Freelancer</th>
+                </tr>
+              </thead>
+              <tbody>
+                {COMPARISON_ROWS.map((r) => (
+                  <tr key={r.label}>
+                    <th scope="row">{r.label}</th>
+                    <td className="cmp-us">
+                      <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" strokeWidth="2.1" strokeLinecap="round" strokeLinejoin="round" aria-hidden><path d="M20 6L9 17l-5-5" /></svg>
+                      {r.us}
+                    </td>
+                    <td>{r.agency}</td>
+                    <td>{r.free}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </div>
         </div>
       </section>

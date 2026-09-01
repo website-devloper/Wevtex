@@ -62,7 +62,7 @@ export function ProcessSection() {
   }, []);
 
   return (
-    <section ref={ref} className={`${isDark ? "theme-dark" : "theme-cream"} process`}>
+    <section ref={ref} id="process" className={`${isDark ? "theme-dark" : "theme-cream"} process`}>
       <div className="container">
         <div className="process-head reveal">
           <div>

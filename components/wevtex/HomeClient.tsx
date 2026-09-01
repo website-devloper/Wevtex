@@ -3,7 +3,8 @@
 import { useTheme } from "../../app/ThemeContext";
 /**
  * Wevtex homepage — a lean conversion funnel:
- * Hero → Problem → Services → Industries → Proof → Work → FAQ → Pricing → Add-ons → CTA → Contact.
+ * Hero → Problem → Services → Work → Proof → Testimonials → Industries → Pricing → FAQ → Contact.
+ * Deeper material (process, comparison, add-ons, founder) lives on /services and /about.
  * Primary actions everywhere are WhatsApp and email.
  */
 
@@ -43,16 +44,6 @@ const CLIENT_LOGOS = [
   { name: "Petrocore", src: "/images/clients/client-04.png" },
   { name: "Eduflow", src: "/images/clients/client-05.png" },
   { name: "Atlas Logistics", src: "/images/clients/client-06.png" },
-];
-
-/* Why a studio beats the two alternatives buyers actually weigh us against. */
-const COMPARISON_ROWS = [
-  { label: "Timeline", us: "2–4 weeks, fixed", agency: "2–4 months", free: "Open-ended" },
-  { label: "Price", us: "Fixed, published", agency: "Quote on request", free: "Hourly, variable" },
-  { label: "Who builds it", us: "The team you met", agency: "Junior or outsourced", free: "One person" },
-  { label: "After launch", us: "Support included", agency: "Retainer required", free: "Often unreachable" },
-  { label: "Speed & SEO", us: "Built in from day one", agency: "Paid add-on", free: "Rarely covered" },
-  { label: "Code ownership", us: "Yours, fully", agency: "Locked to their CMS", free: "Undocumented" },
 ];
 
 const WHATSAPP = (
@@ -175,26 +166,6 @@ const SERVICE_CARDS = [
     href: "/services/ai-chatbots",
     icon: <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><path d="M20.5 11.5a8 8 0 0 1-11.9 7L4 20l1.6-4.4A8 8 0 1 1 20.5 11.5z" /><path d="M9.5 11.5v.8M14.5 11.5v.8" /><path d="M9.8 15c1.4 1 3 1 4.4 0" /></svg>,
   },
-];
-
-/* Add-on cards */
-const ADDONS = [
-  { h: "Extra pages", p: "Add more pages to any package as you grow.", pr: "300 DH / page" },
-  { h: "Multilingual", p: "Serve your customers in a second language.", pr: "800 DH" },
-  { h: "Blog setup", p: "A blog to publish news and boost your SEO.", pr: "1,000 DH" },
-  { h: "SEO boost", p: "Deeper optimization to climb higher on Google.", pr: "from 1,000 DH" },
-  { h: "Booking system", p: "Let customers book appointments online.", pr: "1,500 DH" },
-  { h: "Google Business", p: "Get found on Google Maps and local search.", pr: "from 500 DH" },
-  { h: "Social media setup", p: "Branded social accounts, ready to post.", pr: "500 DH" },
-  { h: "Store module", p: "Add a shop and checkout to an existing site.", pr: "from 2,000 DH" },
-];
-
-/* Process steps */
-const STEPS = [
-  { n: "01", h: "Discover", p: "A quick call to understand your business, your customers and your goals. You get a clear plan before anything starts.", d: "1–2 days" },
-  { n: "02", h: "Design", p: "We design your site in the browser and refine it with you — so what you approve is exactly what gets built.", d: "3–5 days" },
-  { n: "03", h: "Build", p: "We build a fast, secure, mobile-ready site, with updates every week so you always know where things stand.", d: "1–3 weeks" },
-  { n: "04", h: "Launch", p: "We put your site live, test everything, connect analytics and hand it over — with support continuing after launch.", d: "1–2 days" },
 ];
 
 /* Sample proof — placeholder content shown for layout only.
@@ -515,14 +486,9 @@ export function HomeClient() {
               />
             </div>
           </div>
-        </div>
-      </section>
 
-      {/* ===================== CLIENT LOGOS ===================== */}
-      {/* Trust element above the fold: proof of other clients before any claim. */}
-      <section className={`${isDark ? "theme-dark" : "theme-cream"} logo-strip`}>
-        <div className="container">
-          <div className="ls-inner reveal">
+          {/* Trust bar: proof of other clients, kept in the hero so it lands above the fold. */}
+          <div className="hero-logos reveal">
             <p className="ls-lead">Trusted by teams across Morocco and beyond</p>
             <ul className="ls-row">
               {CLIENT_LOGOS.map((c) => (
@@ -588,30 +554,6 @@ export function HomeClient() {
         </div>
       </section>
 
-      {/* ===================== STATS (mockup 6 — clay band) ===================== */}
-      {/* TODO: replace with verified figures before launch. */}
-      <section className="stats-band-v2">
-        <span className="sb-motif tl" aria-hidden></span>
-        <span className="sb-motif br" aria-hidden></span>
-        <div className="container">
-          <div className="sb-grid reveal">
-            {[
-              { to: 200, dec: 0, suffix: "+", label: "Projects delivered", desc: "Successful websites, apps and automation systems launched." },
-              { to: 5, dec: 1, suffix: "", label: "Average rating", desc: "Based on client reviews across platforms." },
-              { to: 4, dec: 0, suffix: "", label: "Years experience", desc: "Helping businesses grow with smart digital solutions." },
-              { to: 98, dec: 0, suffix: "%", label: "Client satisfaction", desc: "Clients who recommend us and come back." },
-            ].map((s) => (
-              <div className="sb-item" key={s.label}>
-                <div className="sb-num" data-to={s.to} data-dec={s.dec} data-suffix={s.suffix}>{`0${s.suffix}`}</div>
-                <div className="sb-label">{s.label}</div>
-                <span className="sb-rule"></span>
-                <p className="sb-desc">{s.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* ===================== PROJECTS (mockup 7 — browser-frame cards) ===================== */}
       <section className={`${isDark ? "theme-dark" : "theme-cream"} projects-v2`} id="work">
         <div className="container">
@@ -650,6 +592,30 @@ export function HomeClient() {
             ))}
           </div>
 
+        </div>
+      </section>
+
+      {/* ===================== STATS (mockup 6 — clay band) ===================== */}
+      {/* TODO: replace with verified figures before launch. */}
+      <section className="stats-band-v2">
+        <span className="sb-motif tl" aria-hidden></span>
+        <span className="sb-motif br" aria-hidden></span>
+        <div className="container">
+          <div className="sb-grid reveal">
+            {[
+              { to: 200, dec: 0, suffix: "+", label: "Projects delivered", desc: "Successful websites, apps and automation systems launched." },
+              { to: 5, dec: 1, suffix: "", label: "Average rating", desc: "Based on client reviews across platforms." },
+              { to: 4, dec: 0, suffix: "", label: "Years experience", desc: "Helping businesses grow with smart digital solutions." },
+              { to: 98, dec: 0, suffix: "%", label: "Client satisfaction", desc: "Clients who recommend us and come back." },
+            ].map((s) => (
+              <div className="sb-item" key={s.label}>
+                <div className="sb-num" data-to={s.to} data-dec={s.dec} data-suffix={s.suffix}>{`0${s.suffix}`}</div>
+                <div className="sb-label">{s.label}</div>
+                <span className="sb-rule"></span>
+                <p className="sb-desc">{s.desc}</p>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -735,48 +701,6 @@ export function HomeClient() {
         </div>
       </section>
 
-      {/* ===================== CALL AUDIT ===================== */}
-      {/* Low-commitment offer for visitors who are not ready to ask for a quote. */}
-      <section className="audit-band" id="audit">
-        <span className="audit-motif" aria-hidden></span>
-        <div className="container">
-          <div className="audit-inner reveal">
-            <div className="audit-left">
-              <span className="eyebrow line-eyebrow">Free call audit</span>
-              <h2 className="audit-h">
-                Not ready for a quote?<br />
-                Take the <em className="hl-em">15-minute call audit</em>
-              </h2>
-              <p className="audit-p">
-                A short call, no slides and no obligation. We look at your site with you
-                and tell you what we would fix first.
-              </p>
-            </div>
-            <div className="audit-right">
-              <ul className="audit-list">
-                <li>
-                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round" aria-hidden><path d="M20 6L9 17l-5-5" /></svg>
-                  What is costing you customers right now
-                </li>
-                <li>
-                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round" aria-hidden><path d="M20 6L9 17l-5-5" /></svg>
-                  The one change to make first
-                </li>
-                <li>
-                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round" aria-hidden><path d="M20 6L9 17l-5-5" /></svg>
-                  A realistic timeline and budget
-                </li>
-              </ul>
-              <a href={AUDIT_WHATSAPP_URL} className="btn btn-primary audit-btn" target="_blank" rel="noopener">
-                Book the free audit
-                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden><path d="M5 12h14M13 6l6 6-6 6" /></svg>
-              </a>
-              <span className="audit-note">No sales pitch. No commitment.</span>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* ===================== INDUSTRIES (mockup 4 — carousel) ===================== */}
       <section className={`${isDark ? "theme-dark" : "theme-paper"} industries-carousel`} id="industries">
         <div className="container">
@@ -832,85 +756,6 @@ export function HomeClient() {
             <button className="ic-arrow" aria-label="Next industries" onClick={(e) => { const t = e.currentTarget.closest(".industries-carousel")?.querySelector(".ic-track") as HTMLElement | null; t?.scrollBy({ left: 340, behavior: "smooth" }); }}>
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M9 18l6-6-6-6" /></svg>
             </button>
-          </div>
-        </div>
-      </section>
-
-      {/* ===================== PROCESS (mockup 5 — timeline) ===================== */}
-      <section className={`${isDark ? "theme-dark" : "theme-cream"} process-timeline`} id="process">
-        <div className="container">
-          <div className="pt-head reveal">
-            <span className="eyebrow line-eyebrow-center">How it works</span>
-            <h2 className="h-section" style={{ marginTop: 16, justifyContent: "center" }}>
-              A clear process. <em className="hl-em">Real results.</em>
-            </h2>
-            <p className="ic-sub">
-              From first conversation to final launch, we keep things simple,<br />
-              transparent, and focused on your goals.
-            </p>
-          </div>
-
-          <div className="pt-track reveal">
-            {[
-              { n: "01", h: "Discover", p: "We learn about your business, audience, and goals.", icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="7" /><path d="M21 21l-4.3-4.3" /></svg> },
-              { n: "02", h: "Design", p: "We plan the structure and craft a beautiful, intuitive experience.", icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><path d="M12 20h9" /><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z" /></svg> },
-              { n: "03", h: "Build", p: "We develop your solution with clean code and reliable functionality.", icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><polyline points="16 18 22 12 16 6" /><polyline points="8 6 2 12 8 18" /></svg> },
-              { n: "04", h: "Launch", p: "We launch, test, and support you for long-term success.", icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><path d="M4.5 16.5c-1.5 1.3-2 5-2 5s3.7-.5 5-2c.7-.9.7-2.2-.1-3a2.1 2.1 0 0 0-2.9 0z" /><path d="M12 15l-3-3a16 16 0 0 1 9-9 6 6 0 0 1-9 9z" /><path d="M9 12H4s.5-3 2-4 5 0 5 0" /></svg> },
-            ].map((s) => (
-              <div className="pt-step" key={s.n}>
-                <span className="pt-node">
-                  {s.icon}
-                  <span className="pt-num">{s.n}</span>
-                </span>
-                <h4>{s.h}</h4>
-                <p>{s.p}</p>
-              </div>
-            ))}
-            {["1–2 days", "3–5 days", "1–3 weeks"].map((d, i) => (
-              <span className="pt-dur" style={{ left: `${25 * (i + 1)}%` }} key={d}>
-                <span className="node"></span>
-                <span className="lbl">{d}</span>
-              </span>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ===================== COMPARISON ===================== */}
-      {/* Answers "why not cheaper" before the visitor sees a price. */}
-      <section className={`${isDark ? "theme-dark" : "theme-cream"} compare-v2`} id="compare">
-        <div className="container">
-          <div className="cmp-head reveal">
-            <span className="eyebrow line-eyebrow">Why Wevtex</span>
-            <h2 className="h-section" style={{ marginTop: 16 }}>
-              How we compare to<br />the <em className="hl-em">usual options</em>
-            </h2>
-          </div>
-          <div className="cmp-scroll reveal">
-            <table className="cmp-table">
-              <caption>Wevtex compared with a typical agency and a freelancer</caption>
-              <thead>
-                <tr>
-                  <th scope="col"><span className="cmp-hidden">Criteria</span></th>
-                  <th scope="col" className="cmp-us">Wevtex</th>
-                  <th scope="col">Typical agency</th>
-                  <th scope="col">Freelancer</th>
-                </tr>
-              </thead>
-              <tbody>
-                {COMPARISON_ROWS.map((r) => (
-                  <tr key={r.label}>
-                    <th scope="row">{r.label}</th>
-                    <td className="cmp-us">
-                      <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" strokeWidth="2.1" strokeLinecap="round" strokeLinejoin="round" aria-hidden><path d="M20 6L9 17l-5-5" /></svg>
-                      {r.us}
-                    </td>
-                    <td>{r.agency}</td>
-                    <td>{r.free}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
           </div>
         </div>
       </section>
@@ -979,68 +824,13 @@ export function HomeClient() {
             <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden><path d="M20 6L9 17l-5-5" /></svg>Pay only when you&apos;re satisfied</span>
             <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden><path d="M20 6L9 17l-5-5" /></svg>Need something custom? Ask us</span>
           </div>
-        </div>
-      </section>
 
-      {/* CTA next to pricing — social proof and the ask in the same eyeline. */}
-      <section className={`${isDark ? "theme-dark" : "theme-cream"} inline-cta`}>
-        <div className="container">
-          <div className="ict-inner reveal">
-            <p className="ict-text">Not sure which plan fits? Ask us — it takes two minutes.</p>
-            <a href={WHATSAPP_URL} className="btn btn-primary" target="_blank" rel="noopener">
-              Talk to us on WhatsApp
+          {/* Add-ons live on /services — the detail belongs after the visitor has picked a plan. */}
+          <div className="pr-addons-link reveal">
+            <a href="/services#addons">
+              See every add-on and its price
               <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden><path d="M5 12h14M13 6l6 6-6 6" /></svg>
             </a>
-          </div>
-        </div>
-      </section>
-
-      {/* ===================== ADD-ONS (mockup 11 — list) ===================== */}
-      <section className={`${isDark ? "theme-dark" : "theme-cream"} addons-v2`} id="addons">
-        <div className="container">
-          <div className="ao-head reveal">
-            <span className="eyebrow line-eyebrow">Add-ons</span>
-            <h2 className="h-section" style={{ marginTop: 14 }}>Make it yours <em className="hl-em">with add-ons</em></h2>
-            <p className="ic-sub" style={{ marginTop: 14, textAlign: "left" }}>
-              Enhance your solution with powerful features and services.<br />Only pay for what you need.
-            </p>
-          </div>
-
-          <div className="ao-grid reveal">
-            {[
-              { name: "Additional Page", desc: "Add extra pages to your website.", price: "300 DH/page", tone: "v", icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><circle cx="12" cy="12" r="9" /><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18" /></svg> },
-              { name: "Custom Feature", desc: "Tailored functionality built for your needs.", price: "1,000 DH+", tone: "o", icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4"><circle cx="12" cy="12" r="3" /><path d="M19 12a7 7 0 0 0-.1-1l2-1.5-2-3.5-2.3 1a7 7 0 0 0-1.7-1l-.3-2.5h-4l-.3 2.5a7 7 0 0 0-1.7 1l-2.3-1-2 3.5 2 1.5a7 7 0 0 0 0 2l-2 1.5 2 3.5 2.3-1a7 7 0 0 0 1.7 1l.3 2.5h4l.3-2.5a7 7 0 0 0 1.7-1l2.3 1 2-3.5-2-1.5a7 7 0 0 0 .1-1z" /></svg> },
-              { name: "E-commerce Setup", desc: "Full online store setup and configuration.", price: "1,500 DH", tone: "o", icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="9" cy="21" r="1" /><circle cx="20" cy="21" r="1" /><path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6" /></svg> },
-              { name: "Content Writing", desc: "Professional copywriting for your pages.", price: "500 DH/page", tone: "v", icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M12 20h9" /><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z" /></svg> },
-              { name: "Multi-language", desc: "Add additional languages to your site.", price: "800 DH", tone: "v", icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M4 5h7M9 3v2c0 4-2 7-6 8" /><path d="M5 9c0 3 3 5 6 6" /><path d="M13 21l4-9 4 9M14.5 18h5" /></svg> },
-              { name: "Custom Design", desc: "Premium UI/UX design enhancements.", price: "2,000 DH", tone: "o", icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="4" width="18" height="16" rx="2" /><circle cx="8.5" cy="9" r="1.5" /><path d="M21 16l-5-5L5 20" /></svg> },
-              { name: "Speed Optimization", desc: "Improve loading speed and performance.", price: "1,000 DH", tone: "o", icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M12 14a8 8 0 1 1 8-8" opacity="0" /><circle cx="12" cy="13" r="8" /><path d="M12 13l4-3" /><path d="M9 3h6" /></svg> },
-              { name: "Cloud Backup", desc: "Automatic daily backups and recovery.", price: "800 DH/year", tone: "o", icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M6 18a4 4 0 0 1 0-8 6 6 0 0 1 11.5-1.5A4 4 0 0 1 18 18z" /><path d="M12 12v5M9.5 14.5L12 12l2.5 2.5" /></svg> },
-              { name: "SSL Certificate", desc: "Secure your website with SSL.", price: "300 DH/year", tone: "v", icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z" /><path d="M9 12l2 2 4-4" /></svg> },
-              { name: "Priority Support", desc: "Faster response and priority handling.", price: "1,000 DH/month", tone: "o", icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M4 14v-2a8 8 0 0 1 16 0v2" /><rect x="3" y="14" width="4" height="6" rx="1.5" /><rect x="17" y="14" width="4" height="6" rx="1.5" /><path d="M20 19a3 3 0 0 1-3 3h-2" /></svg> },
-            ].map((a) => (
-              <div className="ao-row" key={a.name}>
-                <span className="ao-icon">{a.icon}</span>
-                <div className="ao-info">
-                  <div className="ao-name">{a.name}</div>
-                  <div className="ao-desc">{a.desc}</div>
-                </div>
-                <span className={`ao-price ${a.tone}`}>{a.price}</span>
-              </div>
-            ))}
-          </div>
-
-          <div className="ao-foot reveal">
-            <div className="ao-foot-in">
-              <span className="ao-info-icon">
-                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="9" /><path d="M12 16v-4M12 8h.01" /></svg>
-              </span>
-              <span>Need something specific?</span>
-              <a href={WHATSAPP_URL} target="_blank" rel="noopener">
-                Let&apos;s talk about your project
-                <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden><path d="M5 12h14M13 6l6 6-6 6" /></svg>
-              </a>
-            </div>
           </div>
         </div>
       </section>
@@ -1095,33 +885,6 @@ export function HomeClient() {
         </div>
       </section>
 
-      {/* ===================== FOUNDER ===================== */}
-      {/* People buy from people — a face and a name before the final ask. */}
-      <section className={`${isDark ? "theme-dark" : "theme-paper"} founder-v2`}>
-        <div className="container">
-          <div className="fd-inner reveal">
-            <div className="fd-photo">
-              <Image src="/images/team/founder.png" alt="Founder of Wevtex" width={640} height={800} sizes="(max-width: 820px) 60vw, 320px" />
-            </div>
-            <div className="fd-body">
-              <span className="eyebrow line-eyebrow">Who you work with</span>
-              <h2 className="h-section" style={{ marginTop: 16 }}>
-                You will talk to the<br />people who <em className="hl-em">build it</em>
-              </h2>
-              <p className="fd-p">
-                No account managers and no handover to a team you never met. You brief us
-                directly, and the same people write the code and stay reachable after launch.
-              </p>
-              <p className="fd-sign">Wevtex — Morocco</p>
-              <a href={WHATSAPP_URL} className="btn btn-outline" target="_blank" rel="noopener">
-                Message us directly
-                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden><path d="M5 12h14M13 6l6 6-6 6" /></svg>
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* ===================== CONTACT (single column) ===================== */}
       <section className="contact-one" id="contact">
         <div className="container">
@@ -1162,6 +925,21 @@ export function HomeClient() {
             <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden><path d="M20 6L9 17l-5-5" /></svg>Reply within a few hours</li>
           </ul>
           <p className="co-hours reveal">Mon &ndash; Fri 09:00&ndash;18:00 &middot; Sat 10:00&ndash;14:00 &middot; Sun closed</p>
+
+          {/* Low-commitment fallback for visitors who scrolled past the form without sending it. */}
+          <div className="co-audit reveal">
+            <div className="co-audit-tx">
+              <b>Not ready for a quote?</b>
+              <span>
+                Take the free 15-minute call audit. We look at your site with you and tell you
+                what we would fix first &mdash; no slides, no pitch, no commitment.
+              </span>
+            </div>
+            <a href={AUDIT_WHATSAPP_URL} className="btn btn-outline" target="_blank" rel="noopener">
+              Book the free audit
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+            </a>
+          </div>
         </div>
       </section>
 
