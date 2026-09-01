@@ -125,9 +125,9 @@ export function MagneticCursor() {
           width: variant === "hover" ? 48 : 8,
           height: variant === "hover" ? 48 : 8,
           backgroundColor:
-            variant === "hover" ? "rgba(255, 90, 31, 0)" : "#FF5A1F",
+            variant === "hover" ? "rgba(198,242,78, 0)" : "#c6f24e",
           borderWidth: variant === "hover" ? 1.5 : 0,
-          borderColor: "#FF5A1F",
+          borderColor: "#c6f24e",
           borderStyle: "solid",
         }}
         transition={{ type: "spring", damping: 20, stiffness: 200, mass: 0.5 }}

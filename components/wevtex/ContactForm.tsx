@@ -26,8 +26,10 @@ export function ContactForm() {
     const payload = {
       name: String(data.get("name") || ""),
       contact: String(data.get("contact") || ""),
-      business: String(data.get("business") || ""),
-      service: String(data.get("service") || ""),
+      // Business and service were dropped from the form to cut friction; the
+      // Route Handler still accepts them, so they are sent empty.
+      business: "",
+      service: "",
       message: String(data.get("message") || ""),
       company_url: String(data.get("company_url") || ""), // honeypot
     };
@@ -82,21 +84,6 @@ export function ContactForm() {
           <label htmlFor="cf-contact">WhatsApp or email</label>
           <input id="cf-contact" name="contact" type="text" placeholder="So we can reply" required />
         </div>
-        <div className="field">
-          <label htmlFor="cf-business">Business name</label>
-          <input id="cf-business" name="business" type="text" placeholder="Your business" autoComplete="organization" />
-        </div>
-        <div className="field">
-          <label htmlFor="cf-service">What do you need?</label>
-          <select id="cf-service" name="service" defaultValue="">
-            <option value="">Select a service</option>
-            <option>A new website</option>
-            <option>An online store</option>
-            <option>SEO / Google ranking</option>
-            <option>GEO / AI search</option>
-            <option>Hosting &amp; support</option>
-          </select>
-        </div>
         <div className="field full">
           <label htmlFor="cf-message">Your message</label>
           <textarea id="cf-message" name="message" required placeholder="Tell us what you'd like to build and when you'd like it live."></textarea>
@@ -104,7 +91,7 @@ export function ContactForm() {
       </div>
 
       {status === "error" && (
-        <p role="alert" style={{ color: "var(--accent-hot, #e5484d)", margin: "0 0 12px" }}>
+        <p role="alert" style={{ color: "var(--lime-ink, #4c6b10)", fontWeight: 500, margin: "0 0 12px" }}>
           {error}
         </p>
       )}

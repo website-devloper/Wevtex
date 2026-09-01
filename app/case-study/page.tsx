@@ -34,13 +34,13 @@ export default function CaseStudyPage() {
           </div>
 
           <div className="case-cover reveal" style={{ marginBottom: -100 }}>
-            <div style={{ position: "absolute", inset: 0, background: "radial-gradient(60% 80% at 50% 20%, rgba(217,74,26,0.25), transparent 70%)" }}></div>
+            <div style={{ position: "absolute", inset: 0, background: "radial-gradient(60% 80% at 50% 20%, rgba(198,242,78,0.25), transparent 70%)" }}></div>
             <div style={{ position: "absolute", inset: "6% 8%", background: "var(--bg-paper)", borderRadius: 10, boxShadow: "0 40px 80px -20px rgba(0,0,0,0.5)", overflow: "hidden", border: "1px solid rgba(0,0,0,0.1)" }}>
-              <div style={{ height: 32, background: "rgba(28,20,16,0.04)", borderBottom: "1px solid rgba(28,20,16,0.06)", display: "flex", alignItems: "center", padding: "0 14px", gap: 6 }}>
-                <span style={{ width: 9, height: 9, borderRadius: "50%", background: "rgba(28,20,16,0.18)" }}></span>
-                <span style={{ width: 9, height: 9, borderRadius: "50%", background: "rgba(28,20,16,0.18)" }}></span>
-                <span style={{ width: 9, height: 9, borderRadius: "50%", background: "rgba(28,20,16,0.18)" }}></span>
-                <span style={{ marginLeft: "auto", fontFamily: "var(--font-mono)", fontSize: 10, color: "rgba(28,20,16,0.5)", background: "rgba(28,20,16,0.06)", padding: "3px 10px", borderRadius: 4 }}>globale-store.com</span>
+              <div style={{ height: 32, background: "rgba(16,17,18,0.04)", borderBottom: "1px solid rgba(16,17,18,0.06)", display: "flex", alignItems: "center", padding: "0 14px", gap: 6 }}>
+                <span style={{ width: 9, height: 9, borderRadius: "50%", background: "rgba(16,17,18,0.18)" }}></span>
+                <span style={{ width: 9, height: 9, borderRadius: "50%", background: "rgba(16,17,18,0.18)" }}></span>
+                <span style={{ width: 9, height: 9, borderRadius: "50%", background: "rgba(16,17,18,0.18)" }}></span>
+                <span style={{ marginLeft: "auto", fontFamily: "var(--font-mono)", fontSize: 10, color: "rgba(16,17,18,0.5)", background: "rgba(16,17,18,0.06)", padding: "3px 10px", borderRadius: 4 }}>globale-store.com</span>
               </div>
               <div style={{ padding: "40px 60px", display: "grid", gridTemplateColumns: "1fr 1fr", gap: 40, alignItems: "center", height: "calc(100% - 32px)" }}>
                 <div>
@@ -49,19 +49,19 @@ export default function CaseStudyPage() {
                   <div style={{ height: 6, width: "60%", background: "var(--ink-on-cream-2)", borderRadius: 2, marginTop: 18 }}></div>
                   <div style={{ height: 6, width: "45%", background: "var(--ink-on-cream-2)", borderRadius: 2, marginTop: 8 }}></div>
                   <div style={{ display: "flex", gap: 10, marginTop: 30 }}>
-                    <div style={{ padding: "10px 22px", borderRadius: 999, background: "var(--accent)", color: "#fff", fontSize: 12 }}>Shop now →</div>
+                    <div style={{ padding: "10px 22px", borderRadius: 999, background: "var(--accent)", color: "var(--on-lime)", fontSize: 12 }}>Shop now →</div>
                     <div style={{ padding: "10px 22px", borderRadius: 999, border: "1px solid var(--ink-on-cream-2)", color: "var(--ink-on-cream)", fontSize: 12 }}>Browse</div>
                   </div>
                 </div>
                 <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 10 }}>
-                  <div style={{ aspectRatio: "1", borderRadius: 10, background: "linear-gradient(135deg, #d94a1a, #8a2d08)" }}></div>
+                  <div style={{ aspectRatio: "1", borderRadius: 10, background: "linear-gradient(135deg, #c6f24e, #4c6b10)" }}></div>
                   <div style={{ aspectRatio: "1", borderRadius: 10, background: "var(--ink-on-cream)" }}></div>
-                  <div style={{ aspectRatio: "1", borderRadius: 10, background: "rgba(28,20,16,0.08)" }}></div>
+                  <div style={{ aspectRatio: "1", borderRadius: 10, background: "rgba(16,17,18,0.08)" }}></div>
                   <div style={{ aspectRatio: "1", borderRadius: 10, background: "var(--accent)" }}></div>
                 </div>
               </div>
             </div>
-            <div className="case-cover-meta" style={{ color: "rgba(255,220,200,0.5)" }}>// shipped 14.may.2026 · 14-week engagement</div>
+            <div className="case-cover-meta" style={{ color: "rgba(255,255,255,0.5)" }}>// shipped 14.may.2026 · 14-week engagement</div>
           </div>
         </div>
       </section>

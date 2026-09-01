@@ -60,16 +60,53 @@ export function SiteHeader({ current }: { current?: Current }) {
 
   return (
     <header className={scrolled ? "site-header scrolled" : "site-header"} id="siteHeader">
+      {/* Tier 1 — utility bar: contact channels and availability. Collapses on scroll. */}
+      <div className="header-topbar">
+        <div className="header-topbar-inner">
+          <div className="ht-group">
+            <a href="mailto:hello@wevtex.com" className="ht-link">
+              {ic(<><rect x="2" y="4" width="20" height="16" rx="2" /><path d="m2 7 10 6 10-6" /></>)}
+              hello@wevtex.com
+            </a>
+            <span className="ht-divider" aria-hidden></span>
+            <a href="tel:+212687633774" className="ht-link">
+              {ic(<path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z" />)}
+              +212 687 633 774
+            </a>
+            <span className="ht-divider" aria-hidden></span>
+            <span className="ht-link ht-static">
+              {ic(<><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z" /><circle cx="12" cy="10" r="3" /></>)}
+              Morocco — working worldwide
+            </span>
+          </div>
+          <div className="ht-group">
+            <span className="ht-status"><span className="ht-pulse" aria-hidden></span>Available for new projects</span>
+            <span className="ht-divider" aria-hidden></span>
+            <a href="https://wa.me/212687633774" className="ht-social" target="_blank" rel="noopener" aria-label="WhatsApp">
+              <svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor" aria-hidden><path d="M17.5 14.4c-.3-.15-1.74-.86-2-.96-.27-.1-.46-.15-.65.15-.2.29-.75.95-.92 1.15-.17.2-.34.22-.63.07-1.7-.85-2.82-1.52-3.94-3.44-.3-.51.3-.48.85-1.58.1-.2.05-.36-.02-.5-.08-.15-.65-1.58-.9-2.16-.23-.56-.47-.48-.65-.49h-.55c-.2 0-.5.07-.77.36-.26.29-1 .98-1 2.4 0 1.41 1.03 2.78 1.17 2.97.15.2 2.03 3.1 4.92 4.35 2.88 1.24 2.88.83 3.4.78.52-.05 1.69-.69 1.93-1.36.24-.67.24-1.24.17-1.36-.07-.12-.26-.19-.55-.34zM12 2.1A9.9 9.9 0 0 0 3.5 17l-1.32 4.82 4.94-1.3A9.9 9.9 0 1 0 12 2.1z" /></svg>
+            </a>
+            <a href="https://www.linkedin.com/" className="ht-social" target="_blank" rel="noopener" aria-label="LinkedIn">
+              <svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor" aria-hidden><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-.95 1.83-1.95 3.75-1.95C20.3 8.75 21 11 21 14.1V21h-4v-6c0-1.5-.03-3.4-2.1-3.4-2.1 0-2.4 1.6-2.4 3.3V21H9z" /></svg>
+            </a>
+            <a href="https://www.instagram.com/" className="ht-social" target="_blank" rel="noopener" aria-label="Instagram">
+              <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" strokeWidth="1.9" aria-hidden><rect x="3" y="3" width="18" height="18" rx="5" /><circle cx="12" cy="12" r="3.6" /><circle cx="17.2" cy="6.8" r="1.1" fill="currentColor" stroke="none" /></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      {/* Tier 2 — main navigation bar */}
       <div className="site-header-inner">
         <a href="/" className="brand" aria-label="Wevtex — home">
           <Image
-            className="brand-logo"
-            src={isDark ? "/images/logo/wevtex-logo.png" : "/images/logo/wevtex-logo-dark.png"}
-            alt="Wevtex"
-            width={1181}
-            height={160}
+            className="brand-mark"
+            src={isDark ? "/images/logo/wevtex-mark-lime.png" : "/images/logo/wevtex-mark-ink.png"}
+            alt=""
+            width={1192}
+            height={791}
             priority
           />
+          <span className="brand-word">wevtex</span>
         </a>
 
         <nav>

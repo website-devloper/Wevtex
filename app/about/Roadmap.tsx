@@ -34,7 +34,7 @@ const RoadmapSlider: React.FC = () => {
   const nextRef = useRef<HTMLDivElement>(null);
 
   return (
-    <section className="roadmap roadmap-pb pt-130 pb-200 pos-rel" style={{ backgroundColor: '#0F55DC' }}>
+    <section className="roadmap roadmap-pb pt-130 pb-200 pos-rel" style={{ backgroundColor: '#101112' }}>
       <div className="container">
         <div className="sa-tes_top roadmap-top pos-rel mb-85">
           <div className="sec-title--two">

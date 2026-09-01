@@ -17,7 +17,7 @@ import brand10 from '@/public/images/award/ap-brand10.jpg';
 
 const AwardSection: React.FC = () => {
   return (
-    <section className="award" style={{ backgroundColor: "#f6f6f8" }}>
+    <section className="award" style={{ backgroundColor: "#f5f5f2" }}>
       <div className="container">
         <div className="row mt-none-30 align-items-center">
           <div className="col-xl-6 col-lg-5 mt-30">

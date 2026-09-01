@@ -61,22 +61,22 @@ export default function ServicesPage() {
             <div className="service-visual">
               <span className="label">// Web</span>
               <svg viewBox="0 0 320 280" width="100%" style={{ maxWidth: 400 }}>
-                <rect x="20" y="20" width="280" height="240" rx="10" fill="#fbf6ec" stroke="rgba(28,20,16,0.14)" />
-                <rect x="20" y="20" width="280" height="26" rx="10" fill="rgba(28,20,16,0.04)" />
-                <circle cx="34" cy="33" r="3" fill="rgba(28,20,16,0.2)" />
-                <circle cx="46" cy="33" r="3" fill="rgba(28,20,16,0.2)" />
-                <circle cx="58" cy="33" r="3" fill="rgba(28,20,16,0.2)" />
-                <rect x="76" y="28" width="120" height="10" rx="2" fill="rgba(28,20,16,0.06)" />
-                <text x="40" y="92" fontFamily="Geist" fontSize="20" fontWeight="500" fill="#1c1410">We build</text>
-                <text x="40" y="116" fontFamily="Newsreader" fontStyle="italic" fontSize="20" fill="#d94a1a">world-class.</text>
-                <rect x="40" y="140" width="160" height="6" rx="2" fill="rgba(28,20,16,0.18)" />
-                <rect x="40" y="152" width="120" height="6" rx="2" fill="rgba(28,20,16,0.18)" />
-                <rect x="40" y="178" width="80" height="26" rx="13" fill="#d94a1a" />
-                <text x="58" y="194" fontFamily="Geist" fontSize="11" fill="#fff">Start →</text>
-                <rect x="130" y="178" width="80" height="26" rx="13" fill="none" stroke="rgba(28,20,16,0.3)" />
-                <text x="148" y="194" fontFamily="Geist" fontSize="11" fill="#1c1410">Explore</text>
-                <rect x="220" y="60" width="60" height="120" rx="6" fill="#1c1410" />
-                <rect x="40" y="220" width="240" height="24" rx="4" fill="rgba(28,20,16,0.08)" />
+                <rect x="20" y="20" width="280" height="240" rx="10" fill="#f5f5f2" stroke="rgba(16,17,18,0.14)" />
+                <rect x="20" y="20" width="280" height="26" rx="10" fill="rgba(16,17,18,0.04)" />
+                <circle cx="34" cy="33" r="3" fill="rgba(16,17,18,0.2)" />
+                <circle cx="46" cy="33" r="3" fill="rgba(16,17,18,0.2)" />
+                <circle cx="58" cy="33" r="3" fill="rgba(16,17,18,0.2)" />
+                <rect x="76" y="28" width="120" height="10" rx="2" fill="rgba(16,17,18,0.06)" />
+                <text x="40" y="92" fontFamily="Onest" fontSize="20" fontWeight="500" fill="#101112">We build</text>
+                <text x="40" y="116" fontFamily="Onest" fontWeight="700" fontSize="20" fill="#c6f24e">world-class.</text>
+                <rect x="40" y="140" width="160" height="6" rx="2" fill="rgba(16,17,18,0.18)" />
+                <rect x="40" y="152" width="120" height="6" rx="2" fill="rgba(16,17,18,0.18)" />
+                <rect x="40" y="178" width="80" height="26" rx="13" fill="#c6f24e" />
+                <text x="58" y="194" fontFamily="Onest" fontSize="11" fill="#1c2a08">Start →</text>
+                <rect x="130" y="178" width="80" height="26" rx="13" fill="none" stroke="rgba(16,17,18,0.3)" />
+                <text x="148" y="194" fontFamily="Onest" fontSize="11" fill="#101112">Explore</text>
+                <rect x="220" y="60" width="60" height="120" rx="6" fill="#101112" />
+                <rect x="40" y="220" width="240" height="24" rx="4" fill="rgba(16,17,18,0.08)" />
               </svg>
             </div>
           </div>
@@ -105,27 +105,27 @@ export default function ServicesPage() {
             <div className="service-visual">
               <span className="label">// Mobile Apps</span>
               <svg viewBox="0 0 320 280" width="100%" style={{ maxWidth: 400 }}>
-                <rect x="20" y="40" width="280" height="220" rx="8" fill="#100b0a" stroke="rgba(255,220,200,0.16)" />
+                <rect x="20" y="40" width="280" height="220" rx="8" fill="#101112" stroke="rgba(255,255,255,0.16)" />
                 <rect x="20" y="40" width="280" height="22" fill="rgba(255,255,255,0.04)" />
-                <circle cx="36" cy="51" r="3" fill="#d94a1a" />
-                <circle cx="48" cy="51" r="3" fill="rgba(255,220,200,0.2)" />
-                <circle cx="60" cy="51" r="3" fill="rgba(255,220,200,0.2)" />
+                <circle cx="36" cy="51" r="3" fill="#c6f24e" />
+                <circle cx="48" cy="51" r="3" fill="rgba(255,255,255,0.2)" />
+                <circle cx="60" cy="51" r="3" fill="rgba(255,255,255,0.2)" />
                 <rect x="20" y="62" width="80" height="198" fill="rgba(255,255,255,0.02)" />
-                <rect x="30" y="80" width="60" height="18" rx="4" fill="rgba(217,74,26,0.16)" />
-                <text x="38" y="92" fontFamily="Geist" fontSize="9" fill="#fdf7f3">★ iOS Build</text>
-                <text x="36" y="116" fontFamily="Geist" fontSize="9" fill="rgba(255,220,200,0.5)">Android APK</text>
-                <text x="36" y="132" fontFamily="Geist" fontSize="9" fill="rgba(255,220,200,0.5)">Backend API</text>
-                <text x="36" y="148" fontFamily="Geist" fontSize="9" fill="rgba(255,255,255,0.5)">UI Kit</text>
-                <text x="116" y="84" fontFamily="Geist" fontSize="14" fill="#fdf7f3">Build target</text>
-                <rect x="116" y="98" width="170" height="32" rx="6" fill="rgba(217,74,26,0.14)" stroke="rgba(217,74,26,0.3)" />
-                <text x="126" y="118" fontFamily="Geist Mono" fontSize="9" fill="#f0631f">$ expo build:ios --production</text>
+                <rect x="30" y="80" width="60" height="18" rx="4" fill="rgba(198,242,78,0.16)" />
+                <text x="38" y="92" fontFamily="Onest" fontSize="9" fill="#ffffff">★ iOS Build</text>
+                <text x="36" y="116" fontFamily="Onest" fontSize="9" fill="rgba(255,255,255,0.5)">Android APK</text>
+                <text x="36" y="132" fontFamily="Onest" fontSize="9" fill="rgba(255,255,255,0.5)">Backend API</text>
+                <text x="36" y="148" fontFamily="Onest" fontSize="9" fill="rgba(255,255,255,0.5)">UI Kit</text>
+                <text x="116" y="84" fontFamily="Onest" fontSize="14" fill="#ffffff">Build target</text>
+                <rect x="116" y="98" width="170" height="32" rx="6" fill="rgba(198,242,78,0.14)" stroke="rgba(198,242,78,0.3)" />
+                <text x="126" y="118" fontFamily="Space Mono" fontSize="9" fill="#d4ff5e">$ expo build:ios --production</text>
                 <rect x="116" y="140" width="170" height="5" rx="2" fill="rgba(255,255,255,0.1)" />
-                <rect x="116" y="140" width="130" height="5" rx="2" fill="#d94a1a" />
-                <text x="116" y="162" fontFamily="Geist Mono" fontSize="8" fill="rgba(255,220,200,0.5)">75% · 42.4s · 18.2mb</text>
+                <rect x="116" y="140" width="130" height="5" rx="2" fill="#c6f24e" />
+                <text x="116" y="162" fontFamily="Space Mono" fontSize="8" fill="rgba(255,255,255,0.5)">75% · 42.4s · 18.2mb</text>
                 <rect x="116" y="180" width="80" height="64" rx="6" fill="rgba(255,255,255,0.04)" />
-                <rect x="206" y="180" width="80" height="64" rx="6" fill="rgba(217,74,26,0.12)" stroke="rgba(217,74,26,0.25)" />
-                <text x="226" y="218" fontFamily="Geist" fontSize="20" fontWeight="500" fill="#f0631f">5.0</text>
-                <text x="226" y="232" fontFamily="Geist Mono" fontSize="7" fill="rgba(255,220,200,0.5)">/ 5.0 RATING</text>
+                <rect x="206" y="180" width="80" height="64" rx="6" fill="rgba(198,242,78,0.12)" stroke="rgba(198,242,78,0.25)" />
+                <text x="226" y="218" fontFamily="Onest" fontSize="20" fontWeight="500" fill="#d4ff5e">5.0</text>
+                <text x="226" y="232" fontFamily="Space Mono" fontSize="7" fill="rgba(255,255,255,0.5)">/ 5.0 RATING</text>
               </svg>
             </div>
           </div>
@@ -156,24 +156,24 @@ export default function ServicesPage() {
               <svg viewBox="0 0 320 280" width="100%" style={{ maxWidth: 400 }}>
                 <defs>
                   <linearGradient id="pf" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="0" stopColor="#d94a1a" stopOpacity="0.3" />
-                    <stop offset="1" stopColor="#d94a1a" stopOpacity="0" />
+                    <stop offset="0" stopColor="#c6f24e" stopOpacity="0.3" />
+                    <stop offset="1" stopColor="#c6f24e" stopOpacity="0" />
                   </linearGradient>
                 </defs>
-                <rect x="20" y="20" width="280" height="240" rx="10" fill="#fbf6ec" stroke="rgba(28,20,16,0.14)" />
-                <text x="40" y="60" fontFamily="Geist Mono" fontSize="9" letterSpacing="2" fill="rgba(28,20,16,0.5)">GLOBAL TRAFFIC / US &amp; UK</text>
-                <text x="40" y="100" fontFamily="Geist" fontSize="36" fontWeight="400" fill="#1c1410">+340</text>
-                <text x="130" y="100" fontFamily="Geist" fontSize="16" fill="rgba(28,20,16,0.5)">%</text>
-                <text x="40" y="120" fontFamily="Geist Mono" fontSize="9" fill="#d94a1a">↑ 340% vs baseline</text>
-                <line x1="40" y1="220" x2="280" y2="220" stroke="rgba(28,20,16,0.1)" />
-                <line x1="40" y1="180" x2="280" y2="180" stroke="rgba(28,20,16,0.06)" />
-                <line x1="40" y1="150" x2="280" y2="150" stroke="rgba(28,20,16,0.06)" />
+                <rect x="20" y="20" width="280" height="240" rx="10" fill="#f5f5f2" stroke="rgba(16,17,18,0.14)" />
+                <text x="40" y="60" fontFamily="Space Mono" fontSize="9" letterSpacing="2" fill="rgba(16,17,18,0.5)">GLOBAL TRAFFIC / US &amp; UK</text>
+                <text x="40" y="100" fontFamily="Onest" fontSize="36" fontWeight="400" fill="#101112">+340</text>
+                <text x="130" y="100" fontFamily="Onest" fontSize="16" fill="rgba(16,17,18,0.5)">%</text>
+                <text x="40" y="120" fontFamily="Space Mono" fontSize="9" fill="#c6f24e">↑ 340% vs baseline</text>
+                <line x1="40" y1="220" x2="280" y2="220" stroke="rgba(16,17,18,0.1)" />
+                <line x1="40" y1="180" x2="280" y2="180" stroke="rgba(16,17,18,0.06)" />
+                <line x1="40" y1="150" x2="280" y2="150" stroke="rgba(16,17,18,0.06)" />
                 <polyline points="40,200 80,190 120,160 160,170 200,140 240,110 280,70" fill="url(#pf)" opacity="0.6" />
-                <polyline points="40,200 80,190 120,160 160,170 200,140 240,110 280,70" fill="none" stroke="#d94a1a" strokeWidth="2" />
-                <circle cx="280" cy="70" r="4" fill="#d94a1a" />
-                <circle cx="280" cy="70" r="9" fill="none" stroke="#d94a1a" opacity="0.4" />
-                <text x="40" y="246" fontFamily="Geist Mono" fontSize="8" fill="rgba(28,20,16,0.4)">90 DAYS</text>
-                <text x="270" y="246" fontFamily="Geist Mono" fontSize="8" fill="rgba(28,20,16,0.4)" textAnchor="end">TODAY</text>
+                <polyline points="40,200 80,190 120,160 160,170 200,140 240,110 280,70" fill="none" stroke="#c6f24e" strokeWidth="2" />
+                <circle cx="280" cy="70" r="4" fill="#c6f24e" />
+                <circle cx="280" cy="70" r="9" fill="none" stroke="#c6f24e" opacity="0.4" />
+                <text x="40" y="246" fontFamily="Space Mono" fontSize="8" fill="rgba(16,17,18,0.4)">90 DAYS</text>
+                <text x="270" y="246" fontFamily="Space Mono" fontSize="8" fill="rgba(16,17,18,0.4)" textAnchor="end">TODAY</text>
               </svg>
             </div>
           </div>
@@ -202,21 +202,21 @@ export default function ServicesPage() {
             <div className="service-visual">
               <span className="label">// IT Support</span>
               <svg viewBox="0 0 320 280" width="100%" style={{ maxWidth: 400 }}>
-                <rect x="20" y="20" width="280" height="240" rx="10" fill="#100b0a" stroke="rgba(255,220,200,0.14)" />
-                <text x="36" y="56" fontFamily="Geist Mono" fontSize="9" letterSpacing="2" fill="rgba(255,220,200,0.5)">SYSTEM STATUS</text>
-                <rect x="36" y="68" width="248" height="28" rx="6" fill="rgba(217,74,26,0.14)" stroke="rgba(217,74,26,0.3)" />
-                <text x="48" y="86" fontFamily="Geist" fontSize="11" fill="#fdf7f3">US-East Server Cluster</text>
-                <text x="266" y="86" fontFamily="Geist Mono" fontSize="11" fill="#f0631f" textAnchor="end">99.99%</text>
-                <rect x="36" y="102" width="248" height="28" rx="6" fill="rgba(255,220,200,0.03)" />
-                <text x="48" y="120" fontFamily="Geist" fontSize="11" fill="rgba(255,220,200,0.85)">UK-London Edge Node</text>
-                <text x="266" y="120" fontFamily="Geist Mono" fontSize="11" fill="#f0631f" textAnchor="end">99.98%</text>
-                <rect x="36" y="136" width="248" height="28" rx="6" fill="rgba(255,220,200,0.03)" />
-                <text x="48" y="154" fontFamily="Geist" fontSize="11" fill="rgba(255,220,200,0.85)">Database Replicas</text>
-                <text x="266" y="154" fontFamily="Geist Mono" fontSize="11" fill="rgba(255,220,200,0.6)" textAnchor="end">Healthy</text>
-                <rect x="36" y="170" width="248" height="28" rx="6" fill="rgba(255,220,200,0.03)" />
-                <text x="48" y="188" fontFamily="Geist" fontSize="11" fill="rgba(255,220,200,0.85)">Support SLA</text>
-                <text x="266" y="188" fontFamily="Geist Mono" fontSize="11" fill="rgba(255,220,200,0.6)" textAnchor="end">4h 12m</text>
-                <text x="36" y="232" fontFamily="Geist Mono" fontSize="8" letterSpacing="1" fill="rgba(255,220,200,0.5)">ALL SYSTEMS OPERATIONAL · 24/7 MONITORING</text>
+                <rect x="20" y="20" width="280" height="240" rx="10" fill="#101112" stroke="rgba(255,255,255,0.14)" />
+                <text x="36" y="56" fontFamily="Space Mono" fontSize="9" letterSpacing="2" fill="rgba(255,255,255,0.5)">SYSTEM STATUS</text>
+                <rect x="36" y="68" width="248" height="28" rx="6" fill="rgba(198,242,78,0.14)" stroke="rgba(198,242,78,0.3)" />
+                <text x="48" y="86" fontFamily="Onest" fontSize="11" fill="#ffffff">US-East Server Cluster</text>
+                <text x="266" y="86" fontFamily="Space Mono" fontSize="11" fill="#d4ff5e" textAnchor="end">99.99%</text>
+                <rect x="36" y="102" width="248" height="28" rx="6" fill="rgba(255,255,255,0.03)" />
+                <text x="48" y="120" fontFamily="Onest" fontSize="11" fill="rgba(255,255,255,0.85)">UK-London Edge Node</text>
+                <text x="266" y="120" fontFamily="Space Mono" fontSize="11" fill="#d4ff5e" textAnchor="end">99.98%</text>
+                <rect x="36" y="136" width="248" height="28" rx="6" fill="rgba(255,255,255,0.03)" />
+                <text x="48" y="154" fontFamily="Onest" fontSize="11" fill="rgba(255,255,255,0.85)">Database Replicas</text>
+                <text x="266" y="154" fontFamily="Space Mono" fontSize="11" fill="rgba(255,255,255,0.6)" textAnchor="end">Healthy</text>
+                <rect x="36" y="170" width="248" height="28" rx="6" fill="rgba(255,255,255,0.03)" />
+                <text x="48" y="188" fontFamily="Onest" fontSize="11" fill="rgba(255,255,255,0.85)">Support SLA</text>
+                <text x="266" y="188" fontFamily="Space Mono" fontSize="11" fill="rgba(255,255,255,0.6)" textAnchor="end">4h 12m</text>
+                <text x="36" y="232" fontFamily="Space Mono" fontSize="8" letterSpacing="1" fill="rgba(255,255,255,0.5)">ALL SYSTEMS OPERATIONAL · 24/7 MONITORING</text>
               </svg>
             </div>
           </div>

@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Geist, Geist_Mono, Newsreader } from "next/font/google";
+import { Onest, Space_Mono } from "next/font/google";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import { SmoothScroll } from "../components/wevtex/SmoothScroll";
 import { ThemeProvider } from "./ThemeContext";
@@ -8,16 +8,20 @@ import { SITE_URL, abs } from "@/lib/seo";
 const GA_ID = process.env.NEXT_PUBLIC_GA_ID;
 
 // Self-hosted via next/font (no render-blocking Google Fonts request, no layout shift).
-const geist = Geist({ subsets: ["latin"], variable: "--font-geist", display: "swap" });
-const geistMono = Geist_Mono({ subsets: ["latin"], variable: "--font-geist-mono", display: "swap" });
-const newsreader = Newsreader({
+// Design system: Onest for display + body, Space Mono for eyebrows / labels / data.
+const onest = Onest({
   subsets: ["latin"],
-  weight: ["400", "500"],
-  style: ["normal", "italic"],
-  variable: "--font-newsreader",
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-display",
   display: "swap",
 });
-const fontVars = `${geist.variable} ${geistMono.variable} ${newsreader.variable}`;
+const spaceMono = Space_Mono({
+  subsets: ["latin"],
+  weight: ["400", "700"],
+  variable: "--font-mono-face",
+  display: "swap",
+});
+const fontVars = `${onest.variable} ${spaceMono.variable}`;
 
 export const viewport: Viewport = {
   width: 'device-width',
@@ -71,12 +75,12 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [
-      { url: "/images/logo/favicon.png", sizes: "32x32" },
-      { url: "/images/logo/favicon.png", sizes: "192x192" },
-      { url: "/images/logo/favicon.png", sizes: "512x512" },
+      { url: "/images/logo/icon-32.png", sizes: "32x32", type: "image/png" },
+      { url: "/images/logo/icon-192.png", sizes: "192x192", type: "image/png" },
+      { url: "/images/logo/favicon.png", sizes: "512x512", type: "image/png" },
     ],
-    shortcut: "/images/logo/favicon.png",
-    apple: "/images/logo/favicon.png",
+    shortcut: "/images/logo/icon-32.png",
+    apple: { url: "/images/logo/apple-icon.png", sizes: "180x180" },
   },
   manifest: "/manifest.json",
 };
@@ -91,7 +95,7 @@ export default function RootLayout({
     "@type": ["Organization", "ProfessionalService"],
     "name": "Wevtex",
     "url": SITE_URL,
-    "logo": abs("/images/logo/favicon.png"),
+    "logo": abs("/images/logo/wevtex-mark-ink.png"),
     "image": abs("/images/og-image.jpg"),
     "description": "Casablanca-based web & app development agency building fast websites, online stores, SEO/GEO and automation for businesses across Morocco and worldwide.",
     "telephone": "+212687633774",
@@ -109,7 +113,9 @@ export default function RootLayout({
 
   return (
     <html lang="en" className={fontVars}>
-      <body id='scrool'>
+      {/* Browser extensions (ColorZilla, Grammarly, etc.) inject attributes on
+          body before hydration; this scopes the warning away from that one node. */}
+      <body id='scrool' suppressHydrationWarning>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

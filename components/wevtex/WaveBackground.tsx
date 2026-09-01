@@ -23,9 +23,9 @@ type Layer = {
 };
 
 const LAYERS: Layer[] = [
-  { fill: "rgba(255,170,120,0.040)", duration: 38, direction: -1, bottom: "0%", height: "62%", blur: 6 },
-  { fill: "rgba(240,99,31,0.055)", duration: 27, direction: 1, bottom: "0%", height: "50%", blur: 5 },
-  { fill: "rgba(255,140,82,0.075)", duration: 19, direction: -1, bottom: "0%", height: "38%", blur: 4 },
+  { fill: "rgba(198,242,78,0.040)", duration: 38, direction: -1, bottom: "0%", height: "62%", blur: 6 },
+  { fill: "rgba(198,242,78,0.055)", duration: 27, direction: 1, bottom: "0%", height: "50%", blur: 5 },
+  { fill: "rgba(198,242,78,0.075)", duration: 19, direction: -1, bottom: "0%", height: "38%", blur: 4 },
 ];
 
 function WaveLayer({ fill, duration, direction, bottom, height, blur }: Layer) {

@@ -14,11 +14,46 @@ import { SiteHeader } from "./SiteHeader";
 import { SiteFooter } from "./SiteFooter";
 import { ScrollRevealText } from "./ScrollRevealText";
 import { ContactForm } from "./ContactForm";
+import { StickyCta } from "./StickyCta";
 import { FAQS } from "./homeContent";
 
 /* Contact channels — used by every call to action */
 const WHATSAPP_URL = "https://wa.me/212687633774";
 const EMAIL_URL = "mailto:hello@wevtex.com";
+
+/* Opens WhatsApp with the audit request already written, so the visitor only taps send. */
+const AUDIT_WHATSAPP_URL =
+  "https://wa.me/212687633774?text=" +
+  encodeURIComponent("Hi Wevtex — I'd like the free 15-minute call audit for my website.");
+
+/* ---------------------------------------------------------------------------
+ * Claims about the business — keep these accurate.
+ * PRICE_ANCHOR tracks the "Start" tier in the pricing section below.
+ * AVAILABILITY must be updated (or emptied) when it stops being true.
+ * ------------------------------------------------------------------------- */
+const PRICE_ANCHOR = "Projects from 990 MAD";
+const AVAILABILITY = "2 project slots left this month";
+const GUARANTEE = "No payment until you're fully satisfied";
+
+/* Client logo wall. Drop real logos over these files — no code change needed. */
+const CLIENT_LOGOS = [
+  { name: "Luxora Interiors", src: "/images/clients/client-01.png" },
+  { name: "Dar Essaada", src: "/images/clients/client-02.png" },
+  { name: "Wellcare Clinic", src: "/images/clients/client-03.png" },
+  { name: "Petrocore", src: "/images/clients/client-04.png" },
+  { name: "Eduflow", src: "/images/clients/client-05.png" },
+  { name: "Atlas Logistics", src: "/images/clients/client-06.png" },
+];
+
+/* Why a studio beats the two alternatives buyers actually weigh us against. */
+const COMPARISON_ROWS = [
+  { label: "Timeline", us: "2–4 weeks, fixed", agency: "2–4 months", free: "Open-ended" },
+  { label: "Price", us: "Fixed, published", agency: "Quote on request", free: "Hourly, variable" },
+  { label: "Who builds it", us: "The team you met", agency: "Junior or outsourced", free: "One person" },
+  { label: "After launch", us: "Support included", agency: "Retainer required", free: "Often unreachable" },
+  { label: "Speed & SEO", us: "Built in from day one", agency: "Paid add-on", free: "Rarely covered" },
+  { label: "Code ownership", us: "Yours, fully", agency: "Locked to their CMS", free: "Undocumented" },
+];
 
 const WHATSAPP = (
   <svg viewBox="0 0 24 24" width="17" height="17" fill="currentColor" aria-hidden style={{ marginRight: 2 }}>
@@ -88,105 +123,57 @@ const INDUSTRIES = [
   }
 ];
 
-/* Maps each service card (in order) to its detail page at /services/[slug]. */
-const SERVICE_LINKS = [
-  "web-development", "wordpress", "erp-management", "ecommerce",
-  "automation", "business-apps", "ai-chatbots", "ux-ui-design",
-];
-
-const SERVICES = [
+/* The eight service cards in the home bento grid.
+   `href` points at a /services/[slug] detail page where one exists; the newer
+   offers link to the contact section until their detail pages are written. */
+const SERVICE_CARDS = [
   {
-    icon: (
-      <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
-        <polyline points="16 18 22 12 16 6" />
-        <polyline points="8 6 2 12 8 18" />
-      </svg>
-    ),
-    head: <>Web <em>Development</em>.</>,
-    body: "High-performance web apps with React, Next.js and TypeScript. Modern, scalable architecture.",
-    tags: ["React", "Next.js", "TypeScript", "API"],
+    name: "Website Creation",
+    desc: "Showcase sites, online stores and interactive portals — modern, ultra-fast and built for SEO.",
+    href: "/services/web-development",
+    icon: <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="4" width="20" height="13" rx="2" /><path d="M2 9h20M8 21h8M12 17v4" /></svg>,
   },
   {
-    icon: (
-      <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
-        <circle cx="12" cy="12" r="9" />
-        <path d="M3 12h18" />
-        <path d="M12 3c2.5 2.5 3.8 5.6 3.8 9s-1.3 6.5-3.8 9c-2.5-2.5-3.8-5.6-3.8-9s1.3-6.5 3.8-9z" />
-      </svg>
-    ),
-    head: <><em>WordPress</em> sites.</>,
-    body: "Custom showcase and corporate sites. Bespoke themes, optimized performance, maintenance included.",
-    tags: ["WordPress", "Custom", "SEO", "Starter"],
+    name: "Search Engine Optimization",
+    desc: "Technical optimization, keyword strategy and link building that bring in organic traffic month after month.",
+    href: "/#contact",
+    icon: <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="7" /><path d="M20 20l-3.6-3.6" /><path d="M8 12.5l2.2-2.4 1.9 1.7 2.4-2.8" /></svg>,
   },
   {
-    icon: (
-      <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
-        <ellipse cx="12" cy="5" rx="8" ry="3" />
-        <path d="M4 5v14c0 1.66 3.58 3 8 3s8-1.34 8-3V5" />
-        <path d="M4 12c0 1.66 3.58 3 8 3s8-1.34 8-3" />
-      </svg>
-    ),
-    head: <>ERP & <em>Management</em>.</>,
-    body: "Centralize your business: invoicing, stock and CRM. Custom Dolibarr and Odoo solutions.",
-    tags: ["Dolibarr", "Odoo", "CRM", "Invoicing"],
+    name: "Google Maps & Local SEO",
+    desc: "Win the searches happening around you, with an optimized Google Business profile and a strong Maps ranking.",
+    href: "/#contact",
+    icon: <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><path d="M12 21s7-5.6 7-11a7 7 0 1 0-14 0c0 5.4 7 11 7 11z" /><circle cx="12" cy="10" r="2.5" /></svg>,
   },
   {
-    icon: (
-      <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
-        <circle cx="9" cy="21" r="1" />
-        <circle cx="20" cy="21" r="1" />
-        <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" />
-      </svg>
-    ),
-    head: <><em>E-commerce</em>.</>,
-    body: "Turnkey online stores. Stripe payments, product management and order tracking.",
-    tags: ["WooCommerce", "Stripe", "Payments", "Stock"],
+    name: "Ads Creation & Management",
+    desc: "Targeted Google Ads, Facebook and Instagram campaigns built for an immediate, measurable return.",
+    href: "/#contact",
+    icon: <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><path d="M3 11v2a1 1 0 0 0 1 1h2l5 4V6L6 10H4a1 1 0 0 0-1 1z" /><path d="M16 9.2a4 4 0 0 1 0 5.6" /><path d="M18.8 6.4a8 8 0 0 1 0 11.2" /></svg>,
   },
   {
-    icon: (
-      <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
-        <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
-      </svg>
-    ),
-    head: <><em>Automation</em>.</>,
-    body: "Automate your repetitive tasks. Smart workflows that connect all your tools together.",
-    tags: ["n8n", "Workflows", "API", "Webhooks"],
+    name: "Mobile Apps",
+    desc: "Native and cross-platform iOS and Android apps, smooth and fast, built with Flutter.",
+    href: "/#contact",
+    icon: <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><rect x="6" y="2" width="12" height="20" rx="3" /><path d="M10.5 18.5h3" /></svg>,
   },
   {
-    icon: (
-      <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
-        <rect x="3" y="3" width="7" height="7" />
-        <rect x="14" y="3" width="7" height="7" />
-        <rect x="14" y="14" width="7" height="7" />
-        <rect x="3" y="14" width="7" height="7" />
-      </svg>
-    ),
-    head: <>Business <em>Apps</em>.</>,
-    body: "Custom software for your unique processes. Dashboards and dedicated internal tools.",
-    tags: ["Custom", "Dashboard", "SaaS", "Internal"],
+    name: "Desktop Apps",
+    desc: "Custom Windows and macOS software that simplifies your internal operations and your data.",
+    href: "/#contact",
+    icon: <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="4" width="20" height="12" rx="2" /><path d="M8 20h8M12 16v4" /></svg>,
   },
   {
-    icon: (
-      <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
-      </svg>
-    ),
-    head: <>AI <em>Chatbots</em>.</>,
-    body: "Smart chatbots that automate customer service. Available 24/7 on WhatsApp, Messenger and web.",
-    tags: ["OpenAI", "WhatsApp", "NLP", "24/7"],
+    name: "Custom Digital Solutions",
+    desc: "Bespoke business tools, SaaS portals, extranets and API architectures shaped around your company.",
+    href: "/services/business-apps",
+    icon: <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><rect x="7" y="7" width="10" height="10" rx="2.5" /><path d="M9.5 3v4M14.5 3v4M9.5 17v4M14.5 17v4M3 9.5h4M3 14.5h4M17 9.5h4M17 14.5h4" /></svg>,
   },
   {
-    icon: (
-      <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M12 19l7-7 3 3-7 7-3-3z" />
-        <path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z" />
-        <path d="M2 2l7.586 7.586" />
-        <circle cx="11" cy="11" r="2" />
-      </svg>
-    ),
-    head: <>UX/UI <em>Design</em>.</>,
-    body: "Intuitive, beautiful interfaces that convert. Wireframes, prototypes and design systems.",
-    tags: ["Figma", "Prototype", "Design System", "Mobile"],
+    name: "Automated WhatsApp Bots",
+    desc: "Smart bots that answer instantly, qualify your leads and keep support running 24/7.",
+    href: "/services/ai-chatbots",
+    icon: <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><path d="M20.5 11.5a8 8 0 0 1-11.9 7L4 20l1.6-4.4A8 8 0 1 1 20.5 11.5z" /><path d="M9.5 11.5v.8M14.5 11.5v.8" /><path d="M9.8 15c1.4 1 3 1 4.4 0" /></svg>,
   },
 ];
 
@@ -475,7 +462,7 @@ export function HomeClient() {
           <div className="hero-grid">
             <div className="hero-content">
               <span className="status-pill">
-                <span className="pulse"></span>Available for new projects
+                <span className="pulse"></span>{AVAILABILITY}
               </span>
               <ScrollRevealText
                 as="h1"
@@ -502,38 +489,48 @@ export function HomeClient() {
                   </svg>
                 </a>
               </div>
+              {/* Price anchor + risk reversal: both answer the two questions every
+                  visitor has before they will consider getting in touch. */}
+              <ul className="hero-reassure">
+                <li>
+                  <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round" aria-hidden><path d="M20 6L9 17l-5-5" /></svg>
+                  {PRICE_ANCHOR}
+                </li>
+                <li>
+                  <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round" aria-hidden><path d="M20 6L9 17l-5-5" /></svg>
+                  {GUARANTEE}
+                </li>
+              </ul>
             </div>
 
-            <div className="hero-visual" aria-hidden>
-              <div className="hero-browser">
-                <div className="hb-bar"><i></i><i></i><i></i><span className="hb-url">zahra.store</span></div>
-                <div className="hb-body">
-                  <div className="hb-nav">
-                    <span className="hb-logo">ZAHRA</span>
-                    <span className="hb-links"><b></b><b></b><b></b><b></b></span>
-                  </div>
-                  <div className="hb-hero">
-                    <div className="hb-copy">
-                      <span className="hb-h"></span>
-                      <span className="hb-h sm"></span>
-                      <span className="hb-p"></span>
-                      <span className="hb-p sm"></span>
-                      <span className="hb-btn">Shop collection</span>
-                    </div>
-                    <div className="hb-art"><span></span><span></span><span></span></div>
-                  </div>
-                </div>
-              </div>
-              <div className="hero-phone">
-                <span className="hp-cam"></span>
-                <div className="hp-screen">
-                  <div className="hp-img"></div>
-                  <span className="hp-h"></span>
-                  <span className="hp-p"></span>
-                  <span className="hp-p sm"></span>
-                </div>
-              </div>
+            <div className="hero-visual">
+              <Image
+                src="/images/feature/slider section.png"
+                alt="An online store shown on a laptop and phone, with traffic and sales growth"
+                width={1536}
+                height={1024}
+                priority
+                sizes="(max-width: 960px) 92vw, 46vw"
+                className="hero-shot"
+              />
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ===================== CLIENT LOGOS ===================== */}
+      {/* Trust element above the fold: proof of other clients before any claim. */}
+      <section className={`${isDark ? "theme-dark" : "theme-cream"} logo-strip`}>
+        <div className="container">
+          <div className="ls-inner reveal">
+            <p className="ls-lead">Trusted by teams across Morocco and beyond</p>
+            <ul className="ls-row">
+              {CLIENT_LOGOS.map((c) => (
+                <li key={c.name}>
+                  <Image src={c.src} alt={c.name} width={160} height={40} sizes="160px" />
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
       </section>
@@ -574,19 +571,10 @@ export function HomeClient() {
           </div>
 
           <div className="bento-grid reveal">
-            {[
-              { i: 0, slug: "web-development", name: "Web Development", desc: "Fast, secure, and scalable websites built to perform.", variant: "feature" },
-              { i: 1, slug: "wordpress", name: "WordPress", desc: "Flexible, easy to manage sites with WordPress.", variant: "" },
-              { i: 2, slug: "erp-management", name: "ERP", desc: "Custom ERP systems to streamline operations.", variant: "" },
-              { i: 4, slug: "automation", name: "Automation", desc: "Automate workflows and save valuable time.", variant: "vermilion" },
-              { i: 3, slug: "ecommerce", name: "E-commerce", desc: "Online stores that convert visitors into customers.", variant: "feature ochre" },
-              { i: 5, slug: "business-apps", name: "Business Apps", desc: "Powerful web apps tailored to your business needs.", variant: "" },
-              { i: 6, slug: "ai-chatbots", name: "AI Chatbots", desc: "Intelligent bots that engage and support customers.", variant: "" },
-              { i: 7, slug: "ux-ui-design", name: "UX/UI Design", desc: "Beautiful, intuitive designs that users love.", variant: "" },
-            ].map((b) => (
-              <a key={b.slug} href={`/services/${b.slug}`} className={`bento-card ${b.variant} bx-${b.slug}`}>
+            {SERVICE_CARDS.map((b) => (
+              <a key={b.name} href={b.href} className="bento-card">
                 <span className="bento-motif" aria-hidden></span>
-                <span className="bento-icon">{SERVICES[b.i].icon}</span>
+                <span className="bento-icon">{b.icon}</span>
                 <div className="bento-card-body">
                   <h4>{b.name}</h4>
                   <p>{b.desc}</p>
@@ -596,6 +584,195 @@ export function HomeClient() {
                 </div>
               </a>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ===================== STATS (mockup 6 — clay band) ===================== */}
+      {/* TODO: replace with verified figures before launch. */}
+      <section className="stats-band-v2">
+        <span className="sb-motif tl" aria-hidden></span>
+        <span className="sb-motif br" aria-hidden></span>
+        <div className="container">
+          <div className="sb-grid reveal">
+            {[
+              { to: 200, dec: 0, suffix: "+", label: "Projects delivered", desc: "Successful websites, apps and automation systems launched." },
+              { to: 5, dec: 1, suffix: "", label: "Average rating", desc: "Based on client reviews across platforms." },
+              { to: 4, dec: 0, suffix: "", label: "Years experience", desc: "Helping businesses grow with smart digital solutions." },
+              { to: 98, dec: 0, suffix: "%", label: "Client satisfaction", desc: "Clients who recommend us and come back." },
+            ].map((s) => (
+              <div className="sb-item" key={s.label}>
+                <div className="sb-num" data-to={s.to} data-dec={s.dec} data-suffix={s.suffix}>{`0${s.suffix}`}</div>
+                <div className="sb-label">{s.label}</div>
+                <span className="sb-rule"></span>
+                <p className="sb-desc">{s.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ===================== PROJECTS (mockup 7 — browser-frame cards) ===================== */}
+      <section className={`${isDark ? "theme-dark" : "theme-cream"} projects-v2`} id="work">
+        <div className="container">
+          <div className="pj-head reveal">
+            <div>
+              <span className="eyebrow line-eyebrow">Our work</span>
+              <h2 className="h-section" style={{ marginTop: 14 }}>Recent <em className="hl-em">projects</em></h2>
+              <p className="ic-sub" style={{ marginTop: 14, textAlign: "left", maxWidth: "46ch" }}>
+                A selection of websites, apps, and digital platforms we&apos;ve crafted for businesses like yours.
+              </p>
+            </div>
+            <a href="/portfolio" className="btn btn-outline pj-viewall">
+              View all projects
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+            </a>
+          </div>
+
+          <div className="pj-grid reveal">
+            {[
+              { cls: "pj-luxora", title: "Luxora Interiors", type: "E-commerce Website", url: "luxora.store", shot: "g0", variant: "" },
+              { cls: "pj-dar", title: "Dar Essaada Hotel", type: "Hospitality Website", url: "daressaada.com", shot: "g1", variant: "" },
+              { cls: "pj-well", title: "Wellcare Clinic", type: "Healthcare Website", url: "wellcare.ma", shot: "g2", variant: "" },
+              { cls: "pj-petro", title: "Petrocore Solutions", type: "Corporate Website", url: "petrocore.com", shot: "solid", variant: "solid" },
+              { cls: "pj-edu", title: "Eduflow Platform", type: "SaaS Dashboard", url: "eduflow.app", shot: "g3", variant: "" },
+            ].map((p) => (
+              <a key={p.cls} href="/portfolio" className={`pj-card ${p.cls} ${p.variant}`}>
+                <div className="pj-frame">
+                  <div className="pj-bar"><i></i><i></i><i></i><span className="pj-url">{p.url}</span></div>
+                  <div className={`pj-shot ${p.shot}`}></div>
+                </div>
+                <div className="pj-meta">
+                  <div><h4>{p.title}</h4><span>{p.type}</span></div>
+                  <svg className="pj-ext" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M7 17L17 7M9 7h8v8" /></svg>
+                </div>
+              </a>
+            ))}
+          </div>
+
+        </div>
+      </section>
+
+      {/* CTA beside the proof — the reference puts one right after the evidence. */}
+      <section className={`${isDark ? "theme-dark" : "theme-cream"} inline-cta`}>
+        <div className="container">
+          <div className="ict-inner reveal">
+            <p className="ict-text">Want results like these for your business?</p>
+            <a href={WHATSAPP_URL} className="btn btn-primary" target="_blank" rel="noopener">
+              Get a free quote
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* ===================== TESTIMONIALS (mockup 9 — featured + 2) ===================== */}
+      <section className={`${isDark ? "theme-dark" : "theme-cream"} testi-v2`} id="testimonials">
+        <div className="container">
+          <div className="ic-head reveal">
+            <span className="eyebrow line-eyebrow-center">Client testimonials</span>
+            <h2 className="h-section" style={{ marginTop: 16, justifyContent: "center" }}>
+              Businesses that <em className="hl-em">trust us</em>
+            </h2>
+            <p className="ic-sub">
+              We take pride in the relationships we build and the results we deliver.<br />
+              Here&apos;s what our clients have to say.
+            </p>
+          </div>
+
+          <div className="testi-grid reveal">
+            {[0, 1, 2].map((off) => {
+              const t = TPOOL[(ti + off) % TPOOL.length];
+              const featured = off === 1;
+              return (
+                <figure className={featured ? "testi-card featured" : "testi-card"} key={off}>
+                  <div className="testi-stars" aria-label="Rated 5 out of 5">
+                    {[0, 1, 2, 3, 4].map((n) => (
+                      <svg key={n} viewBox="0 0 24 24" width="15" height="15" fill="currentColor" aria-hidden>
+                        <path d="M12 2l2.9 6.3 6.9.6-5.2 4.6 1.6 6.7L12 17.3 5.8 20.8l1.6-6.7L2.2 8.9l6.9-.6z" />
+                      </svg>
+                    ))}
+                  </div>
+                  <blockquote className="testi-q">
+                    &ldquo;{t.q}{t.em ? <em className="hl-em">{t.em}</em> : null}&rdquo;
+                  </blockquote>
+                  <figcaption className="testi-foot">
+                    <span className="testi-rule"></span>
+                    <div className="testi-person">
+                      <span className="testi-avatar">{t.a}</span>
+                      <div>
+                        <div className="testi-name">{t.name}</div>
+                        <div className="testi-role">{t.role}</div>
+                      </div>
+                    </div>
+                  </figcaption>
+                  <span className="testi-bigquote" aria-hidden>&rdquo;</span>
+                </figure>
+              );
+            })}
+          </div>
+
+          <div className="testi-controls reveal">
+            <button className="ic-arrow" aria-label="Previous reviews" onClick={() => setTi((p) => (p - 1 + TPOOL.length) % TPOOL.length)}>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M15 18l-6-6 6-6" /></svg>
+            </button>
+            <div className="ic-dots testi-dots">
+              {TPOOL.map((_, d) => (
+                <span key={d} className={d === ti ? "on" : ""} onClick={() => setTi(d)} role="button" aria-label={`Go to review ${d + 1}`}></span>
+              ))}
+            </div>
+            <button className="ic-arrow" aria-label="Next reviews" onClick={() => setTi((p) => (p + 1) % TPOOL.length)}>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M9 18l6-6-6-6" /></svg>
+            </button>
+          </div>
+
+          <div className="testi-cta reveal">
+            <a href="/portfolio" className="btn btn-outline">
+              See more reviews
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden style={{ marginLeft: 4 }}><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* ===================== CALL AUDIT ===================== */}
+      {/* Low-commitment offer for visitors who are not ready to ask for a quote. */}
+      <section className="audit-band" id="audit">
+        <span className="audit-motif" aria-hidden></span>
+        <div className="container">
+          <div className="audit-inner reveal">
+            <div className="audit-left">
+              <span className="eyebrow line-eyebrow">Free call audit</span>
+              <h2 className="audit-h">
+                Not ready for a quote?<br />
+                Take the <em className="hl-em">15-minute call audit</em>
+              </h2>
+              <p className="audit-p">
+                A short call, no slides and no obligation. We look at your site with you
+                and tell you what we would fix first.
+              </p>
+            </div>
+            <div className="audit-right">
+              <ul className="audit-list">
+                <li>
+                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round" aria-hidden><path d="M20 6L9 17l-5-5" /></svg>
+                  What is costing you customers right now
+                </li>
+                <li>
+                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round" aria-hidden><path d="M20 6L9 17l-5-5" /></svg>
+                  The one change to make first
+                </li>
+                <li>
+                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round" aria-hidden><path d="M20 6L9 17l-5-5" /></svg>
+                  A realistic timeline and budget
+                </li>
+              </ul>
+              <a href={AUDIT_WHATSAPP_URL} className="btn btn-primary audit-btn" target="_blank" rel="noopener">
+                Book the free audit
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+              </a>
+              <span className="audit-note">No sales pitch. No commitment.</span>
+            </div>
           </div>
         </div>
       </section>
@@ -681,8 +858,10 @@ export function HomeClient() {
               { n: "04", h: "Launch", p: "We launch, test, and support you for long-term success.", icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><path d="M4.5 16.5c-1.5 1.3-2 5-2 5s3.7-.5 5-2c.7-.9.7-2.2-.1-3a2.1 2.1 0 0 0-2.9 0z" /><path d="M12 15l-3-3a16 16 0 0 1 9-9 6 6 0 0 1-9 9z" /><path d="M9 12H4s.5-3 2-4 5 0 5 0" /></svg> },
             ].map((s) => (
               <div className="pt-step" key={s.n}>
-                <span className="pt-num">{s.n}</span>
-                <span className="pt-icon">{s.icon}</span>
+                <span className="pt-node">
+                  {s.icon}
+                  <span className="pt-num">{s.n}</span>
+                </span>
                 <h4>{s.h}</h4>
                 <p>{s.p}</p>
               </div>
@@ -697,175 +876,47 @@ export function HomeClient() {
         </div>
       </section>
 
-      {/* ===================== STATS (mockup 6 — clay band) ===================== */}
-      {/* TODO: replace with verified figures before launch. */}
-      <section className="stats-band-v2">
-        <span className="sb-motif tl" aria-hidden></span>
-        <span className="sb-motif br" aria-hidden></span>
+      {/* ===================== COMPARISON ===================== */}
+      {/* Answers "why not cheaper" before the visitor sees a price. */}
+      <section className={`${isDark ? "theme-dark" : "theme-cream"} compare-v2`} id="compare">
         <div className="container">
-          <div className="sb-grid reveal">
-            {[
-              { to: 200, dec: 0, suffix: "+", label: "Projects delivered", desc: "Successful websites, apps and automation systems launched." },
-              { to: 5, dec: 1, suffix: "", label: "Average rating", desc: "Based on client reviews across platforms." },
-              { to: 4, dec: 0, suffix: "", label: "Years experience", desc: "Helping businesses grow with smart digital solutions." },
-              { to: 98, dec: 0, suffix: "%", label: "Client satisfaction", desc: "Clients who recommend us and come back." },
-            ].map((s) => (
-              <div className="sb-item" key={s.label}>
-                <div className="sb-num" data-to={s.to} data-dec={s.dec} data-suffix={s.suffix}>{`0${s.suffix}`}</div>
-                <div className="sb-label">{s.label}</div>
-                <span className="sb-rule"></span>
-                <p className="sb-desc">{s.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ===================== PROJECTS (mockup 7 — browser-frame cards) ===================== */}
-      <section className={`${isDark ? "theme-dark" : "theme-cream"} projects-v2`} id="work">
-        <div className="container">
-          <div className="pj-head reveal">
-            <div>
-              <span className="eyebrow line-eyebrow">Our work</span>
-              <h2 className="h-section" style={{ marginTop: 14 }}>Recent <em className="hl-em">projects</em></h2>
-              <p className="ic-sub" style={{ marginTop: 14, textAlign: "left" }}>
-                A selection of websites, apps, and digital platforms we&apos;ve crafted for businesses like yours.
-              </p>
-            </div>
-            <a href="/portfolio" className="btn btn-outline pj-viewall">
-              View all projects
-              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
-            </a>
-          </div>
-
-          <div className="pj-grid reveal">
-            {[
-              { cls: "pj-luxora", title: "Luxora Interiors", type: "E-commerce Website", url: "luxora.store", shot: "g0", variant: "" },
-              { cls: "pj-dar", title: "Dar Essaada Hotel", type: "Hospitality Website", url: "daressaada.com", shot: "g1", variant: "" },
-              { cls: "pj-well", title: "Wellcare Clinic", type: "Healthcare Website", url: "wellcare.ma", shot: "g2", variant: "" },
-              { cls: "pj-petro", title: "Petrocore Solutions", type: "Corporate Website", url: "petrocore.com", shot: "solid", variant: "solid" },
-              { cls: "pj-edu", title: "Eduflow Platform", type: "SaaS Dashboard", url: "eduflow.app", shot: "g3", variant: "" },
-            ].map((p) => (
-              <a key={p.cls} href="/portfolio" className={`pj-card ${p.cls} ${p.variant}`}>
-                <div className="pj-frame">
-                  <div className="pj-bar"><i></i><i></i><i></i><span className="pj-url">{p.url}</span></div>
-                  <div className={`pj-shot ${p.shot}`}></div>
-                </div>
-                <div className="pj-meta">
-                  <div><h4>{p.title}</h4><span>{p.type}</span></div>
-                  <svg className="pj-ext" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M7 17L17 7M9 7h8v8" /></svg>
-                </div>
-              </a>
-            ))}
-          </div>
-
-        </div>
-      </section>
-
-      {/* ===================== FAQ (mockup 8 — FAQ + WhatsApp card) ===================== */}
-      <section className={`${isDark ? "theme-dark" : "theme-cream"} faq-split`} id="faq">
-        <div className="container">
-          <div className="faq-grid">
-            <div className="faq-left reveal">
-              <span className="eyebrow line-eyebrow">FAQ</span>
-              <h2 className="h-section" style={{ marginTop: 14 }}>Questions, <em className="hl-em">answered</em></h2>
-              <p className="ic-sub" style={{ marginTop: 14, textAlign: "left" }}>
-                Here are some common questions about our process, services, and how we help your business grow.
-              </p>
-              <div className="faq-list-v2">
-                {FAQS.map((f, i) => (
-                  <details className="faq-item-v2" key={i}>
-                    <summary>
-                      <span>{f.q}</span>
-                      <span className="faq-plus" aria-hidden></span>
-                    </summary>
-                    <p>{f.a}</p>
-                  </details>
-                ))}
-              </div>
-            </div>
-
-            <div className="faq-right reveal">
-              <div className="wa-card">
-                <span className="wa-card-motif" aria-hidden></span>
-                <span className="wa-icon">{WHATSAPP}</span>
-                <h3>Still have questions?<br /><em>Chat on WhatsApp</em></h3>
-                <span className="wa-rule"></span>
-                <p>We&apos;re here to help. Reach out anytime and we&apos;ll get back to you as soon as possible.</p>
-                <a href={WHATSAPP_URL} className="wa-btn" target="_blank" rel="noopener">
-                  {WHATSAPP}
-                  Chat on WhatsApp
-                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden><path d="M5 12h14M13 6l6 6-6 6" /></svg>
-                </a>
-              </div>
-              <div className="wa-privacy">
-                <span className="wa-lock">
-                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><rect x="4" y="11" width="16" height="9" rx="2" /><path d="M8 11V7a4 4 0 0 1 8 0v4" /></svg>
-                </span>
-                Your information is safe with us. We respect your privacy.
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ===================== TESTIMONIALS (mockup 9 — featured + 2) ===================== */}
-      <section className={`${isDark ? "theme-dark" : "theme-cream"} testi-v2`} id="testimonials">
-        <div className="container">
-          <div className="ic-head reveal">
-            <span className="eyebrow line-eyebrow-center">Client testimonials</span>
-            <h2 className="h-section" style={{ marginTop: 16, justifyContent: "center" }}>
-              Businesses that <em className="hl-em">trust us</em>
+          <div className="cmp-head reveal">
+            <span className="eyebrow line-eyebrow">Why Wevtex</span>
+            <h2 className="h-section" style={{ marginTop: 16 }}>
+              How we compare to<br />the <em className="hl-em">usual options</em>
             </h2>
-            <p className="ic-sub">
-              We take pride in the relationships we build and the results we deliver.<br />
-              Here&apos;s what our clients have to say.
-            </p>
           </div>
-
-          <div className="testi-grid reveal">
-            {[0, 1, 2].map((off) => {
-              const t = TPOOL[(ti + off) % TPOOL.length];
-              const featured = off === 1;
-              return (
-                <div className={featured ? "testi-card featured" : "testi-card"} key={off}>
-                  {featured ? <div className="stars">★★★★★</div> : <span className="testi-mark">&ldquo;</span>}
-                  <p className="testi-q">
-                    {featured && "“"}{t.q}{t.em ? <em className="hl-em">{t.em}</em> : null}{featured && "”"}
-                  </p>
-                  {!featured && <span className="testi-rule"></span>}
-                  <div className="testi-person">
-                    <span className="testi-avatar">{t.a}</span>
-                    <div><div className="testi-name">{t.name}</div><div className="testi-role">{t.role}</div></div>
-                  </div>
-                  <span className="testi-bigquote" aria-hidden>&rdquo;</span>
-                </div>
-              );
-            })}
-          </div>
-
-          <div className="testi-controls reveal">
-            <button className="ic-arrow" aria-label="Previous reviews" onClick={() => setTi((p) => (p - 1 + TPOOL.length) % TPOOL.length)}>
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M15 18l-6-6 6-6" /></svg>
-            </button>
-            <div className="ic-dots testi-dots">
-              {TPOOL.map((_, d) => (
-                <span key={d} className={d === ti ? "on" : ""} onClick={() => setTi(d)} role="button" aria-label={`Go to review ${d + 1}`}></span>
-              ))}
-            </div>
-            <button className="ic-arrow" aria-label="Next reviews" onClick={() => setTi((p) => (p + 1) % TPOOL.length)}>
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M9 18l6-6-6-6" /></svg>
-            </button>
-            <a href="/portfolio" className="btn btn-outline" style={{ marginLeft: 8 }}>
-              See more reviews
-              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden style={{ marginLeft: 4 }}><path d="M5 12h14M13 6l6 6-6 6" /></svg>
-            </a>
+          <div className="cmp-scroll reveal">
+            <table className="cmp-table">
+              <caption>Wevtex compared with a typical agency and a freelancer</caption>
+              <thead>
+                <tr>
+                  <th scope="col"><span className="cmp-hidden">Criteria</span></th>
+                  <th scope="col" className="cmp-us">Wevtex</th>
+                  <th scope="col">Typical agency</th>
+                  <th scope="col">Freelancer</th>
+                </tr>
+              </thead>
+              <tbody>
+                {COMPARISON_ROWS.map((r) => (
+                  <tr key={r.label}>
+                    <th scope="row">{r.label}</th>
+                    <td className="cmp-us">
+                      <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" strokeWidth="2.1" strokeLinecap="round" strokeLinejoin="round" aria-hidden><path d="M20 6L9 17l-5-5" /></svg>
+                      {r.us}
+                    </td>
+                    <td>{r.agency}</td>
+                    <td>{r.free}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </div>
         </div>
       </section>
 
       {/* ===================== PRICING (mockup 10) ===================== */}
-      <section className={`${isDark ? "theme-dark" : "theme-cream"} pricing-v2`} id="pricing">
+      <section className={`${isDark ? "theme-dark" : "theme-paper"} pricing-v2`} id="pricing">
         <div className="container">
           <div className="ic-head reveal">
             <span className="eyebrow line-eyebrow-center">Pricing</span>
@@ -880,13 +931,13 @@ export function HomeClient() {
 
           <div className="pr-grid reveal">
             {[
-              { name: "Start", sub: "Perfect for small businesses", price: "990", featured: false,
-                icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M11 20A7 7 0 0 1 4 13c0-5 4-9 9-9 0 5-1 11-2 16z" /><path d="M11 20c0-4 2-8 6-10" /></svg>,
+              { name: "Start", sub: "Perfect for small businesses", price: "990", note: "One-time · delivered in 7 days", featured: false,
+                icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M12 3l1.8 4.4L18.2 9.2 13.8 11 12 15.4 10.2 11 5.8 9.2 10.2 7.4 12 3z" /><path d="M18.4 15.2l.7 1.7 1.7.7-1.7.7-.7 1.7-.7-1.7-1.7-.7 1.7-.7z" /></svg>,
                 features: ["Up to 5 Pages Website", "Responsive Design", "Basic SEO Setup", "Contact Form", "1 Month Support"] },
-              { name: "Grow", sub: "Ideal for growing businesses", price: "2,900", featured: true,
+              { name: "Grow", sub: "Ideal for growing businesses", price: "2,900", note: "One-time · delivered in 14 days", featured: true,
                 icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M4.5 16.5c-1.5 1.3-2 5-2 5s3.7-.5 5-2c.7-.9.7-2.2-.1-3a2.1 2.1 0 0 0-2.9 0z" /><path d="M12 15l-3-3a16 16 0 0 1 9-9 6 6 0 0 1-9 9z" /><path d="M9 12H4s.5-3 2-4 5 0 5 0" /></svg>,
                 features: ["Up to 15 Pages Website", "Advanced SEO", "Speed Optimization", "Blog/News Section", "3 Months Support", "Performance Analytics"] },
-              { name: "Scale", sub: "For established businesses", price: "7,900", featured: false,
+              { name: "Scale", sub: "For established businesses", price: "7,900", note: "One-time · custom timeline", featured: false,
                 icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M3 8l4 3 5-6 5 6 4-3-2 11H5L3 8z" /></svg>,
                 features: ["Unlimited Pages", "Advanced SEO & Schema", "Custom Integrations", "Priority Support", "6 Months Support", "Monthly Performance Reports"] },
             ].map((p) => (
@@ -906,6 +957,7 @@ export function HomeClient() {
                 </div>
                 <div className="pr-divider"><span className="dot"></span></div>
                 <div className="pr-price">{p.price}<span className="cur">DH</span></div>
+                <div className="pr-note">{p.note}</div>
                 <ul className="pr-feats">
                   {p.features.map((f) => (
                     <li key={f}>
@@ -921,42 +973,24 @@ export function HomeClient() {
               </div>
             ))}
           </div>
+
+          <div className="pr-foot reveal">
+            <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden><path d="M20 6L9 17l-5-5" /></svg>No hidden fees</span>
+            <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden><path d="M20 6L9 17l-5-5" /></svg>Pay only when you&apos;re satisfied</span>
+            <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden><path d="M20 6L9 17l-5-5" /></svg>Need something custom? Ask us</span>
+          </div>
         </div>
       </section>
 
-      {/* ===================== PROMISE (mockup — dark card + stamp) ===================== */}
-      <section className="promise-v2">
+      {/* CTA next to pricing — social proof and the ask in the same eyeline. */}
+      <section className={`${isDark ? "theme-dark" : "theme-cream"} inline-cta`}>
         <div className="container">
-          <div className="promise-card reveal">
-            <span className="promise-motif tl" aria-hidden></span>
-            <span className="promise-motif br" aria-hidden></span>
-            <div className="promise-left">
-              <span className="eyebrow line-eyebrow">Our promise</span>
-              <h2 className="promise-h">No payment<br />until you&apos;re <em className="hl-em">fully satisfied</em></h2>
-              <p className="promise-p">We stand behind our work and your success. That&apos;s why you won&apos;t pay a thing until you&apos;re completely happy with the results.</p>
-            </div>
-            <div className="promise-right">
-              <svg className="promise-stamp" viewBox="0 0 200 200" aria-hidden>
-                <defs>
-                  <path id="psTop" d="M 36 100 A 64 64 0 0 1 164 100" />
-                  <path id="psBot" d="M 36 100 A 64 64 0 0 0 164 100" />
-                </defs>
-                <circle cx="100" cy="100" r="82" fill="none" stroke="#e5501e" strokeWidth="1.5" opacity="0.55" />
-                <circle cx="100" cy="100" r="70" fill="none" stroke="#e5501e" strokeWidth="1" strokeDasharray="2 5" opacity="0.7" />
-                <text fill="#e5501e" fontSize="13"><textPath href="#psTop" startOffset="50%" textAnchor="middle">SATISFACTION</textPath></text>
-                <text fill="#e5501e" fontSize="13"><textPath href="#psBot" startOffset="50%" textAnchor="middle">GUARANTEED</textPath></text>
-                <text className="ps-num" x="100" y="112" textAnchor="middle" fontSize="34" fontWeight="500" fill="#e5501e">100%</text>
-              </svg>
-              <a href={WHATSAPP_URL} className="promise-btn" target="_blank" rel="noopener">
-                Get a free quote
-                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden><path d="M5 12h14M13 6l6 6-6 6" /></svg>
-              </a>
-              <div className="promise-trust">
-                <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z" /></svg>No risk</span>
-                <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><rect x="4" y="11" width="16" height="9" rx="2" /><path d="M8 11V7a4 4 0 0 1 8 0v4" /></svg>Secure</span>
-                <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="9" /><path d="M8 12l3 3 5-6" /></svg>Hassle-free</span>
-              </div>
-            </div>
+          <div className="ict-inner reveal">
+            <p className="ict-text">Not sure which plan fits? Ask us — it takes two minutes.</p>
+            <a href={WHATSAPP_URL} className="btn btn-primary" target="_blank" rel="noopener">
+              Talk to us on WhatsApp
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+            </a>
           </div>
         </div>
       </section>
@@ -997,94 +1031,145 @@ export function HomeClient() {
           </div>
 
           <div className="ao-foot reveal">
-            <span className="ao-info-icon">
-              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="9" /><path d="M12 16v-4M12 8h.01" /></svg>
-            </span>
-            <span>Need something specific?</span>
-            <a href={WHATSAPP_URL} target="_blank" rel="noopener">
-              Let&apos;s talk about your project
-              <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+            <div className="ao-foot-in">
+              <span className="ao-info-icon">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="9" /><path d="M12 16v-4M12 8h.01" /></svg>
+              </span>
+              <span>Need something specific?</span>
+              <a href={WHATSAPP_URL} target="_blank" rel="noopener">
+                Let&apos;s talk about your project
+                <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ===================== FAQ (mockup 8 — FAQ + WhatsApp card) ===================== */}
+      <section className={`${isDark ? "theme-dark" : "theme-paper"} faq-split`} id="faq">
+        <div className="container">
+          <div className="faq-grid">
+            <div className="faq-left reveal">
+              <span className="eyebrow line-eyebrow">FAQ</span>
+              <h2 className="h-section" style={{ marginTop: 14 }}>Questions, <em className="hl-em">answered</em></h2>
+              <p className="ic-sub" style={{ marginTop: 14, textAlign: "left" }}>
+                Here are some common questions about our process, services, and how we help your business grow.
+              </p>
+              <div className="faq-list-v2">
+                {FAQS.map((f, i) => (
+                  <details className="faq-item-v2" key={i}>
+                    <summary>
+                      <span className="faq-num" aria-hidden>{String(i + 1).padStart(2, "0")}</span>
+                      <span className="faq-q">{f.q}</span>
+                      <span className="faq-plus" aria-hidden></span>
+                    </summary>
+                    <div className="faq-body">
+                      <p>{f.a}</p>
+                    </div>
+                  </details>
+                ))}
+              </div>
+            </div>
+
+            <div className="faq-right reveal">
+              <div className="wa-card">
+                <span className="wa-card-motif" aria-hidden></span>
+                <span className="wa-icon">{WHATSAPP}</span>
+                <h3>Still have questions?<br /><em>Chat on WhatsApp</em></h3>
+                <span className="wa-rule"></span>
+                <p>We&apos;re here to help. Reach out anytime and we&apos;ll get back to you as soon as possible.</p>
+                <a href={WHATSAPP_URL} className="wa-btn" target="_blank" rel="noopener">
+                  {WHATSAPP}
+                  Chat on WhatsApp
+                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+                </a>
+              </div>
+              <div className="wa-privacy">
+                <span className="wa-lock">
+                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><rect x="4" y="11" width="16" height="9" rx="2" /><path d="M8 11V7a4 4 0 0 1 8 0v4" /></svg>
+                </span>
+                Your information is safe with us. We respect your privacy.
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ===================== FOUNDER ===================== */}
+      {/* People buy from people — a face and a name before the final ask. */}
+      <section className={`${isDark ? "theme-dark" : "theme-paper"} founder-v2`}>
+        <div className="container">
+          <div className="fd-inner reveal">
+            <div className="fd-photo">
+              <Image src="/images/team/founder.png" alt="Founder of Wevtex" width={640} height={800} sizes="(max-width: 820px) 60vw, 320px" />
+            </div>
+            <div className="fd-body">
+              <span className="eyebrow line-eyebrow">Who you work with</span>
+              <h2 className="h-section" style={{ marginTop: 16 }}>
+                You will talk to the<br />people who <em className="hl-em">build it</em>
+              </h2>
+              <p className="fd-p">
+                No account managers and no handover to a team you never met. You brief us
+                directly, and the same people write the code and stay reachable after launch.
+              </p>
+              <p className="fd-sign">Wevtex — Morocco</p>
+              <a href={WHATSAPP_URL} className="btn btn-outline" target="_blank" rel="noopener">
+                Message us directly
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ===================== CONTACT (single column) ===================== */}
+      <section className="contact-one" id="contact">
+        <div className="container">
+          <div className="co-head reveal">
+            <span className="eyebrow line-eyebrow-center">Contact</span>
+            <h2 className="h-section" style={{ marginTop: 16, justifyContent: "center" }}>
+              Let&apos;s start with <em className="hl-em">a quick message</em>
+            </h2>
+            <p className="co-sub">
+              Tell us what you need. You get a clear plan and a fixed price back &mdash; usually within a few hours.
+            </p>
+          </div>
+
+          <div className="co-channels reveal">
+            <a className="co-chan primary" href={WHATSAPP_URL} target="_blank" rel="noopener">
+              <span className="co-chan-ic">{WHATSAPP}</span>
+              <span className="co-chan-tx"><b>Chat on WhatsApp</b><small>Fastest way to reach us</small></span>
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+            </a>
+            <a className="co-chan" href={EMAIL_URL}>
+              <span className="co-chan-ic">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="5" width="18" height="14" rx="2" /><path d="M3 7l9 6 9-6" /></svg>
+              </span>
+              <span className="co-chan-tx"><b>Send an email</b><small>hello@wevtex.com</small></span>
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden><path d="M5 12h14M13 6l6 6-6 6" /></svg>
             </a>
           </div>
-        </div>
-      </section>
 
-      {/* ===================== CTA (mockup — vermilion band) ===================== */}
-      <section className="cta-v2">
-        <span className="cta-motif tr" aria-hidden></span>
-        <span className="cta-motif bl" aria-hidden></span>
-        <div className="container">
-          <div className="cta-inner reveal">
-            <span className="cta-eyebrow">Let&apos;s talk</span>
-            <span className="cta-line"><span className="dot"></span></span>
-            <h2 className="cta-h">Ready to grow <em className="cta-em">your business?</em></h2>
-            <p className="cta-p">
-              Let&apos;s build something great together. Tell us about your project<br />
-              and we&apos;ll get back to you within 24 hours.
-            </p>
-            <div className="cta-btns">
-              <a href={WHATSAPP_URL} className="cta-btn solid" target="_blank" rel="noopener">
-                Get a free quote
-                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden><path d="M5 12h14M13 6l6 6-6 6" /></svg>
-              </a>
-              <a href="/portfolio" className="cta-btn outline">
-                See our work
-                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden><path d="M5 12h14M13 6l6 6-6 6" /></svg>
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
+          <div className="co-or reveal"><span>or send a quick brief</span></div>
 
-      {/* ===================== CONTACT (mockup 12 — split) ===================== */}
-      <section className="contact-split" id="contact">
-        <div className="cs-left">
-          <span className="cs-motif" aria-hidden></span>
-          <div className="cs-inner reveal">
-            <span className="eyebrow cs-eyebrow">
-              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" aria-hidden><path d="M12 3v18M3 12h18M5.6 5.6l12.8 12.8M18.4 5.6L5.6 18.4" /></svg>
-              We&apos;d love to hear from you
-            </span>
-            <h2 className="cs-h">Let&apos;s start with<br />a quick <em className="hl-em">message</em></h2>
-            <span className="cs-rule"></span>
-            <p className="cs-p">
-              Have a project in mind or just want to say hello?<br />
-              We&apos;ll get back to you as soon as possible.
-            </p>
-            <div className="cs-cards">
-              <a className="cs-card wa" href={WHATSAPP_URL} target="_blank" rel="noopener">
-                <span className="cs-card-ic">{WHATSAPP}</span>
-                <span className="cs-card-tx"><b>Chat on WhatsApp</b><span>Quick responses</span></span>
-                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden><path d="M5 12h14M13 6l6 6-6 6" /></svg>
-              </a>
-              <a className="cs-card" href={EMAIL_URL}>
-                <span className="cs-card-ic">
-                  <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="5" width="18" height="14" rx="2" /><path d="M3 7l9 6 9-6" /></svg>
-                </span>
-                <span className="cs-card-tx"><b>Send an Email</b><span>hello@wevtex.com</span></span>
-                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden><path d="M5 12h14M13 6l6 6-6 6" /></svg>
-              </a>
-            </div>
-            <div className="cs-hours">
-              <span className="cs-hours-head">
-                <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="9" /><path d="M12 7v5l3 2" /></svg>
-                Opening hours
-              </span>
-              <div className="cs-hour"><span>Monday – Friday</span><span>09:00 – 18:00</span></div>
-              <div className="cs-hour"><span>Saturday</span><span>10:00 – 14:00</span></div>
-              <div className="cs-hour"><span>Sunday</span><span>Closed</span></div>
-              <p className="cs-reply"><span className="dot"></span>We usually reply within a few hours.</p>
-            </div>
+          <div className="co-form reveal">
+            <ContactForm />
           </div>
-        </div>
-        <div className="cs-right">
-          <span className="cs-right-motif" aria-hidden></span>
-          <ContactForm />
+
+          <ul className="co-trust reveal">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden><path d="M20 6L9 17l-5-5" /></svg>Free quote</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden><path d="M20 6L9 17l-5-5" /></svg>No obligation</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden><path d="M20 6L9 17l-5-5" /></svg>Reply within a few hours</li>
+          </ul>
+          <p className="co-hours reveal">Mon &ndash; Fri 09:00&ndash;18:00 &middot; Sat 10:00&ndash;14:00 &middot; Sun closed</p>
         </div>
       </section>
 
       {/* ===================== FOOTER ===================== */}
       <SiteFooter />
+
+      {/* Mobile-only: keeps the ask reachable through the whole scroll. */}
+      <StickyCta whatsappUrl={WHATSAPP_URL} />
     </div>
   );
 }
