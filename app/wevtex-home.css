@@ -24,13 +24,19 @@
   --ink-on-dark-3: rgba(255, 255, 255, 0.50);
   --ink-on-dark-4: rgba(255, 255, 255, 0.30);
 
-  /* Light surfaces — canvas white + paper alt */
+  /* Light surfaces — a four-step value ladder, not one flat field.
+     Each rung is ~2-3% darker than the last. Sections alternate down the
+     ladder so the eye gets a rhythm to hold onto instead of one long wash:
+       cream   → the "air" moments (hero, work)
+       cream-2 → default body sections
+       paper   → recessed / secondary (FAQ, industries)
+       sand    → the deepest light rung, used sparingly */
   --bg-cream: #ffffff;
-  --bg-cream-2: #f5f5f2;
-  --bg-paper: #f5f5f2;
+  --bg-cream-2: #faf9f6;
+  --bg-paper: #f2f1ec;
   --surface-c-1: rgba(16, 17, 18, 0.03);
   --surface-c-2: rgba(16, 17, 18, 0.06);
-  --hairline-c: #e6e6e3;
+  --hairline-c: #e2e0da;
   --hairline-c-strong: rgba(16, 17, 18, 0.20);
   --ink-on-cream: #101112;
   --ink-on-cream-2: #6b6b68;
@@ -48,7 +54,7 @@
 
   /* Named aliases kept for older blocks — all resolve into the new system */
   --vermilion: #c6f24e;
-  --sand: #f5f5f2;
+  --sand: #eceae3;
   --clay: #4c6b10;
   --ochre: #6b6b68;
   --olive: #6b6b68;
@@ -82,12 +88,11 @@
 .wevtex .promise-banner,
 .wevtex .promise-card,
 .wevtex .cs-left,
-.wevtex .testi-card.featured,
 .wevtex .about-card.dark,
 .wevtex .btn-dark,
 .wevtex .ic-card,
 .wevtex .cta-v2,
-.wevtex .pr-card.featured,
+.wevtex .pricing-ink,
 .wevtex .pj-card.solid,
 .wevtex .wa-card {
   --accent-text: var(--accent);
@@ -4927,7 +4932,7 @@
   position: relative;
   overflow: hidden;
 }
-.wevtex.mode-light .hero-split { background: var(--sand); }
+.wevtex.mode-light .hero-split { background: var(--bg-cream-2); }
 
 .wevtex .hero-split .hero-grid {
   display: grid;
@@ -5015,7 +5020,7 @@
 
 /* ===================== SERVICES — mockup 3 (bento) ===================== */
 .wevtex .services-bento { padding: clamp(80px, 12vh, 130px) 0; position: relative; }
-.wevtex.mode-light .services-bento { background: var(--sand); }
+.wevtex.mode-light .services-bento { background: var(--bg-paper); }
 
 .wevtex .bento-head { display: grid; grid-template-columns: 1.5fr 1fr; gap: 48px; align-items: end; margin-bottom: 52px; }
 @media (max-width: 860px) { .wevtex .bento-head { grid-template-columns: 1fr; gap: 16px; align-items: start; } }
@@ -5023,53 +5028,118 @@
 .wevtex.mode-dark .bento-head-right { color: var(--ink-on-dark-2); }
 .wevtex .line-eyebrow::after { content: ""; display: inline-block; width: 58px; height: 1px; background: var(--vermilion); margin-left: 14px; vertical-align: middle; opacity: 0.7; }
 
-/* One ruled block: a border around the whole grid, hairlines between cells. */
+/* ---- The grid ------------------------------------------------------
+   A hairline matrix, not a bordered card block. Same language as the work
+   index and the testimonial columns: internal rules only, open at the
+   outer edges, so the section sits on the page instead of on a tray. */
 .wevtex .bento-grid {
   display: grid; grid-template-columns: repeat(4, 1fr); gap: 0;
-  border: 1px solid rgba(16, 17, 18, 0.14); border-radius: 20px; overflow: hidden;
+  border-top: 1px solid var(--hairline-c);
+  border-bottom: 1px solid var(--hairline-c);
 }
 .wevtex.mode-dark .bento-grid { border-color: var(--hairline-d); }
-.wevtex .bento-card:nth-child(4n) { border-right: 0; }
-.wevtex .bento-card:nth-child(n+5) { border-bottom: 0; }
-@media (max-width: 980px) {
-  .wevtex .bento-grid { grid-template-columns: repeat(2, 1fr); }
-  .wevtex .bento-card { border-right: 1px solid rgba(16, 17, 18, 0.14); border-bottom: 1px solid rgba(16, 17, 18, 0.14); }
-  .wevtex .bento-card:nth-child(2n) { border-right: 0; }
-  .wevtex .bento-card:nth-child(n+7) { border-bottom: 0; }
-}
-@media (max-width: 540px) {
-  .wevtex .bento-grid { grid-template-columns: 1fr; }
-  .wevtex .bento-card { border-right: 0; border-bottom: 1px solid rgba(16, 17, 18, 0.14); }
-  .wevtex .bento-card:last-child { border-bottom: 0; }
-}
 
 .wevtex .bento-card {
   position: relative;
   display: flex; flex-direction: column;
-  background: rgba(255, 255, 255, 0.28); color: var(--ink-on-cream);
+  background: transparent; color: var(--ink-on-cream);
   border: 0;
-  border-right: 1px solid rgba(16, 17, 18, 0.14);
-  border-bottom: 1px solid rgba(16, 17, 18, 0.14);
+  border-left: 1px solid var(--hairline-c);
   border-radius: 0; box-shadow: none;
-  padding: 32px 28px; min-height: 252px; text-decoration: none;
+  padding: 30px 26px 26px; min-height: 244px; text-decoration: none;
 }
-.wevtex.mode-dark .bento-card { border-color: var(--hairline-d); background: rgba(255, 255, 255, 0.01); }
-.wevtex .bento-card.feature { grid-column: auto; }
+.wevtex.mode-dark .bento-card { border-left-color: var(--hairline-d); }
+/* First in each row opens to the page edge; row two gets its own rule. */
+.wevtex .bento-card:nth-child(4n+1) { border-left: 0; padding-left: 0; }
+.wevtex .bento-card:nth-child(4n) { padding-right: 0; }
+.wevtex .bento-card:nth-child(n+5) { border-top: 1px solid var(--hairline-c); }
+.wevtex.mode-dark .bento-card:nth-child(n+5) { border-top-color: var(--hairline-d); }
 
+/* ---- Head row: number left, icon right ---- */
+.wevtex .bento-top {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-bottom: 26px;
+}
+.wevtex .bento-n {
+  font-family: var(--font-mono); font-size: 11.5px; letter-spacing: 0.1em;
+  font-variant-numeric: tabular-nums; color: var(--ink-on-cream-3);
+}
+.wevtex.mode-dark .bento-n { color: var(--ink-on-dark-4); }
+/* Plain ink glyph — the grey outlined disc was the most generic thing here. */
 .wevtex .bento-icon {
-  width: 52px; height: 52px; border-radius: 50%;
-  border: 1px solid var(--hairline-c-strong);
-  display: grid; place-items: center; color: var(--olive); flex-shrink: 0;
+  width: auto; height: auto; border: 0; border-radius: 0;
+  display: grid; place-items: center; color: var(--ink-on-cream); flex-shrink: 0;
+  transition: color 240ms var(--ease-out);
 }
-.wevtex .bento-icon svg { width: 23px; height: 23px; }
+.wevtex.mode-dark .bento-icon { color: var(--ink-on-dark); }
+.wevtex .bento-icon svg { width: 22px; height: 22px; }
 
-.wevtex .bento-card-body { margin-top: auto; padding-top: 22px; position: relative; z-index: 1; }
-.wevtex .bento-card h4 { font-size: 20px; font-weight: 600; letter-spacing: -0.02em; margin-bottom: 8px; }
+/* ---- Body ----------------------------------------------------------
+   Body is NOT pushed to the bottom any more. margin-top:auto was why the
+   titles sat at four different heights across the row. */
+.wevtex .bento-card-body { margin-top: 0; padding-top: 0; position: relative; z-index: 1; }
+.wevtex .bento-card h4 {
+  font-size: 18px; font-weight: 600; letter-spacing: -0.02em;
+  line-height: 1.25; margin-bottom: 10px;
+  /* Two lines reserved so every description starts on the same baseline. */
+  min-height: 2.5em;
+  /* Lime marker wipes in on hover — same gesture as a work row. */
+  display: inline;
+  background: linear-gradient(var(--accent), var(--accent)) no-repeat;
+  background-size: 0% 0.88em;
+  background-position: 0 0.16em;
+  transition: background-size 240ms var(--ease-out), color 240ms var(--ease-out);
+}
 .wevtex .bento-card p { font-size: 14px; line-height: 1.6; color: var(--ink-on-cream-2); max-width: 34ch; }
+.wevtex.mode-dark .bento-card p { color: var(--ink-on-dark-3); }
 
-.wevtex .bento-arrow { display: inline-flex; margin-top: 18px; color: var(--accent-text); }
+/* ---- Arrow ---------------------------------------------------------
+   Eight filled black discs were the loudest thing in the section and the
+   least like the rest of the page. One quiet arrow that arrives on hover. */
+.wevtex .bento-arrow {
+  width: auto; height: auto; border: 0; border-radius: 0; background: none;
+  margin-top: auto; padding-top: 20px;
+  display: inline-flex; color: var(--ink-on-cream-3);
+  opacity: 0; transform: translateX(-6px);
+  transition: opacity 240ms var(--ease-out), transform 240ms var(--ease-out), color 240ms var(--ease-out);
+}
+.wevtex.mode-dark .bento-arrow { color: var(--ink-on-dark-3); }
+.wevtex .bento-arrow svg { width: 16px; height: 16px; }
+
+/* One orchestrated hover: tint, marker, icon, arrow. */
+.wevtex .services-bento .bento-card { transition: background-color 260ms var(--ease-out); }
+.wevtex .services-bento .bento-card:hover { transform: none; box-shadow: none; background: var(--surface-c-1); }
+.wevtex.mode-dark .services-bento .bento-card:hover { background: var(--surface-d-1); }
+.wevtex .services-bento .bento-card:hover h4 { background-size: 100% 0.88em; color: var(--on-lime); }
+.wevtex .services-bento .bento-card:hover .bento-icon { color: var(--accent-deep); }
+.wevtex.mode-dark .services-bento .bento-card:hover .bento-icon { color: var(--accent); }
+.wevtex .services-bento .bento-card:hover .bento-arrow { opacity: 1; transform: none; color: var(--accent-deep); }
+.wevtex.mode-dark .services-bento .bento-card:hover .bento-arrow { color: var(--accent); }
 
 .wevtex .bento-motif { display: none; }
+
+@media (max-width: 980px) {
+  .wevtex .bento-grid { grid-template-columns: repeat(2, 1fr); }
+  .wevtex .bento-card { border-left: 1px solid var(--hairline-c); padding-left: 26px; padding-right: 26px; }
+  .wevtex.mode-dark .bento-card { border-left-color: var(--hairline-d); }
+  .wevtex .bento-card:nth-child(4n+1) { border-left: 1px solid var(--hairline-c); padding-left: 26px; }
+  .wevtex .bento-card:nth-child(2n+1) { border-left: 0; padding-left: 0; }
+  .wevtex .bento-card:nth-child(2n) { padding-right: 0; }
+  .wevtex .bento-card:nth-child(n+3) { border-top: 1px solid var(--hairline-c); }
+  .wevtex.mode-dark .bento-card:nth-child(n+3) { border-top-color: var(--hairline-d); }
+}
+@media (max-width: 540px) {
+  .wevtex .bento-grid { grid-template-columns: 1fr; }
+  .wevtex .bento-card { border-left: 0; padding-left: 0; padding-right: 0; min-height: 0; }
+  .wevtex .bento-card:nth-child(n+2) { border-top: 1px solid var(--hairline-c); }
+  .wevtex .bento-card h4 { min-height: 0; }
+  /* No hover on touch — the arrow would never appear. */
+  .wevtex .bento-arrow { opacity: 1; transform: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .wevtex .bento-card, .wevtex .bento-card h4,
+  .wevtex .bento-icon, .wevtex .bento-arrow { transition: none; }
+}
 
 /* ===================== INDUSTRIES — mockup 4 (carousel) ===================== */
 .wevtex .industries-carousel { padding: clamp(80px, 12vh, 130px) 0; }
@@ -5274,73 +5344,6 @@
 .wevtex .sb-motif.br { bottom: 0; right: 0; -webkit-mask-image: radial-gradient(circle at 100% 100%, #000, transparent 72%); mask-image: radial-gradient(circle at 100% 100%, #000, transparent 72%); }
 
 /* ===================== PROJECTS — mockup 7 (browser-frame cards) ===================== */
-.wevtex .projects-v2 { padding: clamp(80px, 12vh, 130px) 0; }
-.wevtex .pj-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 28px; margin-bottom: 40px; flex-wrap: wrap; }
-.wevtex .pj-head .ic-sub { color: var(--ink-on-cream-2); line-height: 1.6; font-size: 15px; max-width: 40ch; }
-.wevtex.mode-dark .pj-head .ic-sub { color: var(--ink-on-dark-2); }
-.wevtex .pj-viewall { flex-shrink: 0; }
-
-.wevtex .pj-grid { display: grid; grid-template-columns: repeat(12, 1fr); grid-auto-rows: minmax(150px, 1fr); gap: 18px; }
-.wevtex .pj-luxora { grid-column: span 5; grid-row: span 2; }
-.wevtex .pj-dar { grid-column: span 4; }
-.wevtex .pj-well { grid-column: span 3; }
-.wevtex .pj-petro { grid-column: span 3; }
-.wevtex .pj-edu { grid-column: span 4; }
-@media (max-width: 900px) {
-  .wevtex .pj-grid { grid-template-columns: repeat(2, 1fr); grid-auto-rows: 230px; }
-  .wevtex .pj-luxora { grid-column: span 2; grid-row: span 1; }
-  .wevtex .pj-dar, .wevtex .pj-well, .wevtex .pj-petro, .wevtex .pj-edu { grid-column: span 1; }
-}
-@media (max-width: 560px) { .wevtex .pj-grid { grid-template-columns: 1fr; } .wevtex .pj-grid > * { grid-column: span 1 !important; } }
-
-.wevtex .pj-card {
-  display: flex; flex-direction: column; overflow: hidden; text-decoration: none;
-  background: var(--card); border: 1px solid rgba(16, 17, 18, 0.14); border-radius: 18px;
-  box-shadow: none;
-  transition: border-color 320ms var(--ease-out);
-}
-.wevtex.mode-dark .pj-card { border-color: var(--hairline-d); }
-.wevtex .pj-card:hover { transform: none; border-color: rgba(16, 17, 18, 0.34); }
-.wevtex.mode-dark .pj-card:hover { border-color: rgba(255, 255, 255, 0.34); }
-.wevtex .pj-frame { flex: 1; display: flex; flex-direction: column; min-height: 0; }
-.wevtex .pj-bar { display: flex; align-items: center; gap: 6px; height: 32px; padding: 0 12px; background: rgba(0, 0, 0, 0.035); border-bottom: 1px solid var(--hairline-c-strong); flex-shrink: 0; }
-.wevtex .pj-bar i { width: 8px; height: 8px; border-radius: 50%; background: rgba(0, 0, 0, 0.18); }
-.wevtex .pj-bar i:nth-child(1) { background: #d4d4d0; }
-.wevtex .pj-bar i:nth-child(2) { background: #d4d4d0; }
-.wevtex .pj-bar i:nth-child(3) { background: #d4d4d0; }
-.wevtex .pj-url { margin-left: 8px; font-family: var(--font-mono); font-size: 10px; color: var(--ink-on-cream-3); background: #fff; padding: 3px 9px; border-radius: 5px; }
-.wevtex .pj-shot {
-  flex: 1; min-height: 96px;
-  background-repeat: no-repeat;
-  background-size: 100% 320%;
-  background-position: center top;
-  transition: background-position 3200ms cubic-bezier(0.4, 0, 0.25, 1);
-}
-/* hover scrolls the page from its header down to its footer */
-.wevtex .pj-card:hover .pj-shot { background-position: center bottom; }
-/* Placeholder pages — replace with a tall screenshot:
-   <div className="pj-shot" style={{ backgroundImage: "url(/images/work/name.jpg)" }} /> */
-.wevtex .pj-shot.g0 { background-image: linear-gradient(180deg, #ffffff 0%, #f5f5f2 22%, #e2e2de 46%, #f5f5f2 68%, #d8d8d4 100%); }
-.wevtex .pj-shot.g1 { background-image: linear-gradient(180deg, #2a2b2d 0%, #101112 30%, #22242a 58%, #101112 80%, #2a2b2d 100%); }
-.wevtex .pj-shot.g2 { background-image: linear-gradient(180deg, #ffffff 0%, #eeeeea 26%, #d2d2ce 52%, #eeeeea 76%, #c4c4c0 100%); }
-.wevtex .pj-shot.g3 { background-image: linear-gradient(180deg, #ffffff 0%, #f5f5f2 24%, #e6e6e3 50%, #f0f0ec 74%, #dcdcd8 100%); }
-.wevtex .pj-shot.solid { background-image: linear-gradient(180deg, #d4f76a 0%, #c6f24e 28%, #8fb62c 56%, #c6f24e 78%, #4c6b10 100%); }
-.wevtex .pj-meta { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 16px 18px; }
-.wevtex .pj-meta h4 { font-size: 16px; font-weight: 600; letter-spacing: -0.015em; color: var(--ink-on-cream); }
-.wevtex .pj-meta span { font-size: 12px; color: var(--ink-on-cream-2); }
-.wevtex .pj-ext { color: var(--ink-on-cream-3); flex-shrink: 0; transition: color 320ms var(--ease-out); }
-.wevtex .pj-card:hover .pj-ext { color: var(--accent-deep); }
-.wevtex .pj-card.solid:hover .pj-ext { color: var(--accent); }
-
-.wevtex .pj-card.solid { background: #101112; border-color: transparent; }
-.wevtex .pj-card.solid .pj-bar { background: rgba(255, 255, 255, 0.12); border-bottom-color: rgba(255, 255, 255, 0.18); }
-.wevtex .pj-card.solid .pj-url { background: rgba(255, 255, 255, 0.18); color: #fff; }
-.wevtex .pj-card.solid .pj-meta h4 { color: #fff; }
-.wevtex .pj-card.solid .pj-meta span { color: rgba(255, 255, 255, 0.85); }
-.wevtex .pj-card.solid .pj-ext { color: #fff; }
-
-.wevtex .pj-more { display: flex; justify-content: center; margin-top: 38px; }
-
 /* ===================== FAQ — mockup 8 (FAQ + WhatsApp card) ===================== */
 .wevtex .faq-split { padding: clamp(80px, 12vh, 130px) 0; }
 .wevtex .faq-grid { display: grid; grid-template-columns: 1.5fr 1fr; gap: 54px; align-items: start; }
@@ -5413,99 +5416,104 @@
 .wevtex .wa-lock { width: 38px; height: 38px; border-radius: 50%; border: 1px solid var(--hairline-c-strong); display: grid; place-items: center; color: var(--ink-on-cream-3); flex-shrink: 0; }
 .wevtex.mode-dark .wa-lock { border-color: var(--hairline-d-strong); color: var(--ink-on-dark-3); }
 
-/* ===================== TESTIMONIALS — mockup 9 (featured + 2) ===================== */
+/* ===================== TESTIMONIALS — quote wall =====================
+   Three equal columns divided by hairlines. No cards, no dark slab, no
+   shadows: the previous version made the middle quote an object and the
+   outer two plain text, so the star rows sat at three different heights
+   and the pinned authors left a void under any short quote.
+
+   Equal treatment also means equal weight, which is right for this section
+   — the page already carries its emphasis at pricing and contact.
+   ===================================================================== */
 .wevtex .testi-v2 { padding: clamp(80px, 12vh, 130px) 0; }
+
 .wevtex .testi-grid {
-  display: grid; grid-template-columns: 1fr 1.3fr 1fr; gap: 22px;
-  align-items: stretch; margin-top: 50px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  margin-top: 54px;
+  border-top: 1px solid var(--hairline-c);
+  align-items: stretch;
 }
-@media (max-width: 1000px) { .wevtex .testi-grid { grid-template-columns: 1fr 1fr; } .wevtex .testi-card.featured { grid-column: span 2; order: -1; } }
-@media (max-width: 700px) { .wevtex .testi-grid { grid-template-columns: 1fr; max-width: 460px; margin-left: auto; margin-right: auto; } .wevtex .testi-card.featured { grid-column: span 1; } }
+.wevtex.mode-dark .testi-grid { border-top-color: var(--hairline-d); }
 
-.wevtex .testi-card {
-  position: relative; overflow: hidden; margin: 0;
+.wevtex .testi-col {
   display: flex; flex-direction: column;
-  background: var(--card); border: 1px solid var(--hairline-c-strong); border-radius: 22px; padding: 32px 30px;
-  box-shadow: 0 20px 44px -34px rgba(16, 17, 18, 0.4);
+  margin: 0;
+  padding: 34px 36px 4px;
+  border-left: 1px solid var(--hairline-c);
 }
-.wevtex .testi-card.featured {
-  background: #101112; color: #fff; border-color: transparent;
-  padding: 42px 40px; box-shadow: 0 32px 64px -28px rgba(16, 17, 18, 0.5);
-}
-/* thin lime cap on the featured card — same accent language as the pricing badge */
-.wevtex .testi-card.featured::before {
-  content: ""; position: absolute; top: 0; left: 40px; right: 40px; height: 2px;
-  background: linear-gradient(90deg, var(--accent), rgba(198, 242, 78, 0));
-}
+.wevtex.mode-dark .testi-col { border-left-color: var(--hairline-d); }
+/* Outer edges stay open so the wall reads as columns, not as boxes. */
+.wevtex .testi-col:first-child { border-left: 0; padding-left: 0; }
+.wevtex .testi-col:last-child { padding-right: 0; }
 
-.wevtex .testi-stars { display: flex; gap: 3px; color: var(--accent-text); margin-bottom: 18px; }
-.wevtex .testi-card.featured .testi-stars { color: var(--accent); margin-bottom: 22px; }
+.wevtex .testi-stars { display: flex; gap: 3px; color: var(--accent-text); margin-bottom: 20px; }
 
 .wevtex .testi-q {
-  position: relative; z-index: 1; margin: 0 0 26px;
-  font-size: 15px; line-height: 1.65; color: var(--ink-on-cream);
+  margin: 0 0 30px;
+  font-size: 16px; line-height: 1.7; color: var(--ink-on-cream);
   text-wrap: pretty;
 }
-.wevtex .testi-card.featured .testi-q {
-  font-size: clamp(19px, 1.75vw, 24px); line-height: 1.45; letter-spacing: -0.01em;
-  color: #fff; margin-bottom: 32px;
+.wevtex.mode-dark .testi-q { color: var(--ink-on-dark); }
+
+/* Authors align across all three columns, and because the columns are now
+   the same height that alignment costs no dead space. */
+.wevtex .testi-person {
+  margin-top: auto;
+  display: flex; align-items: center; gap: 12px;
+  padding-top: 22px;
+  border-top: 1px solid var(--hairline-c);
 }
-.wevtex .testi-card.featured .testi-q em.hl-em { color: var(--accent); font-style: normal; }
-
-.wevtex .testi-foot { margin-top: auto; position: relative; z-index: 1; }
-.wevtex .testi-rule { display: block; width: 34px; height: 2px; background: var(--vermilion); margin-bottom: 18px; }
-.wevtex .testi-card.featured .testi-rule { background: var(--accent); }
-
-.wevtex .testi-person { display: flex; align-items: center; gap: 12px; }
+.wevtex.mode-dark .testi-person { border-top-color: var(--hairline-d); }
 .wevtex .testi-avatar {
-  width: 44px; height: 44px; border-radius: 50%; flex-shrink: 0;
-  display: grid; place-items: center; font-size: 15px; font-weight: 600; letter-spacing: 0.02em;
-  background: linear-gradient(160deg, #f2f2ee, #dcdcd6); color: var(--ink-on-cream);
-  border: 1px solid var(--hairline-c-strong);
-}
-.wevtex .testi-card.featured .testi-avatar {
-  background: var(--accent); color: var(--on-lime); border-color: transparent;
+  width: 40px; height: 40px; border-radius: 50%; flex-shrink: 0;
+  display: grid; place-items: center;
+  font-size: 14px; font-weight: 600; letter-spacing: 0.02em;
+  background: var(--accent); color: var(--on-lime);
 }
 .wevtex .testi-name { font-size: 14px; font-weight: 600; color: var(--ink-on-cream); }
 .wevtex .testi-role { font-size: 12.5px; color: var(--ink-on-cream-2); margin-top: 2px; }
-.wevtex .testi-card.featured .testi-name { color: #fff; }
-.wevtex .testi-card.featured .testi-role { color: rgba(255, 255, 255, 0.7); }
-
-.wevtex .testi-bigquote {
-  position: absolute; right: 18px; bottom: -34px;
-  font-style: normal; font-size: 150px; line-height: 1;
-  color: var(--ink-on-cream); opacity: 0.05; pointer-events: none; user-select: none;
-}
-.wevtex .testi-card.featured .testi-bigquote { color: #fff; opacity: 0.07; }
+.wevtex.mode-dark .testi-name { color: var(--ink-on-dark); }
+.wevtex.mode-dark .testi-role { color: var(--ink-on-dark-3); }
 
 .wevtex .testi-controls { display: flex; align-items: center; justify-content: center; gap: 22px; margin-top: 44px; }
 .wevtex .testi-cta { display: flex; justify-content: center; margin-top: 26px; }
-
 .wevtex .testi-dots span { cursor: pointer; transition: width 0.2s, background 0.2s; }
 
+@media (max-width: 900px) {
+  .wevtex .testi-grid { grid-template-columns: 1fr; border-top: 0; }
+  .wevtex .testi-col {
+    border-left: 0;
+    border-top: 1px solid var(--hairline-c);
+    padding: 30px 0 4px;
+  }
+  .wevtex.mode-dark .testi-col { border-top-color: var(--hairline-d); }
+  .wevtex .testi-col:first-child { border-top: 1px solid var(--hairline-c); }
+  .wevtex.mode-dark .testi-col:first-child { border-top-color: var(--hairline-d); }
+  .wevtex .testi-q { margin-bottom: 24px; }
+}
+
 /* ===================== PRICING — mockup 10 ===================== */
-.wevtex .pricing-v2 { padding: clamp(80px, 12vh, 130px) 0; }
+.wevtex .pricing-v2 { padding: clamp(96px, 14vh, 160px) 0; }
 .wevtex .pr-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 62px; align-items: stretch; }
 @media (max-width: 900px) { .wevtex .pr-grid { grid-template-columns: 1fr; max-width: 460px; margin-left: auto; margin-right: auto; gap: 34px; } }
 
 .wevtex .pr-card {
   position: relative; display: flex; flex-direction: column;
   background: var(--card); color: var(--ink-on-cream);
-  border: 1px solid var(--hairline-c); border-radius: 24px; padding: 40px 32px 34px;
-  box-shadow: 0 24px 50px -38px rgba(16, 17, 18, 0.35);
+  border: 1px solid var(--hairline-c); border-radius: 16px; padding: 40px 32px 34px;
   overflow: hidden;
 }
 /* the popular tier is ALWAYS ink — it must not follow the light-mode token swap */
 .wevtex .pr-card.featured {
   background: #101112; color: #fff; border-color: #101112;
   padding: 40px 32px 34px;
-  box-shadow: 0 40px 80px -34px rgba(16, 17, 18, 0.55);
   overflow: visible; /* let the badge overhang the top edge */
 }
-.wevtex .pr-card.featured::before {
-  content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none;
-  background: radial-gradient(85% 45% at 22% 0%, rgba(198, 242, 78, 0.15), transparent 72%);
-}
+/* Flat palette: the popular tier is marked by its surface and its badge,
+   not by a wash. Kept as an empty hook so the z-index rule below still reads. */
+.wevtex .pr-card.featured::before { content: none; }
 .wevtex .pr-card.featured > *:not(.pr-badge) { position: relative; z-index: 1; }
 
 .wevtex .pr-badge {
@@ -5514,7 +5522,6 @@
   width: max-content; max-width: calc(100% - 48px); white-space: nowrap; z-index: 3;
   background: var(--accent); color: var(--on-lime); font-family: var(--font-mono); font-size: 10.5px;
   letter-spacing: 0.12em; text-transform: uppercase; padding: 8px 18px; border-radius: 999px;
-  box-shadow: 0 8px 20px -10px rgba(198, 242, 78, 0.9);
 }
 
 .wevtex .pr-top { display: flex; align-items: center; gap: 14px; }
@@ -5555,7 +5562,7 @@
 }
 .wevtex .pr-btn:hover { background: var(--ink-on-cream); border-color: var(--ink-on-cream); color: #fff; transform: translateY(-2px); }
 .wevtex .pr-btn.solid { background: var(--accent); color: var(--on-lime); border-color: var(--accent); }
-.wevtex .pr-btn.solid:hover { background: var(--accent-hot); border-color: var(--accent-hot); color: var(--on-lime); box-shadow: 0 16px 30px -16px rgba(198, 242, 78, 0.7); }
+.wevtex .pr-btn.solid:hover { background: var(--accent-hot); border-color: var(--accent-hot); color: var(--on-lime); }
 
 .wevtex .pr-foot { margin-top: 34px; display: flex; flex-wrap: wrap; justify-content: center; gap: 10px 28px; font-size: 13px; color: var(--ink-on-cream-2); }
 .wevtex .pr-foot span { display: inline-flex; align-items: center; gap: 7px; }
@@ -5639,8 +5646,8 @@
 .wevtex .ao-foot a svg { transition: transform 220ms var(--ease-out); }
 .wevtex .ao-foot a:hover svg { transform: translateX(3px); }
 
-/* ===================== CONTACT — one column, one decision ===================== */
-.wevtex .contact-one { position: relative; padding: clamp(80px, 12vh, 130px) 0; background: var(--bg-cream-2); }
+/* ===================== CONTACT — legacy one-column rules (superseded by .contact-split) ===================== */
+.wevtex .contact-one { position: relative; padding: clamp(80px, 12vh, 130px) 0; background: var(--bg-paper); }
 .wevtex.mode-dark .contact-one { background: var(--bg-1); }
 .wevtex .contact-one .container { max-width: 720px; }
 .wevtex .co-head { text-align: center; }
@@ -5862,7 +5869,7 @@
 .wevtex .cta-btn svg, .wevtex .pr-btn svg,
 .wevtex .promise-btn svg, .wevtex .wa-btn svg, .wevtex .ao-foot a svg,
 .wevtex .pj-viewall svg, .wevtex .pj-more .btn svg, .wevtex .cs-card > svg,
-.wevtex .bento-arrow, .wevtex .pj-ext, .wevtex .testi-controls .btn svg {
+.wevtex .pj-ext, .wevtex .testi-controls .btn svg {
   transition: transform 160ms var(--ease-out);
 }
 .wevtex .cta-btn:hover svg,
@@ -5885,11 +5892,6 @@
 .site-header .brand-mark { transition: opacity 160ms var(--ease-out); }
 .site-header .brand:hover .brand-mark { opacity: 0.85; }
 
-.wevtex .testi-card { transition: transform 240ms var(--ease-out), box-shadow 240ms var(--ease-out), border-color 240ms var(--ease-out); }
-.wevtex .testi-card:not(.featured):hover { transform: translateY(-4px); border-color: rgba(198, 242, 78, 0.5); box-shadow: 0 12px 28px -10px rgba(16, 17, 18, 0.18); }
-.wevtex .testi-card.featured:hover { transform: translateY(-6px); box-shadow: 0 26px 48px -22px rgba(16, 17, 18, 0.45); }
-.wevtex .testi-avatar { transition: background 240ms var(--ease-out), color 240ms var(--ease-out), border-color 240ms var(--ease-out); }
-.wevtex .testi-card:not(.featured):hover .testi-avatar { background: var(--accent); color: var(--on-lime); border-color: transparent; }
 
 /* ---- Industries carousel: overlay darken + icon fills vermilion ---- */
 .wevtex .ic-card { transition: transform 240ms var(--ease-out); }
@@ -5935,9 +5937,10 @@
 .wevtex .testi-dots span:hover { transform: scale(1.4); }
 
 /* ---- Pricing ---- */
-.wevtex .pr-card { transition: transform 240ms var(--ease-out), box-shadow 240ms var(--ease-out), border-color 240ms var(--ease-out); }
-.wevtex .pr-card:not(.featured):hover { transform: translateY(-4px); box-shadow: 0 26px 50px -26px rgba(16, 17, 18, 0.28); }
-.wevtex .pr-card.featured:hover { transform: translateY(-4px); box-shadow: 0 46px 88px -34px rgba(16, 17, 18, 0.6); }
+/* Hover lifts, it does not glow — same gesture as a work row. */
+.wevtex .pr-card { transition: transform 240ms var(--ease-out), border-color 240ms var(--ease-out); }
+.wevtex .pr-card:hover { transform: translateY(-4px); }
+.wevtex .pricing-ink .pr-card:not(.featured):hover { border-color: var(--hairline-d-strong); }
 
 /* ---- Add-ons rows: tint + icon fills + chip faint fill (no lift) ---- */
 .wevtex .ao-row { transition: background 160ms var(--ease-out); border-radius: 10px; }
@@ -5991,31 +5994,6 @@
   .wevtex *:hover, .footer-v2 *:hover { transform: none !important; }
   .wevtex .pj-shot { transition: none !important; }
 }
-
-/* ===================== Bento — circular arrow + per-card hover colour ===================== */
-.wevtex .bento-arrow {
-  width: 40px; height: 40px; border-radius: 50%;
-  background: #101112; border: 1px solid transparent;
-  display: inline-grid; place-items: center;
-  color: #fff;
-  transition: background 200ms var(--ease-out), color 200ms var(--ease-out), border-color 200ms var(--ease-out);
-}
-.wevtex .bento-arrow svg { width: 16px; height: 16px; }
-/* circular arrow shouldn't slide — fill is the effect */
-.wevtex .bento-card:hover .bento-arrow { transform: none; }
-
-/* ===== Services bento — one surface, one hover, all nine tiles ===== */
-.wevtex .services-bento .bento-card,
-.wevtex .services-bento .bento-card h4,
-.wevtex .services-bento .bento-card p,
-.wevtex .services-bento .bento-icon,
-.wevtex .services-bento .bento-arrow {
-  transition: background-color 320ms var(--ease-out), border-color 320ms var(--ease-out), color 320ms var(--ease-out);
-}
-.wevtex .services-bento .bento-card:hover { transform: none; box-shadow: none; background: rgba(255, 255, 255, 0.55); border-color: transparent; }
-.wevtex.mode-dark .services-bento .bento-card:hover { background: rgba(255, 255, 255, 0.025); }
-.wevtex .services-bento .bento-card:hover .bento-icon { border-color: var(--accent); color: var(--accent-deep); }
-.wevtex .services-bento .bento-card:hover .bento-arrow { background: var(--accent); border-color: transparent; color: var(--on-lime); }
 
 /* Industries: vermilion outline on hover */
 /* Industries hover — the badge fills lime, the photo settles. Nothing moves. */
@@ -6130,7 +6108,7 @@
 @media (max-width: 640px) { .wevtex .ls-row { gap: 18px 32px; } .wevtex .ls-row img { height: 22px; } }
 
 /* ---- Inline CTA strips (after proof, after pricing) ---- */
-.wevtex .inline-cta { padding: 0 0 clamp(60px, 8vh, 90px); }
+.wevtex .inline-cta { padding: 0 0 clamp(48px, 6vh, 70px); }
 /* The CTA now follows the dark stats band, so it needs its own breathing room on top. */
 .wevtex .stats-band-v2 + .inline-cta { padding-top: clamp(60px, 8vh, 90px); }
 .wevtex .ict-inner {
@@ -6261,4 +6239,501 @@
   .wevtex .sticky-cta { display: flex; }
   /* keep the bar from covering the last footer row */
   .wevtex .footer-v2 { padding-bottom: 84px; }
+}
+
+/* =====================================================================
+   HOMEPAGE SURFACE PASS
+   The page used to run on one flat light field with two ink bands cut
+   into it, so nothing advanced or receded and the eye had no rhythm.
+   Three changes below: pricing moves onto ink (it is the decision, it
+   should be the visual climax), and Work / Testimonials / FAQ drop their
+   cards so six consecutive "light box on light ground" sections become
+   three. Typography is untouched.
+   ===================================================================== */
+
+/* ---- Quiet emphasis -------------------------------------------------
+   The solid lime marker is reserved for hero, problem band and pricing.
+   Everywhere else the emphasised word gets a lime rule under it instead:
+   same accent, a fraction of the volume, so the marker means something
+   again when it does appear. */
+.wevtex :where(h1, h2, h3, .h-section, .ic-head h2) .hl-line {
+  font-style: normal;
+  font-weight: inherit;
+  color: inherit;
+  background: linear-gradient(var(--accent), var(--accent)) no-repeat;
+  background-size: 100% 0.14em;
+  background-position: 0 0.94em;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
+.wevtex .theme-dark .hl-line { background-image: linear-gradient(var(--accent), var(--accent)); }
+
+/* ---- FAQ: rules, not cards -----------------------------------------
+   Eleven boxes stacked vertically read as a form. Hairlines read as a list. */
+.wevtex .faq-split .faq-list-v2 { gap: 0; }
+.wevtex .faq-split .faq-item-v2 {
+  background: transparent;
+  border: 0;
+  border-top: 1px solid var(--hairline-c);
+  border-radius: 0;
+  box-shadow: none;
+}
+.wevtex .faq-split .faq-item-v2:last-child { border-bottom: 1px solid var(--hairline-c); }
+.wevtex.mode-dark .faq-split .faq-item-v2 { border-top-color: var(--hairline-d); }
+.wevtex.mode-dark .faq-split .faq-item-v2:last-child { border-bottom-color: var(--hairline-d); }
+.wevtex .faq-split .faq-item-v2 summary { padding: 24px 4px; }
+.wevtex .faq-split .faq-body > p { padding: 0 4px 24px 42px; }
+@media (max-width: 600px) {
+  .wevtex .faq-split .faq-item-v2 summary { padding: 20px 2px; }
+  .wevtex .faq-split .faq-body > p { padding: 0 2px 20px 2px; }
+}
+
+/* ---- Ink sections re-assert the dark palette -------------------------
+   .wevtex.mode-light remaps every --*-d / --bg-0 / --ink-on-dark token to a
+   light equivalent, so a section that must stay ink in BOTH modes cannot be
+   built on those tokens — it silently turns light. Custom properties resolve
+   from the nearest ancestor, so declaring them here re-establishes the ink
+   palette for this subtree only, and every rule below then works unchanged.
+   (This is the same trap the "ALWAYS ink" note on .pr-card.featured warns
+   about; that card avoided it by hardcoding #101112.) */
+.wevtex .pricing-ink,
+.wevtex .contact-split {
+  --bg-0: #101112;
+  --bg-1: #17181a;
+  --bg-2: #1f2022;
+  --surface-d-1: rgba(255, 255, 255, 0.04);
+  --surface-d-2: rgba(255, 255, 255, 0.07);
+  --hairline-d: rgba(255, 255, 255, 0.10);
+  --hairline-d-strong: rgba(255, 255, 255, 0.20);
+  --ink-on-dark: #ffffff;
+  --ink-on-dark-2: rgba(255, 255, 255, 0.72);
+  --ink-on-dark-3: rgba(255, 255, 255, 0.50);
+  --ink-on-dark-4: rgba(255, 255, 255, 0.30);
+}
+
+/* The white slabs sitting on those ink grounds are light surfaces again. */
+.wevtex .pricing-ink .pr-card.featured,
+.wevtex .contact-split .cs-form-card {
+  --hairline-d: var(--hairline-c);
+  --ink-on-dark: var(--ink-on-cream);
+}
+
+/* ---- Pricing on ink -------------------------------------------------
+   The money section used to sit mid-way through seven consecutive light
+   sections, the same value as the FAQ below it. On ink it breaks that run
+   at exactly the right point and becomes the climax of the scroll.
+   The tier hierarchy inverts with it: ordinary tiers become ghost cards,
+   the popular tier becomes the one solid white slab on the page. */
+.wevtex .pricing-v2.pricing-ink { background: var(--bg-0); color: var(--ink-on-dark); }
+.wevtex .pricing-ink .h-section { color: var(--ink-on-dark); }
+.wevtex .pricing-ink .ic-sub { color: var(--ink-on-dark-2); }
+.wevtex .pricing-ink .eyebrow { color: var(--ink-on-dark-3); }
+
+/* Ordinary tiers — ghost cards that sit back on the ink. */
+.wevtex .pricing-ink .pr-card {
+  background: var(--surface-d-1);
+  color: var(--ink-on-dark);
+  border-color: var(--hairline-d);
+  box-shadow: none;
+}
+.wevtex .pricing-ink .pr-card .pr-name,
+.wevtex .pricing-ink .pr-card .pr-price { color: var(--ink-on-dark); }
+.wevtex .pricing-ink .pr-card .pr-sub { color: var(--ink-on-dark-3); }
+.wevtex .pricing-ink .pr-card .pr-price .cur { color: var(--ink-on-dark-2); }
+.wevtex .pricing-ink .pr-card .pr-note { color: var(--ink-on-dark-3); }
+.wevtex .pricing-ink .pr-card .pr-feats li { color: var(--ink-on-dark-2); }
+.wevtex .pricing-ink .pr-card .pr-feats li svg { background: rgba(198, 242, 78, 0.14); color: var(--accent); }
+.wevtex .pricing-ink .pr-card .pr-icon { border-color: var(--hairline-d); background: var(--surface-d-1); color: var(--ink-on-dark); }
+.wevtex .pricing-ink .pr-card .pr-divider::before,
+.wevtex .pricing-ink .pr-card .pr-divider::after { background: var(--hairline-d); }
+.wevtex .pricing-ink .pr-card .pr-btn { border-color: var(--hairline-d-strong); color: var(--ink-on-dark); }
+.wevtex .pricing-ink .pr-card .pr-btn:hover { background: var(--ink-on-dark); border-color: var(--ink-on-dark); color: var(--bg-0); }
+
+/* Popular tier — the single white surface, so it reads first. */
+.wevtex .pricing-ink .pr-card.featured {
+  background: #ffffff;
+  color: var(--ink-on-cream);
+  border-color: #ffffff;
+}
+.wevtex .pricing-ink .pr-card.featured .pr-name,
+.wevtex .pricing-ink .pr-card.featured .pr-price { color: var(--ink-on-cream); }
+.wevtex .pricing-ink .pr-card.featured .pr-sub { color: var(--ink-on-cream-2); }
+.wevtex .pricing-ink .pr-card.featured .pr-price .cur { color: var(--accent-deep); }
+.wevtex .pricing-ink .pr-card.featured .pr-note { color: var(--ink-on-cream-3); }
+.wevtex .pricing-ink .pr-card.featured .pr-feats li { color: var(--ink-on-cream); }
+.wevtex .pricing-ink .pr-card.featured .pr-feats li svg { background: var(--accent-soft); color: var(--accent-deep); }
+.wevtex .pricing-ink .pr-card.featured .pr-icon { border-color: var(--hairline-c); background: var(--surface-c-1); color: var(--ink-on-cream); }
+.wevtex .pricing-ink .pr-card.featured .pr-divider::before,
+.wevtex .pricing-ink .pr-card.featured .pr-divider::after { background: var(--hairline-c); }
+
+.wevtex .pricing-ink .pr-foot { color: var(--ink-on-dark-2); }
+.wevtex .pricing-ink .pr-foot svg { color: var(--accent); }
+.wevtex .pricing-ink .pr-addons-link a { color: var(--ink-on-dark); border-bottom-color: var(--hairline-d); }
+.wevtex .pricing-ink .pr-addons-link a:hover { color: var(--accent); border-bottom-color: var(--accent); }
+
+/* Left-aligned variant of the shared section head — used by wide, multi-column
+   blocks so alignment follows the layout instead of varying section to section. */
+.wevtex .ic-head.ic-head-left { text-align: left; max-width: 640px; margin-left: 0; margin-right: 0; }
+.wevtex .ic-head.ic-head-left h2 { justify-content: flex-start; }
+
+/* The popular tier is a white slab inside an ink section, so it has to opt
+   back out of the section's bright-lime text binding. */
+.wevtex .pricing-ink .pr-card.featured { --accent-text: var(--lime-ink); }
+
+/* =====================================================================
+   CONTACT — asymmetric split on ink
+   The old version was a narrow centred stack: heading, two buttons, a
+   divider, a form, a trust row. Correct, and completely anonymous — it is
+   the layout every template ships. Two changes carry the redesign:
+
+   1. Ink ground with a single white slab. That pairing already means
+      "act here" at pricing, so using it again at the only other decision
+      point makes it a system rather than a repeat.
+   2. A left column that answers what happens after you hit send. Not
+      knowing that is the actual reason people abandon a contact form,
+      and no amount of field styling fixes it.
+   All rules scope under .contact-split — .cs-left also exists on the
+   case-study page and must not inherit any of this.
+   ===================================================================== */
+.wevtex .contact-split {
+  position: relative;
+  overflow: hidden;
+  background: var(--bg-0);
+  color: var(--ink-on-dark);
+  padding: clamp(88px, 13vh, 150px) 0;
+}
+.wevtex .contact-split .cs-motif {
+  position: absolute; inset: 0; pointer-events: none;
+  background-image: url("/images/motif.svg");
+  background-size: 74px 74px;
+  opacity: 0.05;
+  -webkit-mask-image: radial-gradient(62% 78% at 100% 0%, #000, transparent 72%);
+  mask-image: radial-gradient(62% 78% at 100% 0%, #000, transparent 72%);
+}
+.wevtex .contact-split .container { position: relative; z-index: 1; max-width: var(--container); }
+
+.wevtex .contact-split .cs-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.05fr;
+  gap: clamp(40px, 6vw, 88px);
+  align-items: start;
+}
+@media (max-width: 940px) {
+  .wevtex .contact-split .cs-grid { grid-template-columns: 1fr; gap: 52px; }
+}
+
+/* ---- Left: the argument ---- */
+.wevtex .contact-split .cs-left { position: relative; }
+@media (min-width: 941px) {
+  .wevtex .contact-split .cs-left { position: sticky; top: 108px; }
+}
+.wevtex .contact-split .cs-left .h-section { color: var(--ink-on-dark); }
+.wevtex .contact-split .cs-left .eyebrow { color: var(--ink-on-dark-3); }
+.wevtex .contact-split .cs-sub {
+  margin-top: 20px; max-width: 42ch;
+  font-size: 16px; line-height: 1.7; color: var(--ink-on-dark-2);
+}
+
+.wevtex .contact-split .cs-channels { display: flex; flex-direction: column; gap: 10px; margin-top: 38px; }
+.wevtex .contact-split .cs-chan {
+  display: flex; align-items: center; gap: 14px;
+  padding: 14px 16px; border-radius: 14px; text-decoration: none;
+  border: 1px solid var(--hairline-d); background: var(--surface-d-1); color: var(--ink-on-dark);
+  transition: background 220ms var(--ease-out), border-color 220ms var(--ease-out);
+}
+.wevtex .contact-split .cs-chan:hover { background: var(--surface-d-2); border-color: var(--hairline-d-strong); }
+.wevtex .contact-split .cs-chan-ic {
+  width: 40px; height: 40px; border-radius: 11px; flex-shrink: 0;
+  display: grid; place-items: center; background: var(--surface-d-2); color: var(--accent);
+}
+.wevtex .contact-split .cs-chan-tx { display: flex; flex-direction: column; flex: 1; min-width: 0; }
+.wevtex .contact-split .cs-chan-tx b { font-size: 14.5px; font-weight: 600; }
+.wevtex .contact-split .cs-chan > svg { flex-shrink: 0; opacity: 0.4; }
+
+.wevtex .contact-split .cs-hours {
+  display: flex; align-items: center; gap: 9px; margin-top: 24px;
+  font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-on-dark-3);
+}
+.wevtex .contact-split .cs-dot {
+  width: 7px; height: 7px; border-radius: 50%; background: var(--accent); flex-shrink: 0;
+}
+
+/* ---- Right: the one white slab on the section ---- */
+.wevtex .contact-split .cs-form-card {
+  background: #ffffff;
+  color: var(--ink-on-cream);
+  border-radius: 24px;
+  padding: clamp(26px, 3.4vw, 40px);
+  --accent-text: var(--lime-ink);
+}
+/* The left column already states the ask, so the form's own header is redundant. */
+.wevtex .contact-split .cs-form-card .form-eyebrow,
+.wevtex .contact-split .cs-form-card .form h3 { display: none; }
+.wevtex .contact-split .cs-form-card .field label { letter-spacing: 0.12em; }
+.wevtex .contact-split .cs-form-card .field input,
+.wevtex .contact-split .cs-form-card .field select,
+.wevtex .contact-split .cs-form-card .field textarea {
+  background: var(--bg-cream-2); border-color: var(--hairline-c);
+  border-radius: 12px; padding: 13px 15px; color: var(--ink-on-cream);
+}
+.wevtex .contact-split .cs-form-card .field input:hover,
+.wevtex .contact-split .cs-form-card .field select:hover,
+.wevtex .contact-split .cs-form-card .field textarea:hover { border-color: var(--hairline-c-strong); }
+.wevtex .contact-split .cs-form-card .field input:focus,
+.wevtex .contact-split .cs-form-card .field select:focus,
+.wevtex .contact-split .cs-form-card .field textarea:focus {
+  background: #fff; border-color: var(--accent); box-shadow: 0 0 0 3px rgba(198, 242, 78, 0.22);
+}
+.wevtex .contact-split .cs-form-card .field textarea { min-height: 128px; }
+.wevtex .contact-split .cs-form-card .form .btn {
+  width: 100%; justify-content: center; border-radius: 999px;
+  padding: 16px; font-size: 15px; margin-top: 20px;
+}
+
+.wevtex .contact-split .cs-audit {
+  margin-top: 20px; text-align: center;
+  font-size: 13px; line-height: 1.6; color: var(--ink-on-dark-3);
+}
+.wevtex .contact-split .cs-audit a {
+  color: var(--ink-on-dark); border-bottom: 1px solid var(--hairline-d-strong); padding-bottom: 1px;
+  transition: color 200ms var(--ease-out), border-color 200ms var(--ease-out);
+}
+.wevtex .contact-split .cs-audit a:hover { color: var(--accent); border-bottom-color: var(--accent); }
+
+/* The form ships as its own bordered card; inside the slab that would be a
+   card in a card, so it flattens to plain content here. */
+.wevtex .contact-split .cs-form-card .form {
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  padding: 0;
+}
+
+/* =====================================================================
+   WORK — gallery wall, not a portfolio grid
+   The whole page is white, ink and one sliver of lime so that the client
+   screenshots are the only rich colour on it. Everything here frames them
+   and then disappears. No shadows, no gradients, no carousel — those all
+   compete with the work instead of presenting it.
+
+   Two tiers, and the contrast between them IS the design: flagships get
+   unhurried editorial rows, everything after collapses into a dense index.
+   ===================================================================== */
+.wevtex .work {
+  background: var(--bg-cream);
+  color: var(--ink-on-cream);
+  padding: clamp(96px, 15vh, 180px) 0 clamp(88px, 13vh, 150px);
+}
+.wevtex.mode-dark .work { background: var(--bg-0); color: var(--ink-on-dark); }
+
+/* ---- A quiet entrance ---- */
+.wevtex .wk-head { margin-bottom: clamp(64px, 9vh, 120px); }
+.wevtex .wk-lede { margin-top: 16px; text-align: left; max-width: 44ch; }
+
+/* ---- The list ------------------------------------------------------
+   A directory at rest, an editorial spread when opened. Hairline rules
+   only — no cards, no shadows, nothing that competes with a screenshot. */
+.wevtex .wk-list {
+  list-style: none; margin: 0; padding: 0;
+  border-top: 1px solid var(--hairline-c);
+}
+.wevtex.mode-dark .wk-list { border-top-color: var(--hairline-d); }
+.wevtex .wk-item { border-bottom: 1px solid var(--hairline-c); }
+.wevtex.mode-dark .wk-item { border-bottom-color: var(--hairline-d); }
+
+.wevtex .wk-row-h { font: inherit; font-weight: inherit; margin: 0; }
+.wevtex .wk-row {
+  width: 100%; text-align: left; cursor: pointer;
+  display: grid;
+  grid-template-columns: 46px minmax(0, 1fr) 170px 66px 34px;
+  align-items: center; gap: 18px;
+  padding: 26px 4px;
+  transition: padding-left 220ms var(--ease-out);
+}
+.wevtex .wk-row:hover { padding-left: 12px; }
+.wevtex .wk-item.is-open .wk-row { padding-top: 32px; padding-bottom: 22px; }
+
+.wevtex .wk-ix-n {
+  font-family: var(--font-mono); font-size: 11.5px; letter-spacing: 0.08em;
+  font-variant-numeric: tabular-nums; color: var(--ink-on-cream-3);
+}
+.wevtex.mode-dark .wk-ix-n { color: var(--ink-on-dark-4); }
+
+.wevtex .wk-ix-title {
+  justify-self: start;
+  font-size: clamp(17px, 1.6vw, 21px); font-weight: 500;
+  letter-spacing: -0.02em; color: var(--ink-on-cream);
+  /* The lime marker wipes in from the left — nothing at rest. */
+  background: linear-gradient(var(--accent), var(--accent)) no-repeat;
+  background-size: 0% 0.88em;
+  background-position: 0 0.2em;
+  transition: background-size 240ms var(--ease-out), color 240ms var(--ease-out),
+              font-size 240ms var(--ease-out), font-weight 240ms var(--ease-out);
+}
+.wevtex.mode-dark .wk-ix-title { color: var(--ink-on-dark); }
+.wevtex .wk-row:hover .wk-ix-title,
+.wevtex .wk-item.is-open .wk-ix-title { background-size: 100% 0.88em; color: var(--on-lime); }
+/* Open, the row label becomes the heading for the panel under it: it grows
+   and gains weight rather than the panel repeating the project name. */
+.wevtex .wk-item.is-open .wk-ix-title {
+  font-size: clamp(21px, 2.2vw, 28px);
+  font-weight: 600;
+  letter-spacing: -0.03em;
+}
+
+.wevtex .wk-ix-cat { font-size: 13.5px; color: var(--ink-on-cream-2); }
+.wevtex.mode-dark .wk-ix-cat { color: var(--ink-on-dark-3); }
+.wevtex .wk-ix-year {
+  font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.06em;
+  font-variant-numeric: tabular-nums; color: var(--ink-on-cream-3);
+  text-align: right;
+}
+.wevtex.mode-dark .wk-ix-year { color: var(--ink-on-dark-3); }
+
+/* + turns into − by dropping the vertical stroke. One state, one gesture. */
+.wevtex .wk-toggle {
+  justify-self: end;
+  width: 30px; height: 30px; border-radius: 50%;
+  display: grid; place-items: center; flex-shrink: 0;
+  border: 1px solid var(--hairline-c-strong); color: var(--ink-on-cream-2);
+  transition: background 220ms var(--ease-out), border-color 220ms var(--ease-out), color 220ms var(--ease-out);
+}
+.wevtex.mode-dark .wk-toggle { border-color: var(--hairline-d-strong); color: var(--ink-on-dark-2); }
+.wevtex .wk-toggle-v { transform-origin: center; transition: transform 240ms var(--ease-out), opacity 200ms var(--ease-out); }
+.wevtex .wk-item.is-open .wk-toggle { background: var(--accent); border-color: var(--accent); color: var(--on-lime); }
+.wevtex .wk-item.is-open .wk-toggle-v { transform: scaleY(0); opacity: 0; }
+
+/* ---- The panel -----------------------------------------------------
+   grid-template-rows 0fr → 1fr animates to the content's real height, so
+   there is no max-height to guess at and no jump when copy changes. */
+.wevtex .wk-panel {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 320ms var(--ease-out);
+}
+.wevtex .wk-item.is-open .wk-panel { grid-template-rows: 1fr; }
+.wevtex .wk-panel-in { overflow: hidden; min-height: 0; }
+.wevtex .wk-panel-grid {
+  display: grid;
+  grid-template-columns: 1.35fr 1fr;
+  gap: clamp(28px, 4vw, 60px);
+  align-items: center;
+  padding: 8px 4px 44px;
+}
+
+/* Content fades up once the row has finished opening. */
+.wevtex .wk-panel-grid > * {
+  opacity: 0; transform: translateY(10px);
+  transition: opacity 300ms var(--ease-out) 120ms, transform 300ms var(--ease-out) 120ms;
+}
+.wevtex .wk-item.is-open .wk-panel-grid > * { opacity: 1; transform: none; }
+
+/* ---- The browser frame ----------------------------------------------
+   A raw screenshot reads as stock art. The same image inside minimal
+   chrome with the real URL reads as a live site we actually built. */
+.wevtex .wk-frame {
+  border: 1px solid var(--hairline-c);
+  border-radius: 12px;
+  overflow: hidden;
+  background: var(--bg-cream);
+  transition: border-color 220ms var(--ease-out);
+}
+.wevtex.mode-dark .wk-frame { border-color: var(--hairline-d); background: var(--bg-1); }
+.wevtex .wk-frame:hover { border-color: var(--hairline-c-strong); }
+.wevtex .wk-bar {
+  display: flex; align-items: center; gap: 6px;
+  height: 34px; padding: 0 13px;
+  border-bottom: 1px solid var(--hairline-c);
+  flex-shrink: 0;
+}
+.wevtex.mode-dark .wk-bar { border-bottom-color: var(--hairline-d); }
+.wevtex .wk-bar i { width: 8px; height: 8px; border-radius: 50%; background: #d8d8d4; }
+.wevtex.mode-dark .wk-bar i { background: rgba(255, 255, 255, 0.18); }
+.wevtex .wk-url {
+  margin-left: 10px;
+  font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.04em;
+  color: var(--ink-on-cream-3);
+}
+.wevtex.mode-dark .wk-url { color: var(--ink-on-dark-3); }
+
+/* Tall captures: at rest you see the top of the page, on hover it scrolls
+   down to the footer. Turns a thumbnail into a small live demo. */
+.wevtex .wk-shot {
+  aspect-ratio: 16 / 10;
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+  background-position: center top;
+  background-color: var(--bg-paper);
+  transition: background-position 3000ms cubic-bezier(0.4, 0, 0.25, 1);
+}
+.wevtex.mode-dark .wk-shot { background-color: var(--bg-2); }
+.wevtex .wk-frame:hover .wk-shot { background-position: center bottom; }
+
+/* Flat neutral placeholders. Delete once real captures land. */
+.wevtex .wk-shot.g0, .wevtex .wk-shot.g1, .wevtex .wk-shot.g3 { background-size: 100% 300%; }
+.wevtex .wk-shot.g0 { background-color: #eeeeea; }
+.wevtex .wk-shot.g1 { background-color: #e4e4e0; }
+.wevtex .wk-shot.g3 { background-color: #ebebe7; }
+
+/* ---- Panel body ---- */
+.wevtex .wk-outcome {
+  max-width: 40ch;
+  font-size: 15.5px; line-height: 1.65; color: var(--ink-on-cream-2);
+}
+.wevtex.mode-dark .wk-outcome { color: var(--ink-on-dark-2); }
+
+.wevtex .wk-stack { list-style: none; display: flex; flex-wrap: wrap; gap: 8px; margin: 24px 0 0; padding: 0; }
+.wevtex .wk-stack li {
+  font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.09em; text-transform: uppercase;
+  color: var(--ink-on-cream-2);
+  border: 1px solid var(--hairline-c); border-radius: 999px; padding: 6px 13px;
+}
+.wevtex.mode-dark .wk-stack li { color: var(--ink-on-dark-3); border-color: var(--hairline-d); }
+
+.wevtex .wk-metric { display: flex; align-items: baseline; gap: 12px; margin-top: 28px; }
+.wevtex .wk-metric-n {
+  font-size: clamp(32px, 3.4vw, 44px); font-weight: 700;
+  letter-spacing: -0.04em; line-height: 1; color: var(--ink-on-cream);
+  font-variant-numeric: tabular-nums;
+}
+.wevtex.mode-dark .wk-metric-n { color: var(--ink-on-dark); }
+.wevtex .wk-metric-l { font-size: 13.5px; color: var(--ink-on-cream-2); }
+.wevtex.mode-dark .wk-metric-l { color: var(--ink-on-dark-3); }
+
+/* The one piece of lime at rest on the whole section: this arrow. */
+.wevtex .wk-view {
+  display: inline-flex; align-items: center; gap: 11px; margin-top: 28px;
+  font-size: 15px; font-weight: 500; color: var(--ink-on-cream);
+}
+.wevtex.mode-dark .wk-view { color: var(--ink-on-dark); }
+.wevtex .wk-view-arrow {
+  display: grid; place-items: center; width: 26px; height: 26px;
+  background: var(--accent); color: var(--on-lime);
+  transition: transform 220ms var(--ease-out);
+}
+.wevtex .wk-view:hover .wk-view-arrow { transform: translateX(4px); }
+
+.wevtex .wk-all { display: flex; justify-content: center; margin-top: clamp(56px, 8vh, 88px); }
+
+/* ---- Responsive ---- */
+@media (max-width: 900px) {
+  /* Category drops so the row stays clean: number, name, year, toggle. */
+  .wevtex .wk-row { grid-template-columns: 34px minmax(0, 1fr) 52px 30px; gap: 14px; padding: 22px 2px; }
+  .wevtex .wk-ix-cat { display: none; }
+  .wevtex .wk-panel-grid { grid-template-columns: 1fr; gap: 26px; padding-bottom: 36px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wevtex .wk-row,
+  .wevtex .wk-ix-title,
+  .wevtex .wk-toggle,
+  .wevtex .wk-toggle-v,
+  .wevtex .wk-frame,
+  .wevtex .wk-shot,
+  .wevtex .wk-view-arrow,
+  .wevtex .wk-panel,
+  .wevtex .wk-panel-grid > * { transition: none; }
+  .wevtex .wk-row:hover { padding-left: 4px; }
+  .wevtex .wk-frame:hover .wk-shot { background-position: center top; }
+  .wevtex .wk-panel-grid > * { opacity: 1; transform: none; }
 }

@@ -168,15 +168,88 @@ const SERVICE_CARDS = [
   },
 ];
 
-/* Sample proof — placeholder content shown for layout only.
-   TODO: replace with real, verified client case studies before launch. */
-const PROJECTS = [
-  { h: "Sample — E-Commerce", tag: "E-Commerce · Headless", style: "" },
-  { h: "Sample — Booking", tag: "Booking · SaaS", style: "style2" },
-  { h: "Sample — Desktop", tag: "Desktop · Electron", style: "" },
-  { h: "Sample — Branding", tag: "Branding · Web", style: "" },
-  { h: "Sample — SEO/Growth", tag: "SEO · Growth", style: "style2" },
-  { h: "Sample — Retail", tag: "E-Commerce · Retail", style: "" },
+/* WORK — one accordion, one project open at a time.
+   Every entry carries its own detail panel, so the list stays a tight index
+   at rest and becomes an editorial row on demand. Order matters: index 0 is
+   open on load, so lead with the strongest piece.
+
+   Placeholder content shown for layout only.
+   TODO before launch: real client names, real URLs, real screenshots at
+   /images/work/<slug>.jpg (tall full-page captures — the hover scrolls them),
+   and metrics that have actually been measured. Do not ship the numbers below. */
+const WORK = [
+  {
+    slug: "luxora",
+    title: "Sample — Luxora Interiors",
+    cat: "E-commerce",
+    year: "2026",
+    url: "luxora.store",
+    outcome: "Rebuilt for speed: instant search across 4,000 SKUs and a checkout that stopped losing people at the shipping step.",
+    stack: ["Next.js", "Shopify", "Algolia"],
+    metric: "+38%",
+    metricLabel: "revenue per visit",
+    shot: "g0",
+  },
+  {
+    slug: "daressaada",
+    title: "Sample — Dar Essaada Hotel",
+    cat: "Hospitality",
+    year: "2026",
+    url: "daressaada.com",
+    outcome: "Direct booking engine that undercuts the OTAs, with live availability and a rate calendar the front desk can edit itself.",
+    stack: ["Next.js", "Strapi", "Stripe"],
+    metric: "2.4x",
+    metricLabel: "direct bookings",
+    shot: "g1",
+  },
+  {
+    slug: "eduflow",
+    title: "Sample — Eduflow Platform",
+    cat: "SaaS",
+    year: "2025",
+    url: "eduflow.app",
+    outcome: "A multi-tenant course platform: student portals, video delivery and certification, all under one dashboard.",
+    stack: ["Next.js", "Postgres", "Mux"],
+    metric: "12k",
+    metricLabel: "active students",
+    shot: "g3",
+  },
+  {
+    slug: "wellcare",
+    title: "Sample — Wellcare Clinic",
+    cat: "Healthcare",
+    year: "2025",
+    url: "wellcare.ma",
+    outcome: "Patient intake that works on a phone in a waiting room, with scheduling wired straight into the practice calendar.",
+    stack: ["Next.js", "Strapi", "Twilio"],
+    metric: "-62%",
+    metricLabel: "no-show rate",
+    shot: "g0",
+  },
+  {
+    slug: "petrocore",
+    title: "Sample — Petrocore Solutions",
+    cat: "Corporate",
+    year: "2025",
+    url: "petrocore.com",
+    outcome: "A B2B site built around quote requests: technical spec sheets, project references and a form the sales team actually reads.",
+    stack: ["Next.js", "Strapi", "Vercel"],
+    metric: "3.1x",
+    metricLabel: "qualified enquiries",
+    shot: "g1",
+  },
+  {
+    slug: "northbound",
+    title: "Sample — Northbound",
+    cat: "SEO & Growth",
+    year: "2024",
+    url: "northbound.co",
+    outcome: "Technical rebuild plus a content structure that finally let their category pages rank for the terms they sell on.",
+    stack: ["Astro", "GA4", "Search Console"],
+    metric: "+240%",
+    metricLabel: "organic sessions",
+    shot: "g3",
+  },
 ];
 
 /* Sample testimonials — placeholder content shown for layout only.
@@ -202,6 +275,9 @@ const TPOOL = [
 export function HomeClient() {
   const { isDark } = useTheme();
   const [ti, setTi] = useState(0);
+  /* Work accordion — a single open index, so opening one closes the rest.
+     Index 0 is open on load: a wall of closed rows reads as an empty section. */
+  const [openWork, setOpenWork] = useState(0);
 
   /* Auto-rotate testimonials. */
   useEffect(() => {
@@ -527,7 +603,7 @@ export function HomeClient() {
               <span className="eyebrow line-eyebrow">Services</span>
               <h2 className="h-section" style={{ marginTop: 16 }}>
                 Everything you need<br />
-                to <em className="hl-em">grow, scale</em> &amp; <em className="hl-em">automate</em>
+                to <em className="hl-line">grow, scale</em> &amp; <em className="hl-line">automate</em>
               </h2>
             </div>
             <p className="bento-head-right">
@@ -537,59 +613,129 @@ export function HomeClient() {
           </div>
 
           <div className="bento-grid reveal">
-            {SERVICE_CARDS.map((b) => (
+            {SERVICE_CARDS.map((b, i) => (
               <a key={b.name} href={b.href} className="bento-card">
-                <span className="bento-motif" aria-hidden></span>
-                <span className="bento-icon">{b.icon}</span>
+                {/* Number + icon on one line, so every title starts at the same
+                    height no matter how long the copy under it runs. */}
+                <span className="bento-top">
+                  <span className="bento-n">{String(i + 1).padStart(2, "0")}</span>
+                  <span className="bento-icon">{b.icon}</span>
+                </span>
                 <div className="bento-card-body">
                   <h4>{b.name}</h4>
                   <p>{b.desc}</p>
-                  <span className="bento-arrow">
-                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
-                  </span>
                 </div>
+                <span className="bento-arrow" aria-hidden>
+                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+                </span>
               </a>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ===================== PROJECTS (mockup 7 — browser-frame cards) ===================== */}
-      <section className={`${isDark ? "theme-dark" : "theme-cream"} projects-v2`} id="work">
+      {/* ===================== WORK =====================
+          The rest of the page is white, ink and one sliver of lime so that
+          the screenshots here are the only rich colour on it. The section's
+          job is to frame them and get out of the way.
+
+          One accordion, one project open at a time. Clicking a row expands
+          it in place rather than navigating away — the visitor never loses
+          the page, and the list stays a tight index between openings. */}
+      <section className="work" id="work">
         <div className="container">
-          <div className="pj-head reveal">
-            <div>
-              <span className="eyebrow line-eyebrow">Our work</span>
-              <h2 className="h-section" style={{ marginTop: 14 }}>Recent <em className="hl-em">projects</em></h2>
-              <p className="ic-sub" style={{ marginTop: 14, textAlign: "left", maxWidth: "46ch" }}>
-                A selection of websites, apps, and digital platforms we&apos;ve crafted for businesses like yours.
-              </p>
-            </div>
-            <a href="/portfolio" className="btn btn-outline pj-viewall">
+
+          {/* Same head components as every other section — eyebrow, h-section,
+              ic-sub. The section reads quiet because of the space around it,
+              not because the heading was removed. */}
+          <div className="wk-head reveal">
+            <span className="eyebrow line-eyebrow">Selected work</span>
+            <h2 className="h-section" style={{ marginTop: 14 }}>
+              Recent <em className="hl-line">projects</em>
+            </h2>
+            <p className="ic-sub wk-lede">
+              A few things we&apos;ve shipped. Open one to see the work.
+            </p>
+          </div>
+
+          <ol className="wk-list reveal">
+            {WORK.map((p, i) => {
+              const open = openWork === i;
+              return (
+                <li key={p.slug} className={open ? "wk-item is-open" : "wk-item"}>
+                  <h3 className="wk-row-h">
+                    <button
+                      type="button"
+                      className="wk-row"
+                      aria-expanded={open}
+                      aria-controls={`wk-panel-${p.slug}`}
+                      id={`wk-row-${p.slug}`}
+                      /* Clicking the open row closes it, so the section can rest fully collapsed. */
+                      onClick={() => setOpenWork(open ? -1 : i)}
+                    >
+                      <span className="wk-ix-n">{String(i + 1).padStart(2, "0")}</span>
+                      <span className="wk-ix-title">{p.title}</span>
+                      <span className="wk-ix-cat">{p.cat}</span>
+                      <span className="wk-ix-year">{p.year}</span>
+                      <span className="wk-toggle" aria-hidden>
+                        <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><path d="M5 12h14" /><path className="wk-toggle-v" d="M12 5v14" /></svg>
+                      </span>
+                    </button>
+                  </h3>
+
+                  {/* grid-template-rows 0fr → 1fr collapses to the panel's real
+                      height, so no max-height guess to get wrong. */}
+                  <div
+                    className="wk-panel"
+                    id={`wk-panel-${p.slug}`}
+                    role="region"
+                    aria-labelledby={`wk-row-${p.slug}`}
+                    hidden={!open}
+                  >
+                    <div className="wk-panel-in">
+                      <div className="wk-panel-grid">
+                        <div className="wk-frame">
+                          <div className="wk-bar">
+                            <i></i><i></i><i></i>
+                            <span className="wk-url">{p.url}</span>
+                          </div>
+                          {/* Swap in a tall full-page capture and the hover scrolls it:
+                              style={{ backgroundImage: "url(/images/work/slug.jpg)" }} */}
+                          <div className={`wk-shot ${p.shot}`}></div>
+                        </div>
+
+                        <div className="wk-body">
+                          <p className="wk-outcome">{p.outcome}</p>
+
+                          <ul className="wk-stack">
+                            {p.stack.map((t) => <li key={t}>{t}</li>)}
+                          </ul>
+
+                          <div className="wk-metric">
+                            <span className="wk-metric-n">{p.metric}</span>
+                            <span className="wk-metric-l">{p.metricLabel}</span>
+                          </div>
+
+                          <a href="/portfolio" className="wk-view">
+                            View project
+                            <span className="wk-view-arrow" aria-hidden>
+                              <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+                            </span>
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+              );
+            })}
+          </ol>
+
+          <div className="wk-all reveal">
+            <a href="/portfolio" className="btn btn-outline">
               View all projects
               <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
             </a>
-          </div>
-
-          <div className="pj-grid reveal">
-            {[
-              { cls: "pj-luxora", title: "Luxora Interiors", type: "E-commerce Website", url: "luxora.store", shot: "g0", variant: "" },
-              { cls: "pj-dar", title: "Dar Essaada Hotel", type: "Hospitality Website", url: "daressaada.com", shot: "g1", variant: "" },
-              { cls: "pj-well", title: "Wellcare Clinic", type: "Healthcare Website", url: "wellcare.ma", shot: "g2", variant: "" },
-              { cls: "pj-petro", title: "Petrocore Solutions", type: "Corporate Website", url: "petrocore.com", shot: "solid", variant: "solid" },
-              { cls: "pj-edu", title: "Eduflow Platform", type: "SaaS Dashboard", url: "eduflow.app", shot: "g3", variant: "" },
-            ].map((p) => (
-              <a key={p.cls} href="/portfolio" className={`pj-card ${p.cls} ${p.variant}`}>
-                <div className="pj-frame">
-                  <div className="pj-bar"><i></i><i></i><i></i><span className="pj-url">{p.url}</span></div>
-                  <div className={`pj-shot ${p.shot}`}></div>
-                </div>
-                <div className="pj-meta">
-                  <div><h4>{p.title}</h4><span>{p.type}</span></div>
-                  <svg className="pj-ext" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M7 17L17 7M9 7h8v8" /></svg>
-                </div>
-              </a>
-            ))}
           </div>
 
         </div>
@@ -635,44 +781,42 @@ export function HomeClient() {
       {/* ===================== TESTIMONIALS (mockup 9 — featured + 2) ===================== */}
       <section className={`${isDark ? "theme-dark" : "theme-cream"} testi-v2`} id="testimonials">
         <div className="container">
-          <div className="ic-head reveal">
-            <span className="eyebrow line-eyebrow-center">Client testimonials</span>
-            <h2 className="h-section" style={{ marginTop: 16, justifyContent: "center" }}>
-              Businesses that <em className="hl-em">trust us</em>
+          <div className="ic-head ic-head-left reveal">
+            <span className="eyebrow line-eyebrow">Client testimonials</span>
+            <h2 className="h-section" style={{ marginTop: 16 }}>
+              Businesses that <em className="hl-line">trust us</em>
             </h2>
             <p className="ic-sub">
-              We take pride in the relationships we build and the results we deliver.<br />
-              Here&apos;s what our clients have to say.
+              We take pride in the relationships we build and the results we deliver.
             </p>
           </div>
 
+          {/* Three equal columns, hairline-separated. The old layout made the
+              middle one a dark card and the outer two plain, so nothing lined
+              up and short quotes left a void under them. Uniform treatment
+              fixes both: a quote is content, not an object. */}
           <div className="testi-grid reveal">
             {[0, 1, 2].map((off) => {
               const t = TPOOL[(ti + off) % TPOOL.length];
-              const featured = off === 1;
               return (
-                <figure className={featured ? "testi-card featured" : "testi-card"} key={off}>
+                <figure className="testi-col" key={off}>
                   <div className="testi-stars" aria-label="Rated 5 out of 5">
                     {[0, 1, 2, 3, 4].map((n) => (
-                      <svg key={n} viewBox="0 0 24 24" width="15" height="15" fill="currentColor" aria-hidden>
+                      <svg key={n} viewBox="0 0 24 24" width="14" height="14" fill="currentColor" aria-hidden>
                         <path d="M12 2l2.9 6.3 6.9.6-5.2 4.6 1.6 6.7L12 17.3 5.8 20.8l1.6-6.7L2.2 8.9l6.9-.6z" />
                       </svg>
                     ))}
                   </div>
                   <blockquote className="testi-q">
-                    &ldquo;{t.q}{t.em ? <em className="hl-em">{t.em}</em> : null}&rdquo;
+                    &ldquo;{t.q}{t.em ? <em className="hl-line">{t.em}</em> : null}&rdquo;
                   </blockquote>
-                  <figcaption className="testi-foot">
-                    <span className="testi-rule"></span>
-                    <div className="testi-person">
-                      <span className="testi-avatar">{t.a}</span>
-                      <div>
-                        <div className="testi-name">{t.name}</div>
-                        <div className="testi-role">{t.role}</div>
-                      </div>
+                  <figcaption className="testi-person">
+                    <span className="testi-avatar">{t.a}</span>
+                    <div>
+                      <div className="testi-name">{t.name}</div>
+                      <div className="testi-role">{t.role}</div>
                     </div>
                   </figcaption>
-                  <span className="testi-bigquote" aria-hidden>&rdquo;</span>
                 </figure>
               );
             })}
@@ -761,7 +905,7 @@ export function HomeClient() {
       </section>
 
       {/* ===================== PRICING (mockup 10) ===================== */}
-      <section className={`${isDark ? "theme-dark" : "theme-paper"} pricing-v2`} id="pricing">
+      <section className="pricing-v2 pricing-ink" id="pricing">
         <div className="container">
           <div className="ic-head reveal">
             <span className="eyebrow line-eyebrow-center">Pricing</span>
@@ -841,7 +985,7 @@ export function HomeClient() {
           <div className="faq-grid">
             <div className="faq-left reveal">
               <span className="eyebrow line-eyebrow">FAQ</span>
-              <h2 className="h-section" style={{ marginTop: 14 }}>Questions, <em className="hl-em">answered</em></h2>
+              <h2 className="h-section" style={{ marginTop: 14 }}>Questions, <em className="hl-line">answered</em></h2>
               <p className="ic-sub" style={{ marginTop: 14, textAlign: "left" }}>
                 Here are some common questions about our process, services, and how we help your business grow.
               </p>
@@ -885,60 +1029,59 @@ export function HomeClient() {
         </div>
       </section>
 
-      {/* ===================== CONTACT (single column) ===================== */}
-      <section className="contact-one" id="contact">
+      {/* ===================== CONTACT =====================
+          Ink ground with one white slab, the same pairing used at pricing —
+          the two points on the page where a visitor decides something.
+          Deliberately spare: one line of copy, two channels, the form.
+          The steps, trust row and card header were cut — the page has
+          already made the argument by the time anyone scrolls here. */}
+      <section className="contact-split" id="contact">
+        <span className="cs-motif" aria-hidden></span>
         <div className="container">
-          <div className="co-head reveal">
-            <span className="eyebrow line-eyebrow-center">Contact</span>
-            <h2 className="h-section" style={{ marginTop: 16, justifyContent: "center" }}>
-              Let&apos;s start with <em className="hl-em">a quick message</em>
-            </h2>
-            <p className="co-sub">
-              Tell us what you need. You get a clear plan and a fixed price back &mdash; usually within a few hours.
-            </p>
-          </div>
+          <div className="cs-grid">
 
-          <div className="co-channels reveal">
-            <a className="co-chan primary" href={WHATSAPP_URL} target="_blank" rel="noopener">
-              <span className="co-chan-ic">{WHATSAPP}</span>
-              <span className="co-chan-tx"><b>Chat on WhatsApp</b><small>Fastest way to reach us</small></span>
-              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden><path d="M5 12h14M13 6l6 6-6 6" /></svg>
-            </a>
-            <a className="co-chan" href={EMAIL_URL}>
-              <span className="co-chan-ic">
-                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="5" width="18" height="14" rx="2" /><path d="M3 7l9 6 9-6" /></svg>
-              </span>
-              <span className="co-chan-tx"><b>Send an email</b><small>hello@wevtex.com</small></span>
-              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden><path d="M5 12h14M13 6l6 6-6 6" /></svg>
-            </a>
-          </div>
+            <div className="cs-left reveal">
+              <span className="eyebrow line-eyebrow">Contact</span>
+              <h2 className="h-section" style={{ marginTop: 18 }}>
+                Tell us what you&apos;re<br />building. <em className="hl-em">We&apos;ll price it.</em>
+              </h2>
+              <p className="cs-sub">
+                Send a brief, get a plan and a fixed price back the same day.
+              </p>
 
-          <div className="co-or reveal"><span>or send a quick brief</span></div>
+              <div className="cs-channels">
+                <a className="cs-chan" href={WHATSAPP_URL} target="_blank" rel="noopener">
+                  <span className="cs-chan-ic">{WHATSAPP}</span>
+                  <span className="cs-chan-tx"><b>WhatsApp</b></span>
+                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+                </a>
+                <a className="cs-chan" href={EMAIL_URL}>
+                  <span className="cs-chan-ic">
+                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="5" width="18" height="14" rx="2" /><path d="M3 7l9 6 9-6" /></svg>
+                  </span>
+                  <span className="cs-chan-tx"><b>hello@wevtex.com</b></span>
+                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+                </a>
+              </div>
 
-          <div className="co-form reveal">
-            <ContactForm />
-          </div>
-
-          <ul className="co-trust reveal">
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden><path d="M20 6L9 17l-5-5" /></svg>Free quote</li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden><path d="M20 6L9 17l-5-5" /></svg>No obligation</li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden><path d="M20 6L9 17l-5-5" /></svg>Reply within a few hours</li>
-          </ul>
-          <p className="co-hours reveal">Mon &ndash; Fri 09:00&ndash;18:00 &middot; Sat 10:00&ndash;14:00 &middot; Sun closed</p>
-
-          {/* Low-commitment fallback for visitors who scrolled past the form without sending it. */}
-          <div className="co-audit reveal">
-            <div className="co-audit-tx">
-              <b>Not ready for a quote?</b>
-              <span>
-                Take the free 15-minute call audit. We look at your site with you and tell you
-                what we would fix first &mdash; no slides, no pitch, no commitment.
-              </span>
+              <p className="cs-hours">
+                <span className="cs-dot" aria-hidden></span>
+                Mon &ndash; Fri 09:00&ndash;18:00 &middot; Sat 10:00&ndash;14:00
+              </p>
             </div>
-            <a href={AUDIT_WHATSAPP_URL} className="btn btn-outline" target="_blank" rel="noopener">
-              Book the free audit
-              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden><path d="M5 12h14M13 6l6 6-6 6" /></svg>
-            </a>
+
+            <div className="cs-right reveal">
+              <div className="cs-form-card">
+                <ContactForm />
+              </div>
+              <p className="cs-audit">
+                <a href={AUDIT_WHATSAPP_URL} target="_blank" rel="noopener">
+                  Free 15-minute call audit
+                </a>{" "}
+                if you&apos;re not ready for a quote.
+              </p>
+            </div>
+
           </div>
         </div>
       </section>
