@@ -1,6 +1,5 @@
 "use client";
 
-import { useTheme } from "../../app/ThemeContext";
 import "../../app/wevtex-home.css";
 import { SiteHeader } from "./SiteHeader";
 import { SiteFooter } from "./SiteFooter";
@@ -9,14 +8,13 @@ import { WHATSAPP_URL, PORTFOLIO_URL } from "@/lib/site-links";
 
 
 export function ThankYouClient() {
-  const { isDark } = useTheme();
 
   return (
-    <div className={`wevtex ${isDark ? "mode-dark" : "mode-light"}`}>
+    <div className="wevtex mode-light">
       <ConversionTracker />
       <SiteHeader />
 
-      <section className={`${isDark ? "theme-dark" : "theme-cream"} cta`} style={{ minHeight: "70vh", display: "flex", alignItems: "center" }}>
+      <section className="theme-cream cta" style={{ minHeight: "70vh", display: "flex", alignItems: "center" }}>
         <div className="container">
           <div>
             <span className="eyebrow accent">Message bien reçu</span>

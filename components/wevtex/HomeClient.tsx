@@ -1,6 +1,5 @@
 "use client";
 
-import { useTheme } from "../../app/ThemeContext";
 /**
  * Wevtex homepage — a lean conversion funnel:
  * Hero → Problem → Services → Work → Proof → Testimonials → Industries → Pricing → FAQ → Contact.
@@ -216,7 +215,6 @@ const TPOOL = [
 ];
 
 export function HomeClient() {
-  const { isDark } = useTheme();
   const [ti, setTi] = useState(0);
   /* Work accordion — a single open index, so opening one closes the rest.
      Index 0 is open on load: a wall of closed rows reads as an empty section. */
@@ -439,12 +437,12 @@ export function HomeClient() {
   }, []);
 
   return (
-    <div className={`wevtex ${isDark ? 'mode-dark' : 'mode-light'}`} ref={rootRef}>
+    <div className="wevtex mode-light" ref={rootRef}>
       {/* ===================== HEADER ===================== */}
       <SiteHeader />
 
       {/* ===================== HERO (mockup 1 — split) ===================== */}
-      <section className={`${isDark ? "theme-dark" : "theme-cream"} hero hero-split`} id="hero">
+      <section className="theme-cream hero hero-split" id="hero">
         <div className="hero-motif" aria-hidden></div>
         <div className="hero-arc" aria-hidden></div>
 
@@ -542,7 +540,6 @@ export function HomeClient() {
           Shared with /services so both surfaces read the same SERVICES list —
           a service added or re-linked in homeContent.ts moves on every page. */}
       <ServicesBento
-        isDark={isDark}
         heading={<>Tout ce qu&apos;il faut pour<br /><em className="hl-line">développer</em> &amp; <em className="hl-line">automatiser</em></>}
         intro="Du site performant à l'automatisation intelligente, nous créons des solutions digitales qui font grandir votre activité et vous simplifient le quotidien."
       />
@@ -679,7 +676,7 @@ export function HomeClient() {
       </section>
 
       {/* CTA beside the proof — the reference puts one right after the evidence. */}
-      <section className={`${isDark ? "theme-dark" : "theme-cream"} inline-cta`}>
+      <section className="theme-cream inline-cta">
         <div className="container">
           <div className="ict-inner reveal">
             <p className="ict-text">Vous voulez ce type de résultats pour votre entreprise ?</p>
@@ -692,7 +689,7 @@ export function HomeClient() {
       </section>
 
       {/* ===================== TESTIMONIALS (mockup 9 — featured + 2) ===================== */}
-      <section className={`${isDark ? "theme-dark" : "theme-cream"} testi-v2`} id="testimonials">
+      <section className="theme-cream testi-v2" id="testimonials">
         <div className="container">
           <div className="ic-head ic-head-left reveal">
             <span className="eyebrow line-eyebrow">Avis clients</span>
@@ -759,7 +756,7 @@ export function HomeClient() {
       </section>
 
       {/* ===================== INDUSTRIES (mockup 4 — carousel) ===================== */}
-      <section className={`${isDark ? "theme-dark" : "theme-paper"} industries-carousel`} id="industries">
+      <section className="theme-paper industries-carousel" id="industries">
         <div className="container">
           <div className="ic-head reveal">
             <span className="eyebrow line-eyebrow-center">Les secteurs que nous servons</span>
@@ -879,7 +876,7 @@ export function HomeClient() {
       </section>
 
       {/* ===================== FAQ (mockup 8 — FAQ + WhatsApp card) ===================== */}
-      <section className={`${isDark ? "theme-dark" : "theme-paper"} faq-split`} id="faq">
+      <section className="theme-paper faq-split" id="faq">
         <div className="container">
           <div className="faq-grid">
             <div className="faq-left reveal">

@@ -11,7 +11,6 @@
  * prestation en particulier, elle sait seulement les afficher.
  */
 
-import { useTheme } from "../../../app/ThemeContext";
 import "../../../app/wevtex-home.css";
 import { SiteHeader } from "../SiteHeader";
 import { SiteFooter } from "../SiteFooter";
@@ -63,17 +62,16 @@ const askUrl = (service: string, extra = "") =>
   encodeURIComponent(`Bonjour Wevtex, je suis intéressé(e) par « ${service} »${extra}. Pouvez-vous m'envoyer un devis ?`);
 
 export function ServiceDetailView({ service }: { service: Service }) {
-  const { isDark } = useTheme();
   useReveal();
 
   const features = service.featureSections?.[0];
 
   return (
-    <div className={`wevtex ${isDark ? "mode-dark" : "mode-light"}`}>
+    <div className="wevtex mode-light">
       <SiteHeader current="services" />
 
       {/* ===================== HERO ===================== */}
-      <section className={`${isDark ? "theme-dark" : "theme-cream"} srv-d-hero`}>
+      <section className="theme-cream srv-d-hero">
         <div className="hero-motif" aria-hidden></div>
         <div className="container">
           <div className="srv-d-hero-grid">
@@ -113,7 +111,7 @@ export function ServiceDetailView({ service }: { service: Service }) {
 
       {/* ===================== CE QUE ÇA CHANGE ===================== */}
       {service.outcomes?.length > 0 && (
-        <section className={`${isDark ? "theme-dark" : "theme-paper"} srv-d-sec`}>
+        <section className="theme-paper srv-d-sec">
           <div className="container">
             <div className="cmp-head reveal">
               <span className="eyebrow line-eyebrow">Ce que ça change</span>
@@ -134,7 +132,7 @@ export function ServiceDetailView({ service }: { service: Service }) {
 
       {/* ===================== SPÉCIALITÉS (grille bento) ===================== */}
       {features && (
-        <section className={`${isDark ? "theme-dark" : "theme-cream"} services-bento srv-d-sec`}>
+        <section className="theme-cream services-bento srv-d-sec">
           <div className="container">
             <div className="bento-head reveal">
               <div className="bento-head-left">
@@ -195,7 +193,7 @@ export function ServiceDetailView({ service }: { service: Service }) {
 
       {/* ===================== MÉTHODE ===================== */}
       {service.process && (
-        <section className={`${isDark ? "theme-dark" : "theme-cream"} srv-d-sec`}>
+        <section className="theme-cream srv-d-sec">
           <div className="container">
             <div className="cmp-head reveal">
               <span className="eyebrow line-eyebrow">Notre méthode</span>
@@ -223,7 +221,7 @@ export function ServiceDetailView({ service }: { service: Service }) {
 
       {/* ===================== PAR SECTEUR ===================== */}
       {service.sectors && (
-        <section className={`${isDark ? "theme-dark" : "theme-paper"} srv-d-sec`}>
+        <section className="theme-paper srv-d-sec">
           <div className="container">
             <div className="cmp-head reveal">
               <span className="eyebrow line-eyebrow">Par secteur</span>
@@ -247,7 +245,7 @@ export function ServiceDetailView({ service }: { service: Service }) {
 
       {/* ===================== POURQUOI NOUS ===================== */}
       {service.whyUs && (
-        <section className={`${isDark ? "theme-dark" : "theme-cream"} srv-d-sec`}>
+        <section className="theme-cream srv-d-sec">
           <div className="container">
             <div className="cmp-head reveal">
               <span className="eyebrow line-eyebrow">Pourquoi Wevtex</span>
@@ -322,7 +320,7 @@ export function ServiceDetailView({ service }: { service: Service }) {
 
       {/* ===================== FAQ ===================== */}
       {service.faqs?.length > 0 && (
-        <section className={`${isDark ? "theme-dark" : "theme-paper"} faq-split srv-d-sec`} id="faq">
+        <section className="theme-paper faq-split srv-d-sec" id="faq">
           <div className="container">
             <div className="faq-grid">
               <div className="faq-left reveal">

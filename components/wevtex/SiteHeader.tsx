@@ -2,7 +2,6 @@
 
 import Image from "next/image";
 import { useEffect, useState, type ReactNode } from "react";
-import { useTheme } from "../../app/ThemeContext";
 import { SERVICES } from "./homeContent";
 import { WHATSAPP_URL, TEL_URL, PHONE_DISPLAY, EMAIL, EMAIL_URL, CONTACT_URL, servicePath, industryPath, socialUrl, HOME_URL, SERVICES_URL, PORTFOLIO_URL, ABOUT_URL } from "@/lib/site-links";
 
@@ -60,7 +59,6 @@ function MegaItem({ item }: { item: NavItem }) {
 
 export function SiteHeader({ current }: { current?: Current }) {
   const [scrolled, setScrolled] = useState(false);
-  const { isDark, toggleTheme } = useTheme();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 16);
@@ -115,7 +113,7 @@ export function SiteHeader({ current }: { current?: Current }) {
         <a href={HOME_URL} className="brand" aria-label="Wevtex — accueil">
           <Image
             className="brand-mark"
-            src={isDark ? "/images/logo/wevtex-mark-lime.png" : "/images/logo/wevtex-mark-ink.png"}
+            src="/images/logo/wevtex-mark-ink.png"
             alt=""
             width={1192}
             height={791}
@@ -169,15 +167,6 @@ export function SiteHeader({ current }: { current?: Current }) {
         </nav>
 
         <div className="nav-cta">
-          <button onClick={toggleTheme} className="theme-toggle" aria-label="Basculer le mode sombre" style={{
-            background: 'transparent', border: 'none', cursor: 'pointer', color: 'var(--ink-on-dark)', padding: '8px', display: 'flex', alignItems: 'center'
-          }}>
-            {isDark ? (
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" /></svg>
-            ) : (
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" /></svg>
-            )}
-          </button>
           <a href={CONTACT_URL} className="btn btn-primary">
             Parlons-en
             <svg className="arrow" viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="1.6">

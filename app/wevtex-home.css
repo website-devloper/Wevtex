@@ -81,8 +81,6 @@
    Signal lime is invisible as text on white, so --accent-text defaults to
    deep lime-ink. On ink surfaces it flips back to full-strength lime; on
    lime surfaces it flips to the deep on-lime tone. Nothing else changes. */
-.wevtex .theme-dark,
-.wevtex.mode-dark,
 .wevtex .problem-band,
 .wevtex .stats-band-v2,
 .wevtex .promise-banner,
@@ -98,7 +96,6 @@
   --accent-text: var(--accent);
 }
 /* the footer is a light surface now — bright lime text would not hold contrast */
-.wevtex.mode-dark .footer-v2 { --accent-text: var(--accent); }
 
 .wevtex .cs-card.wa,
 .wevtex .bento-card.vermilion {
@@ -120,9 +117,6 @@
 .wevtex .hl { color: var(--ink-on-cream-2); font-weight: 400; }
 .wevtex .hl b,
 .wevtex .hl strong { color: var(--ink-on-cream); font-weight: 700; font-style: normal; }
-.wevtex .theme-dark .hl { color: var(--ink-on-dark-2); }
-.wevtex .theme-dark .hl b,
-.wevtex .theme-dark .hl strong { color: var(--ink-on-dark); }
 
 /* Visible keyboard focus ring (a11y checklist). */
 .wevtex :focus-visible,
@@ -131,7 +125,6 @@
   outline-offset: 2px;
   border-radius: 2px;
 }
-.wevtex .theme-dark :focus-visible,
 .footer-v2 :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 
 .wevtex,
@@ -159,12 +152,6 @@
 
 .wevtex button { font: inherit; color: inherit; background: none; border: 0; cursor: pointer; }
 
-.wevtex .theme-dark {
-  background: var(--bg-0);
-  color: var(--ink-on-dark);
-  position: relative;
-}
-
 .wevtex .theme-cream {
   background: var(--bg-cream);
   color: var(--ink-on-cream);
@@ -175,28 +162,6 @@
   background: var(--bg-paper);
   color: var(--ink-on-cream);
   position: relative;
-}
-
-.wevtex .theme-dark::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 0.05 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
-  background-size: 200px 200px;
-  opacity: 0.35;
-  z-index: 1;
-}
-
-.wevtex .theme-dark::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  background:
-    radial-gradient(40% 30% at 8% 18%, rgba(198, 242, 78, 0.05), transparent 60%),
-    radial-gradient(35% 25% at 92% 82%, rgba(198, 242, 78, 0.04), transparent 60%);
-  z-index: 1;
 }
 
 /* No wash on the light canvas — white is the point. */
@@ -262,8 +227,6 @@
   font-weight: 400;
 }
 
-.wevtex .theme-dark .lead { color: var(--ink-on-dark-2); }
-
 .wevtex .eyebrow {
   font-family: var(--font-sans);
   font-size: 11.5px;
@@ -285,8 +248,6 @@
   display: inline-block;
 }
 
-.wevtex .theme-dark .eyebrow { color: var(--ink-on-dark-3); }
-
 .wevtex .eyebrow.accent { color: var(--accent-text); }
 
 .wevtex .caption {
@@ -295,8 +256,6 @@
   letter-spacing: 0.1em;
   color: var(--ink-on-cream-3);
 }
-
-.wevtex .theme-dark .caption { color: var(--ink-on-dark-3); }
 
 .wevtex .btn {
   display: inline-flex;
@@ -337,13 +296,6 @@
 }
 
 .wevtex .btn-outline:hover { background: #101112; color: #fff; border-color: #101112; }
-
-.wevtex .theme-dark .btn-outline {
-  border-color: var(--hairline-d-strong);
-  color: var(--ink-on-dark);
-}
-
-.wevtex .theme-dark .btn-outline:hover { background: var(--ink-on-dark); color: var(--bg-0); border-color: var(--ink-on-dark); }
 
 .wevtex .btn .arrow { width: 12px; height: 12px; }
 
@@ -462,9 +414,6 @@
   line-height: 1;
   color: var(--ink-on-cream);
 }
-
-.wevtex .theme-dark .brand-word,
-.wevtex.mode-dark .brand-word { color: var(--ink-on-dark); }
 
 .wevtex .nav-links {
   display: flex; gap: 4px;
@@ -3232,8 +3181,6 @@
   border-top: 1px solid var(--hairline-c-strong);
 }
 
-.wevtex .theme-dark .values-list { border-top-color: var(--hairline-d-strong); }
-
 .wevtex .value-row {
   display: grid;
   grid-template-columns: 60px 1fr 1.4fr;
@@ -3242,8 +3189,6 @@
   border-bottom: 1px solid var(--hairline-c);
   align-items: start;
 }
-
-.wevtex .theme-dark .value-row { border-bottom-color: var(--hairline-d); }
 
 @media (max-width: 880px) {
 .wevtex .value-row { grid-template-columns: 1fr; gap: 16px; padding: 28px 0; }
@@ -3275,8 +3220,6 @@
   line-height: 1.6;
   max-width: 52ch;
 }
-
-.wevtex .theme-dark .value-row p { color: var(--ink-on-dark-2); }
 
 .wevtex .timeline {
   display: grid;
@@ -3668,8 +3611,6 @@
   font-style: normal; font-weight: 700; color: inherit;
 }
 
-.wevtex .theme-dark .service-text h2 em { color: var(--accent-text); }
-
 .wevtex .service-text p.lead { margin-bottom: 32px; }
 
 .wevtex .service-checks {
@@ -3681,8 +3622,6 @@
   border-top: 1px solid var(--hairline-c);
 }
 
-.wevtex .theme-dark .service-checks { border-top-color: var(--hairline-d); }
-
 .wevtex .service-checks li {
   display: grid;
   grid-template-columns: 70px 1fr;
@@ -3693,8 +3632,6 @@
   border-bottom: 1px solid var(--hairline-c);
 }
 
-.wevtex .theme-dark .service-checks li { border-bottom-color: var(--hairline-d); color: var(--ink-on-dark-2); }
-
 .wevtex .service-checks li:last-child { border-bottom: 0; padding-bottom: 0; }
 
 .wevtex .service-checks li::before {
@@ -3704,8 +3641,6 @@
   letter-spacing: 0.1em;
   color: var(--ink-on-cream-3);
 }
-
-.wevtex .theme-dark .service-checks li::before { color: var(--ink-on-dark-3); }
 
 .wevtex .service-visual {
   aspect-ratio: 5 / 4;
@@ -3718,11 +3653,6 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-}
-
-.wevtex .theme-dark .service-visual {
-  background: linear-gradient(180deg, var(--bg-1), var(--bg-0));
-  border-color: var(--hairline-d);
 }
 
 .wevtex .service-visual::before {
@@ -3755,8 +3685,6 @@
   border-bottom: 1px solid var(--hairline-c);
 }
 
-.wevtex .theme-dark .portfolio-filters { border-top-color: var(--hairline-d); border-bottom-color: var(--hairline-d); }
-
 .wevtex .filter-chip {
   display: inline-flex;
   align-items: center;
@@ -3770,8 +3698,6 @@
   cursor: pointer;
   transition: background 0.2s, color 0.2s, border-color 0.2s;
 }
-
-.wevtex .theme-dark .filter-chip { border-color: var(--hairline-d-strong); color: var(--ink-on-dark-2); }
 
 .wevtex .filter-chip:hover { border-color: var(--ink-on-cream); }
 
@@ -3894,8 +3820,6 @@
 .wevtex .case-stats { grid-template-columns: repeat(2, 1fr); gap: 32px; padding: 48px 0; }
 }
 
-.wevtex .theme-dark .case-stats { border-top-color: var(--hairline-d); border-bottom-color: var(--hairline-d); }
-
 .wevtex .case-stat .num {
   font-size: clamp(48px, 6vw, 88px);
   font-weight: 400;
@@ -3916,8 +3840,6 @@
   text-transform: uppercase;
   color: var(--ink-on-cream-3);
 }
-
-.wevtex .theme-dark .case-stat .label { color: var(--ink-on-dark-3); }
 
 .wevtex .case-section {
   padding: 120px 0;
@@ -3961,8 +3883,6 @@
   max-width: 60ch;
 }
 
-.wevtex .theme-dark .case-section p { color: var(--ink-on-dark-2); }
-
 .wevtex .case-quote {
   padding: 100px 0;
   text-align: center;
@@ -3994,8 +3914,6 @@
   align-items: center;
   gap: 40px;
 }
-
-.wevtex .theme-dark .case-next { border-top-color: var(--hairline-d); }
 
 .wevtex .case-next .label {
   font-family: var(--font-mono);
@@ -5032,7 +4950,6 @@
 .wevtex .bento-head { display: grid; grid-template-columns: 1.5fr 1fr; gap: 48px; align-items: end; margin-bottom: 64px; }
 @media (max-width: 860px) { .wevtex .bento-head { grid-template-columns: 1fr; gap: 16px; align-items: start; } }
 .wevtex .bento-head-right { color: var(--ink-on-cream-2); font-size: 15.5px; line-height: 1.7; max-width: 42ch; padding-bottom: 4px; }
-.wevtex.mode-dark .bento-head-right { color: var(--ink-on-dark-2); }
 .wevtex .line-eyebrow::after { content: ""; display: inline-block; width: 58px; height: 1px; background: var(--vermilion); margin-left: 14px; vertical-align: middle; opacity: 0.7; }
 
 /* ---- The grid ------------------------------------------------------
@@ -5048,7 +4965,6 @@
      the heading above. Stays inside the container gutter. */
   margin-left: -30px; margin-right: -30px;
 }
-.wevtex.mode-dark .bento-grid { border-color: var(--hairline-d); }
 
 .wevtex .bento-card {
   position: relative;
@@ -5059,11 +4975,9 @@
   border-radius: 0; box-shadow: none;
   padding: 68px 30px 60px; min-height: 0; text-decoration: none;
 }
-.wevtex.mode-dark .bento-card { border-left-color: var(--hairline-d); }
 /* First in each row opens to the page edge; row two gets its own rule. */
 .wevtex .bento-card:nth-child(4n+1) { border-left: 0; }
 .wevtex .bento-card:nth-child(n+5) { border-top: 1px solid var(--hairline-c); }
-.wevtex.mode-dark .bento-card:nth-child(n+5) { border-top-color: var(--hairline-d); }
 
 /* ---- Head row: number left, icon right ---- */
 .wevtex .bento-top {
@@ -5074,14 +4988,12 @@
   font-family: var(--font-mono); font-size: 11.5px; letter-spacing: 0.1em;
   font-variant-numeric: tabular-nums; color: var(--ink-on-cream-3);
 }
-.wevtex.mode-dark .bento-n { color: var(--ink-on-dark-4); }
 /* Plain ink glyph — the grey outlined disc was the most generic thing here. */
 .wevtex .bento-icon {
   width: auto; height: auto; border: 0; border-radius: 0;
   display: grid; place-items: center; color: var(--ink-on-cream); flex-shrink: 0;
   transition: color 240ms var(--ease-out);
 }
-.wevtex.mode-dark .bento-icon { color: var(--ink-on-dark); }
 .wevtex .bento-icon svg { width: 22px; height: 22px; }
 
 /* ---- Body ----------------------------------------------------------
@@ -5099,7 +5011,6 @@
   transition: background-size 240ms var(--ease-out), color 240ms var(--ease-out);
 }
 .wevtex .bento-card p { font-size: 14px; line-height: 1.6; color: var(--ink-on-cream-2); max-width: 34ch; }
-.wevtex.mode-dark .bento-card p { color: var(--ink-on-dark-3); }
 
 /* ---- Arrow ---------------------------------------------------------
    Eight filled black discs were the loudest thing in the section and the
@@ -5111,7 +5022,6 @@
   opacity: 0.45; transform: none;
   transition: opacity 240ms var(--ease-out), transform 240ms var(--ease-out), color 240ms var(--ease-out);
 }
-.wevtex.mode-dark .bento-arrow { color: var(--ink-on-dark-3); }
 .wevtex .bento-arrow svg { width: 16px; height: 16px; }
 
 /* One orchestrated hover: tint, marker, icon, arrow. */
@@ -5120,26 +5030,21 @@
   background: var(--surface-c-1); opacity: 0; pointer-events: none; z-index: 0;
   transition: opacity 260ms var(--ease-out);
 }
-.wevtex.mode-dark .services-bento .bento-card::after { background: var(--surface-d-1); }
 
 .wevtex .services-bento .bento-card:hover { transform: none; box-shadow: none; }
 .wevtex .services-bento .bento-card:hover::after { opacity: 1; }
 .wevtex .services-bento .bento-card > * { position: relative; z-index: 1; }
 .wevtex .services-bento .bento-card:hover h4 { background-size: 100% 0.88em; color: var(--on-lime); }
 .wevtex .services-bento .bento-card:hover .bento-icon { color: var(--accent-deep); }
-.wevtex.mode-dark .services-bento .bento-card:hover .bento-icon { color: var(--accent); }
 .wevtex .services-bento .bento-card:hover .bento-arrow { opacity: 1; transform: translateX(4px); color: var(--accent-deep); }
-.wevtex.mode-dark .services-bento .bento-card:hover .bento-arrow { color: var(--accent); }
 
 .wevtex .bento-motif { display: none; }
 
 @media (max-width: 980px) {
   .wevtex .bento-grid { grid-template-columns: repeat(2, 1fr); }
   .wevtex .bento-card { border-left: 1px solid var(--hairline-c); }
-  .wevtex.mode-dark .bento-card { border-left-color: var(--hairline-d); }
   .wevtex .bento-card:nth-child(2n+1) { border-left: 0; }
   .wevtex .bento-card:nth-child(n+3) { border-top: 1px solid var(--hairline-c); }
-  .wevtex.mode-dark .bento-card:nth-child(n+3) { border-top-color: var(--hairline-d); }
 }
 @media (max-width: 540px) {
   .wevtex .bento-grid { grid-template-columns: 1fr; margin-left: 0; margin-right: 0; }
@@ -5157,7 +5062,6 @@
 .wevtex .ic-head { text-align: center; max-width: 760px; margin: 0 auto 52px; }
 .wevtex .ic-head h2 { justify-content: center; }
 .wevtex .ic-sub { margin-top: 18px; color: var(--ink-on-cream-2); line-height: 1.7; font-size: 16px; }
-.wevtex.mode-dark .ic-sub { color: var(--ink-on-dark-2); }
 .wevtex .line-eyebrow-center { display: inline-flex; align-items: center; gap: 14px; }
 .wevtex .line-eyebrow-center::before, .wevtex .line-eyebrow-center::after { content: ""; width: 46px; height: 1px; background: var(--vermilion); opacity: 0.6; }
 
@@ -5198,9 +5102,7 @@
   display: grid; place-items: center; color: var(--ink-on-cream);
   transition: background-color 320ms var(--ease-out), border-color 320ms var(--ease-out), color 320ms var(--ease-out);
 }
-.wevtex.mode-dark .ic-arrow { color: var(--ink-on-dark); border-color: var(--hairline-d); }
 .wevtex .ic-arrow:hover { background: #101112; border-color: #101112; color: #fff; }
-.wevtex.mode-dark .ic-arrow:hover { background: #fff; border-color: #fff; color: #101112; }
 .wevtex .ic-dots { display: flex; gap: 8px; }
 .wevtex .ic-dots span { width: 8px; height: 8px; border-radius: 50%; background: var(--hairline-c-strong); }
 .wevtex .ic-dots span.on { background: var(--vermilion); width: 22px; border-radius: 5px; }
@@ -5217,7 +5119,6 @@
   content: ""; position: absolute; top: 38px; left: 12.5%; right: 12.5%; height: 1px;
   background: rgba(16, 17, 18, 0.14);
 }
-.wevtex.mode-dark .pt-track::before { background: var(--hairline-d); }
 .wevtex .pt-step { display: flex; flex-direction: column; align-items: center; text-align: center; padding: 0 16px; }
 
 /* One node per step: the icon sits on the rail, the number rides its edge. */
@@ -5228,7 +5129,6 @@
   display: grid; place-items: center; color: var(--ink-on-cream);
   box-shadow: 0 0 0 8px var(--sand);
 }
-.wevtex.mode-dark .pt-node { background: var(--bg-0); border-color: var(--hairline-d); color: var(--ink-on-dark); box-shadow: 0 0 0 8px var(--bg-0); }
 .wevtex .pt-node svg { width: 28px; height: 28px; }
 .wevtex .pt-num {
   position: absolute; top: 0; right: 0;
@@ -5239,7 +5139,6 @@
 }
 
 .wevtex .pt-step h4 { margin-top: 28px; font-size: 22px; font-weight: 600; letter-spacing: -0.02em; color: var(--ink-on-cream); }
-.wevtex.mode-dark .pt-step h4 { color: var(--ink-on-dark); }
 .wevtex .pt-step p { margin-top: 10px; font-size: 14px; line-height: 1.6; color: var(--ink-on-cream-2); max-width: 25ch; }
 
 /* Duration marker sitting on the rail between two steps */
@@ -5250,7 +5149,6 @@
   font-family: var(--font-sans); font-size: 10.5px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase;
   color: var(--ink-on-cream-2); background: var(--sand); padding: 0 8px;
 }
-.wevtex.mode-dark .pt-dur .lbl { color: var(--ink-on-dark-2); background: var(--bg-0); }
 
 @media (max-width: 760px) {
   .wevtex .pt-track { grid-template-columns: repeat(2, 1fr); row-gap: 48px; }
@@ -5360,7 +5258,6 @@
 .wevtex .faq-grid { display: grid; grid-template-columns: 1.5fr 1fr; gap: 54px; align-items: start; }
 @media (max-width: 900px) { .wevtex .faq-grid { grid-template-columns: 1fr; gap: 40px; } }
 .wevtex .faq-left .ic-sub { color: var(--ink-on-cream-2); line-height: 1.6; font-size: 15px; max-width: 46ch; }
-.wevtex.mode-dark .faq-left .ic-sub { color: var(--ink-on-dark-2); }
 
 /* Rows are cards — same language as the testimonial / industry cards above. */
 .wevtex .faq-list-v2 { margin-top: 28px; display: flex; flex-direction: column; gap: 8px; }
@@ -5371,37 +5268,31 @@
   overflow: hidden;
   box-shadow: 0 20px 44px -34px rgba(16, 17, 18, 0.4);
 }
-.wevtex.mode-dark .faq-item-v2 { background: var(--surface-d-1); border-color: var(--hairline-d); box-shadow: none; }
 .wevtex .faq-item-v2 summary {
   list-style: none; cursor: pointer;
   display: flex; align-items: center; gap: 14px;
   padding: 14px 20px; font-size: 15.5px; color: var(--ink-on-cream);
 }
-.wevtex.mode-dark .faq-item-v2 summary { color: var(--ink-on-dark); }
 .wevtex .faq-item-v2 summary::-webkit-details-marker { display: none; }
 .wevtex .faq-num {
   font-family: var(--font-mono); font-size: 12.5px; letter-spacing: 0.04em;
   color: var(--ink-on-cream-3); flex-shrink: 0; width: 22px;
 }
-.wevtex.mode-dark .faq-num { color: var(--ink-on-dark-3); }
 .wevtex .faq-q { flex: 1; }
 .wevtex .faq-plus {
   position: relative; width: 26px; height: 26px; border-radius: 50%;
   border: 1px solid var(--hairline-c-strong); flex-shrink: 0;
 }
-.wevtex.mode-dark .faq-plus { border-color: var(--hairline-d-strong); }
 .wevtex .faq-plus::before, .wevtex .faq-plus::after {
   content: ""; position: absolute; top: 50%; left: 50%;
   background: var(--ink-on-cream-2); border-radius: 1px;
 }
-.wevtex.mode-dark .faq-plus::before, .wevtex.mode-dark .faq-plus::after { background: var(--ink-on-dark-2); }
 .wevtex .faq-plus::before { width: 12px; height: 1.6px; transform: translate(-50%, -50%); }
 .wevtex .faq-plus::after { width: 1.6px; height: 12px; transform: translate(-50%, -50%); }
 .wevtex .faq-body > p {
   padding: 0 20px 16px 54px; font-size: 14px; line-height: 1.6;
   color: var(--ink-on-cream-2); max-width: 62ch;
 }
-.wevtex.mode-dark .faq-body > p { color: var(--ink-on-dark-2); }
 @media (max-width: 600px) {
   .wevtex .faq-item-v2 summary { padding: 13px 15px; font-size: 15px; gap: 11px; }
   .wevtex .faq-body > p { padding: 0 15px 15px 15px; }
@@ -5423,9 +5314,7 @@
 .wevtex .wa-btn { position: relative; z-index: 1; display: inline-flex; align-items: center; gap: 10px; background: var(--accent); color: var(--on-lime); padding: 13px 22px; border-radius: 999px; font-weight: 500; font-size: 14px; text-decoration: none; }
 .wevtex .wa-btn svg { width: 17px; height: 17px; }
 .wevtex .wa-privacy { display: flex; align-items: center; gap: 12px; margin-top: 22px; font-size: 13px; color: var(--ink-on-cream-2); }
-.wevtex.mode-dark .wa-privacy { color: var(--ink-on-dark-2); }
 .wevtex .wa-lock { width: 38px; height: 38px; border-radius: 50%; border: 1px solid var(--hairline-c-strong); display: grid; place-items: center; color: var(--ink-on-cream-3); flex-shrink: 0; }
-.wevtex.mode-dark .wa-lock { border-color: var(--hairline-d-strong); color: var(--ink-on-dark-3); }
 
 /* ===================== TESTIMONIALS — quote wall =====================
    Three equal columns divided by hairlines. No cards, no dark slab, no
@@ -5446,7 +5335,6 @@
   border-top: 1px solid var(--hairline-c);
   align-items: stretch;
 }
-.wevtex.mode-dark .testi-grid { border-top-color: var(--hairline-d); }
 
 .wevtex .testi-col {
   display: flex; flex-direction: column;
@@ -5454,7 +5342,6 @@
   padding: 34px 36px 4px;
   border-left: 1px solid var(--hairline-c);
 }
-.wevtex.mode-dark .testi-col { border-left-color: var(--hairline-d); }
 /* Outer edges stay open so the wall reads as columns, not as boxes. */
 .wevtex .testi-col:first-child { border-left: 0; padding-left: 0; }
 .wevtex .testi-col:last-child { padding-right: 0; }
@@ -5466,7 +5353,6 @@
   font-size: 16px; line-height: 1.7; color: var(--ink-on-cream);
   text-wrap: pretty;
 }
-.wevtex.mode-dark .testi-q { color: var(--ink-on-dark); }
 
 /* Authors align across all three columns, and because the columns are now
    the same height that alignment costs no dead space. */
@@ -5476,7 +5362,6 @@
   padding-top: 22px;
   border-top: 1px solid var(--hairline-c);
 }
-.wevtex.mode-dark .testi-person { border-top-color: var(--hairline-d); }
 .wevtex .testi-avatar {
   width: 40px; height: 40px; border-radius: 50%; flex-shrink: 0;
   display: grid; place-items: center;
@@ -5485,8 +5370,6 @@
 }
 .wevtex .testi-name { font-size: 14px; font-weight: 600; color: var(--ink-on-cream); }
 .wevtex .testi-role { font-size: 12.5px; color: var(--ink-on-cream-2); margin-top: 2px; }
-.wevtex.mode-dark .testi-name { color: var(--ink-on-dark); }
-.wevtex.mode-dark .testi-role { color: var(--ink-on-dark-3); }
 
 .wevtex .testi-controls { display: flex; align-items: center; justify-content: center; gap: 22px; margin-top: 44px; }
 .wevtex .testi-cta { display: flex; justify-content: center; margin-top: 26px; }
@@ -5499,9 +5382,7 @@
     border-top: 1px solid var(--hairline-c);
     padding: 30px 0 4px;
   }
-  .wevtex.mode-dark .testi-col { border-top-color: var(--hairline-d); }
   .wevtex .testi-col:first-child { border-top: 1px solid var(--hairline-c); }
-  .wevtex.mode-dark .testi-col:first-child { border-top-color: var(--hairline-d); }
   .wevtex .testi-q { margin-bottom: 24px; }
 }
 
@@ -5578,8 +5459,6 @@
 .wevtex .pr-foot { margin-top: 34px; display: flex; flex-wrap: wrap; justify-content: center; gap: 10px 28px; font-size: 13px; color: var(--ink-on-cream-2); }
 .wevtex .pr-foot span { display: inline-flex; align-items: center; gap: 7px; }
 .wevtex .pr-foot svg { width: 15px; height: 15px; color: var(--accent-deep); }
-.wevtex.mode-dark .pr-foot { color: var(--ink-on-dark-2); }
-.wevtex.mode-dark .pr-foot svg { color: var(--accent); }
 .wevtex .pr-addons-link { margin-top: 22px; text-align: center; }
 .wevtex .pr-addons-link a {
   display: inline-flex; align-items: center; gap: 8px;
@@ -5588,13 +5467,10 @@
   transition: color 260ms var(--ease-out), border-color 260ms var(--ease-out);
 }
 .wevtex .pr-addons-link a:hover { color: var(--accent-deep); border-bottom-color: var(--accent-deep); }
-.wevtex.mode-dark .pr-addons-link a { color: var(--ink-on-dark); border-bottom-color: var(--hairline-d); }
-.wevtex.mode-dark .pr-addons-link a:hover { color: var(--accent); border-bottom-color: var(--accent); }
 
 /* ===================== ADD-ONS — mockup 11 (list) ===================== */
 .wevtex .addons-v2 { padding: clamp(80px, 12vh, 130px) 0; }
 .wevtex .ao-head .ic-sub { color: var(--ink-on-cream-2); line-height: 1.6; font-size: 15px; }
-.wevtex.mode-dark .ao-head .ic-sub { color: var(--ink-on-dark-2); }
 .wevtex .ao-grid { display: grid; grid-template-columns: 1fr 1fr; column-gap: 32px; margin: 46px -16px 0; }
 @media (max-width: 760px) { .wevtex .ao-grid { grid-template-columns: 1fr; column-gap: 0; } }
 
@@ -5606,14 +5482,12 @@
   transition: background 220ms var(--ease-out);
 }
 .wevtex .ao-row::after { content: ""; position: absolute; left: 16px; right: 16px; bottom: 0; height: 1px; background: var(--hairline-c); }
-.wevtex.mode-dark .ao-row::after { background: var(--hairline-d); }
 .wevtex .ao-row:nth-last-child(-n+2)::after { opacity: 0; }
 @media (max-width: 760px) {
   .wevtex .ao-row:nth-last-child(-n+2)::after { opacity: 1; }
   .wevtex .ao-row:last-child::after { opacity: 0; }
 }
 .wevtex .ao-row:hover { background: var(--surface-c-1); }
-.wevtex.mode-dark .ao-row:hover { background: var(--surface-d-1); }
 
 .wevtex .ao-icon {
   width: 46px; height: 46px; border-radius: 14px; border: 1px solid var(--hairline-c);
@@ -5622,14 +5496,10 @@
 }
 .wevtex .ao-icon svg { width: 21px; height: 21px; }
 .wevtex .ao-row:hover .ao-icon { background: var(--accent-soft); border-color: rgba(198, 242, 78, 0.6); color: var(--accent-deep); }
-.wevtex.mode-dark .ao-icon { border-color: var(--hairline-d); background: var(--surface-d-1); color: var(--ink-on-dark); }
-.wevtex.mode-dark .ao-row:hover .ao-icon { background: rgba(198, 242, 78, 0.14); border-color: rgba(198, 242, 78, 0.4); color: var(--accent); }
 
 .wevtex .ao-info { flex: 1; min-width: 0; }
 .wevtex .ao-name { font-size: 15px; font-weight: 600; letter-spacing: -0.01em; color: var(--ink-on-cream); }
-.wevtex.mode-dark .ao-name { color: var(--ink-on-dark); }
 .wevtex .ao-desc { font-size: 13px; line-height: 1.45; color: var(--ink-on-cream-2); margin-top: 3px; }
-.wevtex.mode-dark .ao-desc { color: var(--ink-on-dark-3); }
 
 /* One chip style for every add-on — the alternating lime/ink pills read as noise.
    Hover fills it lime so the row itself becomes the call to action. */
@@ -5640,7 +5510,6 @@
   transition: background 220ms var(--ease-out), border-color 220ms var(--ease-out), color 220ms var(--ease-out);
 }
 .wevtex .ao-row:hover .ao-price { background: var(--accent); border-color: var(--accent); color: var(--on-lime); }
-.wevtex.mode-dark .ao-price { background: var(--surface-d-1); border-color: var(--hairline-d); color: var(--ink-on-dark); }
 
 /* Closing note sits in a pill so the list ends deliberately instead of trailing off. */
 .wevtex .ao-foot { display: flex; justify-content: center; margin-top: 46px; }
@@ -5650,20 +5519,16 @@
   background: var(--card); font-size: 14px; color: var(--ink-on-cream-2);
   box-shadow: 0 18px 40px -32px rgba(16, 17, 18, 0.4);
 }
-.wevtex.mode-dark .ao-foot-in { background: var(--surface-d-1); border-color: var(--hairline-d); color: var(--ink-on-dark-2); }
 .wevtex .ao-info-icon { width: 36px; height: 36px; border-radius: 50%; border: 1px solid var(--hairline-c); background: var(--surface-c-1); display: grid; place-items: center; color: var(--ink-on-cream-3); flex-shrink: 0; }
-.wevtex.mode-dark .ao-info-icon { background: var(--surface-d-1); border-color: var(--hairline-d); color: var(--ink-on-dark-3); }
 .wevtex .ao-foot a { color: var(--accent-text); font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; }
 .wevtex .ao-foot a svg { transition: transform 220ms var(--ease-out); }
 .wevtex .ao-foot a:hover svg { transform: translateX(3px); }
 
 /* ===================== CONTACT — legacy one-column rules (superseded by .contact-split) ===================== */
 .wevtex .contact-one { position: relative; padding: clamp(80px, 12vh, 130px) 0; background: var(--bg-paper); }
-.wevtex.mode-dark .contact-one { background: var(--bg-1); }
 .wevtex .contact-one .container { max-width: 720px; }
 .wevtex .co-head { text-align: center; }
 .wevtex .co-sub { margin: 16px auto 0; max-width: 52ch; font-size: 15px; line-height: 1.65; color: var(--ink-on-cream-2); }
-.wevtex.mode-dark .co-sub { color: var(--ink-on-dark-2); }
 
 /* The two channels sit above the form: most visitors just want to message us. */
 .wevtex .co-channels { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 40px; }
@@ -5683,15 +5548,9 @@
 .wevtex .co-chan-tx small { font-size: 12.5px; color: var(--ink-on-cream-2); margin-top: 1px; }
 .wevtex .co-chan.primary .co-chan-tx small { color: var(--on-lime); opacity: 0.75; }
 .wevtex .co-chan > svg { flex-shrink: 0; opacity: 0.55; }
-.wevtex.mode-dark .co-chan { background: var(--surface-d-1); border-color: var(--hairline-d); color: var(--ink-on-dark); }
-.wevtex.mode-dark .co-chan-ic { background: var(--surface-d-2); }
-.wevtex.mode-dark .co-chan-tx small { color: var(--ink-on-dark-3); }
-.wevtex.mode-dark .co-chan.primary { color: var(--on-lime); }
 
 .wevtex .co-or { display: flex; align-items: center; gap: 16px; margin: 32px 0 22px; font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-on-cream-3); }
 .wevtex .co-or::before, .wevtex .co-or::after { content: ""; flex: 1; height: 1px; background: var(--hairline-c); }
-.wevtex.mode-dark .co-or { color: var(--ink-on-dark-3); }
-.wevtex.mode-dark .co-or::before, .wevtex.mode-dark .co-or::after { background: var(--hairline-d); }
 
 .wevtex .co-form .form { background: var(--card); border: 1px solid var(--hairline-c); border-radius: 24px; padding: clamp(24px, 4vw, 36px); box-shadow: 0 30px 60px -46px rgba(16, 17, 18, 0.4); }
 /* the section heading already introduces the form — no need to say it twice */
@@ -5708,29 +5567,19 @@
 .wevtex .co-form .field textarea:focus { background: #fff; border-color: var(--accent); box-shadow: 0 0 0 3px rgba(198, 242, 78, 0.22); }
 .wevtex .co-form .field textarea { min-height: 130px; }
 .wevtex .co-form .form .btn { border-radius: 999px; padding: 16px; font-size: 15px; margin-top: 18px; }
-.wevtex.mode-dark .co-form .form { background: var(--surface-d-1); border-color: var(--hairline-d); }
-.wevtex.mode-dark .co-form .field input,
-.wevtex.mode-dark .co-form .field select,
-.wevtex.mode-dark .co-form .field textarea { background: rgba(255, 255, 255, 0.05); border-color: var(--hairline-d); color: var(--ink-on-dark); }
 
 .wevtex .co-trust { list-style: none; display: flex; justify-content: center; flex-wrap: wrap; gap: 10px 24px; margin-top: 26px; font-size: 13.5px; color: var(--ink-on-cream-2); }
 .wevtex .co-trust li { display: inline-flex; align-items: center; gap: 7px; }
 .wevtex .co-trust svg { width: 14px; height: 14px; color: var(--accent-deep); flex-shrink: 0; }
-.wevtex.mode-dark .co-trust { color: var(--ink-on-dark-2); }
-.wevtex.mode-dark .co-trust svg { color: var(--accent); }
 .wevtex .co-hours { margin-top: 14px; text-align: center; font-family: var(--font-mono); font-size: 11.5px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-on-cream-3); }
-.wevtex.mode-dark .co-hours { color: var(--ink-on-dark-3); }
 .wevtex .co-audit {
   margin-top: 38px; padding: 26px 28px; display: flex; align-items: center;
   justify-content: space-between; gap: 24px; flex-wrap: wrap;
   border: 1px solid var(--hairline-c); border-radius: 14px; background: var(--surface-c-1);
 }
-.wevtex.mode-dark .co-audit { border-color: var(--hairline-d); background: var(--surface-d-1); }
 .wevtex .co-audit-tx { flex: 1; min-width: 240px; display: flex; flex-direction: column; gap: 6px; }
 .wevtex .co-audit-tx b { font-size: 15.5px; font-weight: 600; letter-spacing: -0.01em; color: var(--ink-on-cream); }
 .wevtex .co-audit-tx span { font-size: 13.5px; line-height: 1.6; color: var(--ink-on-cream-2); }
-.wevtex.mode-dark .co-audit-tx b { color: var(--ink-on-dark); }
-.wevtex.mode-dark .co-audit-tx span { color: var(--ink-on-dark-2); }
 .wevtex .co-audit .btn { flex-shrink: 0; }
 @media (max-width: 620px) { .wevtex .co-audit { padding: 22px; } .wevtex .co-audit .btn { width: 100%; justify-content: center; } }
 
@@ -5838,18 +5687,6 @@
 .footer-v2 .footer-social a:hover { color: var(--ink-on-cream); }
 
 /* Ink theme keeps the same quiet structure, just inverted. */
-.wevtex.mode-dark .footer-v2, .wevtex.mode-dark footer.footer-v2 { background: var(--bg-1); color: var(--ink-on-dark); border-top-color: var(--hairline-d); }
-.wevtex.mode-dark .footer-v2 .footer-wordmark { color: var(--ink-on-dark); }
-.wevtex.mode-dark .footer-v2 .footer-about { color: var(--ink-on-dark-2); }
-.wevtex.mode-dark .footer-v2 .footer-news-sub,
-.wevtex.mode-dark .footer-v2 .footer-col-v2 h5,
-.wevtex.mode-dark .footer-v2 .footer-bottom-v2 > span,
-.wevtex.mode-dark .footer-v2 .footer-social a { color: var(--ink-on-dark-3); }
-.wevtex.mode-dark .footer-v2 .footer-col-v2 a { color: var(--ink-on-dark-2); }
-.wevtex.mode-dark .footer-v2 .footer-col-v2 a:hover,
-.wevtex.mode-dark .footer-v2 .footer-social a:hover { color: var(--ink-on-dark); }
-.wevtex.mode-dark .footer-v2 .footer-news-v2 input { background: var(--surface-d-1); border-color: var(--hairline-d); color: var(--ink-on-dark); }
-.wevtex.mode-dark .footer-v2 .footer-bottom-v2 { border-top-color: var(--hairline-d); }
 
 /* Bigger satisfaction stamp */
 .wevtex .promise-stamp { width: 210px; height: 210px; }
@@ -5897,7 +5734,6 @@
 .site-header li:hover > .nav-label::after, .site-header a.nav-label:hover::after, .site-header .nav-label.current::after { transform: scaleX(1); }
 .site-header .mega-item { transition: background 220ms var(--ease-out); border-radius: 10px; }
 .site-header .mega-item:hover { background: rgba(16, 17, 18, 0.05); }
-.wevtex.mode-dark .site-header .mega-item:hover { background: rgba(255, 255, 255, 0.06); }
 .site-header .mega-item:hover strong { color: var(--ink-on-dark); }
 .site-header .mega-item:hover .mega-icon { background: var(--accent); color: var(--on-lime); }
 .site-header .brand-mark { transition: opacity 160ms var(--ease-out); }
@@ -5920,7 +5756,6 @@
   transition: border-color 200ms var(--ease-out), box-shadow 200ms var(--ease-out), transform 200ms var(--ease-out);
 }
 .wevtex .faq-item-v2:hover { border-color: var(--hairline-c-strong); box-shadow: 0 14px 30px -22px rgba(16, 17, 18, 0.35); }
-.wevtex.mode-dark .faq-item-v2:hover { border-color: var(--hairline-d-strong); box-shadow: none; }
 .wevtex .faq-item-v2[open] { border-color: var(--accent); }
 .wevtex .faq-item-v2 summary span.faq-q { transition: color 160ms var(--ease-out); }
 .wevtex .faq-item-v2 summary:hover .faq-q,
@@ -6065,7 +5900,6 @@
 .wevtex .cs-card.wa .cs-card-ic { background: rgba(28, 42, 8, 0.14); color: var(--on-lime); }
 
 /* The hero backdrop disc needs its own tone on the ink theme. */
-.wevtex .theme-dark .hero-arc { background: var(--bg-2); opacity: 0.85; }
 
 /* Footer lockup: the lime mark sits ahead of the wordmark. */
 .footer-v2 .footer-wordmark { display: inline-flex; align-items: center; gap: 18px; }
@@ -6087,9 +5921,7 @@
   display: inline-flex; align-items: center; gap: 8px;
   font-size: 13.5px; color: var(--ink-on-cream-2);
 }
-.wevtex.mode-dark .hero-reassure li { color: var(--ink-on-dark-2); }
 .wevtex .hero-reassure svg { color: var(--accent-deep); flex-shrink: 0; }
-.wevtex.mode-dark .hero-reassure svg { color: var(--accent); }
 
 /* ---- Client logo strip ---- */
 /* Sits inside the hero so the trust bar lands with the first screen, not as its own band. */
@@ -6098,13 +5930,11 @@
   margin-top: clamp(52px, 6vw, 78px); padding-top: 36px;
   border-top: 1px solid rgba(16, 17, 18, 0.08);
 }
-.wevtex.mode-dark .hero-logos { border-top-color: var(--hairline-d); }
 @media (max-width: 720px) { .wevtex .hero-logos { margin-top: 44px; padding-top: 28px; } }
 .wevtex .ls-lead {
   font-size: 11px; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase;
   color: var(--ink-on-cream-3); margin: 0;
 }
-.wevtex.mode-dark .ls-lead { color: var(--ink-on-dark-3); }
 .wevtex .ls-row {
   display: flex; flex-wrap: wrap; justify-content: center; align-items: center;
   gap: 20px 52px; margin: 0; padding: 0; list-style: none;
@@ -6135,7 +5965,6 @@
   border: 1px solid rgba(16, 17, 18, 0.14); border-radius: 20px;
   background: rgba(255, 255, 255, 0.28);
 }
-.wevtex.mode-dark .ict-inner { border-color: var(--hairline-d); background: rgba(255, 255, 255, 0.02); }
 .wevtex .ict-text { margin: 0; font-size: 17px; font-weight: 500; letter-spacing: -0.015em; }
 @media (max-width: 560px) {
   .wevtex .ict-inner { flex-direction: column; align-items: flex-start; padding: 24px; }
@@ -6191,29 +6020,22 @@
   border-bottom: 1px solid rgba(16, 17, 18, 0.14);
   color: var(--ink-on-cream-2); font-weight: 400; vertical-align: middle;
 }
-.wevtex.mode-dark .cmp-table th,
-.wevtex.mode-dark .cmp-table td { border-bottom-color: var(--hairline-d); color: var(--ink-on-dark-2); }
 .wevtex .cmp-table thead th {
   font-size: 11px; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase;
   color: var(--ink-on-cream-3); padding-bottom: 14px;
 }
-.wevtex.mode-dark .cmp-table thead th { color: var(--ink-on-dark-3); }
 .wevtex .cmp-table tbody th {
   font-weight: 600; color: var(--ink-on-cream); width: 22%;
 }
-.wevtex.mode-dark .cmp-table tbody th { color: var(--ink-on-dark); }
 /* Our column is the one that should read first. */
 .wevtex .cmp-table .cmp-us {
   background: rgba(198, 242, 78, 0.14);
   color: var(--ink-on-cream); font-weight: 500;
 }
-.wevtex.mode-dark .cmp-table .cmp-us { background: rgba(198, 242, 78, 0.1); color: var(--ink-on-dark); }
 .wevtex .cmp-table thead .cmp-us { color: var(--accent-deep); font-weight: 700; border-radius: 12px 12px 0 0; }
-.wevtex.mode-dark .cmp-table thead .cmp-us { color: var(--accent); }
 .wevtex .cmp-table tbody tr:last-child .cmp-us { border-radius: 0 0 12px 12px; }
 .wevtex .cmp-table td.cmp-us { white-space: nowrap; }
 .wevtex .cmp-table td.cmp-us svg { color: var(--accent-deep); margin-right: 8px; vertical-align: -2px; }
-.wevtex.mode-dark .cmp-table td.cmp-us svg { color: var(--accent); }
 
 /* ---- Founder ---- */
 .wevtex .founder-v2 { padding: clamp(80px, 12vh, 130px) 0; }
@@ -6225,12 +6047,10 @@
 .wevtex .fd-photo { border-radius: 20px; overflow: hidden; }
 .wevtex .fd-photo img { display: block; width: 100%; height: auto; }
 .wevtex .fd-p { margin-top: 20px; font-size: 16px; line-height: 1.7; color: var(--ink-on-cream-2); max-width: 52ch; }
-.wevtex.mode-dark .fd-p { color: var(--ink-on-dark-2); }
 .wevtex .fd-sign {
   margin: 18px 0 26px; font-size: 12px; font-weight: 500;
   letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink-on-cream-3);
 }
-.wevtex.mode-dark .fd-sign { color: var(--ink-on-dark-3); }
 
 /* ---- Sticky mobile CTA ---- */
 .wevtex .sticky-cta {
@@ -6242,7 +6062,6 @@
   transform: translateY(100%);
   transition: transform 320ms var(--ease-out);
 }
-.wevtex.mode-dark .sticky-cta { background: rgba(16, 17, 18, 0.94); border-top-color: var(--hairline-d); }
 .wevtex .sticky-cta.shown { transform: translateY(0); }
 .wevtex .sticky-cta-btn {
   flex: 1; display: inline-flex; align-items: center; justify-content: center; gap: 8px;
@@ -6250,7 +6069,6 @@
   text-decoration: none; white-space: nowrap;
 }
 .wevtex .sticky-cta-btn.wa { background: transparent; border: 1px solid rgba(16, 17, 18, 0.2); color: var(--ink-on-cream); }
-.wevtex.mode-dark .sticky-cta-btn.wa { border-color: rgba(255, 255, 255, 0.24); color: var(--ink-on-dark); }
 .wevtex .sticky-cta-btn.primary { background: var(--accent); color: var(--on-lime); }
 @media (max-width: 768px) {
   .wevtex .sticky-cta { display: flex; }
@@ -6283,7 +6101,6 @@
   -webkit-box-decoration-break: clone;
   box-decoration-break: clone;
 }
-.wevtex .theme-dark .hl-line { background-image: linear-gradient(var(--accent), var(--accent)); }
 
 /* ---- FAQ: rules, not cards -----------------------------------------
    Eleven boxes stacked vertically read as a form. Hairlines read as a list. */
@@ -6296,8 +6113,6 @@
   box-shadow: none;
 }
 .wevtex .faq-split .faq-item-v2:last-child { border-bottom: 1px solid var(--hairline-c); }
-.wevtex.mode-dark .faq-split .faq-item-v2 { border-top-color: var(--hairline-d); }
-.wevtex.mode-dark .faq-split .faq-item-v2:last-child { border-bottom-color: var(--hairline-d); }
 .wevtex .faq-split .faq-item-v2 summary { padding: 24px 4px; }
 .wevtex .faq-split .faq-body > p { padding: 0 4px 24px 42px; }
 @media (max-width: 600px) {
@@ -6541,7 +6356,6 @@
   color: var(--ink-on-cream);
   padding: clamp(96px, 15vh, 180px) 0 clamp(88px, 13vh, 150px);
 }
-.wevtex.mode-dark .work { background: var(--bg-0); color: var(--ink-on-dark); }
 
 /* ---- A quiet entrance ---- */
 .wevtex .wk-head { margin-bottom: clamp(64px, 9vh, 120px); }
@@ -6554,9 +6368,7 @@
   list-style: none; margin: 0; padding: 0;
   border-top: 1px solid var(--hairline-c);
 }
-.wevtex.mode-dark .wk-list { border-top-color: var(--hairline-d); }
 .wevtex .wk-item { border-bottom: 1px solid var(--hairline-c); }
-.wevtex.mode-dark .wk-item { border-bottom-color: var(--hairline-d); }
 
 .wevtex .wk-row-h { font: inherit; font-weight: inherit; margin: 0; }
 .wevtex .wk-row {
@@ -6574,7 +6386,6 @@
   font-family: var(--font-mono); font-size: 11.5px; letter-spacing: 0.08em;
   font-variant-numeric: tabular-nums; color: var(--ink-on-cream-3);
 }
-.wevtex.mode-dark .wk-ix-n { color: var(--ink-on-dark-4); }
 
 .wevtex .wk-ix-title {
   justify-self: start;
@@ -6587,7 +6398,6 @@
   transition: background-size 240ms var(--ease-out), color 240ms var(--ease-out),
               font-size 240ms var(--ease-out), font-weight 240ms var(--ease-out);
 }
-.wevtex.mode-dark .wk-ix-title { color: var(--ink-on-dark); }
 .wevtex .wk-row:hover .wk-ix-title,
 .wevtex .wk-item.is-open .wk-ix-title { background-size: 100% 0.88em; color: var(--on-lime); }
 /* Open, the row label becomes the heading for the panel under it: it grows
@@ -6599,13 +6409,11 @@
 }
 
 .wevtex .wk-ix-cat { font-size: 13.5px; color: var(--ink-on-cream-2); }
-.wevtex.mode-dark .wk-ix-cat { color: var(--ink-on-dark-3); }
 .wevtex .wk-ix-year {
   font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.06em;
   font-variant-numeric: tabular-nums; color: var(--ink-on-cream-3);
   text-align: right;
 }
-.wevtex.mode-dark .wk-ix-year { color: var(--ink-on-dark-3); }
 
 /* + turns into − by dropping the vertical stroke. One state, one gesture. */
 .wevtex .wk-toggle {
@@ -6615,7 +6423,6 @@
   border: 1px solid var(--hairline-c-strong); color: var(--ink-on-cream-2);
   transition: background 220ms var(--ease-out), border-color 220ms var(--ease-out), color 220ms var(--ease-out);
 }
-.wevtex.mode-dark .wk-toggle { border-color: var(--hairline-d-strong); color: var(--ink-on-dark-2); }
 .wevtex .wk-toggle-v { transform-origin: center; transition: transform 240ms var(--ease-out), opacity 200ms var(--ease-out); }
 .wevtex .wk-item.is-open .wk-toggle { background: var(--accent); border-color: var(--accent); color: var(--on-lime); }
 .wevtex .wk-item.is-open .wk-toggle-v { transform: scaleY(0); opacity: 0; }
@@ -6655,7 +6462,6 @@
   background: var(--bg-cream);
   transition: border-color 220ms var(--ease-out);
 }
-.wevtex.mode-dark .wk-frame { border-color: var(--hairline-d); background: var(--bg-1); }
 .wevtex .wk-frame:hover { border-color: var(--hairline-c-strong); }
 .wevtex .wk-bar {
   display: flex; align-items: center; gap: 6px;
@@ -6663,15 +6469,12 @@
   border-bottom: 1px solid var(--hairline-c);
   flex-shrink: 0;
 }
-.wevtex.mode-dark .wk-bar { border-bottom-color: var(--hairline-d); }
 .wevtex .wk-bar i { width: 8px; height: 8px; border-radius: 50%; background: #d8d8d4; }
-.wevtex.mode-dark .wk-bar i { background: rgba(255, 255, 255, 0.18); }
 .wevtex .wk-url {
   margin-left: 10px;
   font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.04em;
   color: var(--ink-on-cream-3);
 }
-.wevtex.mode-dark .wk-url { color: var(--ink-on-dark-3); }
 
 /* Tall captures: at rest you see the top of the page, on hover it scrolls
    down to the footer. Turns a thumbnail into a small live demo. */
@@ -6683,7 +6486,6 @@
   background-color: var(--bg-paper);
   transition: background-position 3000ms cubic-bezier(0.4, 0, 0.25, 1);
 }
-.wevtex.mode-dark .wk-shot { background-color: var(--bg-2); }
 .wevtex .wk-frame:hover .wk-shot { background-position: center bottom; }
 
 /* Flat neutral placeholders. Delete once real captures land. */
@@ -6697,7 +6499,6 @@
   max-width: 40ch;
   font-size: 15.5px; line-height: 1.65; color: var(--ink-on-cream-2);
 }
-.wevtex.mode-dark .wk-outcome { color: var(--ink-on-dark-2); }
 
 .wevtex .wk-stack { list-style: none; display: flex; flex-wrap: wrap; gap: 8px; margin: 24px 0 0; padding: 0; }
 .wevtex .wk-stack li {
@@ -6705,7 +6506,6 @@
   color: var(--ink-on-cream-2);
   border: 1px solid var(--hairline-c); border-radius: 999px; padding: 6px 13px;
 }
-.wevtex.mode-dark .wk-stack li { color: var(--ink-on-dark-3); border-color: var(--hairline-d); }
 
 .wevtex .wk-metric { display: flex; align-items: baseline; gap: 12px; margin-top: 28px; }
 .wevtex .wk-metric-n {
@@ -6713,16 +6513,13 @@
   letter-spacing: -0.04em; line-height: 1; color: var(--ink-on-cream);
   font-variant-numeric: tabular-nums;
 }
-.wevtex.mode-dark .wk-metric-n { color: var(--ink-on-dark); }
 .wevtex .wk-metric-l { font-size: 13.5px; color: var(--ink-on-cream-2); }
-.wevtex.mode-dark .wk-metric-l { color: var(--ink-on-dark-3); }
 
 /* The one piece of lime at rest on the whole section: this arrow. */
 .wevtex .wk-view {
   display: inline-flex; align-items: center; gap: 11px; margin-top: 28px;
   font-size: 15px; font-weight: 500; color: var(--ink-on-cream);
 }
-.wevtex.mode-dark .wk-view { color: var(--ink-on-dark); }
 .wevtex .wk-view-arrow {
   display: grid; place-items: center; width: 26px; height: 26px;
   background: var(--accent); color: var(--on-lime);
@@ -6991,7 +6788,6 @@
   margin-top: 48px;
   border: 1px solid rgba(16, 17, 18, 0.14); border-radius: 20px; overflow: hidden;
 }
-.wevtex.mode-dark .srv-types-grid { border-color: var(--hairline-d); }
 @media (max-width: 1080px) { .wevtex .srv-types-grid { grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: 620px) { .wevtex .srv-types-grid { grid-template-columns: 1fr; } }
 
@@ -7005,11 +6801,6 @@
   text-decoration: none; color: var(--ink-on-cream);
   transition: background-color 320ms var(--ease-out);
 }
-.wevtex.mode-dark .srv-type {
-  background: rgba(255, 255, 255, 0.01);
-  border-right-color: var(--hairline-d); border-bottom-color: var(--hairline-d);
-  color: var(--ink-on-dark);
-}
 .wevtex .srv-type:nth-child(4n) { border-right: 0; }
 .wevtex .srv-type:nth-child(n+5) { border-bottom: 0; }
 @media (max-width: 1080px) {
@@ -7022,29 +6813,23 @@
   .wevtex .srv-type:last-child { border-bottom: 0; }
 }
 .wevtex .srv-type:hover { background: rgba(255, 255, 255, 0.55); }
-.wevtex.mode-dark .srv-type:hover { background: rgba(255, 255, 255, 0.04); }
 
 .wevtex .srv-type-top { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 20px; }
 .wevtex .srv-type-n { font-size: 12px; font-weight: 600; letter-spacing: 0.02em; color: var(--ink-on-cream-3); }
-.wevtex.mode-dark .srv-type-n { color: var(--ink-on-dark-3); }
 .wevtex .srv-type-cat {
   font-size: 10px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase;
   color: var(--ink-on-cream-3); border: 1px solid rgba(16, 17, 18, 0.16);
   border-radius: 999px; padding: 4px 9px;
 }
-.wevtex.mode-dark .srv-type-cat { color: var(--ink-on-dark-3); border-color: var(--hairline-d); }
 .wevtex .srv-type h4 { font-size: 18px; font-weight: 600; letter-spacing: -0.018em; margin-bottom: 8px; }
 .wevtex .srv-type p { font-size: 13.5px; line-height: 1.55; color: var(--ink-on-cream-2); }
-.wevtex.mode-dark .srv-type p { color: var(--ink-on-dark-2); }
 .wevtex .srv-type-foot {
   margin-top: auto; padding-top: 20px;
   display: flex; align-items: center; justify-content: space-between; gap: 10px;
 }
 .wevtex .srv-type-price { font-size: 13px; font-weight: 600; color: var(--ink-on-cream); }
-.wevtex.mode-dark .srv-type-price { color: var(--ink-on-dark); }
 .wevtex .srv-type-foot svg { color: var(--ink-on-cream-3); transition: transform 320ms var(--ease-out), color 320ms var(--ease-out); }
 .wevtex .srv-type:hover .srv-type-foot svg { transform: translateX(4px); color: var(--accent-deep); }
-.wevtex.mode-dark .srv-type:hover .srv-type-foot svg { color: var(--accent); }
 
 /* ---- Closing CTA band (shared component, page-agnostic) ---- */
 .wevtex .cta-band { text-align: center; }
@@ -7068,9 +6853,7 @@
   border-top: 1px solid rgba(16, 17, 18, 0.14);
   padding: clamp(34px, 5vh, 58px) 0;
 }
-.wevtex.mode-dark .srv-list-item { border-top-color: var(--hairline-d); }
 .wevtex .srv-list-item:last-child { border-bottom: 1px solid rgba(16, 17, 18, 0.14); }
-.wevtex.mode-dark .srv-list-item:last-child { border-bottom-color: var(--hairline-d); }
 
 .wevtex .srv-list-grid { padding: 0; align-items: center; }
 /* even rows put the preview on the right */
@@ -7095,14 +6878,12 @@
   font-size: 12px; font-weight: 600; letter-spacing: 0.04em;
   color: var(--ink-on-cream-3);
 }
-.wevtex.mode-dark .srv-list-n { color: var(--ink-on-dark-3); }
 .wevtex .srv-list-icon {
   width: 44px; height: 44px; border-radius: 50%;
   border: 1px solid rgba(16, 17, 18, 0.16);
   display: grid; place-items: center; color: var(--ink-on-cream);
   transition: background-color 320ms var(--ease-out), color 320ms var(--ease-out), border-color 320ms var(--ease-out);
 }
-.wevtex.mode-dark .srv-list-icon { border-color: var(--hairline-d); color: var(--ink-on-dark); }
 .wevtex .srv-list-item:hover .srv-list-icon { background: var(--accent); border-color: transparent; color: var(--on-lime); }
 
 .wevtex .srv-list-h {
@@ -7119,9 +6900,7 @@
    cut-out reads as artwork on the page rather than as a framed screenshot.
    .wk-frame's border/background/hover are all neutralised here. */
 .wevtex .srv-frame,
-.wevtex .srv-frame:hover,
-.wevtex.mode-dark .srv-frame,
-.wevtex.mode-dark .srv-frame:hover {
+.wevtex .srv-frame:hover {
   border: 0;
   border-radius: 0;
   background: transparent;
@@ -7130,11 +6909,8 @@
 /* Service preview: the transparent illustration and nothing else.
    `contain` keeps each drawing whole — `cover` was cropping the square art
    into the 16/10 frame — and the shot inherits the section's own ground
-   (white in light mode) rather than painting a panel behind the alpha.
-   The .mode-dark selectors are repeated because .wk-shot's dark rule is
-   (0,3,0) and would otherwise win over a plain .srv-shot. */
-.wevtex .srv-shot,
-.wevtex.mode-dark .srv-shot {
+   rather than painting a panel behind the alpha. */
+.wevtex .srv-shot {
   position: relative;
   overflow: hidden;
   aspect-ratio: 4 / 3;
@@ -7186,7 +6962,6 @@
   border: 1px solid rgba(16, 17, 18, 0.14); border-radius: 20px;
   padding: 28px 26px; background: rgba(255, 255, 255, 0.4);
 }
-.wevtex.mode-dark .srv-d-hero-side { border-color: var(--hairline-d); background: rgba(255, 255, 255, 0.02); }
 .wevtex .srv-d-icon {
   display: inline-grid; place-items: center; width: 52px; height: 52px;
   border-radius: 50%; background: #101112; color: #fff; margin-bottom: 20px;
@@ -7196,9 +6971,7 @@
   display: flex; align-items: flex-start; gap: 11px;
   font-size: 14px; line-height: 1.55; color: var(--ink-on-cream-2);
 }
-.wevtex.mode-dark .srv-d-includes li { color: var(--ink-on-dark-2); }
 .wevtex .srv-d-includes svg { color: var(--accent-deep); flex-shrink: 0; margin-top: 3px; }
-.wevtex.mode-dark .srv-d-includes svg { color: var(--accent); }
 
 /* ---- Listes à coches, partagées par plusieurs blocs ---- */
 .wevtex .srv-d-checks { list-style: none; margin: 14px 0 0; padding: 0; display: flex; flex-direction: column; gap: 9px; }
@@ -7206,16 +6979,13 @@
   display: flex; align-items: flex-start; gap: 10px;
   font-size: 13px; line-height: 1.45; color: var(--ink-on-cream-2);
 }
-.wevtex.mode-dark .srv-d-checks li { color: var(--ink-on-dark-2); }
 .wevtex .srv-d-checks svg { color: var(--accent-deep); flex-shrink: 0; margin-top: 2px; }
-.wevtex.mode-dark .srv-d-checks svg { color: var(--accent); }
 
 .wevtex .srv-d-sub { text-align: left; margin-top: 16px; max-width: 56ch; }
 .wevtex .srv-d-n {
   display: block; font-size: 12px; font-weight: 600; letter-spacing: 0.04em;
   color: var(--ink-on-cream-3); margin-bottom: 14px;
 }
-.wevtex.mode-dark .srv-d-n { color: var(--ink-on-dark-3); }
 
 /* ---- Ce que ça change : trois colonnes réglées ---- */
 .wevtex .srv-d-outcomes {
@@ -7223,13 +6993,11 @@
   margin-top: 44px;
   border-top: 1px solid rgba(16, 17, 18, 0.14);
 }
-.wevtex.mode-dark .srv-d-outcomes { border-top-color: var(--hairline-d); }
 @media (max-width: 820px) { .wevtex .srv-d-outcomes { grid-template-columns: 1fr; } }
 .wevtex .srv-d-outcome {
   padding: 30px 28px 30px 0;
   border-right: 1px solid rgba(16, 17, 18, 0.14);
 }
-.wevtex.mode-dark .srv-d-outcome { border-right-color: var(--hairline-d); }
 .wevtex .srv-d-outcome:not(:first-child) { padding-left: 28px; }
 .wevtex .srv-d-outcome:last-child { border-right: 0; padding-right: 0; }
 @media (max-width: 820px) {
@@ -7239,7 +7007,6 @@
 }
 .wevtex .srv-d-outcome h3 { font-size: 18px; font-weight: 600; letter-spacing: -0.018em; margin-bottom: 10px; }
 .wevtex .srv-d-outcome p { font-size: 14.5px; line-height: 1.65; color: var(--ink-on-cream-2); }
-.wevtex.mode-dark .srv-d-outcome p { color: var(--ink-on-dark-2); }
 
 /* ---- Spécialités : la grille bento de l'accueil, en 4 colonnes ---- */
 .wevtex .srv-d-bento { grid-template-columns: repeat(4, 1fr); }
@@ -7295,9 +7062,7 @@
   padding: 28px 0;
   border-top: 1px solid rgba(16, 17, 18, 0.14);
 }
-.wevtex.mode-dark .srv-d-step { border-top-color: var(--hairline-d); }
 .wevtex .srv-d-step:last-child { border-bottom: 1px solid rgba(16, 17, 18, 0.14); }
-.wevtex.mode-dark .srv-d-step:last-child { border-bottom-color: var(--hairline-d); }
 @media (max-width: 700px) {
   .wevtex .srv-d-step { grid-template-columns: 44px 1fr; gap: 16px; }
   .wevtex .srv-d-step-d { grid-column: 2; }
@@ -7306,14 +7071,12 @@
   font-size: 26px; font-weight: 500; letter-spacing: -0.03em; line-height: 1;
   color: var(--ink-on-cream-3);
 }
-.wevtex.mode-dark .srv-d-step-n { color: var(--ink-on-dark-3); }
 .wevtex .srv-d-step-body h3 { font-size: 19px; font-weight: 600; letter-spacing: -0.02em; }
 .wevtex .srv-d-step-body .srv-d-checks { flex-direction: row; flex-wrap: wrap; gap: 8px 22px; }
 .wevtex .srv-d-step-d {
   font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase;
   color: var(--ink-on-cream-3); white-space: nowrap; padding-top: 6px;
 }
-.wevtex.mode-dark .srv-d-step-d { color: var(--ink-on-dark-3); }
 
 /* ---- Par secteur & pourquoi nous : blocs réglés en 4 / 2 colonnes ---- */
 .wevtex .srv-d-sectors,
@@ -7321,8 +7084,6 @@
   display: grid; gap: 0; margin-top: 44px;
   border: 1px solid rgba(16, 17, 18, 0.14); border-radius: 20px; overflow: hidden;
 }
-.wevtex.mode-dark .srv-d-sectors,
-.wevtex.mode-dark .srv-d-why { border-color: var(--hairline-d); }
 .wevtex .srv-d-sectors { grid-template-columns: repeat(4, 1fr); }
 .wevtex .srv-d-why { grid-template-columns: repeat(2, 1fr); }
 @media (max-width: 1080px) { .wevtex .srv-d-sectors { grid-template-columns: repeat(2, 1fr); } }
@@ -7338,15 +7099,8 @@
   border-bottom: 1px solid rgba(16, 17, 18, 0.14);
   transition: background-color 320ms var(--ease-out);
 }
-.wevtex.mode-dark .srv-d-sector,
-.wevtex.mode-dark .srv-d-why-card {
-  background: rgba(255, 255, 255, 0.01);
-  border-right-color: var(--hairline-d); border-bottom-color: var(--hairline-d);
-}
 .wevtex .srv-d-sector:hover,
 .wevtex .srv-d-why-card:hover { background: rgba(255, 255, 255, 0.55); }
-.wevtex.mode-dark .srv-d-sector:hover,
-.wevtex.mode-dark .srv-d-why-card:hover { background: rgba(255, 255, 255, 0.03); }
 .wevtex .srv-d-sectors > :nth-child(4n) { border-right: 0; }
 .wevtex .srv-d-sectors > :nth-child(n+5) { border-bottom: 0; }
 .wevtex .srv-d-why > :nth-child(2n) { border-right: 0; }
@@ -7362,7 +7116,6 @@
 .wevtex .srv-d-sector h3,
 .wevtex .srv-d-why-card h3 { font-size: 17px; font-weight: 600; letter-spacing: -0.018em; }
 .wevtex .srv-d-why-card p { margin-top: 10px; font-size: 14px; line-height: 1.6; color: var(--ink-on-cream-2); }
-.wevtex.mode-dark .srv-d-why-card p { color: var(--ink-on-dark-2); }
 
 /* ---- Tarifs : trois formules, mêmes cartes que l'accueil ---- */
 .wevtex .pr-grid-3 {

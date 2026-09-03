@@ -1,7 +1,6 @@
 "use client";
 
 
-import { useTheme } from "@/app/ThemeContext";
 /** Wevtex — Case Study. Ported from .design-wevtex/project/case-study.html */
 
 import "../wevtex-home.css";
@@ -11,15 +10,14 @@ import { useReveal } from "../../components/wevtex/useReveal";
 import { HOME_URL, CONTACT_URL, PORTFOLIO_URL } from "@/lib/site-links";
 
 export default function CaseStudyPage() {
-  const { isDark } = useTheme();
 
   useReveal();
   return (
-    <div className={`wevtex ${isDark ? 'mode-dark' : 'mode-light'}`}>
+    <div className="wevtex mode-light">
       <SiteHeader current="work" />
 
       {/* HERO */}
-      <section className={`${isDark ? "theme-dark" : "theme-cream"} page-hero`} style={{ paddingBottom: 0 }}>
+      <section className="theme-cream page-hero" style={{ paddingBottom: 0 }}>
         <div className="hero-wash"></div>
         <div className="hero-grid-bg"></div>
         <div className="container">
@@ -68,7 +66,7 @@ export default function CaseStudyPage() {
       </section>
 
       {/* STATS */}
-      <section className={isDark ? "theme-dark" : "theme-cream"} style={{ padding: "160px 0 0" }}>
+      <section className="theme-cream" style={{ padding: "160px 0 0" }}>
         <div className="container">
           <div className="case-stats reveal">
             <div className="case-stat">
@@ -92,7 +90,7 @@ export default function CaseStudyPage() {
       </section>
 
       {/* BRIEF */}
-      <section className={`${isDark ? "theme-dark" : "theme-cream"} case-section`}>
+      <section className="theme-cream case-section">
         <div className="container">
           <div className="case-section-grid reveal">
             <span className="label">// 01 — The brief</span>
@@ -110,7 +108,7 @@ export default function CaseStudyPage() {
       </section>
 
       {/* APPROACH */}
-      <section className={`${isDark ? "theme-dark" : "theme-cream"} case-section`}>
+      <section className="theme-cream case-section">
         <div className="container">
           <div className="case-section-grid reveal">
             <span className="label">// 02 — The approach</span>
@@ -128,7 +126,7 @@ export default function CaseStudyPage() {
       </section>
 
       {/* RESULT */}
-      <section className={`${isDark ? "theme-dark" : "theme-cream"} case-section`}>
+      <section className="theme-cream case-section">
         <div className="container">
           <div className="case-section-grid reveal">
             <span className="label">// 03 — The result</span>
@@ -146,7 +144,7 @@ export default function CaseStudyPage() {
       </section>
 
       {/* QUOTE */}
-      <section className={`${isDark ? "theme-dark" : "theme-cream"} case-quote`}>
+      <section className="theme-cream case-quote">
         <div className="container">
           <div className="reveal">
             <p className="quote">&ldquo;We didn&apos;t just get a faster site. We got our engineering team back.&rdquo;</p>
@@ -156,7 +154,7 @@ export default function CaseStudyPage() {
       </section>
 
       {/* NEXT PROJECT */}
-      <section className={isDark ? "theme-dark" : "theme-cream"} style={{ padding: "80px 0" }}>
+      <section className="theme-cream" style={{ padding: "80px 0" }}>
         <div className="container">
           <a className="case-next reveal" href={PORTFOLIO_URL}>
             <div>
@@ -172,7 +170,7 @@ export default function CaseStudyPage() {
       </section>
 
       {/* CTA */}
-      <section className={`${isDark ? "theme-dark" : "theme-cream"} cta`}>
+      <section className="theme-cream cta">
         <div className="container">
           <div className="reveal">
             <span className="eyebrow accent">// Your project</span>

@@ -2,7 +2,6 @@ import type { Metadata, Viewport } from "next";
 import { Onest, Space_Mono } from "next/font/google";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import { SmoothScroll } from "../components/wevtex/SmoothScroll";
-import { ThemeProvider } from "./ThemeContext";
 import { SITE_URL, abs } from "@/lib/seo";
 
 const GA_ID = process.env.NEXT_PUBLIC_GA_ID;
@@ -122,9 +121,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
         <SmoothScroll>
-          <ThemeProvider>
-            {children}
-          </ThemeProvider>
+          {children}
         </SmoothScroll>
       </body>
       {GA_ID ? <GoogleAnalytics gaId={GA_ID} /> : null}

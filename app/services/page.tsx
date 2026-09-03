@@ -9,7 +9,6 @@
  */
 
 import Image from "next/image";
-import { useTheme } from "@/app/ThemeContext";
 import "../wevtex-home.css";
 import { SiteHeader } from "../../components/wevtex/SiteHeader";
 import { SiteFooter } from "../../components/wevtex/SiteFooter";
@@ -21,18 +20,17 @@ import { ProcessSection } from "../../components/wevtex/ProcessSection";
 import { WHATSAPP_URL, servicePath } from "@/lib/site-links";
 
 export default function ServicesPage() {
-  const { isDark } = useTheme();
   useReveal();
 
   return (
-    <div className={`wevtex ${isDark ? "mode-dark" : "mode-light"}`}>
+    <div className="wevtex mode-light">
       <SiteHeader current="services" />
 
       {/* ===================== SERVICES — liste détaillée =====================
           Reprend la mise en page des projets de la page d'accueil (aperçu à
           gauche, contenu à droite) mais sans accordéon : chaque prestation
           est visible d'un coup, sans clic. */}
-      <section className={`${isDark ? "theme-dark" : "theme-cream"} work srv-list-sec`} id="services">
+      <section className="theme-cream work srv-list-sec" id="services">
         <div className="container">
           <div className="wk-head reveal">
             <span className="eyebrow line-eyebrow">Nos prestations</span>

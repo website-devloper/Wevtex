@@ -46,18 +46,16 @@ export { serviceWhatsAppUrl };
 /* ------------------------------------------------------------------ */
 
 export function ServicesBento({
-  isDark,
   eyebrow = "Services",
   heading,
   intro,
 }: {
-  isDark: boolean;
   eyebrow?: string;
   heading: ReactNode;
   intro: string;
 }) {
   return (
-    <section className={`${isDark ? "theme-dark" : "theme-cream"} services-bento`} id="services">
+    <section className="theme-cream services-bento" id="services">
       <div className="container">
         <div className="bento-head reveal">
           <div className="bento-head-left">
@@ -157,9 +155,9 @@ export function PricingGrid({
 
 /* ------------------------------------------------------------------ */
 
-export function FaqSection({ isDark }: { isDark: boolean }) {
+export function FaqSection() {
   return (
-    <section className={`${isDark ? "theme-dark" : "theme-paper"} faq-split`} id="faq">
+    <section className="theme-paper faq-split" id="faq">
       <div className="container">
         <div className="faq-grid">
           <div className="faq-left reveal">

@@ -1,6 +1,5 @@
 "use client";
 
-import { useTheme } from "../../app/ThemeContext";
 import "../../app/wevtex-home.css";
 import { SiteHeader } from "./SiteHeader";
 import { SiteFooter } from "./SiteFooter";
@@ -12,12 +11,11 @@ import { WHATSAPP_URL, PORTFOLIO_URL, HOME_URL } from "@/lib/site-links";
 
 
 export function IndustryDetail({ industry }: { industry: Industry }) {
-  const { isDark } = useTheme();
   useReveal();
-  const theme = isDark ? "theme-dark" : "theme-cream";
+  const theme = "theme-cream";
 
   return (
-    <div className={`wevtex ${isDark ? "mode-dark" : "mode-light"}`}>
+    <div className="wevtex mode-light">
       <SiteHeader />
 
       {/* HERO — matches the home hero */}

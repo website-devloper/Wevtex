@@ -368,7 +368,7 @@
 /* Decorative tech SVG — slightly more visible on dark */
 .sd .sd-section.bg-dark .sd-tech-bg { opacity: 0.7; }
 
-/* Warm ambient glow at corners (mirrors .theme-dark::after on homepage) */
+/* Warm ambient glow at corners */
 .sd .sd-section.bg-dark::after {
   content: "";
   position: absolute;

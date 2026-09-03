@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import { useTheme } from "../../app/ThemeContext";
 import { ScrollRevealText } from "./ScrollRevealText";
 
 /* Process steps */
@@ -13,7 +12,6 @@ const STEPS = [
 ];
 
 export function ProcessSection() {
-  const { isDark } = useTheme();
   const ref = useRef<HTMLElement>(null);
 
   useEffect(() => {
@@ -62,7 +60,7 @@ export function ProcessSection() {
   }, []);
 
   return (
-    <section ref={ref} id="process" className={`${isDark ? "theme-dark" : "theme-cream"} process`}>
+    <section ref={ref} id="process" className="theme-cream process">
       <div className="container">
         <div className="process-head reveal">
           <div>

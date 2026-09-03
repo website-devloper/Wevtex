@@ -1,7 +1,6 @@
 "use client";
 
 
-import { useTheme } from "@/app/ThemeContext";
 /** Wevtex — About. Ported from .design-wevtex/project/about.html */
 
 import Image from "next/image";
@@ -48,15 +47,14 @@ const TIMELINE = [
 ];
 
 export default function AboutPage() {
-  const { isDark } = useTheme();
 
   useReveal();
   return (
-    <div className={`wevtex ${isDark ? 'mode-dark' : 'mode-light'}`}>
+    <div className="wevtex mode-light">
       <SiteHeader current="about" />
 
       {/* HERO */}
-      <section className={`${isDark ? "theme-dark" : "theme-cream"} page-hero`}>
+      <section className="theme-cream page-hero">
         <div className="hero-wash"></div>
         <div className="hero-grid-bg"></div>
         <div className="container">
@@ -77,7 +75,7 @@ export default function AboutPage() {
       </section>
 
       {/* MANIFESTO */}
-      <section className={`${isDark ? "theme-dark" : "theme-cream"} manifesto`}>
+      <section className="theme-cream manifesto">
         <div className="container">
           <div className="manifesto-grid reveal">
             <div className="manifesto-meta">
@@ -96,7 +94,7 @@ export default function AboutPage() {
       </section>
 
       {/* VALUES */}
-      <section className={isDark ? "theme-dark" : "theme-cream"} style={{ padding: "140px 0" }}>
+      <section className="theme-cream" style={{ padding: "140px 0" }}>
         <div className="container">
           <div className="about-head reveal">
             <div>
@@ -120,7 +118,7 @@ export default function AboutPage() {
       </section>
 
       {/* TEAM */}
-      <section className={isDark ? "theme-dark" : "theme-cream"} style={{ padding: "140px 0" }}>
+      <section className="theme-cream" style={{ padding: "140px 0" }}>
         <div className="container">
           <div className="about-head reveal">
             <div>
@@ -150,7 +148,7 @@ export default function AboutPage() {
 
       {/* WHO YOU WORK WITH — moved off the homepage; it belongs with the team story. */}
       {/* People buy from people — a face and a name before the final ask. */}
-      <section className={`${isDark ? "theme-dark" : "theme-paper"} founder-v2`}>
+      <section className="theme-paper founder-v2">
         <div className="container">
           <div className="fd-inner reveal">
             <div className="fd-photo">
@@ -176,7 +174,7 @@ export default function AboutPage() {
       </section>
 
       {/* TIMELINE */}
-      <section className={isDark ? "theme-dark" : "theme-cream"} style={{ padding: "140px 0" }}>
+      <section className="theme-cream" style={{ padding: "140px 0" }}>
         <div className="container">
           <div className="about-head reveal">
             <div>
@@ -199,7 +197,7 @@ export default function AboutPage() {
 
       {/* COMPARISON — moved off the homepage; vetting material belongs on About. */}
       {/* Answers "why not cheaper" before the visitor sees a price. */}
-      <section className={`${isDark ? "theme-dark" : "theme-cream"} compare-v2`} id="compare">
+      <section className="theme-cream compare-v2" id="compare">
         <div className="container">
           <div className="cmp-head reveal">
             <span className="eyebrow line-eyebrow">Why Wevtex</span>
@@ -237,7 +235,7 @@ export default function AboutPage() {
       </section>
 
       {/* CTA */}
-      <section className={`${isDark ? "theme-dark" : "theme-cream"} cta`} style={{ color: "var(--ink-on-cream)" }}>
+      <section className="theme-cream cta" style={{ color: "var(--ink-on-cream)" }}>
         <div className="container">
           <div className="reveal">
             <span className="eyebrow accent" style={{ color: "var(--accent)" }}>// 05 — Work with us</span>
