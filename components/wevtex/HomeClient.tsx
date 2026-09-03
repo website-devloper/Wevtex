@@ -57,14 +57,14 @@ const INDUSTRY_LINKS = [
 
 /* Background photo for each industry card — indexed by the same position as INDUSTRY_LINKS. */
 const IC_IMAGES = [
-  "/images/industries/retails websites.png",          // 0 E-Commerce & Retail
-  "/images/industries/ryadh websites.png",             // 1 Tourism & Hospitality
-  "/images/industries/professional websites.png",      // 2 Professional Services
-  "/images/industries/HealthCare websites.png",        // 3 Healthcare & Wellness
-  "/images/industries/Logistic websites.png",          // 4 Industry & Logistics
-  "/images/industries/Learning website.png",           // 5 Education & E-Learning
-  "/images/industries/creative websites.png",          // 6 Creative, Media & Tech
-  "/images/industries/public and ngo website.png",     // 7 Public Sector & NGOs
+  "/images/industries/ecommerce-retail.webp",          // 0 E-Commerce & Retail
+  "/images/industries/tourism-hospitality.webp",             // 1 Tourism & Hospitality
+  "/images/industries/professional-services.webp",      // 2 Professional Services
+  "/images/industries/healthcare-wellness.webp",        // 3 Healthcare & Wellness
+  "/images/industries/industry-logistics.webp",          // 4 Industry & Logistics
+  "/images/industries/education-elearning.webp",           // 5 Education & E-Learning
+  "/images/industries/creative-media-tech.webp",          // 6 Creative, Media & Tech
+  "/images/industries/public-sector-ngos.webp",     // 7 Public Sector & NGOs
 ];
 
 /* Service cards */
@@ -495,7 +495,7 @@ export function HomeClient() {
 
             <div className="hero-visual">
               <Image
-                src="/images/feature/slider section.png"
+                src="/images/feature/hero-shot.webp"
                 alt="Une boutique en ligne affichée sur un ordinateur portable et un téléphone, avec la croissance du trafic et des ventes"
                 width={1536}
                 height={1024}

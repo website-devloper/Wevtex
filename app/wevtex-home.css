@@ -5318,7 +5318,7 @@
 /* Photo backdrop — swap the url below for your own team shot. */
 .wevtex .stats-band-v2::before {
   content: ""; position: absolute; inset: 0; z-index: 0;
-  background-image: url("/images/industries/professional websites.png");
+  background-image: url("/images/industries/professional-services.webp");
   background-size: cover; background-position: center;
   opacity: 0.8;
 }
