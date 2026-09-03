@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Services | Web Dev, E-commerce, SEO & Automation | Wevtex",
-  description: "Wevtex services: custom web development, online stores, WordPress, ERP, automation, AI chatbots, SEO/GEO and UX/UI design — for businesses in Morocco and worldwide.",
+  title: "Services | Sites web, e-commerce, SEO & automatisation | Wevtex",
+  description: "Les services Wevtex : création de sites sur mesure, boutiques en ligne, WordPress, ERP, automatisation, chatbots IA, SEO et design UX/UI — pour les entreprises au Maroc et à l'international.",
   alternates: { canonical: "/services" },
   openGraph: {
-    title: "Services | Web Dev, E-commerce, SEO & Automation | Wevtex",
-    description: "Custom web development, online stores, SEO/GEO, automation and design for businesses in Morocco and worldwide.",
+    title: "Services | Sites web, e-commerce, SEO & automatisation | Wevtex",
+    description: "Création de sites sur mesure, boutiques en ligne, SEO, automatisation et design pour les entreprises au Maroc et à l'international.",
     url: "/services",
   },
 };

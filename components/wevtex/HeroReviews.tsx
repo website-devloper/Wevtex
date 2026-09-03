@@ -1,7 +1,11 @@
 /**
- * Hero review badges — Google Reviews and Trustpilot, with their real
- * brand marks recreated as inline SVG (no asset files needed).
+ * Hero review badge — the Google Business profile, with the brand mark
+ * recreated as inline SVG (no asset file needed).
+ *
+ * Only Google is shown: Wevtex has no Trustpilot profile, and a badge linking
+ * to a page that does not exist costs more trust than it buys.
  */
+import { GOOGLE_REVIEWS_URL } from "@/lib/site-links";
 
 function GoogleMark() {
   return (
@@ -26,29 +30,11 @@ function GoogleMark() {
   );
 }
 
-function TrustpilotMark() {
-  return (
-    <svg className="rv-mark" viewBox="0 0 24 24" width="18" height="18" aria-hidden>
-      <path
-        fill="#00B67A"
-        d="M12 1.5l3.09 6.86 7.41.66-5.6 4.97 1.66 7.36L12 17.9 5.44 21.7l1.66-7.36-5.6-4.97 7.41-.66z"
-      />
-    </svg>
-  );
-}
-
 function Stars({ tone }: { tone: "gold" | "green" }) {
   return <span className={`rv-stars rv-stars-${tone}`}>★★★★★</span>;
 }
 
-/**
- * Review profile links and figures.
- * TODO: replace with your real review-profile URLs and verified rating/count
- * before launch. Unlinked or fabricated review numbers hurt trust more than help.
- */
-const GOOGLE_REVIEWS_URL = "https://www.google.com/search?q=Wevtex+reviews";
-const TRUSTPILOT_URL = "https://www.trustpilot.com/review/wevtex.com";
-
+/* Rating and count are shown to visitors — keep them matching the profile. */
 export function HeroReviews() {
   return (
     <div className="hero-reviews">
@@ -70,23 +56,6 @@ export function HeroReviews() {
         <span className="rv-count">94 Google reviews</span>
       </a>
 
-      <a
-        className="review-badge"
-        href={TRUSTPILOT_URL}
-        target="_blank"
-        rel="noopener nofollow"
-        aria-label="Read our Trustpilot reviews"
-      >
-        <span className="rv-brand">
-          <TrustpilotMark />
-          Trustpilot
-        </span>
-        <span className="rv-row">
-          <Stars tone="green" />
-          <strong>4.9</strong>
-        </span>
-        <span className="rv-count">128 reviews</span>
-      </a>
     </div>
   );
 }

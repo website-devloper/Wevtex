@@ -10,10 +10,10 @@ export function ServiceOutcomes({ service }: { service: Service }) {
       <div className="container">
         <div className="sd-head center reveal">
           <div className="sd-eyebrow-wrap center">
-            <Eyebrow>Why it matters</Eyebrow>
+            <Eyebrow>Ce que ça change</Eyebrow>
           </div>
           <Heading text="The outcomes you get" em={["outcomes"]} />
-          <p className="sd-sub">Real results that move your business forward — not just a nicer-looking website.</p>
+          <p className="sd-sub">Des résultats concrets pour votre activité, pas seulement un site plus joli.</p>
         </div>
         <div className="sd-grid-3 reveal">
           {service.outcomes.map((o, i) => (

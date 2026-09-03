@@ -1,8 +1,8 @@
 import React from "react";
 import type { Service } from "../../../lib/services-data";
 import { Eyebrow, Heading, ArrowR } from "./ServiceShared";
+import { WHATSAPP_URL, SERVICES_URL } from "@/lib/site-links";
 
-const WHATSAPP_URL = "https://wa.me/212687633774";
 
 export function ServiceCTA({ service }: { service: Service }) {
   return (
@@ -12,16 +12,16 @@ export function ServiceCTA({ service }: { service: Service }) {
       <div className="container">
         <div className="sd-cta-inner reveal">
           <div className="sd-eyebrow-wrap center">
-            <Eyebrow light>Let&apos;s talk</Eyebrow>
+            <Eyebrow light>On en parle ?</Eyebrow>
           </div>
-          <Heading text={`Ready to start your\n${service.name.toLowerCase()} project?`} em={["project?"]} className="light" />
-          <p className="sd-sub light">Tell us what you need on WhatsApp or by email. We reply within a few hours — with honest advice and a clear price, no obligation.</p>
+          <Heading text={"Parlons de votre projet" + String.fromCharCode(10) + service.name.toLowerCase() + "."} em={["projet"]} className="light" />
+          <p className="sd-sub light">Dites-nous ce qu'il vous faut sur WhatsApp ou par email. Nous répondons sous quelques heures, avec un conseil honnête et un prix clair, sans engagement.</p>
           <div className="sd-hero-btns center">
             <a href={WHATSAPP_URL} className="btn btn-primary" target="_blank" rel="noopener">
-              Get a free quote <ArrowR />
+              Demander un devis gratuit <ArrowR />
             </a>
-            <a href="/services" className="btn btn-outline">
-              All services <ArrowR />
+            <a href={SERVICES_URL} className="btn btn-outline">
+              Toutes nos prestations <ArrowR />
             </a>
           </div>
         </div>

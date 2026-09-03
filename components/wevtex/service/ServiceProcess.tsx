@@ -11,7 +11,7 @@ export function ServiceProcess({ service }: { service: Service }) {
       <div className="container">
         <div className="sd-head reveal">
           <div className="sd-eyebrow-wrap">
-            <Eyebrow>How it works</Eyebrow>
+            <Eyebrow>Notre méthode</Eyebrow>
           </div>
           <Heading text={service.process.title} em={service.process.titleEm || []} />
           {service.process.subtitle && <p className="sd-sub">{service.process.subtitle}</p>}

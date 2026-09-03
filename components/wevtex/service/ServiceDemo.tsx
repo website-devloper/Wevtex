@@ -11,7 +11,7 @@ export function ServiceDemo({ service }: { service: Service }) {
       <div className="container">
         <div className="sd-head center reveal">
           <div className="sd-eyebrow-wrap center">
-            <Eyebrow>Demo</Eyebrow>
+            <Eyebrow>Aperçu</Eyebrow>
           </div>
           <Heading text={service.demo.title} em={pickEm(service.demo.title)} />
           {service.demo.subtitle && <p className="sd-sub">{service.demo.subtitle}</p>}
@@ -51,7 +51,7 @@ export function ServiceDemo({ service }: { service: Service }) {
                 </h3>
                 <p className="sd-win-sub">Strategic design, clean code, and performance focused on what matters most.</p>
                 <div className="sd-win-acts">
-                  <span className="sd-win-b1">Explore our work</span>
+                  <span className="sd-win-b1">Voir nos réalisations</span>
                   <span className="sd-win-b2">Learn more about us</span>
                 </div>
               </div>

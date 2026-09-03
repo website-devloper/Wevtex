@@ -9,6 +9,7 @@ import "../wevtex-home.css";
 import { SiteHeader } from "../../components/wevtex/SiteHeader";
 import { SiteFooter } from "../../components/wevtex/SiteFooter";
 import { useReveal } from "../../components/wevtex/useReveal";
+import { HOME_URL, CONTACT_URL, SERVICES_URL } from "@/lib/site-links";
 
 const FILTERS = [
   { label: "All", count: "12" },
@@ -20,7 +21,7 @@ const FILTERS = [
 ];
 
 const PROJECTS = [
-  { t: <>Global <em>E-Commerce</em></>, y: "2025", s: "Replatformed a 50K-SKU electronics retailer onto a headless stack — checkout latency 3.2s → 0.8s, conversion +47%.", tags: ["E-Commerce", "Headless", "Featured"], d: 1 },
+  { t: <>Global <em>E-Commerce</em></>, y: "2025", s: "Replatformed a 50K-SKU electronics retailer onto a headless stack — checkout latency 3.2s → 0.8s, conversion +47%.", tags: ["E-Commerce", "Headless", "Featured"], d: 1, caseStudy: "/case-study" },
   { t: <>Reserve<em>.co</em></>, y: "2025", s: "Restaurant booking SaaS — calendar, payments, no-show prediction. 40 restaurants on day one, 4× growth in six months.", tags: ["SaaS", "Booking"], d: 2, style2: true },
   { t: <>Arc <em>Desktop</em></>, y: "2024", s: "Native macOS/Windows companion app — sub-10MB binary, instant launch, native notifications. App-Store featured at launch.", tags: ["Desktop", "Tauri"], d: 1 },
   { t: <>Lumen <em>Studio</em></>, y: "2024", s: "Editorial portfolio site for a photography studio — 100/100 Lighthouse, zero CSS frameworks, custom animations.", tags: ["Marketing", "Editorial"], d: 2, style2: true },
@@ -65,7 +66,7 @@ export default function PortfolioPage() {
         <div className="hero-grid-bg"></div>
         <div className="container">
           <div className="reveal">
-            <div className="crumb"><a href="/" style={{ color: "inherit" }}>Home</a> &nbsp;/&nbsp; Work</div>
+            <div className="crumb"><a href={HOME_URL} style={{ color: "inherit" }}>Home</a> &nbsp;/&nbsp; Work</div>
             <h1>Selected<br /><em>work.</em></h1>
             <p className="lead">
               Twelve case studies from the past three years. Each one was a real engagement with real numbers — the deliverable matters less than the move it unlocked.
@@ -96,19 +97,30 @@ export default function PortfolioPage() {
           </div>
 
           <div className="portfolio-grid">
-            {PROJECTS.map((p, i) => (
-              <a className="portfolio-card reveal" data-delay={p.d} href="/case-study" key={i}>
-                <Mockup style2={p.style2} />
-                <div className="meta-row">
-                  <h3>{p.t}</h3>
-                  <span className="year">{p.y}</span>
-                </div>
-                <p className="summary">{p.s}</p>
-                <div className="tags">
-                  {p.tags.map((tag, j) => <span key={j}>{tag}</span>)}
-                </div>
-              </a>
-            ))}
+            {/* A card is a link only when that project has a case study to open.
+                The rest render identically but inert, rather than sending the
+                visitor to a write-up about someone else. */}
+            {PROJECTS.map((p, i) => {
+              const Card = p.caseStudy ? "a" : "div";
+              return (
+                <Card
+                  className={p.caseStudy ? "portfolio-card reveal" : "portfolio-card reveal no-case"}
+                  data-delay={p.d}
+                  href={p.caseStudy}
+                  key={i}
+                >
+                  <Mockup style2={p.style2} />
+                  <div className="meta-row">
+                    <h3>{p.t}</h3>
+                    <span className="year">{p.y}</span>
+                  </div>
+                  <p className="summary">{p.s}</p>
+                  <div className="tags">
+                    {p.tags.map((tag, j) => <span key={j}>{tag}</span>)}
+                  </div>
+                </Card>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -123,8 +135,8 @@ export default function PortfolioPage() {
               We&apos;re accepting new projects globally. Average response time on briefs: 4 hours.
             </p>
             <div className="cta-ctas">
-              <a href="/contact" className="btn btn-primary">Start a Project →</a>
-              <a href="/services" className="btn btn-outline">View Services</a>
+              <a href={CONTACT_URL} className="btn btn-primary">Start a Project →</a>
+              <a href={SERVICES_URL} className="btn btn-outline">View Services</a>
             </div>
           </div>
         </div>

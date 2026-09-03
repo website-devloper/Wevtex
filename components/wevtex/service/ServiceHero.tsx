@@ -1,8 +1,8 @@
 import React from "react";
 import type { Service } from "../../../lib/services-data";
 import { Eyebrow, Heading, ArrowR, TAG_ICON } from "./ServiceShared";
+import { WHATSAPP_URL, PORTFOLIO_URL } from "@/lib/site-links";
 
-const WHATSAPP_URL = "https://wa.me/212687633774";
 
 export function ServiceHero({ service }: { service: Service }) {
   return (
@@ -19,8 +19,8 @@ export function ServiceHero({ service }: { service: Service }) {
             <a href={WHATSAPP_URL} className="btn btn-primary" target="_blank" rel="noopener">
               Get a free quote <ArrowR />
             </a>
-            <a href="/portfolio" className="btn btn-outline">
-              See our work <ArrowR />
+            <a href={PORTFOLIO_URL} className="btn btn-outline">
+              Voir nos réalisations <ArrowR />
             </a>
           </div>
           <div className="sd-tags">

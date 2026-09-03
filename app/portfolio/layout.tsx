@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Portfolio & Case Studies | Wevtex Web Agency",
-  description: "View our selected work — online stores, SaaS platforms, booking systems and high-converting marketing sites for businesses in Morocco and worldwide.",
+  title: "Réalisations & études de cas | Agence web Wevtex",
+  description: "Découvrez nos réalisations : boutiques en ligne, plateformes SaaS, systèmes de réservation et sites vitrines qui convertissent, au Maroc et à l'international.",
   alternates: { canonical: "/portfolio" },
   openGraph: {
-    title: "Portfolio & Case Studies | Wevtex Web Agency",
-    description: "Selected work: online stores, SaaS, booking systems and marketing sites for clients in Morocco and worldwide.",
+    title: "Réalisations & études de cas | Agence web Wevtex",
+    description: "Nos réalisations : boutiques en ligne, SaaS, systèmes de réservation et sites vitrines, au Maroc et à l'international.",
     url: "/portfolio",
   },
 };

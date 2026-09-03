@@ -16,34 +16,31 @@ import { SiteFooter } from "./SiteFooter";
 import { ScrollRevealText } from "./ScrollRevealText";
 import { ContactForm } from "./ContactForm";
 import { StickyCta } from "./StickyCta";
-import { FAQS } from "./homeContent";
-
-/* Contact channels — used by every call to action */
-const WHATSAPP_URL = "https://wa.me/212687633774";
-const EMAIL_URL = "mailto:hello@wevtex.com";
-
-/* Opens WhatsApp with the audit request already written, so the visitor only taps send. */
-const AUDIT_WHATSAPP_URL =
-  "https://wa.me/212687633774?text=" +
-  encodeURIComponent("Hi Wevtex — I'd like the free 15-minute call audit for my website.");
+import { FAQS, SERVICES } from "./homeContent";
+import { ServicesBento, SERVICE_ICONS } from "./SharedSections";
+/* Contact channels — one definition for the whole site, see lib/site-links.ts */
+import { WHATSAPP_URL, EMAIL_URL, AUDIT_WHATSAPP_URL, serviceWhatsAppUrl, GOOGLE_REVIEWS_URL, PORTFOLIO_URL, industryPath } from "@/lib/site-links";
 
 /* ---------------------------------------------------------------------------
  * Claims about the business — keep these accurate.
  * PRICE_ANCHOR tracks the "Start" tier in the pricing section below.
  * AVAILABILITY must be updated (or emptied) when it stops being true.
  * ------------------------------------------------------------------------- */
-const PRICE_ANCHOR = "Projects from 990 MAD";
-const AVAILABILITY = "2 project slots left this month";
-const GUARANTEE = "No payment until you're fully satisfied";
+const PRICE_ANCHOR = "Projets à partir de 990 DH";
+const AVAILABILITY = "2 places disponibles ce mois-ci";
+const GUARANTEE = "Vous ne payez qu'une fois satisfait";
 
-/* Client logo wall. Drop real logos over these files — no code change needed. */
+/* Client logo wall. Each file is pre-normalised onto the same 400x170
+   transparent canvas, sized by optical weight rather than raw height — a
+   square mark is drawn larger than a wide wordmark so the two carry equal
+   presence in the row. Originals live in assets/clients-src. */
 const CLIENT_LOGOS = [
-  { name: "Luxora Interiors", src: "/images/clients/client-01.png" },
-  { name: "Dar Essaada", src: "/images/clients/client-02.png" },
-  { name: "Wellcare Clinic", src: "/images/clients/client-03.png" },
-  { name: "Petrocore", src: "/images/clients/client-04.png" },
-  { name: "Eduflow", src: "/images/clients/client-05.png" },
-  { name: "Atlas Logistics", src: "/images/clients/client-06.png" },
+  { name: "CMPF", src: "/images/clients/wall/cmpf.png" },
+  { name: "M2 Maroc", src: "/images/clients/wall/m2-maroc.png" },
+  { name: "Meowy", src: "/images/clients/wall/meowy.png" },
+  { name: "Raiide Media", src: "/images/clients/wall/raiide-media.png" },
+  { name: "RedMed", src: "/images/clients/wall/redmed.png" },
+  { name: "Tripway", src: "/images/clients/wall/tripway.png" },
 ];
 
 const WHATSAPP = (
@@ -74,98 +71,44 @@ const IC_IMAGES = [
 const INDUSTRIES = [
   {
     icon: <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><path d="M3 9l1-4h16l1 4"></path><path d="M3 9v11a1 1 0 001 1h16a1 1 0 001-1V9"></path><path d="M9 21V13h6v8"></path></svg>,
-    head: "E-Commerce & Retail",
-    body: "Fashion, beauty, home decor, and local groceries. Complete with shopping carts, secure checkout, and inventory management."
+    head: "E-commerce & commerce de détail",
+    body: "Mode, beauté, décoration et alimentaire. Panier, paiement sécurisé et gestion des stocks, tout est prévu."
   },
   {
     icon: <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><path d="M2 4v16"></path><path d="M2 8h18a2 2 0 012 2v10"></path><path d="M2 17h20"></path><path d="M6 8v3"></path></svg>,
-    head: "Tourism & Hospitality",
-    body: "Hotels, resorts, and travel agencies. Features direct booking engines, availability calendars, and virtual tours."
+    head: "Tourisme & hôtellerie",
+    body: "Hôtels, riads et agences de voyage. Moteur de réservation en direct, calendrier de disponibilités et visites virtuelles."
   },
   {
     icon: <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"></path></svg>,
-    head: "Professional Services",
-    body: "Law firms, accounting, real estate, and consulting. We build trust-driven sites to capture leads and schedule appointments."
+    head: "Services professionnels",
+    body: "Cabinets d'avocats, comptabilité, immobilier et conseil. Des sites qui inspirent confiance, captent des contacts et gèrent la prise de rendez-vous."
   },
   {
     icon: <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0016.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 002 8.5c0 2.3 1.5 4.05 3 5.5l7 7z"></path></svg>,
-    head: "Healthcare & Wellness",
-    body: "Clinics, fitness gyms, and therapists. Secure patient intake forms, class scheduling, and service directories."
+    head: "Santé & bien-être",
+    body: "Cliniques, salles de sport et thérapeutes. Formulaires patients sécurisés, réservation de séances et annuaire des prestations."
   },
   {
     icon: <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><path d="M2 20a2 2 0 002 2h16a2 2 0 002-2V8l-7 5V8l-7 5V4a2 2 0 00-2-2H4a2 2 0 00-2 2z"></path></svg>,
-    head: "Industry & Logistics",
-    body: "Construction, manufacturing, and transport. Showcase your fleet, portfolio, and easily generate B2B quote requests."
+    head: "Industrie & logistique",
+    body: "BTP, production et transport. Mettez en avant votre flotte et vos réalisations, et recevez des demandes de devis B2B."
   },
   {
     icon: <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>,
-    head: "Education & E-Learning",
-    body: "Schools, online courses, and training centers. Integrated student portals, video hosting, and certification modules."
+    head: "Éducation & e-learning",
+    body: "Écoles, cours en ligne et centres de formation. Espace élève intégré, hébergement vidéo et modules de certification."
   },
   {
     icon: <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><path d="M12 19l7-7 3 3-7 7-3-3z"></path><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"></path><path d="M2 2l7.586 7.586"></path><circle cx="11" cy="11" r="2"></circle></svg>,
-    head: "Creative, Media & Tech",
-    body: "SaaS startups, marketing agencies, and artisans. High-performance, animated landing pages to convert early adopters."
+    head: "Création, médias & tech",
+    body: "Startups SaaS, agences marketing et artisans. Des pages d'atterrissage rapides et animées qui convertissent vos premiers clients."
   },
   {
     icon: <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>,
-    head: "Public Sector & NGOs",
-    body: "Charities, foundations, and public institutions. Accessible design, donation processing, and community engagement."
+    head: "Secteur public & associations",
+    body: "Associations, fondations et institutions publiques. Design accessible, collecte de dons et animation de communauté."
   }
-];
-
-/* The eight service cards in the home bento grid.
-   `href` points at a /services/[slug] detail page where one exists; the newer
-   offers link to the contact section until their detail pages are written. */
-const SERVICE_CARDS = [
-  {
-    name: "Website Creation",
-    desc: "Showcase sites, online stores and interactive portals — modern, ultra-fast and built for SEO.",
-    href: "/services/web-development",
-    icon: <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="4" width="20" height="13" rx="2" /><path d="M2 9h20M8 21h8M12 17v4" /></svg>,
-  },
-  {
-    name: "Search Engine Optimization",
-    desc: "Technical optimization, keyword strategy and link building that bring in organic traffic month after month.",
-    href: "/#contact",
-    icon: <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="7" /><path d="M20 20l-3.6-3.6" /><path d="M8 12.5l2.2-2.4 1.9 1.7 2.4-2.8" /></svg>,
-  },
-  {
-    name: "Google Maps & Local SEO",
-    desc: "Win the searches happening around you, with an optimized Google Business profile and a strong Maps ranking.",
-    href: "/#contact",
-    icon: <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><path d="M12 21s7-5.6 7-11a7 7 0 1 0-14 0c0 5.4 7 11 7 11z" /><circle cx="12" cy="10" r="2.5" /></svg>,
-  },
-  {
-    name: "Ads Creation & Management",
-    desc: "Targeted Google Ads, Facebook and Instagram campaigns built for an immediate, measurable return.",
-    href: "/#contact",
-    icon: <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><path d="M3 11v2a1 1 0 0 0 1 1h2l5 4V6L6 10H4a1 1 0 0 0-1 1z" /><path d="M16 9.2a4 4 0 0 1 0 5.6" /><path d="M18.8 6.4a8 8 0 0 1 0 11.2" /></svg>,
-  },
-  {
-    name: "Mobile Apps",
-    desc: "Native and cross-platform iOS and Android apps, smooth and fast, built with Flutter.",
-    href: "/#contact",
-    icon: <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><rect x="6" y="2" width="12" height="20" rx="3" /><path d="M10.5 18.5h3" /></svg>,
-  },
-  {
-    name: "Desktop Apps",
-    desc: "Custom Windows and macOS software that simplifies your internal operations and your data.",
-    href: "/#contact",
-    icon: <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="4" width="20" height="12" rx="2" /><path d="M8 20h8M12 16v4" /></svg>,
-  },
-  {
-    name: "Custom Digital Solutions",
-    desc: "Bespoke business tools, SaaS portals, extranets and API architectures shaped around your company.",
-    href: "/services/business-apps",
-    icon: <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><rect x="7" y="7" width="10" height="10" rx="2.5" /><path d="M9.5 3v4M14.5 3v4M9.5 17v4M14.5 17v4M3 9.5h4M3 14.5h4M17 9.5h4M17 14.5h4" /></svg>,
-  },
-  {
-    name: "Automated WhatsApp Bots",
-    desc: "Smart bots that answer instantly, qualify your leads and keep support running 24/7.",
-    href: "/services/ai-chatbots",
-    icon: <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><path d="M20.5 11.5a8 8 0 0 1-11.9 7L4 20l1.6-4.4A8 8 0 1 1 20.5 11.5z" /><path d="M9.5 11.5v.8M14.5 11.5v.8" /><path d="M9.8 15c1.4 1 3 1 4.4 0" /></svg>,
-  },
 ];
 
 /* WORK — one accordion, one project open at a time.
@@ -180,74 +123,74 @@ const SERVICE_CARDS = [
 const WORK = [
   {
     slug: "luxora",
-    title: "Sample — Luxora Interiors",
+    title: "Exemple — Luxora Interiors",
     cat: "E-commerce",
     year: "2026",
     url: "luxora.store",
-    outcome: "Rebuilt for speed: instant search across 4,000 SKUs and a checkout that stopped losing people at the shipping step.",
+    outcome: "Refonte axée vitesse : recherche instantanée sur 4 000 références et un tunnel de commande qui ne perd plus personne à l'étape livraison.",
     stack: ["Next.js", "Shopify", "Algolia"],
     metric: "+38%",
-    metricLabel: "revenue per visit",
+    metricLabel: "de revenu par visite",
     shot: "g0",
   },
   {
     slug: "daressaada",
-    title: "Sample — Dar Essaada Hotel",
-    cat: "Hospitality",
+    title: "Exemple — Hôtel Dar Essaada",
+    cat: "Hôtellerie",
     year: "2026",
     url: "daressaada.com",
-    outcome: "Direct booking engine that undercuts the OTAs, with live availability and a rate calendar the front desk can edit itself.",
+    outcome: "Un moteur de réservation en direct moins cher que les plateformes, avec disponibilités en temps réel et un calendrier de tarifs que la réception modifie elle-même.",
     stack: ["Next.js", "Strapi", "Stripe"],
     metric: "2.4x",
-    metricLabel: "direct bookings",
+    metricLabel: "de réservations directes",
     shot: "g1",
   },
   {
     slug: "eduflow",
-    title: "Sample — Eduflow Platform",
+    title: "Exemple — Plateforme Eduflow",
     cat: "SaaS",
     year: "2025",
     url: "eduflow.app",
-    outcome: "A multi-tenant course platform: student portals, video delivery and certification, all under one dashboard.",
+    outcome: "Une plateforme de formation multi-établissements : espaces élèves, diffusion vidéo et certification, le tout dans un seul tableau de bord.",
     stack: ["Next.js", "Postgres", "Mux"],
     metric: "12k",
-    metricLabel: "active students",
+    metricLabel: "élèves actifs",
     shot: "g3",
   },
   {
     slug: "wellcare",
-    title: "Sample — Wellcare Clinic",
-    cat: "Healthcare",
+    title: "Exemple — Clinique Wellcare",
+    cat: "Santé",
     year: "2025",
     url: "wellcare.ma",
-    outcome: "Patient intake that works on a phone in a waiting room, with scheduling wired straight into the practice calendar.",
+    outcome: "Un formulaire patient utilisable depuis un téléphone en salle d'attente, relié directement à l'agenda du cabinet.",
     stack: ["Next.js", "Strapi", "Twilio"],
     metric: "-62%",
-    metricLabel: "no-show rate",
+    metricLabel: "de rendez-vous manqués",
     shot: "g0",
   },
   {
     slug: "petrocore",
-    title: "Sample — Petrocore Solutions",
-    cat: "Corporate",
+    title: "Exemple — Petrocore Solutions",
+    cat: "Entreprise",
     year: "2025",
     url: "petrocore.com",
-    outcome: "A B2B site built around quote requests: technical spec sheets, project references and a form the sales team actually reads.",
+    outcome: "Un site B2B pensé pour la demande de devis : fiches techniques, références de chantiers et un formulaire que les commerciaux lisent vraiment.",
     stack: ["Next.js", "Strapi", "Vercel"],
     metric: "3.1x",
-    metricLabel: "qualified enquiries",
+    metricLabel: "de demandes qualifiées",
     shot: "g1",
   },
   {
     slug: "northbound",
-    title: "Sample — Northbound",
-    cat: "SEO & Growth",
+    title: "Exemple — Northbound",
+    cat: "SEO & croissance",
     year: "2024",
     url: "northbound.co",
-    outcome: "Technical rebuild plus a content structure that finally let their category pages rank for the terms they sell on.",
+    outcome: "Refonte technique et arborescence de contenu qui a enfin permis aux pages catégories de se positionner sur leurs mots-clés commerciaux.",
     stack: ["Astro", "GA4", "Search Console"],
     metric: "+240%",
-    metricLabel: "organic sessions",
+    metricLabel: "de visites organiques",
     shot: "g3",
   },
 ];
@@ -255,21 +198,21 @@ const WORK = [
 /* Sample testimonials — placeholder content shown for layout only.
    TODO: replace with real, attributed client reviews (name, company, photo) before launch. */
 const TESTIMONIALS = [
-  { featured: true, q: "Wevtex rebuilt our site and the calls started coming in. It loads fast, looks the part, and customers finally find us on Google. Worth every dirham.", a: "S", n: "Sample client", r: "Founder · Sample Studio" },
-  { q: "They explained everything in plain language, kept to the timeline, and the price never moved. Easiest project we've run.", a: "G", n: "Sample client", r: "Manager · Sample Trading" },
-  { q: "Our online store went live in three weeks and we took our first order the same day. Support has been quick every time we've reached out.", a: "N", n: "Sample client", r: "Owner · Sample & Co." },
-  { q: "We went from invisible to page one for our main keywords. The SEO work paid for itself within a couple of months.", a: "T", n: "Sample client", r: "Director · Sample Growth" },
-  { q: "A real team that picks up the phone. They handle our hosting so we never think about it — the site just works.", a: "A", n: "Sample client", r: "Manager · Sample Co." },
-  { q: "Professional from the first call to launch. The new website looks far more expensive than what we paid.", a: "D", n: "Sample client", r: "Founder · Sample Desktop" },
+  { featured: true, q: "Wevtex a refait notre site et les appels ont commencé à arriver. Il charge vite, il a de l'allure, et nos clients nous trouvent enfin sur Google. Chaque dirham est justifié.", a: "S", n: "Client exemple", r: "Fondateur · Studio exemple" },
+  { q: "Ils ont tout expliqué simplement, tenu les délais, et le prix n'a jamais bougé. Le projet le plus simple qu'on ait mené.", a: "G", n: "Client exemple", r: "Gérant · Trading exemple" },
+  { q: "Notre boutique en ligne était prête en trois semaines et nous avons pris notre première commande le jour même. Le support répond vite à chaque fois.", a: "N", n: "Client exemple", r: "Propriétaire · Exemple & Cie" },
+  { q: "Nous sommes passés d'invisibles à la première page sur nos mots-clés principaux. Le travail SEO s'est rentabilisé en deux mois.", a: "T", n: "Client exemple", r: "Directeur · Growth exemple" },
+  { q: "Une vraie équipe, qui décroche le téléphone. Ils gèrent notre hébergement, on n'y pense plus : le site tourne, tout simplement.", a: "A", n: "Client exemple", r: "Responsable · Société exemple" },
+  { q: "Professionnels du premier appel jusqu'à la mise en ligne. Le nouveau site a l'air bien plus cher que ce que nous avons payé.", a: "D", n: "Client exemple", r: "Fondateur · Desktop exemple" },
 ];
 
 const TPOOL = [
-  { q: "The new website not only looks great but has significantly increased our leads. The team was responsive, professional, and a pleasure to work with.", name: "James Carter", role: "Director, Luxora Interiors", a: "J" },
-  { q: "From day one, they understood our goals and delivered beyond our expectations. Our online sales have ", em: "doubled.", name: "Sarah Mitchell", role: "CEO, Petrocore Solutions", a: "S" },
-  { q: "Their automation solution saved us over 20 hours a week. Everything works seamlessly and the support has been excellent.", name: "Daniel Rahman", role: "Operations Manager, Wellcare Clinic", a: "D" },
-  { q: "They explained everything in plain language, kept to the timeline, and the price never moved. Easiest project we've run.", name: "Gareth Morris", role: "Manager, Atlas Trading", a: "G" },
-  { q: "Our store went live in three weeks and we took our first order the same day. Support has been quick every time.", name: "Naomi Reyes", role: "Owner, Marlow & Co.", a: "N" },
-  { q: "We went from invisible to page one for our main keywords. The SEO work paid for itself within a couple of months.", name: "Theo Lindahl", role: "Director, Northbound", a: "T" },
+  { q: "Le nouveau site est non seulement très beau, il nous apporte nettement plus de demandes. L'équipe est réactive, professionnelle et agréable.", name: "James Carter", role: "Directeur, Luxora Interiors", a: "J" },
+  { q: "Dès le premier jour, ils ont compris nos objectifs et sont allés au-delà. Nos ventes en ligne ont ", em: "doublé.", name: "Sarah Mitchell", role: "Directrice générale, Petrocore Solutions", a: "S" },
+  { q: "Leur solution d'automatisation nous fait gagner plus de 20 heures par semaine. Tout fonctionne sans accroc et le support est excellent.", name: "Daniel Rahman", role: "Responsable d'exploitation, Clinique Wellcare", a: "D" },
+  { q: "They explained everything in plain language, kept to the timeline, and the price never moved. Easiest project we've run.", name: "Gareth Morris", role: "Gérant, Atlas Trading", a: "G" },
+  { q: "Notre boutique était en ligne en trois semaines et nous avons pris notre première commande le jour même. Le support répond toujours vite.", name: "Naomi Reyes", role: "Propriétaire, Marlow & Co.", a: "N" },
+  { q: "We went from invisible to page one for our main keywords. The SEO work paid for itself within a couple of months.", name: "Theo Lindahl", role: "Directeur, Northbound", a: "T" },
 ];
 
 export function HomeClient() {
@@ -514,23 +457,23 @@ export function HomeClient() {
               <ScrollRevealText
                 as="h1"
                 mode="load"
-                em={["customers"]}
+                em={["clients"]}
                 emClassName="hl-em"
-                text={"Websites & apps that\nturn visitors into\ncustomers."}
+                text={"Des sites et applis qui\ntransforment vos visiteurs\nen clients."}
               />
               <p className="hero-sub">
-                From first idea to launch in weeks — custom websites, online stores and
-                automation, built to bring your business more customers.
+                De la première idée à la mise en ligne en quelques semaines : sites sur mesure,
+                boutiques en ligne et automatisation, conçus pour vous amener plus de clients.
               </p>
               <div className="hero-ctas">
                 <a href={WHATSAPP_URL} className="btn btn-primary" target="_blank" rel="noopener">
-                  Get a free quote
+                  Demander un devis gratuit
                   <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden style={{ marginLeft: 2 }}>
                     <path d="M5 12h14M13 6l6 6-6 6" />
                   </svg>
                 </a>
-                <a href="/portfolio" className="btn btn-outline">
-                  See our work
+                <a href={PORTFOLIO_URL} className="btn btn-outline">
+                  Voir nos réalisations
                   <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden style={{ marginLeft: 2 }}>
                     <path d="M5 12h14M13 6l6 6-6 6" />
                   </svg>
@@ -553,7 +496,7 @@ export function HomeClient() {
             <div className="hero-visual">
               <Image
                 src="/images/feature/slider section.png"
-                alt="An online store shown on a laptop and phone, with traffic and sales growth"
+                alt="Une boutique en ligne affichée sur un ordinateur portable et un téléphone, avec la croissance du trafic et des ventes"
                 width={1536}
                 height={1024}
                 priority
@@ -565,11 +508,11 @@ export function HomeClient() {
 
           {/* Trust bar: proof of other clients, kept in the hero so it lands above the fold. */}
           <div className="hero-logos reveal">
-            <p className="ls-lead">Trusted by teams across Morocco and beyond</p>
+            <p className="ls-lead">Ils nous font confiance, au Maroc et ailleurs</p>
             <ul className="ls-row">
               {CLIENT_LOGOS.map((c) => (
                 <li key={c.name}>
-                  <Image src={c.src} alt={c.name} width={160} height={40} sizes="160px" />
+                  <Image src={c.src} alt={c.name} width={400} height={170} sizes="136px" />
                 </li>
               ))}
             </ul>
@@ -583,56 +526,26 @@ export function HomeClient() {
         <div className="container">
           <div className="problem-inner">
             <h2 className="problem-h">
-              Most business websites<br />
-              don&apos;t <em className="hl-em hl-underline">bring in</em> customers
+              La plupart des sites d&apos;entreprise<br />
+              n&apos;<em className="hl-em hl-underline">apportent aucun</em> client
             </h2>
             <p className="problem-sub">
-              They look nice, but they&apos;re slow, confusing, and hard to update.<br />
-              We build websites and apps that actually work —<br />
-              so you get more leads, more sales, and more time back.
+              Ils sont jolis, mais lents, confus et impossibles à mettre à jour.<br />
+              Nous créons des sites et des applications qui fonctionnent vraiment —<br />
+              pour plus de contacts, plus de ventes et plus de temps pour vous.
             </p>
           </div>
         </div>
       </section>
 
-      {/* ===================== SERVICES (mockup 3 — bento) ===================== */}
-      <section className={`${isDark ? "theme-dark" : "theme-cream"} services-bento`} id="services">
-        <div className="container">
-          <div className="bento-head reveal">
-            <div className="bento-head-left">
-              <span className="eyebrow line-eyebrow">Services</span>
-              <h2 className="h-section" style={{ marginTop: 16 }}>
-                Everything you need<br />
-                to <em className="hl-line">grow, scale</em> &amp; <em className="hl-line">automate</em>
-              </h2>
-            </div>
-            <p className="bento-head-right">
-              From powerful websites to smart automation, we build digital solutions that help your
-              business grow faster and run smoother.
-            </p>
-          </div>
-
-          <div className="bento-grid reveal">
-            {SERVICE_CARDS.map((b, i) => (
-              <a key={b.name} href={b.href} className="bento-card">
-                {/* Number + icon on one line, so every title starts at the same
-                    height no matter how long the copy under it runs. */}
-                <span className="bento-top">
-                  <span className="bento-n">{String(i + 1).padStart(2, "0")}</span>
-                  <span className="bento-icon">{b.icon}</span>
-                </span>
-                <div className="bento-card-body">
-                  <h4>{b.name}</h4>
-                  <p>{b.desc}</p>
-                </div>
-                <span className="bento-arrow" aria-hidden>
-                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
-                </span>
-              </a>
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* ===================== SERVICES (mockup 3 — bento) =====================
+          Shared with /services so both surfaces read the same SERVICES list —
+          a service added or re-linked in homeContent.ts moves on every page. */}
+      <ServicesBento
+        isDark={isDark}
+        heading={<>Tout ce qu&apos;il faut pour<br /><em className="hl-line">développer</em> &amp; <em className="hl-line">automatiser</em></>}
+        intro="Du site performant à l'automatisation intelligente, nous créons des solutions digitales qui font grandir votre activité et vous simplifient le quotidien."
+      />
 
       {/* ===================== WORK =====================
           The rest of the page is white, ink and one sliver of lime so that
@@ -649,12 +562,12 @@ export function HomeClient() {
               ic-sub. The section reads quiet because of the space around it,
               not because the heading was removed. */}
           <div className="wk-head reveal">
-            <span className="eyebrow line-eyebrow">Selected work</span>
+            <span className="eyebrow line-eyebrow">Nos réalisations</span>
             <h2 className="h-section" style={{ marginTop: 14 }}>
-              Recent <em className="hl-line">projects</em>
+              Projets <em className="hl-line">récents</em>
             </h2>
             <p className="ic-sub wk-lede">
-              A few things we&apos;ve shipped. Open one to see the work.
+              Quelques projets livrés. Ouvrez-en un pour voir le détail.
             </p>
           </div>
 
@@ -716,8 +629,8 @@ export function HomeClient() {
                             <span className="wk-metric-l">{p.metricLabel}</span>
                           </div>
 
-                          <a href="/portfolio" className="wk-view">
-                            View project
+                          <a href={PORTFOLIO_URL} className="wk-view">
+                            Voir nos réalisations
                             <span className="wk-view-arrow" aria-hidden>
                               <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
                             </span>
@@ -732,8 +645,8 @@ export function HomeClient() {
           </ol>
 
           <div className="wk-all reveal">
-            <a href="/portfolio" className="btn btn-outline">
-              View all projects
+            <a href={PORTFOLIO_URL} className="btn btn-outline">
+              Voir tous les projets
               <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
             </a>
           </div>
@@ -749,10 +662,10 @@ export function HomeClient() {
         <div className="container">
           <div className="sb-grid reveal">
             {[
-              { to: 200, dec: 0, suffix: "+", label: "Projects delivered", desc: "Successful websites, apps and automation systems launched." },
-              { to: 5, dec: 1, suffix: "", label: "Average rating", desc: "Based on client reviews across platforms." },
-              { to: 4, dec: 0, suffix: "", label: "Years experience", desc: "Helping businesses grow with smart digital solutions." },
-              { to: 98, dec: 0, suffix: "%", label: "Client satisfaction", desc: "Clients who recommend us and come back." },
+              { to: 200, dec: 0, suffix: "+", label: "Projets livrés", desc: "Sites, applications et systèmes d'automatisation mis en ligne." },
+              { to: 5, dec: 1, suffix: "", label: "Note moyenne", desc: "D'après les avis clients laissés sur les différentes plateformes." },
+              { to: 4, dec: 0, suffix: "", label: "Ans d'expérience", desc: "À faire grandir des entreprises avec des solutions digitales." },
+              { to: 98, dec: 0, suffix: "%", label: "Clients satisfaits", desc: "Des clients qui nous recommandent et qui reviennent." },
             ].map((s) => (
               <div className="sb-item" key={s.label}>
                 <div className="sb-num" data-to={s.to} data-dec={s.dec} data-suffix={s.suffix}>{`0${s.suffix}`}</div>
@@ -769,9 +682,9 @@ export function HomeClient() {
       <section className={`${isDark ? "theme-dark" : "theme-cream"} inline-cta`}>
         <div className="container">
           <div className="ict-inner reveal">
-            <p className="ict-text">Want results like these for your business?</p>
+            <p className="ict-text">Vous voulez ce type de résultats pour votre entreprise ?</p>
             <a href={WHATSAPP_URL} className="btn btn-primary" target="_blank" rel="noopener">
-              Get a free quote
+              Demander un devis gratuit
               <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden><path d="M5 12h14M13 6l6 6-6 6" /></svg>
             </a>
           </div>
@@ -782,12 +695,12 @@ export function HomeClient() {
       <section className={`${isDark ? "theme-dark" : "theme-cream"} testi-v2`} id="testimonials">
         <div className="container">
           <div className="ic-head ic-head-left reveal">
-            <span className="eyebrow line-eyebrow">Client testimonials</span>
+            <span className="eyebrow line-eyebrow">Avis clients</span>
             <h2 className="h-section" style={{ marginTop: 16 }}>
-              Businesses that <em className="hl-line">trust us</em>
+              Des entreprises qui nous <em className="hl-line">font confiance</em>
             </h2>
             <p className="ic-sub">
-              We take pride in the relationships we build and the results we deliver.
+              Nous sommes fiers des relations que nous construisons et des résultats que nous livrons.
             </p>
           </div>
 
@@ -800,7 +713,7 @@ export function HomeClient() {
               const t = TPOOL[(ti + off) % TPOOL.length];
               return (
                 <figure className="testi-col" key={off}>
-                  <div className="testi-stars" aria-label="Rated 5 out of 5">
+                  <div className="testi-stars" aria-label="Noté 5 sur 5">
                     {[0, 1, 2, 3, 4].map((n) => (
                       <svg key={n} viewBox="0 0 24 24" width="14" height="14" fill="currentColor" aria-hidden>
                         <path d="M12 2l2.9 6.3 6.9.6-5.2 4.6 1.6 6.7L12 17.3 5.8 20.8l1.6-6.7L2.2 8.9l6.9-.6z" />
@@ -823,7 +736,7 @@ export function HomeClient() {
           </div>
 
           <div className="testi-controls reveal">
-            <button className="ic-arrow" aria-label="Previous reviews" onClick={() => setTi((p) => (p - 1 + TPOOL.length) % TPOOL.length)}>
+            <button className="ic-arrow" aria-label="Avis précédents" onClick={() => setTi((p) => (p - 1 + TPOOL.length) % TPOOL.length)}>
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M15 18l-6-6 6-6" /></svg>
             </button>
             <div className="ic-dots testi-dots">
@@ -831,14 +744,14 @@ export function HomeClient() {
                 <span key={d} className={d === ti ? "on" : ""} onClick={() => setTi(d)} role="button" aria-label={`Go to review ${d + 1}`}></span>
               ))}
             </div>
-            <button className="ic-arrow" aria-label="Next reviews" onClick={() => setTi((p) => (p + 1) % TPOOL.length)}>
+            <button className="ic-arrow" aria-label="Avis suivants" onClick={() => setTi((p) => (p + 1) % TPOOL.length)}>
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M9 18l6-6-6-6" /></svg>
             </button>
           </div>
 
           <div className="testi-cta reveal">
-            <a href="/portfolio" className="btn btn-outline">
-              See more reviews
+            <a href={GOOGLE_REVIEWS_URL} className="btn btn-outline" target="_blank" rel="noopener nofollow">
+              Voir tous nos avis Google
               <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden style={{ marginLeft: 4 }}><path d="M5 12h14M13 6l6 6-6 6" /></svg>
             </a>
           </div>
@@ -849,28 +762,28 @@ export function HomeClient() {
       <section className={`${isDark ? "theme-dark" : "theme-paper"} industries-carousel`} id="industries">
         <div className="container">
           <div className="ic-head reveal">
-            <span className="eyebrow line-eyebrow-center">Industries we serve</span>
+            <span className="eyebrow line-eyebrow-center">Les secteurs que nous servons</span>
             <h2 className="h-section" style={{ marginTop: 16 }}>
-              Built for your <em className="hl-em">specific sector</em>
+              Pensé pour <em className="hl-em">votre secteur</em>
             </h2>
             <p className="ic-sub">
-              We understand that every industry has unique challenges.<br />
-              Our solutions are tailored to help you grow in your world.
+              Chaque secteur a ses propres contraintes.<br />
+              Nos solutions sont adaptées à votre réalité pour vous faire grandir.
             </p>
           </div>
 
           <div className="ic-track reveal">
             {[
-              { i: 0, label: "Retail", desc: "Solutions that drive footfall and boost online sales." },
-              { i: 1, label: "Hospitality", desc: "Beautiful digital experiences that delight your guests." },
-              { i: 3, label: "Healthcare", desc: "Secure, compliant systems for better patient care." },
-              { i: 5, label: "Education", desc: "Digital tools that empower students and educators." },
-              { i: 4, label: "Logistics", desc: "Streamlined operations that keep business moving." },
-              { i: 2, label: "Professional Services", desc: "Trust-driven sites that capture qualified leads." },
-              { i: 6, label: "Creative & Tech", desc: "High-performance sites for startups and creators." },
-              { i: 7, label: "Public & NGOs", desc: "Accessible sites that inform and inspire action." },
+              { i: 0, label: "Commerce", desc: "Des solutions qui font venir en boutique et augmentent les ventes en ligne." },
+              { i: 1, label: "Hôtellerie", desc: "Des expériences digitales soignées qui séduisent vos clients." },
+              { i: 3, label: "Santé", desc: "Des systèmes sécurisés et conformes, au service de vos patients." },
+              { i: 5, label: "Éducation", desc: "Des outils numériques qui aident élèves et enseignants." },
+              { i: 4, label: "Logistique", desc: "Des opérations fluidifiées pour que tout continue d'avancer." },
+              { i: 2, label: "Services professionnels", desc: "Des sites qui inspirent confiance et captent des contacts qualifiés." },
+              { i: 6, label: "Création & tech", desc: "Des sites performants pour les startups et les créateurs." },
+              { i: 7, label: "Public & associations", desc: "Des sites accessibles qui informent et donnent envie d'agir." },
             ].map((it, idx) => (
-              <a key={it.i} href={`/industries/${INDUSTRY_LINKS[it.i]}`} className={`ic-card g${idx % 5}`}>
+              <a key={it.i} href={industryPath(INDUSTRY_LINKS[it.i])} className={`ic-card g${idx % 5}`}>
                 <Image
                   src={IC_IMAGES[it.i]}
                   alt={it.label}
@@ -891,13 +804,13 @@ export function HomeClient() {
           </div>
 
           <div className="ic-controls reveal">
-            <button className="ic-arrow" aria-label="Previous industries" onClick={(e) => { const t = e.currentTarget.closest(".industries-carousel")?.querySelector(".ic-track") as HTMLElement | null; t?.scrollBy({ left: -340, behavior: "smooth" }); }}>
+            <button className="ic-arrow" aria-label="Secteurs précédents" onClick={(e) => { const t = e.currentTarget.closest(".industries-carousel")?.querySelector(".ic-track") as HTMLElement | null; t?.scrollBy({ left: -340, behavior: "smooth" }); }}>
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M15 18l-6-6 6-6" /></svg>
             </button>
             <div className="ic-dots" aria-hidden>
               <span className="on"></span><span></span><span></span><span></span><span></span>
             </div>
-            <button className="ic-arrow" aria-label="Next industries" onClick={(e) => { const t = e.currentTarget.closest(".industries-carousel")?.querySelector(".ic-track") as HTMLElement | null; t?.scrollBy({ left: 340, behavior: "smooth" }); }}>
+            <button className="ic-arrow" aria-label="Secteurs suivants" onClick={(e) => { const t = e.currentTarget.closest(".industries-carousel")?.querySelector(".ic-track") as HTMLElement | null; t?.scrollBy({ left: 340, behavior: "smooth" }); }}>
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M9 18l6-6-6-6" /></svg>
             </button>
           </div>
@@ -908,55 +821,48 @@ export function HomeClient() {
       <section className="pricing-v2 pricing-ink" id="pricing">
         <div className="container">
           <div className="ic-head reveal">
-            <span className="eyebrow line-eyebrow-center">Pricing</span>
+            <span className="eyebrow line-eyebrow-center">Tarifs</span>
             <h2 className="h-section" style={{ marginTop: 16, justifyContent: "center" }}>
-              Clear pricing. <em className="hl-em">No surprises.</em>
+              Des prix clairs. <em className="hl-em">Aucune surprise.</em>
             </h2>
             <p className="ic-sub">
-              Choose the plan that fits your goals. All plans include expert support<br />
-              and a commitment to your success.
+              Un prix de départ pour chacun de nos services. Dites-nous ce qu&apos;il vous faut<br />
+              et nous vous envoyons un devis ferme pour votre projet.
             </p>
           </div>
 
-          <div className="pr-grid reveal">
-            {[
-              { name: "Start", sub: "Perfect for small businesses", price: "990", note: "One-time · delivered in 7 days", featured: false,
-                icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M12 3l1.8 4.4L18.2 9.2 13.8 11 12 15.4 10.2 11 5.8 9.2 10.2 7.4 12 3z" /><path d="M18.4 15.2l.7 1.7 1.7.7-1.7.7-.7 1.7-.7-1.7-1.7-.7 1.7-.7z" /></svg>,
-                features: ["Up to 5 Pages Website", "Responsive Design", "Basic SEO Setup", "Contact Form", "1 Month Support"] },
-              { name: "Grow", sub: "Ideal for growing businesses", price: "2,900", note: "One-time · delivered in 14 days", featured: true,
-                icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M4.5 16.5c-1.5 1.3-2 5-2 5s3.7-.5 5-2c.7-.9.7-2.2-.1-3a2.1 2.1 0 0 0-2.9 0z" /><path d="M12 15l-3-3a16 16 0 0 1 9-9 6 6 0 0 1-9 9z" /><path d="M9 12H4s.5-3 2-4 5 0 5 0" /></svg>,
-                features: ["Up to 15 Pages Website", "Advanced SEO", "Speed Optimization", "Blog/News Section", "3 Months Support", "Performance Analytics"] },
-              { name: "Scale", sub: "For established businesses", price: "7,900", note: "One-time · custom timeline", featured: false,
-                icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M3 8l4 3 5-6 5 6 4-3-2 11H5L3 8z" /></svg>,
-                features: ["Unlimited Pages", "Advanced SEO & Schema", "Custom Integrations", "Priority Support", "6 Months Support", "Monthly Performance Reports"] },
-            ].map((p) => (
-              <div className={p.featured ? "pr-card featured" : "pr-card"} key={p.name}>
-                {p.featured && (
+          {/* One card per service — the price is the entry point for that service,
+              not a bundle, so a visitor sees what their own job costs. */}
+          <div className="pr-grid pr-grid-8 reveal">
+            {SERVICES.map((sv) => (
+              <div className={sv.featured ? "pr-card featured" : "pr-card"} key={sv.slug}>
+                {sv.featured && (
                   <span className="pr-badge">
                     <svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor" aria-hidden><path d="M12 2l2.9 6.3 6.9.6-5.2 4.6 1.6 6.7L12 17.3 5.8 20.8l1.6-6.7L2.2 8.9l6.9-.6z" /></svg>
-                    Most Popular
+                    Le plus demandé
                   </span>
                 )}
                 <div className="pr-top">
-                  <span className="pr-icon">{p.icon}</span>
+                  <span className="pr-icon">{SERVICE_ICONS[sv.slug]}</span>
                   <div>
-                    <div className="pr-name">{p.name}</div>
-                    <div className="pr-sub">{p.sub}</div>
+                    <div className="pr-name">{sv.name}</div>
+                    <div className="pr-sub">{sv.short}</div>
                   </div>
                 </div>
-                <div className="pr-divider"><span className="dot"></span></div>
-                <div className="pr-price">{p.price}<span className="cur">DH</span></div>
-                <div className="pr-note">{p.note}</div>
+                <div className="pr-divider"></div>
+                <span className="pr-from">À partir de</span>
+                <div className="pr-price">{sv.price}<span className="cur">DH</span></div>
+                <div className="pr-note">{sv.note}</div>
                 <ul className="pr-feats">
-                  {p.features.map((f) => (
+                  {sv.features.map((f) => (
                     <li key={f}>
                       <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><path d="M20 6L9 17l-5-5" /></svg>
                       {f}
                     </li>
                   ))}
                 </ul>
-                <a href={WHATSAPP_URL} className={`pr-btn${p.featured ? " solid" : ""}`} target="_blank" rel="noopener">
-                  Get Started
+                <a href={serviceWhatsAppUrl(sv.name)} className={`pr-btn${sv.featured ? " solid" : ""}`} target="_blank" rel="noopener">
+                  {sv.cta}
                   <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden style={{ marginLeft: 4 }}><path d="M5 12h14M13 6l6 6-6 6" /></svg>
                 </a>
               </div>
@@ -964,18 +870,11 @@ export function HomeClient() {
           </div>
 
           <div className="pr-foot reveal">
-            <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden><path d="M20 6L9 17l-5-5" /></svg>No hidden fees</span>
-            <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden><path d="M20 6L9 17l-5-5" /></svg>Pay only when you&apos;re satisfied</span>
-            <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden><path d="M20 6L9 17l-5-5" /></svg>Need something custom? Ask us</span>
+            <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden><path d="M20 6L9 17l-5-5" /></svg>Aucun frais caché</span>
+            <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden><path d="M20 6L9 17l-5-5" /></svg>Vous ne payez qu&apos;une fois satisfait</span>
+            <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden><path d="M20 6L9 17l-5-5" /></svg>Besoin de sur-mesure ? Écrivez-nous</span>
           </div>
 
-          {/* Add-ons live on /services — the detail belongs after the visitor has picked a plan. */}
-          <div className="pr-addons-link reveal">
-            <a href="/services#addons">
-              See every add-on and its price
-              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden><path d="M5 12h14M13 6l6 6-6 6" /></svg>
-            </a>
-          </div>
         </div>
       </section>
 
@@ -985,9 +884,9 @@ export function HomeClient() {
           <div className="faq-grid">
             <div className="faq-left reveal">
               <span className="eyebrow line-eyebrow">FAQ</span>
-              <h2 className="h-section" style={{ marginTop: 14 }}>Questions, <em className="hl-line">answered</em></h2>
+              <h2 className="h-section" style={{ marginTop: 14 }}>Vos questions, <em className="hl-line">nos réponses</em></h2>
               <p className="ic-sub" style={{ marginTop: 14, textAlign: "left" }}>
-                Here are some common questions about our process, services, and how we help your business grow.
+                Les questions qu&apos;on nous pose le plus souvent sur notre méthode, nos services et notre façon de travailler.
               </p>
               <div className="faq-list-v2">
                 {FAQS.map((f, i) => (
@@ -1009,12 +908,12 @@ export function HomeClient() {
               <div className="wa-card">
                 <span className="wa-card-motif" aria-hidden></span>
                 <span className="wa-icon">{WHATSAPP}</span>
-                <h3>Still have questions?<br /><em>Chat on WhatsApp</em></h3>
+                <h3>Une autre question ?<br /><em>Écrivez-nous sur WhatsApp</em></h3>
                 <span className="wa-rule"></span>
-                <p>We&apos;re here to help. Reach out anytime and we&apos;ll get back to you as soon as possible.</p>
+                <p>Nous sommes là pour vous aider. Écrivez-nous quand vous voulez, nous répondons au plus vite.</p>
                 <a href={WHATSAPP_URL} className="wa-btn" target="_blank" rel="noopener">
                   {WHATSAPP}
-                  Chat on WhatsApp
+                  Discuter sur WhatsApp
                   <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden><path d="M5 12h14M13 6l6 6-6 6" /></svg>
                 </a>
               </div>
@@ -1022,7 +921,7 @@ export function HomeClient() {
                 <span className="wa-lock">
                   <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><rect x="4" y="11" width="16" height="9" rx="2" /><path d="M8 11V7a4 4 0 0 1 8 0v4" /></svg>
                 </span>
-                Your information is safe with us. We respect your privacy.
+                Vos informations restent confidentielles. Nous respectons votre vie privée.
               </div>
             </div>
           </div>
@@ -1043,10 +942,10 @@ export function HomeClient() {
             <div className="cs-left reveal">
               <span className="eyebrow line-eyebrow">Contact</span>
               <h2 className="h-section" style={{ marginTop: 18 }}>
-                Tell us what you&apos;re<br />building. <em className="hl-em">We&apos;ll price it.</em>
+                Dites-nous ce que vous<br />construisez. <em className="hl-em">On le chiffre.</em>
               </h2>
               <p className="cs-sub">
-                Send a brief, get a plan and a fixed price back the same day.
+                Envoyez votre brief, recevez un plan et un prix ferme le jour même.
               </p>
 
               <div className="cs-channels">
@@ -1066,7 +965,7 @@ export function HomeClient() {
 
               <p className="cs-hours">
                 <span className="cs-dot" aria-hidden></span>
-                Mon &ndash; Fri 09:00&ndash;18:00 &middot; Sat 10:00&ndash;14:00
+                Lun &ndash; Ven 09h00&ndash;18h00 &middot; Sam 10h00&ndash;14h00
               </p>
             </div>
 
@@ -1076,9 +975,9 @@ export function HomeClient() {
               </div>
               <p className="cs-audit">
                 <a href={AUDIT_WHATSAPP_URL} target="_blank" rel="noopener">
-                  Free 15-minute call audit
+                  Audit téléphonique gratuit de 15 min
                 </a>{" "}
-                if you&apos;re not ready for a quote.
+                si vous n&apos;êtes pas encore prêt pour un devis.
               </p>
             </div>
 

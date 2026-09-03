@@ -14,6 +14,7 @@ import brand7 from '@/public/images/award/ap-brand07.jpg';
 import brand8 from '@/public/images/award/ap-brand08.jpg';
 import brand9 from '@/public/images/award/ap-brand09.jpg';
 import brand10 from '@/public/images/award/ap-brand10.jpg';
+import { CONTACT_URL } from "@/lib/site-links";
 
 const AwardSection: React.FC = () => {
   return (
@@ -49,7 +50,7 @@ const AwardSection: React.FC = () => {
               <Fade direction="up" triggerOnce duration={1200} delay={9}>
                 <div>
                   <div className="xb-btn mt-50 wow fadeInUp" data-wow-delay="450ms" data-wow-duration="600ms">
-                    <Link href="/contact" className="thm-btn thm-btn--aso thm-btn--aso_yellow">
+                    <Link href={CONTACT_URL} className="thm-btn thm-btn--aso thm-btn--aso_yellow">
                       Book a free consultation
                     </Link>
                   </div>

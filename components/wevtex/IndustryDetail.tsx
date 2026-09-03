@@ -8,8 +8,8 @@ import { ScrollRevealText } from "./ScrollRevealText";
 import { WaveBackground } from "./WaveBackground";
 import { useReveal } from "./useReveal";
 import type { Industry } from "../../lib/industries-data";
+import { WHATSAPP_URL, PORTFOLIO_URL, HOME_URL } from "@/lib/site-links";
 
-const WHATSAPP_URL = "https://wa.me/212687633774";
 
 export function IndustryDetail({ industry }: { industry: Industry }) {
   const { isDark } = useTheme();
@@ -43,7 +43,7 @@ export function IndustryDetail({ industry }: { industry: Industry }) {
                     <path d="M5 12h14M13 6l6 6-6 6" />
                   </svg>
                 </a>
-                <a href="/portfolio" className="btn btn-outline">See our work</a>
+                <a href={PORTFOLIO_URL} className="btn btn-outline">See our work</a>
               </div>
             </div>
           </div>
@@ -123,7 +123,7 @@ export function IndustryDetail({ industry }: { industry: Industry }) {
             </p>
             <div className="cta-ctas">
               <a href={WHATSAPP_URL} className="btn btn-primary" target="_blank" rel="noopener">Get a free quote</a>
-              <a href="/#industries" className="btn btn-outline">All industries</a>
+              <a href={`${HOME_URL}#industries`} className="btn btn-outline">All industries</a>
             </div>
           </div>
         </div>

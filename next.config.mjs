@@ -2,6 +2,9 @@
 const nextConfig = {
   reactStrictMode: true,
   images: {
+    // Next 16 only honours quality values declared here. 90 keeps the flat
+    // colour fields in the transparent service illustrations free of banding.
+    qualities: [75, 90],
     remotePatterns: [
       {
         protocol: "https",

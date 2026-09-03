@@ -8,6 +8,7 @@ import "../wevtex-home.css";
 import { SiteHeader } from "../../components/wevtex/SiteHeader";
 import { SiteFooter } from "../../components/wevtex/SiteFooter";
 import { useReveal } from "../../components/wevtex/useReveal";
+import { HOME_URL, CONTACT_URL, PORTFOLIO_URL } from "@/lib/site-links";
 
 export default function CaseStudyPage() {
   const { isDark } = useTheme();
@@ -24,8 +25,8 @@ export default function CaseStudyPage() {
         <div className="container">
           <div className="reveal">
             <div className="crumb">
-              <a href="/" style={{ color: "inherit" }}>Home</a> &nbsp;/&nbsp;
-              <a href="/portfolio" style={{ color: "inherit" }}>Work</a> &nbsp;/&nbsp; Global E-Commerce
+              <a href={HOME_URL} style={{ color: "inherit" }}>Home</a> &nbsp;/&nbsp;
+              <a href={PORTFOLIO_URL} style={{ color: "inherit" }}>Work</a> &nbsp;/&nbsp; Global E-Commerce
             </div>
             <h1>Global <em>E-Commerce</em><br />platform.</h1>
             <p className="lead">
@@ -157,25 +158,15 @@ export default function CaseStudyPage() {
       {/* NEXT PROJECT */}
       <section className={isDark ? "theme-dark" : "theme-cream"} style={{ padding: "80px 0" }}>
         <div className="container">
-          <a className="case-next reveal" href="/case-study">
+          <a className="case-next reveal" href={PORTFOLIO_URL}>
             <div>
-              <div className="label">// Previous case</div>
-              <h4>Lumen <em>Studio</em></h4>
+              <div className="label">// All work</div>
+              <h4>Every <em>case study</em></h4>
             </div>
-            <div className="arrow">
-              <svg width="20" height="20" viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="1.8"><path d="M9 3L3 9M3 9V4M3 9H8" transform="rotate(180 6 6)" /></svg>
-            </div>
-            <div></div>
-          </a>
-          <a className="case-next reveal" href="/case-study" style={{ borderTop: 0, paddingTop: 0 }}>
-            <div></div>
             <div className="arrow">
               <svg width="20" height="20" viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="1.8"><path d="M3 9L9 3M9 3H4M9 3V8" /></svg>
             </div>
-            <div style={{ textAlign: "right" }}>
-              <div className="label">// Next case</div>
-              <h4>Reserve<em>.co</em></h4>
-            </div>
+            <div></div>
           </a>
         </div>
       </section>
@@ -190,8 +181,8 @@ export default function CaseStudyPage() {
               We&apos;re accepting new projects globally. Send the rough shape — we&apos;ll come back within 4 hours.
             </p>
             <div className="cta-ctas">
-              <a href="/contact" className="btn btn-primary">Start a Project →</a>
-              <a href="/portfolio" className="btn btn-outline">More Case Studies</a>
+              <a href={CONTACT_URL} className="btn btn-primary">Start a Project →</a>
+              <a href={PORTFOLIO_URL} className="btn btn-outline">More Case Studies</a>
             </div>
           </div>
         </div>

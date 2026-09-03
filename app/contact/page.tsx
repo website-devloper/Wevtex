@@ -9,6 +9,7 @@ import "../wevtex-home.css";
 import { SiteHeader } from "../../components/wevtex/SiteHeader";
 import { SiteFooter } from "../../components/wevtex/SiteFooter";
 import { useReveal } from "../../components/wevtex/useReveal";
+import { EMAIL_URL, HOME_URL, PORTFOLIO_URL } from "@/lib/site-links";
 
 const FAQS = [
   { q: "How quickly can you start?", a: "We're currently booking projects. If your project is urgent (under 4 weeks lead time) let us know in the brief and we'll see what's possible." },
@@ -38,7 +39,7 @@ export default function ContactPage() {
         <div className="hero-grid-bg"></div>
         <div className="container">
           <div className="reveal">
-            <div className="crumb"><a href="/" style={{ color: "inherit" }}>Home</a> &nbsp;/&nbsp; Contact</div>
+            <div className="crumb"><a href={HOME_URL} style={{ color: "inherit" }}>Home</a> &nbsp;/&nbsp; Contact</div>
             <h1>Let&apos;s build<br />something <em>together.</em></h1>
             <p className="lead">
               Tell us about the project. We&apos;ll come back within four hours during business hours with a rough scope, a quote, and a calendar invite.
@@ -222,8 +223,8 @@ export default function ContactPage() {
               It doesn&apos;t have to be polished. Three lines and a screenshot is enough — we&apos;ll figure the rest out together.
             </p>
             <div className="cta-ctas">
-              <a href="#" className="btn btn-primary">Email Us Directly →</a>
-              <a href="/portfolio" className="btn btn-outline">See Our Work First</a>
+              <a href={EMAIL_URL} className="btn btn-primary">Email Us Directly →</a>
+              <a href={PORTFOLIO_URL} className="btn btn-outline">See Our Work First</a>
             </div>
           </div>
         </div>

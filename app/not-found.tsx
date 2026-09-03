@@ -5,6 +5,7 @@ import { useTheme } from "@/app/ThemeContext";
 import "./wevtex-home.css";
 import { SiteHeader } from "../components/wevtex/SiteHeader";
 import { SiteFooter } from "../components/wevtex/SiteFooter";
+import { HOME_URL } from "@/lib/site-links";
 
 export default function NotFound() {
   const { isDark } = useTheme();
@@ -18,14 +19,14 @@ export default function NotFound() {
         <div className="hero-grid-bg"></div>
         <div className="container" style={{ textAlign: "center" }}>
           <div className="reveal in">
-            <div style={{ fontFamily: "var(--font-mono)", fontSize: 14, letterSpacing: "0.2em", color: "var(--accent)", marginBottom: 24 }}>// 404 ERROR</div>
-            <h1 style={{ fontSize: "5rem", marginBottom: 20 }}>Page not <em>found.</em></h1>
+            <div style={{ fontFamily: "var(--font-mono)", fontSize: 14, letterSpacing: "0.2em", color: "var(--accent)", marginBottom: 24 }}>// ERREUR 404</div>
+            <h1 style={{ fontSize: "5rem", marginBottom: 20 }}>Page <em>introuvable.</em></h1>
             <p className="lead" style={{ maxWidth: 600, margin: "0 auto 40px" }}>
-              The instrument or surface you are looking for does not exist or has been moved. Let&apos;s get you back on track.
+              La page que vous cherchez n&apos;existe pas ou a été déplacée. Reprenons depuis le début.
             </p>
             <div>
-              <a href="/" className="btn btn-primary">
-                Go Back Home
+              <a href={HOME_URL} className="btn btn-primary">
+                Retour à l&apos;accueil
                 <svg className="arrow" viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="1.6">
                   <path d="M3 9L9 3M9 3H4M9 3V8" />
                 </svg>

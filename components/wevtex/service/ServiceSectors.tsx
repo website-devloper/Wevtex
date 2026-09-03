@@ -10,7 +10,7 @@ export function ServiceSectors({ service }: { service: Service }) {
       <div className="container">
         <div className="sd-head reveal">
           <div className="sd-eyebrow-wrap">
-            <Eyebrow>By sector</Eyebrow>
+            <Eyebrow>Par secteur</Eyebrow>
           </div>
           <Heading text={service.sectors.title} em={service.sectors.titleEm || []} />
           {service.sectors.subtitle && <p className="sd-sub">{service.sectors.subtitle}</p>}

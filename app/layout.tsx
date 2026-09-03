@@ -32,31 +32,31 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "Wevtex | Web & App Development Agency — Casablanca, Morocco & Worldwide",
-    template: "%s | Wevtex IT Agency",
+    default: "Wevtex | Agence web & applications — Casablanca, Maroc",
+    template: "%s | Agence Wevtex",
   },
-  description: "Wevtex is a Casablanca-based web & app development agency building fast websites, online stores, SEO/GEO and automation for businesses across Morocco and worldwide.",
-  keywords: ["agence web Maroc", "création site web Casablanca", "web development agency", "site web Maroc prix", "e-commerce Maroc", "mobile app development", "SEO services", "GEO targeting", "secure hosting", "Wevtex"],
+  description: "Wevtex est une agence web basée à Casablanca : sites vitrines, boutiques en ligne, applications, SEO et automatisation pour les entreprises au Maroc et à l'international.",
+  keywords: ["agence web Maroc", "création site web Casablanca", "agence digitale Maroc", "prix site web Maroc", "e-commerce Maroc", "développement application mobile", "référencement naturel SEO Maroc", "Google Maps référencement local", "chatbot WhatsApp", "Wevtex"],
   openGraph: {
-    title: "Wevtex | Web & App Development Agency — Casablanca, Morocco & Worldwide",
-    description: "Casablanca-based agency delivering fast websites, online stores, SEO/GEO and automation for businesses across Morocco and worldwide.",
+    title: "Wevtex | Agence web & applications — Casablanca, Maroc",
+    description: "Agence basée à Casablanca : sites rapides, boutiques en ligne, applications, SEO et automatisation pour les entreprises marocaines et internationales.",
     url: SITE_URL,
-    siteName: 'Wevtex Agency',
+    siteName: 'Agence Wevtex',
     images: [
       {
         url: '/images/og-image.jpg',
         width: 1200,
         height: 630,
-        alt: 'Wevtex IT Agency',
+        alt: 'Agence Wevtex',
       },
     ],
-    locale: "en_US",
+    locale: "fr_MA",
     type: "website",
   },
   twitter: {
     card: 'summary_large_image',
-    title: "Wevtex | Web & App Development Agency — Casablanca, Morocco & Worldwide",
-    description: "Casablanca-based agency delivering fast websites, online stores, SEO/GEO and automation for businesses across Morocco and worldwide.",
+    title: "Wevtex | Agence web & applications — Casablanca, Maroc",
+    description: "Agence basée à Casablanca : sites rapides, boutiques en ligne, applications, SEO et automatisation pour les entreprises marocaines et internationales.",
     images: ['/images/og-image.jpg'],
   },
   robots: {
@@ -97,7 +97,7 @@ export default function RootLayout({
     "url": SITE_URL,
     "logo": abs("/images/logo/wevtex-mark-ink.png"),
     "image": abs("/images/og-image.jpg"),
-    "description": "Casablanca-based web & app development agency building fast websites, online stores, SEO/GEO and automation for businesses across Morocco and worldwide.",
+    "description": "Agence web basée à Casablanca : sites vitrines, boutiques en ligne, applications, SEO et automatisation pour les entreprises au Maroc et à l'international.",
     "telephone": "+212687633774",
     "address": {
       "@type": "PostalAddress",
@@ -107,12 +107,13 @@ export default function RootLayout({
     "sameAs": [
       "https://www.instagram.com/wevtex.agency/"
     ],
-    "areaServed": ["MA", "US", "GB", "Worldwide"],
+    "areaServed": ["MA", "FR", "BE", "CA", "Worldwide"],
+    "inLanguage": "fr",
     "priceRange": "$$$"
   };
 
   return (
-    <html lang="en" className={fontVars}>
+    <html lang="fr" className={fontVars}>
       {/* Browser extensions (ColorZilla, Grammarly, etc.) inject attributes on
           body before hydration; this scopes the warning away from that one node. */}
       <body id='scrool' suppressHydrationWarning>

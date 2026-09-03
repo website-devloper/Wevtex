@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
+import { WHATSAPP_URL } from "@/lib/site-links";
 
 export default function Error({ error, reset }: { error: Error & { digest?: string }; reset: () => void }) {
   useEffect(() => {
@@ -33,7 +34,7 @@ export default function Error({ error, reset }: { error: Error & { digest?: stri
           Try again
         </button>
         <a
-          href="https://wa.me/212687633774"
+          href={WHATSAPP_URL}
           target="_blank"
           rel="noopener"
           style={{ padding: "12px 22px", borderRadius: 999, border: "1px solid #e6e6e3", color: "inherit", textDecoration: "none", fontWeight: 500 }}

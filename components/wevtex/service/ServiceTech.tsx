@@ -16,7 +16,7 @@ export function ServiceTech({ service }: { service: Service }) {
       <div className="container">
         <div className="sd-head reveal">
           <div className="sd-eyebrow-wrap">
-            <Eyebrow>Technology</Eyebrow>
+            <Eyebrow>Technologies</Eyebrow>
           </div>
           <Heading text={service.tech.title} em={service.tech.titleEm || []} />
           {service.tech.subtitle && <p className="sd-sub">{service.tech.subtitle}</p>}

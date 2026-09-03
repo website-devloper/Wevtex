@@ -36,7 +36,7 @@ export function ContactForm() {
 
     if (payload.name.trim().length < 2 || payload.contact.trim().length < 3 || payload.message.trim().length < 5) {
       setStatus("error");
-      setError("Please add your name, a way to reach you, and a short message.");
+      setError("Merci d’indiquer votre nom, un moyen de vous joindre et un court message.");
       return;
     }
 
@@ -50,20 +50,20 @@ export function ContactForm() {
       if (!res.ok) {
         const body = await res.json().catch(() => ({}));
         setStatus("error");
-        setError(body.error || "Something went wrong. Please try WhatsApp.");
+        setError(body.error || "Une erreur est survenue. Essayez plutôt WhatsApp.");
         return;
       }
       router.push("/thank-you");
     } catch {
       setStatus("error");
-      setError("Network error. Please check your connection or message us on WhatsApp.");
+      setError("Erreur réseau. Vérifiez votre connexion ou écrivez-nous sur WhatsApp.");
     }
   }
 
   return (
     <form className="form reveal" data-delay="2" onSubmit={handleSubmit} noValidate>
-      <div className="form-eyebrow">Quick brief</div>
-      <h3>Tell us about your <em>project</em>.</h3>
+      <div className="form-eyebrow">Brief express</div>
+      <h3>Parlez-nous de votre <em>projet</em>.</h3>
 
       {/* Honeypot — hidden from humans, catches bots. */}
       <input
@@ -77,16 +77,16 @@ export function ContactForm() {
 
       <div className="form-grid">
         <div className="field">
-          <label htmlFor="cf-name">Full name</label>
-          <input id="cf-name" name="name" type="text" placeholder="Your name" required autoComplete="name" />
+          <label htmlFor="cf-name">Nom complet</label>
+          <input id="cf-name" name="name" type="text" placeholder="Votre nom" required autoComplete="name" />
         </div>
         <div className="field">
-          <label htmlFor="cf-contact">WhatsApp or email</label>
-          <input id="cf-contact" name="contact" type="text" placeholder="So we can reply" required />
+          <label htmlFor="cf-contact">WhatsApp ou e-mail</label>
+          <input id="cf-contact" name="contact" type="text" placeholder="Pour que l’on puisse vous répondre" required />
         </div>
         <div className="field full">
-          <label htmlFor="cf-message">Your message</label>
-          <textarea id="cf-message" name="message" required placeholder="Tell us what you'd like to build and when you'd like it live."></textarea>
+          <label htmlFor="cf-message">Votre message</label>
+          <textarea id="cf-message" name="message" required placeholder="Dites-nous ce que vous souhaitez créer et pour quand."></textarea>
         </div>
       </div>
 
@@ -98,10 +98,10 @@ export function ContactForm() {
 
       <button type="submit" className="btn btn-primary" disabled={status === "sending"}>
         {status === "sending" ? (
-          "Sending…"
+          "Envoi en cours…"
         ) : (
           <>
-            Send message
+            Envoyer le message
             <svg className="arrow" width="14" height="14" viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="1.6"><path d="M3 9L9 3M9 3H4M9 3V8" /></svg>
           </>
         )}

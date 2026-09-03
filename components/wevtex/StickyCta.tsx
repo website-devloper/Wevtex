@@ -10,8 +10,9 @@
  */
 
 import { useEffect, useState } from "react";
+import { WHATSAPP_URL, CONTACT_URL } from "@/lib/site-links";
 
-export function StickyCta({ whatsappUrl }: { whatsappUrl: string }) {
+export function StickyCta({ whatsappUrl = WHATSAPP_URL }: { whatsappUrl?: string }) {
   const [shown, setShown] = useState(false);
 
   useEffect(() => {
@@ -29,8 +30,8 @@ export function StickyCta({ whatsappUrl }: { whatsappUrl: string }) {
         </svg>
         WhatsApp
       </a>
-      <a href="#contact" className="sticky-cta-btn primary">
-        Get a quote
+      <a href={CONTACT_URL} className="sticky-cta-btn primary">
+        Demander un devis
         <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
           <path d="M5 12h14M13 6l6 6-6 6" />
         </svg>

@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "About Wevtex | Casablanca Web & App Development Agency",
-  description: "Learn about Wevtex, a Casablanca-based web & app development agency building fast websites, online stores, SEO and automation for businesses across Morocco and worldwide.",
+  title: "À propos de Wevtex | Agence web & applications à Casablanca",
+  description: "Découvrez Wevtex, agence web basée à Casablanca : sites rapides, boutiques en ligne, SEO et automatisation pour les entreprises au Maroc et à l'international.",
   alternates: { canonical: "/about" },
   openGraph: {
-    title: "About Wevtex | Casablanca Web & App Development Agency",
-    description: "A Casablanca-based web & app development agency serving clients across Morocco and worldwide.",
+    title: "À propos de Wevtex | Agence web & applications à Casablanca",
+    description: "Une agence web et applications basée à Casablanca, au service de clients au Maroc et à l'international.",
     url: "/about",
   },
 };

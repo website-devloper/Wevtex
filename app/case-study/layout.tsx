@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Case Studies | Wevtex Enterprise Solutions",
-  description: "Read how Wevtex transforms businesses worldwide with high-performance web development, mobile apps, advanced SEO, and managed IT support.",
+  title: "Études de cas | Solutions entreprise Wevtex",
+  description: "Découvrez comment Wevtex transforme les entreprises : sites performants, applications mobiles, SEO avancé et infogérance.",
   openGraph: {
-    title: "Case Studies | Wevtex Enterprise Solutions",
-    description: "Read how Wevtex transforms businesses worldwide with high-performance web development, mobile apps, advanced SEO, and managed IT support.",
+    title: "Études de cas | Solutions entreprise Wevtex",
+    description: "Découvrez comment Wevtex transforme les entreprises : sites performants, applications mobiles, SEO avancé et infogérance.",
     url: 'https://wevtex.com/case-study',
   },
 };

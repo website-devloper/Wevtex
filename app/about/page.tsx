@@ -9,6 +9,7 @@ import "../wevtex-home.css";
 import { SiteHeader } from "../../components/wevtex/SiteHeader";
 import { SiteFooter } from "../../components/wevtex/SiteFooter";
 import { useReveal } from "../../components/wevtex/useReveal";
+import { HOME_URL, CONTACT_URL, PORTFOLIO_URL } from "@/lib/site-links";
 
 const VALUES = [
   { n: "i", h: <>Measure in <em>revenue</em>,<br />not pixels.</>, p: "Every project starts with the same question: what business outcome will this move? If we can't connect the work to a number you care about, we'll tell you — and we won't take the engagement." },
@@ -60,7 +61,7 @@ export default function AboutPage() {
         <div className="hero-grid-bg"></div>
         <div className="container">
           <div className="reveal">
-            <div className="crumb"><a href="/" style={{ color: "inherit" }}>Home</a> &nbsp;/&nbsp; About</div>
+            <div className="crumb"><a href={HOME_URL} style={{ color: "inherit" }}>Home</a> &nbsp;/&nbsp; About</div>
             <h1>A workshop —<br />not a <em>factory.</em></h1>
             <p className="lead">
               Wevtex is a global IT agency of senior engineers, designers, and strategists. We specialize in building scalable web and mobile applications, advanced SEO, and enterprise IT support for businesses across the US, UK, and worldwide.
@@ -165,7 +166,7 @@ export default function AboutPage() {
                 directly, and the same people write the code and stay reachable after launch.
               </p>
               <p className="fd-sign">Wevtex — Morocco</p>
-              <a href="/contact" className="btn btn-outline">
+              <a href={CONTACT_URL} className="btn btn-outline">
                 Message us directly
                 <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden><path d="M5 12h14M13 6l6 6-6 6" /></svg>
               </a>
@@ -245,11 +246,11 @@ export default function AboutPage() {
               We&apos;re ready to partner with ambitious businesses worldwide. If you&apos;ve got a project that needs senior craft and honest measurement, we&apos;d love to hear it.
             </p>
             <div className="cta-ctas">
-              <a href="/contact" className="btn btn-primary">
+              <a href={CONTACT_URL} className="btn btn-primary">
                 Start a Project
                 <svg className="arrow" viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="1.6"><path d="M3 9L9 3M9 3H4M9 3V8" /></svg>
               </a>
-              <a href="/portfolio" className="btn btn-outline">See Our Work</a>
+              <a href={PORTFOLIO_URL} className="btn btn-outline">See Our Work</a>
             </div>
           </div>
         </div>
