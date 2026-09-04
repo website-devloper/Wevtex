@@ -14,21 +14,12 @@
 import { useLeadSubmit } from "./useLeadSubmit";
 
 export function ProjectBriefForm() {
-  const { status, error, submit, setStatus, setError } = useLeadSubmit();
+  const { status, error, submit } = useLeadSubmit();
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const data = new FormData(e.currentTarget);
     const get = (k: string) => String(data.get(k) || "");
-
-    // WhatsApp is how we answer, so the number is not optional — and the
-    // auto-reply promises a WhatsApp message, which we must be able to keep.
-    // The form carries noValidate, so `required` alone would not stop this.
-    if (get("phone").replace(/\D/g, "").length < 8) {
-      setStatus("error");
-      setError("Merci d'indiquer votre numéro WhatsApp — c'est par là que nous répondons.");
-      return;
-    }
 
     await submit({
       name: get("name"),
@@ -69,8 +60,10 @@ export function ProjectBriefForm() {
           <input id="pb-contact" name="contact" type="email" placeholder="jane@company.com" required autoComplete="email" />
         </div>
         <div className="field">
-          <label htmlFor="pb-phone">WhatsApp</label>
-          <input id="pb-phone" name="phone" type="tel" placeholder="+212 6 12 34 56 78" required autoComplete="tel" />
+          <label htmlFor="pb-phone">
+            WhatsApp <span style={{ opacity: 0.6, fontWeight: 400 }}>(faster reply)</span>
+          </label>
+          <input id="pb-phone" name="phone" type="tel" placeholder="+212 6 12 34 56 78" autoComplete="tel" />
         </div>
         <div className="field">
           <label htmlFor="pb-service">Project type</label>
