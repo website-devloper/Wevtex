@@ -11,12 +11,14 @@
  * prestation en particulier, elle sait seulement les afficher.
  */
 
+import Image from "next/image";
 import "../../../app/wevtex-home.css";
 import { SiteHeader } from "../SiteHeader";
 import { SiteFooter } from "../SiteFooter";
 import { StickyCta } from "../StickyCta";
 import { useReveal } from "../useReveal";
 import { SERVICE_ICONS, CtaBand } from "../SharedSections";
+import { SERVICES as MARKETED } from "../homeContent";
 import { WHATSAPP_URL } from "@/lib/site-links";
 import type { Service } from "@/lib/services-data";
 
@@ -65,6 +67,9 @@ export function ServiceDetailView({ service }: { service: Service }) {
   useReveal();
 
   const features = service.featureSections?.[0];
+  /* L'illustration de la prestation, la même que sur /services : les deux
+     listes partagent le slug, c'est le contrat posé dans services-data.ts. */
+  const art = MARKETED.find((m) => m.slug === service.slug)?.image;
 
   return (
     <div className="wevtex mode-light">
@@ -98,7 +103,21 @@ export function ServiceDetailView({ service }: { service: Service }) {
             </div>
 
             <div className="srv-d-hero-side reveal">
-              <span className="srv-d-icon">{SERVICE_ICONS[service.slug]}</span>
+              {art ? (
+                <div className="srv-d-hero-art">
+                  <Image
+                    src={art}
+                    alt={`Aperçu — ${service.name}`}
+                    width={900}
+                    height={860}
+                    quality={90}
+                    sizes="(max-width: 900px) 92vw, 34vw"
+                    priority
+                  />
+                </div>
+              ) : (
+                <span className="srv-d-icon">{SERVICE_ICONS[service.slug]}</span>
+              )}
               <ul className="srv-d-includes">
                 {service.includes.map((inc) => (
                   <li key={inc}>{CHECK}{inc}</li>

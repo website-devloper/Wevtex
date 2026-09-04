@@ -6966,6 +6966,23 @@
   display: inline-grid; place-items: center; width: 52px; height: 52px;
   border-radius: 50%; background: #101112; color: #fff; margin-bottom: 20px;
 }
+/* L'illustration de la prestation en tête de la carte : même traitement que
+   sur /services, l'artwork sur le fond de la carte, sans cadre ni ombre.
+   Un filet la sépare de la liste « ce qui est inclus ». */
+.wevtex .srv-d-hero-art {
+  position: relative;
+  margin: -8px -6px 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid rgba(16, 17, 18, 0.12);
+}
+.wevtex .srv-d-hero-art img {
+  display: block; width: 100%; height: auto;
+  aspect-ratio: 4 / 3; object-fit: contain; object-position: center;
+}
+@media (max-width: 900px) {
+  .wevtex .srv-d-hero-art img { aspect-ratio: 16 / 10; }
+}
+
 .wevtex .srv-d-includes { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 14px; }
 .wevtex .srv-d-includes li {
   display: flex; align-items: flex-start; gap: 11px;
