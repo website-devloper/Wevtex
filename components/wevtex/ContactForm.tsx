@@ -22,7 +22,7 @@ export function ContactForm() {
       business: "",
       service: "",
       message: String(data.get("message") || ""),
-      company_url: String(data.get("company_url") || ""), // honeypot
+      hp_token: String(data.get("hp_token") || ""), // honeypot
     });
   }
 
@@ -31,10 +31,12 @@ export function ContactForm() {
       <div className="form-eyebrow">Brief express</div>
       <h3>Parlez-nous de votre <em>projet</em>.</h3>
 
-      {/* Honeypot — hidden from humans, catches bots. */}
+      {/* Honeypot — hidden from humans, catches bots. Deliberately named
+          nothing like a real field: browser autofill matches on names, and a
+          "company_url" here was being filled for real visitors. */}
       <input
         type="text"
-        name="company_url"
+        name="hp_token"
         tabIndex={-1}
         autoComplete="off"
         aria-hidden="true"

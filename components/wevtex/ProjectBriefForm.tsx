@@ -30,7 +30,7 @@ export function ProjectBriefForm() {
       timeline: get("timeline"),
       source: get("source"),
       message: get("message"),
-      company_url: get("company_url"), // honeypot
+      hp_token: get("hp_token"), // honeypot
     });
   }
 
@@ -39,10 +39,12 @@ export function ProjectBriefForm() {
       <div className="form-eyebrow">// Project brief</div>
       <h3>Tell us about your <em>project.</em></h3>
 
-      {/* Honeypot — hidden from humans, catches bots. */}
+      {/* Honeypot — hidden from humans, catches bots. Deliberately named
+          nothing like a real field: browser autofill matches on names, and a
+          "company_url" here was being filled for real visitors. */}
       <input
         type="text"
-        name="company_url"
+        name="hp_token"
         tabIndex={-1}
         autoComplete="off"
         aria-hidden="true"

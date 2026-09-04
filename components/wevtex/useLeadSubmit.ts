@@ -24,7 +24,7 @@ export type LeadPayload = {
   source?: string;
   topic?: string;
   /** Honeypot — hidden from humans, filled only by bots. */
-  company_url?: string;
+  hp_token?: string;
 };
 
 export type LeadStatus = "idle" | "sending" | "error";

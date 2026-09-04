@@ -28,7 +28,12 @@ type Payload = {
   source?: string;
   // Distinguishes a project brief from a newsletter signup in the subject line.
   topic?: string;
-  // Honeypot: real users never fill this hidden field.
+  // Honeypot: real users never fill this hidden field. Named non-semantically
+  // because Chrome's address autofill matches on field names — the old name
+  // ("company_url") sat next to a real Company input on /contact and was being
+  // autofilled for real people, whose enquiries were then dropped as spam.
+  hp_token?: string;
+  /** Legacy honeypot name, still accepted so cached pages keep working. */
   company_url?: string;
 };
 
@@ -103,8 +108,16 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: "Invalid request." }, { status: 400 });
   }
 
-  // Honeypot — pretend success so bots don't retry.
-  if (body.company_url && body.company_url.trim() !== "") {
+  // Honeypot — pretend success so bots don't retry, but leave a trace. A silent
+  // 200 here is indistinguishable from a delivered lead, so it must be logged:
+  // that is what made an autofilled honeypot impossible to diagnose.
+  const trap = (body.hp_token || body.company_url || "").trim();
+  if (trap !== "") {
+    console.warn("Contact form: honeypot triggered, submission dropped.", {
+      field: body.hp_token ? "hp_token" : "company_url",
+      name: (body.name || "").slice(0, 40),
+      contact: (body.contact || "").slice(0, 60),
+    });
     return NextResponse.json({ ok: true });
   }
 
@@ -179,6 +192,7 @@ export async function POST(req: Request) {
       html: adminHtml,
       replyTo: visitorIsEmail ? contact : undefined,
     });
+    console.info("Contact form: lead delivered to team.", { name, contact });
   } catch (err) {
     console.error("Contact form: team notification failed.", err);
     return NextResponse.json(
