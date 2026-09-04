@@ -7,6 +7,7 @@ import { useState } from "react";
 import "../wevtex-home.css";
 import { SiteHeader } from "../../components/wevtex/SiteHeader";
 import { SiteFooter } from "../../components/wevtex/SiteFooter";
+import { ProjectBriefForm } from "../../components/wevtex/ProjectBriefForm";
 import { useReveal } from "../../components/wevtex/useReveal";
 import { EMAIL_URL, HOME_URL, PORTFOLIO_URL } from "@/lib/site-links";
 
@@ -23,7 +24,6 @@ const FAQS = [
 export default function ContactPage() {
 
   useReveal();
-  const [sent, setSent] = useState(false);
   const [open, setOpen] = useState<Record<number, boolean>>({ 0: true });
   const toggle = (i: number) => setOpen((o) => ({ ...o, [i]: !o[i] }));
 
@@ -76,76 +76,7 @@ export default function ContactPage() {
               </div>
             </div>
 
-            <form className="form reveal" data-delay="2" onSubmit={(e) => { e.preventDefault(); setSent(true); }}>
-              <div className="form-eyebrow">// Project brief</div>
-              <h3>Tell us about your <em>project.</em></h3>
-              <div className="form-grid">
-                <div className="field"><label>Full name</label><input type="text" placeholder="Jane Smith" /></div>
-                <div className="field"><label>Work email</label><input type="email" placeholder="jane@company.com" /></div>
-                <div className="field"><label>Company</label><input type="text" placeholder="Your company" /></div>
-                <div className="field"><label>Phone (optional)</label><input type="tel" placeholder="+1 234 567 890" /></div>
-                <div className="field">
-                  <label>Project type</label>
-                  <select defaultValue="">
-                    <option value="">Select type</option>
-                    <option>E-commerce</option>
-                    <option>SaaS</option>
-                    <option>Booking system</option>
-                    <option>Desktop software</option>
-                    <option>Marketing site</option>
-                    <option>Migration</option>
-                    <option>Not sure yet</option>
-                  </select>
-                </div>
-                <div className="field">
-                  <label>Budget range</label>
-                  <select defaultValue="">
-                    <option value="">Select budget</option>
-                    <option>MAD 3K — 10K</option>
-                    <option>MAD 10K — 25K</option>
-                    <option>MAD 25K — 50K</option>
-                    <option>MAD 50K+</option>
-                    <option>Not sure yet</option>
-                  </select>
-                </div>
-                <div className="field">
-                  <label>Timeline</label>
-                  <select defaultValue="">
-                    <option value="">Select timeline</option>
-                    <option>ASAP</option>
-                    <option>Within 1 month</option>
-                    <option>1—3 months</option>
-                    <option>3+ months</option>
-                    <option>Just exploring</option>
-                  </select>
-                </div>
-                <div className="field">
-                  <label>How&apos;d you find us?</label>
-                  <select defaultValue="">
-                    <option value="">Select source</option>
-                    <option>Google</option>
-                    <option>Referral</option>
-                    <option>Clutch / DesignRush</option>
-                    <option>Social</option>
-                    <option>Other</option>
-                  </select>
-                </div>
-                <div className="field full">
-                  <label>Project brief</label>
-                  <textarea placeholder="What are you trying to build? What's the deadline? What's keeping you up at night?" style={{ minHeight: 140 }}></textarea>
-                </div>
-              </div>
-              <button type="submit" className="btn btn-primary">
-                {sent ? (
-                  "Sent ✓ — we'll reply within 24h"
-                ) : (
-                  <>
-                    Send Message
-                    <svg className="arrow" width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" strokeWidth="1.6"><path d="M2 7l10-5-3 12-2-5-5-2z" /></svg>
-                  </>
-                )}
-              </button>
-            </form>
+            <ProjectBriefForm />
           </div>
         </div>
       </section>

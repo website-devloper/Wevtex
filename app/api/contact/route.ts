@@ -20,6 +20,14 @@ type Payload = {
   business?: string;
   service?: string;
   message?: string;
+  // Extra qualifying answers from the long brief on /contact. All optional so
+  // the short home form keeps working unchanged.
+  phone?: string;
+  budget?: string;
+  timeline?: string;
+  source?: string;
+  // Distinguishes a project brief from a newsletter signup in the subject line.
+  topic?: string;
   // Honeypot: real users never fill this hidden field.
   company_url?: string;
 };
@@ -113,6 +121,11 @@ export async function POST(req: Request) {
   const business = (body.business || "").trim();
   const service = (body.service || "").trim();
   const message = (body.message || "").trim();
+  const phone = (body.phone || "").trim().slice(0, 60);
+  const budget = (body.budget || "").trim().slice(0, 60);
+  const timeline = (body.timeline || "").trim().slice(0, 60);
+  const source = (body.source || "").trim().slice(0, 60);
+  const topic = (body.topic || "").trim().slice(0, 40);
 
   if (name.length < 2 || contact.length < 3 || message.length < 5) {
     return NextResponse.json(
@@ -131,7 +144,7 @@ export async function POST(req: Request) {
   if (!apiKey || !notify || !from) {
     // Don't lose the lead silently: log it server-side so it's recoverable.
     console.error("Contact form: missing email env vars. Lead received:", {
-      name, contact, business, service, message,
+      name, contact, business, service, message, phone, budget, timeline, source, topic,
     });
     return NextResponse.json(
       { error: "Email isn't configured yet. Please reach us on WhatsApp for now." },
@@ -148,6 +161,10 @@ export async function POST(req: Request) {
       <tr><td><b>Contact</b></td><td>${esc(contact)}</td></tr>
       <tr><td><b>Business</b></td><td>${esc(business) || "—"}</td></tr>
       <tr><td><b>Needs</b></td><td>${esc(service) || "—"}</td></tr>
+      <tr><td><b>Phone</b></td><td>${esc(phone) || "—"}</td></tr>
+      <tr><td><b>Budget</b></td><td>${esc(budget) || "—"}</td></tr>
+      <tr><td><b>Timeline</b></td><td>${esc(timeline) || "—"}</td></tr>
+      <tr><td><b>Heard via</b></td><td>${esc(source) || "—"}</td></tr>
       <tr><td valign="top"><b>Message</b></td><td>${esc(message).replace(/\n/g, "<br>")}</td></tr>
     </table>`;
 
@@ -158,7 +175,7 @@ export async function POST(req: Request) {
       apiKey,
       from,
       to: notify,
-      subject: `New lead — ${name}${business ? ` (${business})` : ""}`,
+      subject: `${topic === "newsletter" ? "Newsletter signup" : "New lead"} — ${name}${business ? ` (${business})` : ""}`,
       html: adminHtml,
       replyTo: visitorIsEmail ? contact : undefined,
     });
@@ -173,7 +190,7 @@ export async function POST(req: Request) {
   // The auto-reply is best-effort: a bounced confirmation must never fail a
   // lead that already reached the team. (Also why Resend test mode — which
   // only allows emailing your own address — doesn't break real submissions.)
-  if (visitorIsEmail) {
+  if (visitorIsEmail && topic !== "newsletter") {
     try {
       await sendEmail({
         apiKey,

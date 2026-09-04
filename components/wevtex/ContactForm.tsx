@@ -2,62 +2,28 @@
 
 /**
  * Home contact form — a small client island.
- * Validates, POSTs to /api/contact, then redirects to /thank-you on success
- * (where the conversion event is fired). Never loses the visitor's input on error.
+ * Deliberately short: name, one way to reach you, and a message. The longer
+ * qualifying brief lives on /contact. Both submit through useLeadSubmit.
  */
 
-import { useState } from "react";
-import { useRouter } from "next/navigation";
-
-type Status = "idle" | "sending" | "error";
+import { useLeadSubmit } from "./useLeadSubmit";
 
 export function ContactForm() {
-  const router = useRouter();
-  const [status, setStatus] = useState<Status>("idle");
-  const [error, setError] = useState("");
+  const { status, error, submit } = useLeadSubmit();
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    if (status === "sending") return;
-    setError("");
-
-    const form = e.currentTarget;
-    const data = new FormData(form);
-    const payload = {
+    const data = new FormData(e.currentTarget);
+    await submit({
       name: String(data.get("name") || ""),
       contact: String(data.get("contact") || ""),
-      // Business and service were dropped from the form to cut friction; the
+      // Business and service were dropped from this form to cut friction; the
       // Route Handler still accepts them, so they are sent empty.
       business: "",
       service: "",
       message: String(data.get("message") || ""),
       company_url: String(data.get("company_url") || ""), // honeypot
-    };
-
-    if (payload.name.trim().length < 2 || payload.contact.trim().length < 3 || payload.message.trim().length < 5) {
-      setStatus("error");
-      setError("Merci d’indiquer votre nom, un moyen de vous joindre et un court message.");
-      return;
-    }
-
-    setStatus("sending");
-    try {
-      const res = await fetch("/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload),
-      });
-      if (!res.ok) {
-        const body = await res.json().catch(() => ({}));
-        setStatus("error");
-        setError(body.error || "Une erreur est survenue. Essayez plutôt WhatsApp.");
-        return;
-      }
-      router.push("/thank-you");
-    } catch {
-      setStatus("error");
-      setError("Erreur réseau. Vérifiez votre connexion ou écrivez-nous sur WhatsApp.");
-    }
+    });
   }
 
   return (
