@@ -111,18 +111,13 @@ export function ServiceDetailView({ service }: { service: Service }) {
                     width={900}
                     height={860}
                     quality={90}
-                    sizes="(max-width: 900px) 92vw, 34vw"
+                    sizes="(max-width: 900px) 92vw, 40vw"
                     priority
                   />
                 </div>
               ) : (
                 <span className="srv-d-icon">{SERVICE_ICONS[service.slug]}</span>
               )}
-              <ul className="srv-d-includes">
-                {service.includes.map((inc) => (
-                  <li key={inc}>{CHECK}{inc}</li>
-                ))}
-              </ul>
             </div>
           </div>
         </div>
