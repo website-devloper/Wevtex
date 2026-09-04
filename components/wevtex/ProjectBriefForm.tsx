@@ -33,10 +33,8 @@ export function ProjectBriefForm() {
     await submit({
       name: get("name"),
       contact: get("contact"),
-      business: get("business"),
       service: get("service"),
       phone: get("phone"),
-      budget: get("budget"),
       timeline: get("timeline"),
       source: get("source"),
       message: get("message"),
@@ -71,10 +69,6 @@ export function ProjectBriefForm() {
           <input id="pb-contact" name="contact" type="email" placeholder="jane@company.com" required autoComplete="email" />
         </div>
         <div className="field">
-          <label htmlFor="pb-business">Company</label>
-          <input id="pb-business" name="business" type="text" placeholder="Your company" autoComplete="organization" />
-        </div>
-        <div className="field">
           <label htmlFor="pb-phone">WhatsApp</label>
           <input id="pb-phone" name="phone" type="tel" placeholder="+212 6 12 34 56 78" required autoComplete="tel" />
         </div>
@@ -88,17 +82,6 @@ export function ProjectBriefForm() {
             <option>Desktop software</option>
             <option>Marketing site</option>
             <option>Migration</option>
-            <option>Not sure yet</option>
-          </select>
-        </div>
-        <div className="field">
-          <label htmlFor="pb-budget">Budget range</label>
-          <select id="pb-budget" name="budget" defaultValue="">
-            <option value="">Select budget</option>
-            <option>MAD 3K — 10K</option>
-            <option>MAD 10K — 25K</option>
-            <option>MAD 25K — 50K</option>
-            <option>MAD 50K+</option>
             <option>Not sure yet</option>
           </select>
         </div>
