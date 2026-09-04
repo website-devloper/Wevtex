@@ -180,8 +180,12 @@ export function autoReplyEmail(d: { firstName: string; whatsappUrl: string }) {
     <td style="padding:30px 32px 0;font-family:${FONT};">
       <div style="font-size:22px;font-weight:700;color:${INK};line-height:1.3;">Merci ${esc(d.firstName)} —<br>votre message est bien arrivé.</div>
       <div style="font-size:15px;line-height:1.7;color:${INK_2};margin-top:16px;">
-        Nous le lisons et revenons vers vous dans les prochaines heures ouvrées,
-        avec un conseil honnête et un prix clair. Pas de jargon, pas de surprise.
+        Nous revenons vers vous dans les prochaines heures ouvrées avec un avis
+        clair sur votre projet et un prix précis.
+      </div>
+      <div style="font-size:15px;line-height:1.7;color:${INK_2};margin-top:14px;">
+        Et si votre idée est encore en train de se préciser, tant mieux&nbsp;: c'est
+        souvent là que le meilleur travail commence. Nous vous aiderons à la cadrer.
       </div>
       <div style="font-size:15px;line-height:1.7;color:${INK_2};margin-top:14px;">
         Besoin d'une réponse plus rapide&nbsp;? Écrivez-nous sur WhatsApp.
