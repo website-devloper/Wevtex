@@ -13,12 +13,11 @@ import "../../app/wevtex-home.css";
 import { SiteHeader } from "./SiteHeader";
 import { SiteFooter } from "./SiteFooter";
 import { ScrollRevealText } from "./ScrollRevealText";
-import { ContactForm } from "./ContactForm";
 import { StickyCta } from "./StickyCta";
 import { FAQS, SERVICES } from "./homeContent";
 import { ServicesBento, SERVICE_ICONS } from "./SharedSections";
 /* Contact channels — one definition for the whole site, see lib/site-links.ts */
-import { WHATSAPP_URL, EMAIL_URL, AUDIT_WHATSAPP_URL, serviceWhatsAppUrl, GOOGLE_REVIEWS_URL, PORTFOLIO_URL, industryPath } from "@/lib/site-links";
+import { WHATSAPP_URL, serviceWhatsAppUrl, GOOGLE_REVIEWS_URL, PORTFOLIO_URL, industryPath } from "@/lib/site-links";
 
 /* ---------------------------------------------------------------------------
  * Claims about the business — keep these accurate.
@@ -931,57 +930,6 @@ export function HomeClient() {
           Deliberately spare: one line of copy, two channels, the form.
           The steps, trust row and card header were cut — the page has
           already made the argument by the time anyone scrolls here. */}
-      <section className="contact-split" id="contact">
-        <span className="cs-motif" aria-hidden></span>
-        <div className="container">
-          <div className="cs-grid">
-
-            <div className="cs-left reveal">
-              <span className="eyebrow line-eyebrow">Contact</span>
-              <h2 className="h-section" style={{ marginTop: 18 }}>
-                Dites-nous ce que vous<br />construisez. <em className="hl-em">On le chiffre.</em>
-              </h2>
-              <p className="cs-sub">
-                Envoyez votre brief, recevez un plan et un prix ferme le jour même.
-              </p>
-
-              <div className="cs-channels">
-                <a className="cs-chan" href={WHATSAPP_URL} target="_blank" rel="noopener">
-                  <span className="cs-chan-ic">{WHATSAPP}</span>
-                  <span className="cs-chan-tx"><b>WhatsApp</b></span>
-                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden><path d="M5 12h14M13 6l6 6-6 6" /></svg>
-                </a>
-                <a className="cs-chan" href={EMAIL_URL}>
-                  <span className="cs-chan-ic">
-                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="5" width="18" height="14" rx="2" /><path d="M3 7l9 6 9-6" /></svg>
-                  </span>
-                  <span className="cs-chan-tx"><b>hello@wevtex.com</b></span>
-                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden><path d="M5 12h14M13 6l6 6-6 6" /></svg>
-                </a>
-              </div>
-
-              <p className="cs-hours">
-                <span className="cs-dot" aria-hidden></span>
-                Lun &ndash; Ven 09h00&ndash;18h00 &middot; Sam 10h00&ndash;14h00
-              </p>
-            </div>
-
-            <div className="cs-right reveal">
-              <div className="cs-form-card">
-                <ContactForm />
-              </div>
-              <p className="cs-audit">
-                <a href={AUDIT_WHATSAPP_URL} target="_blank" rel="noopener">
-                  Audit téléphonique gratuit de 15 min
-                </a>{" "}
-                si vous n&apos;êtes pas encore prêt pour un devis.
-              </p>
-            </div>
-
-          </div>
-        </div>
-      </section>
-
       {/* ===================== FOOTER ===================== */}
       <SiteFooter />
 
