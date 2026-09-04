@@ -1,4 +1,6 @@
 import { NextResponse } from "next/server";
+import { WHATSAPP_URL } from "@/lib/site-links";
+import { leadNotificationEmail, newsletterEmail, autoReplyEmail } from "@/lib/email-templates";
 
 /**
  * Contact / lead Route Handler.
@@ -38,11 +40,6 @@ type Payload = {
 };
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-const esc = (s: string) =>
-  s.replace(/[&<>"']/g, (c) =>
-    ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c] as string)
-  );
-
 /**
  * Best-effort in-memory rate limit: max RATE_MAX submissions per IP per window.
  * Note: serverless instances each have their own memory, so this is a first
@@ -167,19 +164,10 @@ export async function POST(req: Request) {
 
   const visitorIsEmail = EMAIL_RE.test(contact);
 
-  const adminHtml = `
-    <h2>New lead from wevtex.com</h2>
-    <table cellpadding="6" style="border-collapse:collapse;font-family:system-ui,sans-serif">
-      <tr><td><b>Name</b></td><td>${esc(name)}</td></tr>
-      <tr><td><b>Contact</b></td><td>${esc(contact)}</td></tr>
-      <tr><td><b>Business</b></td><td>${esc(business) || "—"}</td></tr>
-      <tr><td><b>Needs</b></td><td>${esc(service) || "—"}</td></tr>
-      <tr><td><b>Phone</b></td><td>${esc(phone) || "—"}</td></tr>
-      <tr><td><b>Budget</b></td><td>${esc(budget) || "—"}</td></tr>
-      <tr><td><b>Timeline</b></td><td>${esc(timeline) || "—"}</td></tr>
-      <tr><td><b>Heard via</b></td><td>${esc(source) || "—"}</td></tr>
-      <tr><td valign="top"><b>Message</b></td><td>${esc(message).replace(/\n/g, "<br>")}</td></tr>
-    </table>`;
+  const adminHtml =
+    topic === "newsletter"
+      ? newsletterEmail(contact)
+      : leadNotificationEmail({ name, contact, business, service, phone, budget, timeline, source, message });
 
   // Notifying the team is the critical path — if this fails, the lead is lost,
   // so surface an error.
@@ -188,7 +176,7 @@ export async function POST(req: Request) {
       apiKey,
       from,
       to: notify,
-      subject: `${topic === "newsletter" ? "Newsletter signup" : "New lead"} — ${name}${business ? ` (${business})` : ""}`,
+      subject: `${topic === "newsletter" ? "Inscription newsletter" : "Nouveau prospect"} — ${name}${business ? ` (${business})` : ""}`,
       html: adminHtml,
       replyTo: visitorIsEmail ? contact : undefined,
     });
@@ -210,13 +198,11 @@ export async function POST(req: Request) {
         apiKey,
         from,
         to: contact,
-        subject: "Thanks — we've got your message (Wevtex)",
-        html: `
-          <p>Hi ${esc(name.split(" ")[0] || name)},</p>
-          <p>Thanks for reaching out to Wevtex. We've received your message and will reply
-          within a few hours during working hours with honest advice and a clear price.</p>
-          <p>Need a faster answer? Message us on WhatsApp.</p>
-          <p>— The Wevtex team</p>`,
+        subject: "Merci — nous avons bien reçu votre message (Wevtex)",
+        html: autoReplyEmail({
+          firstName: name.split(" ")[0] || name,
+          whatsappUrl: WHATSAPP_URL,
+        }),
       });
     } catch (err) {
       console.error("Contact form: auto-reply failed (lead still captured).", err);
