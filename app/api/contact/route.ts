@@ -200,7 +200,7 @@ export async function POST(req: Request) {
         apiKey,
         from,
         to: contact,
-        subject: "Merci — nous avons bien reçu votre message (Wevtex)",
+        subject: "Merci — nous avons bien reçu votre message",
         html: autoReplyEmail({
           firstName: name.split(" ")[0] || name,
           whatsappUrl: WHATSAPP_URL,
