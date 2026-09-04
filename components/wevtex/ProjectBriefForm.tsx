@@ -1,116 +1,232 @@
 "use client";
 
 /**
- * The long qualifying brief on /contact.
+ * The project brief on /contact — three short steps rather than one long form.
  *
- * Same fields the page always showed — but they now reach the team. Until
- * 2026-09-04 this form called setSent(true) and discarded the enquiry, so every
- * submission from the site's own Contact page was silently lost.
+ * Every field is required, which a single nine-field form could not carry
+ * without losing people. Split into steps of three, each screen asks little
+ * and the progress bar shows how little is left.
  *
- * Copy is still English while the rest of the site is French; that is Day 5 of
- * the launch plan, kept separate so this change stays reviewable.
+ * Values are held in state, not read from the DOM at submit, because fields
+ * from earlier steps are unmounted by the time the last one is sent.
  */
 
+import { useState } from "react";
 import { useLeadSubmit } from "./useLeadSubmit";
 
+/* Mirrors the services in the footer, so a brief names something we sell. */
+const SERVICES = [
+  "Création de site web",
+  "Boutique en ligne",
+  "Application mobile",
+  "Logiciel bureau",
+  "Référencement naturel (SEO)",
+  "Google Maps & SEO local",
+  "Publicité en ligne (Google, Meta)",
+  "Chatbot WhatsApp",
+  "Refonte d'un site existant",
+  "Je ne sais pas encore",
+];
+
+const TIMELINES = [
+  "Dès que possible",
+  "Sous 1 mois",
+  "1 à 3 mois",
+  "Plus de 3 mois",
+  "Je me renseigne",
+];
+
+const SOURCES = [
+  "Google",
+  "Recommandation",
+  "Instagram",
+  "LinkedIn",
+  "Déjà client",
+  "Autre",
+];
+
+const STEP_LABELS = ["Vos coordonnées", "Votre projet", "Votre brief"];
+const TOTAL = STEP_LABELS.length;
+
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+type Values = {
+  name: string;
+  contact: string;
+  phone: string;
+  service: string;
+  timeline: string;
+  source: string;
+  message: string;
+};
+
+const EMPTY: Values = {
+  name: "",
+  contact: "",
+  phone: "",
+  service: "",
+  timeline: "",
+  source: "",
+  message: "",
+};
+
 export function ProjectBriefForm() {
-  const { status, error, submit } = useLeadSubmit();
+  const { status, error, submit, setStatus, setError } = useLeadSubmit();
+  const [step, setStep] = useState(0);
+  const [v, setV] = useState<Values>(EMPTY);
+  const [hp, setHp] = useState("");
+
+  const set =
+    (k: keyof Values) =>
+    (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
+      setV((prev) => ({ ...prev, [k]: e.target.value }));
+      if (status === "error") setStatus("idle");
+    };
+
+  /** Returns the first problem on the current step, or null when it is clear. */
+  function problemOnStep(s: number): string | null {
+    if (s === 0) {
+      if (v.name.trim().length < 2) return "Merci d'indiquer votre nom.";
+      if (!EMAIL_RE.test(v.contact.trim())) return "Merci d'indiquer une adresse e-mail valide.";
+      if (v.phone.replace(/\D/g, "").length < 8) return "Merci d'indiquer un numéro de téléphone valide.";
+    }
+    if (s === 1) {
+      if (!v.service) return "Choisissez le type de projet.";
+      if (!v.timeline) return "Indiquez votre délai souhaité.";
+      if (!v.source) return "Dites-nous comment vous nous avez connus.";
+    }
+    if (s === 2) {
+      if (v.message.trim().length < 10) return "Décrivez votre projet en quelques mots.";
+    }
+    return null;
+  }
+
+  function next() {
+    const problem = problemOnStep(step);
+    if (problem) {
+      setStatus("error");
+      setError(problem);
+      return;
+    }
+    setStatus("idle");
+    setError("");
+    setStep((s) => Math.min(TOTAL - 1, s + 1));
+  }
+
+  function back() {
+    setStatus("idle");
+    setError("");
+    setStep((s) => Math.max(0, s - 1));
+  }
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    const data = new FormData(e.currentTarget);
-    const get = (k: string) => String(data.get(k) || "");
-
-    await submit({
-      name: get("name"),
-      contact: get("contact"),
-      service: get("service"),
-      phone: get("phone"),
-      timeline: get("timeline"),
-      source: get("source"),
-      message: get("message"),
-      hp_token: get("hp_token"), // honeypot
-    });
+    // Enter on an early step advances rather than submitting a half-filled brief.
+    if (step < TOTAL - 1) {
+      next();
+      return;
+    }
+    for (let s = 0; s < TOTAL; s++) {
+      const problem = problemOnStep(s);
+      if (problem) {
+        setStep(s);
+        setStatus("error");
+        setError(problem);
+        return;
+      }
+    }
+    await submit({ ...v, hp_token: hp });
   }
+
+  const pct = ((step + 1) / TOTAL) * 100;
 
   return (
     <form className="form reveal" data-delay="2" onSubmit={handleSubmit} noValidate>
-      <div className="form-eyebrow">// Project brief</div>
-      <h3>Tell us about your <em>project.</em></h3>
+      <div className="form-eyebrow">Votre projet</div>
+      <h3>Parlez-nous de votre <em>projet.</em></h3>
 
       {/* Honeypot — hidden from humans, catches bots. Deliberately named
-          nothing like a real field: browser autofill matches on names, and a
-          "company_url" here was being filled for real visitors. */}
+          nothing like a real field: browser autofill matches on names. */}
       <input
         type="text"
         name="hp_token"
+        value={hp}
+        onChange={(e) => setHp(e.target.value)}
         tabIndex={-1}
         autoComplete="off"
         aria-hidden="true"
         style={{ position: "absolute", left: "-9999px", width: 1, height: 1, opacity: 0 }}
       />
 
-      <div className="form-grid">
-        <div className="field">
-          <label htmlFor="pb-name">Full name</label>
-          <input id="pb-name" name="name" type="text" placeholder="Jane Smith" required autoComplete="name" />
+      <div className="pb-progress">
+        <div className="pb-track">
+          <span className="pb-fill" style={{ width: `${pct}%` }} />
         </div>
-        <div className="field">
-          <label htmlFor="pb-contact">Work email</label>
-          <input id="pb-contact" name="contact" type="email" placeholder="jane@company.com" required autoComplete="email" />
-        </div>
-        <div className="field">
-          <label htmlFor="pb-phone">
-            WhatsApp <span style={{ opacity: 0.6, fontWeight: 400 }}>(faster reply)</span>
-          </label>
-          <input id="pb-phone" name="phone" type="tel" placeholder="+212 6 12 34 56 78" autoComplete="tel" />
-        </div>
-        <div className="field">
-          <label htmlFor="pb-service">Project type</label>
-          <select id="pb-service" name="service" defaultValue="">
-            <option value="">Select type</option>
-            <option>E-commerce</option>
-            <option>SaaS</option>
-            <option>Booking system</option>
-            <option>Desktop software</option>
-            <option>Marketing site</option>
-            <option>Migration</option>
-            <option>Not sure yet</option>
-          </select>
-        </div>
-        <div className="field">
-          <label htmlFor="pb-timeline">Timeline</label>
-          <select id="pb-timeline" name="timeline" defaultValue="">
-            <option value="">Select timeline</option>
-            <option>ASAP</option>
-            <option>Within 1 month</option>
-            <option>1—3 months</option>
-            <option>3+ months</option>
-            <option>Just exploring</option>
-          </select>
-        </div>
-        <div className="field">
-          <label htmlFor="pb-source">How&apos;d you find us?</label>
-          <select id="pb-source" name="source" defaultValue="">
-            <option value="">Select source</option>
-            <option>Google</option>
-            <option>Referral</option>
-            <option>Clutch / DesignRush</option>
-            <option>Social</option>
-            <option>Other</option>
-          </select>
-        </div>
-        <div className="field full">
-          <label htmlFor="pb-message">Project brief</label>
-          <textarea
-            id="pb-message"
-            name="message"
-            required
-            placeholder="What are you trying to build? What's the deadline? What's keeping you up at night?"
-            style={{ minHeight: 140 }}
-          ></textarea>
-        </div>
+        <span className="pb-count">{step + 1} / {TOTAL}</span>
       </div>
+
+      <div className="pb-step-label">{STEP_LABELS[step]}</div>
+
+      {step === 0 && (
+        <div className="form-grid">
+          <div className="field full">
+            <label htmlFor="pb-name">Nom complet</label>
+            <input id="pb-name" type="text" value={v.name} onChange={set("name")}
+                   placeholder="Votre nom et prénom" autoComplete="name" />
+          </div>
+          <div className="field full">
+            <label htmlFor="pb-contact">E-mail</label>
+            <input id="pb-contact" type="email" value={v.contact} onChange={set("contact")}
+                   placeholder="vous@entreprise.ma" autoComplete="email" />
+          </div>
+          <div className="field full">
+            <label htmlFor="pb-phone">Téléphone / WhatsApp</label>
+            <input id="pb-phone" type="tel" value={v.phone} onChange={set("phone")}
+                   placeholder="+212 6 XX XX XX XX" autoComplete="tel" />
+          </div>
+        </div>
+      )}
+
+      {step === 1 && (
+        <div className="form-grid">
+          <div className="field full">
+            <label htmlFor="pb-service">Type de projet</label>
+            <select id="pb-service" value={v.service} onChange={set("service")}>
+              <option value="">Sélectionnez un type</option>
+              {SERVICES.map((s) => <option key={s}>{s}</option>)}
+            </select>
+          </div>
+          <div className="field full">
+            <label htmlFor="pb-timeline">Délai souhaité</label>
+            <select id="pb-timeline" value={v.timeline} onChange={set("timeline")}>
+              <option value="">Sélectionnez un délai</option>
+              {TIMELINES.map((s) => <option key={s}>{s}</option>)}
+            </select>
+          </div>
+          <div className="field full">
+            <label htmlFor="pb-source">Comment nous avez-vous connus&nbsp;?</label>
+            <select id="pb-source" value={v.source} onChange={set("source")}>
+              <option value="">Sélectionnez une réponse</option>
+              {SOURCES.map((s) => <option key={s}>{s}</option>)}
+            </select>
+          </div>
+        </div>
+      )}
+
+      {step === 2 && (
+        <div className="form-grid">
+          <div className="field full">
+            <label htmlFor="pb-message">Décrivez votre projet</label>
+            <textarea
+              id="pb-message"
+              value={v.message}
+              onChange={set("message")}
+              placeholder="Ce que vous souhaitez créer, pour quand, et ce qui compte le plus pour vous."
+              style={{ minHeight: 160 }}
+            ></textarea>
+          </div>
+        </div>
+      )}
 
       {status === "error" && (
         <p role="alert" style={{ color: "var(--lime-ink, #4c6b10)", fontWeight: 500, margin: "0 0 12px" }}>
@@ -118,16 +234,30 @@ export function ProjectBriefForm() {
         </p>
       )}
 
-      <button type="submit" className="btn btn-primary" disabled={status === "sending"}>
-        {status === "sending" ? (
-          "Sending…"
-        ) : (
-          <>
-            Send Message
-            <svg className="arrow" width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" strokeWidth="1.6"><path d="M2 7l10-5-3 12-2-5-5-2z" /></svg>
-          </>
+      <div className="pb-actions">
+        {step > 0 && (
+          <button type="button" className="pb-back" onClick={back}>
+            ← Retour
+          </button>
         )}
-      </button>
+        {step < TOTAL - 1 ? (
+          <button type="button" className="btn btn-primary" onClick={next} style={{ flex: 1, justifyContent: "center" }}>
+            Suivant →
+          </button>
+        ) : (
+          <button type="submit" className="btn btn-primary" disabled={status === "sending"} style={{ flex: 1, justifyContent: "center" }}>
+            {status === "sending" ? "Envoi en cours…" : "Envoyer ma demande"}
+          </button>
+        )}
+      </div>
+
+      <p className="pb-note">
+        <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden>
+          <rect x="4" y="10" width="16" height="10" rx="2" />
+          <path d="M8 10V7a4 4 0 018 0v3" />
+        </svg>
+        Vos informations restent confidentielles.
+      </p>
     </form>
   );
 }

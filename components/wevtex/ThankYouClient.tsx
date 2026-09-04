@@ -11,6 +11,10 @@ import { WHATSAPP_URL, PORTFOLIO_URL } from "@/lib/site-links";
  * /portfolio and /contact so it reads as part of the site — it previously used
  * the centred `.cta` band with a 70vh floor, which left most of the screen empty.
  *
+ * The content carries no `.reveal` class on purpose: that class is opacity:0
+ * until an observer adds `.in`, so the one message this page exists to deliver
+ * would depend on JavaScript running. It renders visible, always.
+ *
  * The meta row answers the question someone actually has here: when do I hear
  * back, and how. Every value is factual — the hours match the ones quoted
  * elsewhere on the site, and the confirmation e-mail really has just been sent.
@@ -26,7 +30,7 @@ export function ThankYouClient() {
         <div className="hero-wash"></div>
         <div className="hero-grid-bg"></div>
         <div className="container">
-          <div className="reveal">
+          <div>
             <span className="eyebrow accent">Message bien reçu</span>
             <h1 style={{ marginTop: 24 }}>
               Merci — votre demande<br />nous est bien <em>parvenue.</em>

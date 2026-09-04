@@ -1,7 +1,6 @@
 "use client";
 
-
-/** Wevtex — Contact. Ported from .design-wevtex/project/contact.html */
+/** Wevtex — Contact. Hero, then contact details beside the brief, then FAQ. */
 
 import { useState } from "react";
 import "../wevtex-home.css";
@@ -9,20 +8,42 @@ import { SiteHeader } from "../../components/wevtex/SiteHeader";
 import { SiteFooter } from "../../components/wevtex/SiteFooter";
 import { ProjectBriefForm } from "../../components/wevtex/ProjectBriefForm";
 import { useReveal } from "../../components/wevtex/useReveal";
-import { EMAIL_URL, HOME_URL, PORTFOLIO_URL } from "@/lib/site-links";
+import { EMAIL_URL, HOME_URL, WHATSAPP_URL } from "@/lib/site-links";
 
+/* REVIEW BEFORE LAUNCH — these are commitments to clients, not marketing copy.
+   Written from what the site already states; confirm each one is true for you. */
 const FAQS = [
-  { q: "How quickly can you start?", a: "We're currently booking projects. If your project is urgent (under 4 weeks lead time) let us know in the brief and we'll see what's possible." },
-  { q: "Do you work with US/EU clients despite being in Morocco?", a: "Yes. In fact, our primary target audience is the USA and UK. We work seamlessly across time zones, with all contracts in English and invoicing through standard secure channels." },
-  { q: "What's the smallest engagement you'll take?", a: "We offer customized project and retainer pricing based on your specific needs, whether it's a small app feature or enterprise SEO." },
-  { q: "Who owns the code at the end?", a: "You do — fully, contractually, from day one. We commit straight to your GitHub org, with your engineers added if you want. No vendor lock-in, no licensing tricks, no maintenance hostage." },
-  { q: "Can you work with our existing team?", a: "Yes — that's how most of our engagements work. We embed alongside in-house engineers, run daily standups in your Slack, follow your conventions, and hand things off cleanly." },
-  { q: "What does post-launch support look like?", a: "Every project includes 30 days of post-launch support free. After that, most clients move to a retainer (MAD 300 — 5,000/mo) for ongoing dev, monitoring & growth work. We never abandon a project." },
-  { q: "What if it doesn't work out?", a: "Project contracts have a 14-day kill clause — if the engagement isn't clicking in the first two weeks, either side can exit, and we refund anything not yet billed. Retainers cancel any month, no questions." },
+  {
+    q: "Combien de temps faut-il pour créer un site ?",
+    a: "Cela dépend de la taille du projet. Un site vitrine est généralement plus rapide qu'une boutique en ligne ou une application. Vous recevez une date de livraison ferme dans le devis, avant que le travail ne commence.",
+  },
+  {
+    q: "Combien coûte un site web ?",
+    a: "Nos formules démarrent à 990 DH. Le prix final dépend du nombre de pages, des fonctionnalités et du contenu à produire. Vous recevez un devis détaillé avant tout engagement, sans frais de votre côté.",
+  },
+  {
+    q: "Travaillez-vous avec des clients en dehors du Maroc ?",
+    a: "Oui. Nous sommes basés à Casablanca et travaillons à distance avec des clients au Maroc comme à l'étranger. Les échanges se font en français, en anglais ou en arabe.",
+  },
+  {
+    q: "À qui appartient le site à la fin du projet ?",
+    a: "À vous. Le site, le nom de domaine et l'hébergement sont mis à votre nom. Vous restez propriétaire de tout, et libre de travailler avec qui vous voulez ensuite.",
+  },
+  {
+    q: "Puis-je modifier le contenu moi-même ?",
+    a: "Oui. Nous mettons en place une interface simple pour modifier vos textes et vos images, et nous vous montrons comment l'utiliser avant la mise en ligne.",
+  },
+  {
+    q: "Que se passe-t-il après la mise en ligne ?",
+    a: "Nous restons joignables. Les corrections liées à notre travail sont prises en charge, et vous pouvez ajouter un suivi mensuel si vous souhaitez que nous continuions à faire évoluer le site.",
+  },
+  {
+    q: "Comment démarrer ?",
+    a: "Remplissez le formulaire ci-dessus, ou écrivez-nous directement sur WhatsApp. Nous revenons vers vous avec un premier avis et une idée claire du budget.",
+  },
 ];
 
 export default function ContactPage() {
-
   useReveal();
   const [open, setOpen] = useState<Record<number, boolean>>({ 0: true });
   const toggle = (i: number) => setOpen((o) => ({ ...o, [i]: !o[i] }));
@@ -37,81 +58,62 @@ export default function ContactPage() {
         <div className="hero-grid-bg"></div>
         <div className="container">
           <div className="reveal">
-            <div className="crumb"><a href={HOME_URL} style={{ color: "inherit" }}>Home</a> &nbsp;/&nbsp; Contact</div>
-            <h1>Let&apos;s build<br />something <em>together.</em></h1>
+            <div className="crumb">
+              <a href={HOME_URL} style={{ color: "inherit" }}>Accueil</a> &nbsp;/&nbsp; Contact
+            </div>
+            <h1>Construisons votre<br />prochain <em>projet.</em></h1>
             <p className="lead">
-              Tell us about the project. We&apos;ll come back within four hours during business hours with a rough scope, a quote, and a calendar invite.
+              Décrivez-nous ce que vous voulez créer. Nous revenons vers vous avec un
+              premier avis, une idée claire du budget et un délai réaliste — sans
+              engagement de votre part.
             </p>
-              <div className="page-hero-meta">
-                <div><span className="label">Response time</span><div className="val">4h 12m average</div></div>
-                <div><span className="label">Target</span><div className="val">USA, UK &amp; Worldwide</div></div>
-                <div><span className="label">Locations</span><div className="val">Casablanca · Remote</div></div>
-                <div><span className="label">Focus</span><div className="val">Web, Apps, SEO &amp; IT</div></div>
-              </div>
+            <div className="page-hero-meta">
+              <div><span className="label">Réponse</span><div className="val">Quelques heures ouvrées</div></div>
+              <div><span className="label">Basés à</span><div className="val">Casablanca, Maroc</div></div>
+              <div><span className="label">Nous servons</span><div className="val">Maroc &amp; international</div></div>
+              <div><span className="label">Domaines</span><div className="val">Web, apps, SEO, automatisation</div></div>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* CONTACT */}
+      {/* CONTACT — details beside the brief */}
       <section className="theme-cream contact">
         <div className="container">
           <div className="contact-grid">
             <div className="contact-info reveal">
-              <span className="eyebrow">// Get in touch</span>
-              <h2 className="h-section" style={{ marginTop: 24 }}>Send a brief —<br />we&apos;ll <span className="serif" style={{ color: "var(--accent)" }}>reply in 24h.</span></h2>
+              <span className="eyebrow">Nous contacter</span>
+              <h2 className="h-section" style={{ marginTop: 24 }}>
+                Casablanca,<br />et à <span className="serif" style={{ color: "var(--accent)" }}>distance.</span>
+              </h2>
               <p className="lead">
-                Email is fine, the form is faster, and if you want to skip ahead just grab a slot on the calendar — we keep three open every week for first meetings.
+                Le formulaire est le plus rapide : il nous donne tout ce qu&apos;il faut pour
+                vous répondre utilement dès le premier message. Mais WhatsApp et e-mail
+                fonctionnent tout aussi bien.
               </p>
               <div className="contact-row">
-                <div className="contact-line"><span className="label">Email</span><span className="val">hello@wevtex.com</span></div>
-                <div className="contact-line"><span className="label">Phone</span><span className="val">+212 687 633 774</span></div>
-                <div className="contact-line"><span className="label">Calendar</span><span className="val">cal.com/wevtex/intro</span></div>
-                <div className="contact-line"><span className="label">Press</span><span className="val">press@wevtex.com</span></div>
-                <div className="contact-line"><span className="label">Careers</span><span className="val">careers@wevtex.com</span></div>
-              </div>
-              <div className="contact-ratings">
-                <div className="rating-chip"><strong>4.8</strong> Clutch</div>
-                <div className="rating-chip"><strong>5.0</strong> Google</div>
-                <div className="rating-chip"><strong>4.9</strong> DesignRush</div>
+                <div className="contact-line">
+                  <span className="label">E-mail</span>
+                  <a className="val" href={EMAIL_URL} style={{ color: "inherit" }}>hello@wevtex.com</a>
+                </div>
+                <div className="contact-line">
+                  <span className="label">Téléphone</span>
+                  <a className="val" href="tel:+212687633774" style={{ color: "inherit" }}>+212 687 633 774</a>
+                </div>
+                <div className="contact-line">
+                  <span className="label">WhatsApp</span>
+                  <a className="val" href={WHATSAPP_URL} target="_blank" rel="noopener" style={{ color: "inherit" }}>
+                    Discuter maintenant
+                  </a>
+                </div>
+                <div className="contact-line">
+                  <span className="label">Horaires</span>
+                  <span className="val">Lun&ndash;Ven 9h&ndash;18h · Sam 10h&ndash;14h</span>
+                </div>
               </div>
             </div>
 
             <ProjectBriefForm />
-          </div>
-        </div>
-      </section>
-
-      {/* LOCATIONS */}
-      <section className="theme-cream" style={{ padding: "140px 0" }}>
-        <div className="container">
-          <div className="about-head reveal">
-            <div>
-              <span className="eyebrow">// Studios</span>
-              <h2 className="h-section" style={{ marginTop: 24 }}>Two cities.<br /><span className="serif" style={{ color: "var(--accent-hot)" }}>One team.</span></h2>
-            </div>
-            <p className="lead">
-              We operate out of Casablanca, Morocco, serving clients worldwide — primarily in the USA and UK. Wherever you are, we're ready to build.
-            </p>
-          </div>
-          <div className="locations reveal">
-            <div className="location-card">
-              <div className="label">// HQ</div>
-              <h4>Casablanca</h4>
-              <p>Boulevard d&apos;Anfa 142<br />20330 · Casablanca, Morocco</p>
-              <div className="time">Local time · 14:32 GMT+1</div>
-            </div>
-            <div className="location-card">
-              <div className="label">// Target</div>
-              <h4>USA &amp; UK</h4>
-              <p>Specialized in scaling<br />North American &amp; British businesses.</p>
-              <div className="time">Seamless overlap</div>
-            </div>
-            <div className="location-card">
-              <div className="label">// Remote</div>
-              <h4>Everywhere</h4>
-              <p>Twelve more humans across<br />Berlin, Mexico City, Bangalore &amp; more</p>
-              <div className="time">Always-on async</div>
-            </div>
           </div>
         </div>
       </section>
@@ -121,40 +123,26 @@ export default function ContactPage() {
         <div className="container">
           <div className="about-head reveal">
             <div>
-              <span className="eyebrow">// FAQ</span>
-              <h2 className="h-section" style={{ marginTop: 24 }}>Common<br /><span className="serif" style={{ color: "var(--accent)" }}>questions.</span></h2>
+              <span className="eyebrow">FAQ</span>
+              <h2 className="h-section" style={{ marginTop: 24 }}>
+                Les questions<br /><span className="serif" style={{ color: "var(--accent)" }}>fréquentes.</span>
+              </h2>
             </div>
             <p className="lead">
-              The seven things people ask before signing. If you&apos;ve got a different one, just ask — we&apos;ll add it to the list.
+              Ce qu&apos;on nous demande le plus souvent avant de démarrer. Votre question
+              n&apos;y est pas ? Écrivez-nous, nous répondons directement.
             </p>
           </div>
           <div className="faq-list reveal">
             {FAQS.map((f, i) => (
               <div className={open[i] ? "faq-item open" : "faq-item"} key={i}>
-                <button className="faq-q" onClick={() => toggle(i)}>
+                <button className="faq-q" onClick={() => toggle(i)} aria-expanded={!!open[i]}>
                   <span>{f.q}</span>
                   <span className="icon">+</span>
                 </button>
                 <div className="faq-a">{f.a}</div>
               </div>
             ))}
-          </div>
-        </div>
-      </section>
-
-      {/* CTA */}
-      <section className="theme-cream cta">
-        <div className="container">
-          <div className="reveal">
-            <span className="eyebrow accent">// Just go for it</span>
-            <h2 style={{ marginTop: 28 }}>Send the<br /><em>brief.</em></h2>
-            <p className="lead">
-              It doesn&apos;t have to be polished. Three lines and a screenshot is enough — we&apos;ll figure the rest out together.
-            </p>
-            <div className="cta-ctas">
-              <a href={EMAIL_URL} className="btn btn-primary">Email Us Directly →</a>
-              <a href={PORTFOLIO_URL} className="btn btn-outline">See Our Work First</a>
-            </div>
           </div>
         </div>
       </section>
