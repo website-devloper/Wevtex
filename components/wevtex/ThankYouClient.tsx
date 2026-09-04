@@ -32,7 +32,7 @@ export function ThankYouClient() {
           <span className="eyebrow line-eyebrow-center">Message bien reçu</span>
 
           <h1 className="h-section" style={{ marginTop: 18 }}>
-            Merci — votre demande<br />
+            Merci, votre demande<br />
             nous est bien <em className="hl-line">parvenue.</em>
           </h1>
 

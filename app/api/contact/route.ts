@@ -28,6 +28,7 @@ type Payload = {
   budget?: string;
   timeline?: string;
   source?: string;
+  employees?: string;
   // Distinguishes a project brief from a newsletter signup in the subject line.
   topic?: string;
   // Honeypot: real users never fill this hidden field. Named non-semantically
@@ -135,6 +136,7 @@ export async function POST(req: Request) {
   const budget = (body.budget || "").trim().slice(0, 60);
   const timeline = (body.timeline || "").trim().slice(0, 60);
   const source = (body.source || "").trim().slice(0, 60);
+  const employees = (body.employees || "").trim().slice(0, 60);
   const topic = (body.topic || "").trim().slice(0, 40);
 
   if (name.length < 2 || contact.length < 3 || message.length < 5) {
@@ -154,7 +156,7 @@ export async function POST(req: Request) {
   if (!apiKey || !notify || !from) {
     // Don't lose the lead silently: log it server-side so it's recoverable.
     console.error("Contact form: missing email env vars. Lead received:", {
-      name, contact, business, service, message, phone, budget, timeline, source, topic,
+      name, contact, business, service, message, phone, budget, timeline, source, employees, topic,
     });
     return NextResponse.json(
       { error: "Email isn't configured yet. Please reach us on WhatsApp for now." },
@@ -167,7 +169,7 @@ export async function POST(req: Request) {
   const adminHtml =
     topic === "newsletter"
       ? newsletterEmail(contact)
-      : leadNotificationEmail({ name, contact, business, service, phone, budget, timeline, source, message });
+      : leadNotificationEmail({ name, contact, business, service, phone, budget, timeline, source, employees, message });
 
   // Notifying the team is the critical path — if this fails, the lead is lost,
   // so surface an error.

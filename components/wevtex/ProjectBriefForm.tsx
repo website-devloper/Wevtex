@@ -4,8 +4,8 @@
  * The project brief on /contact — three short steps rather than one long form.
  *
  * Every field is required, which a single nine-field form could not carry
- * without losing people. Split into steps of three, each screen asks little
- * and the progress bar shows how little is left.
+ * without losing people. Split into steps, each screen asks little and the
+ * progress bar shows how little is left.
  *
  * Values are held in state, not read from the DOM at submit, because fields
  * from earlier steps are unmounted by the time the last one is sent.
@@ -28,21 +28,29 @@ const SERVICES = [
   "Je ne sais pas encore",
 ];
 
+const EMPLOYEES = [
+  "Indépendant / 1 personne",
+  "2 à 10",
+  "11 à 50",
+  "51 à 200",
+  "Plus de 200",
+];
+
+const BUDGETS = [
+  "Moins de 5 000 DH",
+  "5 000 – 15 000 DH",
+  "15 000 – 30 000 DH",
+  "30 000 – 60 000 DH",
+  "Plus de 60 000 DH",
+  "À définir ensemble",
+];
+
 const TIMELINES = [
   "Dès que possible",
   "Sous 1 mois",
   "1 à 3 mois",
   "Plus de 3 mois",
   "Je me renseigne",
-];
-
-const SOURCES = [
-  "Google",
-  "Recommandation",
-  "Instagram",
-  "LinkedIn",
-  "Déjà client",
-  "Autre",
 ];
 
 const STEP_LABELS = ["Vos coordonnées", "Votre projet", "Votre brief"];
@@ -54,9 +62,11 @@ type Values = {
   name: string;
   contact: string;
   phone: string;
+  business: string;
+  employees: string;
   service: string;
+  budget: string;
   timeline: string;
-  source: string;
   message: string;
 };
 
@@ -64,9 +74,11 @@ const EMPTY: Values = {
   name: "",
   contact: "",
   phone: "",
+  business: "",
+  employees: "",
   service: "",
+  budget: "",
   timeline: "",
-  source: "",
   message: "",
 };
 
@@ -83,17 +95,19 @@ export function ProjectBriefForm() {
       if (status === "error") setStatus("idle");
     };
 
-  /** Returns the first problem on the current step, or null when it is clear. */
+  /** Returns the first problem on the given step, or null when it is clear. */
   function problemOnStep(s: number): string | null {
     if (s === 0) {
       if (v.name.trim().length < 2) return "Merci d'indiquer votre nom.";
       if (!EMAIL_RE.test(v.contact.trim())) return "Merci d'indiquer une adresse e-mail valide.";
       if (v.phone.replace(/\D/g, "").length < 8) return "Merci d'indiquer un numéro de téléphone valide.";
+      if (v.business.trim().length < 2) return "Merci d'indiquer le nom de votre entreprise.";
+      if (!v.employees) return "Indiquez la taille de votre entreprise.";
     }
     if (s === 1) {
       if (!v.service) return "Choisissez le type de projet.";
+      if (!v.budget) return "Indiquez une fourchette de budget.";
       if (!v.timeline) return "Indiquez votre délai souhaité.";
-      if (!v.source) return "Dites-nous comment vous nous avez connus.";
     }
     if (s === 2) {
       if (v.message.trim().length < 10) return "Décrivez votre projet en quelques mots.";
@@ -184,6 +198,18 @@ export function ProjectBriefForm() {
             <input id="pb-phone" type="tel" value={v.phone} onChange={set("phone")}
                    placeholder="+212 6 XX XX XX XX" autoComplete="tel" />
           </div>
+          <div className="field full">
+            <label htmlFor="pb-business">Société</label>
+            <input id="pb-business" type="text" value={v.business} onChange={set("business")}
+                   placeholder="Nom de votre entreprise" autoComplete="organization" />
+          </div>
+          <div className="field full">
+            <label htmlFor="pb-employees">Nombre d&apos;employés</label>
+            <select id="pb-employees" value={v.employees} onChange={set("employees")}>
+              <option value="">Sélectionnez une tranche</option>
+              {EMPLOYEES.map((s) => <option key={s}>{s}</option>)}
+            </select>
+          </div>
         </div>
       )}
 
@@ -197,17 +223,17 @@ export function ProjectBriefForm() {
             </select>
           </div>
           <div className="field full">
+            <label htmlFor="pb-budget">Budget estimé</label>
+            <select id="pb-budget" value={v.budget} onChange={set("budget")}>
+              <option value="">Sélectionnez une fourchette</option>
+              {BUDGETS.map((s) => <option key={s}>{s}</option>)}
+            </select>
+          </div>
+          <div className="field full">
             <label htmlFor="pb-timeline">Délai souhaité</label>
             <select id="pb-timeline" value={v.timeline} onChange={set("timeline")}>
               <option value="">Sélectionnez un délai</option>
               {TIMELINES.map((s) => <option key={s}>{s}</option>)}
-            </select>
-          </div>
-          <div className="field full">
-            <label htmlFor="pb-source">Comment nous avez-vous connus&nbsp;?</label>
-            <select id="pb-source" value={v.source} onChange={set("source")}>
-              <option value="">Sélectionnez une réponse</option>
-              {SOURCES.map((s) => <option key={s}>{s}</option>)}
             </select>
           </div>
         </div>

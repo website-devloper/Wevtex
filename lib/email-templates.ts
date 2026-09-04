@@ -111,6 +111,7 @@ export function leadNotificationEmail(d: {
   budget: string;
   timeline: string;
   source: string;
+  employees: string;
   message: string;
 }) {
   const isEmail = EMAIL_RE.test(d.contact);
@@ -120,6 +121,7 @@ export function leadNotificationEmail(d: {
     row("Nom", d.name),
     row("Contact", d.contact, isEmail ? "mailto" : undefined),
     row("Entreprise", d.business),
+    row("Effectif", d.employees),
     row("Besoin", d.service),
     row("Téléphone", d.phone, "tel"),
     row("Budget", d.budget),
