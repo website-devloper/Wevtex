@@ -7275,3 +7275,7 @@
 @media (prefers-reduced-motion: reduce) {
   .wevtex .pb-fill { transition: none; }
 }
+
+/* First section on an inner page — clears the fixed two-tier header by the
+   same amount as .hero-split on the homepage. */
+.wevtex .sec-first { padding-top: clamp(158px, 18vh, 200px); }

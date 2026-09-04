@@ -1,6 +1,15 @@
 "use client";
 
-/** Wevtex — Contact. Hero, then contact details beside the brief, then FAQ. */
+/**
+ * Wevtex — Contact. Three sections: hero, contact, FAQ.
+ *
+ * Built in the homepage's design language, not the ported template's:
+ * `eyebrow line-eyebrow` → `h-section` with `hl-line` (the lime underline
+ * highlight) → `ic-sub`. Grounds alternate cream → ink → paper, the same
+ * rhythm the homepage uses to mark the points where a visitor decides
+ * something. No `page-hero`, no breadcrumb, no coloured serif accents —
+ * those belong to the older pages and are what made this one look foreign.
+ */
 
 import { useState } from "react";
 import "../wevtex-home.css";
@@ -8,18 +17,24 @@ import { SiteHeader } from "../../components/wevtex/SiteHeader";
 import { SiteFooter } from "../../components/wevtex/SiteFooter";
 import { ProjectBriefForm } from "../../components/wevtex/ProjectBriefForm";
 import { useReveal } from "../../components/wevtex/useReveal";
-import { EMAIL_URL, HOME_URL, WHATSAPP_URL } from "@/lib/site-links";
+import { EMAIL_URL, WHATSAPP_URL, AUDIT_WHATSAPP_URL } from "@/lib/site-links";
+
+const WHATSAPP = (
+  <svg viewBox="0 0 24 24" width="17" height="17" fill="currentColor" aria-hidden>
+    <path d="M17.5 14.4c-.3-.15-1.74-.86-2-.96-.27-.1-.46-.15-.65.15-.2.29-.75.95-.92 1.15-.17.2-.34.22-.63.07-1.7-.85-2.82-1.52-3.94-3.44-.3-.51.3-.48.85-1.58.1-.2.05-.36-.02-.5-.08-.15-.65-1.58-.9-2.16-.23-.56-.47-.48-.65-.49h-.55c-.2 0-.5.07-.77.36-.26.29-1 .98-1 2.4 0 1.41 1.03 2.78 1.17 2.97.15.2 2.03 3.1 4.92 4.35 2.88 1.24 2.88.83 3.4.78.52-.05 1.69-.69 1.93-1.36.24-.67.24-1.24.17-1.36-.07-.12-.26-.19-.55-.34zM12 2.1A9.9 9.9 0 0 0 3.5 17l-1.32 4.82 4.94-1.3A9.9 9.9 0 1 0 12 2.1z" />
+  </svg>
+);
 
 /* REVIEW BEFORE LAUNCH — these are commitments to clients, not marketing copy.
    Written from what the site already states; confirm each one is true for you. */
 const FAQS = [
   {
     q: "Combien de temps faut-il pour créer un site ?",
-    a: "Cela dépend de la taille du projet. Un site vitrine est généralement plus rapide qu'une boutique en ligne ou une application. Vous recevez une date de livraison ferme dans le devis, avant que le travail ne commence.",
+    a: "Cela dépend de la taille du projet : un site vitrine va plus vite qu'une boutique en ligne ou une application. Vous recevez une date de livraison ferme dans le devis, avant que le travail ne commence.",
   },
   {
     q: "Combien coûte un site web ?",
-    a: "Nos formules démarrent à 990 DH. Le prix final dépend du nombre de pages, des fonctionnalités et du contenu à produire. Vous recevez un devis détaillé avant tout engagement, sans frais de votre côté.",
+    a: "Nos formules démarrent à 990 DH. Le prix final dépend du nombre de pages, des fonctionnalités et du contenu à produire. Vous recevez un devis détaillé avant tout engagement.",
   },
   {
     q: "Travaillez-vous avec des clients en dehors du Maroc ?",
@@ -35,7 +50,7 @@ const FAQS = [
   },
   {
     q: "Que se passe-t-il après la mise en ligne ?",
-    a: "Nous restons joignables. Les corrections liées à notre travail sont prises en charge, et vous pouvez ajouter un suivi mensuel si vous souhaitez que nous continuions à faire évoluer le site.",
+    a: "Nous restons joignables. Les corrections liées à notre travail sont prises en charge, et vous pouvez ajouter un suivi mensuel si vous souhaitez faire évoluer le site.",
   },
   {
     q: "Comment démarrer ?",
@@ -45,104 +60,138 @@ const FAQS = [
 
 export default function ContactPage() {
   useReveal();
-  const [open, setOpen] = useState<Record<number, boolean>>({ 0: true });
-  const toggle = (i: number) => setOpen((o) => ({ ...o, [i]: !o[i] }));
 
   return (
     <div className="wevtex mode-light">
       <SiteHeader current="contact" />
 
-      {/* HERO */}
-      <section className="theme-cream page-hero">
-        <div className="hero-wash"></div>
-        <div className="hero-grid-bg"></div>
+      {/* ===================== HERO ===================== */}
+      <section className="theme-cream sec-first" style={{ paddingBottom: "clamp(60px, 9vh, 100px)" }}>
         <div className="container">
           <div className="reveal">
-            <div className="crumb">
-              <a href={HOME_URL} style={{ color: "inherit" }}>Accueil</a> &nbsp;/&nbsp; Contact
-            </div>
-            <h1>Construisons votre<br />prochain <em>projet.</em></h1>
-            <p className="lead">
-              Décrivez-nous ce que vous voulez créer. Nous revenons vers vous avec un
-              premier avis, une idée claire du budget et un délai réaliste — sans
-              engagement de votre part.
+            <span className="eyebrow line-eyebrow">Contact</span>
+            <h1 className="h-section" style={{ marginTop: 14 }}>
+              Dites-nous ce que vous<br />
+              construisez. <em className="hl-line">On le chiffre.</em>
+            </h1>
+            <p className="ic-sub wk-lede">
+              Trois étapes, deux minutes. Vous recevez un premier avis, une idée claire
+              du budget et un délai réaliste — sans engagement de votre part.
             </p>
-            <div className="page-hero-meta">
-              <div><span className="label">Réponse</span><div className="val">Quelques heures ouvrées</div></div>
-              <div><span className="label">Basés à</span><div className="val">Casablanca, Maroc</div></div>
-              <div><span className="label">Nous servons</span><div className="val">Maroc &amp; international</div></div>
-              <div><span className="label">Domaines</span><div className="val">Web, apps, SEO, automatisation</div></div>
-            </div>
           </div>
         </div>
       </section>
 
-      {/* CONTACT — details beside the brief */}
-      <section className="theme-cream contact">
+      {/* ===================== CONTACT =====================
+          Ink ground with one white slab, the same pairing the homepage uses at
+          pricing — the point on the page where a visitor decides something. */}
+      <section className="contact-split" id="contact">
+        <span className="cs-motif" aria-hidden></span>
         <div className="container">
-          <div className="contact-grid">
-            <div className="contact-info reveal">
-              <span className="eyebrow">Nous contacter</span>
-              <h2 className="h-section" style={{ marginTop: 24 }}>
-                Casablanca,<br />et à <span className="serif" style={{ color: "var(--accent)" }}>distance.</span>
+          <div className="cs-grid">
+
+            <div className="cs-left reveal">
+              <span className="eyebrow line-eyebrow">Nous joindre</span>
+              <h2 className="h-section" style={{ marginTop: 18 }}>
+                Casablanca,<br />et à <em className="hl-em">distance.</em>
               </h2>
-              <p className="lead">
-                Le formulaire est le plus rapide : il nous donne tout ce qu&apos;il faut pour
-                vous répondre utilement dès le premier message. Mais WhatsApp et e-mail
-                fonctionnent tout aussi bien.
+              <p className="cs-sub">
+                Le formulaire est le plus rapide : il nous donne tout ce qu&apos;il faut
+                pour vous répondre utilement dès le premier message.
               </p>
-              <div className="contact-row">
-                <div className="contact-line">
-                  <span className="label">E-mail</span>
-                  <a className="val" href={EMAIL_URL} style={{ color: "inherit" }}>hello@wevtex.com</a>
-                </div>
-                <div className="contact-line">
-                  <span className="label">Téléphone</span>
-                  <a className="val" href="tel:+212687633774" style={{ color: "inherit" }}>+212 687 633 774</a>
-                </div>
-                <div className="contact-line">
-                  <span className="label">WhatsApp</span>
-                  <a className="val" href={WHATSAPP_URL} target="_blank" rel="noopener" style={{ color: "inherit" }}>
-                    Discuter maintenant
-                  </a>
-                </div>
-                <div className="contact-line">
-                  <span className="label">Horaires</span>
-                  <span className="val">Lun&ndash;Ven 9h&ndash;18h · Sam 10h&ndash;14h</span>
-                </div>
+
+              <div className="cs-channels">
+                <a className="cs-chan" href={WHATSAPP_URL} target="_blank" rel="noopener">
+                  <span className="cs-chan-ic">{WHATSAPP}</span>
+                  <span className="cs-chan-tx"><b>WhatsApp</b></span>
+                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+                </a>
+                <a className="cs-chan" href={EMAIL_URL}>
+                  <span className="cs-chan-ic">
+                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="5" width="18" height="14" rx="2" /><path d="M3 7l9 6 9-6" /></svg>
+                  </span>
+                  <span className="cs-chan-tx"><b>hello@wevtex.com</b></span>
+                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+                </a>
+                <a className="cs-chan" href="tel:+212687633774">
+                  <span className="cs-chan-ic">
+                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 005 5L15 13l5 2v4a1 1 0 01-1.1 1A16 16 0 014 5.1 1 1 0 015 4z" /></svg>
+                  </span>
+                  <span className="cs-chan-tx"><b>+212 687 633 774</b></span>
+                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+                </a>
               </div>
+
+              <p className="cs-hours">
+                <span className="cs-dot" aria-hidden></span>
+                Lun &ndash; Ven 09h00&ndash;18h00 &middot; Sam 10h00&ndash;14h00
+              </p>
             </div>
 
-            <ProjectBriefForm />
+            <div className="cs-right reveal">
+              <div className="cs-form-card">
+                <ProjectBriefForm />
+              </div>
+              <p className="cs-audit">
+                <a href={AUDIT_WHATSAPP_URL} target="_blank" rel="noopener">
+                  Audit téléphonique gratuit de 15 min
+                </a>{" "}
+                si vous n&apos;êtes pas encore prêt pour un devis.
+              </p>
+            </div>
+
           </div>
         </div>
       </section>
 
-      {/* FAQ */}
-      <section className="theme-cream" style={{ padding: "140px 0" }}>
+      {/* ===================== FAQ ===================== */}
+      <section className="theme-paper faq-split" id="faq">
         <div className="container">
-          <div className="about-head reveal">
-            <div>
-              <span className="eyebrow">FAQ</span>
-              <h2 className="h-section" style={{ marginTop: 24 }}>
-                Les questions<br /><span className="serif" style={{ color: "var(--accent)" }}>fréquentes.</span>
+          <div className="faq-grid">
+            <div className="faq-left reveal">
+              <span className="eyebrow line-eyebrow">FAQ</span>
+              <h2 className="h-section" style={{ marginTop: 14 }}>
+                Vos questions, <em className="hl-line">nos réponses</em>
               </h2>
-            </div>
-            <p className="lead">
-              Ce qu&apos;on nous demande le plus souvent avant de démarrer. Votre question
-              n&apos;y est pas ? Écrivez-nous, nous répondons directement.
-            </p>
-          </div>
-          <div className="faq-list reveal">
-            {FAQS.map((f, i) => (
-              <div className={open[i] ? "faq-item open" : "faq-item"} key={i}>
-                <button className="faq-q" onClick={() => toggle(i)} aria-expanded={!!open[i]}>
-                  <span>{f.q}</span>
-                  <span className="icon">+</span>
-                </button>
-                <div className="faq-a">{f.a}</div>
+              <p className="ic-sub" style={{ marginTop: 14, textAlign: "left" }}>
+                Ce qu&apos;on nous demande le plus souvent avant de démarrer un projet.
+              </p>
+              <div className="faq-list-v2">
+                {FAQS.map((f, i) => (
+                  <details className="faq-item-v2" key={i}>
+                    <summary>
+                      <span className="faq-num" aria-hidden>{String(i + 1).padStart(2, "0")}</span>
+                      <span className="faq-q">{f.q}</span>
+                      <span className="faq-plus" aria-hidden></span>
+                    </summary>
+                    <div className="faq-body">
+                      <p>{f.a}</p>
+                    </div>
+                  </details>
+                ))}
               </div>
-            ))}
+            </div>
+
+            <div className="faq-right reveal">
+              <div className="wa-card">
+                <span className="wa-card-motif" aria-hidden></span>
+                <span className="wa-icon">{WHATSAPP}</span>
+                <h3>Une autre question ?<br /><em>Écrivez-nous sur WhatsApp</em></h3>
+                <span className="wa-rule"></span>
+                <p>Nous sommes là pour vous aider. Écrivez-nous quand vous voulez, nous répondons au plus vite.</p>
+                <a href={WHATSAPP_URL} className="wa-btn" target="_blank" rel="noopener">
+                  {WHATSAPP}
+                  Discuter sur WhatsApp
+                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+                </a>
+              </div>
+              <div className="wa-privacy">
+                <span className="wa-lock">
+                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><rect x="4" y="11" width="16" height="9" rx="2" /><path d="M8 11V7a4 4 0 0 1 8 0v4" /></svg>
+                </span>
+                Vos informations restent confidentielles. Nous respectons votre vie privée.
+              </div>
+            </div>
           </div>
         </div>
       </section>
