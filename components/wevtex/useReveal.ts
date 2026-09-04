@@ -29,7 +29,7 @@ export function useReveal() {
       },
       { threshold: [0, 0.12], rootMargin: "0px 0px -60px 0px" }
     );
-    document.querySelectorAll(".reveal, .reveal-words").forEach((r) => io.observe(r));
+    document.querySelectorAll(".reveal, .reveal-words, .srt-scroll").forEach((r) => io.observe(r));
     return () => io.disconnect();
   }, []);
 }

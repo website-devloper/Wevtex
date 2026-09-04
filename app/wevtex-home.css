@@ -7136,3 +7136,62 @@
   margin: 26px auto 0; max-width: 60ch; text-align: center;
   font-size: 12.5px; line-height: 1.6; color: rgba(255, 255, 255, 0.55);
 }
+
+/* ---------------------------------------------------------------------------
+   Staggered word reveal (ScrollRevealText)
+   Was framer-motion; now plain keyframes. Each word carries its own
+   animation-delay inline, so the stagger is data, not JS. No `display` is set
+   on .srt-word deliberately — the words must keep wrapping as plain inline
+   text, exactly as they did before.
+   "load" runs on paint. "scroll" waits for the `.in` class that the existing
+   IntersectionObserver in useReveal / HomeClient already applies.
+   ------------------------------------------------------------------------- */
+.wevtex .srt-word {
+  opacity: 0.14;
+}
+
+.wevtex .srt-load .srt-word,
+.wevtex .srt-scroll.in .srt-word {
+  animation: srt-word-in 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes srt-word-in {
+  from { opacity: 0.14; }
+  to   { opacity: 1; }
+}
+
+/* ---------------------------------------------------------------------------
+   Drifting wave background (WaveBackground)
+   Duration is set inline per layer; direction picks the keyframe.
+   ------------------------------------------------------------------------- */
+.wevtex .wave-drift-l,
+.wevtex .wave-drift-r {
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  will-change: transform;
+}
+
+.wevtex .wave-drift-l { animation-name: wave-drift-l; }
+.wevtex .wave-drift-r { animation-name: wave-drift-r; }
+
+@keyframes wave-drift-l {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+@keyframes wave-drift-r {
+  from { transform: translateX(-50%); }
+  to   { transform: translateX(0); }
+}
+
+/* Respect the OS "reduce motion" setting: show the end state, skip the travel. */
+@media (prefers-reduced-motion: reduce) {
+  .wevtex .srt-word {
+    opacity: 1;
+    animation: none;
+  }
+  .wevtex .wave-drift-l,
+  .wevtex .wave-drift-r {
+    animation: none;
+  }
+}

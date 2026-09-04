@@ -33,7 +33,7 @@ const nextConfig = {
 
   experimental: {
     // Tree-shake barrel imports so only the used icons/motion primitives ship.
-    optimizePackageImports: ["framer-motion", "swiper", "react-awesome-reveal"],
+    optimizePackageImports: ["swiper", "react-awesome-reveal"],
   },
 
   async headers() {

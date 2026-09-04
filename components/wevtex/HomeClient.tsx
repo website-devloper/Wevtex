@@ -247,7 +247,7 @@ export function HomeClient() {
       },
       { threshold: 0.12, rootMargin: "0px 0px -60px 0px" }
     );
-    root.querySelectorAll(".reveal, .reveal-words").forEach((r) => io.observe(r));
+    root.querySelectorAll(".reveal, .reveal-words, .srt-scroll").forEach((r) => io.observe(r));
     cleanups.push(() => io.disconnect());
 
     /* Testimonials carousel */

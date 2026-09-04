@@ -1,11 +1,10 @@
-"use client";
-
-import { motion } from "framer-motion";
-
 /**
  * Layered SVG waves that drift horizontally at different speeds — a calm,
  * oceanic motion background. Each tile is seamless (start/end y match), so
  * a two-tile strip animated by -50% loops without a visible seam.
+ *
+ * Pure CSS keyframes (see .wave-drift-* in wevtex-home.css) — the animation is
+ * a constant linear translate, which the compositor runs off the main thread.
  */
 
 // One seamless wave tile, 1200 wide. Starts and ends at y=70.
@@ -40,10 +39,14 @@ function WaveLayer({ fill, duration, direction, bottom, height, blur }: Layer) {
         filter: `blur(${blur}px)`,
       }}
     >
-      <motion.div
-        style={{ display: "flex", width: "200%", height: "100%" }}
-        animate={{ x: direction === 1 ? ["0%", "-50%"] : ["-50%", "0%"] }}
-        transition={{ duration, repeat: Infinity, ease: "linear" }}
+      <div
+        className={direction === 1 ? "wave-drift-l" : "wave-drift-r"}
+        style={{
+          display: "flex",
+          width: "200%",
+          height: "100%",
+          animationDuration: `${duration}s`,
+        }}
       >
         {[0, 1].map((i) => (
           <svg
@@ -55,7 +58,7 @@ function WaveLayer({ fill, duration, direction, bottom, height, blur }: Layer) {
             <path d={WAVE_D} fill={fill} />
           </svg>
         ))}
-      </motion.div>
+      </div>
     </div>
   );
 }
