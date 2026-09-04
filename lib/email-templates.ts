@@ -148,12 +148,21 @@ export function leadNotificationEmail(d: {
           ${esc(d.message).replace(/\n/g, "<br>")}
         </td></tr>
       </table>
-      ${isEmail ? button(`mailto:${esc(d.contact)}`, `Répondre à ${esc(firstName)}`) : ""}
+      ${
+        isEmail
+          ? button(
+              // A fresh compose, not a thread reply — so the internal record
+              // below is never quoted into the client's inbox.
+              `mailto:${esc(d.contact)}?subject=${encodeURIComponent("Votre projet — Wevtex")}`,
+              `Écrire à ${esc(firstName)}`
+            )
+          : ""
+      }
     </td>
   </tr>
   ${footer(
     isEmail
-      ? `Répondre à cet e-mail écrit directement à ${esc(d.contact)}.`
+      ? `Utilisez le bouton ci-dessus&nbsp;: il ouvre un message vierge adressé à ${esc(d.contact)}.<br>Un «&nbsp;Répondre&nbsp;» depuis votre boîte part bien au client, mais recopie cette fiche — budget, source, délai — dans son e-mail.`
       : `Aucune adresse e-mail fournie. Recontactez ce prospect par téléphone ou WhatsApp&nbsp;: un «&nbsp;Répondre&nbsp;» ici n'arriverait nulle part.`
   )}`);
 }
