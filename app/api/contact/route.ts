@@ -202,7 +202,11 @@ export async function POST(req: Request) {
         html: autoReplyEmail({
           firstName: name.split(" ")[0] || name,
           whatsappUrl: WHATSAPP_URL,
+          hasPhone: phone !== "" || !visitorIsEmail,
         }),
+        // hello@wevtex.com has no MX record, so a client who hits Reply on this
+        // would be writing into a void. Point them at the inbox we actually read.
+        replyTo: notify,
       });
     } catch (err) {
       console.error("Contact form: auto-reply failed (lead still captured).", err);

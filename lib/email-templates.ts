@@ -182,15 +182,23 @@ export function newsletterEmail(address: string) {
   ${footer("Envoyé depuis le pied de page de wevtex.com.")}`);
 }
 
-export function autoReplyEmail(d: { firstName: string; whatsappUrl: string }) {
+export function autoReplyEmail(d: {
+  firstName: string;
+  whatsappUrl: string;
+  /** True when the visitor left a number — only then can we promise WhatsApp. */
+  hasPhone: boolean;
+}) {
+  const channel = d.hasPhone
+    ? "Nous vous répondons sur WhatsApp dans les prochaines heures ouvrées"
+    : "Nous vous répondons par e-mail dans les prochaines heures ouvrées";
+
   return shell(`
   ${header("MESSAGE BIEN REÇU")}
   <tr>
     <td style="padding:30px 32px 0;font-family:${FONT};">
       <div style="font-size:22px;font-weight:700;color:${INK};line-height:1.3;">Merci ${esc(d.firstName)} —<br>votre message est bien arrivé.</div>
       <div style="font-size:15px;line-height:1.7;color:${INK_2};margin-top:16px;">
-        Nous revenons vers vous dans les prochaines heures ouvrées avec un avis
-        clair sur votre projet et un prix précis.
+        ${channel}, avec un avis clair sur votre projet et un prix précis.
       </div>
       <div style="font-size:15px;line-height:1.7;color:${INK_2};margin-top:14px;">
         Et si votre idée est encore en train de se préciser, tant mieux&nbsp;: c'est
