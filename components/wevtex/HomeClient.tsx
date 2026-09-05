@@ -13,19 +13,14 @@ import "../../app/wevtex-home.css";
 import { SiteHeader } from "./SiteHeader";
 import { SiteFooter } from "./SiteFooter";
 import { ScrollRevealText } from "./ScrollRevealText";
+import { HeroReviews } from "./HeroReviews";
 import { StickyCta } from "./StickyCta";
 import { FAQS, SERVICES } from "./homeContent";
 import { ServicesBento, SERVICE_ICONS } from "./SharedSections";
 /* Contact channels — one definition for the whole site, see lib/site-links.ts */
 import { WHATSAPP_URL, serviceWhatsAppUrl, GOOGLE_REVIEWS_URL, PORTFOLIO_URL, industryPath } from "@/lib/site-links";
 
-/* ---------------------------------------------------------------------------
- * Claims about the business — keep these accurate.
- * PRICE_ANCHOR tracks the "Start" tier in the pricing section below.
- * AVAILABILITY must be updated (or emptied) when it stops being true.
- * ------------------------------------------------------------------------- */
-const PRICE_ANCHOR = "Projets à partir de 990 DH";
-const AVAILABILITY = "2 places disponibles ce mois-ci";
+/* Claim shown in the hero — keep it accurate. */
 const GUARANTEE = "Vous ne payez qu'une fois satisfait";
 
 /* Client logo wall. Each file is pre-normalised onto the same 400x170
@@ -115,10 +110,29 @@ const INDUSTRIES = [
    open on load, so lead with the strongest piece.
 
    Placeholder content shown for layout only.
-   TODO before launch: real client names, real URLs, real screenshots at
-   /images/work/<slug>.jpg (tall full-page captures — the hover scrolls them),
-   and metrics that have actually been measured. Do not ship the numbers below. */
-const WORK = [
+   TODO before launch: real client names, real URLs, real screenshots, and
+   metrics that have actually been measured. Do not ship the numbers below. */
+type WorkItem = {
+  slug: string;
+  title: string;
+  cat: string;
+  year: string;
+  url: string;
+  outcome: string;
+  stack: string[];
+  metric: string;
+  metricLabel: string;
+  /** Dégradé de repli, tant qu'il n'y a pas de capture. */
+  shot: string;
+  /**
+   * Passez à true une fois public/images/work/<slug>.webp en place — la
+   * capture remplace le dégradé et le cadre la fait défiler au survol.
+   * Produisez le fichier avec `node scripts/capture-shots.js`.
+   */
+  capture?: boolean;
+};
+
+const WORK: WorkItem[] = [
   {
     slug: "luxora",
     title: "Exemple — Luxora Interiors",
@@ -448,9 +462,7 @@ export function HomeClient() {
         <div className="container">
           <div className="hero-grid">
             <div className="hero-content">
-              <span className="status-pill">
-                <span className="pulse"></span>{AVAILABILITY}
-              </span>
+              <HeroReviews />
               <ScrollRevealText
                 as="h1"
                 mode="load"
@@ -476,13 +488,9 @@ export function HomeClient() {
                   </svg>
                 </a>
               </div>
-              {/* Price anchor + risk reversal: both answer the two questions every
-                  visitor has before they will consider getting in touch. */}
+              {/* Risk reversal: answers the question every visitor has before
+                  they will consider getting in touch. */}
               <ul className="hero-reassure">
-                <li>
-                  <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round" aria-hidden><path d="M20 6L9 17l-5-5" /></svg>
-                  {PRICE_ANCHOR}
-                </li>
                 <li>
                   <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round" aria-hidden><path d="M20 6L9 17l-5-5" /></svg>
                   {GUARANTEE}
@@ -608,9 +616,14 @@ export function HomeClient() {
                             <i></i><i></i><i></i>
                             <span className="wk-url">{p.url}</span>
                           </div>
-                          {/* Swap in a tall full-page capture and the hover scrolls it:
-                              style={{ backgroundImage: "url(/images/work/slug.jpg)" }} */}
-                          <div className={`wk-shot ${p.shot}`}></div>
+                          {/* Une capture pleine page réelle dès qu'il y en a une :
+                              .wk-shot la fait défiler de haut en bas au survol.
+                              Les classes g0/g1/g3 forcent un background-size de
+                              dégradé, elles sont donc retirées dans ce cas. */}
+                          <div
+                            className={p.capture ? "wk-shot" : `wk-shot ${p.shot}`}
+                            style={p.capture ? { backgroundImage: `url(/images/work/${p.slug}.webp)` } : undefined}
+                          ></div>
                         </div>
 
                         <div className="wk-body">
@@ -651,14 +664,15 @@ export function HomeClient() {
       </section>
 
       {/* ===================== STATS (mockup 6 — clay band) ===================== */}
-      {/* TODO: replace with verified figures before launch. */}
+      {/* Projets livrés is confirmed. The other three still need verifying
+          against something real before launch. */}
       <section className="stats-band-v2">
         <span className="sb-motif tl" aria-hidden></span>
         <span className="sb-motif br" aria-hidden></span>
         <div className="container">
           <div className="sb-grid reveal">
             {[
-              { to: 200, dec: 0, suffix: "+", label: "Projets livrés", desc: "Sites, applications et systèmes d'automatisation mis en ligne." },
+              { to: 40, dec: 0, suffix: "+", label: "Projets livrés", desc: "Sites, applications et systèmes d'automatisation mis en ligne." },
               { to: 5, dec: 1, suffix: "", label: "Note moyenne", desc: "D'après les avis clients laissés sur les différentes plateformes." },
               { to: 4, dec: 0, suffix: "", label: "Ans d'expérience", desc: "À faire grandir des entreprises avec des solutions digitales." },
               { to: 98, dec: 0, suffix: "%", label: "Clients satisfaits", desc: "Des clients qui nous recommandent et qui reviennent." },

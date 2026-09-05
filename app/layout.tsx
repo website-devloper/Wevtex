@@ -1,6 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Onest, Space_Mono } from "next/font/google";
-import { GoogleAnalytics } from "@next/third-parties/google";
+import { AnalyticsConsent } from "../components/wevtex/AnalyticsConsent";
 import { SmoothScroll } from "../components/wevtex/SmoothScroll";
 import { SITE_URL, abs } from "@/lib/seo";
 
@@ -123,8 +123,8 @@ export default function RootLayout({
         <SmoothScroll>
           {children}
         </SmoothScroll>
+        <AnalyticsConsent gaId={GA_ID} />
       </body>
-      {GA_ID ? <GoogleAnalytics gaId={GA_ID} /> : null}
     </html>
   );
 }

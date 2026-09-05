@@ -22,32 +22,7 @@ import { SiteFooter } from "../../components/wevtex/SiteFooter";
 import { StickyCta } from "../../components/wevtex/StickyCta";
 import { CtaBand } from "../../components/wevtex/SharedSections";
 import { useReveal } from "../../components/wevtex/useReveal";
-import { WHATSAPP_URL, SERVICES_URL } from "@/lib/site-links";
-
-type Member = {
-  /** Initiales affichées tant qu'il n'y a pas de portrait. */
-  i: string;
-  n: string;
-  r: string;
-  /** Discipline, en bas de la vignette sans photo. */
-  tag: string;
-  d: number;
-  dark?: boolean;
-  /* Déposez le portrait dans /public/images/team/ et renseignez-le ici ;
-     sans photo, la vignette retombe sur les initiales. */
-  img?: string;
-};
-
-const TEAM: Member[] = [
-  { i: "YB", n: "Yassine Benali", r: "Fondateur · Stratégie", tag: "// Stratégie", d: 1, img: "/images/team/founder.png" },
-  { i: "RM", n: "Rania M'rabet", r: "Cofondatrice · Design", tag: "// Design", d: 2 },
-  { i: "OS", n: "Omar Saidi", r: "Cofondateur · Ingénierie", tag: "// Ingénierie", d: 3, dark: true },
-  { i: "LF", n: "Lina Farah", r: "Lead technique · Web", tag: "// Web", d: 4 },
-  { i: "TS", n: "Tomás Silva", r: "Lead technique · Applications", tag: "// Applications", d: 1 },
-  { i: "AK", n: "Aïcha Khattabi", r: "Direction artistique", tag: "// Direction artistique", d: 2, dark: true },
-  { i: "NV", n: "Nadia Vela", r: "SEO & conversion", tag: "// SEO", d: 3 },
-  { i: "+7", n: "et 7 autres", r: "Développeurs · designers · support", tag: "// L'équipe", d: 4 },
-];
+import { WHATSAPP_URL, SERVICES_URL, CONTACT_URL } from "@/lib/site-links";
 
 /* Les objections qui restent une fois la présentation faite. */
 const WHY = [
@@ -160,37 +135,33 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* ===================== L'ÉQUIPE ===================== */}
-      <section className="theme-paper team-sec" id="equipe">
+      {/* ===================== L'ÉQUIPE =====================
+          Un visage et un nom plutôt qu'une grille de vignettes : la question
+          que se pose le visiteur ici n'est pas « combien êtes-vous » mais
+          « qui aurai-je en face de moi ». */}
+      <section className="theme-paper founder-v2" id="equipe">
         <div className="container">
-          <div className="ic-head reveal">
-            <span className="eyebrow line-eyebrow-center">L&apos;équipe</span>
-            <h2 className="h-section" style={{ marginTop: 16 }}>
-              Quatorze personnes, <em className="hl-line">aucun relais</em>
-            </h2>
-            <p className="ic-sub">
-              Les mêmes interlocuteurs du premier échange à la mise en ligne, puis après.
-            </p>
-          </div>
-          <div className="team-grid">
-            {TEAM.map((m) => (
-              <div className={m.dark ? "team-card dark reveal" : "team-card reveal"} data-delay={m.d} key={m.n}>
-                <div className="team-photo">
-                  {m.img ? (
-                    <Image src={m.img} alt={`${m.n}, ${m.r}`} width={640} height={800} sizes="(max-width: 980px) 45vw, 23vw" />
-                  ) : (
-                    <>
-                      <div className="initials">{m.i}</div>
-                      <div className="placeholder">{m.tag}</div>
-                    </>
-                  )}
-                </div>
-                <div className="team-info">
-                  <div className="name">{m.n}</div>
-                  <div className="role">{m.r}</div>
-                </div>
-              </div>
-            ))}
+          <div className="fd-inner reveal">
+            <div className="fd-photo">
+              <Image src="/images/team/founder.png" alt="Le fondateur de Wevtex" width={640} height={800} sizes="(max-width: 820px) 60vw, 320px" />
+            </div>
+            <div className="fd-body">
+              <span className="eyebrow line-eyebrow">L&apos;équipe</span>
+              <h2 className="h-section" style={{ marginTop: 16 }}>
+                Vous parlerez aux personnes<br />qui <em className="hl-em">réalisent le projet</em>
+              </h2>
+              <p className="fd-p">
+                Nous sommes quatorze : stratégie, design, développement et référencement, dans la même
+                équipe. Pas de chef de projet intermédiaire, pas de relais vers des personnes que vous
+                n&apos;avez jamais rencontrées. Vous nous briefez directement, et ce sont les mêmes qui
+                écrivent le code et restent joignables après la mise en ligne.
+              </p>
+              <p className="fd-sign">Wevtex — Casablanca, Maroc</p>
+              <a href={CONTACT_URL} className="btn btn-outline">
+                Nous écrire directement
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+              </a>
+            </div>
           </div>
         </div>
       </section>

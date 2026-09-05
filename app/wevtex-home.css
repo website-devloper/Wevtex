@@ -92,10 +92,10 @@
 .wevtex .cta-v2,
 .wevtex .pricing-ink,
 .wevtex .pj-card.solid,
-.wevtex .wa-card {
+.wevtex .wa-card,
+.wevtex .footer-v2 {
   --accent-text: var(--accent);
 }
-/* the footer is a light surface now — bright lime text would not hold contrast */
 
 .wevtex .cs-card.wa,
 .wevtex .bento-card.vermilion {
@@ -5646,45 +5646,83 @@
 .wevtex .cta-motif.tr { top: 0; right: 0; -webkit-mask-image: radial-gradient(circle at 100% 0, #000, transparent 70%); mask-image: radial-gradient(circle at 100% 0, #000, transparent 70%); }
 .wevtex .cta-motif.bl { bottom: 0; left: 0; -webkit-mask-image: radial-gradient(circle at 0 100%, #000, transparent 70%); mask-image: radial-gradient(circle at 0 100%, #000, transparent 70%); }
 
-/* ===================== FOOTER — light, quiet, no ornament ===================== */
+/* ===================== FOOTER — ink, the same surface as the CTA band =====
+   The footer used to sit on --bg-cream-2, which put a near-white slab
+   directly under the ink CTA band that closes every page: the site ended on
+   a colour break instead of a close. It is ink again — the surface the
+   design system reserves for "dark theme, footer, feature blocks" — so the
+   page finishes on one continuous block, and the hover rules further down
+   (link → #fff, social chip → lime) line up with their base state again
+   instead of contradicting it.
+
+   #101112 is hardcoded, not var(--bg-0): .wevtex.mode-light remaps every
+   --*-d token to a light equivalent, so a surface that must stay ink cannot
+   be built on them. Same reason .audit-band and .pr-card.featured hardcode
+   it. The tokens are re-declared on the element below so the descendants
+   can go on using them. */
 .wevtex .footer-v2, footer.footer-v2 {
-  background: var(--bg-cream-2); color: var(--ink-on-cream);
-  position: relative; border-top: 1px solid var(--hairline-c);
+  --hairline-d: rgba(255, 255, 255, 0.10);
+  --ink-on-dark: #ffffff;
+  --ink-on-dark-2: rgba(255, 255, 255, 0.72);
+  --ink-on-dark-3: rgba(255, 255, 255, 0.50);
+  background: #101112; color: var(--ink-on-dark);
+  position: relative; overflow: hidden;
+  border-top: 1px solid rgba(255, 255, 255, 0.10);
   padding: clamp(56px, 8vh, 84px) 0 30px;
 }
-.footer-v2 .container { position: relative; }
+/* Same motif wash as .audit-band, mirrored to the opposite corner so the
+   two ink blocks do not repeat the identical gradient back to back. */
+.footer-v2::before {
+  content: ""; position: absolute; inset: 0; z-index: 0; pointer-events: none;
+  background-image: url("/images/motif.svg"); background-size: 80px 80px; background-repeat: repeat;
+  opacity: 0.06;
+  -webkit-mask-image: radial-gradient(58% 70% at 100% 0%, #000, transparent 76%);
+  mask-image: radial-gradient(58% 70% at 100% 0%, #000, transparent 76%);
+}
+.footer-v2 .container { position: relative; z-index: 1; }
 
-.footer-v2 .footer-wordmark { display: inline-flex; align-items: center; gap: 13px; font-size: 25px; font-weight: 500; letter-spacing: 0.07em; color: var(--ink-on-cream); text-decoration: none; }
-.footer-v2 .footer-wordmark span { color: var(--accent-text); margin-left: -0.07em; }
-.footer-v2 .footer-mark { height: 1em; width: auto; display: block; }
+.footer-v2 .footer-wordmark { display: inline-flex; align-items: center; gap: 13px; font-size: 25px; font-weight: 500; letter-spacing: 0.07em; color: var(--ink-on-dark); text-decoration: none; }
+.footer-v2 .footer-wordmark span { color: var(--accent); margin-left: -0.07em; }
+/* The only mark we ship is solid ink on transparent, so it is knocked out to
+   white here rather than shipping a second file. */
+.footer-v2 .footer-mark { height: 1em; width: auto; display: block; filter: brightness(0) invert(1); }
 
 .footer-v2 .footer-cols { display: grid; grid-template-columns: 1.7fr 1fr 1fr 1fr; gap: 44px; }
 @media (max-width: 860px) { .footer-v2 .footer-cols { grid-template-columns: 1fr 1fr; gap: 36px; } }
 @media (max-width: 520px) { .footer-v2 .footer-cols { grid-template-columns: 1fr; } }
 
-.footer-v2 .footer-about { color: var(--ink-on-cream-2); line-height: 1.7; font-size: 14.5px; max-width: 34ch; margin-top: 20px; }
-.footer-v2 .footer-news-sub { color: var(--ink-on-cream-3); font-size: 13px; line-height: 1.6; margin: 24px 0 12px; max-width: 32ch; }
+.footer-v2 .footer-about { color: var(--ink-on-dark-2); line-height: 1.7; font-size: 14.5px; max-width: 34ch; margin-top: 20px; }
+.footer-v2 .footer-news-sub { color: var(--ink-on-dark-3); font-size: 13px; line-height: 1.6; margin: 24px 0 12px; max-width: 32ch; }
 .footer-v2 .footer-news-v2 { display: flex; gap: 10px; max-width: 380px; }
 .footer-v2 .footer-news-v2 input {
-  flex: 1; min-width: 0; background: #fff; border: 1px solid var(--hairline-c); border-radius: 999px;
-  padding: 12px 18px; color: var(--ink-on-cream); font-size: 14px; outline: none;
-  transition: border-color 0.2s, box-shadow 0.2s;
+  flex: 1; min-width: 0; background: rgba(255, 255, 255, 0.06); border: 1px solid rgba(255, 255, 255, 0.16); border-radius: 999px;
+  padding: 12px 18px; color: var(--ink-on-dark); font-size: 14px; outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
 }
-.footer-v2 .footer-news-v2 input::placeholder { color: var(--ink-on-cream-3); }
-.footer-v2 .footer-news-v2 input:focus { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(198, 242, 78, 0.22); }
+.footer-v2 .footer-news-v2 input::placeholder { color: rgba(255, 255, 255, 0.42); }
+.footer-v2 .footer-news-v2 input:hover { border-color: rgba(255, 255, 255, 0.3); }
+.footer-v2 .footer-news-v2 input:focus { background: rgba(255, 255, 255, 0.09); border-color: var(--accent); box-shadow: 0 0 0 3px rgba(198, 242, 78, 0.22); }
 .footer-v2 .footer-news-v2 button { background: var(--accent); color: var(--on-lime); border: 0; border-radius: 999px; padding: 12px 22px; font-weight: 600; font-size: 14px; cursor: pointer; white-space: nowrap; transition: background 0.2s; }
 .footer-v2 .footer-news-v2 button:hover { background: var(--accent-hot); }
+.footer-v2 .footer-news-v2 button:disabled { opacity: 0.65; cursor: default; }
 
-.footer-v2 .footer-col-v2 h5 { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-on-cream-3); margin-bottom: 16px; }
+.footer-v2 .footer-col-v2 h5 { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-on-dark-3); margin-bottom: 16px; }
 .footer-v2 .footer-col-v2 ul { list-style: none; display: flex; flex-direction: column; gap: 11px; }
-.footer-v2 .footer-col-v2 a { color: var(--ink-on-cream-2); text-decoration: none; font-size: 14.5px; transition: color 0.15s; }
-.footer-v2 .footer-col-v2 a:hover { color: var(--ink-on-cream); }
+.footer-v2 .footer-col-v2 a { color: var(--ink-on-dark-2); text-decoration: none; font-size: 14.5px; transition: color 0.15s; }
+.footer-v2 .footer-col-v2 a:hover { color: var(--ink-on-dark); }
 
-.footer-v2 .footer-bottom-v2 { display: flex; align-items: center; justify-content: space-between; gap: 18px; flex-wrap: wrap; margin-top: 52px; padding-top: 22px; border-top: 1px solid var(--hairline-c); }
-.footer-v2 .footer-bottom-v2 > span { color: var(--ink-on-cream-3); font-size: 13px; }
-.footer-v2 .footer-social { display: flex; gap: 18px; }
-.footer-v2 .footer-social a { display: grid; place-items: center; color: var(--ink-on-cream-3); transition: color 0.15s; }
-.footer-v2 .footer-social a:hover { color: var(--ink-on-cream); }
+.footer-v2 .footer-bottom-v2 { display: flex; align-items: center; justify-content: space-between; gap: 18px; flex-wrap: wrap; margin-top: 52px; padding-top: 22px; border-top: 1px solid var(--hairline-d); }
+.footer-v2 .footer-bottom-v2 > span { color: var(--ink-on-dark-3); font-size: 13px; }
+.footer-v2 .footer-social { display: flex; gap: 10px; }
+/* Bordered chips, so the icons read as controls rather than as three loose
+   glyphs — and so the lime hover further down has something to fill. */
+.footer-v2 .footer-social a {
+  width: 38px; height: 38px; border-radius: 999px;
+  display: grid; place-items: center;
+  border: 1px solid var(--hairline-d); color: var(--ink-on-dark-3);
+  transition: color 0.15s, background 0.15s, border-color 0.15s;
+}
+.footer-v2 .footer-social a:hover { background: var(--accent); border-color: var(--accent); color: var(--on-lime); }
 
 /* Ink theme keeps the same quiet structure, just inverted. */
 
@@ -5821,10 +5859,10 @@
 
 /* ---- Footer ---- */
 .footer-v2 .footer-col-v2 a { transition: color 160ms var(--ease-out), transform 160ms var(--ease-out); }
-.footer-v2 .footer-col-v2 a:hover { color: #fff; transform: translateX(2px); }
+.footer-v2 .footer-col-v2 a:hover { color: var(--ink-on-dark); transform: translateX(2px); }
 .footer-v2 .footer-news-v2 input:focus { outline: none; border-color: var(--vermilion); box-shadow: 0 0 0 2px rgba(198, 242, 78, 0.3); }
 .footer-v2 .footer-news-v2 button { transition: background 160ms var(--ease-out); }
-.footer-v2 .footer-news-v2 button:hover { background: var(--clay); }
+.footer-v2 .footer-news-v2 button:hover { background: var(--accent-hot); }
 .footer-v2 .footer-social a { transition: background 160ms var(--ease-out), border-color 160ms var(--ease-out), color 160ms var(--ease-out); }
 .footer-v2 .footer-social a:hover { background: var(--vermilion); border-color: var(--vermilion); color: var(--on-lime); }
 .footer-v2 .footer-wordmark { transition: opacity 160ms var(--ease-out); }
@@ -7291,9 +7329,7 @@
    ABOUT — brand band, why-us grid, team photos
    The About page had no visual anchor: it opened on type and stayed on
    type for four sections. The mosaic below gives the studio a face, the
-   why-us grid answers "pourquoi vous" before the comparison table proves
-   it, and .team-photo now accepts a real photograph, falling back to the
-   initials treatment for the faces we have not shot yet.
+   why-us grid answers "pourquoi vous" just before the contact band.
    ===================================================================== */
 
 /* ---- Brand presentation (photo mosaic + positioning) ---- */
@@ -7389,8 +7425,6 @@
 .wevtex .bv-facts svg { color: var(--accent-deep); flex: none; }
 .wevtex .bv-cta { margin-top: 30px; }
 
-/* ---- Équipe ---- */
-.wevtex .team-sec { padding: clamp(80px, 12vh, 130px) 0; }
 
 /* ---- Why us ---- */
 .wevtex .whyus { padding: clamp(80px, 12vh, 130px) 0; }
@@ -7423,5 +7457,66 @@
 .wevtex .why-card h3 { font-size: 19px; font-weight: 600; letter-spacing: -0.02em; line-height: 1.25; }
 .wevtex .why-card p { margin-top: 10px; font-size: 14.5px; line-height: 1.6; color: var(--ink-on-cream-2); }
 
-/* ---- Team: a real photograph when we have one, initials when we do not ---- */
-.wevtex .team-photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+/* ---------------------------------------------------------------------------
+   Legal pages — /confidentialite and /mentions-legales
+   ------------------------------------------------------------------------- */
+.wevtex .legal-body p {
+  margin: 0 0 14px;
+  color: var(--ink-on-cream-2);
+  line-height: 1.75;
+  font-size: 15.5px;
+}
+.wevtex .legal-body p:last-child { margin-bottom: 0; }
+.wevtex .legal-body b { color: var(--ink-on-cream); font-weight: 600; }
+.wevtex .legal-body a {
+  color: var(--ink-on-cream);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+}
+.wevtex .legal-body a:hover { text-decoration-color: var(--accent); }
+
+/* Footer legal links, beside the copyright line. */
+.wevtex .footer-legal { display: inline-flex; gap: 20px; flex-wrap: wrap; }
+.wevtex .footer-legal a { color: inherit; opacity: 0.72; text-decoration: none; }
+.wevtex .footer-legal a:hover { opacity: 1; text-decoration: underline; text-underline-offset: 3px; }
+
+/* ---------------------------------------------------------------------------
+   Analytics consent bar. Fixed to the bottom, above the sticky CTA on mobile.
+   ------------------------------------------------------------------------- */
+.wevtex-cc, .cc-bar {
+  position: fixed;
+  left: 16px; right: 16px; bottom: 16px;
+  z-index: 90;
+  background: #14170f;
+  color: #f1f4e7;
+  border-radius: 12px;
+  box-shadow: 0 10px 40px -12px rgba(0, 0, 0, 0.5);
+  padding: 16px 20px;
+}
+.cc-inner {
+  display: flex; align-items: center; gap: 20px;
+  max-width: 1120px; margin: 0 auto; flex-wrap: wrap;
+}
+.cc-text {
+  margin: 0; flex: 1 1 380px;
+  font-size: 13.5px; line-height: 1.6; color: rgba(241, 244, 231, 0.82);
+}
+.cc-text a { color: #c6f24e; text-decoration: underline; text-underline-offset: 3px; }
+.cc-actions { display: flex; gap: 10px; flex: 0 0 auto; }
+.cc-btn {
+  font: inherit; font-size: 13.5px; font-weight: 600;
+  padding: 10px 20px; border-radius: 999px; cursor: pointer;
+  border: 1px solid transparent; white-space: nowrap;
+}
+.cc-refuse { background: transparent; color: rgba(241, 244, 231, 0.82); border-color: rgba(255, 255, 255, 0.22); }
+.cc-refuse:hover { color: #fff; border-color: rgba(255, 255, 255, 0.45); }
+.cc-accept { background: #c6f24e; color: #14170f; }
+.cc-accept:hover { filter: brightness(1.05); }
+.cc-btn:focus-visible { outline: 2px solid #c6f24e; outline-offset: 2px; }
+
+@media (max-width: 620px) {
+  .cc-bar { left: 10px; right: 10px; bottom: 10px; padding: 14px 16px; }
+  .cc-actions { width: 100%; }
+  .cc-btn { flex: 1; }
+}

@@ -107,6 +107,10 @@ export function SiteFooter() {
 
         <div className="footer-bottom-v2">
           <span>© 2026 Wevtex. Tous droits réservés.</span>
+          <span className="footer-legal">
+            <a href="/confidentialite">Politique de confidentialité</a>
+            <a href="/mentions-legales">Mentions légales</a>
+          </span>
           <div className="footer-social">
             {SOCIAL_ICONS.filter(({ label }) => SOCIALS.some((x) => x.label === label && x.url)).map(({ label, icon }) => (
               <a key={label} href={SOCIALS.find((x) => x.label === label)!.url} aria-label={label} target="_blank" rel="noopener noreferrer">
