@@ -7297,7 +7297,10 @@
    ===================================================================== */
 
 /* ---- Brand presentation (photo mosaic + positioning) ---- */
-.wevtex .brand-v2 { padding: clamp(80px, 12vh, 130px) 0; }
+/* Première section de la page : elle dégage la barre d'en-tête fixe,
+   comme .srv-list-sec sur /services. */
+.wevtex .brand-v2 { padding: clamp(150px, 17vh, 190px) 0 clamp(80px, 12vh, 130px); }
+.wevtex .brand-v2 h1 { text-align: left; }
 .wevtex .bv-inner {
   display: grid;
   grid-template-columns: 1fr 1.05fr;
@@ -7384,6 +7387,10 @@
   color: var(--ink-on-cream-2);
 }
 .wevtex .bv-facts svg { color: var(--accent-deep); flex: none; }
+.wevtex .bv-cta { margin-top: 30px; }
+
+/* ---- Équipe ---- */
+.wevtex .team-sec { padding: clamp(80px, 12vh, 130px) 0; }
 
 /* ---- Why us ---- */
 .wevtex .whyus { padding: clamp(80px, 12vh, 130px) 0; }

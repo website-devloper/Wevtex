@@ -3,45 +3,53 @@
 /**
  * Wevtex — À propos.
  *
- * Structure de la page, dans l'ordre où un visiteur se décide :
- *   hero → le studio (photos) → manifeste → principes → l'équipe →
- *   qui vous accompagne → pourquoi nous → comparatif → parcours → CTA.
+ * Quatre sections seulement, dans les composants de la page d'accueil et de
+ * la page prestations (ic-head / line-eyebrow / h-section / hl-line / CtaBand) :
+ *   le studio (présentation de la marque, en photos) → l'équipe →
+ *   pourquoi nous → la bande de contact.
  *
- * Tout le style vient de wevtex-home.css ; les seules classes propres à
- * cette page sont dans le bloc « ABOUT » ajouté en fin de feuille.
+ * La page ouvrait auparavant sur un « page-hero » avec fil d'Ariane et
+ * bandeau de chiffres, un gabarit qui ne sert plus qu'à /portfolio ; elle
+ * enchaînait ensuite manifeste, principes, comparatif et frise. Tout cela a
+ * été retiré pour que le parcours reste : qui nous sommes, qui vous suit,
+ * pourquoi nous, on en parle.
  */
 
 import Image from "next/image";
 import "../wevtex-home.css";
 import { SiteHeader } from "../../components/wevtex/SiteHeader";
 import { SiteFooter } from "../../components/wevtex/SiteFooter";
+import { StickyCta } from "../../components/wevtex/StickyCta";
+import { CtaBand } from "../../components/wevtex/SharedSections";
 import { useReveal } from "../../components/wevtex/useReveal";
-import { HOME_URL, CONTACT_URL, PORTFOLIO_URL, WHATSAPP_URL } from "@/lib/site-links";
+import { WHATSAPP_URL, SERVICES_URL } from "@/lib/site-links";
 
-const VALUES = [
-  {
-    n: "i",
-    h: <>On mesure en <em>chiffre d&apos;affaires</em>,<br />pas en pixels.</>,
-    p: "Chaque projet commence par la même question : quel résultat business cela doit-il déplacer ? Si le travail ne se rattache pas à un chiffre qui compte pour vous, nous vous le disons, et nous ne prenons pas la mission.",
-  },
-  {
-    n: "ii",
-    h: <>Des profils <em>seniors</em>,<br />uniquement.</>,
-    p: "Aucun junior à qui confier votre compte. L'équipe qui vous reçoit est celle qui livre. C'est cette expérience qui fait la qualité du résultat, pas la taille de l'agence.",
-  },
-  {
-    n: "iii",
-    h: <>Un nombre de projets<br />limité. <em>Volontairement.</em></>,
-    p: "Nous plafonnons les missions en cours. C'est la seule façon de garder des réponses en moins de quatre heures, des démos chaque semaine et une équipe assez disponible pour bien faire.",
-  },
-  {
-    n: "iv",
-    h: <>Indépendants.<br />Et <em>joignables.</em></>,
-    p: "Pas d'investisseurs, pas de pression de sortie. Nous répondons à deux interlocuteurs : nos clients et notre équipe. Cette structure nous permet de refuser les projets mal engagés et d'accepter les bons.",
-  },
+type Member = {
+  /** Initiales affichées tant qu'il n'y a pas de portrait. */
+  i: string;
+  n: string;
+  r: string;
+  /** Discipline, en bas de la vignette sans photo. */
+  tag: string;
+  d: number;
+  dark?: boolean;
+  /* Déposez le portrait dans /public/images/team/ et renseignez-le ici ;
+     sans photo, la vignette retombe sur les initiales. */
+  img?: string;
+};
+
+const TEAM: Member[] = [
+  { i: "YB", n: "Yassine Benali", r: "Fondateur · Stratégie", tag: "// Stratégie", d: 1, img: "/images/team/founder.png" },
+  { i: "RM", n: "Rania M'rabet", r: "Cofondatrice · Design", tag: "// Design", d: 2 },
+  { i: "OS", n: "Omar Saidi", r: "Cofondateur · Ingénierie", tag: "// Ingénierie", d: 3, dark: true },
+  { i: "LF", n: "Lina Farah", r: "Lead technique · Web", tag: "// Web", d: 4 },
+  { i: "TS", n: "Tomás Silva", r: "Lead technique · Applications", tag: "// Applications", d: 1 },
+  { i: "AK", n: "Aïcha Khattabi", r: "Direction artistique", tag: "// Direction artistique", d: 2, dark: true },
+  { i: "NV", n: "Nadia Vela", r: "SEO & conversion", tag: "// SEO", d: 3 },
+  { i: "+7", n: "et 7 autres", r: "Développeurs · designers · support", tag: "// L'équipe", d: 4 },
 ];
 
-/* Ce que le visiteur se demande juste avant le comparatif : pourquoi nous. */
+/* Les objections qui restent une fois la présentation faite. */
 const WHY = [
   {
     t: "Un prix fixe, annoncé avant de commencer",
@@ -75,47 +83,6 @@ const WHY = [
   },
 ];
 
-/* Le comparatif répond à « pourquoi pas moins cher » avant la page tarifs. */
-const COMPARISON_ROWS = [
-  { label: "Délai", us: "2 à 4 semaines, ferme", agency: "2 à 4 mois", free: "Sans date d'engagement" },
-  { label: "Prix", us: "Fixe, annoncé", agency: "Devis sur demande", free: "À l'heure, variable" },
-  { label: "Qui réalise", us: "L'équipe rencontrée", agency: "Juniors ou sous-traitance", free: "Une seule personne" },
-  { label: "Après le lancement", us: "Suivi inclus", agency: "Forfait obligatoire", free: "Souvent injoignable" },
-  { label: "Vitesse et SEO", us: "Intégrés dès le départ", agency: "Option payante", free: "Rarement traités" },
-  { label: "Propriété du code", us: "La vôtre, entièrement", agency: "Liée à leur CMS", free: "Non documentée" },
-];
-
-type Member = {
-  i: string;
-  n: string;
-  r: string;
-  tag: string;
-  d: number;
-  dark?: boolean;
-  /* Déposez le portrait dans /public/images/team/ et renseignez-le ici ;
-     sans photo, la carte retombe sur les initiales. */
-  img?: string;
-};
-
-const TEAM: Member[] = [
-  { i: "YB", n: "Yassine Benali", r: "Fondateur · Stratégie", tag: "// Stratégie", d: 1, img: "/images/team/founder.png" },
-  { i: "RM", n: "Rania M'rabet", r: "Cofondatrice · Design", tag: "// Design", d: 2 },
-  { i: "OS", n: "Omar Saidi", r: "Cofondateur · Ingénierie", tag: "// Ingénierie", d: 3, dark: true },
-  { i: "LF", n: "Lina Farah", r: "Lead technique · Web", tag: "// Web", d: 4 },
-  { i: "TS", n: "Tomás Silva", r: "Lead technique · Applications", tag: "// Applications", d: 1 },
-  { i: "AK", n: "Aïcha Khattabi", r: "Direction artistique", tag: "// Direction artistique", d: 2, dark: true },
-  { i: "NV", n: "Nadia Vela", r: "SEO & conversion", tag: "// SEO", d: 3 },
-  { i: "+7", n: "et 7 autres", r: "Développeurs · designers · support", tag: "// L'équipe", d: 4 },
-];
-
-const TIMELINE = [
-  { y: "2019", h: "Création", p: "Trois opérationnels, la même lassitude face aux agences qui livrent des gabarits. Trois missions la première année." },
-  { y: "2021", h: "Au-delà du Maroc", p: "Premiers clients à l'international, avec des projets suivis à distance de bout en bout." },
-  { y: "2023", h: "Une offre complète", p: "Le SEO, la publicité et l'automatisation rejoignent la création de sites et d'applications." },
-  { y: "2025", h: "Une équipe de 14", p: "L'équipe s'étoffe et s'organise en distanciel, avec des livraisons cadencées chaque semaine." },
-  { y: "2026", h: "Aujourd'hui", p: "Plus de 200 projets livrés, une quarantaine de secteurs, et toujours la même façon de travailler." },
-];
-
 export default function AboutPage() {
   useReveal();
 
@@ -123,33 +90,10 @@ export default function AboutPage() {
     <div className="wevtex mode-light">
       <SiteHeader current="about" />
 
-      {/* HERO */}
-      <section className="theme-cream page-hero">
-        <div className="hero-wash"></div>
-        <div className="hero-grid-bg"></div>
-        <div className="container">
-          <div className="reveal">
-            <div className="crumb"><a href={HOME_URL} style={{ color: "inherit" }}>Accueil</a> &nbsp;/&nbsp; À propos</div>
-            <h1>Un atelier,<br />pas une <em>usine.</em></h1>
-            <p className="lead">
-              Wevtex est une agence web basée à Casablanca. Nous concevons des sites rapides, des boutiques
-              en ligne et des applications sur mesure, puis nous les rendons visibles avec le référencement
-              et la publicité, pour des entreprises au Maroc et à l&apos;international.
-            </p>
-            <div className="page-hero-meta">
-              <div><span className="label">Création</span><div className="val">2019 · Casablanca</div></div>
-              <div><span className="label">Équipe</span><div className="val">14 personnes</div></div>
-              <div><span className="label">Expertises</span><div className="val">Web, applications, SEO</div></div>
-              <div><span className="label">Clients</span><div className="val">Maroc &amp; international</div></div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* LE STUDIO — présentation de la marque, en images.
-          La page enchaînait quatre sections de texte avant le moindre visuel ;
-          ce bloc donne un visage au studio avant de demander quoi que ce soit. */}
-      <section className="theme-cream brand-v2">
+      {/* ===================== LE STUDIO =====================
+          Ouverture de la page : le texte porte le h1, la mosaïque donne un
+          visage au studio avant la moindre demande. */}
+      <section className="theme-cream brand-v2" id="studio">
         <div className="container">
           <div className="bv-inner reveal">
             <div className="bv-mosaic">
@@ -159,6 +103,7 @@ export default function AboutPage() {
                   alt="L'atelier Wevtex à Casablanca, un poste de travail en cours de projet"
                   fill
                   sizes="(max-width: 960px) 45vw, 24vw"
+                  priority
                 />
                 <figcaption className="bv-tag">L&apos;atelier · Casablanca</figcaption>
               </figure>
@@ -177,20 +122,20 @@ export default function AboutPage() {
               </div>
             </div>
 
-            <div>
+            <div className="bv-body">
               <span className="eyebrow line-eyebrow">Le studio</span>
-              <h2 className="h-section" style={{ marginTop: 16 }}>
-                Une équipe réduite,<br />des projets <em className="hl-line">suivis de près</em>
-              </h2>
+              <h1 className="h-section" style={{ marginTop: 14 }}>
+                Une agence web,<br />pas une <em className="hl-line">usine à sites</em>
+              </h1>
               <p className="bv-p">
-                Nous sommes quatorze : stratégie, design, développement et référencement, sous le même toit
-                et sur le même canal de discussion. Personne ne repasse votre projet à un service voisin,
-                ce qui explique la plupart de nos délais.
+                Wevtex est une agence basée à Casablanca. Nous concevons des sites rapides, des boutiques
+                en ligne et des applications sur mesure, puis nous les rendons visibles avec le
+                référencement et la publicité, pour des entreprises au Maroc et à l&apos;international.
               </p>
               <p className="bv-p">
-                Concrètement, vous repartez avec un site rapide, structuré pour Google, dont vous possédez
-                le code, les accès et le nom de domaine, et avec des interlocuteurs qui restent joignables
-                une fois le site en ligne.
+                Stratégie, design, développement et SEO sont dans la même équipe. Personne ne repasse votre
+                projet à un service voisin, et vous repartez avec un site dont vous possédez le code, les
+                accès et le nom de domaine.
               </p>
               <ul className="bv-facts">
                 <li>
@@ -206,66 +151,25 @@ export default function AboutPage() {
                   Maroc &amp; international
                 </li>
               </ul>
+              <a href={SERVICES_URL} className="btn btn-outline bv-cta">
+                Voir nos prestations
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+              </a>
             </div>
           </div>
         </div>
       </section>
 
-      {/* MANIFESTE */}
-      <section className="theme-cream manifesto">
+      {/* ===================== L'ÉQUIPE ===================== */}
+      <section className="theme-paper team-sec" id="equipe">
         <div className="container">
-          <div className="manifesto-grid reveal">
-            <div className="manifesto-meta">
-              <span className="eyebrow">// 01 — Origine</span>
-              <div className="num">2019</div>
-              <span className="caption">Fondée à Casablanca<br />par trois anciens opérationnels</span>
-            </div>
-            <h2>
-              Nous avons lancé Wevtex parce que<br />
-              nous en avions assez des agences<br />
-              qui traitent le <em>métier</em> comme un coût<br />
-              et les clients comme une file d&apos;attente.
+          <div className="ic-head reveal">
+            <span className="eyebrow line-eyebrow-center">L&apos;équipe</span>
+            <h2 className="h-section" style={{ marginTop: 16 }}>
+              Quatorze personnes, <em className="hl-line">aucun relais</em>
             </h2>
-          </div>
-        </div>
-      </section>
-
-      {/* PRINCIPES */}
-      <section className="theme-cream" style={{ padding: "140px 0" }}>
-        <div className="container">
-          <div className="about-head reveal">
-            <div>
-              <span className="eyebrow">// 02 — Principes</span>
-              <h2 className="h-section" style={{ marginTop: 24 }}>Ce que nous<br /><span className="serif" style={{ color: "var(--accent-hot)" }}>défendons.</span></h2>
-            </div>
-            <p className="lead">
-              Quatre convictions qui se retrouvent dans chaque brief, chaque ligne de code et chaque message
-              que nous envoyons à un client.
-            </p>
-          </div>
-          <div className="values-list reveal">
-            {VALUES.map((v, i) => (
-              <div className="value-row" key={i}>
-                <div className="num">{v.n}</div>
-                <h4>{v.h}</h4>
-                <p>{v.p}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* L'ÉQUIPE */}
-      <section className="theme-cream" style={{ padding: "140px 0" }}>
-        <div className="container">
-          <div className="about-head reveal">
-            <div>
-              <span className="eyebrow">// 03 — L&apos;équipe</span>
-              <h2 className="h-section" style={{ marginTop: 24 }}>Quatorze personnes.<br /><span className="serif" style={{ color: "var(--accent)" }}>Aucun relais.</span></h2>
-            </div>
-            <p className="lead">
-              Stratégie, design et développement dans la même équipe, avec les mêmes interlocuteurs du
-              premier échange à la mise en ligne.
+            <p className="ic-sub">
+              Les mêmes interlocuteurs du premier échange à la mise en ligne, puis après.
             </p>
           </div>
           <div className="team-grid">
@@ -291,45 +195,21 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* QUI VOUS ACCOMPAGNE — un visage et un nom avant la demande finale. */}
-      <section className="theme-paper founder-v2">
-        <div className="container">
-          <div className="fd-inner reveal">
-            <div className="fd-photo">
-              <Image src="/images/team/founder.png" alt="Le fondateur de Wevtex" width={640} height={800} sizes="(max-width: 820px) 60vw, 320px" />
-            </div>
-            <div className="fd-body">
-              <span className="eyebrow line-eyebrow">Qui vous accompagne</span>
-              <h2 className="h-section" style={{ marginTop: 16 }}>
-                Vous parlerez aux personnes<br />qui <em className="hl-em">réalisent le projet</em>
-              </h2>
-              <p className="fd-p">
-                Pas de chef de projet intermédiaire, pas de relais vers une équipe que vous n&apos;avez jamais
-                rencontrée. Vous nous briefez directement, et ce sont les mêmes personnes qui écrivent le
-                code et restent joignables après la mise en ligne.
-              </p>
-              <p className="fd-sign">Wevtex — Casablanca, Maroc</p>
-              <a href={CONTACT_URL} className="btn btn-outline">
-                Nous écrire directement
-                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden><path d="M5 12h14M13 6l6 6-6 6" /></svg>
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* POURQUOI NOUS */}
+      {/* ===================== POURQUOI NOUS ===================== */}
       <section className="theme-cream whyus" id="pourquoi-nous">
         <div className="container">
-          <div className="cmp-head reveal">
-            <span className="eyebrow line-eyebrow">Pourquoi nous</span>
+          <div className="ic-head reveal">
+            <span className="eyebrow line-eyebrow-center">Pourquoi nous</span>
             <h2 className="h-section" style={{ marginTop: 16 }}>
-              Six raisons de nous<br />confier <em className="hl-line">votre projet</em>
+              Six raisons de nous confier <em className="hl-line">votre projet</em>
             </h2>
+            <p className="ic-sub">
+              Ce qui change concrètement, du devis jusqu&apos;au suivi après le lancement.
+            </p>
           </div>
-          <div className="why-grid reveal">
-            {WHY.map((w) => (
-              <div className="why-card" key={w.t}>
+          <div className="why-grid">
+            {WHY.map((w, i) => (
+              <div className="why-card reveal" data-delay={(i % 3) + 1} key={w.t}>
                 <div className="why-ico">
                   <svg viewBox="0 0 24 24" width="21" height="21" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden>{w.d}</svg>
                 </div>
@@ -341,89 +221,20 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* COMPARATIF */}
-      <section className="theme-paper compare-v2" id="comparatif">
-        <div className="container">
-          <div className="cmp-head reveal">
-            <span className="eyebrow line-eyebrow">Le comparatif</span>
-            <h2 className="h-section" style={{ marginTop: 16 }}>
-              Ce qui nous distingue<br />des <em className="hl-em">autres options</em>
-            </h2>
-          </div>
-          <div className="cmp-scroll reveal">
-            <table className="cmp-table">
-              <caption>Wevtex comparé à une agence classique et à un freelance</caption>
-              <thead>
-                <tr>
-                  <th scope="col"><span className="cmp-hidden">Critère</span></th>
-                  <th scope="col" className="cmp-us">Wevtex</th>
-                  <th scope="col">Agence classique</th>
-                  <th scope="col">Freelance</th>
-                </tr>
-              </thead>
-              <tbody>
-                {COMPARISON_ROWS.map((r) => (
-                  <tr key={r.label}>
-                    <th scope="row">{r.label}</th>
-                    <td className="cmp-us">
-                      <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" strokeWidth="2.1" strokeLinecap="round" strokeLinejoin="round" aria-hidden><path d="M20 6L9 17l-5-5" /></svg>
-                      {r.us}
-                    </td>
-                    <td>{r.agency}</td>
-                    <td>{r.free}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </section>
-
-      {/* PARCOURS */}
-      <section className="theme-cream" style={{ padding: "140px 0" }}>
-        <div className="container">
-          <div className="about-head reveal">
-            <div>
-              <span className="eyebrow">// 04 — Parcours</span>
-              <h2 className="h-section" style={{ marginTop: 24 }}>Depuis 2019.<br /><span className="serif" style={{ color: "var(--accent-hot)" }}>200 projets.</span></h2>
-            </div>
-            <p className="lead">Une courte histoire de ce que nous avons construit, et de ce que nous en avons appris.</p>
-          </div>
-          <div className="timeline reveal">
-            {TIMELINE.map((t) => (
-              <div className="timeline-item" style={{ background: "var(--bg-1)", borderColor: "var(--hairline-d)" }} key={t.y}>
-                <div className="year">{t.y}</div>
-                <h5 style={{ color: "var(--ink-on-dark)" }}>{t.h}</h5>
-                <p style={{ color: "var(--ink-on-dark-2)" }}>{t.p}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* CTA */}
-      <section className="theme-cream cta" style={{ color: "var(--ink-on-cream)" }}>
-        <div className="container">
-          <div className="reveal">
-            <span className="eyebrow accent" style={{ color: "var(--accent)" }}>// 05 — Travaillons ensemble</span>
-            <h2 style={{ marginTop: 28, color: "var(--ink-on-cream)" }}>Parlons de<br />votre <em>projet.</em></h2>
-            <p className="lead" style={{ color: "var(--ink-on-cream-2)" }}>
-              Décrivez-nous ce que vous voulez lancer, et nous revenons vers vous sous 24 heures avec un
-              périmètre, un délai et un prix fixe. L&apos;échange est gratuit et sans engagement.
-            </p>
-            <div className="cta-ctas">
-              <a href={CONTACT_URL} className="btn btn-primary">
-                Demander un devis gratuit
-                <svg className="arrow" viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="1.6"><path d="M3 9L9 3M9 3H4M9 3V8" /></svg>
-              </a>
-              <a href={WHATSAPP_URL} className="btn btn-outline" target="_blank" rel="noopener">Écrire sur WhatsApp</a>
-              <a href={PORTFOLIO_URL} className="btn btn-outline">Voir nos réalisations</a>
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* ===================== ON EN PARLE ===================== */}
+      <CtaBand
+        heading={<>Parlons de <em className="hl-em">votre projet</em></>}
+        text={
+          <>
+            Décrivez-nous ce que vous voulez lancer, nous revenons vers vous sous 24 heures avec un
+            périmètre, un délai et un prix fixe. L&apos;échange est gratuit et sans engagement.
+          </>
+        }
+      />
 
       <SiteFooter />
+
+      <StickyCta whatsappUrl={WHATSAPP_URL} />
     </div>
   );
 }
