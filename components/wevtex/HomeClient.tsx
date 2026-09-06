@@ -125,8 +125,8 @@ type WorkItem = {
   /** Dégradé de repli, tant qu'il n'y a pas de capture. */
   shot: string;
   /**
-   * Passez à true une fois public/images/work/<slug>.webp en place — la
-   * capture remplace le dégradé et le cadre la fait défiler au survol.
+   * Passez à true une fois public/images/work/<slug>.webp en place, la
+   * capture remplace alors l'aplat de repli.
    * Produisez le fichier avec `node scripts/capture-shots.js`.
    */
   capture?: boolean;
@@ -559,7 +559,7 @@ export function HomeClient() {
           One accordion, one project open at a time. Clicking a row expands
           it in place rather than navigating away — the visitor never loses
           the page, and the list stays a tight index between openings. */}
-      <section className="work" id="work">
+      <section className="theme-cream-2 work" id="work">
         <div className="container">
 
           {/* Same head components as every other section — eyebrow, h-section,
@@ -616,10 +616,9 @@ export function HomeClient() {
                             <i></i><i></i><i></i>
                             <span className="wk-url">{p.url}</span>
                           </div>
-                          {/* Une capture pleine page réelle dès qu'il y en a une :
-                              .wk-shot la fait défiler de haut en bas au survol.
-                              Les classes g0/g1/g3 forcent un background-size de
-                              dégradé, elles sont donc retirées dans ce cas. */}
+                          {/* La capture du site dès qu'il y en a une. Les classes
+                              g0/g1/g3 ne portent qu'une couleur de repli, elles
+                              n'ont plus lieu d'être une fois l'image en place. */}
                           <div
                             className={p.capture ? "wk-shot" : `wk-shot ${p.shot}`}
                             style={p.capture ? { backgroundImage: `url(/images/work/${p.slug}.webp)` } : undefined}
@@ -689,7 +688,7 @@ export function HomeClient() {
       </section>
 
       {/* CTA beside the proof — the reference puts one right after the evidence. */}
-      <section className="theme-cream inline-cta">
+      <section className="theme-sand inline-cta">
         <div className="container">
           <div className="ict-inner reveal">
             <p className="ict-text">Vous voulez ce type de résultats pour votre entreprise ?</p>

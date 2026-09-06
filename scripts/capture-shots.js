@@ -1,14 +1,11 @@
-/* Full-page captures for the hover-scroll frames on the homepage.
+/* Site captures for the project frames on the homepage.
  *
  *   npm i -D playwright && npx playwright install chromium
  *   node scripts/capture-shots.js
  *
- * Produces public/images/work/<slug>.webp — one tall capture per project,
- * 1440px wide, which .wk-shot scrolls from top to bottom on hover.
- *
- * Height is capped at CROP_RATIO viewports. An uncapped capture of a long
- * landing page can run 12000px, and the hover then crawls through it at a
- * speed nobody reads; four screens is enough to show the page has depth.
+ * Produces public/images/work/<slug>.webp — one 1440x900 capture per project,
+ * which .wk-shot displays at the frame's own 16/10 ratio, so the shot fits
+ * exactly with nothing cropped.
  */
 const fs = require("fs");
 const path = require("path");
@@ -22,7 +19,6 @@ const SITES = [
 
 const WIDTH = 1440;
 const VIEWPORT_H = 900;
-const CROP_RATIO = 4;
 const QUALITY = 78;
 const OUT_DIR = path.join(__dirname, "..", "public", "images", "work");
 
@@ -53,9 +49,8 @@ async function main() {
       await page.goto(url, { waitUntil: "networkidle", timeout: 60000 });
 
       /* Walk the page once so lazy-loaded images and scroll-reveal sections
-         have actually rendered — otherwise the capture is full of blanks
-         where the real site shows content. Then back to the top, because a
-         sticky header photographs itself mid-page otherwise. */
+         above the fold have actually rendered — a site that animates its hero
+         in on load otherwise photographs blank. Then back to the top. */
       await page.evaluate(async () => {
         for (let y = 0; y < document.body.scrollHeight; y += window.innerHeight) {
           window.scrollTo(0, y);
@@ -65,22 +60,15 @@ async function main() {
       });
       await page.waitForTimeout(600);
 
-      const png = await page.screenshot({ fullPage: true, type: "png" });
+      /* Viewport only: the frame shows the site above the fold, so a
+         full-page capture would just be cropped back down to this. */
+      const png = await page.screenshot({ fullPage: false, type: "png" });
 
-      const img = sharp(png);
-      const { height } = await img.metadata();
-      const maxH = VIEWPORT_H * CROP_RATIO;
       const out = path.join(OUT_DIR, `${slug}.webp`);
-
-      await (height > maxH
-        ? img.extract({ left: 0, top: 0, width: WIDTH, height: maxH })
-        : img
-      )
-        .webp({ quality: QUALITY })
-        .toFile(out);
+      await sharp(png).webp({ quality: QUALITY }).toFile(out);
 
       const kb = Math.round(fs.statSync(out).size / 1024);
-      console.log(`${slug}: ${WIDTH}x${Math.min(height, maxH)} — ${kb}KB`);
+      console.log(`${slug}: ${WIDTH}x${VIEWPORT_H} — ${kb}KB`);
     } catch (err) {
       console.error(`${slug}: failed — ${err.message}`);
     }

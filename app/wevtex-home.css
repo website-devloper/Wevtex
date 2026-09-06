@@ -17,12 +17,12 @@
   --bg-2: #1f2022;
   --surface-d-1: rgba(255, 255, 255, 0.04);
   --surface-d-2: rgba(255, 255, 255, 0.07);
-  --hairline-d: rgba(255, 255, 255, 0.10);
-  --hairline-d-strong: rgba(255, 255, 255, 0.20);
+  --hairline-d: rgba(255, 255, 255, 0.16);
+  --hairline-d-strong: rgba(255, 255, 255, 0.30);
   --ink-on-dark: #ffffff;
-  --ink-on-dark-2: rgba(255, 255, 255, 0.72);
-  --ink-on-dark-3: rgba(255, 255, 255, 0.50);
-  --ink-on-dark-4: rgba(255, 255, 255, 0.30);
+  --ink-on-dark-2: rgba(255, 255, 255, 0.84);
+  --ink-on-dark-3: rgba(255, 255, 255, 0.64);
+  --ink-on-dark-4: rgba(255, 255, 255, 0.42);
 
   /* Light surfaces — a four-step value ladder, not one flat field.
      Each rung is ~2-3% darker than the last. Sections alternate down the
@@ -32,15 +32,20 @@
        paper   → recessed / secondary (FAQ, industries)
        sand    → the deepest light rung, used sparingly */
   --bg-cream: #ffffff;
-  --bg-cream-2: #faf9f6;
-  --bg-paper: #f2f1ec;
+  --bg-cream-2: #f7f5ef;
+  --bg-paper: #ebe8de;
+  /* Deepest light rung — used sparingly to break a run of pale sections. */
+  --bg-sand: #ddd7c7;
+  /* Lime's dark cousin. A second dark ground so consecutive dark bands do not
+     read as the same slab, and warmer than the near-black --bg-0. */
+  --bg-olive: #17210d;
   --surface-c-1: rgba(16, 17, 18, 0.03);
   --surface-c-2: rgba(16, 17, 18, 0.06);
-  --hairline-c: #e2e0da;
-  --hairline-c-strong: rgba(16, 17, 18, 0.20);
+  --hairline-c: #d5d1c4;
+  --hairline-c-strong: rgba(16, 17, 18, 0.32);
   --ink-on-cream: #101112;
-  --ink-on-cream-2: #6b6b68;
-  --ink-on-cream-3: rgba(16, 17, 18, 0.44);
+  --ink-on-cream-2: #46463f;
+  --ink-on-cream-3: #6c6c63;
 
   /* Signal lime — the single accent */
   --accent: #c6f24e;
@@ -54,7 +59,7 @@
 
   /* Named aliases kept for older blocks — all resolve into the new system */
   --vermilion: #c6f24e;
-  --sand: #eceae3;
+  --sand: #ddd7c7;
   --clay: #4c6b10;
   --ochre: #6b6b68;
   --olive: #6b6b68;
@@ -182,22 +187,22 @@
 .wevtex h3,
 .wevtex h4 {
   font-family: var(--font-sans);
-  font-weight: 500;
+  font-weight: 600;
   letter-spacing: -0.025em;
   line-height: 1.06;
   text-wrap: balance;
 }
 
 .wevtex .h-display {
-  font-size: clamp(46px, 7vw, 108px);
-  font-weight: 500;
+  font-size: clamp(42px, 6.2vw, 92px);
+  font-weight: 600;
   letter-spacing: -0.04em;
   line-height: 0.96;
 }
 
 .wevtex .h-section {
-  font-size: clamp(28px, 3.3vw, 44px);
-  font-weight: 500;
+  font-size: clamp(26px, 3vw, 38px);
+  font-weight: 600;
   letter-spacing: -0.035em;
   line-height: 1.08;
 }
@@ -230,7 +235,7 @@
 .wevtex .eyebrow {
   font-family: var(--font-sans);
   font-size: 11.5px;
-  font-weight: 500;
+  font-weight: 600;
   letter-spacing: 0.16em;
   text-transform: uppercase;
   color: var(--ink-on-cream-2);
@@ -4935,8 +4940,8 @@
 }
 
 /* ===================== Consistent heading sizes (match hero) ===================== */
-.wevtex .h-section { font-size: clamp(34px, 4.2vw, 56px); line-height: 1.1; }
-.wevtex .problem-h { font-size: clamp(34px, 4.2vw, 56px); line-height: 1.12; }
+.wevtex .h-section { font-size: clamp(30px, 3.5vw, 46px); font-weight: 600; line-height: 1.12; }
+.wevtex .problem-h { font-size: clamp(30px, 3.5vw, 46px); font-weight: 600; line-height: 1.14; }
 
 /* Force light text on the dark problem band (beats mode-light heading color) */
 .wevtex .problem-band .problem-h { color: #ffffff !important; }
@@ -5061,7 +5066,7 @@
 .wevtex .industries-carousel { padding: clamp(80px, 12vh, 130px) 0; }
 .wevtex .ic-head { text-align: center; max-width: 760px; margin: 0 auto 52px; }
 .wevtex .ic-head h2 { justify-content: center; }
-.wevtex .ic-sub { margin-top: 18px; color: var(--ink-on-cream-2); line-height: 1.7; font-size: 16px; }
+.wevtex .ic-sub { margin-top: 18px; color: var(--ink-on-cream-2); line-height: 1.68; font-size: 16px; font-weight: 450; }
 .wevtex .line-eyebrow-center { display: inline-flex; align-items: center; gap: 14px; }
 .wevtex .line-eyebrow-center::before, .wevtex .line-eyebrow-center::after { content: ""; width: 46px; height: 1px; background: var(--vermilion); opacity: 0.6; }
 
@@ -5210,7 +5215,7 @@
 /* ===================== STATS — mockup 6 (clay band) ===================== */
 .wevtex .stats-band-v2 {
   position: relative; overflow: hidden; color: #ffffff;
-  background: #17181a;
+  background: var(--bg-olive);
   padding: clamp(88px, 13vh, 138px) 0;
 }
 /* Photo backdrop — swap the url below for your own team shot. */
@@ -5661,10 +5666,10 @@
    it. The tokens are re-declared on the element below so the descendants
    can go on using them. */
 .wevtex .footer-v2, footer.footer-v2 {
-  --hairline-d: rgba(255, 255, 255, 0.10);
+  --hairline-d: rgba(255, 255, 255, 0.16);
   --ink-on-dark: #ffffff;
-  --ink-on-dark-2: rgba(255, 255, 255, 0.72);
-  --ink-on-dark-3: rgba(255, 255, 255, 0.50);
+  --ink-on-dark-2: rgba(255, 255, 255, 0.84);
+  --ink-on-dark-3: rgba(255, 255, 255, 0.64);
   background: #101112; color: var(--ink-on-dark);
   position: relative; overflow: hidden;
   border-top: 1px solid rgba(255, 255, 255, 0.10);
@@ -6173,12 +6178,12 @@
   --bg-2: #1f2022;
   --surface-d-1: rgba(255, 255, 255, 0.04);
   --surface-d-2: rgba(255, 255, 255, 0.07);
-  --hairline-d: rgba(255, 255, 255, 0.10);
-  --hairline-d-strong: rgba(255, 255, 255, 0.20);
+  --hairline-d: rgba(255, 255, 255, 0.16);
+  --hairline-d-strong: rgba(255, 255, 255, 0.30);
   --ink-on-dark: #ffffff;
-  --ink-on-dark-2: rgba(255, 255, 255, 0.72);
-  --ink-on-dark-3: rgba(255, 255, 255, 0.50);
-  --ink-on-dark-4: rgba(255, 255, 255, 0.30);
+  --ink-on-dark-2: rgba(255, 255, 255, 0.84);
+  --ink-on-dark-3: rgba(255, 255, 255, 0.64);
+  --ink-on-dark-4: rgba(255, 255, 255, 0.42);
 }
 
 /* The white slabs sitting on those ink grounds are light surfaces again. */
@@ -6514,20 +6519,21 @@
   color: var(--ink-on-cream-3);
 }
 
-/* Tall captures: at rest you see the top of the page, on hover it scrolls
-   down to the footer. Turns a thumbnail into a small live demo. */
+/* A still capture, anchored to the top of the page, filling the frame.
+   This used to scroll from top to footer on hover over three seconds; the
+   scroll is gone by choice — a screenshot of the site above the fold says
+   what it needs to, and it costs one paint instead of an animation on six
+   frames at once. `cover` means a 1440x900 viewport capture fits exactly
+   and a taller full-page capture is simply cropped to its top. */
 .wevtex .wk-shot {
   aspect-ratio: 16 / 10;
   background-repeat: no-repeat;
-  background-size: 100% auto;
+  background-size: cover;
   background-position: center top;
   background-color: var(--bg-paper);
-  transition: background-position 3000ms cubic-bezier(0.4, 0, 0.25, 1);
 }
-.wevtex .wk-frame:hover .wk-shot { background-position: center bottom; }
 
 /* Flat neutral placeholders. Delete once real captures land. */
-.wevtex .wk-shot.g0, .wevtex .wk-shot.g1, .wevtex .wk-shot.g3 { background-size: 100% 300%; }
 .wevtex .wk-shot.g0 { background-color: #eeeeea; }
 .wevtex .wk-shot.g1 { background-color: #e4e4e0; }
 .wevtex .wk-shot.g3 { background-color: #ebebe7; }
@@ -6581,12 +6587,10 @@
   .wevtex .wk-toggle,
   .wevtex .wk-toggle-v,
   .wevtex .wk-frame,
-  .wevtex .wk-shot,
   .wevtex .wk-view-arrow,
   .wevtex .wk-panel,
   .wevtex .wk-panel-grid > * { transition: none; }
   .wevtex .wk-row:hover { padding-left: 4px; }
-  .wevtex .wk-frame:hover .wk-shot { background-position: center top; }
   .wevtex .wk-panel-grid > * { opacity: 1; transform: none; }
 }
 
@@ -7520,3 +7524,31 @@
   .cc-actions { width: 100%; }
   .cc-btn { flex: 1; }
 }
+
+/* ---------------------------------------------------------------------------
+   Contrast pass — section grounds
+   The light ladder is white → cream-2 → paper → sand. Three pale sections in a
+   row read as one long wash however far apart their values are, so the deeper
+   rungs exist to break a run, not to be used everywhere.
+   ------------------------------------------------------------------------- */
+.wevtex .theme-sand {
+  background: var(--bg-sand);
+  color: var(--ink-on-cream);
+  position: relative;
+  /* Sand is the darkest light rung, so the muted tier has to come down with
+     it — at the default #6c6c63 it lands at 3.7:1 here, under WCAG AA. */
+  --ink-on-cream-3: #55554d;
+  --hairline-c: #c3bda9;
+}
+
+.wevtex .theme-cream-2 {
+  background: var(--bg-cream-2);
+  color: var(--ink-on-cream);
+  position: relative;
+}
+
+/* Cards sitting on the deeper light grounds need a real edge, not a hairline
+   that dissolves into the ground behind it. */
+.wevtex .theme-sand .ic-card,
+.wevtex .theme-sand .pr-card,
+.wevtex .theme-sand .faq-item-v2 { border-color: var(--hairline-c-strong); }
