@@ -69,7 +69,6 @@ export function ServicesBento({
           {SERVICES.map((sv, i) => (
             <a key={sv.slug} href={servicePath(sv.slug)} className="bento-card">
               <span className="bento-top">
-                <span className="bento-n">{String(i + 1).padStart(2, "0")}</span>
                 <span className="bento-icon">{SERVICE_ICONS[sv.slug]}</span>
               </span>
               <div className="bento-card-body">

@@ -4981,14 +4981,14 @@
   gap: clamp(12px, 1.2vw, 18px);
 }
 
-/* Each service is its own object. On the paper ground a white card separates
+/* Each service is its own object. On the paper ground an off-white card separates
    itself without needing a heavy border, and the border is then free to carry
    the hover state instead of just drawing the grid. */
 .wevtex .bento-card {
   position: relative;
   display: flex; flex-direction: column;
-  background: var(--bg-cream); color: var(--ink-on-cream);
-  border: 1px solid #c6c1b1;
+  background: var(--bg-cream-2); color: var(--ink-on-cream);
+  border: 1px solid var(--hairline-c-strong);
   border-radius: var(--radius-md);
   box-shadow: none;
   padding: 34px 28px 30px; min-height: 0; text-decoration: none;
@@ -4996,14 +4996,11 @@
               transform 220ms var(--ease-out);
 }
 
-/* ---- Head row: number left, icon right ---- */
+/* ---- Head row: the icon, alone. The 01-08 numbering was removed — services
+   are not a sequence, so the digits implied an order that does not exist. ---- */
 .wevtex .bento-top {
-  display: flex; align-items: center; justify-content: space-between;
-  height: 24px; margin-bottom: 24px;
-}
-.wevtex .bento-n {
-  font-family: var(--font-mono); font-size: 11.5px; letter-spacing: 0.1em;
-  font-variant-numeric: tabular-nums; color: var(--ink-on-cream-3);
+  display: flex; align-items: center;
+  height: 32px; margin-bottom: 22px;
 }
 /* Plain ink glyph — the grey outlined disc was the most generic thing here. */
 .wevtex .bento-icon {
@@ -5011,7 +5008,7 @@
   display: grid; place-items: center; color: var(--ink-on-cream); flex-shrink: 0;
   transition: color 240ms var(--ease-out);
 }
-.wevtex .bento-icon svg { width: 22px; height: 22px; }
+.wevtex .bento-icon svg { width: 30px; height: 30px; stroke-width: 1.6; }
 
 /* ---- Body ----------------------------------------------------------
    Body is NOT pushed to the bottom any more. margin-top:auto was why the
@@ -5035,8 +5032,8 @@
 .wevtex .bento-arrow {
   width: auto; height: auto; border: 0; border-radius: 0; background: none;
   margin-top: auto; padding-top: 20px;
-  display: inline-flex; color: var(--ink-on-cream-3);
-  opacity: 0.45; transform: none;
+  display: inline-flex; color: var(--ink-on-cream-2);
+  opacity: 1; transform: none;
   transition: opacity 240ms var(--ease-out), transform 240ms var(--ease-out), color 240ms var(--ease-out);
 }
 .wevtex .bento-arrow svg { width: 16px; height: 16px; }
