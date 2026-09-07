@@ -4922,7 +4922,7 @@
   background-size: cover; background-position: center;
   /* Desaturated: the photo's green dividers would otherwise tint the band. */
   filter: grayscale(1);
-  opacity: 0.13;
+  opacity: 0.07;
 }
 /* Scrim: darkest through the middle, where the headline sits. */
 .wevtex .problem-band::after {
@@ -5240,7 +5240,7 @@
   content: ""; position: absolute; inset: 0; z-index: 0;
   background-image: url("/images/background/office-desks.webp");
   background-size: cover; background-position: center;
-  opacity: 0.15;
+  opacity: 0.08;
 }
 /* Scrim: keeps the figures legible over the photo without hiding it. */
 .wevtex .stats-band-v2::after {
