@@ -722,20 +722,22 @@ export function HomeClient() {
               const t = TPOOL[(ti + off) % TPOOL.length];
               return (
                 <figure className="testi-col" key={off}>
-                  <div className="testi-stars" aria-label="Noté 5 sur 5">
-                    {[0, 1, 2, 3, 4].map((n) => (
-                      <svg key={n} viewBox="0 0 24 24" width="14" height="14" fill="currentColor" aria-hidden>
-                        <path d="M12 2l2.9 6.3 6.9.6-5.2 4.6 1.6 6.7L12 17.3 5.8 20.8l1.6-6.7L2.2 8.9l6.9-.6z" />
-                      </svg>
-                    ))}
-                  </div>
                   <blockquote className="testi-q">
                     &ldquo;{t.q}{t.em ? <em className="hl-line">{t.em}</em> : null}&rdquo;
                   </blockquote>
                   <figcaption className="testi-person">
                     <span className="testi-avatar">{t.a}</span>
                     <div>
-                      <div className="testi-name">{t.name}</div>
+                      <div className="testi-name-row">
+                        <span className="testi-name">{t.name}</span>
+                        <span className="testi-stars" aria-label="Noté 5 sur 5">
+                          {[0, 1, 2, 3, 4].map((n) => (
+                            <svg key={n} viewBox="0 0 24 24" width="14" height="14" fill="currentColor" aria-hidden>
+                              <path d="M12 2l2.9 6.3 6.9.6-5.2 4.6 1.6 6.7L12 17.3 5.8 20.8l1.6-6.7L2.2 8.9l6.9-.6z" />
+                            </svg>
+                          ))}
+                        </span>
+                      </div>
                       <div className="testi-role">{t.role}</div>
                     </div>
                   </figcaption>

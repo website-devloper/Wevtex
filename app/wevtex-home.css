@@ -5375,10 +5375,14 @@
   border-radius: var(--radius-md);
 }
 
-.wevtex .testi-stars {
-  display: flex; gap: 4px; color: var(--accent-deep); margin-bottom: 22px;
+/* Stars sit with the reviewer, not above the quote — a rating belongs to the
+   person who gave it. Gold rather than lime: everyone reads gold stars as a
+   rating, and lime ones read as decoration. */
+.wevtex .testi-stars { display: inline-flex; gap: 2px; color: #b57c03; }
+.wevtex .testi-stars svg { width: 14px; height: 14px; }
+.wevtex .testi-name-row {
+  display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
 }
-.wevtex .testi-stars svg { width: 18px; height: 18px; }
 
 .wevtex .testi-q {
   position: relative;
@@ -7596,3 +7600,17 @@
 .wevtex .theme-sand .ic-card,
 .wevtex .theme-sand .pr-card,
 .wevtex .theme-sand .faq-item-v2 { border-color: var(--hairline-c-strong); }
+
+/* ---------------------------------------------------------------------------
+   Mega menu panel
+   In light mode --bg-1 resolves to --bg-paper, so the dropdown inherited the
+   same beige as the recessed page sections and read as part of the page rather
+   than as a surface floating over it. It takes the clean ground instead, and
+   leans on the shadow for separation.
+   ------------------------------------------------------------------------- */
+.wevtex.mode-light .mega-dropdown {
+  background: var(--bg-cream);
+  border-color: var(--hairline-c);
+  box-shadow: 0 20px 52px -14px rgba(16, 17, 18, 0.26),
+              0 2px 8px -2px rgba(16, 17, 18, 0.08);
+}
