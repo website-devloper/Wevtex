@@ -4918,8 +4918,10 @@
    walking into. Kept low so it reads as texture, not as a hero image. */
 .wevtex .problem-band::before {
   content: ""; position: absolute; inset: 0; z-index: 0;
-  background-image: url("/images/background/office-desks.webp");
+  background-image: url("/images/background/office-green.webp");
   background-size: cover; background-position: center;
+  /* Desaturated: the photo's green dividers would otherwise tint the band. */
+  filter: grayscale(1);
   opacity: 0.13;
 }
 /* Scrim: darkest through the middle, where the headline sits. */
@@ -5236,10 +5238,8 @@
    of fighting it. Replaces an industry illustration used as a placeholder. */
 .wevtex .stats-band-v2::before {
   content: ""; position: absolute; inset: 0; z-index: 0;
-  background-image: url("/images/background/office-green.webp");
+  background-image: url("/images/background/office-desks.webp");
   background-size: cover; background-position: center;
-  /* Desaturated so the photo's green dividers do not tint the whole band. */
-  filter: grayscale(1);
   opacity: 0.15;
 }
 /* Scrim: keeps the figures legible over the photo without hiding it. */
