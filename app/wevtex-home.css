@@ -5352,28 +5352,38 @@
 .wevtex .testi-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 0;
+  gap: clamp(14px, 1.4vw, 20px);
   margin-top: 54px;
-  border-top: 1px solid var(--hairline-c);
   align-items: stretch;
 }
 
 .wevtex .testi-col {
   display: flex; flex-direction: column;
   margin: 0;
-  padding: 34px 36px 4px;
-  border-left: 1px solid var(--hairline-c);
+  padding: 32px 30px 28px;
+  background: var(--bg-cream-2);
+  border: 1px solid var(--hairline-c-strong);
+  border-radius: var(--radius-md);
 }
-/* Outer edges stay open so the wall reads as columns, not as boxes. */
-.wevtex .testi-col:first-child { border-left: 0; padding-left: 0; }
-.wevtex .testi-col:last-child { padding-right: 0; }
 
-.wevtex .testi-stars { display: flex; gap: 3px; color: var(--accent-text); margin-bottom: 20px; }
+.wevtex .testi-stars {
+  display: flex; gap: 4px; color: var(--accent-deep); margin-bottom: 22px;
+}
+.wevtex .testi-stars svg { width: 18px; height: 18px; }
 
 .wevtex .testi-q {
-  margin: 0 0 30px;
-  font-size: 16px; line-height: 1.7; color: var(--ink-on-cream);
+  position: relative;
+  margin: 0 0 32px;
+  font-size: clamp(17px, 1.5vw, 20px); font-weight: 500;
+  line-height: 1.55; letter-spacing: -0.015em;
+  color: var(--ink-on-cream);
   text-wrap: pretty;
+}
+/* The signature lime marker, same device as the headline highlight. */
+.wevtex .testi-q em { font-style: normal; font-weight: 600;
+  background: linear-gradient(var(--accent), var(--accent)) no-repeat;
+  background-size: 100% 0.5em; background-position: 0 0.72em;
+  -webkit-box-decoration-break: clone; box-decoration-break: clone;
 }
 
 /* Authors align across all three columns, and because the columns are now
@@ -5385,12 +5395,12 @@
   border-top: 1px solid var(--hairline-c);
 }
 .wevtex .testi-avatar {
-  width: 40px; height: 40px; border-radius: 50%; flex-shrink: 0;
+  width: 46px; height: 46px; border-radius: 50%; flex-shrink: 0;
   display: grid; place-items: center;
-  font-size: 14px; font-weight: 600; letter-spacing: 0.02em;
+  font-size: 16px; font-weight: 700; letter-spacing: 0.02em;
   background: var(--accent); color: var(--on-lime);
 }
-.wevtex .testi-name { font-size: 14px; font-weight: 600; color: var(--ink-on-cream); }
+.wevtex .testi-name { font-size: 15px; font-weight: 600; color: var(--ink-on-cream); letter-spacing: -0.01em; }
 .wevtex .testi-role { font-size: 12.5px; color: var(--ink-on-cream-2); margin-top: 2px; }
 
 .wevtex .testi-controls { display: flex; align-items: center; justify-content: center; gap: 22px; margin-top: 44px; }
@@ -6018,14 +6028,24 @@
 .wevtex .inline-cta { padding: 0 0 clamp(48px, 6vh, 70px); }
 /* The CTA now follows the dark stats band, so it needs its own breathing room on top. */
 .wevtex .stats-band-v2 + .inline-cta { padding-top: clamp(60px, 8vh, 90px); }
+/* An ink slab on the sand ground. Lime measures 1.11 against sand and 14.59
+   against ink — on the pale ground the button was barely a shape, which is the
+   one thing a CTA cannot afford. Ink also lets the card earn its edges instead
+   of being a faint rectangle a shade off the ground behind it. */
 .wevtex .ict-inner {
   display: flex; align-items: center; justify-content: space-between;
-  flex-wrap: wrap; gap: 18px 28px;
-  padding: 26px 30px;
-  border: 1px solid rgba(16, 17, 18, 0.14); border-radius: 20px;
-  background: rgba(255, 255, 255, 0.28);
+  flex-wrap: wrap; gap: 20px 34px;
+  padding: 34px 38px;
+  border: 0; border-radius: var(--radius-lg);
+  background: var(--bg-0); color: var(--ink-on-dark);
+  --accent-text: var(--accent);
+  box-shadow: 0 18px 44px -22px rgba(16, 17, 18, 0.55);
 }
-.wevtex .ict-text { margin: 0; font-size: 17px; font-weight: 500; letter-spacing: -0.015em; }
+.wevtex .ict-text {
+  margin: 0;
+  font-size: clamp(18px, 1.7vw, 22px); font-weight: 600; letter-spacing: -0.02em;
+  color: var(--ink-on-dark); max-width: 30ch;
+}
 @media (max-width: 560px) {
   .wevtex .ict-inner { flex-direction: column; align-items: flex-start; padding: 24px; }
 }
