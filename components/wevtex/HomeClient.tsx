@@ -16,6 +16,7 @@ import { ScrollRevealText } from "./ScrollRevealText";
 import { HeroReviews } from "./HeroReviews";
 import { StickyCta } from "./StickyCta";
 import { FAQS, SERVICES } from "./homeContent";
+import { PROJECTS_ORDERED } from "@/lib/projects-data";
 import { ServicesBento, SERVICE_ICONS } from "./SharedSections";
 /* Contact channels — one definition for the whole site, see lib/site-links.ts */
 import { WHATSAPP_URL, serviceWhatsAppUrl, GOOGLE_REVIEWS_URL, PORTFOLIO_URL, industryPath } from "@/lib/site-links";
@@ -108,10 +109,10 @@ const INDUSTRIES = [
    Every entry carries its own detail panel, so the list stays a tight index
    at rest and becomes an editorial row on demand. Order matters: index 0 is
    open on load, so lead with the strongest piece.
-
-   Placeholder content shown for layout only.
-   TODO before launch: real client names, real URLs, real screenshots, and
-   metrics that have actually been measured. Do not ship the numbers below. */
+ */
+/* The homepage index shows the first six by the order set in projects-data;
+   the rest live on /portfolio. Fields are mapped rather than duplicated so
+   there is one place to correct a client name, a URL or a figure. */
 type WorkItem = {
   slug: string;
   title: string;
@@ -122,90 +123,25 @@ type WorkItem = {
   stack: string[];
   metric: string;
   metricLabel: string;
-  /** Dégradé de repli, tant qu'il n'y a pas de capture. */
+  /** Fallback gradient, kept for any entry without a screenshot yet. */
   shot: string;
-  /**
-   * Passez à true une fois public/images/work/<slug>.webp en place, la
-   * capture remplace alors l'aplat de repli.
-   * Produisez le fichier avec `node scripts/capture-shots.js`.
-   */
+  /** True once /images/work/<slug>.webp exists. */
   capture?: boolean;
 };
 
-const WORK: WorkItem[] = [
-  {
-    slug: "luxora",
-    title: "Exemple — Luxora Interiors",
-    cat: "E-commerce",
-    year: "2026",
-    url: "luxora.store",
-    outcome: "Refonte axée vitesse : recherche instantanée sur 4 000 références et un tunnel de commande qui ne perd plus personne à l'étape livraison.",
-    stack: ["Next.js", "Shopify", "Algolia"],
-    metric: "+38%",
-    metricLabel: "de revenu par visite",
-    shot: "g0",
-  },
-  {
-    slug: "daressaada",
-    title: "Exemple — Hôtel Dar Essaada",
-    cat: "Hôtellerie",
-    year: "2026",
-    url: "daressaada.com",
-    outcome: "Un moteur de réservation en direct moins cher que les plateformes, avec disponibilités en temps réel et un calendrier de tarifs que la réception modifie elle-même.",
-    stack: ["Next.js", "Strapi", "Stripe"],
-    metric: "2.4x",
-    metricLabel: "de réservations directes",
-    shot: "g1",
-  },
-  {
-    slug: "eduflow",
-    title: "Exemple — Plateforme Eduflow",
-    cat: "SaaS",
-    year: "2025",
-    url: "eduflow.app",
-    outcome: "Une plateforme de formation multi-établissements : espaces élèves, diffusion vidéo et certification, le tout dans un seul tableau de bord.",
-    stack: ["Next.js", "Postgres", "Mux"],
-    metric: "12k",
-    metricLabel: "élèves actifs",
-    shot: "g3",
-  },
-  {
-    slug: "wellcare",
-    title: "Exemple — Clinique Wellcare",
-    cat: "Santé",
-    year: "2025",
-    url: "wellcare.ma",
-    outcome: "Un formulaire patient utilisable depuis un téléphone en salle d'attente, relié directement à l'agenda du cabinet.",
-    stack: ["Next.js", "Strapi", "Twilio"],
-    metric: "-62%",
-    metricLabel: "de rendez-vous manqués",
-    shot: "g0",
-  },
-  {
-    slug: "petrocore",
-    title: "Exemple — Petrocore Solutions",
-    cat: "Entreprise",
-    year: "2025",
-    url: "petrocore.com",
-    outcome: "Un site B2B pensé pour la demande de devis : fiches techniques, références de chantiers et un formulaire que les commerciaux lisent vraiment.",
-    stack: ["Next.js", "Strapi", "Vercel"],
-    metric: "3.1x",
-    metricLabel: "de demandes qualifiées",
-    shot: "g1",
-  },
-  {
-    slug: "northbound",
-    title: "Exemple — Northbound",
-    cat: "SEO & croissance",
-    year: "2024",
-    url: "northbound.co",
-    outcome: "Refonte technique et arborescence de contenu qui a enfin permis aux pages catégories de se positionner sur leurs mots-clés commerciaux.",
-    stack: ["Astro", "GA4", "Search Console"],
-    metric: "+240%",
-    metricLabel: "de visites organiques",
-    shot: "g3",
-  },
-];
+const WORK: WorkItem[] = PROJECTS_ORDERED.slice(0, 6).map((p, i) => ({
+  slug: p.slug,
+  title: p.title,
+  cat: p.category,
+  year: String(p.year),
+  url: p.clientUrl,
+  outcome: p.description,
+  stack: p.stack,
+  metric: p.metricValue,
+  metricLabel: p.metricLabel,
+  shot: `g${i % 5}`,
+  capture: true,
+}));
 
 /* Sample testimonials — placeholder content shown for layout only.
    TODO: replace with real, attributed client reviews (name, company, photo) before launch. */
