@@ -5050,8 +5050,10 @@
 
 .wevtex .services-bento .bento-card:hover,
 .wevtex .services-bento .bento-card:focus-visible {
-  border-color: var(--ink-on-cream);
-  box-shadow: 0 10px 30px -14px rgba(16, 17, 18, 0.35);
+  /* Was --ink-on-cream, a near-black outline that jumped off the card. The
+     muted tier still reads clearly against the resting hairline. */
+  border-color: var(--ink-on-cream-3);
+  box-shadow: 0 10px 30px -14px rgba(16, 17, 18, 0.28);
   transform: translateY(-3px);
 }
 .wevtex .services-bento .bento-card:hover::after { opacity: 1; }
