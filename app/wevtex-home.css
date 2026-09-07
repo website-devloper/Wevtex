@@ -36,9 +36,6 @@
   --bg-paper: #ebe8de;
   /* Deepest light rung — used sparingly to break a run of pale sections. */
   --bg-sand: #ddd7c7;
-  /* Lime's dark cousin. A second dark ground so consecutive dark bands do not
-     read as the same slab, and warmer than the near-black --bg-0. */
-  --bg-olive: #17210d;
   --surface-c-1: rgba(16, 17, 18, 0.03);
   --surface-c-2: rgba(16, 17, 18, 0.06);
   --hairline-c: #d5d1c4;
@@ -4923,7 +4920,7 @@
   content: ""; position: absolute; inset: 0; z-index: 0;
   background-image: url("/images/background/office-desks.webp");
   background-size: cover; background-position: center;
-  opacity: 0.26;
+  opacity: 0.13;
 }
 /* Scrim: darkest through the middle, where the headline sits. */
 .wevtex .problem-band::after {
@@ -5231,7 +5228,7 @@
 /* ===================== STATS — mockup 6 (clay band) ===================== */
 .wevtex .stats-band-v2 {
   position: relative; overflow: hidden; color: #ffffff;
-  background: var(--bg-olive);
+  background: #17181a;
   padding: clamp(88px, 13vh, 138px) 0;
 }
 /* Photo backdrop: a working coworking floor. Its green dividers sit in the
@@ -5241,14 +5238,16 @@
   content: ""; position: absolute; inset: 0; z-index: 0;
   background-image: url("/images/background/office-green.webp");
   background-size: cover; background-position: center;
-  opacity: 0.30;
+  /* Desaturated so the photo's green dividers do not tint the whole band. */
+  filter: grayscale(1);
+  opacity: 0.15;
 }
 /* Scrim: keeps the figures legible over the photo without hiding it. */
 .wevtex .stats-band-v2::after {
   content: ""; position: absolute; inset: 0; z-index: 1;
   background:
-    linear-gradient(90deg, rgba(23, 33, 13, 0.80) 0%, rgba(23, 33, 13, 0.52) 55%, rgba(23, 33, 13, 0.74) 100%),
-    linear-gradient(180deg, rgba(23, 33, 13, 0.30), rgba(23, 33, 13, 0.20));
+    linear-gradient(90deg, rgba(16, 17, 18, 0.74) 0%, rgba(16, 17, 18, 0.46) 55%, rgba(16, 17, 18, 0.68) 100%),
+    linear-gradient(180deg, rgba(16, 17, 18, 0.30), rgba(16, 17, 18, 0.20));
 }
 .wevtex .sb-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; position: relative; z-index: 2; }
 .wevtex .sb-item { padding: 0 34px; border-right: 1px solid rgba(255, 255, 255, 0.14); }
