@@ -11,7 +11,7 @@
 
 import type { ReactNode } from "react";
 import { FAQS, SERVICES } from "./homeContent";
-import { WHATSAPP_URL, serviceWhatsAppUrl, servicePath } from "@/lib/site-links";
+import { WHATSAPP_URL, SERVICES_URL, serviceWhatsAppUrl, servicePath } from "@/lib/site-links";
 
 export const WHATSAPP_MARK = (
   <svg viewBox="0 0 24 24" width="17" height="17" fill="currentColor" aria-hidden style={{ marginRight: 2 }}>
@@ -80,6 +80,13 @@ export function ServicesBento({
               </span>
             </a>
           ))}
+        </div>
+
+        <div className="wk-all reveal">
+          <a href={SERVICES_URL} className="btn btn-outline">
+            Voir tous nos services
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+          </a>
         </div>
       </div>
     </section>

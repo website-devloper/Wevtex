@@ -542,7 +542,7 @@
 
 .wevtex .hero h1 {
   font-size: clamp(30px, 4.6vw, 60px);
-  font-weight: 400;
+  font-weight: 600;
   letter-spacing: -0.04em;
   line-height: 1.05;
   margin-bottom: 28px;
@@ -610,10 +610,19 @@
 
 .wevtex .review-badge {
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 7px;
+  flex-direction: row;
+  align-items: center;
+  gap: 12px;
   padding: 0 30px;
+  flex-wrap: wrap;
+}
+/* Divider between brand, score and count so the row reads as one strip. */
+.wevtex .review-badge .rv-row,
+.wevtex .review-badge .rv-count { position: relative; padding-left: 12px; }
+.wevtex .review-badge .rv-row::before,
+.wevtex .review-badge .rv-count::before {
+  content: ""; position: absolute; left: 0; top: 50%; transform: translateY(-50%);
+  width: 1px; height: 13px; background: var(--hairline-d);
 }
 
 .wevtex .review-badge:first-child { padding-left: 6px; }
@@ -4875,7 +4884,7 @@
 
 .wevtex .hero-split .hero-content { text-align: left; align-items: flex-start; max-width: none; margin: 0; }
 .wevtex .hero-split .status-pill { margin-bottom: 26px; text-transform: uppercase; letter-spacing: 0.1em; }
-.wevtex .hero-split h1 { padding: 0; text-align: left; margin-bottom: 22px; font-size: clamp(34px, 4.2vw, 56px); white-space: nowrap; }
+.wevtex .hero-split h1 { padding: 0; text-align: left; margin-bottom: 22px; font-size: clamp(32px, 3.9vw, 52px); white-space: nowrap; }
 @media (max-width: 600px) { .wevtex .hero-split h1 { white-space: normal; font-size: clamp(30px, 8vw, 44px); } }
 .wevtex .hero-split .hero-sub { text-align: left; margin: 0 0 34px; max-width: 46ch; }
 .wevtex .hero-split .hero-ctas { justify-content: flex-start; margin-bottom: 0; }
