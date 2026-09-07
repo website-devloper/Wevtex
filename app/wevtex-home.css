@@ -4922,14 +4922,14 @@
   background-size: cover; background-position: center;
   /* Desaturated: the photo's green dividers would otherwise tint the band. */
   filter: grayscale(1);
-  opacity: 0.035;
+  opacity: 0.22;
 }
 /* Scrim: darkest through the middle, where the headline sits. */
 .wevtex .problem-band::after {
   content: ""; position: absolute; inset: 0; z-index: 1;
   background:
-    radial-gradient(120% 80% at 50% 50%, rgba(16, 17, 18, 0.88) 0%, rgba(16, 17, 18, 0.62) 45%, rgba(16, 17, 18, 0.5) 100%),
-    linear-gradient(180deg, rgba(16, 17, 18, 0.55), rgba(16, 17, 18, 0.35));
+    radial-gradient(120% 80% at 50% 50%, rgba(16, 17, 18, 0.72) 0%, rgba(16, 17, 18, 0.42) 45%, rgba(16, 17, 18, 0.26) 100%),
+    linear-gradient(180deg, rgba(16, 17, 18, 0.30), rgba(16, 17, 18, 0.18));
 }
 .wevtex .problem-inner { max-width: 1000px; margin: 0 auto; text-align: center; position: relative; z-index: 2; }
 .wevtex .problem-h {
@@ -5241,14 +5241,14 @@
   content: ""; position: absolute; inset: 0; z-index: 0;
   background-image: url("/images/background/office-desks.webp");
   background-size: cover; background-position: center;
-  opacity: 0.04;
+  opacity: 0.24;
 }
 /* Scrim: keeps the figures legible over the photo without hiding it. */
 .wevtex .stats-band-v2::after {
   content: ""; position: absolute; inset: 0; z-index: 1;
   background:
-    linear-gradient(90deg, rgba(16, 17, 18, 0.74) 0%, rgba(16, 17, 18, 0.46) 55%, rgba(16, 17, 18, 0.68) 100%),
-    linear-gradient(180deg, rgba(16, 17, 18, 0.30), rgba(16, 17, 18, 0.20));
+    linear-gradient(90deg, rgba(16, 17, 18, 0.62) 0%, rgba(16, 17, 18, 0.24) 55%, rgba(16, 17, 18, 0.55) 100%),
+    linear-gradient(180deg, rgba(16, 17, 18, 0.18), rgba(16, 17, 18, 0.12));
 }
 .wevtex .sb-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; position: relative; z-index: 2; }
 .wevtex .sb-item { padding: 0 34px; border-right: 1px solid rgba(255, 255, 255, 0.14); }
