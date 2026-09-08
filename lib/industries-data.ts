@@ -248,3 +248,84 @@ export const INDUSTRIES: Industry[] = [
 
 export const INDUSTRY_SLUGS = INDUSTRIES.map((i) => i.slug);
 export const getIndustry = (slug: string) => INDUSTRIES.find((i) => i.slug === slug);
+
+/* ---------------------------------------------------------------------------
+ * What each service means for a given sector.
+ *
+ * Kept as a separate map rather than a field on Industry so the sector copy
+ * above stays readable, and so a service can be added or reworded for every
+ * sector in one place.
+ *
+ * The line is written for the sector, not copied from the service page: a
+ * hotelier and a dentist both need "un site", but they are not buying the same
+ * thing, and a page that says the same sentence to both ranks for neither.
+ * Keys are service slugs from homeContent.ts.
+ * ------------------------------------------------------------------------- */
+export type IndustryService = { slug: string; line: string };
+
+export const INDUSTRY_SERVICES: Record<string, IndustryService[]> = {
+  "ecommerce-retail": [
+    { slug: "website-creation", line: "Votre boutique en ligne, du catalogue au paiement, pensée pour l'achat sur mobile." },
+    { slug: "seo", line: "Vos fiches produits positionnées sur les recherches d'achat, pas seulement sur votre nom de marque." },
+    { slug: "ads", line: "Des campagnes Google Shopping et Meta qui ramènent des acheteurs, avec un coût par vente suivi." },
+    { slug: "whatsapp-bots", line: "Un assistant qui répond aux questions produit, suit les commandes et relance les paniers abandonnés." },
+    { slug: "custom-solutions", line: "Synchronisation des stocks entre votre boutique, votre point de vente et vos marketplaces." },
+    { slug: "local-seo", line: "Votre magasin visible sur Maps quand on cherche votre produit à proximité." },
+  ],
+  "tourism-hospitality": [
+    { slug: "website-creation", line: "Un site avec moteur de réservation en direct, pour cesser de tout laisser aux plateformes." },
+    { slug: "local-seo", line: "Votre établissement en tête sur Maps et sur les recherches « hôtel » ou « riad » dans votre ville." },
+    { slug: "seo", line: "Des pages qui captent les recherches de séjour bien avant la date d'arrivée." },
+    { slug: "ads", line: "Des campagnes ciblées sur vos marchés émetteurs, en basse comme en haute saison." },
+    { slug: "whatsapp-bots", line: "Réponses instantanées sur les disponibilités, les tarifs et les transferts, 24h/24." },
+    { slug: "mobile-apps", line: "Une application pour le check-in, les services sur place et la fidélisation." },
+  ],
+  "professional-services": [
+    { slug: "website-creation", line: "Un site qui inspire confiance et transforme les visiteurs en rendez-vous." },
+    { slug: "local-seo", line: "Votre cabinet trouvé sur Maps quand on cherche votre spécialité dans votre ville." },
+    { slug: "seo", line: "Des pages d'expertise positionnées sur les questions que vos clients tapent avant d'appeler." },
+    { slug: "custom-solutions", line: "Portails clients, espaces documents et suivi de dossiers sécurisés." },
+    { slug: "ads", line: "Des campagnes qui vous amènent des dossiers qualifiés, pas des curieux." },
+    { slug: "whatsapp-bots", line: "Qualification des demandes et prise de rendez-vous automatisées." },
+  ],
+  "healthcare-wellness": [
+    { slug: "website-creation", line: "Un site rassurant, avec prise de rendez-vous en ligne et présentation claire des soins." },
+    { slug: "local-seo", line: "Votre cabinet visible sur Maps au moment où un patient cherche près de chez lui." },
+    { slug: "whatsapp-bots", line: "Confirmation et rappel des rendez-vous, pour réduire les absences." },
+    { slug: "seo", line: "Des pages de soins qui répondent aux questions posées avant de prendre rendez-vous." },
+    { slug: "custom-solutions", line: "Gestion des patients, agenda et dossiers, dans le respect de la confidentialité." },
+    { slug: "ads", line: "Des campagnes locales mesurées au nombre de rendez-vous obtenus." },
+  ],
+  "industry-logistics": [
+    { slug: "website-creation", line: "Un site catalogue clair, avec fiches techniques et demande de devis simplifiée." },
+    { slug: "custom-solutions", line: "Outils métier : suivi de flotte, gestion d'entrepôt, portails fournisseurs." },
+    { slug: "desktop-apps", line: "Logiciels bureau pour les postes qui doivent fonctionner sans connexion." },
+    { slug: "seo", line: "Un positionnement sur les recherches B2B de vos acheteurs et donneurs d'ordre." },
+    { slug: "mobile-apps", line: "Applications terrain pour vos équipes : scan, saisie et remontée d'informations." },
+    { slug: "whatsapp-bots", line: "Suivi de commande et d'expédition consultable directement sur WhatsApp." },
+  ],
+  "education-elearning": [
+    { slug: "website-creation", line: "Un site qui présente vos formations et remplit vos sessions d'inscription." },
+    { slug: "custom-solutions", line: "Plateforme de cours, suivi des apprenants, quiz et certificats." },
+    { slug: "seo", line: "Des pages formation positionnées sur ce que cherchent vos futurs inscrits." },
+    { slug: "ads", line: "Des campagnes calées sur vos périodes d'inscription." },
+    { slug: "whatsapp-bots", line: "Réponses aux questions d'admission et relance des dossiers incomplets." },
+    { slug: "mobile-apps", line: "Une application pour suivre les cours et les devoirs depuis un téléphone." },
+  ],
+  "creative-media-tech": [
+    { slug: "website-creation", line: "Un portfolio qui met votre production au premier plan, sans la ralentir." },
+    { slug: "seo", line: "Une visibilité sur les recherches de prestataires dans votre discipline." },
+    { slug: "custom-solutions", line: "Outils sur mesure : espaces clients, livraison de fichiers, gestion de projets." },
+    { slug: "mobile-apps", line: "Votre produit porté sur iOS et Android à partir d'une seule base de code." },
+    { slug: "ads", line: "Des campagnes pour lancer un produit ou remplir un carnet de commandes." },
+    { slug: "desktop-apps", line: "Applications bureau performantes pour les métiers créatifs exigeants." },
+  ],
+  "public-sector-ngos": [
+    { slug: "website-creation", line: "Un site accessible et clair, qui informe et donne envie d'agir." },
+    { slug: "custom-solutions", line: "Formulaires, dons en ligne, gestion des bénévoles et des adhérents." },
+    { slug: "seo", line: "Vos actions et vos ressources trouvables par ceux qui en ont besoin." },
+    { slug: "whatsapp-bots", line: "Information et orientation du public, sans mobiliser une équipe." },
+    { slug: "local-seo", line: "Vos antennes et permanences visibles sur Maps." },
+    { slug: "ads", line: "Des campagnes de sensibilisation ciblées et mesurées." },
+  ],
+};

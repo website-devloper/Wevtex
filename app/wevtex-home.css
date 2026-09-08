@@ -7684,3 +7684,9 @@
   .wevtex .pj-row:nth-child(even) .pj-shot { order: 0; }
   .wevtex .pj-list { gap: 64px; }
 }
+
+/* Six sector services sit better as two rows of three than as a row of four
+   and an orphaned pair. */
+.wevtex .bento-grid-3 { grid-template-columns: repeat(3, 1fr); }
+@media (max-width: 980px) { .wevtex .bento-grid-3 { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 620px) { .wevtex .bento-grid-3 { grid-template-columns: 1fr; } }
