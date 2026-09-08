@@ -6648,11 +6648,10 @@
    Four across on desktop, so the grid reads as a price list rather than a
    plan comparison. Cards are denser than the old tiers to suit the count. */
 .wevtex .pr-grid-8 {
-  grid-template-columns: repeat(4, 1fr);
-  gap: 16px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
   margin-top: 48px;
 }
-@media (max-width: 1180px) { .wevtex .pr-grid-8 { grid-template-columns: repeat(3, 1fr); } }
 @media (max-width: 900px) {
   .wevtex .pr-grid-8 { grid-template-columns: repeat(2, 1fr); max-width: none; gap: 16px; }
 }
@@ -8045,3 +8044,59 @@
 .wevtex .inline-cta-ink .btn-outline { border-color: #3a3e46; color: #f4f5f2; }
 .wevtex .inline-cta-ink .btn-outline:hover { border-color: #f4f5f2; background: rgba(255, 255, 255, 0.06); }
 
+
+/* ---------------------------------------------------------------------------
+   Pricing — white cards on the ink ground
+   Every tier reads the same way now: a white surface, ink text. Colours are
+   literals rather than --ink-on-dark / --surface-d-*, which .mode-light rebinds
+   to their light-mode equivalents and which left the ordinary tiers as a
+   near-transparent wash over the ink.
+   ------------------------------------------------------------------------- */
+.wevtex .pricing-ink .pr-card,
+.wevtex .pricing-ink .pr-card.featured {
+  background: #ffffff;
+  color: #101112;
+  border: 1px solid #e4e2dc;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05), 0 18px 40px -26px rgba(0, 0, 0, 0.5);
+}
+
+.wevtex .pricing-ink .pr-card .pr-name,
+.wevtex .pricing-ink .pr-card .pr-price,
+.wevtex .pricing-ink .pr-card.featured .pr-name,
+.wevtex .pricing-ink .pr-card.featured .pr-price { color: #101112; }
+
+.wevtex .pricing-ink .pr-card .pr-sub,
+.wevtex .pricing-ink .pr-card.featured .pr-sub { color: #6c6c63; }
+.wevtex .pricing-ink .pr-card .pr-note,
+.wevtex .pricing-ink .pr-card.featured .pr-note { color: #6c6c63; }
+.wevtex .pricing-ink .pr-card .pr-feats li,
+.wevtex .pricing-ink .pr-card.featured .pr-feats li { color: #3a3a38; }
+
+.wevtex .pricing-ink .pr-card .pr-price .cur,
+.wevtex .pricing-ink .pr-card.featured .pr-price .cur { color: var(--accent-deep); }
+
+.wevtex .pricing-ink .pr-card .pr-feats li svg,
+.wevtex .pricing-ink .pr-card.featured .pr-feats li svg {
+  background: var(--accent-soft); color: var(--accent-deep);
+}
+.wevtex .pricing-ink .pr-card .pr-icon,
+.wevtex .pricing-ink .pr-card.featured .pr-icon {
+  background: var(--accent-soft); border-color: #e4e2dc; color: var(--accent-deep);
+}
+.wevtex .pricing-ink .pr-card .pr-divider::before,
+.wevtex .pricing-ink .pr-card .pr-divider::after,
+.wevtex .pricing-ink .pr-card.featured .pr-divider::before,
+.wevtex .pricing-ink .pr-card.featured .pr-divider::after { background: #e4e2dc; }
+
+/* The popular tier is marked by its badge and its button, not by a dark slab. */
+.wevtex .pricing-ink .pr-card .pr-btn,
+.wevtex .pricing-ink .pr-card.featured .pr-btn { border-color: #cfccc2; color: #101112; }
+.wevtex .pricing-ink .pr-card .pr-btn:hover,
+.wevtex .pricing-ink .pr-card.featured .pr-btn:hover { border-color: #101112; }
+.wevtex .pricing-ink .pr-card.featured .pr-btn {
+  background: var(--accent); border-color: var(--accent); color: var(--on-lime);
+}
+.wevtex .pricing-ink .pr-card.featured .pr-btn:hover { filter: brightness(1.05); border-color: var(--accent); }
+
+/* Hover stays on the button, per the brief — the card itself does not move. */
+.wevtex .pricing-ink .pr-card:not(.featured):hover { border-color: #cfccc2; }
