@@ -76,32 +76,9 @@ export function IndustryDetail({ industry }: { industry: Industry }) {
         </div>
       </section>
 
-      {/* ===================== WHAT WE BUILD ===================== */}
-      <section className="theme-paper" style={{ padding: "clamp(72px, 11vh, 120px) 0" }}>
-        <div className="container">
-          <div className="reveal">
-            <span className="eyebrow line-eyebrow">Ce que nous construisons</span>
-            <h2 className="h-section" style={{ marginTop: 14 }}>
-              Pensé pour <em className="hl-line">{industry.name.toLowerCase()}.</em>
-            </h2>
-          </div>
-
-          <ul className="ind-checks reveal">
-            {industry.includes.map((c, i) => (
-              <li key={i}>
-                <span className="ind-check-ic" aria-hidden>
-                  <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><path d="M20 6L9 17l-5-5" /></svg>
-                </span>
-                {c}
-              </li>
-            ))}
-          </ul>
-        </div>
-      </section>
-
       {/* ===================== SERVICES FOR THIS SECTOR ===================== */}
       {sectorServices.length > 0 && (
-        <section className="theme-cream services-bento">
+        <section className="theme-paper services-bento">
           <div className="container">
             <div className="bento-head reveal">
               <span className="eyebrow line-eyebrow">Nos services pour ce secteur</span>
@@ -114,7 +91,7 @@ export function IndustryDetail({ industry }: { industry: Industry }) {
               </p>
             </div>
 
-            <div className="bento-grid bento-grid-3">
+            <div className="bento-grid">
               {sectorServices.map((s) => (
                 <a key={s.slug} href={servicePath(s.slug)} className="bento-card">
                   <span className="bento-top">
@@ -135,7 +112,7 @@ export function IndustryDetail({ industry }: { industry: Industry }) {
       )}
 
       {/* ===================== OUTCOMES ===================== */}
-      <section className="theme-paper" style={{ padding: "clamp(72px, 11vh, 120px) 0" }}>
+      <section className="theme-cream" style={{ padding: "clamp(72px, 11vh, 120px) 0" }}>
         <div className="container">
           <div className="reveal">
             <span className="eyebrow line-eyebrow">Ce que ça change</span>
@@ -158,7 +135,7 @@ export function IndustryDetail({ industry }: { industry: Industry }) {
 
       {/* ===================== FAQ ===================== */}
       {industry.faqs.length > 0 && (
-        <section className="theme-cream faq-split" id="faq">
+        <section className="theme-paper faq-split" id="faq">
           <div className="container">
             <div className="faq-grid">
               <div className="faq-left reveal">

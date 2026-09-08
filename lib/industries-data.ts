@@ -271,6 +271,8 @@ export const INDUSTRY_SERVICES: Record<string, IndustryService[]> = {
     { slug: "whatsapp-bots", line: "Un assistant qui répond aux questions produit, suit les commandes et relance les paniers abandonnés." },
     { slug: "custom-solutions", line: "Synchronisation des stocks entre votre boutique, votre point de vente et vos marketplaces." },
     { slug: "local-seo", line: "Votre magasin visible sur Maps quand on cherche votre produit à proximité." },
+    { slug: "mobile-apps", line: "Une application boutique pour vos clients fidèles : commande en deux gestes et notifications." },
+    { slug: "desktop-apps", line: "Un logiciel de caisse et de gestion des stocks pour votre point de vente." },
   ],
   "tourism-hospitality": [
     { slug: "website-creation", line: "Un site avec moteur de réservation en direct, pour cesser de tout laisser aux plateformes." },
@@ -279,6 +281,8 @@ export const INDUSTRY_SERVICES: Record<string, IndustryService[]> = {
     { slug: "ads", line: "Des campagnes ciblées sur vos marchés émetteurs, en basse comme en haute saison." },
     { slug: "whatsapp-bots", line: "Réponses instantanées sur les disponibilités, les tarifs et les transferts, 24h/24." },
     { slug: "mobile-apps", line: "Une application pour le check-in, les services sur place et la fidélisation." },
+    { slug: "custom-solutions", line: "Gestion des réservations, des chambres et des tarifs, connectée à vos canaux." },
+    { slug: "desktop-apps", line: "Un logiciel de réception qui continue de fonctionner quand la connexion tombe." },
   ],
   "professional-services": [
     { slug: "website-creation", line: "Un site qui inspire confiance et transforme les visiteurs en rendez-vous." },
@@ -287,6 +291,8 @@ export const INDUSTRY_SERVICES: Record<string, IndustryService[]> = {
     { slug: "custom-solutions", line: "Portails clients, espaces documents et suivi de dossiers sécurisés." },
     { slug: "ads", line: "Des campagnes qui vous amènent des dossiers qualifiés, pas des curieux." },
     { slug: "whatsapp-bots", line: "Qualification des demandes et prise de rendez-vous automatisées." },
+    { slug: "mobile-apps", line: "Une application pour vos clients : suivi de dossier et échange de documents." },
+    { slug: "desktop-apps", line: "Des outils bureau pour les traitements lourds et les données sensibles." },
   ],
   "healthcare-wellness": [
     { slug: "website-creation", line: "Un site rassurant, avec prise de rendez-vous en ligne et présentation claire des soins." },
@@ -295,6 +301,8 @@ export const INDUSTRY_SERVICES: Record<string, IndustryService[]> = {
     { slug: "seo", line: "Des pages de soins qui répondent aux questions posées avant de prendre rendez-vous." },
     { slug: "custom-solutions", line: "Gestion des patients, agenda et dossiers, dans le respect de la confidentialité." },
     { slug: "ads", line: "Des campagnes locales mesurées au nombre de rendez-vous obtenus." },
+    { slug: "mobile-apps", line: "Une application patient : rendez-vous, ordonnances et rappels de traitement." },
+    { slug: "desktop-apps", line: "Un logiciel de cabinet qui reste accessible sans connexion internet." },
   ],
   "industry-logistics": [
     { slug: "website-creation", line: "Un site catalogue clair, avec fiches techniques et demande de devis simplifiée." },
@@ -303,6 +311,8 @@ export const INDUSTRY_SERVICES: Record<string, IndustryService[]> = {
     { slug: "seo", line: "Un positionnement sur les recherches B2B de vos acheteurs et donneurs d'ordre." },
     { slug: "mobile-apps", line: "Applications terrain pour vos équipes : scan, saisie et remontée d'informations." },
     { slug: "whatsapp-bots", line: "Suivi de commande et d'expédition consultable directement sur WhatsApp." },
+    { slug: "ads", line: "Des campagnes B2B ciblées sur les acheteurs et les responsables achats." },
+    { slug: "local-seo", line: "Vos sites, dépôts et agences visibles sur Maps." },
   ],
   "education-elearning": [
     { slug: "website-creation", line: "Un site qui présente vos formations et remplit vos sessions d'inscription." },
@@ -311,6 +321,8 @@ export const INDUSTRY_SERVICES: Record<string, IndustryService[]> = {
     { slug: "ads", line: "Des campagnes calées sur vos périodes d'inscription." },
     { slug: "whatsapp-bots", line: "Réponses aux questions d'admission et relance des dossiers incomplets." },
     { slug: "mobile-apps", line: "Une application pour suivre les cours et les devoirs depuis un téléphone." },
+    { slug: "desktop-apps", line: "Des logiciels de salle et de laboratoire pour vos postes fixes." },
+    { slug: "local-seo", line: "Votre établissement visible sur Maps au moment des inscriptions." },
   ],
   "creative-media-tech": [
     { slug: "website-creation", line: "Un portfolio qui met votre production au premier plan, sans la ralentir." },
@@ -319,6 +331,8 @@ export const INDUSTRY_SERVICES: Record<string, IndustryService[]> = {
     { slug: "mobile-apps", line: "Votre produit porté sur iOS et Android à partir d'une seule base de code." },
     { slug: "ads", line: "Des campagnes pour lancer un produit ou remplir un carnet de commandes." },
     { slug: "desktop-apps", line: "Applications bureau performantes pour les métiers créatifs exigeants." },
+    { slug: "whatsapp-bots", line: "Qualification des demandes entrantes et prise de brief automatisées." },
+    { slug: "local-seo", line: "Votre studio trouvé sur Maps par les clients de votre ville." },
   ],
   "public-sector-ngos": [
     { slug: "website-creation", line: "Un site accessible et clair, qui informe et donne envie d'agir." },
@@ -327,5 +341,7 @@ export const INDUSTRY_SERVICES: Record<string, IndustryService[]> = {
     { slug: "whatsapp-bots", line: "Information et orientation du public, sans mobiliser une équipe." },
     { slug: "local-seo", line: "Vos antennes et permanences visibles sur Maps." },
     { slug: "ads", line: "Des campagnes de sensibilisation ciblées et mesurées." },
+    { slug: "mobile-apps", line: "Une application pour vos membres, vos bénévoles ou vos usagers." },
+    { slug: "desktop-apps", line: "Des outils bureau pour vos équipes internes et vos permanences." },
   ],
 };
