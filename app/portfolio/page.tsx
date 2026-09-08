@@ -54,10 +54,7 @@ export default function PortfolioPage() {
       <section className="theme-sand inline-cta" style={{ paddingTop: "clamp(70px, 10vh, 110px)" }}>
         <div className="container">
           <div className="ict-inner reveal">
-            <div>
-              <span className="ict-eyebrow">Parlons-en</span>
-              <p className="ict-text">Votre projet mérite la même attention.</p>
-            </div>
+            <p className="ict-text">Votre projet mérite la même attention.</p>
             <div className="ict-actions">
               <a href={WHATSAPP_URL} className="btn btn-primary" target="_blank" rel="noopener">
                 Demander un devis gratuit
