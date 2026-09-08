@@ -403,7 +403,6 @@ export function HomeClient() {
         <div className="container">
           <div className="hero-grid">
             <div className="hero-content">
-              <HeroReviews />
               <ScrollRevealText
                 as="h1"
                 mode="load"
@@ -429,6 +428,8 @@ export function HomeClient() {
                   </svg>
                 </a>
               </div>
+
+              <HeroReviews />
 
               {/* Risk reversal: answers the question every visitor has before
                   they will consider getting in touch. */}
@@ -456,13 +457,24 @@ export function HomeClient() {
           {/* Trust bar: proof of other clients, kept in the hero so it lands above the fold. */}
           <div className="hero-logos reveal">
             <p className="ls-lead">Ils nous font confiance, au Maroc et ailleurs</p>
-            <ul className="ls-row">
-              {CLIENT_LOGOS.map((c) => (
-                <li key={c.name}>
-                  <Image src={c.src} alt={c.name} width={400} height={170} sizes="136px" />
-                </li>
-              ))}
-            </ul>
+            {/* The list is rendered twice and the track travels exactly -50%,
+                so the second copy is in the first's place when it loops — the
+                seam never lands on screen. The duplicate is aria-hidden so a
+                screen reader reads six logos, not twelve. */}
+            <div className="ls-marquee">
+              <ul className="ls-row ls-track">
+                {CLIENT_LOGOS.map((c) => (
+                  <li key={c.name}>
+                    <Image src={c.src} alt={c.name} width={400} height={170} sizes="136px" />
+                  </li>
+                ))}
+                {CLIENT_LOGOS.map((c) => (
+                  <li key={`${c.name}-dup`} aria-hidden>
+                    <Image src={c.src} alt="" width={400} height={170} sizes="136px" />
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
         </div>
       </section>

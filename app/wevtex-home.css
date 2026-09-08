@@ -8158,3 +8158,53 @@
    margin-top:5px was tuned for the older 12px icon and sat it visibly low. */
 .wevtex .pricing-ink .pr-grid-8 .pr-feats li { align-items: flex-start; gap: 10px; line-height: 1.45; }
 .wevtex .pricing-ink .pr-grid-8 .pr-feats li svg { margin-top: -1px; }
+
+/* ---------------------------------------------------------------------------
+   Client logos — an automatic marquee
+   ------------------------------------------------------------------------- */
+.wevtex .ls-marquee {
+  overflow: hidden;
+  /* Fade the ends so logos enter and leave rather than being cut off. */
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+}
+.wevtex .ls-track {
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  width: max-content;
+  animation: ls-scroll 38s linear infinite;
+}
+.wevtex .ls-marquee:hover .ls-track { animation-play-state: paused; }
+@keyframes ls-scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .wevtex .ls-track { animation: none; width: 100%; flex-wrap: wrap; justify-content: center; }
+  .wevtex .ls-track li[aria-hidden] { display: none; }
+}
+
+/* The badge now sits under the buttons rather than above the headline. */
+.wevtex .hero-split .hero-reviews { margin: 24px 0 0; }
+
+/* ---------------------------------------------------------------------------
+   FAQ rows — tighter, and a + that is actually a +
+   24px top and bottom made five questions read as a long list. The glyph is
+   drawn from two bars here; the inherited rule rendered a stray character.
+   ------------------------------------------------------------------------- */
+.wevtex .faq-split .faq-item-v2 summary { padding: 15px 4px; }
+.wevtex .faq-split .faq-body > p { padding: 0 4px 18px 42px; }
+
+.wevtex .faq-split .faq-plus {
+  position: relative; width: 13px; height: 13px; flex: none;
+  margin-left: auto; font-size: 0; line-height: 0;
+}
+.wevtex .faq-split .faq-plus::before,
+.wevtex .faq-split .faq-plus::after {
+  content: ""; position: absolute; left: 50%; top: 50%;
+  background: var(--ink-on-cream-3); border-radius: 1px;
+}
+.wevtex .faq-split .faq-plus::before { width: 13px; height: 1.8px; margin: -0.9px 0 0 -6.5px; }
+.wevtex .faq-split .faq-plus::after  { width: 1.8px; height: 13px; margin: -6.5px 0 0 -0.9px; }
+.wevtex .faq-split .faq-item-v2[open] .faq-plus::before,
+.wevtex .faq-split .faq-item-v2[open] .faq-plus::after { background: var(--accent-deep); }
