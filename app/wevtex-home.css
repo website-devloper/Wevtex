@@ -282,7 +282,14 @@
   color: var(--on-lime);
 }
 
-.wevtex .btn-primary:hover { background: #101112; color: #fff; }
+/* The fill deepens; it does not swap to ink. On a dark section #101112 is the
+   ground, so the old hover made the button disappear and left floating text. */
+.wevtex .btn-primary:hover { background: #b4e23c; color: var(--on-lime); transform: translateY(-2px); }
+.wevtex .btn-primary { transition: background 180ms var(--ease-out), transform 180ms var(--ease-out); }
+@media (prefers-reduced-motion: reduce) {
+  .wevtex .btn-primary { transition: none; }
+  .wevtex .btn-primary:hover { transform: none; }
+}
 
 .wevtex .btn-dark {
   background: var(--bg-0);
@@ -8320,3 +8327,14 @@
 .wevtex .process-ink .process-step .duration { color: rgba(244, 245, 242, 0.56); }
 .wevtex .process-ink .process-progress { background: #2a2d33; }
 .wevtex .process-ink .process-progress-fill { background: var(--accent); }
+
+/* The method list now owns the full width — no preview column beside it. */
+.wevtex .process-wrap { display: block; }
+.wevtex .process-steps { width: 100%; }
+.wevtex .process-step { padding: 22px 0; }
+.wevtex .process-step h4 { font-size: clamp(18px, 1.9vw, 22px); font-weight: 600; letter-spacing: -0.02em; }
+.wevtex .process-step .num { font-size: clamp(26px, 3vw, 38px); font-weight: 600; letter-spacing: -0.03em; }
+.wevtex .process-step p { font-size: 15px; line-height: 1.6; }
+/* The active step is the one lime moment in the list. */
+.wevtex .process-ink .process-step.active h4 { color: #ffffff; }
+.wevtex .process-ink .process-step.active p { color: rgba(244, 245, 242, 0.9); }

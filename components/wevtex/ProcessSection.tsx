@@ -4,8 +4,10 @@ import { useEffect, useRef } from "react";
 import { ScrollRevealText } from "./ScrollRevealText";
 
 /**
- * The method section: a sticky panel showing the active step beside a numbered
- * list that drives it on scroll and hover.
+ * The method section: a numbered list of steps, the current one marked as you
+ * scroll. The sticky preview panel that used to sit beside it is gone — it
+ * repeated the step you were already reading, in a box that rendered as an
+ * empty gradient on the ink ground.
  *
  * Steps and headings are props so the service detail pages can pass their own
  * process rather than duplicating this layout. Service steps carry `checks`
@@ -61,17 +63,11 @@ export function ProcessSection({
     if (!root) return;
 
     const nodes = root.querySelectorAll<HTMLElement>(".process-step");
-    const processH = root.querySelector<HTMLElement>("#processH");
-    const processP = root.querySelector<HTMLElement>("#processP");
     const processProgress = root.querySelector<HTMLElement>("#processProgress");
 
     const setActive = (i: number) => {
       nodes.forEach((s) => s.classList.remove("active"));
       if (nodes[i]) nodes[i].classList.add("active");
-      if (steps[i] && processH && processP) {
-        processH.textContent = steps[i].h;
-        processP.textContent = proseFor(steps[i]);
-      }
       if (processProgress && nodes[i]) {
         const cur = nodes[i];
         processProgress.style.height = cur.offsetTop + cur.offsetHeight + "px";
@@ -122,14 +118,6 @@ export function ProcessSection({
         </div>
 
         <div className="process-wrap">
-          <div className="process-sticky reveal">
-            <div className="process-preview">
-              <div className="preview-kicker">Étape en cours</div>
-              <h3 id="processH">{steps[0].h}</h3>
-              <p id="processP">{proseFor(steps[0])}</p>
-            </div>
-          </div>
-
           <div className="process-steps">
             <div className="process-progress"><div className="process-progress-fill" id="processProgress"></div></div>
             {steps.map((s, i) => (
