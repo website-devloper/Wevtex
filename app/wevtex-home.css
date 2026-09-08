@@ -8208,3 +8208,37 @@
 .wevtex .faq-split .faq-plus::after  { width: 1.8px; height: 13px; margin: -6.5px 0 0 -0.9px; }
 .wevtex .faq-split .faq-item-v2[open] .faq-plus::before,
 .wevtex .faq-split .faq-item-v2[open] .faq-plus::after { background: var(--accent-deep); }
+
+/* ---------------------------------------------------------------------------
+   FAQ rows — the real height source, and the real glyph
+   The tall rows were .faq-q's own `padding: 24px 0`, not the summary padding,
+   so tightening the summary changed nothing. And .faq-plus is a 26px bordered
+   circle at its base: the rules above drew bars inside it without clearing the
+   circle, which is the odd mark on screen. Reset the shape, then draw the plus.
+   ------------------------------------------------------------------------- */
+.wevtex .faq-split .faq-q { padding: 0; }
+.wevtex .faq-split .faq-item-v2 summary { padding: 16px 4px; }
+
+.wevtex .faq-split .faq-plus {
+  width: 14px; height: 14px;
+  border: 0; border-radius: 0; background: none;
+  transform: none;
+}
+.wevtex .faq-split .faq-plus::before,
+.wevtex .faq-split .faq-plus::after {
+  background: var(--ink-on-cream-2);
+  transform: translate(-50%, -50%);
+  margin: 0;
+  transition: background 160ms var(--ease-out);
+}
+.wevtex .faq-split .faq-plus::before { width: 14px; height: 1.8px; }
+.wevtex .faq-split .faq-plus::after  { width: 1.8px; height: 14px; }
+
+/* Open: the vertical bar collapses, leaving a minus. One idea, no rotation. */
+.wevtex .faq-split .faq-item-v2[open] .faq-plus {
+  background: none; border: 0; transform: none;
+}
+.wevtex .faq-split .faq-item-v2[open] .faq-plus::after { transform: translate(-50%, -50%) scaleY(0); }
+.wevtex .faq-split .faq-item-v2[open] .faq-plus::before { background: var(--accent-deep); }
+.wevtex .faq-split .faq-item-v2[open] .faq-plus::after { transition: transform 200ms var(--ease-out); }
+.wevtex .faq-split .faq-item-v2 summary:hover .faq-plus { border-color: transparent; }
