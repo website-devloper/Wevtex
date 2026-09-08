@@ -25,18 +25,37 @@ export default function ServicesPage() {
     <div className="wevtex mode-light">
       <SiteHeader current="services" />
 
+      {/* ===================== HERO =====================
+          The page opened straight onto the list, so its h1 was doing double
+          duty as a section head. A hero gives the list room to be a list. */}
+      <section className="theme-cream sec-first" style={{ paddingBottom: "clamp(30px, 5vh, 56px)" }}>
+        <div className="container">
+          <div className="reveal">
+            <span className="eyebrow line-eyebrow">Nos prestations</span>
+            <h1 className="h-section" style={{ marginTop: 14 }}>
+              Huit façons de faire<br />
+              <em className="hl-line">grandir votre activité.</em>
+            </h1>
+            <p className="ic-sub wk-lede" style={{ maxWidth: "58ch" }}>
+              Du site vitrine à l&apos;automatisation, chaque prestation a sa page :
+              ce qu&apos;elle comprend, comment nous procédons, et le prix.
+            </p>
+          </div>
+        </div>
+      </section>
+
       {/* ===================== SERVICES — liste détaillée =====================
           Reprend la mise en page des projets de la page d'accueil (aperçu à
           gauche, contenu à droite) mais sans accordéon : chaque prestation
           est visible d'un coup, sans clic. */}
-      <section className="theme-cream work srv-list-sec" id="services">
+      <section className="theme-paper work srv-list-sec" id="services">
         <div className="container">
           <div className="wk-head reveal">
             <span className="eyebrow line-eyebrow">Nos prestations</span>
-            <h1 className="h-section" style={{ marginTop: 14 }}>
+            <h2 className="h-section" style={{ marginTop: 14 }}>
               Tout ce qu&apos;il faut pour<br />
               <em className="hl-line">développer</em> &amp; <em className="hl-line">automatiser</em>
-            </h1>
+            </h2>
             <p className="ic-sub wk-lede">
               Du site performant à l&apos;automatisation intelligente, huit prestations
               qui font grandir votre activité et vous simplifient le quotidien.

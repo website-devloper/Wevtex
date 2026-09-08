@@ -312,7 +312,7 @@ export function ServiceDetailView({ service }: { service: Service }) {
 
       {/* ===================== CTA ===================== */}
       <CtaBand
-        heading={<>Parlons de votre projet<br /><em className="hl-line">{service.name.toLowerCase()}.</em></>}
+        heading={<>{service.name}<br /><em className="hl-line">parlons de votre projet.</em></>}
         text="Envoyez-nous votre projet en deux lignes sur WhatsApp. Nous répondons sous quelques heures, avec un conseil honnête et un prix clair."
         secondaryHref="/services"
         secondaryLabel="Toutes nos prestations"

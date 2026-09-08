@@ -8400,3 +8400,25 @@
 .wevtex .founder-ink .fv-meta { color: rgba(244, 245, 242, 0.58); }
 .wevtex .founder-ink .btn-outline { border-color: #3a3e46; color: #f4f5f2; }
 .wevtex .founder-ink .btn-outline:hover { border-color: #f4f5f2; background: rgba(255, 255, 255, 0.06); }
+
+/* The split CTA is left-aligned throughout — the paragraph was still inheriting
+   the centring from the band's previous centred layout. */
+.wevtex .cta-band-split .ctab-copy,
+.wevtex .cta-band-split .audit-h,
+.wevtex .cta-band-split .audit-p { text-align: left; margin-left: 0; margin-right: 0; }
+.wevtex .cta-band-split .audit-p { max-width: 42ch; }
+/* Copy and actions align to the top, so a three-line heading does not push the
+   buttons down past the middle of the band. */
+.wevtex .cta-band-split .ctab-inner { align-items: start; }
+.wevtex .cta-band-split .ctab-btns { align-self: center; }
+
+/* Sector outcomes on ink — the anchor that stops four pale sections running
+   into the closing CTA. Literals, not --ink-on-dark. */
+.wevtex .ind-outcomes-ink { background: #101112; color: #f4f5f2; position: relative; }
+.wevtex .ind-outcomes-ink .h-section { color: #f4f5f2; }
+.wevtex .ind-outcomes-ink .eyebrow { color: rgba(244, 245, 242, 0.62); }
+.wevtex .ind-outcomes-ink .ind-outcome {
+  background: #191b1f; border-color: #2a2d33;
+}
+.wevtex .ind-outcomes-ink .ind-outcome h3 { color: #f4f5f2; }
+.wevtex .ind-outcomes-ink .ind-outcome p { color: rgba(244, 245, 242, 0.78); }

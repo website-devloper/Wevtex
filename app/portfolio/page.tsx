@@ -51,7 +51,7 @@ export default function PortfolioPage() {
       </section>
 
       {/* ===================== CTA ===================== */}
-      <section className="theme-sand inline-cta" style={{ paddingTop: "clamp(70px, 10vh, 110px)" }}>
+      <section className="inline-cta inline-cta-ink" style={{ paddingTop: "clamp(70px, 10vh, 110px)" }}>
         <div className="container">
           <div className="ict-inner reveal">
             <p className="ict-text">Votre projet mérite la même attention.</p>

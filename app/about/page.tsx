@@ -119,9 +119,9 @@ export default function AboutPage() {
 
             <div className="bv-body">
               <span className="eyebrow line-eyebrow">Le studio</span>
-              <h1 className="h-section" style={{ marginTop: 14 }}>
+              <h2 className="h-section" style={{ marginTop: 14 }}>
                 Une agence web,<br />pas une <em className="hl-line">usine à sites</em>
-              </h1>
+              </h2>
               <p className="bv-p">
                 Wevtex est une agence basée à Casablanca. Nous concevons des sites rapides, des boutiques
                 en ligne et des applications sur mesure, puis nous les rendons visibles avec le

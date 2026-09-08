@@ -121,7 +121,7 @@ export function IndustryDetail({ industry }: { industry: Industry }) {
       )}
 
       {/* ===================== OUTCOMES ===================== */}
-      <section className="theme-cream" style={{ padding: "clamp(72px, 11vh, 120px) 0" }}>
+      <section className="ind-outcomes-ink" style={{ padding: "clamp(72px, 11vh, 120px) 0" }}>
         <div className="container">
           <div className="reveal">
             <span className="eyebrow line-eyebrow">Ce que ça change</span>
@@ -188,7 +188,7 @@ export function IndustryDetail({ industry }: { industry: Industry }) {
       )}
 
       {/* ===================== CTA ===================== */}
-      <section className="theme-sand inline-cta" style={{ paddingTop: "clamp(70px, 10vh, 110px)" }}>
+      <section className="inline-cta inline-cta-ink" style={{ paddingTop: "clamp(70px, 10vh, 110px)" }}>
         <div className="container">
           <div className="ict-inner reveal">
             <p className="ict-text">Un projet dans {industry.name.toLowerCase()} ?</p>
