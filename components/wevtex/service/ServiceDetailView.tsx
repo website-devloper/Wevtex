@@ -20,6 +20,7 @@ import { useReveal } from "../useReveal";
 import { SERVICE_ICONS, CtaBand } from "../SharedSections";
 import { SERVICES as MARKETED } from "../homeContent";
 import { WHATSAPP_URL } from "@/lib/site-links";
+import { ProcessSection } from "../ProcessSection";
 import type { Service } from "@/lib/services-data";
 
 const ARROW = (
@@ -157,32 +158,18 @@ export function ServiceDetailView({ service }: { service: Service }) {
         </section>
       )}
 
-      {/* ===================== MÉTHODE ===================== */}
+      {/* ===================== MÉTHODE =====================
+          The shared ProcessSection: a sticky panel tracking the active step.
+          Service steps carry `checks` rather than prose, which the component
+          falls back to for the panel copy. */}
       {service.process && (
-        <section className="theme-cream srv-d-sec">
-          <div className="container">
-            <div className="cmp-head reveal">
-              <span className="eyebrow line-eyebrow">Notre méthode</span>
-              <Title text={service.process.title} em={service.process.titleEm || []} />
-              {service.process.subtitle && <p className="ic-sub srv-d-sub">{service.process.subtitle}</p>}
-            </div>
-
-            <ol className="srv-d-steps reveal">
-              {service.process.steps.map((st) => (
-                <li className="srv-d-step" key={st.n}>
-                  <span className="srv-d-step-n">{st.n}</span>
-                  <div className="srv-d-step-body">
-                    <h3>{st.h}</h3>
-                    <ul className="srv-d-checks">
-                      {st.checks.map((c) => <li key={c}>{CHECK}{c}</li>)}
-                    </ul>
-                  </div>
-                  <span className="srv-d-step-d">{st.d}</span>
-                </li>
-              ))}
-            </ol>
-          </div>
-        </section>
+        <ProcessSection
+          eyebrow="Notre méthode"
+          title={service.process.title}
+          titleEm={service.process.titleEm || []}
+          subtitle={service.process.subtitle}
+          steps={service.process.steps}
+        />
       )}
 
       {/* ===================== CTA — MI-PARCOURS =====================
@@ -220,29 +207,6 @@ export function ServiceDetailView({ service }: { service: Service }) {
                   <ul className="srv-d-checks">
                     {g.cases.map((c) => <li key={c}>{CHECK}{c}</li>)}
                   </ul>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-      )}
-
-      {/* ===================== POURQUOI NOUS ===================== */}
-      {service.whyUs && (
-        <section className="theme-cream srv-d-sec">
-          <div className="container">
-            <div className="cmp-head reveal">
-              <span className="eyebrow line-eyebrow">Pourquoi Wevtex</span>
-              <Title text={service.whyUs.title} em={service.whyUs.titleEm || []} />
-              {service.whyUs.subtitle && <p className="ic-sub srv-d-sub">{service.whyUs.subtitle}</p>}
-            </div>
-
-            <div className="srv-d-why reveal">
-              {service.whyUs.points.map((pt, i) => (
-                <div className="srv-d-why-card" key={pt.h}>
-                  <span className="srv-d-n">{String(i + 1).padStart(2, "0")}</span>
-                  <h3>{pt.h}</h3>
-                  <p>{pt.p}</p>
                 </div>
               ))}
             </div>
