@@ -110,9 +110,9 @@ const INDUSTRIES = [
    at rest and becomes an editorial row on demand. Order matters: index 0 is
    open on load, so lead with the strongest piece.
  */
-/* The homepage index shows the first six by the order set in projects-data;
-   the rest live on /portfolio. Fields are mapped rather than duplicated so
-   there is one place to correct a client name, a URL or a figure. */
+/* Every delivered project, in the order set in projects-data. Fields are
+   mapped rather than duplicated so there is one place to correct a client
+   name, a URL or a figure. */
 type WorkItem = {
   slug: string;
   title: string;
@@ -129,7 +129,7 @@ type WorkItem = {
   capture?: boolean;
 };
 
-const WORK: WorkItem[] = PROJECTS_ORDERED.slice(0, 6).map((p, i) => ({
+const WORK: WorkItem[] = PROJECTS_ORDERED.map((p, i) => ({
   slug: p.slug,
   title: p.title,
   cat: p.category,
