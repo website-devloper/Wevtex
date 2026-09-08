@@ -123,27 +123,6 @@ export function ServiceDetailView({ service }: { service: Service }) {
         </div>
       </section>
 
-      {/* ===================== CE QUE ÇA CHANGE ===================== */}
-      {service.outcomes?.length > 0 && (
-        <section className="theme-paper srv-d-sec">
-          <div className="container">
-            <div className="cmp-head reveal">
-              <span className="eyebrow line-eyebrow">Ce que ça change</span>
-              <Title text={"Des résultats concrets,\npas seulement un beau site."} em={["concrets,"]} />
-            </div>
-            <div className="srv-d-outcomes reveal">
-              {service.outcomes.map((o, i) => (
-                <div className="srv-d-outcome" key={o.h}>
-                  <span className="srv-d-n">{String(i + 1).padStart(2, "0")}</span>
-                  <h3>{o.h}</h3>
-                  <p>{o.p}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-      )}
-
       {/* ===================== SPÉCIALITÉS (grille bento) ===================== */}
       {features && (
         <section className="theme-cream services-bento srv-d-sec">
@@ -178,33 +157,6 @@ export function ServiceDetailView({ service }: { service: Service }) {
         </section>
       )}
 
-      {/* ===================== TECHNOLOGIES ===================== */}
-      {service.tech && (
-        <section className="srv-d-tech">
-          <span className="audit-motif" aria-hidden></span>
-          <div className="container">
-            <div className="cmp-head reveal">
-              <span className="eyebrow line-eyebrow">Technologies</span>
-              <Title text={service.tech.title} em={service.tech.titleEm || []} />
-              {service.tech.subtitle && <p className="ic-sub srv-d-sub">{service.tech.subtitle}</p>}
-            </div>
-
-            <div className="srv-d-tech-grid reveal">
-              {service.tech.groups.map((g, i) => (
-                <div className="srv-d-tech-card" key={g.label}>
-                  <span className="srv-d-n">{String(i + 1).padStart(2, "0")}</span>
-                  <h3>{g.label}</h3>
-                  {g.desc && <p>{g.desc}</p>}
-                  <ul className="srv-d-chips">
-                    {g.items.map((it) => <li key={it}>{it}</li>)}
-                  </ul>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-      )}
-
       {/* ===================== MÉTHODE ===================== */}
       {service.process && (
         <section className="theme-cream srv-d-sec">
@@ -232,6 +184,24 @@ export function ServiceDetailView({ service }: { service: Service }) {
           </div>
         </section>
       )}
+
+      {/* ===================== CTA — MI-PARCOURS =====================
+          A decision point halfway down: someone convinced by the method should
+          not have to scroll past pricing, sectors and the FAQ to act. */}
+      <section className="inline-cta inline-cta-ink">
+        <div className="container">
+          <div className="ict-inner reveal">
+            <p className="ict-text">Ce service correspond à votre besoin ?</p>
+            <div className="ict-actions">
+              <a href={WHATSAPP_URL} className="btn btn-primary" target="_blank" rel="noopener">
+                Demander un devis gratuit
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+              </a>
+              <a href="#tarifs" className="btn btn-outline">Voir les tarifs</a>
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* ===================== PAR SECTEUR ===================== */}
       {service.sectors && (

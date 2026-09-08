@@ -16,7 +16,6 @@ import { StickyCta } from "../../components/wevtex/StickyCta";
 import { useReveal } from "../../components/wevtex/useReveal";
 import { SERVICES } from "../../components/wevtex/homeContent";
 import { SERVICE_ICONS, CtaBand } from "../../components/wevtex/SharedSections";
-import { ProcessSection } from "../../components/wevtex/ProcessSection";
 import { WHATSAPP_URL, servicePath } from "@/lib/site-links";
 
 export default function ServicesPage() {
@@ -101,7 +100,6 @@ export default function ServicesPage() {
 
       {/* ===================== NOTRE MÉTHODE =====================
           Rendu ici parce que le pied de page pointe vers /services#process. */}
-      <ProcessSection />
 
       {/* ===================== CTA (composant partagé) ===================== */}
       <CtaBand
