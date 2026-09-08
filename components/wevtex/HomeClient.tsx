@@ -396,14 +396,14 @@ export function HomeClient() {
       <SiteHeader />
 
       {/* ===================== HERO (mockup 1 — split) ===================== */}
-      <section className="hero hero-split hero-ink" id="hero">
-        <InkBackdrop variant="spotlight" />
+      <section className="theme-cream hero hero-split" id="hero">
         <div className="hero-motif" aria-hidden></div>
         <div className="hero-arc" aria-hidden></div>
 
         <div className="container">
           <div className="hero-grid">
             <div className="hero-content">
+              <HeroReviews />
               <ScrollRevealText
                 as="h1"
                 mode="load"
@@ -429,9 +429,6 @@ export function HomeClient() {
                   </svg>
                 </a>
               </div>
-
-              {/* Proof sits with the action, not adrift at the top of the page. */}
-              <HeroReviews />
 
               {/* Risk reversal: answers the question every visitor has before
                   they will consider getting in touch. */}
@@ -504,8 +501,7 @@ export function HomeClient() {
           One accordion, one project open at a time. Clicking a row expands
           it in place rather than navigating away — the visitor never loses
           the page, and the list stays a tight index between openings. */}
-      <section className="work work-ink" id="work">
-        <InkBackdrop variant="data" />
+      <section className="theme-cream-2 work" id="work">
         <div className="container">
 
           {/* Same head components as every other section — eyebrow, h-section,
