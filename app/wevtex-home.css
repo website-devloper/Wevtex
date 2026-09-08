@@ -38,10 +38,10 @@
   --bg-sand: #ddd7c7;
   --surface-c-1: rgba(16, 17, 18, 0.03);
   --surface-c-2: rgba(16, 17, 18, 0.06);
-  --hairline-c: #d5d1c4;
+  --hairline-c: #dadad6;
   --hairline-c-strong: rgba(16, 17, 18, 0.32);
   --ink-on-cream: #101112;
-  --ink-on-cream-2: #46463f;
+  --ink-on-cream-2: #3a3a38;
   --ink-on-cream-3: #6c6c63;
 
   /* Signal lime — the single accent */
@@ -7744,3 +7744,418 @@
   /* Too narrow to sit beside the text — it would end up behind it. */
   .wevtex .ind-hero-bg { display: none; }
 }
+
+/* ===========================================================================
+   DESIGN PRIMITIVES
+   Section tone + rhythm, eyebrow, heading emphasis devices, surfaces, and the
+   ink backdrops. Sections differ by composing these, not by re-authoring a
+   shell each time.
+   ========================================================================= */
+
+/* ---- Section: tone owns the background value ---- */
+.wevtex .sec { position: relative; }
+.wevtex .sec-light { background: var(--bg-cream); color: var(--ink-on-cream); }
+.wevtex .sec-paper { background: var(--bg-paper); color: var(--ink-on-cream); }
+.wevtex .sec-ink {
+  background: #101112;
+  /* Off-white, never pure white, on every ink section. */
+  color: #f4f5f2;
+  --ink-on-dark: #f4f5f2;
+  --ink-on-dark-2: rgba(244, 245, 242, 0.78);
+  --ink-on-dark-3: rgba(244, 245, 242, 0.58);
+  --accent-text: var(--accent);
+  --hairline-d: #2a2d33;
+  --hairline-d-strong: #3a3e46;
+}
+.wevtex .sec-ink .h-section,
+.wevtex .sec-ink h1, .wevtex .sec-ink h2, .wevtex .sec-ink h3, .wevtex .sec-ink h4 { color: #f4f5f2; }
+.wevtex .sec-ink .ic-sub,
+.wevtex .sec-ink p { color: rgba(244, 245, 242, 0.78); }
+.wevtex .sec-ink .eyebrow { color: rgba(244, 245, 242, 0.62); }
+.wevtex .sec-ink .container { position: relative; z-index: 2; }
+
+/* ---- Spacing: expressive, not uniform ---- */
+.wevtex .sec-sp-tight  { padding: clamp(48px, 7vh, 76px) 0; }
+.wevtex .sec-sp-normal { padding: clamp(80px, 12vh, 130px) 0; }
+.wevtex .sec-sp-loose  { padding: clamp(112px, 17vh, 190px) 0; }
+
+/* ---- Heading emphasis: three devices, so no page marks every heading alike ---- */
+.wevtex .hl-weight { font-style: normal; font-weight: 700; color: var(--ink-on-cream); }
+.wevtex .sec-ink .hl-weight { color: #ffffff; }
+
+.wevtex .hl-hand { font-style: normal; position: relative; white-space: nowrap; }
+.wevtex .hl-hand svg {
+  position: absolute; left: 0; right: 0; bottom: -0.12em;
+  width: 100%; height: 0.3em; overflow: visible;
+}
+.wevtex .hl-hand svg path {
+  fill: none; stroke: var(--accent); stroke-width: 5;
+  stroke-linecap: round; vector-effect: non-scaling-stroke;
+}
+
+/* ---- Surface: one component, three faces ---- */
+.wevtex .surface { position: relative; }
+.wevtex .surface-bordered {
+  background: var(--bg-cream);
+  border: 1px solid var(--hairline-c);
+  border-radius: var(--radius-md);
+}
+.wevtex .surface-filled {
+  background: #f5f5f2;
+  border: 0;
+  border-radius: var(--radius-md);
+  box-shadow: 0 1px 2px rgba(16, 17, 18, 0.04), 0 14px 34px -20px rgba(16, 17, 18, 0.22);
+}
+.wevtex .sec-ink .surface-filled { background: #191b1f; box-shadow: none; }
+.wevtex .surface-ghost { background: none; border: 0; border-radius: 0; }
+
+/* ---- Ink backdrops: a flat fill reads as generated ---- */
+.wevtex .ink-grain {
+  position: absolute; inset: 0; z-index: 0; pointer-events: none;
+  opacity: 0.035;
+  /* feTurbulence, inlined — no asset request for a texture this quiet. */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+}
+.wevtex .ink-spotlight {
+  position: absolute; inset: 0; z-index: 0; pointer-events: none;
+  background: radial-gradient(60% 70% at 50% 45%, #1a1d22 0%, rgba(26, 29, 34, 0.55) 32%, rgba(16, 17, 18, 0) 62%);
+}
+
+/* ---- Hover vocabulary: one idea per element, never stacked ---- */
+.wevtex .hv-underline { position: relative; text-decoration: none; }
+.wevtex .hv-underline::after {
+  content: ""; position: absolute; left: 0; right: 0; bottom: -3px; height: 2px;
+  background: var(--accent); transform: scaleX(0); transform-origin: left;
+  transition: transform 180ms var(--ease-out);
+}
+.wevtex .hv-underline:hover::after,
+.wevtex .hv-underline:focus-visible::after { transform: scaleX(1); }
+
+.wevtex .hv-lift { transition: transform 200ms var(--ease-out), box-shadow 200ms var(--ease-out); }
+.wevtex .hv-lift:hover { transform: translateY(-3px); box-shadow: 0 16px 38px -22px rgba(16, 17, 18, 0.34); }
+
+@media (prefers-reduced-motion: reduce) {
+  .wevtex .hv-underline::after,
+  .wevtex .hv-lift { transition: none; }
+  .wevtex .hv-lift:hover { transform: none; }
+}
+
+/* ---------------------------------------------------------------------------
+   Ink section overrides — problem band and stats band
+   ------------------------------------------------------------------------- */
+.wevtex .problem-band .container,
+.wevtex .stats-band-v2 .container { position: relative; z-index: 3; }
+.wevtex .problem-band .ink-grain,
+.wevtex .stats-band-v2 .ink-grain { z-index: 2; }
+.wevtex .problem-band .ink-spotlight { z-index: 2; }
+
+/* "data" variant: hairlines, not cards, so four figures read as one strip. */
+.wevtex .stats-band-v2 .sb-item { border-right: 1px solid #2a2d33; }
+.wevtex .stats-band-v2 .sb-item:last-child { border-right: 0; }
+/* Numbers white, label and unit in lime — the single accent doing the work. */
+.wevtex .stats-band-v2 .sb-num { color: #ffffff; }
+.wevtex .stats-band-v2 .sb-label { color: var(--accent); }
+.wevtex .stats-band-v2 .sb-desc { color: rgba(244, 245, 242, 0.72); }
+.wevtex .problem-band .problem-sub { color: rgba(244, 245, 242, 0.80) !important; }
+
+/* ---------------------------------------------------------------------------
+   Services — a divider grid, not eight floating tiles
+   Gaps and per-card borders made eight loose objects. Internal hairlines with
+   no gaps make one engineered matrix, which is what a service list is.
+   ------------------------------------------------------------------------- */
+.wevtex .services-bento .bento-grid {
+  gap: 0;
+  border: 1px solid var(--hairline-c);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background: var(--bg-cream);
+}
+
+.wevtex .services-bento .bento-card {
+  background: transparent;
+  border: 0;
+  border-right: 1px solid var(--hairline-c);
+  border-bottom: 1px solid var(--hairline-c);
+  border-radius: 0;
+  box-shadow: none;
+  padding: 32px 28px 28px;
+  transition: background-color 190ms var(--ease-out);
+}
+/* Close the outer edges: the wrapper already draws them. */
+.wevtex .services-bento .bento-grid > .bento-card:nth-child(4n) { border-right: 0; }
+.wevtex .services-bento .bento-grid > .bento-card:nth-last-child(-n + 4) { border-bottom: 0; }
+
+/* One hover idea: the cell fills, the arrow moves. Nothing lifts, nothing glows. */
+.wevtex .services-bento .bento-card:hover,
+.wevtex .services-bento .bento-card:focus-visible {
+  background: #f5f5f2;
+  border-color: var(--hairline-c);
+  box-shadow: none;
+  transform: none;
+}
+.wevtex .services-bento .bento-card:hover .bento-arrow { transform: translateX(4px); }
+
+/* Icons carry the top row alone, so give them size and the accent. */
+.wevtex .services-bento .bento-icon { color: var(--accent-deep); }
+.wevtex .services-bento .bento-icon svg { width: 34px; height: 34px; stroke-width: 1.5; }
+.wevtex .services-bento .bento-top { height: 36px; margin-bottom: 20px; }
+
+/* The arrow says "this is a link" — it should not be a whisper. */
+.wevtex .services-bento .bento-arrow { color: var(--ink-on-cream); opacity: 1; }
+
+@media (max-width: 980px) {
+  .wevtex .services-bento .bento-grid > .bento-card:nth-child(4n) { border-right: 1px solid var(--hairline-c); }
+  .wevtex .services-bento .bento-grid > .bento-card:nth-child(2n) { border-right: 0; }
+  .wevtex .services-bento .bento-grid > .bento-card:nth-last-child(-n + 4) { border-bottom: 1px solid var(--hairline-c); }
+  .wevtex .services-bento .bento-grid > .bento-card:nth-last-child(-n + 2) { border-bottom: 0; }
+}
+@media (max-width: 620px) {
+  .wevtex .services-bento .bento-grid > .bento-card { border-right: 0 !important; }
+  .wevtex .services-bento .bento-grid > .bento-card:not(:last-child) { border-bottom: 1px solid var(--hairline-c) !important; }
+  .wevtex .services-bento .bento-grid > .bento-card:last-child { border-bottom: 0 !important; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wevtex .services-bento .bento-card,
+  .wevtex .services-bento .bento-arrow { transition: none; }
+}
+
+/* ---------------------------------------------------------------------------
+   Testimonials — filled surfaces
+   A faint border on a pale ground reads as nothing. Fill plus a real soft
+   shadow gives the quotes weight without drawing eight more rectangles.
+   ------------------------------------------------------------------------- */
+.wevtex .testi-v2 .testi-col {
+  background: #f5f5f2;
+  border: 0;
+  border-radius: var(--radius-md);
+  box-shadow: 0 1px 2px rgba(16, 17, 18, 0.04), 0 14px 34px -20px rgba(16, 17, 18, 0.22);
+  transition: transform 200ms var(--ease-out), box-shadow 200ms var(--ease-out);
+}
+/* One idea: it lifts. No border change, no scale, nothing else. */
+.wevtex .testi-v2 .testi-col:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 1px 2px rgba(16, 17, 18, 0.05), 0 22px 46px -22px rgba(16, 17, 18, 0.3);
+}
+.wevtex .testi-v2 .testi-person { border-top-color: var(--hairline-c); }
+
+/* ---------------------------------------------------------------------------
+   Sectors — full-bleed image tiles
+   The label was borderline over the photo. A bottom-to-top gradient guarantees
+   it reads, whatever the image behind it.
+   ------------------------------------------------------------------------- */
+.wevtex .industries-carousel .ic-card { overflow: hidden; }
+.wevtex .industries-carousel .ic-card img {
+  transition: transform 250ms var(--ease-out);
+  will-change: transform;
+}
+/* The image moves under a fixed mask; the label holds still. */
+.wevtex .industries-carousel .ic-card:hover img { transform: scale(1.03); }
+.wevtex .industries-carousel .ic-overlay {
+  background: linear-gradient(
+    to top,
+    rgba(10, 11, 12, 0.88) 0%,
+    rgba(10, 11, 12, 0.62) 32%,
+    rgba(10, 11, 12, 0.18) 64%,
+    rgba(10, 11, 12, 0.06) 100%
+  );
+}
+.wevtex .industries-carousel .ic-card-h { color: #ffffff; }
+.wevtex .industries-carousel .ic-card-p { color: rgba(244, 245, 242, 0.82); }
+
+/* ---------------------------------------------------------------------------
+   FAQ — a calm open/close, and a lime + that becomes an ×
+   ------------------------------------------------------------------------- */
+.wevtex .faq-item-v2 .faq-body {
+  overflow: hidden;
+  transition: opacity 200ms var(--ease-out);
+}
+.wevtex .faq-item-v2[open] .faq-body { opacity: 1; }
+.wevtex .faq-item-v2 .faq-plus {
+  position: relative; width: 14px; height: 14px; flex: none;
+  transition: transform 200ms var(--ease-out);
+}
+.wevtex .faq-item-v2 .faq-plus::before,
+.wevtex .faq-item-v2 .faq-plus::after {
+  content: ""; position: absolute; left: 50%; top: 50%;
+  background: var(--ink-on-cream-3);
+  transition: background-color 200ms var(--ease-out);
+}
+.wevtex .faq-item-v2 .faq-plus::before { width: 14px; height: 2px; margin: -1px 0 0 -7px; }
+.wevtex .faq-item-v2 .faq-plus::after  { width: 2px; height: 14px; margin: -7px 0 0 -1px; }
+/* Open: the bar rotates into a cross and the accent picks it up. */
+.wevtex .faq-item-v2[open] .faq-plus { transform: rotate(45deg); }
+.wevtex .faq-item-v2[open] .faq-plus::before,
+.wevtex .faq-item-v2[open] .faq-plus::after { background: var(--accent-deep); }
+
+/* ---------------------------------------------------------------------------
+   Footer — the same grain as the other ink sections
+   ------------------------------------------------------------------------- */
+.wevtex .footer-v2 { position: relative; }
+.wevtex .footer-v2 > * { position: relative; z-index: 2; }
+.wevtex .footer-v2::after {
+  content: ""; position: absolute; inset: 0; z-index: 1; pointer-events: none;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wevtex .testi-v2 .testi-col,
+  .wevtex .industries-carousel .ic-card img,
+  .wevtex .faq-item-v2 .faq-plus,
+  .wevtex .faq-item-v2 .faq-body { transition: none; }
+  .wevtex .testi-v2 .testi-col:hover { transform: none; }
+  .wevtex .industries-carousel .ic-card:hover img { transform: none; }
+}
+
+/* ---------------------------------------------------------------------------
+   Projects — editorial, on ink
+   The screenshots are the only rich colour in this section, and they carry far
+   better against dark than against another pale ground.
+   ------------------------------------------------------------------------- */
+.wevtex .work-ink {
+  background: #101112;
+  color: #f4f5f2;
+  position: relative;
+  --ink-on-cream: #f4f5f2;
+  --ink-on-cream-2: rgba(244, 245, 242, 0.78);
+  --ink-on-cream-3: rgba(244, 245, 242, 0.56);
+  --hairline-c: #2a2d33;
+  --hairline-c-strong: #3a3e46;
+  --accent-text: var(--accent);
+}
+.wevtex .work-ink .container { position: relative; z-index: 3; }
+.wevtex .work-ink .ink-grain { z-index: 2; }
+
+.wevtex .work-ink .h-section,
+.wevtex .work-ink h2, .wevtex .work-ink h3, .wevtex .work-ink h4 { color: #f4f5f2; }
+.wevtex .work-ink .wk-lede,
+.wevtex .work-ink .ic-sub,
+.wevtex .work-ink .wk-outcome { color: rgba(244, 245, 242, 0.78); }
+.wevtex .work-ink .eyebrow { color: rgba(244, 245, 242, 0.62); }
+
+/* Index rows: stronger dividers, mono numbering in lime. */
+.wevtex .work-ink .wk-item { border-color: #2a2d33; }
+.wevtex .work-ink .wk-ix-n { color: var(--accent); }
+.wevtex .work-ink .wk-ix-title { color: #f4f5f2; }
+.wevtex .work-ink .wk-ix-cat,
+.wevtex .work-ink .wk-ix-year { color: rgba(244, 245, 242, 0.56); }
+.wevtex .work-ink .wk-toggle { color: rgba(244, 245, 242, 0.72); border-color: #3a3e46; }
+
+/* One hover: the row's name takes the lime marker. Nothing else moves. */
+.wevtex .work-ink .wk-row:hover .wk-ix-title,
+.wevtex .work-ink .wk-row:focus-visible .wk-ix-title {
+  background: linear-gradient(var(--accent), var(--accent)) no-repeat;
+  background-size: 100% 0.14em;
+  background-position: 0 0.94em;
+}
+
+/* The screenshot nudges up to reveal a little more of the page. */
+.wevtex .work-ink .wk-shot { transition: transform 220ms var(--ease-out); }
+.wevtex .work-ink .wk-panel-grid:hover .wk-shot { transform: translateY(-6px); }
+
+.wevtex .work-ink .wk-stack li { border-color: #3a3e46; color: rgba(244, 245, 242, 0.78); }
+.wevtex .work-ink .wk-metric-n { color: var(--accent); }
+.wevtex .work-ink .wk-metric-l { color: rgba(244, 245, 242, 0.7); }
+.wevtex .work-ink .wk-view { color: #f4f5f2; }
+.wevtex .work-ink .btn-outline { border-color: #3a3e46; color: #f4f5f2; }
+.wevtex .work-ink .btn-outline:hover { border-color: #f4f5f2; background: rgba(255, 255, 255, 0.06); }
+
+@media (prefers-reduced-motion: reduce) {
+  .wevtex .work-ink .wk-shot { transition: none; }
+  .wevtex .work-ink .wk-panel-grid:hover .wk-shot { transform: none; }
+}
+
+/* ---------------------------------------------------------------------------
+   Inline CTA — ink, sitting with the proof above it
+   Two purposes. It breaks what was a run of three light sections between the
+   stats band and pricing, and it gives the lime button a ground to work
+   against: lime measures 1.11 on the sand it used to sit on, and 14.59 here.
+
+   Every colour below is a literal, not --ink-on-dark. That token is rebound to
+   near-black by .mode-light, which every page carries — a dark block that
+   inherits it ends up with dark text on a dark ground.
+   ------------------------------------------------------------------------- */
+.wevtex .inline-cta-ink {
+  background: #101112;
+  position: relative;
+  padding: clamp(64px, 9vh, 96px) 0;
+}
+.wevtex .inline-cta-ink .container { position: relative; z-index: 3; }
+.wevtex .inline-cta-ink .ink-grain { z-index: 2; }
+
+/* Ghost, not a card: on ink the section already reads as its own object. */
+.wevtex .inline-cta-ink .ict-inner {
+  background: none;
+  border: 0;
+  box-shadow: none;
+  padding: 0;
+  gap: 22px 40px;
+}
+.wevtex .inline-cta-ink .ict-text {
+  color: #f4f5f2;
+  font-size: clamp(19px, 2vw, 26px);
+  font-weight: 600;
+  letter-spacing: -0.025em;
+  max-width: 24ch;
+}
+.wevtex .inline-cta-ink .btn-outline { border-color: #3a3e46; color: #f4f5f2; }
+.wevtex .inline-cta-ink .btn-outline:hover { border-color: #f4f5f2; background: rgba(255, 255, 255, 0.06); }
+
+/* ---------------------------------------------------------------------------
+   Hero — its own stage
+   Every colour is a literal: .mode-light rebinds --ink-on-dark to near-black,
+   so a dark block that inherits it renders dark-on-dark.
+   ------------------------------------------------------------------------- */
+.wevtex .hero-ink {
+  background: #101112;
+  color: #f4f5f2;
+  position: relative;
+  overflow: hidden;
+}
+.wevtex .hero-ink .container { position: relative; z-index: 3; }
+.wevtex .hero-ink .ink-grain,
+.wevtex .hero-ink .ink-spotlight { z-index: 1; }
+
+.wevtex .hero-ink h1,
+.wevtex .hero-ink .srt-word { color: #f4f5f2; }
+.wevtex .hero-ink .hero-sub { color: rgba(244, 245, 242, 0.76); }
+
+/* The arc was a pale disc behind the render — on ink it becomes the glow the
+   product shot sits in. */
+.wevtex .hero-ink .hero-arc {
+  background: radial-gradient(circle, rgba(198, 242, 78, 0.10) 0%, rgba(198, 242, 78, 0) 62%);
+}
+
+/* The render bleeds off the right edge: the page's one off-grid moment. */
+.wevtex .hero-ink .hero-visual { position: relative; }
+.wevtex .hero-ink .hero-shot {
+  border-radius: var(--radius-md);
+  box-shadow: 0 40px 90px -40px rgba(0, 0, 0, 0.8);
+}
+@media (min-width: 1100px) {
+  .wevtex .hero-ink .hero-visual { margin-right: clamp(-90px, -5vw, -40px); }
+}
+
+.wevtex .hero-ink .hero-reassure li { color: rgba(244, 245, 242, 0.80); }
+.wevtex .hero-ink .hero-reassure svg { color: var(--accent); }
+.wevtex .hero-ink .btn-outline { border-color: #3a3e46; color: #f4f5f2; }
+.wevtex .hero-ink .btn-outline:hover { border-color: #f4f5f2; background: rgba(255, 255, 255, 0.06); }
+
+/* The review badge now sits under the buttons, so it needs its own spacing. */
+.wevtex .hero-ink .hero-reviews { margin: 26px 0 0; }
+.wevtex .hero-ink .review-badge {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: #2a2d33;
+  color: #f4f5f2;
+}
+.wevtex .hero-ink .review-badge:hover { border-color: #3a3e46; }
+.wevtex .hero-ink .rv-brand,
+.wevtex .hero-ink .rv-count { color: rgba(244, 245, 242, 0.62); }
+.wevtex .hero-ink .rv-row strong { color: #f4f5f2; }
+
+/* Trust bar sits on the same ink; the marks need lifting off it. */
+.wevtex .hero-ink .hero-logos { border-top-color: #2a2d33; }
+.wevtex .hero-ink .ls-lead { color: rgba(244, 245, 242, 0.56); }
+.wevtex .hero-ink .ls-row img { filter: brightness(0) invert(1); opacity: 0.72; }

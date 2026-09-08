@@ -14,6 +14,7 @@ import { SiteHeader } from "./SiteHeader";
 import { SiteFooter } from "./SiteFooter";
 import { ScrollRevealText } from "./ScrollRevealText";
 import { HeroReviews } from "./HeroReviews";
+import { InkBackdrop } from "./primitives";
 import { StickyCta } from "./StickyCta";
 import { FAQS, SERVICES } from "./homeContent";
 import { PROJECTS_ORDERED } from "@/lib/projects-data";
@@ -358,6 +359,8 @@ export function HomeClient() {
 
     const animate = (el: HTMLElement) => {
       const to = parseFloat(el.dataset.to || "0");
+      // Markup ships the final value as the no-JS fallback, so the animation
+      // resets to zero before running rather than counting up from the total.
       const dec = parseInt(el.dataset.dec || "0", 10);
       const suffix = el.dataset.suffix || "";
       const dur = 1500;
@@ -393,14 +396,14 @@ export function HomeClient() {
       <SiteHeader />
 
       {/* ===================== HERO (mockup 1 — split) ===================== */}
-      <section className="theme-cream hero hero-split" id="hero">
+      <section className="hero hero-split hero-ink" id="hero">
+        <InkBackdrop variant="spotlight" />
         <div className="hero-motif" aria-hidden></div>
         <div className="hero-arc" aria-hidden></div>
 
         <div className="container">
           <div className="hero-grid">
             <div className="hero-content">
-              <HeroReviews />
               <ScrollRevealText
                 as="h1"
                 mode="load"
@@ -426,6 +429,10 @@ export function HomeClient() {
                   </svg>
                 </a>
               </div>
+
+              {/* Proof sits with the action, not adrift at the top of the page. */}
+              <HeroReviews />
+
               {/* Risk reversal: answers the question every visitor has before
                   they will consider getting in touch. */}
               <ul className="hero-reassure">
@@ -497,7 +504,8 @@ export function HomeClient() {
           One accordion, one project open at a time. Clicking a row expands
           it in place rather than navigating away — the visitor never loses
           the page, and the list stays a tight index between openings. */}
-      <section className="theme-cream-2 work" id="work">
+      <section className="work work-ink" id="work">
+        <InkBackdrop variant="data" />
         <div className="container">
 
           {/* Same head components as every other section — eyebrow, h-section,
@@ -601,8 +609,7 @@ export function HomeClient() {
       {/* Projets livrés is confirmed. The other three still need verifying
           against something real before launch. */}
       <section className="stats-band-v2">
-        <span className="sb-motif tl" aria-hidden></span>
-        <span className="sb-motif br" aria-hidden></span>
+        <InkBackdrop variant="data" />
         <div className="container">
           <div className="sb-grid reveal">
             {[
@@ -612,7 +619,12 @@ export function HomeClient() {
               { to: 98, dec: 0, suffix: "%", label: "Clients satisfaits", desc: "Des clients qui nous recommandent et qui reviennent." },
             ].map((s) => (
               <div className="sb-item" key={s.label}>
-                <div className="sb-num" data-to={s.to} data-dec={s.dec} data-suffix={s.suffix}>{`0${s.suffix}`}</div>
+                {/* The final value is rendered here, not a zero: if the count-up
+                    never runs — no JS, reduced data, an observer that never
+                    fires — the band still shows real numbers. */}
+                <div className="sb-num" data-to={s.to} data-dec={s.dec} data-suffix={s.suffix}>
+                  {s.to.toFixed(s.dec) + s.suffix}
+                </div>
                 <div className="sb-label">{s.label}</div>
                 <span className="sb-rule"></span>
                 <p className="sb-desc">{s.desc}</p>
@@ -623,7 +635,8 @@ export function HomeClient() {
       </section>
 
       {/* CTA beside the proof — the reference puts one right after the evidence. */}
-      <section className="theme-sand inline-cta">
+      <section className="inline-cta inline-cta-ink">
+        <InkBackdrop variant="data" />
         <div className="container">
           <div className="ict-inner reveal">
             <p className="ict-text">Vous voulez ce type de résultats pour votre entreprise ?</p>
@@ -636,7 +649,7 @@ export function HomeClient() {
       </section>
 
       {/* ===================== TESTIMONIALS (mockup 9 — featured + 2) ===================== */}
-      <section className="theme-cream testi-v2" id="testimonials">
+      <section className="theme-paper testi-v2" id="testimonials">
         <div className="container">
           <div className="ic-head ic-head-left reveal">
             <span className="eyebrow line-eyebrow">Avis clients</span>
@@ -705,7 +718,7 @@ export function HomeClient() {
       </section>
 
       {/* ===================== INDUSTRIES (mockup 4 — carousel) ===================== */}
-      <section className="theme-paper industries-carousel" id="industries">
+      <section className="theme-cream industries-carousel" id="industries">
         <div className="container">
           <div className="ic-head reveal">
             <span className="eyebrow line-eyebrow-center">Les secteurs que nous servons</span>
