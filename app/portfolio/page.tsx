@@ -20,8 +20,6 @@ import { WHATSAPP_URL, CONTACT_URL } from "@/lib/site-links";
 export default function PortfolioPage() {
   useReveal();
 
-  const categories = Array.from(new Set(PROJECTS.map((p) => p.category)));
-
   return (
     <div className="wevtex mode-light">
       <SiteHeader current="work" />
@@ -41,14 +39,6 @@ export default function PortfolioPage() {
               applications. Chacun est en ligne — ouvrez-les et jugez par vous-même.
             </p>
 
-            <div className="pj-meta" style={{ marginTop: 28 }}>
-              {categories.map((c, i) => (
-                <span key={c} style={{ display: "inline-flex", alignItems: "center", gap: 12 }}>
-                  {i > 0 && <span className="pj-dot" aria-hidden />}
-                  {c}
-                </span>
-              ))}
-            </div>
           </div>
         </div>
       </section>
@@ -61,20 +51,23 @@ export default function PortfolioPage() {
       </section>
 
       {/* ===================== CTA ===================== */}
-      <section className="theme-sand inline-cta" style={{ paddingTop: "clamp(60px, 8vh, 90px)" }}>
+      <section className="theme-sand inline-cta" style={{ paddingTop: "clamp(70px, 10vh, 110px)" }}>
         <div className="container">
           <div className="ict-inner reveal">
-            <p className="ict-text">Votre projet mérite la même attention.</p>
-            <a href={WHATSAPP_URL} className="btn btn-primary" target="_blank" rel="noopener">
-              Demander un devis gratuit
-              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden><path d="M5 12h14M13 6l6 6-6 6" /></svg>
-            </a>
+            <div>
+              <span className="ict-eyebrow">Parlons-en</span>
+              <p className="ict-text">Votre projet mérite la même attention.</p>
+            </div>
+            <div className="ict-actions">
+              <a href={WHATSAPP_URL} className="btn btn-primary" target="_blank" rel="noopener">
+                Demander un devis gratuit
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+              </a>
+              <a href={CONTACT_URL} className="btn btn-outline">
+                Envoyer un brief
+              </a>
+            </div>
           </div>
-          <p style={{ textAlign: "center", marginTop: 22 }}>
-            <a href={CONTACT_URL} className="btn btn-outline">
-              Ou envoyez-nous votre brief
-            </a>
-          </p>
         </div>
       </section>
 

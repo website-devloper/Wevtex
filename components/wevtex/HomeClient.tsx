@@ -119,6 +119,7 @@ type WorkItem = {
   cat: string;
   year: string;
   url: string;
+  liveUrl: string;
   outcome: string;
   stack: string[];
   metric: string;
@@ -135,6 +136,7 @@ const WORK: WorkItem[] = PROJECTS_ORDERED.slice(0, 6).map((p, i) => ({
   cat: p.category,
   year: String(p.year),
   url: p.clientUrl,
+  liveUrl: p.liveUrl,
   outcome: p.description,
   stack: p.stack,
   metric: p.metricValue,
@@ -547,16 +549,18 @@ export function HomeClient() {
                   >
                     <div className="wk-panel-in">
                       <div className="wk-panel-grid">
-                        {/* The screenshot alone. The fake browser bar was
-                            chrome around a picture of chrome; the client URL it
-                            carried now sits in the body as a real link. */}
-                        <div
+                        {/* The screenshot is the link — clicking a picture of a
+                            site to open that site is what people already try. */}
+                        <a
+                          href={p.liveUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          aria-label={`Ouvrir le site ${p.title}`}
                           className={p.capture ? "wk-shot" : `wk-shot ${p.shot}`}
                           style={p.capture ? { backgroundImage: `url(/images/work/${p.slug}.webp)` } : undefined}
-                        ></div>
+                        ></a>
 
                         <div className="wk-body">
-                          <span className="wk-url">{p.url}</span>
                           <p className="wk-outcome">{p.outcome}</p>
 
                           <ul className="wk-stack">
@@ -568,8 +572,8 @@ export function HomeClient() {
                             <span className="wk-metric-l">{p.metricLabel}</span>
                           </div>
 
-                          <a href={PORTFOLIO_URL} className="wk-view">
-                            Voir nos réalisations
+                          <a href={p.liveUrl} target="_blank" rel="noopener noreferrer" className="wk-view">
+                            Voir le site web
                             <span className="wk-view-arrow" aria-hidden>
                               <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
                             </span>

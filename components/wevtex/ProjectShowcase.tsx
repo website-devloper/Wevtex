@@ -23,10 +23,12 @@ export function ProjectShowcase() {
     <div className="pj-list">
       {PROJECTS_ORDERED.map((p) => (
         <article className="pj-row reveal" key={p.slug}>
-          <div
+          <a
             className="pj-shot"
-            role="img"
-            aria-label={`Aperçu du site ${p.title}`}
+            href={p.liveUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={`Ouvrir le site ${p.title}`}
             style={{ backgroundImage: `url(${p.screenshot})` }}
           />
 
@@ -35,8 +37,6 @@ export function ProjectShowcase() {
               <span>{p.category}</span>
               <span className="pj-dot" aria-hidden />
               <span>{p.year}</span>
-              <span className="pj-dot" aria-hidden />
-              <span>{p.clientUrl}</span>
             </div>
 
             <h3 className="pj-title">{p.title}</h3>
@@ -54,7 +54,7 @@ export function ProjectShowcase() {
             </div>
 
             <a className="pj-visit" href={p.liveUrl} target="_blank" rel="noopener noreferrer">
-              Voir le site en ligne
+              Voir le site web
               {ARROW}
             </a>
           </div>
