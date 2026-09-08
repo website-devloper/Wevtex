@@ -233,13 +233,18 @@ export function CtaBand({
   secondaryLabel?: string;
 }) {
   return (
-    <section className="audit-band cta-band">
-      <span className="audit-motif" aria-hidden></span>
+    /* Split, not centred: the problem band is already a centred statement on
+       ink, and two sections sharing a container pattern is what makes a page
+       read as generated. Copy holds the left, the decision sits on the right. */
+    <section className="audit-band cta-band cta-band-split">
+      <span className="ink-grain" aria-hidden></span>
       <div className="container">
         <div className="ctab-inner reveal">
-          <span className="eyebrow line-eyebrow">{eyebrow}</span>
-          <h2 className="audit-h" style={{ marginTop: 16 }}>{heading}</h2>
-          <p className="audit-p">{text}</p>
+          <div className="ctab-copy">
+            <span className="eyebrow line-eyebrow">{eyebrow}</span>
+            <h2 className="audit-h" style={{ marginTop: 16 }}>{heading}</h2>
+            <p className="audit-p">{text}</p>
+          </div>
           <div className="ctab-btns">
             <a href={WHATSAPP_URL} className="btn btn-primary" target="_blank" rel="noopener">
               {primaryLabel}

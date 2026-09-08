@@ -65,10 +65,30 @@ export default function AboutPage() {
     <div className="wevtex mode-light">
       <SiteHeader current="about" />
 
+      {/* ===================== HERO =====================
+          The page previously opened straight into the studio mosaic, so a
+          visitor met photographs before they knew whose they were. */}
+      <section className="theme-cream sec-first" style={{ paddingBottom: "clamp(40px, 6vh, 70px)" }}>
+        <div className="container">
+          <div className="reveal">
+            <span className="eyebrow line-eyebrow">À propos</span>
+            <h1 className="h-section" style={{ marginTop: 14 }}>
+              Une agence web à Casablanca,<br />
+              qui <em className="hl-line">livre.</em>
+            </h1>
+            <p className="ic-sub wk-lede" style={{ maxWidth: "58ch" }}>
+              Nous concevons des sites, des boutiques en ligne et des applications
+              pour des entreprises marocaines et internationales. Petite équipe,
+              interlocuteur unique, et un projet livré quand nous l&apos;avons dit.
+            </p>
+          </div>
+        </div>
+      </section>
+
       {/* ===================== LE STUDIO =====================
           Ouverture de la page : le texte porte le h1, la mosaïque donne un
           visage au studio avant la moindre demande. */}
-      <section className="theme-cream brand-v2" id="studio">
+      <section className="theme-paper brand-v2" id="studio">
         <div className="container">
           <div className="bv-inner reveal">
             <div className="bv-mosaic">
@@ -139,7 +159,7 @@ export default function AboutPage() {
           Un visage et un nom plutôt qu'une grille de vignettes : la question
           que se pose le visiteur ici n'est pas « combien êtes-vous » mais
           « qui aurai-je en face de moi ». */}
-      <section className="theme-paper founder-v2" id="equipe">
+      <section className="founder-v2 founder-ink" id="equipe">
         <div className="container">
           <div className="fd-inner reveal">
             <div className="fd-photo">

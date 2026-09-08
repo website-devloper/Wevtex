@@ -8338,3 +8338,65 @@
 /* The active step is the one lime moment in the list. */
 .wevtex .process-ink .process-step.active h4 { color: #ffffff; }
 .wevtex .process-ink .process-step.active p { color: rgba(244, 245, 242, 0.9); }
+
+/* ---------------------------------------------------------------------------
+   Closing CTA — split, not another centred ink statement
+   The problem band is already a centred statement on ink. Repeating that
+   container here is exactly the uniformity the brief is against, so the copy
+   takes the left and the decision sits on the right, with a hairline between.
+   ------------------------------------------------------------------------- */
+.wevtex .cta-band-split { position: relative; overflow: hidden; }
+.wevtex .cta-band-split .container { position: relative; z-index: 2; }
+.wevtex .cta-band-split .ink-grain { z-index: 1; }
+
+.wevtex .cta-band-split .ctab-inner {
+  display: grid;
+  grid-template-columns: 1.35fr auto;
+  align-items: center;
+  gap: clamp(32px, 5vw, 76px);
+  text-align: left;
+  max-width: none;
+}
+.wevtex .cta-band-split .ctab-copy { max-width: 46ch; }
+.wevtex .cta-band-split .audit-h {
+  font-size: clamp(28px, 3.4vw, 44px);
+  font-weight: 600; letter-spacing: -0.03em; line-height: 1.12;
+  text-wrap: balance;
+}
+.wevtex .cta-band-split .audit-p {
+  margin: 16px 0 0; max-width: 44ch;
+  font-size: 15.5px; line-height: 1.68; color: rgba(244, 245, 242, 0.78);
+}
+/* The actions stack, so the primary is unmistakably the primary. */
+.wevtex .cta-band-split .ctab-btns {
+  display: flex; flex-direction: column; align-items: stretch;
+  gap: 12px; margin: 0;
+  padding-left: clamp(32px, 5vw, 76px);
+  border-left: 1px solid rgba(255, 255, 255, 0.14);
+}
+.wevtex .cta-band-split .ctab-btns .btn { justify-content: center; white-space: nowrap; }
+
+@media (max-width: 900px) {
+  .wevtex .cta-band-split .ctab-inner { grid-template-columns: 1fr; gap: 30px; }
+  .wevtex .cta-band-split .ctab-btns {
+    padding-left: 0; border-left: 0;
+    padding-top: 26px; border-top: 1px solid rgba(255, 255, 255, 0.14);
+  }
+}
+
+/* The team block on ink — the dark anchor between the studio and the closing
+   CTA, which were otherwise four pale sections in a row. Literals throughout. */
+.wevtex .founder-ink { background: #101112; color: #f4f5f2; position: relative; }
+.wevtex .founder-ink .h-section,
+.wevtex .founder-ink h2, .wevtex .founder-ink h3, .wevtex .founder-ink h4 { color: #f4f5f2; }
+.wevtex .founder-ink .eyebrow { color: rgba(244, 245, 242, 0.62); }
+.wevtex .founder-ink p,
+.wevtex .founder-ink .ic-sub { color: rgba(244, 245, 242, 0.78); }
+.wevtex .founder-ink .fv-card,
+.wevtex .founder-ink .fv-quote {
+  background: #191b1f; border-color: #2a2d33; box-shadow: none;
+}
+.wevtex .founder-ink .fv-role,
+.wevtex .founder-ink .fv-meta { color: rgba(244, 245, 242, 0.58); }
+.wevtex .founder-ink .btn-outline { border-color: #3a3e46; color: #f4f5f2; }
+.wevtex .founder-ink .btn-outline:hover { border-color: #f4f5f2; background: rgba(255, 255, 255, 0.06); }
