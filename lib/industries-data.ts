@@ -39,9 +39,9 @@ export const INDUSTRIES: Industry[] = [
       "Design mobile-first, orienté conversion.",
     ],
     outcomes: [
-      { h: "Plus de ventes", p: "Des pages rapides et un tunnel d'achat clair réduisent les paniers abandonnés." },
-      { h: "Simple à gérer", p: "Produits, stocks et commandes depuis un seul tableau de bord." },
-      { h: "Visible sur Google", p: "Des fiches produits optimisées qui vous amènent des acheteurs." },
+      { h: "Moins de paniers abandonnés", p: "Un tunnel de commande en trois étapes, les moyens de paiement locaux acceptés, et des pages qui s'ouvrent en moins d'une seconde sur mobile." },
+      { h: "Des stocks toujours justes", p: "Catalogue, déclinaisons et quantités pilotés depuis un seul écran, sans double saisie entre la boutique et le point de vente." },
+      { h: "Trouvé au moment de l'achat", p: "Vos fiches produits écrites pour les recherches qui précèdent une commande, pas seulement pour votre nom de marque." },
     ],
     faqs: [
       { q: "Pouvez-vous migrer ma boutique actuelle ?", a: "Oui. Nous migrons produits, clients et commandes depuis la plupart des plateformes, avec une interruption minimale." },
@@ -67,9 +67,9 @@ export const INDUSTRIES: Industry[] = [
       "Pages multilingues pour votre clientèle internationale.",
     ],
     outcomes: [
-      { h: "Gardez vos marges", p: "La réservation directe supprime les commissions des plateformes." },
-      { h: "Remplissez vos chambres", p: "Un parcours de réservation fluide convertit davantage." },
-      { h: "Touchez les voyageurs", p: "Des pages multilingues et optimisées attirent une clientèle internationale." },
+      { h: "Des réservations en direct", p: "Un moteur sur votre propre site : chaque réservation prise chez vous est une commission que vous ne versez pas aux plateformes." },
+      { h: "Des demandes traitées la nuit", p: "Disponibilités, tarifs et transferts répondus automatiquement sur WhatsApp, y compris en dehors de vos horaires." },
+      { h: "Visible avant la réservation", p: "Vos pages positionnées sur les recherches de séjour, des semaines avant que la date du voyage soit fixée." },
     ],
     faqs: [
       { q: "Est-ce compatible avec mon channel manager ?", a: "Oui. Nous pouvons synchroniser les disponibilités avec les principaux outils de réservation et de channel management." },
@@ -95,9 +95,9 @@ export const INDUSTRIES: Industry[] = [
       "Contenu optimisé pour les recherches locales.",
     ],
     outcomes: [
-      { h: "Des contacts qualifiés", p: "Des appels à l'action clairs transforment les visiteurs en demandes." },
-      { h: "Crédible dès la première visite", p: "Un design professionnel qui inspire immédiatement confiance." },
-      { h: "Un agenda qui se remplit", p: "La prise de rendez-vous intégrée permet d'agir tout de suite." },
+      { h: "Des demandes déjà qualifiées", p: "Un formulaire qui recueille le contexte du dossier, pour que le premier échange commence informé plutôt qu'à zéro." },
+      { h: "Une crédibilité immédiate", p: "Références, méthode et tarifs présentés clairement : le doute se lève avant l'appel, pas pendant." },
+      { h: "Moins d'allers-retours", p: "Portail client, documents et suivi de dossier consultables en ligne, sans passer par votre secrétariat." },
     ],
     faqs: [
       { q: "Mes clients peuvent-ils prendre rendez-vous en ligne ?", a: "Oui. Nous intégrons un système de prise de rendez-vous directement depuis votre site." },
@@ -123,9 +123,9 @@ export const INDUSTRIES: Industry[] = [
       "Design mobile-first et accessible.",
     ],
     outcomes: [
-      { h: "Plus de rendez-vous", p: "La réservation en ligne supprime les freins pour les nouveaux patients." },
-      { h: "Moins d'administratif", p: "Formulaires et agenda en ligne réduisent les allers-retours téléphoniques." },
-      { h: "Une présence rassurante", p: "Un site soigné rassure les nouveaux patients et adhérents." },
+      { h: "Un agenda qui se remplit seul", p: "La prise de rendez-vous en ligne fonctionne le soir et le week-end, précisément quand vos patients cherchent." },
+      { h: "Moins de rendez-vous manqués", p: "Confirmation et rappel automatiques sur WhatsApp, avec la possibilité de déplacer le créneau en un message." },
+      { h: "Un patient rassuré avant d'entrer", p: "Soins expliqués simplement, équipe présentée, tarifs annoncés : les questions gênantes ont déjà leur réponse." },
     ],
     faqs: [
       { q: "Les formulaires patients sont-ils sécurisés ?", a: "Oui. Les données transitent en HTTPS et nous appliquons les bonnes pratiques en matière de confidentialité." },
@@ -151,9 +151,9 @@ export const INDUSTRIES: Industry[] = [
       "Un site rapide et professionnel sur tous les écrans.",
     ],
     outcomes: [
-      { h: "Plus de demandes de devis", p: "Des appels à l'action clairs simplifient la prise de contact." },
-      { h: "Un savoir-faire prouvé", p: "Références et certifications vous ouvrent de plus gros contrats." },
-      { h: "Une image sérieuse", p: "Un site solide signale un partenaire fiable." },
+      { h: "Des devis partis plus vite", p: "Fiches techniques et références disponibles en ligne : l'acheteur trouve ce qu'il cherche sans mobiliser vos équipes." },
+      { h: "Moins de saisie manuelle", p: "Vos outils métier communiquent entre eux, les données ne sont plus recopiées d'un fichier à l'autre." },
+      { h: "Un suivi que le client consulte seul", p: "État de commande et d'expédition en libre-service, ce qui allège d'autant votre standard téléphonique." },
     ],
     faqs: [
       { q: "Pouvez-vous présenter nos réalisations passées ?", a: "Oui. Nous créons des sections portfolio et études de cas pour valoriser vos chantiers." },
@@ -179,9 +179,9 @@ export const INDUSTRIES: Industry[] = [
       "Inscription et paiement pour les formations payantes.",
     ],
     outcomes: [
-      { h: "Plus d'inscriptions", p: "Un site clair et rapide transforme les visiteurs en élèves." },
-      { h: "Diffusez à grande échelle", p: "Hébergez cours et vidéos pour un nombre illimité d'apprenants." },
-      { h: "Suivez la progression", p: "Espaces élèves et certificats entretiennent la motivation." },
+      { h: "Des sessions qui se remplissent", p: "Programmes, dates et conditions clairs, avec une inscription qui aboutit en ligne au lieu de s'arrêter à un e-mail." },
+      { h: "Moins de dossiers incomplets", p: "Relance automatique des pièces manquantes, sans mobiliser votre équipe administrative." },
+      { h: "Des apprenants qui reviennent", p: "Cours, devoirs et progression accessibles depuis un téléphone, entre deux séances." },
     ],
     faqs: [
       { q: "Peut-on vendre des formations en ligne ?", a: "Oui. Nous ajoutons l'inscription et le paiement pour vendre vos formations directement." },
@@ -207,9 +207,9 @@ export const INDUSTRIES: Industry[] = [
       "Un design qui vous distingue de la concurrence.",
     ],
     outcomes: [
-      { h: "Convertissez vos premiers utilisateurs", p: "Des pages claires et rapides transforment l'intérêt en inscription." },
-      { h: "Ayez l'image qui va avec", p: "Un design marquant installe la crédibilité immédiatement." },
-      { h: "Avancez vite", p: "Nous livrons rapidement pour que vous puissiez lancer et itérer." },
+      { h: "Votre travail vu en premier", p: "Un portfolio qui charge vite et met les images et les vidéos au premier plan, sans habillage qui les retarde." },
+      { h: "Des briefs mieux cadrés", p: "Un formulaire qui pose les bonnes questions — budget, délai, périmètre — avant le premier rendez-vous." },
+      { h: "Un site à votre niveau", p: "Une identité tenue jusque dans le détail des interactions, parce que c'est précisément ce que vos clients achètent." },
     ],
     faqs: [
       { q: "Pouvez-vous faire le site vitrine et le produit ?", a: "Oui. Du site marketing jusqu'au produit lui-même, nous pouvons construire les deux." },
@@ -235,9 +235,9 @@ export const INDUSTRIES: Industry[] = [
       "Une information claire et multilingue, pour tous.",
     ],
     outcomes: [
-      { h: "Plus de dons", p: "Un parcours simple et rassurant encourage à donner." },
-      { h: "Accessible à tous", p: "Un design inclusif et multilingue n'exclut personne." },
-      { h: "La confiance en plus", p: "Une présence transparente et professionnelle inspire confiance." },
+      { h: "Une information accessible à tous", p: "Contrastes, navigation au clavier et lecture d'écran pris en compte, pour que personne ne soit laissé de côté." },
+      { h: "Des dons et adhésions simplifiés", p: "Un parcours court et sécurisé, qui fonctionne aussi bien sur un téléphone d'entrée de gamme." },
+      { h: "Moins de sollicitations répétitives", p: "Les questions fréquentes traitées en ligne et sur WhatsApp : votre équipe se concentre sur le terrain." },
     ],
     faqs: [
       { q: "Peut-on faire un don en ligne ?", a: "Oui. Nous mettons en place une collecte de dons sécurisée avec les options dont vous avez besoin." },

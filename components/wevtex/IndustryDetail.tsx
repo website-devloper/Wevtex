@@ -124,8 +124,8 @@ export function IndustryDetail({ industry }: { industry: Industry }) {
           <div className="ind-outcomes reveal">
             {industry.outcomes.map((o, i) => (
               <div className="ind-outcome" key={i}>
-                <span className="ind-outcome-n">{String(i + 1).padStart(2, "0")}</span>
                 <h3>{o.h}</h3>
+                <span className="ind-outcome-rule" aria-hidden></span>
                 <p>{o.p}</p>
               </div>
             ))}
