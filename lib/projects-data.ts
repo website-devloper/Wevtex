@@ -37,7 +37,7 @@ export const PROJECTS: Project[] = [
     category: "Plateforme",
     year: 2026,
     featured: true,
-    order: 1,
+    order: 7,
     description:
       "Plateforme de recrutement complète reliant candidats et employeurs marocains : offres vérifiées, matching intelligent, profils entreprises et messagerie recruteur en temps réel. Pensée pour la vitesse et la confiance, avec un parcours de candidature simplifié.",
     stack: ["Next.js", "React", "Tailwind"],
@@ -55,7 +55,7 @@ export const PROJECTS: Project[] = [
     category: "E-commerce",
     year: 2026,
     featured: true,
-    order: 2,
+    order: 8,
     description:
       "Boutique de cosmétiques marocains dotée d'un assistant IA conversationnel : le client décrit sa peau, l'assistant recommande les produits, construit une routine et prend la commande dans le chat — en darija, français ou anglais, 24h/24. Une nouvelle façon d'acheter, guidée et instantanée.",
     stack: ["Next.js", "Assistant IA", "Multilingue"],
@@ -73,7 +73,7 @@ export const PROJECTS: Project[] = [
     category: "Immobilier",
     year: 2026,
     featured: true,
-    order: 3,
+    order: 5,
     description:
       "Plateforme immobilière haut de gamme pour Marrakech et tout le Maroc : recherche multicritères (ville, type, budget, chambres), fiches biens détaillées, estimation gratuite et prise de contact WhatsApp. Blog immobilier intégré pour renforcer le référencement.",
     stack: ["Next.js", "Recherche avancée", "SEO"],
@@ -109,7 +109,7 @@ export const PROJECTS: Project[] = [
     category: "Site vitrine",
     year: 2026,
     featured: false,
-    order: 5,
+    order: 1,
     description:
       "Site vitrine bilingue pour un café de spécialité aux Palmiers : menu illustré, mise en avant des signatures, intégration commande Glovo et référencement local optimisé (horaires, avis Google, itinéraire). Conçu pour transformer les recherches locales en clients au comptoir.",
     stack: ["Next.js", "SEO Local", "Glovo"],
@@ -127,7 +127,7 @@ export const PROJECTS: Project[] = [
     category: "Santé",
     year: 2026,
     featured: false,
-    order: 6,
+    order: 9,
     description:
       "Site de clinique dentaire moderne axé sur la prise de rendez-vous : présentation des soins (implants, orthodontie, esthétique), équipe de praticiens, grille tarifaire claire et système de réservation en ligne. Design rassurant pensé pour convertir le visiteur en patient.",
     stack: ["HTML5", "Prise de RDV", "Responsive"],
@@ -145,7 +145,7 @@ export const PROJECTS: Project[] = [
     category: "Portfolio",
     year: 2026,
     featured: false,
-    order: 7,
+    order: 2,
     description:
       "Site vitrine pour une agence créative casablancaise : portfolio filtrable, showcase d'identités visuelles, intégration de reels vidéo, pages services détaillées et témoignages clients. Une vitrine immersive qui met la production créative au premier plan.",
     stack: ["Next.js", "Portfolio", "Vidéo"],
@@ -163,7 +163,7 @@ export const PROJECTS: Project[] = [
     category: "Application",
     year: 2026,
     featured: false,
-    order: 8,
+    order: 3,
     description:
       "Application web de gestion de budget personnel et familial : suivi des dépenses par catégorie, marchand et mois, scan de reçus, catégorisation automatique et questions en langage naturel sur son propre historique. Chaque donnée est cloisonnée par utilisateur, avec export et suppression à tout moment.",
     stack: ["Next.js", "Dashboard", "Auth sécurisée"],
@@ -181,7 +181,7 @@ export const PROJECTS: Project[] = [
     category: "Landing",
     year: 2026,
     featured: false,
-    order: 9,
+    order: 10,
     description:
       "Landing page produit immersive pour un casque VR autonome : narration au défilement, séquence d'images animée, audio spatial 3D et présentation de la bibliothèque de jeux. Une expérience scroll cinématique conçue pour donner envie de rentrer dans le jeu.",
     stack: ["Animation scroll", "WebGL", "Performance"],
@@ -199,7 +199,7 @@ export const PROJECTS: Project[] = [
     category: "Portfolio",
     year: 2026,
     featured: false,
-    order: 10,
+    order: 6,
     description:
       "Site portfolio pour un studio de photographie primé : galeries par spécialité (mariages, portraits, événements, commercial), mise en valeur visuelle plein écran et prise de contact simplifiée. Un écrin sobre où les images parlent d'elles-mêmes.",
     stack: ["Galerie", "SEO", "Responsive"],

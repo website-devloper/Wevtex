@@ -1,142 +1,80 @@
 "use client";
 
+/**
+ * Wevtex — Réalisations.
+ *
+ * Rebuilt on the real project data and the homepage's design language:
+ * `eyebrow line-eyebrow` → `h-section` with the `hl-line` lime underline →
+ * `ic-sub`. The previous version was the ported template's English placeholder
+ * content (Reserve.co, Arc Desktop, Lumen Studio) on the old `page-hero` block.
+ */
 
-/** Wevtex — Portfolio. Ported from .design-wevtex/project/portfolio.html */
-
-import { useState } from "react";
 import "../wevtex-home.css";
 import { SiteHeader } from "../../components/wevtex/SiteHeader";
 import { SiteFooter } from "../../components/wevtex/SiteFooter";
+import { ProjectShowcase } from "../../components/wevtex/ProjectShowcase";
 import { useReveal } from "../../components/wevtex/useReveal";
-import { HOME_URL, CONTACT_URL, SERVICES_URL } from "@/lib/site-links";
-
-const FILTERS = [
-  { label: "All", count: "12" },
-  { label: "E-commerce", count: "04" },
-  { label: "SaaS", count: "03" },
-  { label: "Booking", count: "02" },
-  { label: "Desktop", count: "02" },
-  { label: "Marketing", count: "01" },
-];
-
-const PROJECTS = [
-  { t: <>Global <em>E-Commerce</em></>, y: "2025", s: "Replatformed a 50K-SKU electronics retailer onto a headless stack — checkout latency 3.2s → 0.8s, conversion +47%.", tags: ["E-Commerce", "Headless", "Featured"], d: 1, caseStudy: "/case-study" },
-  { t: <>Reserve<em>.co</em></>, y: "2025", s: "Restaurant booking SaaS — calendar, payments, no-show prediction. 40 restaurants on day one, 4× growth in six months.", tags: ["SaaS", "Booking"], d: 2, style2: true },
-  { t: <>Arc <em>Desktop</em></>, y: "2024", s: "Native macOS/Windows companion app — sub-10MB binary, instant launch, native notifications. App-Store featured at launch.", tags: ["Desktop", "Tauri"], d: 1 },
-  { t: <>Lumen <em>Studio</em></>, y: "2024", s: "Editorial portfolio site for a photography studio — 100/100 Lighthouse, zero CSS frameworks, custom animations.", tags: ["Marketing", "Editorial"], d: 2, style2: true },
-  { t: <>Northbound<em>.io</em></>, y: "2024", s: "B2B SaaS dashboard for logistics — multi-tenant auth, real-time tracking, custom reporting. ARR up 3× in 12 months.", tags: ["SaaS", "B2B"], d: 1 },
-  { t: <>Marlow <em>&amp; Co.</em></>, y: "2024", s: "Heritage menswear e-commerce — Shopify Hydrogen rebuild, brand refresh, made-to-measure flow. Orders +89%.", tags: ["E-commerce", "Shopify"], d: 2, style2: true },
-  { t: <>Atlas <em>Desktop</em></>, y: "2023", s: "Cross-platform CAD viewer — handles 1GB files at 60fps. Replaced an Electron predecessor that maxed out at 50MB.", tags: ["Desktop", "Rust"], d: 1 },
-  { t: <>Hammam <em>Casablanca</em></>, y: "2023", s: "Luxury spa booking platform — calendar, gift cards, multilingual. Phone bookings down 60%, online 4×.", tags: ["Booking", "Hospitality"], d: 2, style2: true },
-  { t: <>Verbena <em>Skincare</em></>, y: "2023", s: "Direct-to-consumer beauty brand launch — full stack from brand identity to subscription commerce.", tags: ["E-commerce", "Brand"], d: 1 },
-  { t: <>Helix<em>.health</em></>, y: "2023", s: "Telehealth platform — HIPAA-compliant video, scheduling, prescriptions. Patient signups +220% YoY.", tags: ["SaaS", "Health"], d: 2, style2: true },
-  { t: <>Brick <em>&amp; Mortar</em></>, y: "2022", s: "Real-estate listing platform with map-first UX, agent CRM hooks, lead capture. Inquiries up 3.5×.", tags: ["E-commerce", "Real estate"], d: 1 },
-  { t: <>Studio <em>v2</em></>, y: "2022", s: "Internal tool for a film production house — asset management, review & approval, shoot scheduling.", tags: ["SaaS", "Internal tool"], d: 2, style2: true },
-];
-
-function Mockup({ style2 }: { style2?: boolean }) {
-  return (
-    <div className={style2 ? "project-visual style2" : "project-visual"}>
-      <div className="mockup">
-        <div className="topbar"><span></span><span></span><span></span></div>
-        <div className="body">
-          <div className="row1"><div></div><div></div><div></div></div>
-          <h4></h4>
-          <p></p>
-          <div className="grid"><div className="tile"></div><div className="tile"></div><div className="tile"></div></div>
-        </div>
-      </div>
-    </div>
-  );
-}
+import { PROJECTS } from "@/lib/projects-data";
+import { WHATSAPP_URL, CONTACT_URL } from "@/lib/site-links";
 
 export default function PortfolioPage() {
-
   useReveal();
-  const [active, setActive] = useState(0);
+
+  const categories = Array.from(new Set(PROJECTS.map((p) => p.category)));
+
   return (
     <div className="wevtex mode-light">
       <SiteHeader current="work" />
 
-      {/* HERO */}
-      <section className="theme-cream page-hero">
-        <div className="hero-wash"></div>
-        <div className="hero-grid-bg"></div>
+      {/* ===================== HERO ===================== */}
+      <section className="theme-cream sec-first" style={{ paddingBottom: "clamp(30px, 5vh, 54px)" }}>
         <div className="container">
           <div className="reveal">
-            <div className="crumb"><a href={HOME_URL} style={{ color: "inherit" }}>Home</a> &nbsp;/&nbsp; Work</div>
-            <h1>Selected<br /><em>work.</em></h1>
-            <p className="lead">
-              Twelve case studies from the past three years. Each one was a real engagement with real numbers — the deliverable matters less than the move it unlocked.
+            <span className="eyebrow line-eyebrow">Réalisations</span>
+            <h1 className="h-section" style={{ marginTop: 14 }}>
+              Des projets livrés,<br />
+              en ligne et <em className="hl-line">consultables.</em>
+            </h1>
+            <p className="ic-sub wk-lede">
+              {PROJECTS.length} projets réalisés pour des entreprises marocaines et
+              internationales : sites vitrines, boutiques en ligne, plateformes et
+              applications. Chacun est en ligne — ouvrez-les et jugez par vous-même.
             </p>
-            <div className="page-hero-meta">
-              <div><span className="label">Total ships</span><div className="val">240+ to date</div></div>
-              <div><span className="label">Featured here</span><div className="val">12 case studies</div></div>
-              <div><span className="label">Avg. conv. lift</span><div className="val">+47% in 90d</div></div>
-              <div><span className="label">Industries</span><div className="val">40+ verticals</div></div>
+
+            <div className="pj-meta" style={{ marginTop: 28 }}>
+              {categories.map((c, i) => (
+                <span key={c} style={{ display: "inline-flex", alignItems: "center", gap: 12 }}>
+                  {i > 0 && <span className="pj-dot" aria-hidden />}
+                  {c}
+                </span>
+              ))}
             </div>
           </div>
         </div>
       </section>
 
-      {/* FILTERS + GRID */}
-      <section className="theme-cream" style={{ padding: "100px 0 140px" }}>
+      {/* ===================== THE WORK ===================== */}
+      <section className="theme-cream" style={{ padding: "clamp(20px, 3vh, 40px) 0 clamp(90px, 13vh, 150px)" }}>
         <div className="container">
-          <div className="portfolio-filters reveal">
-            {FILTERS.map((f, i) => (
-              <button
-                className={i === active ? "filter-chip active" : "filter-chip"}
-                onClick={() => setActive(i)}
-                key={i}
-              >
-                {f.label} <span className="count">{f.count}</span>
-              </button>
-            ))}
-          </div>
-
-          <div className="portfolio-grid">
-            {/* A card is a link only when that project has a case study to open.
-                The rest render identically but inert, rather than sending the
-                visitor to a write-up about someone else. */}
-            {PROJECTS.map((p, i) => {
-              const Card = p.caseStudy ? "a" : "div";
-              return (
-                <Card
-                  className={p.caseStudy ? "portfolio-card reveal" : "portfolio-card reveal no-case"}
-                  data-delay={p.d}
-                  href={p.caseStudy}
-                  key={i}
-                >
-                  <Mockup style2={p.style2} />
-                  <div className="meta-row">
-                    <h3>{p.t}</h3>
-                    <span className="year">{p.y}</span>
-                  </div>
-                  <p className="summary">{p.s}</p>
-                  <div className="tags">
-                    {p.tags.map((tag, j) => <span key={j}>{tag}</span>)}
-                  </div>
-                </Card>
-              );
-            })}
-          </div>
+          <ProjectShowcase />
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="theme-cream cta">
+      {/* ===================== CTA ===================== */}
+      <section className="theme-sand inline-cta" style={{ paddingTop: "clamp(60px, 8vh, 90px)" }}>
         <div className="container">
-          <div className="reveal">
-            <span className="eyebrow accent">// Yours next?</span>
-            <h2 style={{ marginTop: 28 }}>Let&apos;s put your<br />name on this <em>list.</em></h2>
-            <p className="lead">
-              We&apos;re accepting new projects globally. Average response time on briefs: 4 hours.
-            </p>
-            <div className="cta-ctas">
-              <a href={CONTACT_URL} className="btn btn-primary">Start a Project →</a>
-              <a href={SERVICES_URL} className="btn btn-outline">View Services</a>
-            </div>
+          <div className="ict-inner reveal">
+            <p className="ict-text">Votre projet mérite la même attention.</p>
+            <a href={WHATSAPP_URL} className="btn btn-primary" target="_blank" rel="noopener">
+              Demander un devis gratuit
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+            </a>
           </div>
+          <p style={{ textAlign: "center", marginTop: 22 }}>
+            <a href={CONTACT_URL} className="btn btn-outline">
+              Ou envoyez-nous votre brief
+            </a>
+          </p>
         </div>
       </section>
 

@@ -110,9 +110,9 @@ const INDUSTRIES = [
    at rest and becomes an editorial row on demand. Order matters: index 0 is
    open on load, so lead with the strongest piece.
  */
-/* Every delivered project, in the order set in projects-data. Fields are
-   mapped rather than duplicated so there is one place to correct a client
-   name, a URL or a figure. */
+/* The six the client chose for the homepage, by the `order` field. Every
+   project appears on /portfolio. Fields are mapped rather than duplicated so
+   there is one place to correct a client name, a URL or a figure. */
 type WorkItem = {
   slug: string;
   title: string;
@@ -129,7 +129,7 @@ type WorkItem = {
   capture?: boolean;
 };
 
-const WORK: WorkItem[] = PROJECTS_ORDERED.map((p, i) => ({
+const WORK: WorkItem[] = PROJECTS_ORDERED.slice(0, 6).map((p, i) => ({
   slug: p.slug,
   title: p.title,
   cat: p.category,
@@ -547,21 +547,16 @@ export function HomeClient() {
                   >
                     <div className="wk-panel-in">
                       <div className="wk-panel-grid">
-                        <div className="wk-frame">
-                          <div className="wk-bar">
-                            <i></i><i></i><i></i>
-                            <span className="wk-url">{p.url}</span>
-                          </div>
-                          {/* La capture du site dès qu'il y en a une. Les classes
-                              g0/g1/g3 ne portent qu'une couleur de repli, elles
-                              n'ont plus lieu d'être une fois l'image en place. */}
-                          <div
-                            className={p.capture ? "wk-shot" : `wk-shot ${p.shot}`}
-                            style={p.capture ? { backgroundImage: `url(/images/work/${p.slug}.webp)` } : undefined}
-                          ></div>
-                        </div>
+                        {/* The screenshot alone. The fake browser bar was
+                            chrome around a picture of chrome; the client URL it
+                            carried now sits in the body as a real link. */}
+                        <div
+                          className={p.capture ? "wk-shot" : `wk-shot ${p.shot}`}
+                          style={p.capture ? { backgroundImage: `url(/images/work/${p.slug}.webp)` } : undefined}
+                        ></div>
 
                         <div className="wk-body">
+                          <span className="wk-url">{p.url}</span>
                           <p className="wk-outcome">{p.outcome}</p>
 
                           <ul className="wk-stack">
