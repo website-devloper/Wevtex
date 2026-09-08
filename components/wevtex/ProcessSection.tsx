@@ -35,6 +35,8 @@ type Props = {
   titleEm?: string[];
   subtitle?: string;
   steps?: ProcessStep[];
+  /** `ink` gives the section a dark ground, for pages that need a dark anchor. */
+  tone?: "cream" | "ink";
 };
 
 /** The panel shows prose when a step has it, otherwise its deliverables. */
@@ -50,6 +52,7 @@ export function ProcessSection({
   titleEm = ["mise", "en", "ligne."],
   subtitle,
   steps = DEFAULT_STEPS,
+  tone = "cream",
 }: Props) {
   const ref = useRef<HTMLElement>(null);
 
@@ -99,7 +102,7 @@ export function ProcessSection({
   }, [steps]);
 
   return (
-    <section ref={ref} id="process" className="theme-cream process">
+    <section ref={ref} id="process" className={tone === "ink" ? "process process-ink" : "theme-cream process"}>
       <div className="container">
         <div className="process-head reveal">
           <div>

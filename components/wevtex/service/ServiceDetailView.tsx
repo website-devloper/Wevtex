@@ -126,7 +126,7 @@ export function ServiceDetailView({ service }: { service: Service }) {
 
       {/* ===================== SPÉCIALITÉS (grille bento) ===================== */}
       {features && (
-        <section className="theme-cream services-bento srv-d-sec">
+        <section className="theme-paper services-bento srv-d-sec">
           <div className="container">
             <div className="bento-head reveal">
               <div className="bento-head-left">
@@ -169,6 +169,7 @@ export function ServiceDetailView({ service }: { service: Service }) {
           titleEm={service.process.titleEm || []}
           subtitle={service.process.subtitle}
           steps={service.process.steps}
+          tone="ink"
         />
       )}
 
@@ -268,7 +269,7 @@ export function ServiceDetailView({ service }: { service: Service }) {
 
       {/* ===================== FAQ ===================== */}
       {service.faqs?.length > 0 && (
-        <section className="theme-paper faq-split srv-d-sec" id="faq">
+        <section className="theme-cream faq-split srv-d-sec" id="faq">
           <div className="container">
             <div className="faq-grid">
               <div className="faq-left reveal">

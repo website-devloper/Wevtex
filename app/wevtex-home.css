@@ -8242,3 +8242,81 @@
 .wevtex .faq-split .faq-item-v2[open] .faq-plus::before { background: var(--accent-deep); }
 .wevtex .faq-split .faq-item-v2[open] .faq-plus::after { transition: transform 200ms var(--ease-out); }
 .wevtex .faq-split .faq-item-v2 summary:hover .faq-plus { border-color: transparent; }
+
+/* ===========================================================================
+   PRICING — one card design everywhere
+   The white-card rules were scoped to .pr-grid-8, which only the homepage uses;
+   the service pages use .pr-grid-3 and were still rendering dark tiers. These
+   are scoped to .pricing-ink .pr-card so both grids get the same card.
+   ========================================================================= */
+.wevtex .pricing-ink .pr-from,
+.wevtex .pricing-ink .pr-card.featured .pr-from {
+  color: var(--accent-deep); font-weight: 700; font-size: 11px; letter-spacing: 0.15em;
+}
+.wevtex .pricing-ink .pr-name { font-size: 17px; font-weight: 700; letter-spacing: -0.02em; color: #101112; }
+.wevtex .pricing-ink .pr-sub { color: #56564e; font-size: 13px; }
+.wevtex .pricing-ink .pr-price { font-size: 40px; font-weight: 700; letter-spacing: -0.035em; color: #101112; }
+.wevtex .pricing-ink .pr-price .cur { font-size: 14px; font-weight: 700; color: var(--accent-deep); }
+.wevtex .pricing-ink .pr-note { color: #56564e; font-weight: 500; }
+.wevtex .pricing-ink .pr-feats li { color: #2f2f2d; font-size: 13.5px; font-weight: 500; align-items: flex-start; gap: 10px; line-height: 1.45; }
+.wevtex .pricing-ink .pr-feats li svg { margin-top: -1px; background: var(--accent-soft); color: var(--accent-deep); }
+
+.wevtex .pricing-ink .pr-card:not(.featured) { background: #fbfaf7; }
+.wevtex .pricing-ink .pr-card.featured { background: #ffffff; border-color: var(--accent); }
+
+/* Hover stays on the button; the card holds still. */
+.wevtex .pricing-ink .pr-card:hover,
+.wevtex .pricing-ink .pr-card:not(.featured):hover { transform: none; border-color: #cfccc2; }
+.wevtex .pricing-ink .pr-card:hover .pr-icon { background: var(--accent-soft); color: var(--accent-deep); border-color: #e4e2dc; }
+.wevtex .pricing-ink .pr-card:hover .pr-btn { background: var(--accent); color: var(--on-lime); border-color: var(--accent); }
+
+/* ===========================================================================
+   SERVICE DETAIL — bring the page onto the homepage's language
+   ========================================================================= */
+.wevtex .srv-d-hero { padding-top: clamp(158px, 18vh, 200px); }
+.wevtex .srv-d-hero .eyebrow { color: var(--ink-on-cream-2); }
+
+/* Section heads read like the homepage: eyebrow, heading, lede. */
+.wevtex .srv-d-sec .cmp-head,
+.wevtex .srv-d-sec .bento-head { margin-bottom: clamp(34px, 5vh, 54px); }
+.wevtex .srv-d-sub { color: var(--ink-on-cream-2); font-size: 16px; line-height: 1.68; max-width: 56ch; }
+
+/* Sector cards on the service page get the surface treatment, not hairlines
+   that vanish into the paper ground. */
+.wevtex .srv-d-sec .sector-group,
+.wevtex .srv-d-sec .svc-feature-card {
+  background: var(--bg-cream);
+  border: 1px solid var(--hairline-c);
+  border-radius: var(--radius-md);
+  transition: border-color 200ms var(--ease-out);
+}
+.wevtex .srv-d-sec .sector-group:hover,
+.wevtex .srv-d-sec .svc-feature-card:hover { border-color: var(--hairline-c-strong); background: var(--bg-cream); }
+
+/* The method block sits on paper here so it separates from the bento above. */
+.wevtex .srv-d-pricing .ic-sub { color: rgba(244, 245, 242, 0.78); }
+
+@media (prefers-reduced-motion: reduce) {
+  .wevtex .srv-d-sec .sector-group,
+  .wevtex .srv-d-sec .svc-feature-card { transition: none; }
+}
+
+/* The method block on ink — the dark anchor that breaks the run of three pale
+   sections at the top of a service page. Literals, not --ink-on-dark. */
+.wevtex .process-ink { background: #101112; color: #f4f5f2; position: relative; }
+.wevtex .process-ink .h-section,
+.wevtex .process-ink h3, .wevtex .process-ink h4 { color: #f4f5f2; }
+.wevtex .process-ink .eyebrow { color: rgba(244, 245, 242, 0.62); }
+.wevtex .process-ink .ic-sub,
+.wevtex .process-ink p { color: rgba(244, 245, 242, 0.78); }
+.wevtex .process-ink .srt-word { color: #f4f5f2; }
+.wevtex .process-ink .process-preview {
+  background: #191b1f; border-color: #2a2d33;
+}
+.wevtex .process-ink .preview-kicker { color: var(--accent); }
+.wevtex .process-ink .process-step { border-color: #2a2d33; }
+.wevtex .process-ink .process-step .num { color: rgba(244, 245, 242, 0.34); }
+.wevtex .process-ink .process-step.active .num { color: var(--accent); }
+.wevtex .process-ink .process-step .duration { color: rgba(244, 245, 242, 0.56); }
+.wevtex .process-ink .process-progress { background: #2a2d33; }
+.wevtex .process-ink .process-progress-fill { background: var(--accent); }
