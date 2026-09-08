@@ -7716,3 +7716,31 @@
 .wevtex .ind-outcome p {
   margin: 0; font-size: 15px; line-height: 1.7; color: var(--ink-on-cream-2);
 }
+
+/* ---------------------------------------------------------------------------
+   Sector hero backdrop
+   The illustration fades in from the right rather than sitting behind the whole
+   hero: the headline is dark ink on cream, and a photo under it would cost the
+   contrast the rest of the site was just tuned for. The mask does the work, so
+   there is no scrim washing the image out.
+   ------------------------------------------------------------------------- */
+.wevtex .ind-hero { position: relative; overflow: hidden; }
+
+.wevtex .ind-hero-bg {
+  content: ""; position: absolute; top: 0; bottom: 0; right: 0;
+  width: 58%; z-index: 0; pointer-events: none;
+  background-image: var(--ind-hero-img);
+  background-size: cover; background-position: center right;
+  opacity: 0.55;
+  -webkit-mask-image: linear-gradient(90deg, transparent 0%, rgba(0,0,0,0.55) 38%, #000 78%);
+  mask-image: linear-gradient(90deg, transparent 0%, rgba(0,0,0,0.55) 38%, #000 78%);
+}
+
+.wevtex .ind-hero .container { position: relative; z-index: 2; }
+/* The lede is the only element that runs under the image edge. */
+.wevtex .ind-hero .wk-lede { max-width: 48ch; }
+
+@media (max-width: 900px) {
+  /* Too narrow to sit beside the text — it would end up behind it. */
+  .wevtex .ind-hero-bg { display: none; }
+}

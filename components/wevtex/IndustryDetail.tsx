@@ -50,7 +50,16 @@ export function IndustryDetail({ industry }: { industry: Industry }) {
       <SiteHeader />
 
       {/* ===================== HERO ===================== */}
-      <section className="theme-cream sec-first" style={{ paddingBottom: "clamp(56px, 8vh, 92px)" }}>
+      {/* The sector illustration, already named by slug, fades in from the right
+          so the headline keeps a clean cream ground and full contrast. */}
+      <section
+        className="theme-cream sec-first ind-hero"
+        style={{
+          paddingBottom: "clamp(56px, 8vh, 92px)",
+          ["--ind-hero-img" as string]: `url(/images/industries/${industry.slug}.webp)`,
+        }}
+      >
+        <span className="ind-hero-bg" aria-hidden></span>
         <div className="container">
           <div className="reveal">
             <span className="eyebrow line-eyebrow">{industry.eyebrow}</span>
