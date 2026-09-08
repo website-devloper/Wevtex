@@ -8100,3 +8100,55 @@
 
 /* Hover stays on the button, per the brief — the card itself does not move. */
 .wevtex .pricing-ink .pr-card:not(.featured):hover { border-color: #cfccc2; }
+
+/* ---------------------------------------------------------------------------
+   Pricing white cards — corrections
+   The rules above were written for dark tiers: the hover washed white over
+   white and set a white border, and .pr-from was rgba(255,255,255,.5), which is
+   invisible on a white surface.
+   ------------------------------------------------------------------------- */
+
+/* "À partir de" — was white-on-white. */
+.wevtex .pricing-ink .pr-grid-8 .pr-from,
+.wevtex .pricing-ink .pr-grid-8 .pr-card.featured .pr-from {
+  color: var(--accent-deep);
+  font-weight: 700;
+  font-size: 11px;
+  letter-spacing: 0.15em;
+}
+
+/* Type with more presence: the name and price are what people scan. */
+.wevtex .pricing-ink .pr-grid-8 .pr-name { font-size: 17px; font-weight: 700; letter-spacing: -0.02em; }
+.wevtex .pricing-ink .pr-grid-8 .pr-sub { color: #56564e; font-size: 13px; }
+.wevtex .pricing-ink .pr-grid-8 .pr-price { font-size: 40px; font-weight: 700; letter-spacing: -0.035em; color: #101112; }
+.wevtex .pricing-ink .pr-grid-8 .pr-price .cur { font-size: 14px; font-weight: 700; color: var(--accent-deep); }
+.wevtex .pricing-ink .pr-grid-8 .pr-note { color: #56564e; font-weight: 500; }
+.wevtex .pricing-ink .pr-grid-8 .pr-feats li { color: #2f2f2d; font-size: 13.5px; font-weight: 500; }
+
+/* Hover: the card holds still and only the button responds, per the brief. */
+.wevtex .pricing-ink .pr-grid-8 .pr-card:hover,
+.wevtex .pricing-ink .pr-grid-8 .pr-card:not(.featured):hover {
+  background: #ffffff;
+  border-color: #b9b5a8;
+  transform: none;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05), 0 18px 40px -26px rgba(0, 0, 0, 0.5);
+}
+/* The icon tile keeps its resting look — one hover idea, and it is the button. */
+.wevtex .pricing-ink .pr-grid-8 .pr-card:hover .pr-icon {
+  background: var(--accent-soft); color: var(--accent-deep); border-color: #e4e2dc;
+}
+.wevtex .pricing-ink .pr-grid-8 .pr-card:hover .pr-btn {
+  background: var(--accent); color: var(--on-lime); border-color: var(--accent);
+}
+
+/* Non-featured tiers recede a shade so the popular one wins the eye. */
+.wevtex .pricing-ink .pr-grid-8 .pr-card:not(.featured) { background: #fbfaf7; }
+.wevtex .pricing-ink .pr-grid-8 .pr-card.featured {
+  background: #ffffff;
+  border-color: var(--accent);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05), 0 24px 54px -26px rgba(0, 0, 0, 0.6);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wevtex .pricing-ink .pr-grid-8 .pr-card { transition: none; }
+}
