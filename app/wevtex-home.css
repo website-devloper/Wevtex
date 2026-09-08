@@ -8152,3 +8152,9 @@
 @media (prefers-reduced-motion: reduce) {
   .wevtex .pricing-ink .pr-grid-8 .pr-card { transition: none; }
 }
+
+/* Tick alignment: the icon is 14px plus 4px padding (22px), against a 13.5px
+   line at 1.45 (~19.6px). It centres on the first line at -1px; the inherited
+   margin-top:5px was tuned for the older 12px icon and sat it visibly low. */
+.wevtex .pricing-ink .pr-grid-8 .pr-feats li { align-items: flex-start; gap: 10px; line-height: 1.45; }
+.wevtex .pricing-ink .pr-grid-8 .pr-feats li svg { margin-top: -1px; }
