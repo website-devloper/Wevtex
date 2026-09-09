@@ -5729,11 +5729,6 @@
 }
 
 .footer-v2 .footer-about { color: var(--ink-on-dark-2); line-height: 1.7; font-size: 14.5px; max-width: 34ch; margin-top: 20px; }
-  flex: 1; min-width: 0; background: rgba(255, 255, 255, 0.06); border: 1px solid rgba(255, 255, 255, 0.16); border-radius: 999px;
-  padding: 12px 18px; color: var(--ink-on-dark); font-size: 14px; outline: none;
-  transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
-}
-
 .footer-v2 .footer-col-v2 h5 {
   font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.18em;
   text-transform: uppercase; font-weight: 700;
@@ -5882,7 +5877,7 @@
 .wevtex .cta-btn.outline:hover { background: rgba(255, 255, 255, 0.12); border-color: rgba(255, 255, 255, 0.85); }
 
 /* ---- Contact: inputs focus ring, cards ---- */
-.wevtex .form input, .wevtex .form select, .wevtex .form textarea,
+.wevtex .form input, .wevtex .form select, .wevtex .form textarea {
   transition: border-color 160ms var(--ease-out), box-shadow 160ms var(--ease-out);
 }
 .wevtex .form input:hover, .wevtex .form select:hover, .wevtex .form textarea:hover { border-color: rgba(16, 17, 18, 0.4); }
