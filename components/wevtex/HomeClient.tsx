@@ -487,24 +487,28 @@ export function HomeClient() {
               pour plus de contacts, plus de ventes et plus de temps pour vous.
             </p>
 
-            {/* The cities we serve, as their own tiles. This is also the only
-                homepage link into the city landing pages, which are the site's
-                strongest local-search entry points. */}
-            <ul className="pb-cities">
-              {CITIES.map((c) => (
-                <li key={c.slug}>
-                  <a href={`/${c.slug}`} aria-label={`Agence web à ${c.name}`}>
-                    <span
-                      className="pb-city-img"
-                      aria-hidden
-                      style={{ backgroundImage: `url(/images/villes/${c.slug}.webp)` }}
-                    />
-                    <span className="pb-city-name">{c.name}</span>
-                  </a>
-                </li>
-              ))}
-            </ul>
           </div>
+        </div>
+      </section>
+
+      {/* ===================== VILLES =====================
+          Its own band under the statement. These are the only homepage links
+          into the city landing pages, which are the strongest local-search
+          entry points on the site. */}
+      <section className="cities-band">
+        <div className="container">
+          <ul className="pb-cities reveal">
+            {CITIES.map((c) => (
+              <li key={c.slug}>
+                <a href={`/${c.slug}`} aria-label={`Agence web à ${c.name}`}>
+                  <span
+                    className="pb-city-img"
+                    style={{ backgroundImage: `url(/images/villes/${c.slug}.webp)` }}
+                  />
+                </a>
+              </li>
+            ))}
+          </ul>
         </div>
       </section>
 

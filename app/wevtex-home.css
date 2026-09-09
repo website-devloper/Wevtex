@@ -5737,9 +5737,28 @@
    white here rather than shipping a second file. */
 .footer-v2 .footer-mark { height: 1em; width: auto; display: block; filter: brightness(0) invert(1); }
 
-.footer-v2 .footer-cols { display: grid; grid-template-columns: 1.7fr 1fr 1fr 1fr; gap: 44px; }
-@media (max-width: 860px) { .footer-v2 .footer-cols { grid-template-columns: 1fr 1fr; gap: 36px; } }
-@media (max-width: 520px) { .footer-v2 .footer-cols { grid-template-columns: 1fr; } }
+.footer-v2 .footer-cols {
+  display: grid;
+  grid-template-columns: 1.5fr repeat(4, minmax(0, 1fr));
+  gap: 0;
+}
+.footer-v2 .footer-brandcol { padding-right: clamp(28px, 3vw, 52px); }
+/* The rule between columns is the grid — without it four link stacks just
+   float in space at whatever width the labels happen to need. */
+.footer-v2 .footer-col-v2 {
+  padding-left: clamp(20px, 2.2vw, 36px);
+  border-left: 1px solid var(--hairline-d);
+}
+
+@media (max-width: 1080px) {
+  .footer-v2 .footer-cols { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 40px; }
+  .footer-v2 .footer-brandcol { grid-column: 1 / -1; padding-right: 0; padding-bottom: 40px; border-bottom: 1px solid var(--hairline-d); }
+  .footer-v2 .footer-col-v2:nth-child(even) { border-left: 0; padding-left: 0; }
+}
+@media (max-width: 520px) {
+  .footer-v2 .footer-cols { grid-template-columns: minmax(0, 1fr); row-gap: 34px; }
+  .footer-v2 .footer-col-v2 { border-left: 0; padding-left: 0; }
+}
 
 .footer-v2 .footer-about { color: var(--ink-on-dark-2); line-height: 1.7; font-size: 14.5px; max-width: 34ch; margin-top: 20px; }
 .footer-v2 .footer-news-sub { color: var(--ink-on-dark-3); font-size: 13px; line-height: 1.6; margin: 24px 0 12px; max-width: 32ch; }
@@ -5756,10 +5775,20 @@
 .footer-v2 .footer-news-v2 button:hover { background: var(--accent-hot); }
 .footer-v2 .footer-news-v2 button:disabled { opacity: 0.65; cursor: default; }
 
-.footer-v2 .footer-col-v2 h5 { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-on-dark-3); margin-bottom: 16px; }
-.footer-v2 .footer-col-v2 ul { list-style: none; display: flex; flex-direction: column; gap: 11px; }
-.footer-v2 .footer-col-v2 a { color: var(--ink-on-dark-2); text-decoration: none; font-size: 14.5px; transition: color 0.15s; }
-.footer-v2 .footer-col-v2 a:hover { color: var(--ink-on-dark); }
+.footer-v2 .footer-col-v2 h5 {
+  font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.18em;
+  text-transform: uppercase; font-weight: 700;
+  color: var(--accent);
+  margin-bottom: 20px;
+}
+.footer-v2 .footer-col-v2 ul { list-style: none; display: flex; flex-direction: column; gap: 13px; }
+.footer-v2 .footer-col-v2 a {
+  color: rgba(255, 255, 255, 0.94);
+  text-decoration: none;
+  font-size: 14.5px; font-weight: 600; letter-spacing: -0.005em; line-height: 1.35;
+  display: inline-block;
+}
+.footer-v2 .footer-col-v2 a:hover { color: var(--accent); }
 
 .footer-v2 .footer-bottom-v2 { display: flex; align-items: center; justify-content: space-between; gap: 18px; flex-wrap: wrap; margin-top: 52px; padding-top: 22px; border-top: 1px solid var(--hairline-d); }
 .footer-v2 .footer-bottom-v2 > span { color: var(--ink-on-dark-3); font-size: 13px; }
@@ -5909,7 +5938,7 @@
 
 /* ---- Footer ---- */
 .footer-v2 .footer-col-v2 a { transition: color 160ms var(--ease-out), transform 160ms var(--ease-out); }
-.footer-v2 .footer-col-v2 a:hover { color: var(--ink-on-dark); transform: translateX(2px); }
+.footer-v2 .footer-col-v2 a:hover { color: var(--accent); transform: translateX(3px); }
 .footer-v2 .footer-news-v2 input:focus { outline: none; border-color: var(--vermilion); box-shadow: 0 0 0 2px rgba(198, 242, 78, 0.3); }
 .footer-v2 .footer-news-v2 button { transition: background 160ms var(--ease-out); }
 .footer-v2 .footer-news-v2 button:hover { background: var(--accent-hot); }
@@ -8524,35 +8553,31 @@
 .wevtex .problem-band::before { display: none; }
 .wevtex .problem-band::after { display: none; }
 
+.wevtex .cities-band {
+  background: #101112;
+  padding: 0 0 clamp(64px, 9vh, 100px);
+}
 .wevtex .pb-cities {
-  list-style: none; padding: 0;
-  margin: clamp(46px, 7vh, 76px) auto 0;
+  list-style: none; padding: 0; margin: 0 auto;
   display: grid; grid-template-columns: repeat(6, 1fr);
-  gap: clamp(10px, 1.2vw, 18px);
-  max-width: 900px;
+  gap: clamp(8px, 1vw, 16px);
+  max-width: 940px;
 }
-.wevtex .pb-cities a {
-  display: block; text-decoration: none; text-align: center;
-  border-radius: var(--radius-md); overflow: hidden;
-}
+.wevtex .pb-cities a { display: block; text-decoration: none; }
+/* The artwork is a transparent PNG drawn in near-black — unreadable on ink, so
+   it is inverted to white here and takes the lime accent on hover. No card, no
+   border: the shape is the tile. */
 .wevtex .pb-city-img {
   display: block; width: 100%; aspect-ratio: 3 / 4;
-  background-size: cover; background-position: center;
-  border-radius: var(--radius-md);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  filter: grayscale(1);
-  opacity: 0.62;
+  background-size: contain; background-position: center; background-repeat: no-repeat;
+  filter: invert(1) brightness(1.6);
+  opacity: 0.68;
   transition: opacity 200ms var(--ease-out), filter 200ms var(--ease-out);
 }
-/* One hover idea: the city comes into colour. */
 .wevtex .pb-cities a:hover .pb-city-img,
-.wevtex .pb-cities a:focus-visible .pb-city-img { opacity: 1; filter: grayscale(0); }
-.wevtex .pb-city-name {
-  display: block; margin-top: 10px;
-  font-size: 13px; font-weight: 600; letter-spacing: -0.01em;
-  color: rgba(244, 245, 242, 0.82);
+.wevtex .pb-cities a:focus-visible .pb-city-img {
+  opacity: 1;
+  filter: invert(1) brightness(1.6) sepia(1) saturate(6) hue-rotate(35deg);
 }
-.wevtex .pb-cities a:hover .pb-city-name { color: #ffffff; }
-
 @media (max-width: 780px) { .wevtex .pb-cities { grid-template-columns: repeat(3, 1fr); } }
 @media (prefers-reduced-motion: reduce) { .wevtex .pb-city-img { transition: none; } }
