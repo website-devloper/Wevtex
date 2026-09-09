@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useState } from "react";
 import { SERVICES } from "./homeContent";
+import { CITIES } from "@/lib/cities-data";
 import { CONTACT_URL, HOME_URL, ABOUT_URL, SERVICES_URL, PORTFOLIO_URL, servicePath, industryPath, SOCIALS } from "@/lib/site-links";
 
 /** Wevtex site footer — shared across the homepage and all inner pages. */
@@ -10,7 +11,7 @@ import { CONTACT_URL, HOME_URL, ABOUT_URL, SERVICES_URL, PORTFOLIO_URL, serviceP
    #process is rendered on /services, #pricing on the homepage. */
 const PAGES: [string, string][] = [
   ["Accueil", HOME_URL], ["À propos", ABOUT_URL], ["Services", SERVICES_URL], ["Réalisations", PORTFOLIO_URL],
-  ["Notre méthode", `${SERVICES_URL}#process`], ["Tarifs", `${HOME_URL}#pricing`], ["Contact", CONTACT_URL],
+  ["Notre méthode", `${SERVICES_URL}#process`], ["Tarifs", `${HOME_URL}#pricing`], ["FAQ", "/faq"], ["Contact", CONTACT_URL],
 ];
 /* Several labels share a page on purpose — one sector page covers both
    "Immobilier" and "Finance" under Services professionnels. */
@@ -104,6 +105,7 @@ export function SiteFooter() {
           <FooterCol title="Navigation" items={PAGES} />
           <FooterCol title="Services" items={SERVICES.map((sv) => [sv.name, servicePath(sv.slug)] as [string, string])} />
           <FooterCol title="Secteurs" items={SECTEURS} />
+          <FooterCol title="Villes" items={CITIES.map((c) => [c.name, `/${c.slug}`] as [string, string])} />
         </div>
 
         <div className="footer-bottom-v2">

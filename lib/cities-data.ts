@@ -17,6 +17,7 @@
 
 export type City = {
   slug: string;
+  /** Hero backdrop at /images/villes/<slug>.webp. */
   name: string;
   /** "à Casablanca" / "à Rabat" — used inside sentences. */
   inCity: string;
@@ -121,6 +122,35 @@ export const CITIES: City[] = [
       { q: "Pouvez-vous ajouter un moteur de réservation à mon riad ?", a: "Oui. Nous intégrons un moteur de réservation en direct sur votre site, avec calendrier de disponibilités et paiement en ligne, pour que vous encaissiez sans commission de plateforme." },
       { q: "Faites-vous des sites multilingues pour les clients étrangers ?", a: "Oui. Français, anglais et espagnol sont les combinaisons les plus demandées à Marrakech. Le multilingue est prévu dès la structure du site, ce qui permet aussi d'être référencé dans chaque langue." },
       { q: "Puis-je garder Booking en parallèle de mon site ?", a: "Bien sûr. L'objectif n'est pas de quitter les plateformes, mais de récupérer les réservations des clients qui vous cherchent déjà par votre nom — ce sont celles qui vous coûtent le plus cher en commission." },
+    ],
+  },
+  {
+    slug: "agence-web-fes",
+    name: "Fès",
+    inCity: "à Fès",
+    title: "Agence Web à Fès — Création de Sites | WEVTEX",
+    metaDescription:
+      "Agence web pour Fès : sites d'artisans, de riads et de commerces, e-commerce et référencement local. Studio basé à Casablanca. Devis gratuit.",
+    h1: "Agence web à",
+    h1Em: "Fès.",
+    intro:
+      "Fès vit de son artisanat, de son patrimoine et de ses écoles. Nous y construisons des sites qui donnent à ce savoir-faire une vitrine à sa hauteur — et un moyen de vendre au-delà de la médina.",
+    context: [
+      "Fès concentre le plus grand héritage artisanal du Maroc : dinanderie, zellige, tannerie, broderie, poterie de Aïn Nokbi. La demande existe bien au-delà de la ville, en Europe et en Amérique du Nord, mais elle se heurte presque toujours au même mur : un atelier reconnu localement n'a aucune existence en ligne, et l'acheteur étranger passe à un revendeur qui, lui, en a une.",
+      "L'enjeu n'est donc pas la notoriété locale, qui est déjà acquise, mais la crédibilité à distance : des photos qui rendent justice à la pièce, une description qui explique la technique, une expédition claire et un moyen de payer. C'est ce qui sépare un atelier qui exporte d'un atelier qui attend le passage.",
+    ],
+    sectors: [
+      { h: "Artisanat & export", p: "Boutiques en ligne pour la dinanderie, le zellige, le cuir et la poterie, avec multidevise, expédition internationale et fiches qui expliquent la technique." },
+      { h: "Riads & hôtellerie", p: "Réservation en direct pour les riads de la médina, plutôt que des nuitées qui partent en commission." },
+      { h: "Éducation & formation", p: "Universités, écoles et instituts : programmes, inscriptions en ligne et espaces pour les apprenants." },
+      { h: "Commerce & services", p: "Commerces de Ville Nouvelle et prestataires locaux, avec fiche Google Business et référencement local." },
+    ],
+    proximity:
+      "Notre studio est à Casablanca et nous travaillons avec Fès à distance : maquettes partagées en ligne, points hebdomadaires et un interlocuteur unique joignable sur WhatsApp.",
+    faqs: [
+      { q: "Pouvez-vous créer une boutique pour vendre l'artisanat à l'étranger ?", a: "Oui. C'est un cas fréquent : catalogue traduit, gestion multidevise, frais d'expédition internationaux et fiches produits qui expliquent la technique et l'origine — c'est ce qui rassure un acheteur qui ne peut pas toucher la pièce." },
+      { q: "Faites-vous des sites pour les riads de la médina ?", a: "Oui, avec un moteur de réservation en direct. Chaque réservation prise sur votre site est une commission de plateforme que vous ne versez pas." },
+      { q: "Travaillez-vous à distance avec Fès ?", a: "Oui. Tout se suit en ligne : maquettes consultables, points hebdomadaires et WhatsApp aux horaires de bureau. Le projet avance exactement comme s'il était à Casablanca." },
     ],
   },
   {

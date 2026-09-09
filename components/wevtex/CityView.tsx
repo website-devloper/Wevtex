@@ -35,7 +35,16 @@ export function CityView({ city }: { city: City }) {
 
       <main id="main">
         {/* ===================== HERO ===================== */}
-        <section className="theme-cream sec-first" style={{ paddingBottom: "clamp(48px, 7vh, 80px)" }}>
+        {/* The city photo fades in from the right, as on the sector pages: the
+            headline keeps a clean cream ground and its full contrast. */}
+        <section
+          className="theme-cream sec-first ind-hero"
+          style={{
+            paddingBottom: "clamp(48px, 7vh, 80px)",
+            ["--ind-hero-img" as string]: `url(/images/villes/${city.slug}.webp)`,
+          }}
+        >
+          <span className="ind-hero-bg" aria-hidden></span>
           <div className="container">
             <div className="reveal">
               <span className="eyebrow line-eyebrow">Agence web · {city.name}</span>
