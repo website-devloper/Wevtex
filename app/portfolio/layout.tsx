@@ -4,7 +4,7 @@ import { SITE_URL, abs } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: { absolute: "Réalisations | Agence web au Maroc | WEVTEX" },
-  description: "Découvrez nos réalisations : boutiques en ligne, plateformes SaaS, systèmes de réservation et sites vitrines qui convertissent, au Maroc et à l'international.",
+  description: "Nos réalisations au Maroc : boutiques en ligne, SaaS, réservation et sites vitrines. Des sites en production, cliquables. Voyez le travail.",
   alternates: { canonical: "/portfolio" },
   openGraph: {
     title: "Réalisations | Agence web au Maroc | WEVTEX",
