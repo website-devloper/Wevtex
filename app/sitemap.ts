@@ -2,6 +2,7 @@ import { MetadataRoute } from 'next';
 import { SITE_URL } from '@/lib/seo';
 import { SERVICE_SLUGS } from '@/lib/services-data';
 import { INDUSTRY_SLUGS } from '@/lib/industries-data';
+import { CITY_SLUGS } from '@/lib/cities-data';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = SITE_URL;
@@ -31,5 +32,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }));
 
-  return [...staticPages, ...servicePages, ...industryPages];
+  /* City landing pages sit at the root so the URL is the keyword. They target
+     the strongest local terms, so they rank just under the homepage. */
+  const cityPages: MetadataRoute.Sitemap = CITY_SLUGS.map((slug) => ({
+    url: `${baseUrl}/${slug}`,
+    lastModified: now,
+    changeFrequency: 'monthly',
+    priority: 0.9,
+  }));
+
+  return [...staticPages, ...servicePages, ...industryPages, ...cityPages];
 }

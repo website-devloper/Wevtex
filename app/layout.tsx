@@ -3,6 +3,7 @@ import { Onest, Space_Mono } from "next/font/google";
 import { AnalyticsConsent } from "../components/wevtex/AnalyticsConsent";
 import { SmoothScroll } from "../components/wevtex/SmoothScroll";
 import { SITE_URL, abs } from "@/lib/seo";
+import { SERVICES } from "../components/wevtex/homeContent";
 
 const GA_ID = process.env.NEXT_PUBLIC_GA_ID;
 
@@ -89,26 +90,94 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  /* Organisation / local business. Everything here is stated somewhere on the
+     site — the hours come from the contact page, the catalogue from the service
+     list, the price band from the cheapest published tier. Nothing is invented,
+     and no geo coordinates are claimed without a verified street address. */
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": ["Organization", "ProfessionalService"],
-    "name": "Wevtex",
-    "url": SITE_URL,
-    "logo": abs("/images/logo/wevtex-mark-ink.png"),
-    "image": abs("/images/og-image.jpg"),
-    "description": "Agence web basée à Casablanca : sites vitrines, boutiques en ligne, applications, SEO et automatisation pour les entreprises au Maroc et à l'international.",
-    "telephone": "+212687633774",
-    "address": {
-      "@type": "PostalAddress",
-      "addressLocality": "Casablanca",
-      "addressCountry": "MA"
+    "@id": `${SITE_URL}#organization`,
+    name: "Wevtex",
+    alternateName: "Agence Wevtex",
+    url: SITE_URL,
+    logo: {
+      "@type": "ImageObject",
+      url: abs("/images/logo/wevtex-mark-ink.png"),
+      caption: "Wevtex",
     },
-    "sameAs": [
-      "https://www.instagram.com/wevtex.agency/"
+    image: abs("/images/og-image.jpg"),
+    description:
+      "Agence web basée à Casablanca : sites vitrines, boutiques en ligne, applications, SEO et automatisation pour les entreprises au Maroc et à l'international.",
+    telephone: "+212687633774",
+    email: "hello@wevtex.com",
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: "Casablanca",
+      addressRegion: "Casablanca-Settat",
+      addressCountry: "MA",
+    },
+    sameAs: ["https://www.instagram.com/wevtex.agency/"],
+    areaServed: [
+      { "@type": "Country", name: "Maroc" },
+      { "@type": "Country", name: "France" },
+      { "@type": "Country", name: "Belgique" },
+      { "@type": "Country", name: "Canada" },
     ],
-    "areaServed": ["MA", "FR", "BE", "CA", "Worldwide"],
-    "inLanguage": "fr",
-    "priceRange": "$$$"
+    knowsLanguage: ["fr", "ar", "en"],
+    inLanguage: "fr",
+    /* Was "$$$", which reads as expensive against a published entry price of
+       990 DH. */
+    priceRange: "990 DH – 60 000 DH",
+    currenciesAccepted: "MAD",
+    openingHoursSpecification: [
+      {
+        "@type": "OpeningHoursSpecification",
+        dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+        opens: "09:00",
+        closes: "18:00",
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        dayOfWeek: "Saturday",
+        opens: "10:00",
+        closes: "14:00",
+      },
+    ],
+    hasOfferCatalog: {
+      "@type": "OfferCatalog",
+      name: "Prestations Wevtex",
+      itemListElement: SERVICES.map((sv) => ({
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: sv.name,
+          description: sv.desc,
+          url: abs(`/services/${sv.slug}`),
+          provider: { "@id": `${SITE_URL}#organization` },
+          areaServed: { "@type": "Country", name: "Maroc" },
+        },
+      })),
+    },
+    contactPoint: {
+      "@type": "ContactPoint",
+      telephone: "+212687633774",
+      contactType: "sales",
+      availableLanguage: ["French", "Arabic", "English"],
+      areaServed: "MA",
+    },
+  };
+
+  /* A WebSite entity so the site itself is a named node crawlers can attach
+     pages to, rather than only the organisation behind it. */
+  const siteJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "@id": `${SITE_URL}#website`,
+    url: SITE_URL,
+    name: "Wevtex",
+    inLanguage: "fr",
+    publisher: { "@id": `${SITE_URL}#organization` },
   };
 
   return (
@@ -119,6 +188,10 @@ export default function RootLayout({
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(siteJsonLd) }}
         />
         <a href="#main" className="skip-link">Aller au contenu</a>
         <SmoothScroll>
