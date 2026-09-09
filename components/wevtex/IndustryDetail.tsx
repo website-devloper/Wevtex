@@ -49,6 +49,8 @@ export function IndustryDetail({ industry }: { industry: Industry }) {
     <div className="wevtex mode-light">
       <SiteHeader />
 
+      <main id="main">
+
       {/* ===================== HERO ===================== */}
       {/* The sector illustration, already named by slug, fades in from the right
           so the headline keeps a clean cream ground and full contrast. */}
@@ -107,7 +109,7 @@ export function IndustryDetail({ industry }: { industry: Industry }) {
                     <span className="bento-icon">{SERVICE_ICONS[s.slug]}</span>
                   </span>
                   <div className="bento-card-body">
-                    <h4>{s.service!.name}</h4>
+                    <h3>{s.service!.name}</h3>
                     <p>{s.line}</p>
                   </div>
                   <span className="bento-arrow" aria-hidden>
@@ -202,6 +204,8 @@ export function IndustryDetail({ industry }: { industry: Industry }) {
           </div>
         </div>
       </section>
+      </main>
+
 
       <SiteFooter />
     </div>

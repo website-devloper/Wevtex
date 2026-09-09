@@ -65,6 +65,8 @@ export default function AboutPage() {
     <div className="wevtex mode-light">
       <SiteHeader current="about" />
 
+      <main id="main">
+
       {/* ===================== HERO =====================
           The page previously opened straight into the studio mosaic, so a
           visitor met photographs before they knew whose they were. */}
@@ -222,6 +224,8 @@ export default function AboutPage() {
           </>
         }
       />
+      </main>
+
 
       <SiteFooter />
 

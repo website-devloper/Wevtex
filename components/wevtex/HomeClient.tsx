@@ -395,6 +395,8 @@ export function HomeClient() {
       {/* ===================== HEADER ===================== */}
       <SiteHeader />
 
+      <main id="main">
+
       {/* ===================== HERO (mockup 1 — split) ===================== */}
       <section className="theme-cream hero hero-split" id="hero">
         <div className="hero-motif" aria-hidden></div>
@@ -894,6 +896,8 @@ export function HomeClient() {
           The steps, trust row and card header were cut — the page has
           already made the argument by the time anyone scrolls here. */}
       {/* ===================== FOOTER ===================== */}
+      </main>
+
       <SiteFooter />
 
       {/* Mobile-only: keeps the ask reachable through the whole scroll. */}

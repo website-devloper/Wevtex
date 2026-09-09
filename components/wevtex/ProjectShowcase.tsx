@@ -39,7 +39,7 @@ export function ProjectShowcase() {
               <span>{p.year}</span>
             </div>
 
-            <h3 className="pj-title">{p.title}</h3>
+            <h2 className="pj-title">{p.title}</h2>
             <p className="pj-desc">{p.description}</p>
 
             <ul className="pj-stack">

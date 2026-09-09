@@ -24,6 +24,8 @@ export default function PortfolioPage() {
     <div className="wevtex mode-light">
       <SiteHeader current="work" />
 
+      <main id="main">
+
       {/* ===================== HERO ===================== */}
       <section className="theme-cream sec-first" style={{ paddingBottom: "clamp(30px, 5vh, 54px)" }}>
         <div className="container">
@@ -67,6 +69,8 @@ export default function PortfolioPage() {
           </div>
         </div>
       </section>
+      </main>
+
 
       <SiteFooter />
     </div>

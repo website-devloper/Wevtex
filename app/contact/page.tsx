@@ -65,6 +65,8 @@ export default function ContactPage() {
     <div className="wevtex mode-light">
       <SiteHeader current="contact" />
 
+      <main id="main">
+
       {/* ===================== HERO ===================== */}
       <section className="theme-cream sec-first" style={{ paddingBottom: "clamp(60px, 9vh, 100px)" }}>
         <div className="container">
@@ -195,6 +197,8 @@ export default function ContactPage() {
           </div>
         </div>
       </section>
+      </main>
+
 
       <SiteFooter />
     </div>

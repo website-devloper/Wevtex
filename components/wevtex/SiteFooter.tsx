@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useState } from "react";
 import { SERVICES } from "./homeContent";
 import { CONTACT_URL, HOME_URL, ABOUT_URL, SERVICES_URL, PORTFOLIO_URL, servicePath, industryPath, SOCIALS } from "@/lib/site-links";
@@ -75,7 +76,7 @@ export function SiteFooter() {
         <div className="footer-cols">
           <div className="footer-brandcol">
             <a href={HOME_URL} className="footer-wordmark" aria-label="Wevtex — accueil">
-              <img className="footer-mark" src="/images/logo/wevtex-mark-ink.png" alt="" width={1192} height={791} />
+              <Image className="footer-mark" src="/images/logo/wevtex-mark-ink.png" alt="" width={1192} height={791} sizes="34px" />
               WEVT<span>EX</span>
             </a>
             <p className="footer-about">Studio digital basé à Casablanca. On conçoit des sites, des systèmes et des applications qui font grandir des marques ambitieuses — au Maroc et ailleurs.</p>

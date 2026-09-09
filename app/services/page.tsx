@@ -25,6 +25,8 @@ export default function ServicesPage() {
     <div className="wevtex mode-light">
       <SiteHeader current="services" />
 
+      <main id="main">
+
       {/* ===================== HERO =====================
           The page opened straight onto the list, so its h1 was doing double
           duty as a section head. A hero gives the list room to be a list. */}
@@ -79,7 +81,7 @@ export default function ServicesPage() {
                       <span className="srv-list-n">{String(i + 1).padStart(2, "0")}</span>
                       <span className="srv-list-icon">{SERVICE_ICONS[sv.slug]}</span>
                     </span>
-                    <h3 className="srv-list-h">{sv.name}</h3>
+                    <h2 className="srv-list-h">{sv.name}</h2>
                     <p className="wk-outcome">{sv.desc}</p>
 
                     <ul className="wk-stack">
@@ -113,6 +115,8 @@ export default function ServicesPage() {
         heading={<>Dites-nous ce que<br />vous voulez <em className="hl-line">construire.</em></>}
         text="Envoyez-nous votre projet en deux lignes sur WhatsApp. Nous répondons sous quelques heures, avec un conseil honnête et un prix clair."
       />
+      </main>
+
 
       <SiteFooter />
       <StickyCta whatsappUrl={WHATSAPP_URL} />

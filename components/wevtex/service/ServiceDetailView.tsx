@@ -76,6 +76,8 @@ export function ServiceDetailView({ service }: { service: Service }) {
     <div className="wevtex mode-light">
       <SiteHeader current="services" />
 
+      <main id="main">
+
       {/* ===================== HERO ===================== */}
       <section className="theme-cream srv-d-hero">
         <div className="hero-motif" aria-hidden></div>
@@ -145,7 +147,7 @@ export function ServiceDetailView({ service }: { service: Service }) {
                     <span className="bento-n">{String(i + 1).padStart(2, "0")}</span>
                   </span>
                   <div className="bento-card-body">
-                    <h4>{c.title}</h4>
+                    <h3>{c.title}</h3>
                     <p>{c.desc}</p>
                     <ul className="srv-d-checks">
                       {c.checks.map((ch) => <li key={ch}>{CHECK}{ch}</li>)}
@@ -317,6 +319,8 @@ export function ServiceDetailView({ service }: { service: Service }) {
         secondaryHref="/services"
         secondaryLabel="Toutes nos prestations"
       />
+      </main>
+
 
       <SiteFooter />
       <StickyCta whatsappUrl={WHATSAPP_URL} />

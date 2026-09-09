@@ -24,6 +24,8 @@ export function ThankYouClient() {
       <ConversionTracker />
       <SiteHeader />
 
+      <main id="main">
+
       <section
         className="theme-cream sec-first"
         style={{ paddingBottom: "clamp(110px, 16vh, 180px)", textAlign: "center" }}
@@ -56,6 +58,8 @@ export function ThankYouClient() {
           </div>
         </div>
       </section>
+      </main>
+
 
       <SiteFooter />
     </div>

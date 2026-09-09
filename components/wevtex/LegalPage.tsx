@@ -38,6 +38,8 @@ export function LegalPage({
     <div className="wevtex mode-light">
       <SiteHeader />
 
+      <main id="main">
+
       <section className="theme-cream sec-first" style={{ paddingBottom: "clamp(48px, 7vh, 76px)" }}>
         <div className="container">
           <span className="eyebrow line-eyebrow">{eyebrow}</span>
@@ -82,6 +84,8 @@ export function LegalPage({
           </div>
         </div>
       </section>
+      </main>
+
 
       <SiteFooter />
     </div>

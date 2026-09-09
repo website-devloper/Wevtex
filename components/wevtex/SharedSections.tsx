@@ -72,7 +72,7 @@ export function ServicesBento({
                 <span className="bento-icon">{SERVICE_ICONS[sv.slug]}</span>
               </span>
               <div className="bento-card-body">
-                <h4>{sv.name}</h4>
+                <h3>{sv.name}</h3>
                 <p>{sv.desc}</p>
               </div>
               <span className="bento-arrow" aria-hidden>

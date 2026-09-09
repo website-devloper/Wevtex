@@ -124,7 +124,7 @@ export function ProcessSection({
               <div className={i === 0 ? "process-step active reveal" : "process-step reveal"} data-i={i} data-delay={i || undefined} key={s.n}>
                 <div className="num">{s.n}</div>
                 <div>
-                  <h4>{s.h}</h4>
+                  <h3>{s.h}</h3>
                   <p>{proseFor(s)}</p>
                 </div>
                 <div className="duration">{s.d}</div>

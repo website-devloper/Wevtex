@@ -120,6 +120,7 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
+        <a href="#main" className="skip-link">Aller au contenu</a>
         <SmoothScroll>
           {children}
         </SmoothScroll>

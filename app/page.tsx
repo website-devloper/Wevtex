@@ -9,32 +9,33 @@ import { FAQS } from "../components/wevtex/homeContent";
  */
 
 export const metadata: Metadata = {
+  /* The page is served in French to a French-speaking market, so the title,
+     description and keywords are too. They were English, which meant the
+     snippet Google showed did not match the page a visitor then landed on. */
   title: {
-    absolute: "Web Design & Development Agency in Morocco | Wevtex",
+    absolute: "Agence web à Casablanca | Création de sites & applications | Wevtex",
   },
   description:
-    "Wevtex builds fast, modern websites, online stores and apps that turn visitors into customers. Casablanca-based, serving clients across Morocco and worldwide. Clear DH pricing, no surprises.",
+    "Agence web à Casablanca : création de sites vitrines, boutiques en ligne, applications et référencement. Un devis clair en DH, un délai ferme, et un site qui vous amène des clients.",
   keywords: [
-    // Local (Morocco)
-    "web design agency Morocco",
-    "création site web Casablanca",
-    "agence web Maroc",
-    "site web Maroc prix",
-    "e-commerce Maroc",
-    // Service / international
-    "website development",
-    "online store development",
-    "Next.js development agency",
-    "SEO services",
+    "agence web Casablanca",
+    "création site web Maroc",
+    "création site internet Casablanca",
+    "prix site web Maroc",
+    "création boutique en ligne Maroc",
+    "agence e-commerce Maroc",
+    "développement application mobile Maroc",
+    "référencement naturel SEO Maroc",
+    "Google Maps référencement local Maroc",
     "Wevtex",
   ],
   alternates: {
     canonical: "/",
   },
   openGraph: {
-    title: "Web Design & Development Agency in Morocco | Wevtex",
+    title: "Agence web à Casablanca | Création de sites & applications | Wevtex",
     description:
-      "Fast, modern websites, online stores and apps that turn visitors into customers. Casablanca-based, serving Morocco and worldwide.",
+      "Création de sites, boutiques en ligne et applications qui transforment vos visiteurs en clients. Basés à Casablanca, au service du Maroc et de l'international.",
     url: "/",
     type: "website",
   },
