@@ -1,7 +1,4 @@
-"use client";
-
 import Image from "next/image";
-import { useState } from "react";
 import { SERVICES } from "./homeContent";
 import { CITIES } from "@/lib/cities-data";
 import { CONTACT_URL, HOME_URL, ABOUT_URL, SERVICES_URL, PORTFOLIO_URL, servicePath, industryPath, SOCIALS } from "@/lib/site-links";
@@ -44,33 +41,6 @@ function FooterCol({ title, items }: { title: string; items: [string, string][] 
 }
 
 export function SiteFooter() {
-  const [news, setNews] = useState<"idle" | "sending" | "done" | "error">("idle");
-
-  /* Sends the address to the team via the contact route. Until 2026-09-04 this
-     form only flipped a flag, so every address typed here was discarded. */
-  async function handleSubscribe(e: React.FormEvent<HTMLFormElement>) {
-    e.preventDefault();
-    if (news === "sending" || news === "done") return;
-    const email = String(new FormData(e.currentTarget).get("email") || "").trim();
-    if (!email) return;
-    setNews("sending");
-    try {
-      const res = await fetch("/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          name: email,
-          contact: email,
-          message: "Souhaite recevoir la newsletter.",
-          topic: "newsletter",
-        }),
-      });
-      setNews(res.ok ? "done" : "error");
-    } catch {
-      setNews("error");
-    }
-  }
-
   return (
     <footer className="footer-v2">
       <div className="container">
@@ -81,25 +51,6 @@ export function SiteFooter() {
               WEVT<span>EX</span>
             </a>
             <p className="footer-about">Studio digital basé à Casablanca. On conçoit des sites, des systèmes et des applications qui font grandir des marques ambitieuses — au Maroc et ailleurs.</p>
-            <p className="footer-news-sub">Des conseils utiles pour développer votre activité. Pas de spam.</p>
-            <form className="footer-news-v2" onSubmit={handleSubscribe}>
-              <input
-                type="email"
-                name="email"
-                placeholder="Votre adresse e-mail"
-                aria-label="Adresse e-mail"
-                required
-                disabled={news === "sending" || news === "done"}
-              />
-              <button type="submit" disabled={news === "sending" || news === "done"}>
-                {news === "sending" ? "…" : news === "done" ? "Inscrit ✓" : "S’inscrire"}
-              </button>
-            </form>
-            {news === "error" && (
-              <p role="alert" className="footer-news-sub" style={{ marginTop: 8 }}>
-                Inscription impossible pour le moment. Écrivez-nous sur WhatsApp.
-              </p>
-            )}
           </div>
 
           <FooterCol title="Navigation" items={PAGES} />

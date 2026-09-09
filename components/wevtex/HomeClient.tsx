@@ -497,6 +497,9 @@ export function HomeClient() {
           entry points on the site. */}
       <section className="cities-band">
         <div className="container">
+          <h2 className="cities-band-h">
+            Nous travaillons partout au Maroc — et près de chez vous.
+          </h2>
           <ul className="pb-cities reveal">
             {CITIES.map((c) => (
               <li key={c.slug}>

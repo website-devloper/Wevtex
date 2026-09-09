@@ -2596,44 +2596,11 @@
   color: var(--ink-on-dark-2);
 }
 
-.wevtex .footer-news {
-  display: flex;
-  border: 1px solid var(--hairline-d-strong);
-  border-radius: 999px;
-  padding: 4px 4px 4px 16px;
-  max-width: 360px;
-  align-items: center;
-  margin-top: 24px;
-  transition: border-color 0.2s var(--ease-out);
-}
 
-.wevtex .footer-news:focus-within { border-color: var(--accent); }
 
-.wevtex .footer-news input {
-  flex: 1;
-  background: transparent;
-  border: 0;
-  outline: 0;
-  color: var(--ink-on-dark);
-  font: inherit;
-  font-size: 13px;
-  padding: 8px 0;
-}
 
-.wevtex .footer-news input::placeholder { color: var(--ink-on-dark-3); }
 
-.wevtex .footer-news button {
-  padding: 8px 16px;
-  border-radius: 999px;
-  background: var(--accent);
-  color: var(--on-lime);
-  font-weight: 500;
-  font-size: 12px;
-  cursor: pointer;
-  transition: background-color 0.2s var(--ease-out);
-}
 
-.wevtex .footer-news button:hover { background: var(--accent-hot); }
 
 .wevtex .footer-bottom {
   display: flex;
@@ -5762,19 +5729,10 @@
 }
 
 .footer-v2 .footer-about { color: var(--ink-on-dark-2); line-height: 1.7; font-size: 14.5px; max-width: 34ch; margin-top: 20px; }
-.footer-v2 .footer-news-sub { color: var(--ink-on-dark-3); font-size: 13px; line-height: 1.6; margin: 24px 0 12px; max-width: 32ch; }
-.footer-v2 .footer-news-v2 { display: flex; gap: 10px; max-width: 380px; }
-.footer-v2 .footer-news-v2 input {
   flex: 1; min-width: 0; background: rgba(255, 255, 255, 0.06); border: 1px solid rgba(255, 255, 255, 0.16); border-radius: 999px;
   padding: 12px 18px; color: var(--ink-on-dark); font-size: 14px; outline: none;
   transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
 }
-.footer-v2 .footer-news-v2 input::placeholder { color: rgba(255, 255, 255, 0.42); }
-.footer-v2 .footer-news-v2 input:hover { border-color: rgba(255, 255, 255, 0.3); }
-.footer-v2 .footer-news-v2 input:focus { background: rgba(255, 255, 255, 0.09); border-color: var(--accent); box-shadow: 0 0 0 3px rgba(198, 242, 78, 0.22); }
-.footer-v2 .footer-news-v2 button { background: var(--accent); color: var(--on-lime); border: 0; border-radius: 999px; padding: 12px 22px; font-weight: 600; font-size: 14px; cursor: pointer; white-space: nowrap; transition: background 0.2s; }
-.footer-v2 .footer-news-v2 button:hover { background: var(--accent-hot); }
-.footer-v2 .footer-news-v2 button:disabled { opacity: 0.65; cursor: default; }
 
 .footer-v2 .footer-col-v2 h5 {
   font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.18em;
@@ -5925,7 +5883,6 @@
 
 /* ---- Contact: inputs focus ring, cards ---- */
 .wevtex .form input, .wevtex .form select, .wevtex .form textarea,
-.footer-v2 .footer-news-v2 input {
   transition: border-color 160ms var(--ease-out), box-shadow 160ms var(--ease-out);
 }
 .wevtex .form input:hover, .wevtex .form select:hover, .wevtex .form textarea:hover { border-color: rgba(16, 17, 18, 0.4); }
@@ -5940,9 +5897,6 @@
 /* ---- Footer ---- */
 .footer-v2 .footer-col-v2 a { transition: color 160ms var(--ease-out), transform 160ms var(--ease-out); }
 .footer-v2 .footer-col-v2 a:hover { color: var(--accent); transform: translateX(3px); }
-.footer-v2 .footer-news-v2 input:focus { outline: none; border-color: var(--vermilion); box-shadow: 0 0 0 2px rgba(198, 242, 78, 0.3); }
-.footer-v2 .footer-news-v2 button { transition: background 160ms var(--ease-out); }
-.footer-v2 .footer-news-v2 button:hover { background: var(--accent-hot); }
 .footer-v2 .footer-social a { transition: background 160ms var(--ease-out), border-color 160ms var(--ease-out), color 160ms var(--ease-out); }
 .footer-v2 .footer-social a:hover { background: var(--vermilion); border-color: var(--vermilion); color: var(--on-lime); }
 .footer-v2 .footer-wordmark { transition: opacity 160ms var(--ease-out); }
@@ -8559,9 +8513,21 @@
 .wevtex .problem-band::before { display: none; }
 .wevtex .problem-band::after { display: none; }
 
+/* Lime band: its own value step between the ink statement above and the light
+   services below, and the one place the accent carries a whole section. */
 .wevtex .cities-band {
-  background: #101112;
-  padding: 0 0 clamp(64px, 9vh, 100px);
+  background: var(--accent);
+  color: #101112;
+  padding: clamp(48px, 7vh, 76px) 0 clamp(52px, 8vh, 84px);
+}
+.wevtex .cities-band-h {
+  margin: 0 0 clamp(28px, 4vh, 44px);
+  text-align: center;
+  font-size: clamp(15px, 1.5vw, 18px);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: #101112;
+  text-wrap: balance;
 }
 .wevtex .pb-cities {
   list-style: none; padding: 0; margin: 0 auto;
@@ -8576,14 +8542,16 @@
 .wevtex .pb-city-img {
   display: block; width: 100%; aspect-ratio: 3 / 4;
   background-size: contain; background-position: center; background-repeat: no-repeat;
-  filter: invert(1) brightness(1.6);
-  opacity: 0.68;
-  transition: opacity 200ms var(--ease-out), filter 200ms var(--ease-out);
+  opacity: 0.78;
+  transition: opacity 200ms var(--ease-out), transform 200ms var(--ease-out);
 }
 .wevtex .pb-cities a:hover .pb-city-img,
 .wevtex .pb-cities a:focus-visible .pb-city-img {
   opacity: 1;
-  filter: invert(1) brightness(1.6) sepia(1) saturate(6) hue-rotate(35deg);
+  transform: translateY(-3px);
 }
 @media (max-width: 780px) { .wevtex .pb-cities { grid-template-columns: repeat(3, 1fr); } }
-@media (prefers-reduced-motion: reduce) { .wevtex .pb-city-img { transition: none; } }
+@media (prefers-reduced-motion: reduce) {
+  .wevtex .pb-city-img { transition: none; }
+  .wevtex .pb-cities a:hover .pb-city-img { transform: none; }
+}
