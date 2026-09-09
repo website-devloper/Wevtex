@@ -5741,6 +5741,7 @@
   display: grid;
   grid-template-columns: 1.5fr repeat(4, minmax(0, 1fr));
   gap: 0;
+  padding-bottom: clamp(30px, 4vh, 48px);
 }
 .footer-v2 .footer-brandcol { padding-right: clamp(28px, 3vw, 52px); }
 /* The rule between columns is the grid — without it four link stacks just
@@ -7562,9 +7563,14 @@
 .wevtex .legal-body a:hover { text-decoration-color: var(--accent); }
 
 /* Footer legal links, beside the copyright line. */
-.wevtex .footer-legal { display: inline-flex; gap: 20px; flex-wrap: wrap; }
-.wevtex .footer-legal a { color: inherit; opacity: 0.72; text-decoration: none; }
-.wevtex .footer-legal a:hover { opacity: 1; text-decoration: underline; text-underline-offset: 3px; }
+.wevtex .footer-legal { display: inline-flex; gap: 22px; flex-wrap: wrap; }
+.wevtex .footer-legal a {
+  color: rgba(255, 255, 255, 0.80);
+  font-size: 13px; font-weight: 500;
+  text-decoration: none;
+  transition: color 160ms var(--ease-out);
+}
+.wevtex .footer-legal a:hover { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; }
 
 /* ---------------------------------------------------------------------------
    Analytics consent bar. Fixed to the bottom, above the sticky CTA on mobile.
