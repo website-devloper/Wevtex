@@ -11,32 +11,24 @@ export const metadata: Metadata = {
   },
 };
 
+import { CONTACT_FAQS } from "@/lib/contact-content";
+
 export default function ContactLayout({
   children,
 }: {
   children: React.ReactNode
 }) {
+  /* Generated from the same array the page renders. Google requires FAQPage
+     markup to match the visible content; this was hand-written English that
+     listed two questions the page does not show. */
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "Do you work with US/EU clients?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Yes, we target worldwide clients specifically in the USA and UK. We work seamlessly across time zones with all contracts in English and invoicing through Stripe."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "What services does Wevtex offer?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Our core services include Web Development, App Development, SEO and GEO targeting, Secure Hosting services, Technical IT services, and comprehensive IT support."
-        }
-      }
-    ]
+    mainEntity: CONTACT_FAQS.map((f) => ({
+      "@type": "Question",
+      name: f.q,
+      acceptedAnswer: { "@type": "Answer", text: f.a },
+    })),
   };
 
   return (
