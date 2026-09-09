@@ -5,12 +5,12 @@
  */
 
 export const FAQS = [
-  { q: "Combien de temps prend la création d'un site ?", a: "La plupart des sites vitrines sont en ligne en 2 à 4 semaines, les boutiques en ligne en 4 à 8. Vous recevez un délai ferme avec votre devis, avant que quoi que ce soit ne démarre." },
-  { q: "Comment se passe le paiement ?", a: "Un prix fixe pour un périmètre fixe, réparti en étapes. Vous validez chaque étape avant qu'elle ne soit facturée : rien n'est dû tant que le résultat ne vous convient pas." },
-  { q: "Mon site sera-t-il visible sur Google ?", a: "Oui. Chaque site est livré prêt pour le référencement, et nous pouvons aller plus loin avec nos prestations SEO et Google Maps pour que vos clients vous trouvent." },
-  { q: "À qui appartient le site une fois livré ?", a: "À vous, entièrement. Le code, le contenu, le nom de domaine et tous les accès vous sont remis à votre nom. Aucune dépendance, jamais." },
-  { q: "Gérez-vous l'hébergement et le nom de domaine ?", a: "Oui. Nous mettons en place un hébergement rapide et sécurisé ainsi que votre domaine, et nous pouvons continuer à les gérer — ou tout vous transmettre si vous préférez." },
-  { q: "Que se passe-t-il après la mise en ligne ?", a: "Chaque projet inclut un accompagnement après le lancement. Ensuite, un forfait de maintenance optionnel assure la surveillance, les mises à jour et les sauvegardes." },
+  { q: "Combien de temps pour lancer mon site ?", a: "Une vitrine part en ligne en 2 à 4 semaines, une boutique en 4 à 8. Vous avez un délai ferme dans le devis, avant tout démarrage." },
+  { q: "Comment se passe le paiement ?", a: "Prix fixe, périmètre fixe, payé par étapes. Vous validez chaque étape avant qu'elle ne soit facturée. Rien n'est dû tant que le résultat ne vous convient pas." },
+  { q: "Serai-je visible sur Google ?", a: "Chaque site est livré prêt pour Google. Et si vous voulez viser plus haut, nos prestations SEO et Google Maps s'en chargent." },
+  { q: "À qui appartient le site ?", a: "À vous, entièrement — code, contenu, domaine, accès, à votre nom. Aucune dépendance, jamais." },
+  { q: "Gérez-vous l'hébergement et le domaine ?", a: "Oui : un hébergement rapide et sécurisé, votre domaine, et on gère tout — ou on vous transmet les clés si vous préférez." },
+  { q: "Et après la mise en ligne ?", a: "Chaque projet inclut un accompagnement après lancement. Ensuite, une maintenance optionnelle veille sur tout : mises à jour, sauvegardes, surveillance." },
 ] as const;
 
 /**
@@ -52,7 +52,7 @@ export const SERVICES: Service[] = [
     cta: "Lancer mon site",
     name: "Création de sites web",
     short: "Sites vitrines et boutiques en ligne",
-    desc: "Sites vitrines, boutiques en ligne et portails sur mesure — modernes, ultra-rapides et pensés pour le référencement.",
+    desc: "Des sites vitrines et boutiques rapides, soignés et faciles à faire vivre vous-même.",
     price: "990",
     note: "Livré en 7 à 14 jours",
     featured: true,
@@ -70,7 +70,7 @@ export const SERVICES: Service[] = [
     cta: "Améliorer mon référencement",
     name: "Référencement naturel (SEO)",
     short: "Sortez sur les recherches de vos clients",
-    desc: "Optimisation technique, stratégie de mots-clés et netlinking pour un trafic qui progresse mois après mois.",
+    desc: "On vous place là où vos clients cherchent déjà, et on y reste.",
     price: "1 500",
     note: "Par mois · 3 mois minimum",
     features: [
@@ -87,7 +87,7 @@ export const SERVICES: Service[] = [
     cta: "Me rendre visible sur Maps",
     name: "Google Maps & SEO local",
     short: "Captez les recherches autour de vous",
-    desc: "Gagnez les recherches qui se font près de chez vous, avec une fiche Google Business optimisée et un bon positionnement sur Maps.",
+    desc: "Soyez le premier résultat quand quelqu'un cherche près de chez vous.",
     price: "790",
     note: "Puis 490 DH par mois",
     features: [
@@ -104,7 +104,7 @@ export const SERVICES: Service[] = [
     cta: "Lancer ma campagne",
     name: "Création & gestion de publicités",
     short: "Des campagnes qui se rentabilisent",
-    desc: "Campagnes Google Ads, Facebook et Instagram ciblées, conçues pour un retour immédiat et mesurable.",
+    desc: "Des campagnes Google et Meta qui ramènent des clients, pas juste des clics.",
     price: "1 200",
     note: "Par mois · hors budget publicitaire",
     features: [
@@ -121,7 +121,7 @@ export const SERVICES: Service[] = [
     cta: "Cadrer mon application",
     name: "Applications mobiles",
     short: "iOS et Android, une seule base de code",
-    desc: "Applications iOS et Android natives ou multiplateformes, fluides et rapides, développées avec Flutter.",
+    desc: "Votre service dans la poche de vos clients, sur iOS et Android.",
     price: "12 000",
     note: "Périmètre défini par projet",
     features: [
@@ -138,7 +138,7 @@ export const SERVICES: Service[] = [
     cta: "Cadrer mon logiciel",
     name: "Logiciels bureau",
     short: "Windows et macOS sur mesure",
-    desc: "Logiciels Windows et macOS sur mesure qui simplifient vos opérations internes et la gestion de vos données.",
+    desc: "Des outils sur mesure qui font le travail répétitif à votre place.",
     price: "14 000",
     note: "Périmètre défini par projet",
     features: [
@@ -155,7 +155,7 @@ export const SERVICES: Service[] = [
     cta: "Cadrer ma solution",
     name: "Solutions digitales sur mesure",
     short: "Outils métier et portails SaaS",
-    desc: "Outils métier, portails SaaS, extranets et architectures d'API conçus autour du fonctionnement de votre entreprise.",
+    desc: "Quand aucun outil du marché ne colle, on construit le vôtre.",
     price: "18 000",
     note: "Périmètre défini par projet",
     features: [
@@ -172,7 +172,7 @@ export const SERVICES: Service[] = [
     cta: "Automatiser mon WhatsApp",
     name: "Chatbots WhatsApp automatisés",
     short: "Répondez et qualifiez 24h/24",
-    desc: "Des chatbots intelligents qui répondent instantanément, qualifient vos prospects et assurent le support 24h/24.",
+    desc: "Un assistant qui répond et qualifie vos prospects, même la nuit.",
     price: "2 400",
     note: "Puis 390 DH par mois",
     features: [

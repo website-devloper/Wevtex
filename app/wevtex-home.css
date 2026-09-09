@@ -8455,3 +8455,11 @@
   .wevtex .cta-band-split .ctab-inner { grid-template-columns: 1fr; gap: 26px; }
   .wevtex .cta-band-split .ctab-btns { padding-top: 0; border-top: 0; flex-wrap: wrap; }
 }
+
+/* Honest framing beside a project metric: these figures are the client's, not
+   independently measured, and the caption says so without hiding them. */
+.wevtex .wk-metric-note {
+  margin: 8px 0 0;
+  font-size: 12px; letter-spacing: 0.02em;
+  color: rgba(244, 245, 242, 0.5);
+}

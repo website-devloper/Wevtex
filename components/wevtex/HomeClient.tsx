@@ -23,7 +23,7 @@ import { ServicesBento, SERVICE_ICONS } from "./SharedSections";
 import { WHATSAPP_URL, serviceWhatsAppUrl, GOOGLE_REVIEWS_URL, PORTFOLIO_URL, industryPath } from "@/lib/site-links";
 
 /* Claim shown in the hero — keep it accurate. */
-const GUARANTEE = "Vous ne payez qu'une fois satisfait";
+const GUARANTEE = "Vous ne payez qu'une fois satisfait.";
 
 /* Client logo wall. Each file is pre-normalised onto the same 400x170
    transparent canvas, sized by optical weight rather than raw height — a
@@ -67,7 +67,7 @@ const INDUSTRIES = [
   {
     icon: <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><path d="M3 9l1-4h16l1 4"></path><path d="M3 9v11a1 1 0 001 1h16a1 1 0 001-1V9"></path><path d="M9 21V13h6v8"></path></svg>,
     head: "E-commerce & commerce de détail",
-    body: "Mode, beauté, décoration et alimentaire. Panier, paiement sécurisé et gestion des stocks, tout est prévu."
+    body: "Plus de passage en boutique, plus de ventes en ligne."
   },
   {
     icon: <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><path d="M2 4v16"></path><path d="M2 8h18a2 2 0 012 2v10"></path><path d="M2 17h20"></path><path d="M6 8v3"></path></svg>,
@@ -406,13 +406,14 @@ export function HomeClient() {
               <ScrollRevealText
                 as="h1"
                 mode="load"
-                em={["clients"]}
-                emClassName="hl-em"
-                text={"Des sites et applis qui\ntransforment vos visiteurs\nen clients."}
+                em={["site."]}
+                emClassName="hl-line"
+                text={"Un site qui travaille pour vous,\npas seulement un beau site."}
               />
               <p className="hero-sub">
-                De la première idée à la mise en ligne en quelques semaines : sites sur mesure,
-                boutiques en ligne et automatisation, conçus pour vous amener plus de clients.
+                Nous concevons des sites, des boutiques et des applications qui vont droit
+                au but : plus de contacts, plus de ventes, moins de temps perdu. De l'idée
+                à la mise en ligne en quelques semaines — pas en quelques mois.
               </p>
               <div className="hero-ctas">
                 <a href={WHATSAPP_URL} className="btn btn-primary" target="_blank" rel="noopener">
@@ -474,8 +475,8 @@ export function HomeClient() {
         <div className="container">
           <div className="problem-inner">
             <h2 className="problem-h">
-              La plupart des sites d&apos;entreprise<br />
-              n&apos;<em className="hl-em hl-underline">apportent aucun</em> client
+              La plupart des sites<br />
+              ne rapportent <em className="hl-em hl-underline">aucun</em> client.
             </h2>
             <p className="problem-sub">
               Ils sont jolis, mais lents, confus et impossibles à mettre à jour.<br />
@@ -490,8 +491,9 @@ export function HomeClient() {
           Shared with /services so both surfaces read the same SERVICES list —
           a service added or re-linked in homeContent.ts moves on every page. */}
       <ServicesBento
-        heading={<>Tout ce qu&apos;il faut pour<br /><em className="hl-line">développer</em> &amp; <em className="hl-line">automatiser</em></>}
-        intro="Du site performant à l'automatisation intelligente, nous créons des solutions digitales qui font grandir votre activité et vous simplifient le quotidien."
+        eyebrow="Nos services"
+        heading={<>Tout pour lancer, être trouvé et <em className="hl-line">vendre.</em></>}
+        intro="Huit prestations, un même principe : chacune est pensée pour un résultat mesurable, pas pour cocher une case."
       />
 
       {/* ===================== WORK =====================
@@ -511,7 +513,7 @@ export function HomeClient() {
           <div className="wk-head reveal">
             <span className="eyebrow line-eyebrow">Nos réalisations</span>
             <h2 className="h-section" style={{ marginTop: 14 }}>
-              Projets <em className="hl-line">récents</em>
+              Du concret, <em className="hl-line">en ligne.</em>
             </h2>
             <p className="ic-sub wk-lede">
               Quelques projets livrés. Ouvrez-en un pour voir le détail.
@@ -576,6 +578,7 @@ export function HomeClient() {
                             <span className="wk-metric-n">{p.metric}</span>
                             <span className="wk-metric-l">{p.metricLabel}</span>
                           </div>
+                          <p className="wk-metric-note">Résultats illustratifs.</p>
 
                           <a href={p.liveUrl} target="_blank" rel="noopener noreferrer" className="wk-view">
                             Voir le site web
@@ -610,10 +613,10 @@ export function HomeClient() {
         <div className="container">
           <div className="sb-grid reveal">
             {[
-              { to: 40, dec: 0, suffix: "+", label: "Projets livrés", desc: "Sites, applications et systèmes d'automatisation mis en ligne." },
-              { to: 5, dec: 1, suffix: "", label: "Note moyenne", desc: "D'après les avis clients laissés sur les différentes plateformes." },
-              { to: 4, dec: 0, suffix: "", label: "Ans d'expérience", desc: "À faire grandir des entreprises avec des solutions digitales." },
-              { to: 98, dec: 0, suffix: "%", label: "Clients satisfaits", desc: "Des clients qui nous recommandent et qui reviennent." },
+              { to: 40, dec: 0, suffix: "+", label: "Projets livrés", desc: "Sites, boutiques et applications en production." },
+              { to: 5, dec: 1, suffix: "", label: "Note moyenne", desc: "Note moyenne laissée par nos clients." },
+              { to: 4, dec: 0, suffix: "", label: "Ans d'expérience", desc: "À faire grandir des entreprises marocaines en ligne." },
+              { to: 98, dec: 0, suffix: "%", label: "Clients satisfaits", desc: "De clients qui recommandent et qui reviennent." },
             ].map((s) => (
               <div className="sb-item" key={s.label}>
                 {/* The final value is rendered here, not a zero: if the count-up
@@ -636,7 +639,7 @@ export function HomeClient() {
         <InkBackdrop variant="data" />
         <div className="container">
           <div className="ict-inner reveal">
-            <p className="ict-text">Vous voulez ce type de résultats pour votre entreprise ?</p>
+            <p className="ict-text">Vous voulez ces résultats pour votre entreprise ?</p>
             <a href={WHATSAPP_URL} className="btn btn-primary" target="_blank" rel="noopener">
               Demander un devis gratuit
               <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden><path d="M5 12h14M13 6l6 6-6 6" /></svg>
@@ -651,10 +654,10 @@ export function HomeClient() {
           <div className="ic-head ic-head-left reveal">
             <span className="eyebrow line-eyebrow">Avis clients</span>
             <h2 className="h-section" style={{ marginTop: 16 }}>
-              Des entreprises qui nous <em className="hl-line">font confiance</em>
+              Ils nous ont fait <em className="hl-line">confiance.</em>
             </h2>
             <p className="ic-sub">
-              Nous sommes fiers des relations que nous construisons et des résultats que nous livrons.
+              Les résultats parlent, mais nos clients aussi. Voici ce qu&apos;ils disent, mot pour mot.
             </p>
           </div>
 
@@ -720,7 +723,7 @@ export function HomeClient() {
           <div className="ic-head reveal">
             <span className="eyebrow line-eyebrow-center">Les secteurs que nous servons</span>
             <h2 className="h-section" style={{ marginTop: 16 }}>
-              Pensé pour <em className="hl-em">votre secteur</em>
+              On connaît <em className="hl-line">votre métier.</em>
             </h2>
             <p className="ic-sub">
               Chaque secteur a ses propres contraintes.<br />
@@ -779,7 +782,7 @@ export function HomeClient() {
           <div className="ic-head reveal">
             <span className="eyebrow line-eyebrow-center">Tarifs</span>
             <h2 className="h-section" style={{ marginTop: 16, justifyContent: "center" }}>
-              Des prix clairs. <em className="hl-em">Aucune surprise.</em>
+              Un prix clair, <em className="hl-line">dès le départ.</em>
             </h2>
             <p className="ic-sub">
               Un prix de départ pour chacun de nos services. Dites-nous ce qu&apos;il vous faut<br />
@@ -840,9 +843,9 @@ export function HomeClient() {
           <div className="faq-grid">
             <div className="faq-left reveal">
               <span className="eyebrow line-eyebrow">FAQ</span>
-              <h2 className="h-section" style={{ marginTop: 14 }}>Vos questions, <em className="hl-line">nos réponses</em></h2>
+              <h2 className="h-section" style={{ marginTop: 14 }}>Vos questions, <em className="hl-line">nos réponses.</em></h2>
               <p className="ic-sub" style={{ marginTop: 14, textAlign: "left" }}>
-                Les questions qu&apos;on nous pose le plus souvent sur notre méthode, nos services et notre façon de travailler.
+                Les questions qu&apos;on nous pose le plus souvent avant de démarrer un projet.
               </p>
               <div className="faq-list-v2">
                 {FAQS.map((f, i) => (
