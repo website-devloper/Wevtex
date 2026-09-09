@@ -8422,3 +8422,36 @@
 }
 .wevtex .ind-outcomes-ink .ind-outcome h3 { color: #f4f5f2; }
 .wevtex .ind-outcomes-ink .ind-outcome p { color: rgba(244, 245, 242, 0.78); }
+
+/* ---------------------------------------------------------------------------
+   Closing CTA — match the compact inline CTA
+   The stacked buttons behind a vertical rule read as a second, heavier layout
+   than the inline CTA used elsewhere. Same shape everywhere now: copy left,
+   actions side by side on the right, no divider.
+   ------------------------------------------------------------------------- */
+.wevtex .cta-band-split .ctab-inner {
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: clamp(28px, 4vw, 60px);
+}
+.wevtex .cta-band-split .ctab-btns {
+  flex-direction: row;
+  align-items: center;
+  gap: 12px;
+  padding-left: 0;
+  border-left: 0;
+}
+.wevtex .cta-band-split .ctab-copy { max-width: 40ch; }
+.wevtex .cta-band-split .audit-h { font-size: clamp(24px, 2.8vw, 36px); }
+/* The paragraph was the least legible thing on the band. */
+.wevtex .cta-band-split .audit-p {
+  color: rgba(244, 245, 242, 0.82);
+  font-size: 15px;
+  margin-top: 14px;
+}
+.wevtex .cta-band-split .eyebrow { color: rgba(244, 245, 242, 0.62); }
+
+@media (max-width: 1080px) {
+  .wevtex .cta-band-split .ctab-inner { grid-template-columns: 1fr; gap: 26px; }
+  .wevtex .cta-band-split .ctab-btns { padding-top: 0; border-top: 0; flex-wrap: wrap; }
+}

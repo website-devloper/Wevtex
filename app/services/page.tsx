@@ -50,18 +50,6 @@ export default function ServicesPage() {
           est visible d'un coup, sans clic. */}
       <section className="theme-paper work srv-list-sec" id="services">
         <div className="container">
-          <div className="wk-head reveal">
-            <span className="eyebrow line-eyebrow">Nos prestations</span>
-            <h2 className="h-section" style={{ marginTop: 14 }}>
-              Tout ce qu&apos;il faut pour<br />
-              <em className="hl-line">développer</em> &amp; <em className="hl-line">automatiser</em>
-            </h2>
-            <p className="ic-sub wk-lede">
-              Du site performant à l&apos;automatisation intelligente, huit prestations
-              qui font grandir votre activité et vous simplifient le quotidien.
-            </p>
-          </div>
-
           {/* Reveal per item, not on the <ol>: as one element the list is
               taller than any viewport, so it could never satisfy the
               observer's area threshold. Per item it also staggers in. */}
