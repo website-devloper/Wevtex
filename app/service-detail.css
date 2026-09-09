@@ -456,3 +456,36 @@
   font-size: 12.5px; line-height: 1.6; color: var(--ink-on-cream-3);
   max-width: 60ch; margin-left: auto; margin-right: auto;
 }
+
+/* ======================================================================
+   BUTTONS — square-ish corners and a heavier label, matching the site.
+   --radius-btn comes from .wevtex, which sits on the same wrapper element.
+   ====================================================================== */
+.sd .sd-btn,
+.sd .btn,
+.sd .sd-price-btn,
+.sd button[type="submit"] {
+  border-radius: var(--radius-btn);
+  font-weight: 700;
+}
+
+.sd .sd-btn svg,
+.sd .btn svg { stroke-width: 2.4; }
+
+/* the hairline outline becomes a solid ink button, as on the rest of the site */
+.sd .sd-btn.outline {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: #fff;
+}
+.sd .sd-btn.outline:hover {
+  background: var(--vermilion);
+  border-color: var(--vermilion);
+  color: var(--on-lime);
+}
+
+/* except on ink grounds, where a black fill would vanish */
+.sd .sd-cta .sd-btn.outline,
+.sd .sd-price.featured .sd-btn.outline,
+.sd .sd-cta .btn-outline,
+.sd .sd-price.featured .btn-outline { background: transparent; }

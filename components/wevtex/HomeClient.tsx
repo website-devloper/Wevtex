@@ -406,6 +406,9 @@ export function HomeClient() {
         <div className="container">
           <div className="hero-grid">
             <div className="hero-content">
+              <span className="eyebrow line-eyebrow" style={{ marginBottom: 18, display: "inline-block" }}>
+                Agence web &amp; applications · Casablanca, Maroc
+              </span>
               <ScrollRevealText
                 as="h1"
                 mode="load"
@@ -414,9 +417,10 @@ export function HomeClient() {
                 text={"Un site qui travaille pour vous,\npas seulement un beau site."}
               />
               <p className="hero-sub">
-                Nous concevons des sites, des boutiques et des applications qui vont droit
-                au but : plus de contacts, plus de ventes, moins de temps perdu. De l'idée
-                à la mise en ligne en quelques semaines — pas en quelques mois.
+                Wevtex est une agence web au Maroc, basée à Casablanca. Nous construisons
+                des sites, des boutiques en ligne, des applications mobiles, des campagnes
+                Google et Meta et des outils sur mesure. Livrés en 2 à 4 semaines — pas en
+                quelques mois.
               </p>
               <div className="hero-ctas">
                 <a href={WHATSAPP_URL} className="btn btn-primary" target="_blank" rel="noopener">
@@ -487,6 +491,35 @@ export function HomeClient() {
               pour plus de contacts, plus de ventes et plus de temps pour vous.
             </p>
 
+          </div>
+        </div>
+      </section>
+
+      {/* ===================== POURQUOI WEVTEX =====================
+          Four promises, each written as a contrast: the reader can picture the
+          wrong version, which is what makes the right one land. */}
+      <section className="theme-paper" style={{ padding: "clamp(72px, 11vh, 120px) 0" }}>
+        <div className="container">
+          <div className="reveal">
+            <span className="eyebrow line-eyebrow">Pourquoi Wevtex</span>
+            <h2 className="h-section" style={{ marginTop: 14 }}>
+              Ce que vous obtenez, <em className="hl-line">et ce que vous évitez.</em>
+            </h2>
+          </div>
+
+          <div className="ind-outcomes reveal" style={{ marginTop: "clamp(38px, 6vh, 58px)" }}>
+            {[
+              { h: "Un prix annoncé, pas une rallonge", p: "Le devis est ferme avant que le travail commence. Le prix que vous validez est celui que vous payez, quelle que soit la durée réelle du projet." },
+              { h: "Un code qui vous appartient", p: "Le site, le domaine et les accès sont à votre nom dès la livraison. Vous pouvez partir chez qui vous voulez, quand vous voulez, sans rien nous demander." },
+              { h: "Une équipe directe, pas un intermédiaire", p: "Vous parlez à la personne qui construit votre site. Pas de chef de projet qui transmet, pas de sous-traitance à l'autre bout du monde." },
+              { h: "Livré en semaines, pas en mois", p: "Une vitrine part en ligne en 2 à 4 semaines, une boutique en 4 à 8. Le délai est écrit dans le devis, pas estimé en cours de route." },
+            ].map((c) => (
+              <div className="ind-outcome" key={c.h}>
+                <h3>{c.h}</h3>
+                <span className="ind-outcome-rule" aria-hidden></span>
+                <p>{c.p}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>

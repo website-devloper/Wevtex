@@ -29,7 +29,7 @@ export default function Error({ error, reset }: { error: Error & { digest?: stri
       <div style={{ display: "flex", gap: 12, flexWrap: "wrap", justifyContent: "center" }}>
         <button
           onClick={reset}
-          style={{ padding: "12px 22px", borderRadius: 999, border: "none", background: "#c6f24e", color: "#1c2a08", cursor: "pointer", fontWeight: 500 }}
+          style={{ padding: "12px 22px", borderRadius: "5%", border: "none", background: "#c6f24e", color: "#1c2a08", cursor: "pointer", fontWeight: 700 }}
         >
           Try again
         </button>
@@ -37,7 +37,7 @@ export default function Error({ error, reset }: { error: Error & { digest?: stri
           href={WHATSAPP_URL}
           target="_blank"
           rel="noopener"
-          style={{ padding: "12px 22px", borderRadius: 999, border: "1px solid #e6e6e3", color: "inherit", textDecoration: "none", fontWeight: 500 }}
+          style={{ padding: "12px 22px", borderRadius: "5%", border: "1px solid #e6e6e3", color: "inherit", textDecoration: "none", fontWeight: 700 }}
         >
           Chat on WhatsApp
         </a>

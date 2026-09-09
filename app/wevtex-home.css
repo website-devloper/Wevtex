@@ -74,6 +74,8 @@
   --radius-sm: 6px;
   --radius-md: 12px;
   --radius-lg: 20px;
+  /* every button corner comes from here — one value to retune the whole site */
+  --radius-btn: 5%;
 
   --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
   --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
@@ -8549,4 +8551,71 @@
 @media (prefers-reduced-motion: reduce) {
   .wevtex .pb-city-img { transition: none; }
   .wevtex .pb-cities a:hover .pb-city-img { transform: none; }
+}
+
+/* ======================================================================
+   BUTTONS — square-ish corners, heavier label, solid ink outline variant
+   Last block in the file so it settles every earlier radius override
+   (the 999px pills at .btn, .pr-btn, .cta-btn, .co-form .form .btn…).
+   Corner size lives in --radius-btn; change it there, not here.
+   ====================================================================== */
+.wevtex .btn,
+.wevtex .pr-btn,
+.wevtex .cta-btn,
+.wevtex .promise-btn,
+.wevtex .wa-btn,
+.wevtex .sticky-cta-btn,
+.wevtex .promo-btn,
+.wevtex .co-form .form .btn,
+.wevtex .contact-split .cs-form-card .form .btn,
+.wevtex .t-nav button,
+.wevtex .testi-controls .btn,
+.wevtex .form button[type="submit"],
+.wevtex button[type="submit"] {
+  border-radius: var(--radius-btn);
+}
+
+/* the label and its arrow carry the weight now */
+.wevtex .btn,
+.wevtex .pr-btn,
+.wevtex .cta-btn,
+.wevtex .promise-btn,
+.wevtex .wa-btn,
+.wevtex .sticky-cta-btn,
+.wevtex button[type="submit"] {
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.wevtex .btn .arrow,
+.wevtex .btn svg,
+.wevtex .pr-btn svg,
+.wevtex .cta-btn svg,
+.wevtex .promise-btn svg,
+.wevtex .wa-btn svg,
+.wevtex .sticky-cta-btn svg {
+  stroke-width: 2.4;
+}
+
+/* the former hairline outline is now a solid ink button */
+.wevtex .btn-outline {
+  background: #101112;
+  border-color: #101112;
+  color: #fff;
+}
+.wevtex .btn-outline:hover {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--on-lime);
+}
+
+/* Ink grounds keep an outlined button — a black fill would vanish there.
+   These already out-specify the rule above; the background is restated
+   because that rule is the first to give .btn-outline a fill at all. */
+.wevtex .cta-band .btn-outline,
+.wevtex .inline-cta-ink .btn-outline,
+.wevtex .founder-ink .btn-outline,
+.wevtex .pr-card.featured .btn-outline,
+.wevtex .plan.featured .btn-outline {
+  background: transparent;
 }

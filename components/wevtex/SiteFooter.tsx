@@ -50,7 +50,7 @@ export function SiteFooter() {
               <Image className="footer-mark" src="/images/logo/wevtex-mark-ink.png" alt="" width={1192} height={791} sizes="34px" />
               WEVT<span>EX</span>
             </a>
-            <p className="footer-about">Studio digital basé à Casablanca. On conçoit des sites, des systèmes et des applications qui font grandir des marques ambitieuses — au Maroc et ailleurs.</p>
+            <p className="footer-about">Studio web, mobile et IT basé à Casablanca — sites, boutiques en ligne, applications et automatisation pour les entreprises marocaines.</p>
           </div>
 
           <FooterCol title="Navigation" items={PAGES} />
