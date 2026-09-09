@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Contact Wevtex | Lancez votre projet web ou application",
+  title: { absolute: "Contact | Devis site web au Maroc | WEVTEX" },
   description: "Contactez Wevtex, agence web et applications basée à Casablanca. Sites internet, boutiques en ligne, SEO et automatisation, au Maroc et à l'international.",
   alternates: { canonical: "/contact" },
   openGraph: {
-    title: "Contact Wevtex | Lancez votre projet web ou application",
+    title: "Contact | Devis site web au Maroc | WEVTEX",
     description: "Agence web et applications basée à Casablanca. Sites internet, boutiques en ligne, SEO et automatisation.",
     url: "/contact",
   },

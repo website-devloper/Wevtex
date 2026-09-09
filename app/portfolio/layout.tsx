@@ -3,11 +3,11 @@ import { PROJECTS_ORDERED } from "@/lib/projects-data";
 import { SITE_URL, abs } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  title: "Réalisations & études de cas | Agence web Wevtex",
+  title: { absolute: "Réalisations | Agence web au Maroc | WEVTEX" },
   description: "Découvrez nos réalisations : boutiques en ligne, plateformes SaaS, systèmes de réservation et sites vitrines qui convertissent, au Maroc et à l'international.",
   alternates: { canonical: "/portfolio" },
   openGraph: {
-    title: "Réalisations & études de cas | Agence web Wevtex",
+    title: "Réalisations | Agence web au Maroc | WEVTEX",
     description: "Nos réalisations : boutiques en ligne, SaaS, systèmes de réservation et sites vitrines, au Maroc et à l'international.",
     url: "/portfolio",
   },

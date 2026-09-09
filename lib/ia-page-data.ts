@@ -62,3 +62,41 @@ export const IA_STEPS = [
   { n: "03", h: "Intégration", p: "Connexion à vos outils : WhatsApp, catalogue, stock, CRM. C'est là que passe l'essentiel du travail, pas dans le modèle.", d: "2–4 semaines" },
   { n: "04", h: "Mise en service", p: "Passage en production, suivi des conversations réelles et ajustements. Un agent se règle avec de vrais échanges, pas en laboratoire.", d: "1 semaine" },
 ];
+
+/* ------------------------------------------------------------------ Page copy
+ * Hero, metadata and the running text. Answer-first: the first paragraph says
+ * plainly who does what, where, so an answer engine can quote it alone. */
+
+export const IA_META = {
+  path: "/agence-developpement-ia-maroc",
+  title: "Agence de Développement IA au Maroc — Agents & Automatisation | WEVTEX",
+  description:
+    "Agence IA à Casablanca : agents WhatsApp, automatisation des tâches et assistants connectés à vos outils. Livrés en 1 à 4 semaines, en français, darija et anglais.",
+  keywords: [
+    "agence développement ia maroc",
+    "automatisation entreprise maroc",
+    "agent ia whatsapp maroc",
+    "intelligence artificielle entreprise maroc",
+    "chatbot ia darija",
+    "agence ia casablanca",
+  ],
+  h1: "Agence de développement",
+  h1Em: "IA au Maroc.",
+  lede:
+    "Wevtex est un studio basé à Casablanca qui conçoit des agents IA et des automatisations pour les entreprises marocaines : un assistant WhatsApp qui répond aux clients en darija, un agent qui prend les commandes, un robot qui remplit les tâches répétitives de votre équipe. Un premier agent est en service en 1 à 4 semaines.",
+} as const;
+
+/** "Ce que l'IA change vraiment" — the honest framing, before the catalogue. */
+export const IA_REALITY = [
+  "L'IA d'entreprise n'est pas un sujet de conférence : c'est une question de temps récupéré. Une PME marocaine qui reçoit trente messages WhatsApp par jour passe une heure et demie à répondre trois fois la même chose. C'est cette heure et demie que nous rendons, pas plus, et nous le disons avant de commencer.",
+  "Ce qui a changé en deux ans, c'est la langue. Les modèles comprennent maintenant la darija écrite comme le français, ce qui rend l'automatisation utilisable au Maroc au lieu d'être réservée aux marchés anglophones. Un client peut écrire « chhal taman » et recevoir une réponse juste, dans sa langue.",
+  "Le travail réel n'est pas le modèle : c'est le branchement. Connecter l'agent à votre catalogue, votre stock, votre agenda ou votre CRM représente l'essentiel du projet. C'est aussi ce qui sépare un agent qui sert d'un chatbot qui récite.",
+];
+
+/** Sectors where the studio has actually shipped or scoped this work. */
+export const IA_SECTORS = [
+  { h: "E-commerce", p: "Conseil produit, suivi de commande et relance de panier dans la conversation. Livré pour une boutique de cosmétiques marocains." },
+  { h: "Services & rendez-vous", p: "Qualification de la demande et prise de rendez-vous directe dans l'agenda, sans aller-retour téléphonique." },
+  { h: "Immobilier & automobile", p: "Tri des demandes entrantes selon budget, zone et disponibilité, pour que le commercial ne rappelle que des pistes réelles." },
+  { h: "Import, gros & distribution", p: "Devis récurrents, relances impayés et mise à jour de stock : les tâches de bureau qui s'automatisent le plus proprement." },
+];
