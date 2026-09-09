@@ -4934,10 +4934,8 @@
    walking into. Kept low so it reads as texture, not as a hero image. */
 .wevtex .problem-band::before {
   content: ""; position: absolute; inset: 0; z-index: 0;
-  background-image: url("/images/background/office-green.webp");
-  background-size: cover; background-position: center;
-  /* Desaturated: the photo's green dividers would otherwise tint the band. */
-  filter: grayscale(1);
+  display: none;
+  /* removed: the band is flat ink now */
   opacity: 0.34;
 }
 /* Scrim: darkest through the middle, where the headline sits. */
@@ -8517,3 +8515,44 @@
   color: var(--ink-on-cream-2); max-width: 58ch;
 }
 @media (prefers-reduced-motion: reduce) { .wevtex .faq-jump-link { transition: none; } }
+
+/* ---------------------------------------------------------------------------
+   Problem band — flat ink, and the cities we serve
+   The photo backdrop is gone: this section's power is emptiness and contrast,
+   and the grain from InkBackdrop already keeps the black from reading flat.
+   ------------------------------------------------------------------------- */
+.wevtex .problem-band::before { display: none; }
+.wevtex .problem-band::after { display: none; }
+
+.wevtex .pb-cities {
+  list-style: none; padding: 0;
+  margin: clamp(46px, 7vh, 76px) auto 0;
+  display: grid; grid-template-columns: repeat(6, 1fr);
+  gap: clamp(10px, 1.2vw, 18px);
+  max-width: 900px;
+}
+.wevtex .pb-cities a {
+  display: block; text-decoration: none; text-align: center;
+  border-radius: var(--radius-md); overflow: hidden;
+}
+.wevtex .pb-city-img {
+  display: block; width: 100%; aspect-ratio: 1;
+  background-size: cover; background-position: center;
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  filter: grayscale(1);
+  opacity: 0.62;
+  transition: opacity 200ms var(--ease-out), filter 200ms var(--ease-out);
+}
+/* One hover idea: the city comes into colour. */
+.wevtex .pb-cities a:hover .pb-city-img,
+.wevtex .pb-cities a:focus-visible .pb-city-img { opacity: 1; filter: grayscale(0); }
+.wevtex .pb-city-name {
+  display: block; margin-top: 10px;
+  font-size: 13px; font-weight: 600; letter-spacing: -0.01em;
+  color: rgba(244, 245, 242, 0.82);
+}
+.wevtex .pb-cities a:hover .pb-city-name { color: #ffffff; }
+
+@media (max-width: 780px) { .wevtex .pb-cities { grid-template-columns: repeat(3, 1fr); } }
+@media (prefers-reduced-motion: reduce) { .wevtex .pb-city-img { transition: none; } }

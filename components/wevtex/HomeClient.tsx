@@ -15,6 +15,7 @@ import { SiteFooter } from "./SiteFooter";
 import { ScrollRevealText } from "./ScrollRevealText";
 import { HeroReviews } from "./HeroReviews";
 import { InkBackdrop } from "./primitives";
+import { CITIES } from "@/lib/cities-data";
 import { StickyCta } from "./StickyCta";
 import { FAQS, SERVICES } from "./homeContent";
 import { PROJECTS_ORDERED } from "@/lib/projects-data";
@@ -485,6 +486,24 @@ export function HomeClient() {
               Nous créons des sites et des applications qui fonctionnent vraiment —<br />
               pour plus de contacts, plus de ventes et plus de temps pour vous.
             </p>
+
+            {/* The cities we serve, as their own tiles. This is also the only
+                homepage link into the city landing pages, which are the site's
+                strongest local-search entry points. */}
+            <ul className="pb-cities">
+              {CITIES.map((c) => (
+                <li key={c.slug}>
+                  <a href={`/${c.slug}`} aria-label={`Agence web à ${c.name}`}>
+                    <span
+                      className="pb-city-img"
+                      aria-hidden
+                      style={{ backgroundImage: `url(/images/villes/${c.slug}.webp)` }}
+                    />
+                    <span className="pb-city-name">{c.name}</span>
+                  </a>
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
       </section>
