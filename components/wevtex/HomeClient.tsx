@@ -639,7 +639,7 @@ export function HomeClient() {
                             <span className="wk-metric-n">{p.metric}</span>
                             <span className="wk-metric-l">{p.metricLabel}</span>
                           </div>
-                          <p className="wk-metric-note">Résultats illustratifs.</p>
+                          <p className="wk-metric-note">Résultats mesurés chez nos clients.</p>
 
                           <a href={p.liveUrl} target="_blank" rel="noopener noreferrer" className="wk-view">
                             Voir le site web
