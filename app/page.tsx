@@ -13,11 +13,13 @@ export const metadata: Metadata = {
      description and keywords are too. They were English, which meant the
      snippet Google showed did not match the page a visitor then landed on. */
   title: {
-    absolute: "Agence Web au Maroc — Sites & Applications | WEVTEX",
+    absolute: "Agence Marketing Web au Maroc | Sites & SEO | WEVTEX",
   },
   description:
-    "Agence web au Maroc : création de sites, boutiques en ligne, applications et SEO. Prix clair en DH, livré en 2 à 4 semaines. Devis gratuit.",
+    "Agence marketing web au Maroc : sites, boutiques en ligne, SEO et publicité Google & Meta. Prix clair en DH, livré en 2 à 4 semaines.",
   keywords: [
+    "agence marketing web",
+    "agence marketing web Maroc",
     "agence web Maroc",
     "création site web Maroc",
     "création site internet Casablanca",
@@ -33,7 +35,7 @@ export const metadata: Metadata = {
     canonical: "/",
   },
   openGraph: {
-    title: "Agence Web au Maroc — Sites & Applications | WEVTEX",
+    title: "Agence Marketing Web au Maroc | Sites & SEO | WEVTEX",
     description:
       "Création de sites, boutiques en ligne et applications qui transforment vos visiteurs en clients. Basés à Casablanca, au service du Maroc et de l'international.",
     url: "/",

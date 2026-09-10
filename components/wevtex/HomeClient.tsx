@@ -407,17 +407,17 @@ export function HomeClient() {
           <div className="hero-grid">
             <div className="hero-content">
               <span className="eyebrow line-eyebrow" style={{ marginBottom: 18 }}>
-                Agence web &amp; applications · Casablanca, Maroc
+                Agence marketing web · Casablanca, Maroc
               </span>
               <ScrollRevealText
                 as="h1"
                 mode="load"
-                em={["site."]}
+                em={["travaillent"]}
                 emClassName="hl-line"
-                text={"Un site qui travaille pour vous,\npas seulement un beau site."}
+                text={"Agence marketing web au Maroc :\ndes sites qui travaillent pour vous."}
               />
               <p className="hero-sub">
-                Wevtex est une agence web au Maroc, basée à Casablanca. Nous construisons
+                Wevtex est une agence marketing web au Maroc, basée à Casablanca. Nous construisons
                 des sites, des boutiques en ligne, des applications mobiles, des campagnes
                 Google et Meta et des outils sur mesure. Livrés en 2 à 4 semaines — pas en
                 quelques mois.
