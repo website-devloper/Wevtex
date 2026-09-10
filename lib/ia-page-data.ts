@@ -69,9 +69,9 @@ export const IA_STEPS = [
 
 export const IA_META = {
   path: "/agence-developpement-ia-maroc",
-  title: "Agence de Développement IA au Maroc — Agents & Automatisation | WEVTEX",
+  title: "Agence de Développement IA au Maroc | WEVTEX",
   description:
-    "Agence IA à Casablanca : agents WhatsApp, automatisation des tâches et assistants connectés à vos outils. Livrés en 1 à 4 semaines, en français, darija et anglais.",
+    "Agence IA à Casablanca : agents WhatsApp, automatisation des tâches et assistants connectés à vos outils. Livrés en 1 à 4 semaines.",
   keywords: [
     "agence développement ia maroc",
     "automatisation entreprise maroc",

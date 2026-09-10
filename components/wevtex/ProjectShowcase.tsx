@@ -1,4 +1,4 @@
-import { PROJECTS_ORDERED } from "@/lib/projects-data";
+import { PROJECTS_ORDERED, projectPath } from "@/lib/projects-data";
 
 /**
  * Every delivered project, laid out open.
@@ -39,7 +39,7 @@ export function ProjectShowcase() {
               <span>{p.year}</span>
             </div>
 
-            <h2 className="pj-title">{p.title}</h2>
+            <h2 className="pj-title"><a href={projectPath(p.slug)}>{p.title}</a></h2>
             <p className="pj-desc">{p.description}</p>
 
             <ul className="pj-stack">

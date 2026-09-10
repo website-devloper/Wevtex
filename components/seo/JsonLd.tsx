@@ -118,3 +118,59 @@ export function localBusinessSchema(o: {
     inLanguage: "fr",
   };
 }
+
+/** A blog post. Dates are the visible ones; the author is the studio. */
+export function articleSchema(o: {
+  headline: string;
+  description: string;
+  path: string;
+  datePublished: string;
+  dateModified?: string;
+  keywords?: string[];
+  image?: string;
+}) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "@id": `${abs(o.path)}#article`,
+    headline: o.headline,
+    description: o.description,
+    url: abs(o.path),
+    mainEntityOfPage: abs(o.path),
+    datePublished: o.datePublished,
+    dateModified: o.dateModified ?? o.datePublished,
+    author: { "@id": ORG_ID },
+    publisher: { "@id": ORG_ID },
+    image: abs(o.image ?? "/images/og-image.jpg"),
+    inLanguage: "fr",
+    ...(o.keywords ? { keywords: o.keywords.join(", ") } : {}),
+  };
+}
+
+/** A delivered project: the live site, who built it, and what with. */
+export function creativeWorkSchema(o: {
+  name: string;
+  description: string;
+  path: string;
+  liveUrl: string;
+  image: string;
+  year: number;
+  keywords: string[];
+  genre: string;
+}) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "CreativeWork",
+    "@id": `${abs(o.path)}#work`,
+    name: o.name,
+    description: o.description,
+    url: abs(o.path),
+    sameAs: o.liveUrl,
+    image: abs(o.image),
+    dateCreated: String(o.year),
+    genre: o.genre,
+    keywords: o.keywords.join(", "),
+    creator: { "@id": ORG_ID },
+    inLanguage: "fr",
+  };
+}

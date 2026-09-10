@@ -6,10 +6,9 @@ import { JsonLd, breadcrumb, faqSchema } from "@/components/seo/JsonLd";
 export const metadata: Metadata = {
   title: { absolute: "Questions fréquentes | Création de site au Maroc | WEVTEX" },
   description:
-    "Prix, délais, propriété du site, hébergement, référencement et maintenance : les réponses claires aux questions qu'on nous pose avant de lancer un projet web au Maroc.",
+    "Prix, délais, propriété du site, hébergement, SEO et maintenance : des réponses claires avant de lancer votre projet web au Maroc.",
   keywords: [
-    "combien coûte un site web au maroc",
-    "prix création site web maroc",
+    "faq création site web maroc",
     "combien de temps pour créer un site web",
     "à qui appartient un site web",
     "agence web maroc questions",

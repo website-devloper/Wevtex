@@ -35,7 +35,7 @@ export const metadata: Metadata = {
     default: "Wevtex | Agence web & applications — Casablanca, Maroc",
     template: "%s | Agence Wevtex",
   },
-  description: "Wevtex est une agence web basée à Casablanca : sites vitrines, boutiques en ligne, applications, SEO et automatisation pour les entreprises au Maroc et à l'international.",
+  description: "Wevtex, agence web à Casablanca : sites vitrines, boutiques en ligne, applications, SEO et automatisation pour les entreprises au Maroc.",
   keywords: ["agence web Maroc", "création site web Casablanca", "agence digitale Maroc", "prix site web Maroc", "e-commerce Maroc", "développement application mobile", "référencement naturel SEO Maroc", "Google Maps référencement local", "chatbot WhatsApp", "Wevtex"],
   openGraph: {
     title: "Wevtex | Agence web & applications — Casablanca, Maroc",

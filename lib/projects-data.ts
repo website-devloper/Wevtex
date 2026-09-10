@@ -305,3 +305,8 @@ export const PROJECTS: Project[] = [
 export const PROJECTS_ORDERED = [...PROJECTS].sort((a, b) => a.order - b.order);
 
 export const PROJECT_SLUGS = PROJECTS.map((p) => p.slug);
+
+export const getProject = (slug: string) => PROJECTS.find((p) => p.slug === slug);
+
+/** Detail page for a delivered project. */
+export const projectPath = (slug: string) => `/realisations/${slug}`;

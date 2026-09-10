@@ -8,7 +8,7 @@ import { CONTACT_URL, HOME_URL, ABOUT_URL, SERVICES_URL, PORTFOLIO_URL, serviceP
    #process is rendered on /services, #pricing on the homepage. */
 const PAGES: [string, string][] = [
   ["Accueil", HOME_URL], ["À propos", ABOUT_URL], ["Services", SERVICES_URL], ["Réalisations", PORTFOLIO_URL],
-  ["Notre méthode", `${SERVICES_URL}#process`], ["Tarifs", `${HOME_URL}#pricing`], ["FAQ", "/faq"], ["Contact", CONTACT_URL],
+  ["Notre méthode", `${SERVICES_URL}#process`], ["Tarifs", `${HOME_URL}#pricing`], ["FAQ", "/faq"], ["Blog", "/blog"], ["Agence IA", "/agence-developpement-ia-maroc"], ["Contact", CONTACT_URL],
 ];
 /* Several labels share a page on purpose — one sector page covers both
    "Immobilier" and "Finance" under Services professionnels. */

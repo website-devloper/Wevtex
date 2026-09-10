@@ -17,9 +17,9 @@ export const POSTS_A: Post[] = [
   {
     slug: "combien-coute-un-site-web-au-maroc",
     title: "Combien coûte un site web au Maroc en 2026 ?",
-    metaTitle: "Combien Coûte un Site Web au Maroc en 2026 ? Prix Réels | WEVTEX",
+    metaTitle: "Combien Coûte un Site Web au Maroc en 2026 ? | WEVTEX",
     metaDescription:
-      "Un site vitrine au Maroc coûte de 990 à 15 000 DH, une boutique en ligne de 16 000 à 40 000 DH. Le détail des fourchettes et ce qui fait varier la facture.",
+      "Un site vitrine au Maroc coûte de 990 à 15 000 DH, une boutique en ligne de 16 000 à 40 000 DH. Ce qui fait varier le prix.",
     keyword: "combien coûte un site web au maroc",
     excerpt:
       "Les fourchettes réelles par type de site, ce qui fait monter la facture, et les coûts annuels que personne ne chiffre avant de signer.",
@@ -141,7 +141,7 @@ export const POSTS_A: Post[] = [
   {
     slug: "comment-choisir-une-agence-web-au-maroc",
     title: "Comment choisir une agence web au Maroc : le guide complet",
-    metaTitle: "Comment Choisir une Agence Web au Maroc — Guide 2026 | WEVTEX",
+    metaTitle: "Comment Choisir une Agence Web au Maroc | WEVTEX",
     metaDescription:
       "Les huit questions à poser avant de signer, les signaux d'alerte, et comment comparer deux devis qui ne contiennent pas les mêmes lignes. Guide pratique.",
     keyword: "comment choisir une agence web au maroc",
@@ -242,7 +242,7 @@ export const POSTS_A: Post[] = [
   {
     slug: "site-vitrine-ou-boutique-en-ligne",
     title: "Site vitrine ou boutique en ligne : lequel choisir pour votre activité ?",
-    metaTitle: "Site Vitrine ou Boutique en Ligne : Lequel Choisir ? | WEVTEX",
+    metaTitle: "Site Vitrine ou E-commerce : Lequel Choisir ? | WEVTEX",
     metaDescription:
       "Vitrine ou e-commerce : la règle simple pour trancher, les coûts et le travail réel de chaque option, et les cas où le vitrine vend mieux.",
     keyword: "site vitrine ou e-commerce",

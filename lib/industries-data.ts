@@ -26,7 +26,7 @@ export const INDUSTRIES: Industry[] = [
     keyword: "création site e-commerce Maroc",
     metaTitle: "Sites e-commerce & commerce de détail | Wevtex",
     metaDescription:
-      "Boutiques en ligne pour la mode, la beauté, la maison et l'alimentaire : paiement sécurisé, gestion des stocks et des commandes, pensés pour transformer les visiteurs en acheteurs.",
+      "Boutiques en ligne pour la mode, la beauté, la maison et l'alimentaire : paiement sécurisé, stocks et commandes gérés. Devis gratuit.",
     eyebrow: "E-commerce & commerce de détail",
     h1: "Des boutiques en ligne\nqui vendent vraiment.",
     h1Em: ["vendent", "vraiment."],
@@ -54,7 +54,7 @@ export const INDUSTRIES: Industry[] = [
     keyword: "site de réservation hôtel Maroc",
     metaTitle: "Sites pour le tourisme & l'hôtellerie | Wevtex",
     metaDescription:
-      "Sites de réservation directe pour hôtels, riads, resorts et agences de voyage : calendrier de disponibilités, paiement en ligne et visites virtuelles pour remplir vos chambres.",
+      "Sites de réservation directe pour hôtels, riads et agences de voyage : disponibilités, paiement en ligne et visites virtuelles.",
     eyebrow: "Tourisme & hôtellerie",
     h1: "Des réservations directes,\nmoins de commissions.",
     h1Em: ["moins", "de", "commissions."],
@@ -82,7 +82,7 @@ export const INDUSTRIES: Industry[] = [
     keyword: "site internet cabinet avocat comptable Maroc",
     metaTitle: "Sites pour les services professionnels | Wevtex",
     metaDescription:
-      "Sites qui inspirent confiance pour les cabinets d'avocats, experts-comptables, agences immobilières et consultants — conçus pour capter des contacts qualifiés et remplir votre agenda.",
+      "Des sites qui inspirent confiance aux avocats, experts-comptables, agences immobilières et consultants, conçus pour capter des contacts qualifiés.",
     eyebrow: "Services professionnels",
     h1: "La confiance d'abord,\nles contacts ensuite.",
     h1Em: ["les", "contacts", "ensuite."],
@@ -110,7 +110,7 @@ export const INDUSTRIES: Industry[] = [
     keyword: "site internet clinique salle de sport Maroc",
     metaTitle: "Sites pour la santé & le bien-être | Wevtex",
     metaDescription:
-      "Sites pour cliniques, salles de sport et thérapeutes : formulaires patients sécurisés, réservation de séances et annuaire des prestations pour attirer de nouveaux patients et adhérents.",
+      "Sites pour cliniques, salles de sport et thérapeutes : formulaires patients sécurisés et réservation de séances en ligne.",
     eyebrow: "Santé & bien-être",
     h1: "Des soins simples\nà réserver en ligne.",
     h1Em: ["simples", "à", "réserver"],
@@ -194,7 +194,7 @@ export const INDUSTRIES: Industry[] = [
     keyword: "site internet startup agence Maroc",
     metaTitle: "Sites pour la création, les médias & la tech | Wevtex",
     metaDescription:
-      "Pages d'atterrissage et sites animés haute performance pour startups SaaS, agences et créateurs — conçus pour convertir vos premiers utilisateurs et asseoir votre image.",
+      "Pages d'atterrissage et sites animés rapides pour startups SaaS, agences et créateurs, conçus pour convertir vos premiers utilisateurs.",
     eyebrow: "Création, médias & tech",
     h1: "Des sites qui sortent\ndu lot, comme vous.",
     h1Em: ["comme", "vous."],

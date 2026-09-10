@@ -64,7 +64,7 @@ export const SERVICES: Service[] = [
     keyword: "création site web Maroc",
     metaTitle: "Création de sites web au Maroc | Wevtex",
     metaDescription:
-      "Sites vitrines, boutiques en ligne et portails sur mesure en Next.js : rapides, sécurisés et prêts pour le référencement. Livraison en 2 à 4 semaines.",
+      "Sites vitrines, boutiques en ligne et portails sur mesure en Next.js : rapides, sécurisés, prêts pour le SEO. Livrés en 2 à 4 semaines.",
     eyebrow: "Création de sites web",
     h1: "Des sites qui chargent vite\net transforment vos visiteurs.",
     h1Em: ["transforment", "vos", "visiteurs."],

@@ -72,7 +72,7 @@ export const CITIES: City[] = [
     inCity: "à Rabat",
     title: "Agence Web à Rabat — Création de Sites | WEVTEX",
     metaDescription:
-      "Agence web pour Rabat : création de sites, applications et référencement. Studio basé à Casablanca, à une heure de Rabat. Devis gratuit et délai ferme.",
+      "Agence web pour Rabat : sites, applications et référencement. Studio basé à Casablanca, à une heure de Rabat. Devis gratuit, délai ferme.",
     h1: "Agence web à",
     h1Em: "Rabat.",
     intro:

@@ -14,7 +14,7 @@ export const POSTS_B: Post[] = [
     title: "SEO au Maroc : par où commencer pour être trouvé sur Google",
     metaTitle: "SEO au Maroc : Par Où Commencer pour Être Trouvé | WEVTEX",
     metaDescription:
-      "Les six premières actions de référencement pour une entreprise marocaine, dans l'ordre : fiche Google, mots-clés réels, pages par service et par ville.",
+      "Les six premières actions SEO pour une entreprise marocaine, dans l'ordre : fiche Google, vrais mots-clés, pages par service et par ville.",
     keyword: "référencement naturel maroc débutant",
     excerpt:
       "Les six premières actions, dans l'ordre, et les délais réalistes avant de voir arriver les premières demandes.",
@@ -237,7 +237,7 @@ export const POSTS_B: Post[] = [
     title: "Next.js ou WordPress : quel choix pour un site rapide et durable ?",
     metaTitle: "Next.js ou WordPress : Quel Choix pour Votre Site ? | WEVTEX",
     metaDescription:
-      "Les différences réelles entre Next.js et WordPress : vitesse, coût, sécurité, autonomie éditoriale. Le tableau de décision et les cas où chacun gagne.",
+      "Next.js ou WordPress : vitesse, coût, sécurité et autonomie éditoriale comparés. Le tableau de décision et les cas où chacun gagne.",
     keyword: "next.js ou wordpress",
     excerpt:
       "Vitesse, sécurité, coût d'entretien et autonomie : ce qui sépare vraiment les deux, et le cas où WordPress reste le bon choix.",
