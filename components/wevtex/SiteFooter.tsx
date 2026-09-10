@@ -50,7 +50,7 @@ export function SiteFooter() {
               <Image className="footer-mark" src="/images/logo/wevtex-mark-ink.png" alt="" width={1192} height={791} sizes="34px" />
               <span className="footer-word">WEVT<span>EX</span></span>
             </a>
-            <p className="footer-about">Agence marketing web basée à Casablanca : sites, boutiques en ligne, SEO, publicité et automatisation pour les entreprises marocaines.</p>
+            <p className="footer-about">Agence marketing digital basée à Casablanca : sites, boutiques en ligne, SEO, publicité et automatisation pour les entreprises marocaines.</p>
           </div>
 
           <FooterCol title="Navigation" items={PAGES} split />

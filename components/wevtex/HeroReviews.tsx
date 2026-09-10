@@ -43,7 +43,7 @@ export function HeroReviews() {
         href={GOOGLE_REVIEWS_URL}
         target="_blank"
         rel="noopener nofollow"
-        aria-label="Read our Google reviews"
+        aria-label="Lire nos avis Google"
       >
         <span className="rv-brand">
           <GoogleMark />
@@ -53,7 +53,7 @@ export function HeroReviews() {
           <Stars tone="gold" />
           <strong>5.0</strong>
         </span>
-        <span className="rv-count">94 Google reviews</span>
+        <span className="rv-count">2 avis Google</span>
       </a>
 
     </div>

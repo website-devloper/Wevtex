@@ -40,7 +40,7 @@ export const CITIES: City[] = [
     slug: "agence-web-casablanca",
     name: "Casablanca",
     inCity: "à Casablanca",
-    title: "Agence Web à Casablanca — Création de Sites | WEVTEX",
+    title: "Agence Web & Marketing Digital à Casablanca | WEVTEX",
     metaDescription:
       "Agence web à Casablanca : création de sites vitrines, boutiques en ligne, applications et SEO. Studio basé à Casablanca, devis gratuit et délai ferme.",
     h1: "Agence web à",
@@ -70,7 +70,7 @@ export const CITIES: City[] = [
     slug: "agence-web-rabat",
     name: "Rabat",
     inCity: "à Rabat",
-    title: "Agence Web à Rabat — Création de Sites | WEVTEX",
+    title: "Agence Web & Marketing Digital à Rabat | WEVTEX",
     metaDescription:
       "Agence web pour Rabat : sites, applications et référencement. Studio basé à Casablanca, à une heure de Rabat. Devis gratuit, délai ferme.",
     h1: "Agence web à",
@@ -99,7 +99,7 @@ export const CITIES: City[] = [
     slug: "agence-web-marrakech",
     name: "Marrakech",
     inCity: "à Marrakech",
-    title: "Agence Web à Marrakech — Création de Sites | WEVTEX",
+    title: "Agence Web & Marketing Digital à Marrakech | WEVTEX",
     metaDescription:
       "Agence web pour Marrakech : sites de riads, hôtels, restaurants et boutiques, avec réservation en direct et SEO local. Devis gratuit, délai ferme.",
     h1: "Agence web à",
@@ -128,7 +128,7 @@ export const CITIES: City[] = [
     slug: "agence-web-fes",
     name: "Fès",
     inCity: "à Fès",
-    title: "Agence Web à Fès — Création de Sites | WEVTEX",
+    title: "Agence Web & Marketing Digital à Fès | WEVTEX",
     metaDescription:
       "Agence web pour Fès : sites d'artisans, de riads et de commerces, e-commerce et référencement local. Studio basé à Casablanca. Devis gratuit.",
     h1: "Agence web à",
@@ -157,7 +157,7 @@ export const CITIES: City[] = [
     slug: "agence-web-tanger",
     name: "Tanger",
     inCity: "à Tanger",
-    title: "Agence Web à Tanger — Création de Sites | WEVTEX",
+    title: "Agence Web & Marketing Digital à Tanger | WEVTEX",
     metaDescription:
       "Agence web pour Tanger : sites industriels et logistiques, e-commerce et applications. Studio basé à Casablanca. Devis gratuit et délai ferme.",
     h1: "Agence web à",
@@ -186,7 +186,7 @@ export const CITIES: City[] = [
     slug: "agence-web-agadir",
     name: "Agadir",
     inCity: "à Agadir",
-    title: "Agence Web à Agadir — Création de Sites | WEVTEX",
+    title: "Agence Web & Marketing Digital à Agadir | WEVTEX",
     metaDescription:
       "Agence web pour Agadir : sites d'hôtels, de coopératives et de commerces, e-commerce et SEO local. Studio basé à Casablanca. Devis gratuit.",
     h1: "Agence web à",
