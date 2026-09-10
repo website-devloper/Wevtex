@@ -65,7 +65,7 @@ export function AnalyticsConsent({ gaId }: { gaId?: string }) {
               Nous aimerions mesurer l&apos;audience du site pour savoir quelles pages
               vous sont utiles. Rien n&apos;est chargé tant que vous n&apos;avez pas
               accepté, et nous ne faisons aucune publicité ciblée.{" "}
-              <a href="/confidentialite">En savoir plus</a>
+              <a href="/confidentialite">Lire notre politique de confidentialité</a>
             </p>
             <div className="cc-actions">
               <button type="button" className="cc-btn cc-refuse" onClick={() => decide("denied")}>
