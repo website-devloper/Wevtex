@@ -52,7 +52,7 @@ export const SERVICES: Service[] = [
     cta: "Lancer mon site",
     name: "Création de sites web",
     short: "Sites vitrines et boutiques en ligne",
-    desc: "Des sites vitrines et boutiques rapides, soignés et faciles à faire vivre vous-même.",
+    desc: "Un site que vous modifiez vous-même, pas un site qui vous rend dépendant d'une agence.",
     price: "990",
     note: "Livré en 7 à 14 jours",
     featured: true,
