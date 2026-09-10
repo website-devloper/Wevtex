@@ -36,7 +36,7 @@ export function BlogIndexView() {
             <div className="reveal">
               <span className="eyebrow line-eyebrow">Le blog</span>
               <h1 className="h-section" style={{ marginTop: 14 }}>
-                Prix, délais, méthodes :<br />
+                Prix, délais, méthodes&nbsp;:<br />
                 les réponses <em className="hl-line">sans détour.</em>
               </h1>
               <p className="ic-sub wk-lede">

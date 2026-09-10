@@ -486,8 +486,8 @@ export function HomeClient() {
               ne rapportent <em className="hl-em hl-underline">aucun</em> client.
             </h2>
             <p className="problem-sub">
-              Ils sont jolis, mais lents, confus et impossibles à mettre à jour.<br />
-              Nous créons des sites et des applications qui fonctionnent vraiment —<br />
+              Ils sont jolis, mais lents, confus et impossibles à mettre à jour.{" "}<br />
+              Nous créons des sites et des applications qui fonctionnent vraiment —{" "}<br />
               pour plus de contacts, plus de ventes et plus de temps pour vous.
             </p>
 

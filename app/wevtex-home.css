@@ -8975,6 +8975,8 @@ html.menu-open .cc-bar { visibility: hidden; }
 @media (max-width: 560px) {
   .wevtex .process-step { grid-template-columns: 48px 1fr; column-gap: 16px; row-gap: 8px; }
   .wevtex .process-step .duration { grid-column: 2; }
+  /* the rail sits in the new gutter: 48px column plus half the 16px gap */
+  .wevtex .process-progress { left: 56px; }
 }
 
 /* footer links on phones: a 36px hit area, same row pitch */
