@@ -1,5 +1,6 @@
 import { MetadataRoute } from 'next';
 import { SITE_URL } from '@/lib/seo';
+import { servicePath } from '@/lib/site-links';
 import { SERVICE_SLUGS } from '@/lib/services-data';
 import { INDUSTRY_SLUGS } from '@/lib/industries-data';
 import { CITY_SLUGS } from '@/lib/cities-data';
@@ -24,7 +25,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   ];
 
   const servicePages: MetadataRoute.Sitemap = SERVICE_SLUGS.map((slug) => ({
-    url: `${baseUrl}/services/${slug}`,
+    url: `${baseUrl}${servicePath(slug)}`,
     lastModified: now,
     changeFrequency: 'monthly',
     priority: 0.8,

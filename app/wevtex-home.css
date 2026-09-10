@@ -74,8 +74,6 @@
   --radius-sm: 6px;
   --radius-md: 12px;
   --radius-lg: 20px;
-  /* every button corner comes from here — one value to retune the whole site */
-  --radius-btn: 15px;
 
   --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
   --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
@@ -8762,7 +8760,6 @@
 
   .wevtex .mnav-inner {
     min-height: 100%;
-    max-width: 720px; margin: 0 auto;
     padding: 8px var(--gutter) calc(28px + env(safe-area-inset-bottom));
     display: flex; flex-direction: column;
   }
@@ -8848,4 +8845,148 @@
 
 @media (prefers-reduced-motion: reduce) {
   .wevtex .mnav, .wevtex .mnav-panel, .wevtex .nav-burger-bars i, .wevtex .mnav-row svg { transition: none; }
+}
+
+/* ======================================================================
+   MOBILE AND TABLET POLISH
+   Scoped to 1100px and below, or to touch input, so the desktop layout
+   stays as it was. The two exceptions are plain bug fixes, marked below.
+   ====================================================================== */
+
+/* one value for every button corner, reachable outside .wevtex as well */
+:root { --radius-btn: 15px; }
+
+/* bug fix, all widths: the diamond is gone from .pr-divider, but its flex gap
+   still split the hairline into two segments */
+.wevtex .pr-divider { gap: 0; }
+
+/* the consent bar sits outside .wevtex, so it fell back to the browser serif */
+.cc-bar { font-family: var(--font-display), "Onest", -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif; }
+.cc-btn { border-radius: var(--radius-btn); }
+/* an open drawer owns the screen; the consent bar waits until it closes */
+html.menu-open .cc-bar { visibility: hidden; }
+
+/* narrow screens: no one-word last lines under headings or in copy */
+@media (max-width: 1100px) {
+  .wevtex :is(h1, h2, h3, h4, .faq-q) { text-wrap: balance; }
+  .wevtex p { text-wrap: pretty; }
+}
+
+/* stats: the ink variant hairlines outranked the stacked-layout reset */
+@media (max-width: 860px) {
+  .wevtex .stats-band-v2 .sb-item:nth-child(2n) { border-right: 0; }
+}
+@media (max-width: 480px) {
+  .wevtex .stats-band-v2 .sb-item { border-right: 0; }
+}
+
+/* pricing in one column has no row to line up with, so the equal-height
+   header and note blocks only left holes */
+@media (max-width: 620px) {
+  .wevtex .pr-grid-8 .pr-top,
+  .wevtex .pr-grid-8 .pr-note { min-height: 0; }
+  .wevtex .pr-grid-8 .pr-note { font-size: 12.5px; }
+}
+
+/* hero: the two CTAs stack as one full-width block, not two ragged pills */
+@media (max-width: 560px) {
+  .wevtex .hero-ctas .btn { flex: 1 1 100%; justify-content: center; }
+}
+
+/* centred eyebrows: shorter side rules keep the label on one line */
+@media (max-width: 480px) {
+  .wevtex .line-eyebrow-center { gap: 10px; }
+  .wevtex .line-eyebrow-center::before,
+  .wevtex .line-eyebrow-center::after { width: 18px; }
+}
+
+/* section rhythm on phones: the vh-based paddings came out at 90 to 150px,
+   a blank third of the screen between every band. The first section keeps
+   its own top padding, which clears the fixed header. */
+@media (max-width: 620px) {
+  .wevtex main > section:not(:first-child):not(.cities-band):not(.inline-cta) {
+    padding-top: 72px; padding-bottom: 72px;
+  }
+}
+
+/* footer. Bug fix, all widths: the flex gap landed between WEVT and EX.
+   Phones: short link lists run in two columns, every link gets a taller hit
+   area, and the row pitch stays where it was. */
+.footer-v2 .footer-wordmark .footer-word { color: inherit; margin-left: 0; }
+@media (max-width: 520px) {
+  .footer-v2 .footer-col-v2 ul { gap: 2px; }
+  .footer-v2 .footer-col-v2.split ul { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 20px; }
+  .footer-v2 .footer-col-v2 a { display: inline-block; padding: 6px 0; }
+}
+
+/* touch: small inline links get a finger-sized hit area */
+@media (pointer: coarse) {
+  .wevtex .wk-view,
+  .wevtex .pj-visit,
+  .wevtex .ht-link,
+  .wevtex .site-header .brand { min-height: 44px; }
+}
+
+/* ---- Bug fixes, all widths ------------------------------------------- */
+
+/* service hero: the breadcrumb had no rule outside .page-hero and sat on the h1 */
+.wevtex .srv-d-hero .crumb { margin-bottom: 18px; }
+
+/* blog tables: --bg-0 turns cream in light mode, so the white header text
+   vanished into a white row */
+.wevtex .post-table thead th { background: #101112; }
+
+/* blog FAQ: it never got the .faq-split reset, so the plus drew its bars over
+   the base 26px circle and offset them twice. Same glyph as the home FAQ. */
+.wevtex .post-faq .faq-plus {
+  position: relative; width: 14px; height: 14px; flex: none; margin-left: auto;
+  border: 0; border-radius: 0; background: none; transform: none;
+  font-size: 0; line-height: 0;
+}
+.wevtex .post-faq .faq-plus::before,
+.wevtex .post-faq .faq-plus::after {
+  content: ""; position: absolute; left: 50%; top: 50%; margin: 0;
+  background: var(--ink-on-cream-2); border-radius: 1px;
+  transform: translate(-50%, -50%);
+  transition: background 160ms var(--ease-out), transform 200ms var(--ease-out);
+}
+.wevtex .post-faq .faq-plus::before { width: 14px; height: 1.8px; }
+.wevtex .post-faq .faq-plus::after  { width: 1.8px; height: 14px; }
+.wevtex .post-faq .faq-item-v2[open] .faq-plus { background: none; border: 0; transform: none; }
+.wevtex .post-faq .faq-item-v2[open] .faq-plus::before { background: var(--accent-deep); }
+.wevtex .post-faq .faq-item-v2[open] .faq-plus::after { background: var(--accent-deep); transform: translate(-50%, -50%) scaleY(0); }
+
+/* ---- Phones ------------------------------------------------------------ */
+@media (max-width: 620px) {
+  /* the opening section ends at the same rhythm as the rest */
+  .wevtex main > section:first-child:not(.sec-first) { padding-bottom: 64px; }
+
+  /* hand-set line breaks in the problem band read as ragged on a phone */
+  .wevtex .problem-band .problem-sub br { display: none; }
+
+  /* price tables: figures stay whole; the frame scrolls sideways instead */
+  .wevtex .post-table { font-size: 14px; }
+  .wevtex .post-table th, .wevtex .post-table td { padding: 10px 12px; }
+  .wevtex .post-table tbody td { white-space: nowrap; }
+}
+
+/* process timeline: the duration column squeezed the copy to 150px, so it
+   drops under the step text and the copy gets the full width */
+@media (max-width: 560px) {
+  .wevtex .process-step { grid-template-columns: 48px 1fr; column-gap: 16px; row-gap: 8px; }
+  .wevtex .process-step .duration { grid-column: 2; }
+}
+
+/* footer links on phones: a 36px hit area, same row pitch */
+@media (max-width: 520px) {
+  .footer-v2 .footer-col-v2 ul { gap: 0; }
+  .footer-v2 .footer-col-v2 a { padding: 8px 0; }
+}
+
+/* touch: the 26px social circles and the review badge get a finger-sized
+   hit area without changing what is drawn */
+@media (pointer: coarse) {
+  .wevtex .ht-social { position: relative; }
+  .wevtex .ht-social::after { content: ""; position: absolute; inset: -9px; }
+  .wevtex a.review-badge { min-height: 44px; }
 }

@@ -27,7 +27,7 @@ export const FAQS = [
 export type Service = {
   /**
    * Also the URL: the card, the mega-menu entry and the footer link all point
-   * at /services/<slug>, and lib/services-data.ts must carry an entry with the
+   * at servicePath(<slug>), and lib/services-data.ts must carry an entry with the
    * same slug — that pairing is asserted there, so a rename breaks the build
    * rather than shipping a 404.
    */

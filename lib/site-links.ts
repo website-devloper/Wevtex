@@ -38,8 +38,25 @@ export const ABOUT_URL = "/about";
 export const SERVICES_URL = "/services";
 export const PORTFOLIO_URL = "/portfolio";
 
+/**
+ * Public URL of each service, keyed by its internal id.
+ *
+ * The id (`website-creation`) stays the key everywhere in code: icons, sector
+ * pages and blog posts reference it. Only the URL is the French exact-match
+ * keyword, at the root: /creation-site-web-maroc. The same JSON drives the 301s
+ * from the old /services/<id> addresses in next.config.mjs, so a URL can't
+ * change here without its redirect following.
+ */
+import SERVICE_URL_SLUGS from "./service-urls.json";
+
+export const SERVICE_URLS: Record<string, string> = SERVICE_URL_SLUGS;
+
 /** The detail page for a service — see SERVICE_SLUGS in lib/services-data.ts. */
-export const servicePath = (slug: string) => `/services/${slug}`;
+export const servicePath = (slug: string) => `/${SERVICE_URLS[slug] ?? slug}`;
+
+/** The internal service id behind a public URL slug, if there is one. */
+export const serviceIdFromUrl = (urlSlug: string) =>
+  Object.keys(SERVICE_URLS).find((id) => SERVICE_URLS[id] === urlSlug);
 /** The detail page for a sector — see INDUSTRY_SLUGS in lib/industries-data.ts. */
 export const industryPath = (slug: string) => `/industries/${slug}`;
 

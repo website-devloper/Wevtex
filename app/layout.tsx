@@ -3,6 +3,7 @@ import { Onest, Space_Mono } from "next/font/google";
 import { AnalyticsConsent } from "../components/wevtex/AnalyticsConsent";
 import { SmoothScroll } from "../components/wevtex/SmoothScroll";
 import { SITE_URL, abs } from "@/lib/seo";
+import { servicePath } from "@/lib/site-links";
 import { SERVICES } from "../components/wevtex/homeContent";
 
 const GA_ID = process.env.NEXT_PUBLIC_GA_ID;
@@ -153,7 +154,7 @@ export default function RootLayout({
           "@type": "Service",
           name: sv.name,
           description: sv.desc,
-          url: abs(`/services/${sv.slug}`),
+          url: abs(servicePath(sv.slug)),
           provider: { "@id": `${SITE_URL}#organization` },
           areaServed: { "@type": "Country", name: "Maroc" },
         },

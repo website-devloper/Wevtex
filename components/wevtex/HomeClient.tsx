@@ -406,7 +406,7 @@ export function HomeClient() {
         <div className="container">
           <div className="hero-grid">
             <div className="hero-content">
-              <span className="eyebrow line-eyebrow" style={{ marginBottom: 18, display: "inline-block" }}>
+              <span className="eyebrow line-eyebrow" style={{ marginBottom: 18 }}>
                 Agence web &amp; applications · Casablanca, Maroc
               </span>
               <ScrollRevealText

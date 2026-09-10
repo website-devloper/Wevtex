@@ -1,3 +1,11 @@
+import { readFileSync } from "node:fs";
+
+/* Service id -> public URL slug. Shared with lib/site-links.ts, so every old
+   /services/<id> address 301s to the page that replaced it. */
+const SERVICE_URLS = JSON.parse(
+  readFileSync(new URL("./lib/service-urls.json", import.meta.url), "utf8"),
+);
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
@@ -34,6 +42,14 @@ const nextConfig = {
   experimental: {
     // Tree-shake barrel imports so only the used icons/motion primitives ship.
     optimizePackageImports: ["swiper", "react-awesome-reveal"],
+  },
+
+  async redirects() {
+    return Object.entries(SERVICE_URLS).map(([id, url]) => ({
+      source: `/services/${id}`,
+      destination: `/${url}`,
+      statusCode: 301,
+    }));
   },
 
   async headers() {

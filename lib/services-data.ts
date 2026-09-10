@@ -1,7 +1,8 @@
 /**
  * Service detail content. Plain data (no JSX) so it can be imported by both the
  * server route (metadata + JSON-LD + generateStaticParams) and the client view.
- * One entry per service = one SEO-targeted page (/services/[slug]).
+ * One entry per service = one SEO-targeted page, served at its French URL
+ * (/creation-site-web-maroc…) by app/[slug] — see SERVICE_URLS in site-links.
  *
  * The slugs here MUST match `SERVICES` in components/wevtex/homeContent.ts —
  * that list drives the home bento, the header mega menu, the footer column and
@@ -953,7 +954,7 @@ export const SERVICE_SLUGS = SERVICES.map((s) => s.slug);
 /**
  * The slugs here and in homeContent.ts are the same set, by contract: the home
  * bento, the header mega menu, the footer column and /services all build their
- * links as `/services/<slug>` from that list, and this file supplies the page
+ * links through servicePath(<slug>) from that list, and this file supplies the page
  * each one lands on. Checked at module load so a rename or a new service fails
  * the build rather than shipping a link to a 404.
  */

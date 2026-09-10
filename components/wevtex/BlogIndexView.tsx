@@ -6,6 +6,7 @@ import { SiteFooter } from "./SiteFooter";
 import { useReveal } from "./useReveal";
 import { POSTS_ORDERED, postPath, formatPostDate } from "@/lib/blog-data";
 import { WHATSAPP_URL, CONTACT_URL } from "@/lib/site-links";
+import { frenchSpacing } from "@/lib/typo";
 
 /**
  * /blog — the index.
@@ -58,7 +59,7 @@ export function BlogIndexView() {
                     <time dateTime={lead.publishedAt}>{formatPostDate(lead.publishedAt)}</time>
                     <span>{lead.readingMinutes} min de lecture</span>
                   </span>
-                  <h2>{lead.title}</h2>
+                  <h2>{frenchSpacing(lead.title)}</h2>
                   <p>{lead.answer}</p>
                   <span className="blog-more">
                     Lire l&apos;article
@@ -76,7 +77,7 @@ export function BlogIndexView() {
                       <span className="blog-cat">{p.category}</span>
                       <span>{p.readingMinutes} min</span>
                     </span>
-                    <h2>{p.title}</h2>
+                    <h2>{frenchSpacing(p.title)}</h2>
                     <p>{p.excerpt}</p>
                     <span className="blog-card-foot">
                       <time dateTime={p.publishedAt}>{formatPostDate(p.publishedAt)}</time>

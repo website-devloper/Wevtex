@@ -27,9 +27,9 @@ const SOCIAL_ICONS: { label: string; icon: React.ReactNode }[] = [
   { label: "GitHub", icon: <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5a11.5 11.5 0 0 0-3.64 22.42c.57.1.78-.25.78-.55v-2c-3.2.7-3.88-1.37-3.88-1.37-.52-1.33-1.28-1.69-1.28-1.69-1.05-.71.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.56-.29-5.25-1.28-5.25-5.7 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.04 0 0 .97-.31 3.18 1.18a11 11 0 0 1 5.8 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.58.23 2.75.11 3.04.74.81 1.19 1.83 1.19 3.09 0 4.43-2.69 5.41-5.26 5.69.41.36.78 1.05.78 2.12v3.14c0 .31.21.66.79.55A11.5 11.5 0 0 0 12 .5z" /></svg> },
 ];
 
-function FooterCol({ title, items }: { title: string; items: [string, string][] }) {
+function FooterCol({ title, items, split }: { title: string; items: [string, string][]; split?: boolean }) {
   return (
-    <div className="footer-col-v2">
+    <div className={split ? "footer-col-v2 split" : "footer-col-v2"}>
       <h5>{title}</h5>
       <ul>
         {items.map(([label, href]) => (
@@ -48,15 +48,15 @@ export function SiteFooter() {
           <div className="footer-brandcol">
             <a href={HOME_URL} className="footer-wordmark" aria-label="Wevtex — accueil">
               <Image className="footer-mark" src="/images/logo/wevtex-mark-ink.png" alt="" width={1192} height={791} sizes="34px" />
-              WEVT<span>EX</span>
+              <span className="footer-word">WEVT<span>EX</span></span>
             </a>
             <p className="footer-about">Studio web, mobile et IT basé à Casablanca — sites, boutiques en ligne, applications et automatisation pour les entreprises marocaines.</p>
           </div>
 
-          <FooterCol title="Navigation" items={PAGES} />
+          <FooterCol title="Navigation" items={PAGES} split />
           <FooterCol title="Services" items={SERVICES.map((sv) => [sv.name, servicePath(sv.slug)] as [string, string])} />
-          <FooterCol title="Secteurs" items={SECTEURS} />
-          <FooterCol title="Villes" items={CITIES.map((c) => [c.name, `/${c.slug}`] as [string, string])} />
+          <FooterCol title="Secteurs" items={SECTEURS} split />
+          <FooterCol title="Villes" items={CITIES.map((c) => [c.name, `/${c.slug}`] as [string, string])} split />
         </div>
 
         <div className="footer-bottom-v2">

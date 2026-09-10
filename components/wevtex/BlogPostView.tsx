@@ -8,6 +8,7 @@ import type { Post, PostBlock } from "@/lib/blog-data";
 import { getPost, postPath, formatPostDate } from "@/lib/blog-data";
 import { SERVICES } from "./homeContent";
 import { WHATSAPP_URL, CONTACT_URL, servicePath } from "@/lib/site-links";
+import { frenchSpacing } from "@/lib/typo";
 
 /**
  * /blog/[slug] — one post.
@@ -90,7 +91,7 @@ export function BlogPostView({ post }: { post: Post }) {
                 <time dateTime={post.publishedAt}>{formatPostDate(post.publishedAt)}</time>
                 <span>{post.readingMinutes} min de lecture</span>
               </span>
-              <h1 className="h-section" style={{ marginTop: 16 }}>{post.title}</h1>
+              <h1 className="h-section" style={{ marginTop: 16 }}>{frenchSpacing(post.title)}</h1>
               {/* The answer-first paragraph: a self-contained reply, before any
                   build-up, so it survives being quoted on its own. */}
               <p className="post-answer">{post.answer}</p>
@@ -181,7 +182,7 @@ export function BlogPostView({ post }: { post: Post }) {
                         <span className="blog-cat">{p.category}</span>
                         <span>{p.readingMinutes} min</span>
                       </span>
-                      <h3>{p.title}</h3>
+                      <h3>{frenchSpacing(p.title)}</h3>
                       <p>{p.excerpt}</p>
                       <span className="blog-card-foot">
                         <time dateTime={p.publishedAt}>{formatPostDate(p.publishedAt)}</time>
