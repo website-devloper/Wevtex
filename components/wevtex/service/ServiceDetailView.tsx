@@ -19,9 +19,22 @@ import { StickyCta } from "../StickyCta";
 import { useReveal } from "../useReveal";
 import { SERVICE_ICONS, CtaBand } from "../SharedSections";
 import { SERVICES as MARKETED } from "../homeContent";
-import { WHATSAPP_URL } from "@/lib/site-links";
+import { WHATSAPP_URL, servicePath } from "@/lib/site-links";
 import { ProcessSection } from "../ProcessSection";
 import type { Service } from "@/lib/services-data";
+
+/* Internal links (content brief, SEO rule 5): each service page points to two
+   neighbouring services and the Casablanca page, with the keyword as anchor. */
+const RELATED: Record<string, string[]> = {
+  "website-creation": ["seo", "local-seo"],
+  seo: ["local-seo", "website-creation"],
+  "local-seo": ["seo", "website-creation"],
+  ads: ["seo", "website-creation"],
+  "mobile-apps": ["custom-solutions", "desktop-apps"],
+  "desktop-apps": ["custom-solutions", "mobile-apps"],
+  "custom-solutions": ["desktop-apps", "whatsapp-bots"],
+  "whatsapp-bots": ["custom-solutions", "ads"],
+};
 
 const ARROW = (
   <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
@@ -311,6 +324,25 @@ export function ServiceDetailView({ service }: { service: Service }) {
           </div>
         </section>
       )}
+
+      {/* ===================== SERVICES LIÉS ===================== */}
+      <section className="theme-paper srv-d-sec">
+        <div className="container">
+          <span className="eyebrow line-eyebrow">Pour aller plus loin</span>
+          <h2 className="h-section" style={{ marginTop: 14 }}>
+            Souvent associé à <em className="hl-line">ce service</em>
+          </h2>
+          <div style={{ display: "flex", flexWrap: "wrap", gap: 10, marginTop: 28 }}>
+            {(RELATED[service.slug] ?? []).map((slug) => {
+              const s = MARKETED.find((m) => m.slug === slug);
+              return s ? (
+                <a key={slug} href={servicePath(slug)} className="btn btn-outline">{s.name}</a>
+              ) : null;
+            })}
+            <a href="/agence-web-casablanca" className="btn btn-outline">Agence web à Casablanca</a>
+          </div>
+        </div>
+      </section>
 
       {/* ===================== CTA ===================== */}
       <CtaBand
