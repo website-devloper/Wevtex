@@ -38,7 +38,7 @@ export default function PortfolioPage() {
             <p className="ic-sub wk-lede">
               {PROJECTS.length} projets réalisés pour des entreprises marocaines et
               internationales : sites vitrines, boutiques en ligne, plateformes et
-              applications. Chacun est en ligne — ouvrez-les et jugez par vous-même.
+              applications. Chacun est en ligne : ouvrez-les, ce sont de vrais sites, pas des maquettes.
             </p>
 
           </div>

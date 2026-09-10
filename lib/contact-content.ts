@@ -14,7 +14,7 @@ export type ContactFaq = { q: string; a: string };
 export const CONTACT_FAQS: ContactFaq[] = [
   {
     q: "Combien de temps faut-il pour créer un site ?",
-    a: "Cela dépend de la taille du projet : un site vitrine va plus vite qu'une boutique en ligne ou une application. Vous recevez une date de livraison ferme dans le devis, avant que le travail ne commence.",
+    a: "Un site vitrine est en ligne en 2 à 4 semaines, une boutique en ligne en 4 à 8. La date de livraison est écrite dans le devis, avant que le travail ne commence.",
   },
   {
     q: "Combien coûte un site web ?",
