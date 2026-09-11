@@ -93,7 +93,7 @@ export async function generateMetadata({
   return {
     title: { absolute: service.metaTitle },
     description: service.metaDescription,
-    keywords: [service.keyword],
+    keywords: [service.keyword, ...(service.seoKeywords ?? [])],
     alternates: { canonical: url },
     openGraph: {
       title: service.metaTitle,
@@ -137,7 +137,7 @@ export default async function KeywordPage({
           startingPrice: startingPrice(service),
         })}
       />
-      {/* ServiceFAQ renders these same answers on the page, verbatim. */}
+      {/* ServiceDetailView renders these same answers on the page, verbatim. */}
       {service.faqs.length > 0 && <JsonLd data={faqSchema(service.faqs)} />}
       <JsonLd
         data={breadcrumb([

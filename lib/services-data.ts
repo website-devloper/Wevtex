@@ -14,6 +14,8 @@
  */
 
 import { SERVICES as MARKETED } from "@/components/wevtex/homeContent";
+import { withSeo } from "./service-seo";
+import type { SeoSection } from "./service-seo";
 
 export type FeatureCard = { title: string; desc: string; checks: string[] };
 export type FeatureSection = { eyebrow: string; title: string; titleEm?: string[]; subtitle?: string; cards: FeatureCard[] };
@@ -52,6 +54,10 @@ export type Service = {
   sectors?: { title: string; titleEm?: string[]; subtitle?: string; groups: SectorGroup[] };
   pricing?: { title: string; titleEm?: string[]; subtitle?: string; tiers: PriceTier[]; footnote?: string };
   whyUs?: { title: string; titleEm?: string[]; subtitle?: string; points: WhyPoint[] };
+  /** Question-shaped search sections, merged in from lib/service-seo.ts. */
+  seoSections?: SeoSection[];
+  /** Secondary search terms, merged in from lib/service-seo.ts. */
+  seoKeywords?: string[];
 };
 
 const PRICE_FOOTNOTE =
@@ -63,12 +69,12 @@ export const SERVICES: Service[] = [
     slug: "website-creation",
     name: "Création de sites web",
     keyword: "création site web Maroc",
-    metaTitle: "Création de sites web au Maroc | Wevtex",
+    metaTitle: "Création de Site Web au Maroc | Agence Web | WEVTEX",
     metaDescription:
-      "Sites vitrines, boutiques en ligne et portails sur mesure en Next.js : rapides, sécurisés, prêts pour le SEO. Livrés en 2 à 4 semaines.",
+      "Création de site web au Maroc dès 990 DH : sites vitrines, boutiques en ligne et sites sur mesure, rapides et prêts pour Google. Livré en 2 à 4 semaines.",
     eyebrow: "Création de sites web",
-    h1: "Des sites qui chargent vite\net transforment vos visiteurs.",
-    h1Em: ["transforment", "vos", "visiteurs."],
+    h1: "Création de site web au Maroc,\nrapide et pensé pour vendre.",
+    h1Em: ["rapide", "et", "pensé", "pour", "vendre."],
     intro:
       "Nous concevons et développons des sites vitrines, des boutiques en ligne et des portails sur mesure. Modernes, ultra-rapides et pensés pour le référencement dès la première ligne de code — pas seulement jolis, mais construits pour vous apporter des clients.",
     includes: [
@@ -174,13 +180,13 @@ export const SERVICES: Service[] = [
   {
     slug: "seo",
     name: "Référencement naturel (SEO)",
-    keyword: "agence SEO Maroc référencement naturel",
-    metaTitle: "Référencement naturel (SEO) au Maroc | Wevtex",
+    keyword: "agence SEO Maroc",
+    metaTitle: "Agence SEO Maroc | Référencement Naturel Google | WEVTEX",
     metaDescription:
-      "Audit technique, stratégie de mots-clés et netlinking pour faire remonter votre site sur Google et attirer un trafic qui achète, mois après mois.",
+      "Agence SEO au Maroc : audit, mots-clés, contenus et netlinking pour remonter sur Google et attirer des clients. Référencement naturel dès 1 500 DH/mois.",
     eyebrow: "Référencement naturel",
-    h1: "Être trouvé par ceux\nqui cherchent déjà.",
-    h1Em: ["qui", "cherchent déjà."],
+    h1: "Agence SEO au Maroc,\nsoyez trouvé par qui vous cherche.",
+    h1Em: ["soyez", "trouvé"],
     intro:
       "Le référencement naturel est le seul canal qui continue de travailler quand vous arrêtez de payer. Nous corrigeons ce qui bloque techniquement, écrivons ce que vos clients cherchent vraiment, et construisons l'autorité qui vous fait passer devant.",
     includes: [
@@ -285,13 +291,13 @@ export const SERVICES: Service[] = [
   {
     slug: "local-seo",
     name: "Google Maps & SEO local",
-    keyword: "référencement Google Maps Maroc",
-    metaTitle: "Google Maps & référencement local | Wevtex",
+    keyword: "référencement local Google Maps Maroc",
+    metaTitle: "Référencement Local & Google Maps au Maroc | WEVTEX",
     metaDescription:
-      "Fiche Google Business optimisée, position renforcée sur Maps et avis clients : captez les recherches qui se font autour de vous.",
+      "Référencement local au Maroc : fiche Google Business optimisée, top 3 sur Google Maps et avis clients. Mise en place dès 790 DH, suivi à 490 DH/mois.",
     eyebrow: "Google Maps & SEO local",
-    h1: "Apparaître quand on\ncherche près de chez vous.",
-    h1Em: ["cherche", "près de chez vous."],
+    h1: "Référencement local Google Maps,\nsoyez la fiche qu'on appelle.",
+    h1Em: ["la", "fiche", "qu'on", "appelle."],
     intro:
       "Quatre recherches locales sur cinq débouchent sur une visite ou un appel. Nous optimisons votre fiche Google Business, renforçons votre position sur Maps et organisons vos avis, pour que ce soit vous qu'on trouve — pas le concurrent d'à côté.",
     includes: [
@@ -396,12 +402,12 @@ export const SERVICES: Service[] = [
   {
     slug: "ads",
     name: "Création & gestion de publicités",
-    keyword: "agence Google Ads Facebook Maroc",
-    metaTitle: "Google Ads & publicité Facebook au Maroc | Wevtex",
+    keyword: "agence Google Ads Maroc",
+    metaTitle: "Agence Google Ads & Facebook Ads au Maroc | WEVTEX",
     metaDescription:
-      "Campagnes Google, Facebook et Instagram conçues pour un retour mesurable : ciblage, création, page d'atterrissage et suivi des conversions.",
+      "Agence Google Ads et Meta Ads au Maroc : campagnes Google, Facebook et Instagram, page d'atterrissage et suivi des conversions. Dès 1 200 DH/mois.",
     eyebrow: "Publicité en ligne",
-    h1: "De la publicité qui\nse rembourse.",
+    h1: "Agence Google Ads et Meta au Maroc,\nde la publicité qui se rembourse.",
     h1Em: ["se", "rembourse."],
     intro:
       "La publicité en ligne donne des résultats dès le premier jour — à condition de viser juste. Nous construisons vos campagnes Google, Facebook et Instagram, la page qui reçoit le clic, et le suivi qui dit exactement combien chaque dirham a rapporté.",
@@ -509,12 +515,12 @@ export const SERVICES: Service[] = [
     slug: "mobile-apps",
     name: "Applications mobiles",
     keyword: "développement application mobile Maroc",
-    metaTitle: "Développement d'applications mobiles | Wevtex",
+    metaTitle: "Développement Application Mobile au Maroc | WEVTEX",
     metaDescription:
-      "Applications iOS et Android performantes développées avec Flutter : un seul code, deux plateformes, publication sur les stores prise en charge.",
+      "Développement d'application mobile au Maroc : iOS et Android avec Flutter, un seul code, publication sur les stores incluse. Dès 12 000 DH.",
     eyebrow: "Applications mobiles",
-    h1: "Une application,\ndeux plateformes.",
-    h1Em: ["deux", "plateformes."],
+    h1: "Développement d'application mobile\nau Maroc, iOS et Android.",
+    h1Em: ["iOS", "et", "Android."],
     intro:
       "Développer deux fois la même application coûte deux fois plus cher. Avec Flutter, nous écrivons un seul code qui tourne nativement sur iOS et Android, avec la même fluidité — et nous nous occupons de la publication sur les stores.",
     includes: [
@@ -619,12 +625,12 @@ export const SERVICES: Service[] = [
   {
     slug: "desktop-apps",
     name: "Logiciels bureau",
-    keyword: "développement logiciel sur mesure Maroc",
-    metaTitle: "Logiciels Windows et macOS sur mesure | Wevtex",
+    keyword: "logiciel sur mesure Maroc",
+    metaTitle: "Logiciel sur Mesure au Maroc | Développement | WEVTEX",
     metaDescription:
-      "Logiciels métier pour Windows et macOS : gestion, facturation, stock et reporting, adaptés à votre organisation et utilisables hors connexion.",
+      "Développement de logiciel sur mesure au Maroc : gestion, facturation, stock, Windows et macOS, utilisable hors connexion. Dès 14 000 DH, sans licence.",
     eyebrow: "Logiciels bureau",
-    h1: "Le logiciel qui suit\nvotre organisation.",
+    h1: "Logiciel sur mesure au Maroc,\nqui suit votre organisation.",
     h1Em: ["votre", "organisation."],
     intro:
       "Quand aucun logiciel du marché ne correspond à votre façon de travailler, la solution n'est pas de changer votre façon de travailler. Nous développons des applications Windows et macOS taillées pour vos processus, rapides, et qui fonctionnent même sans connexion.",
@@ -730,13 +736,13 @@ export const SERVICES: Service[] = [
   {
     slug: "custom-solutions",
     name: "Solutions digitales sur mesure",
-    keyword: "développement sur mesure SaaS Maroc",
-    metaTitle: "Solutions digitales sur mesure & SaaS | Wevtex",
+    keyword: "développement web sur mesure Maroc",
+    metaTitle: "Développement Web sur Mesure au Maroc | SaaS | WEVTEX",
     metaDescription:
-      "Outils métier, portails SaaS, extranets et architectures d'API conçus autour du fonctionnement réel de votre entreprise.",
+      "Développement web sur mesure au Maroc : applications web, plateformes SaaS, portails clients et API, conçus autour de votre métier. Cadrage dès 6 000 DH.",
     eyebrow: "Solutions sur mesure",
-    h1: "Quand rien d'existant\nne fait l'affaire.",
-    h1Em: ["ne", "fait l'affaire."],
+    h1: "Développement web sur mesure,\nquand rien d'existant ne suffit.",
+    h1Em: ["ne", "suffit."],
     intro:
       "Certaines entreprises fonctionnent avec des règles que personne n'a prévues. Nous concevons des plateformes SaaS, des extranets, des portails clients et des architectures d'API qui épousent exactement votre organisation — et qui tiennent la charge quand elle grandit.",
     includes: [
@@ -841,13 +847,13 @@ export const SERVICES: Service[] = [
   {
     slug: "whatsapp-bots",
     name: "Chatbots WhatsApp automatisés",
-    keyword: "chatbot WhatsApp entreprise Maroc",
-    metaTitle: "Chatbots WhatsApp automatisés | Wevtex",
+    keyword: "chatbot WhatsApp Maroc",
+    metaTitle: "Chatbot WhatsApp pour Entreprise au Maroc | WEVTEX",
     metaDescription:
-      "Des bots WhatsApp qui répondent instantanément, qualifient vos prospects et assurent le support 24h/24, reliés à vos outils.",
+      "Chatbot WhatsApp pour entreprise au Maroc : réponses 24h/24 en français et darija, qualification des prospects, prise de rendez-vous. Dès 2 400 DH.",
     eyebrow: "Chatbots WhatsApp",
-    h1: "Répondre en trois secondes,\nmême à minuit.",
-    h1Em: ["même", "à minuit."],
+    h1: "Chatbot WhatsApp au Maroc,\nune réponse même à minuit.",
+    h1Em: ["même", "à", "minuit."],
     intro:
       "Au Maroc, vos clients écrivent sur WhatsApp — et attendent une réponse immédiate. Nous mettons en place des bots qui répondent aux questions courantes, qualifient les demandes sérieuses et passent la main à un humain au bon moment.",
     includes: [
@@ -948,6 +954,10 @@ export const SERVICES: Service[] = [
     },
   },
 ];
+
+/* Search layer (secondary keywords, question sections, extra FAQs) merged
+   in once, here, so the page view and the FAQPage schema read the same data. */
+for (let i = 0; i < SERVICES.length; i++) SERVICES[i] = withSeo(SERVICES[i]);
 
 export const SERVICE_SLUGS = SERVICES.map((s) => s.slug);
 

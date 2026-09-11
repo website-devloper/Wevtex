@@ -124,7 +124,7 @@ export const POSTS_B: Post[] = [
     metaTitle: "Chatbot WhatsApp pour PME au Maroc : Guide Pratique | WEVTEX",
     metaDescription:
       "Ce qu'un chatbot WhatsApp automatise vraiment dans une PME marocaine, ce qu'il coûte, en combien de temps il se met en place, et ses limites.",
-    keyword: "chatbot whatsapp entreprise maroc",
+    keyword: "automatiser relation client whatsapp",
     excerpt:
       "Ce qui s'automatise vraiment, ce qui ne doit pas l'être, et le coût réel d'un assistant WhatsApp au Maroc.",
     answer:

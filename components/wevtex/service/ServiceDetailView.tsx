@@ -22,6 +22,7 @@ import { SERVICES as MARKETED } from "../homeContent";
 import { WHATSAPP_URL, servicePath } from "@/lib/site-links";
 import { ProcessSection } from "../ProcessSection";
 import type { Service } from "@/lib/services-data";
+import { CITIES } from "@/lib/cities-data";
 
 /* Internal links (content brief, SEO rule 5): each service page points to two
    neighbouring services and the Casablanca page, with the keyword as anchor. */
@@ -123,7 +124,7 @@ export function ServiceDetailView({ service }: { service: Service }) {
                 <div className="srv-d-hero-art">
                   <Image
                     src={art}
-                    alt={`Aperçu — ${service.name}`}
+                    alt={`${service.name} au Maroc, illustration Wevtex`}
                     width={900}
                     height={860}
                     quality={90}
@@ -225,6 +226,54 @@ export function ServiceDetailView({ service }: { service: Service }) {
                   </ul>
                 </div>
               ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* ===================== RECHERCHE =====================
+          The questions buyers type, answered on the page (lib/service-seo.ts):
+          the exact term in an H2, the answer first, real published prices.
+          Ends with the cities served, linked to their pages. */}
+      {service.seoSections && service.seoSections.length > 0 && (
+        <section className="theme-cream srv-d-sec">
+          <div className="container">
+            <div className="reveal" style={{ maxWidth: "74ch" }}>
+              {service.seoSections.map((sec, i) => (
+                <div key={sec.h2} style={{ marginTop: i === 0 ? 0 : 64 }}>
+                  <h2 className="h-section" style={{ fontSize: "clamp(26px, 3.2vw, 38px)" }}>{sec.h2}</h2>
+                  {sec.paras.map((p) => (
+                    <p key={p} className="ic-sub" style={{ marginTop: 16, textAlign: "left", maxWidth: "none" }}>{p}</p>
+                  ))}
+                  {sec.bullets && (
+                    <ul className="srv-d-checks" style={{ marginTop: 20 }}>
+                      {sec.bullets.map((b) => <li key={b}>{CHECK}{b}</li>)}
+                    </ul>
+                  )}
+                  {sec.links && (
+                    <div style={{ display: "flex", flexWrap: "wrap", gap: 10, marginTop: 24 }}>
+                      {sec.links.map((l) => (
+                        <a key={l.href} href={l.href} className="btn btn-outline">{l.label}</a>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              ))}
+
+              <div style={{ marginTop: 64 }}>
+                <h2 className="h-section" style={{ fontSize: "clamp(26px, 3.2vw, 38px)" }}>
+                  {service.name} à Casablanca, Rabat, Marrakech et partout au Maroc
+                </h2>
+                <p className="ic-sub" style={{ marginTop: 16, textAlign: "left", maxWidth: "none" }}>
+                  Wevtex est basé à Casablanca et travaille avec des entreprises de tout le Maroc,
+                  en visio et sur WhatsApp, ainsi qu&apos;en France, en Belgique et au Canada.
+                </p>
+                <div style={{ display: "flex", flexWrap: "wrap", gap: 10, marginTop: 24 }}>
+                  {CITIES.map((c) => (
+                    <a key={c.slug} href={`/${c.slug}`} className="btn btn-outline">Agence web à {c.name}</a>
+                  ))}
+                </div>
+              </div>
             </div>
           </div>
         </section>

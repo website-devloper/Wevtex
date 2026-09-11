@@ -8992,3 +8992,68 @@ html.menu-open .cc-bar { visibility: hidden; }
   .wevtex .ht-social::after { content: ""; position: absolute; inset: -9px; }
   .wevtex a.review-badge { min-height: 44px; }
 }
+
+/* ---- Testimonials on phones and tablets ----
+   The ≤900px rule above dates from the flat, hairline-separated columns and
+   zeroes the side padding. The columns have since become filled cards, so on
+   a phone the quote ran flush into both card edges while the avatar row sat
+   inset. Give the cards their inner margin back; desktop is unchanged. */
+@media (max-width: 900px) {
+  .wevtex .testi-v2 .testi-col { padding: 26px 22px 22px; }
+  .wevtex .testi-v2 .testi-q { margin-bottom: 22px; }
+  .wevtex .testi-v2 .testi-person { padding-top: 18px; }
+}
+@media (max-width: 400px) {
+  .wevtex .testi-v2 .testi-col { padding: 22px 18px 18px; }
+  .wevtex .testi-v2 .testi-q { font-size: 16.5px; }
+}
+/* a tap is not a hover: the lift would stay stuck on after touching a card */
+@media (hover: none) {
+  .wevtex .testi-v2 .testi-col:hover {
+    transform: none;
+    box-shadow: 0 1px 2px rgba(16, 17, 18, 0.04), 0 14px 34px -20px rgba(16, 17, 18, 0.22);
+  }
+}
+
+/* ---- Blog post: the related-service card on narrow phones ----
+   The button label names the service, so on a 320px screen it outgrew the
+   card. Let it wrap and span the card instead of spilling past the edge. */
+@media (max-width: 600px) {
+  .wevtex .post-service { padding: 24px 20px; }
+  .wevtex .post-service .btn { width: 100%; justify-content: space-between; white-space: normal; text-align: left; line-height: 1.35; }
+}
+
+/* ---- Utility bar socials on touch tablets: 26px is too small a target ---- */
+@media (hover: none) {
+  .wevtex .ht-social { width: 32px; height: 32px; }
+}
+
+/* ---- Breadcrumbs on touch screens: a 20px-tall link is hard to hit.
+   The padding grows the target; the equal negative margin keeps the
+   line exactly where it was. ---- */
+@media (hover: none) {
+  .wevtex .post-crumbs a { display: inline-block; padding: 10px 2px; margin: -10px -2px; }
+}
+
+/* ---- Footer links on touch tablets ----
+   Phones (≤520px) already pad these; wider touch screens left them 20px
+   tall. Same trick as the breadcrumbs: bigger target, unchanged layout. */
+@media (hover: none) and (min-width: 521px) {
+  .footer-v2 .footer-col-v2 a { display: inline-block; padding: 6px 0; margin: -6px 0; }
+}
+
+/* ---- Blog FAQ: the rows are white cards, so they get card padding ----
+   `.post-faq ... summary { padding: 22px 4px }` came from the flat, hairline
+   FAQ, where 4px is right. On a filled card it left the number and the plus
+   5px from the edges. The old `.faq-q` rule also pads the question, which
+   made every card twice as tall as its text. The answer lines up under the
+   question: side padding + number column + gap. */
+.wevtex .post-faq .faq-q { padding: 0; margin: 0; }
+.wevtex .post-faq .faq-item-v2 summary { padding: 22px 26px; gap: 16px; align-items: center; }
+.wevtex .post-faq .faq-num { width: 22px; }
+.wevtex .post-faq .faq-body > p { padding: 0 26px 24px 64px; }
+
+@media (max-width: 600px) {
+  .wevtex .post-faq .faq-item-v2 summary { padding: 18px 18px; gap: 12px; font-size: 15px; line-height: 1.45; }
+  .wevtex .post-faq .faq-body > p { padding: 0 18px 18px 52px; }
+}
