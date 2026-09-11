@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { BlogPostView } from "@/components/wevtex/BlogPostView";
 import { POST_SLUGS, getPost, postPath } from "@/lib/blog-data";
+import { toCard } from "@/lib/blog-utils";
 import { JsonLd, articleSchema, breadcrumb, faqSchema } from "@/components/seo/JsonLd";
 
 export const dynamicParams = false;
@@ -66,7 +67,13 @@ export default async function BlogPostPage({
           { name: post.title, path },
         ])}
       />
-      <BlogPostView post={post} />
+      <BlogPostView
+        post={post}
+        related={post.relatedPosts.flatMap((s) => {
+          const r = getPost(s);
+          return r ? [toCard(r)] : [];
+        })}
+      />
     </>
   );
 }

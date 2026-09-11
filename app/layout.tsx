@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from "next";
+import { serializeJsonLd } from "@/components/seo/JsonLd";
 import { Onest, Space_Mono } from "next/font/google";
 import { AnalyticsConsent } from "../components/wevtex/AnalyticsConsent";
 import { SmoothScroll } from "../components/wevtex/SmoothScroll";
@@ -111,7 +112,7 @@ export default function RootLayout({
     image: abs("/images/og-image.jpg"),
     description:
       "Agence web basée à Casablanca : sites vitrines, boutiques en ligne, applications, SEO et automatisation pour les entreprises au Maroc et à l'international.",
-    telephone: "+212687633774",
+    telephone: "+212783180806",
     email: "hello@wevtex.com",
     address: {
       "@type": "PostalAddress",
@@ -163,7 +164,7 @@ export default function RootLayout({
     },
     contactPoint: {
       "@type": "ContactPoint",
-      telephone: "+212687633774",
+      telephone: "+212783180806",
       contactType: "sales",
       availableLanguage: ["French", "Arabic", "English"],
       areaServed: "MA",
@@ -189,11 +190,11 @@ export default function RootLayout({
       <body id='scrool' suppressHydrationWarning>
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+          dangerouslySetInnerHTML={{ __html: serializeJsonLd(jsonLd) }}
         />
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(siteJsonLd) }}
+          dangerouslySetInnerHTML={{ __html: serializeJsonLd(siteJsonLd) }}
         />
         <a href="#main" className="skip-link">Aller au contenu</a>
         <SmoothScroll>

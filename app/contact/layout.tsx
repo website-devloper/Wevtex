@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { serializeJsonLd } from "@/components/seo/JsonLd";
 
 export const metadata: Metadata = {
   title: { absolute: "Contact | Devis site web au Maroc | WEVTEX" },
@@ -36,7 +37,7 @@ export default function ContactLayout({
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        dangerouslySetInnerHTML={{ __html: serializeJsonLd(jsonLd) }}
       />
       {children}
     </>

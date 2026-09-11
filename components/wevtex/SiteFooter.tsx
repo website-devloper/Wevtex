@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { SERVICES } from "./homeContent";
-import { CITIES } from "@/lib/cities-data";
+import { CITY_LINKS as CITIES } from "@/lib/city-list";
 import { CONTACT_URL, HOME_URL, ABOUT_URL, SERVICES_URL, PORTFOLIO_URL, servicePath, industryPath, SOCIALS } from "@/lib/site-links";
 
 /** Wevtex site footer — shared across the homepage and all inner pages. */

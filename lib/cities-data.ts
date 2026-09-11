@@ -16,6 +16,7 @@
  */
 
 import { fillPricesDeep } from "./pricing";
+import { CITY_LINKS } from "./city-list";
 
 export type City = {
   slug: string;
@@ -222,3 +223,11 @@ export const CITIES: City[] = fillPricesDeep([
 ]);
 
 export const CITY_SLUGS = CITIES.map((c) => c.slug);
+
+/* The client navigation imports lib/city-list (slug + name only) so the city
+   paragraphs never reach the browser. The two lists must agree. */
+const navList = CITY_LINKS.map((c) => `${c.slug}:${c.name}`).join("|");
+const pageList = CITIES.map((c) => `${c.slug}:${c.name}`).join("|");
+if (navList !== pageList) {
+  throw new Error(`lib/city-list.ts is out of sync with lib/cities-data.ts: ${navList} != ${pageList}`);
+}

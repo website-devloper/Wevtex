@@ -86,11 +86,11 @@ export default function ContactPage() {
                   <span className="cs-chan-tx"><b>hello@wevtex.com</b></span>
                   <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden><path d="M5 12h14M13 6l6 6-6 6" /></svg>
                 </a>
-                <a className="cs-chan" href="tel:+212687633774">
+                <a className="cs-chan" href="tel:+212783180806">
                   <span className="cs-chan-ic">
                     <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 005 5L15 13l5 2v4a1 1 0 01-1.1 1A16 16 0 014 5.1 1 1 0 015 4z" /></svg>
                   </span>
-                  <span className="cs-chan-tx"><b>+212 687 633 774</b></span>
+                  <span className="cs-chan-tx"><b>+212 783 180 806</b></span>
                   <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden><path d="M5 12h14M13 6l6 6-6 6" /></svg>
                 </a>
               </div>

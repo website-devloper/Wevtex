@@ -17,6 +17,7 @@
 
 import { POSTS_A } from "./blog/posts-a";
 import { POSTS_B } from "./blog/posts-b";
+import { POSTS_C } from "./blog/posts-c";
 import { fillPricesDeep } from "./pricing";
 
 export type PostBlock =
@@ -57,7 +58,7 @@ export type Post = {
 };
 
 /* Prices in the posts are {{prix:…}} tokens, resolved from lib/pricing.ts. */
-export const POSTS: Post[] = fillPricesDeep([...POSTS_A, ...POSTS_B]);
+export const POSTS: Post[] = fillPricesDeep([...POSTS_A, ...POSTS_B, ...POSTS_C]);
 
 export const POST_SLUGS = POSTS.map((p) => p.slug);
 
@@ -68,16 +69,7 @@ export const POSTS_ORDERED = [...POSTS].sort((a, b) =>
   (b.updatedAt ?? b.publishedAt).localeCompare(a.updatedAt ?? a.publishedAt),
 );
 
-export const postPath = (slug: string) => `/blog/${slug}`;
-
-/** "10 septembre 2026" — the visible date, in French. */
-export const formatPostDate = (iso: string) =>
-  new Date(`${iso}T12:00:00Z`).toLocaleDateString("fr-FR", {
-    day: "numeric",
-    month: "long",
-    year: "numeric",
-    timeZone: "UTC",
-  });
+export { postPath, formatPostDate } from "./blog-utils";
 
 /* Two posts targeting the same term would compete with each other, so the
    keyword set is checked at module load rather than left to review. */

@@ -10,10 +10,10 @@
 /* --- Contact channels ---------------------------------------------------- */
 
 /** International format, no "+" — required by wa.me. */
-export const PHONE_E164 = "212687633774";
+export const PHONE_E164 = "212783180806";
 /** Display / tel: format. */
-export const PHONE_TEL = "+212687633774";
-export const PHONE_DISPLAY = "+212 687 633 774";
+export const PHONE_TEL = "+212783180806";
+export const PHONE_DISPLAY = "+212 783 180 806";
 
 export const WHATSAPP_URL = `https://wa.me/${PHONE_E164}`;
 export const TEL_URL = `tel:${PHONE_TEL}`;

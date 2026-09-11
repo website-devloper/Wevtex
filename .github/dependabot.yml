@@ -1,0 +1,14 @@
+# Keeps dependencies patched: GitHub opens a pull request when a package has a
+# security fix (immediately) or a new version (weekly). Review and merge; the
+# site redeploys on merge.
+version: 2
+updates:
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    open-pull-requests-limit: 5
+    groups:
+      security-fixes:
+        applies-to: security-updates
+        patterns: ["*"]

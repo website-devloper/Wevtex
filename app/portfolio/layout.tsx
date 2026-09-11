@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { serializeJsonLd } from "@/components/seo/JsonLd";
 import { PROJECTS_ORDERED } from "@/lib/projects-data";
 import { SITE_URL, abs } from "@/lib/seo";
 
@@ -47,7 +48,7 @@ export default function PortfolioLayout({
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        dangerouslySetInnerHTML={{ __html: serializeJsonLd(jsonLd) }}
       />
       {children}
     </>

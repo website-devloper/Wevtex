@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { BlogIndexView } from "@/components/wevtex/BlogIndexView";
 import { POSTS_ORDERED, postPath } from "@/lib/blog-data";
+import { toCard } from "@/lib/blog-utils";
 import { JsonLd, breadcrumb } from "@/components/seo/JsonLd";
 import { abs, SITE_URL } from "@/lib/seo";
 
@@ -42,7 +43,7 @@ export default function BlogPage() {
     <>
       <JsonLd data={blogJsonLd} />
       <JsonLd data={breadcrumb([{ name: "Blog", path: "/blog" }])} />
-      <BlogIndexView />
+      <BlogIndexView posts={POSTS_ORDERED.map(toCard)} />
     </>
   );
 }

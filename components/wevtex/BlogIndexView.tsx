@@ -4,7 +4,7 @@ import "../../app/wevtex-home.css";
 import { SiteHeader } from "./SiteHeader";
 import { SiteFooter } from "./SiteFooter";
 import { useReveal } from "./useReveal";
-import { POSTS_ORDERED, postPath, formatPostDate } from "@/lib/blog-data";
+import { postPath, formatPostDate, type PostCard } from "@/lib/blog-utils";
 import { WHATSAPP_URL, CONTACT_URL } from "@/lib/site-links";
 import { frenchSpacing } from "@/lib/typo";
 
@@ -21,9 +21,9 @@ const ARROW = (
   </svg>
 );
 
-export function BlogIndexView() {
+export function BlogIndexView({ posts }: { posts: PostCard[] }) {
   useReveal();
-  const [lead, ...rest] = POSTS_ORDERED;
+  const [lead, ...rest] = posts;
 
   return (
     <div className="wevtex mode-light">

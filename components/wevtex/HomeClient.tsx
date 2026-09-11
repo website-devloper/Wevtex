@@ -15,7 +15,7 @@ import { SiteFooter } from "./SiteFooter";
 import { ScrollRevealText } from "./ScrollRevealText";
 import { HeroReviews } from "./HeroReviews";
 import { InkBackdrop } from "./primitives";
-import { CITIES } from "@/lib/cities-data";
+import { CITY_LINKS as CITIES } from "@/lib/city-list";
 import { StickyCta } from "./StickyCta";
 import { FAQS, SERVICES } from "./homeContent";
 import { PROJECTS_ORDERED } from "@/lib/projects-data";
@@ -806,7 +806,7 @@ export function HomeClient() {
               <a key={it.i} href={industryPath(INDUSTRY_LINKS[it.i])} className={`ic-card g${idx % 5}`}>
                 <Image
                   src={IC_IMAGES[it.i]}
-                  alt={it.label}
+                  alt={`Site web pour le secteur ${it.label.toLowerCase()} au Maroc`}
                   fill
                   style={{ objectFit: "cover", objectPosition: "center top" }}
                   sizes="(max-width: 768px) 80vw, 25vw"

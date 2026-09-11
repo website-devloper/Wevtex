@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { serializeJsonLd } from "@/components/seo/JsonLd";
 import { HomeClient } from "../components/wevtex/HomeClient";
 import { FAQS } from "../components/wevtex/homeContent";
 
@@ -56,7 +57,7 @@ export default function HomePage() {
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+        dangerouslySetInnerHTML={{ __html: serializeJsonLd(faqJsonLd) }}
       />
       <HomeClient />
     </>

@@ -5,7 +5,7 @@ import { SiteHeader } from "./SiteHeader";
 import { SiteFooter } from "./SiteFooter";
 import { useReveal } from "./useReveal";
 import type { Post, PostBlock } from "@/lib/blog-data";
-import { getPost, postPath, formatPostDate } from "@/lib/blog-data";
+import { postPath, formatPostDate, type PostCard } from "@/lib/blog-utils";
 import { SERVICES } from "./homeContent";
 import { WHATSAPP_URL, CONTACT_URL, servicePath } from "@/lib/site-links";
 import { frenchSpacing } from "@/lib/typo";
@@ -65,11 +65,10 @@ function Block({ block }: { block: PostBlock }) {
   }
 }
 
-export function BlogPostView({ post }: { post: Post }) {
+export function BlogPostView({ post, related }: { post: Post; related: PostCard[] }) {
   useReveal();
 
   const service = SERVICES.find((s) => s.slug === post.relatedService);
-  const related = post.relatedPosts.map(getPost).filter(Boolean) as Post[];
 
   return (
     <div className="wevtex mode-light">

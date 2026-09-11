@@ -15,11 +15,16 @@ import { PRICE_RANGE } from "@/lib/pricing";
 
 export const ORG_ID = `${SITE_URL}#organization`;
 
+/** JSON for an inline <script>: "<" is escaped so no value can close the tag. */
+export function serializeJsonLd(data: object) {
+  return JSON.stringify(data).replace(/</g, "\\u003c");
+}
+
 export function JsonLd({ data }: { data: object }) {
   return (
     <script
       type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }}
+      dangerouslySetInnerHTML={{ __html: serializeJsonLd(data) }}
     />
   );
 }
@@ -105,7 +110,7 @@ export function localBusinessSchema(o: {
     parentOrganization: { "@id": ORG_ID },
     url: abs(o.path),
     description: o.description,
-    telephone: "+212687633774",
+    telephone: "+212783180806",
     email: "hello@wevtex.com",
     image: abs("/images/og-image.jpg"),
     address: {

@@ -1,0 +1,5 @@
+Contact: https://wevtex.com/contact
+Contact: https://wa.me/212783180806
+Expires: 2027-09-11T00:00:00.000Z
+Preferred-Languages: fr, en
+Canonical: https://wevtex.com/.well-known/security.txt

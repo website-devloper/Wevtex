@@ -22,7 +22,7 @@ import { SERVICES as MARKETED } from "../homeContent";
 import { WHATSAPP_URL, servicePath } from "@/lib/site-links";
 import { ProcessSection } from "../ProcessSection";
 import type { Service } from "@/lib/services-data";
-import { CITIES } from "@/lib/cities-data";
+import { CITY_LINKS as CITIES } from "@/lib/city-list";
 
 /* Internal links (content brief, SEO rule 5): each service page points to two
    neighbouring services and the Casablanca page, with the keyword as anchor. */
@@ -224,6 +224,37 @@ export function ServiceDetailView({ service }: { service: Service }) {
                   <ul className="srv-d-checks">
                     {g.cases.map((c) => <li key={c}>{CHECK}{c}</li>)}
                   </ul>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* ===================== POURQUOI NOUS =====================
+          Each service states four answers to its own objections (whyUs in
+          services-data). Same ink band and cards as the sector pages' outcomes,
+          placed between two light sections to keep the page's rhythm. */}
+      {service.whyUs && (
+        <section className="ind-outcomes-ink" style={{ padding: "clamp(72px, 11vh, 120px) 0" }}>
+          <div className="container">
+            <div className="reveal">
+              <span className="eyebrow line-eyebrow">Pourquoi nous</span>
+              <div style={{ marginTop: 14 }}>
+                <Title text={service.whyUs.title} em={service.whyUs.titleEm || []} />
+              </div>
+              {service.whyUs.subtitle && (
+                <p className="ic-sub" style={{ marginTop: 16, textAlign: "left", maxWidth: "58ch", color: "rgba(244, 245, 242, 0.72)" }}>
+                  {service.whyUs.subtitle}
+                </p>
+              )}
+            </div>
+            <div className="ind-outcomes reveal">
+              {service.whyUs.points.map((w) => (
+                <div className="ind-outcome" key={w.h}>
+                  <h3>{w.h}</h3>
+                  <span className="ind-outcome-rule" aria-hidden></span>
+                  <p>{w.p}</p>
                 </div>
               ))}
             </div>

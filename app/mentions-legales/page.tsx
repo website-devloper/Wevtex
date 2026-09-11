@@ -40,7 +40,7 @@ export default function MentionsLegalesPage() {
                 Identifiant fiscal (IF)&nbsp;: [À COMPLÉTER]
               </p>
               <p>
-                Téléphone&nbsp;: <a href="tel:+212687633774">+212 687 633 774</a>
+                Téléphone&nbsp;: <a href="tel:+212783180806">+212 783 180 806</a>
                 <br />
                 E-mail&nbsp;: <a href="mailto:hello@wevtex.com">hello@wevtex.com</a>
               </p>

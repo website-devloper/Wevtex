@@ -21,7 +21,7 @@ Nothing downstream is correct until these are settled. **Decisions made 2026-06-
 - [x] 🔴 **Canonical domain = `wevtex.com`** (not bought yet). Centralized in `lib/seo.ts` (`SITE_URL`,
   override via `NEXT_PUBLIC_SITE_URL`). `[you]` still need to **buy it** before deploy.
 - [x] 🔴 **Content source = add Strapi CMS** (chosen). Not built yet — see new Phase 1b below. Until then content stays hardcoded.
-- [x] 🔴 **Phone fixed to `+212 687 633 774`** everywhere (layout JSON-LD + contact page now match the WhatsApp number).
+- [x] 🔴 **Phone fixed to `+212 783 180 806`** everywhere (layout JSON-LD + contact page now match the WhatsApp number).
 - [ ] 🔴 `[you]` **Brand assets:** final logo (light + dark), `favicon`/app icons, real `1200×630` OG image (`/images/og-image.jpg` — confirm it exists).
 
 ---
