@@ -64,7 +64,7 @@ export const POSTS_A: Post[] = [
         type: "ul",
         items: [
           "Le nombre de pages uniques. Cinq pages, ce n'est pas la moitié de dix : chaque page a sa structure, son contenu et sa version mobile.",
-          "La rédaction. Si vous fournissez vos textes, vous économisez. Si l'agence les écrit, comptez plusieurs jours de travail — et un site rédigé se positionne mieux qu'un site rempli.",
+          "La rédaction. Si vous fournissez vos textes, vous économisez. Si l'agence les écrit, comptez plusieurs jours de travail, et un site rédigé se positionne mieux qu'un site rempli.",
           "Le design. Un modèle adapté coûte moins qu'une maquette dessinée pour vous. La différence se voit surtout sur la crédibilité, pas sur la technique.",
           "Les fonctions. Un formulaire, c'est une heure. Un paiement en ligne, un espace client, une réservation avec créneaux, une synchronisation de stock : chacun est un projet dans le projet.",
           "Les langues. Un site français-arabe n'est pas un site français traduit : il faut une seconde version de chaque contenu, et l'arabe se lit de droite à gauche.",
@@ -148,7 +148,7 @@ export const POSTS_A: Post[] = [
     excerpt:
       "Huit questions qui séparent un prestataire sérieux d'un vendeur de maquettes, et les trois clauses à vérifier avant de signer.",
     answer:
-      "Pour choisir une agence web au Maroc, vérifiez trois choses avant tout le reste : des réalisations en ligne que vous pouvez ouvrir et tester, un devis détaillé ligne par ligne, et une clause écrite qui vous donne la propriété du site, du code et des accès. Le reste — technologie, taille de l'équipe, années d'existence — vient après.",
+      "Pour choisir une agence web au Maroc, vérifiez trois choses avant tout le reste : des réalisations en ligne que vous pouvez ouvrir et tester, un devis détaillé ligne par ligne, et une clause écrite qui vous donne la propriété du site, du code et des accès. Le reste, technologie, taille de l'équipe, années d'existence, vient après.",
     category: "Choisir un prestataire",
     publishedAt: "2026-09-10",
     readingMinutes: 9,
@@ -172,10 +172,10 @@ export const POSTS_A: Post[] = [
       {
         type: "ol",
         items: [
-          "À qui appartient le site une fois payé — le code, les contenus, le domaine et les accès ? La réponse doit être « à vous », et elle doit figurer par écrit.",
+          "À qui appartient le site une fois payé, le code, les contenus, le domaine et les accès ? La réponse doit être « à vous », et elle doit figurer par écrit.",
           "Que se passe-t-il si nous arrêtons de travailler ensemble ? Pouvez-vous partir avec le site, ou repart-il avec le prestataire ?",
           "Qui rédige les textes ? Si c'est vous, c'est un travail réel à prévoir ; si c'est l'agence, c'est une ligne du devis.",
-          "Le site sera-t-il livré avec les bases du référencement — titres, descriptions, structure, vitesse, sitemap ?",
+          "Le site sera-t-il livré avec les bases du référencement, titres, descriptions, structure, vitesse, sitemap ?",
           "Quel est le délai, et sur quoi repose-t-il ? Un délai crédible tient compte de vos retours, pas seulement du travail de l'agence.",
           "Que couvre exactement la maintenance, et à quel prix après la première année ?",
           "Pourrai-je modifier mes contenus moi-même, et sur quel outil ?",
@@ -189,7 +189,7 @@ export const POSTS_A: Post[] = [
       },
       {
         type: "note",
-        text: "Un devis d'une seule ligne — « création site internet : 12 000 DH » — n'est pas comparable et ne vous protège pas. Demandez le détail avant de discuter le prix.",
+        text: "Un devis d'une seule ligne, « création site internet : 12 000 DH », n'est pas comparable et ne vous protège pas. Demandez le détail avant de discuter le prix.",
       },
       { type: "h2", text: "Les signaux d'alerte" },
       {
@@ -206,7 +206,7 @@ export const POSTS_A: Post[] = [
       { type: "h2", text: "Agence, freelance ou plateforme : lequel pour vous" },
       {
         type: "p",
-        text: "Un freelance coûte moins cher et convient parfaitement à un site vitrine, à condition d'accepter le risque de disponibilité : une personne seule tombe malade et prend des vacances. Une agence coûte davantage mais couvre plusieurs métiers — design, développement, rédaction, référencement — et reste joignable après la livraison. Une plateforme en libre-service est la moins chère et suffit pour tester une idée, tant que vous acceptez de ne pas posséder le résultat et de rester limité à ce que l'outil sait faire.",
+        text: "Un freelance coûte moins cher et convient parfaitement à un site vitrine, à condition d'accepter le risque de disponibilité : une personne seule tombe malade et prend des vacances. Une agence coûte davantage mais couvre plusieurs métiers, design, développement, rédaction, référencement, et reste joignable après la livraison. Une plateforme en libre-service est la moins chère et suffit pour tester une idée, tant que vous acceptez de ne pas posséder le résultat et de rester limité à ce que l'outil sait faire.",
       },
       {
         type: "p",
@@ -249,7 +249,7 @@ export const POSTS_A: Post[] = [
     excerpt:
       "La règle simple pour trancher, ce que chaque option demande vraiment, et pourquoi un vitrine peut rapporter plus qu'une boutique.",
     answer:
-      "Choisissez un site vitrine si la vente se conclut par un échange — devis, rendez-vous, conseil, essai. Choisissez une boutique en ligne si un client peut décider seul, payer seul et recevoir un produit standard. La question n'est pas la taille de l'entreprise mais la façon dont la vente se conclut aujourd'hui.",
+      "Choisissez un site vitrine si la vente se conclut par un échange, devis, rendez-vous, conseil, essai. Choisissez une boutique en ligne si un client peut décider seul, payer seul et recevoir un produit standard. La question n'est pas la taille de l'entreprise mais la façon dont la vente se conclut aujourd'hui.",
     category: "Stratégie",
     publishedAt: "2026-09-10",
     readingMinutes: 7,
@@ -305,7 +305,7 @@ export const POSTS_A: Post[] = [
       { type: "h2", text: "La troisième voie : le vitrine catalogue" },
       {
         type: "p",
-        text: "Entre les deux existe une option que peu de prestataires proposent, et qui convient à beaucoup de commerces : un site vitrine avec un catalogue complet, des prix affichés, mais sans panier — chaque produit ouvre une conversation WhatsApp pré-remplie avec sa référence.",
+        text: "Entre les deux existe une option que peu de prestataires proposent, et qui convient à beaucoup de commerces : un site vitrine avec un catalogue complet, des prix affichés, mais sans panier, chaque produit ouvre une conversation WhatsApp pré-remplie avec sa référence.",
       },
       {
         type: "p",

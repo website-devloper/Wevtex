@@ -111,10 +111,10 @@ export function ServiceDetailView({ service }: { service: Service }) {
 
               <div className="srv-d-cta">
                 <a href={askUrl(service.name)} className="btn btn-primary" target="_blank" rel="noopener">
-                  Demander un devis gratuit {ARROW}
+                  Obtenir mon devis gratuit {ARROW}
                 </a>
                 <a href="#tarifs" className="btn btn-outline">
-                  Voir les tarifs {ARROW}
+                  Voir les prix {ARROW}
                 </a>
               </div>
             </div>
@@ -195,13 +195,13 @@ export function ServiceDetailView({ service }: { service: Service }) {
       <section className="inline-cta inline-cta-ink">
         <div className="container">
           <div className="ict-inner reveal">
-            <p className="ict-text">Ce service correspond à votre besoin ?</p>
+            <p className="ict-text">Vous savez ce qu&apos;il vous faut ? Recevez le prix exact.</p>
             <div className="ict-actions">
               <a href={WHATSAPP_URL} className="btn btn-primary" target="_blank" rel="noopener">
-                Demander un devis gratuit
+                Obtenir mon devis gratuit
                 <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden><path d="M5 12h14M13 6l6 6-6 6" /></svg>
               </a>
-              <a href="#tarifs" className="btn btn-outline">Voir les tarifs</a>
+              <a href="#tarifs" className="btn btn-outline">Voir les prix</a>
             </div>
           </div>
         </div>
@@ -320,7 +320,7 @@ export function ServiceDetailView({ service }: { service: Service }) {
                     target="_blank"
                     rel="noopener"
                   >
-                    Demander un devis
+                    Choisir cette formule
                     <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden style={{ marginLeft: 4 }}><path d="M5 12h14M13 6l6 6-6 6" /></svg>
                   </a>
                 </div>
@@ -340,10 +340,10 @@ export function ServiceDetailView({ service }: { service: Service }) {
               <div className="faq-left reveal">
                 <span className="eyebrow line-eyebrow">FAQ</span>
                 <div style={{ marginTop: 14 }}>
-                  <Title text={"Vos questions,\nnos réponses"} em={["nos", "réponses"]} />
+                  <Title text={"Ce qu'on nous demande\navant de signer"} em={["avant", "de", "signer"]} />
                 </div>
                 <p className="ic-sub" style={{ marginTop: 14, textAlign: "left" }}>
-                  Les questions qu&apos;on nous pose le plus souvent sur cette prestation.
+                  Les doutes qu&apos;on entend le plus souvent sur ce service, et nos réponses franches.
                 </p>
                 <div className="faq-list-v2">
                   {service.faqs.map((f, i) => (
@@ -362,11 +362,11 @@ export function ServiceDetailView({ service }: { service: Service }) {
               <div className="faq-right reveal">
                 <div className="wa-card">
                   <span className="wa-card-motif" aria-hidden></span>
-                  <h3>Une autre question ?<br /><em>Écrivez-nous sur WhatsApp</em></h3>
+                  <h3>Une question sur ce service ?<br /><em>Posez-la sur WhatsApp</em></h3>
                   <span className="wa-rule"></span>
                   <p>Nous répondons sous quelques heures, avec un conseil honnête et un prix clair.</p>
                   <a href={askUrl(service.name)} className="wa-btn" target="_blank" rel="noopener">
-                    Discuter sur WhatsApp {ARROW}
+                    Poser ma question {ARROW}
                   </a>
                 </div>
               </div>
@@ -378,9 +378,9 @@ export function ServiceDetailView({ service }: { service: Service }) {
       {/* ===================== SERVICES LIÉS ===================== */}
       <section className="theme-paper srv-d-sec">
         <div className="container">
-          <span className="eyebrow line-eyebrow">Pour aller plus loin</span>
+          <span className="eyebrow line-eyebrow">Souvent pris ensemble</span>
           <h2 className="h-section" style={{ marginTop: 14 }}>
-            Souvent associé à <em className="hl-line">ce service</em>
+            Ce qui marche encore mieux <em className="hl-line">avec ce service</em>
           </h2>
           <div style={{ display: "flex", flexWrap: "wrap", gap: 10, marginTop: 28 }}>
             {(RELATED[service.slug] ?? []).map((slug) => {
@@ -396,10 +396,10 @@ export function ServiceDetailView({ service }: { service: Service }) {
 
       {/* ===================== CTA ===================== */}
       <CtaBand
-        heading={<>{service.name}<br /><em className="hl-line">parlons de votre projet.</em></>}
-        text="Envoyez-nous votre projet en deux lignes sur WhatsApp. Nous répondons sous quelques heures, avec un conseil honnête et un prix clair."
+        heading={<>{service.name}<br /><em className="hl-line">chiffré en quinze minutes.</em></>}
+        text="Deux lignes sur WhatsApp suffisent pour démarrer. Après un échange de quinze minutes, vous recevez un devis ferme, sans engagement."
         secondaryHref="/services"
-        secondaryLabel="Toutes nos prestations"
+        secondaryLabel="Comparer les prestations"
       />
       </main>
 

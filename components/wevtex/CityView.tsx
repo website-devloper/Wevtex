@@ -55,10 +55,10 @@ export function CityView({ city }: { city: City }) {
 
               <div className="hero-ctas" style={{ marginTop: 32, marginBottom: 0 }}>
                 <a href={WHATSAPP_URL} className="btn btn-primary" target="_blank" rel="noopener">
-                  Demander un devis gratuit
+                  Obtenir mon devis gratuit
                   {ARROW}
                 </a>
-                <a href={PORTFOLIO_URL} className="btn btn-outline">Voir nos réalisations</a>
+                <a href={PORTFOLIO_URL} className="btn btn-outline">Voir les sites livrés</a>
               </div>
             </div>
           </div>
@@ -68,9 +68,9 @@ export function CityView({ city }: { city: City }) {
         <section className="theme-paper" style={{ padding: "clamp(72px, 11vh, 120px) 0" }}>
           <div className="container">
             <div className="reveal" style={{ maxWidth: "68ch" }}>
-              <span className="eyebrow line-eyebrow">Le contexte local</span>
+              <span className="eyebrow line-eyebrow">Votre marché local</span>
               <h2 className="h-section" style={{ marginTop: 14 }}>
-                Ce qui compte <em className="hl-line">{city.inCity}.</em>
+                Ce qui fait vendre <em className="hl-line">{city.inCity}.</em>
               </h2>
               {city.context.map((p, i) => (
                 <p key={i} className="ic-sub" style={{ marginTop: i === 0 ? 20 : 16 }}>{p}</p>
@@ -85,7 +85,7 @@ export function CityView({ city }: { city: City }) {
             <div className="reveal">
               <span className="eyebrow line-eyebrow">Les secteurs {city.inCity}</span>
               <h2 className="h-section" style={{ marginTop: 14 }}>
-                Pour qui nous <em className="hl-line">travaillons.</em>
+                Les métiers qu&apos;on <em className="hl-line">connaît ici.</em>
               </h2>
             </div>
 
@@ -103,9 +103,9 @@ export function CityView({ city }: { city: City }) {
 
         {/* ===================== SERVICES ===================== */}
         <ServicesBento
-          eyebrow="Nos services"
-          heading={<>Tout pour lancer, être trouvé et <em className="hl-line">vendre.</em></>}
-          intro={`Huit prestations, disponibles pour toute entreprise ${city.inCity} comme partout au Maroc.`}
+          eyebrow="Ce qu'on peut faire pour vous"
+          heading={<>Être trouvé {city.inCity}, <em className="hl-line">puis choisi.</em></>}
+          intro={`Huit prestations pour les entreprises ${city.inCity}, chacune avec son prix affiché.`}
         />
 
         {/* ===================== PROXIMITY ===================== */}
@@ -115,10 +115,10 @@ export function CityView({ city }: { city: City }) {
               <p className="ict-text">{city.proximity}</p>
               <div className="ict-actions">
                 <a href={WHATSAPP_URL} className="btn btn-primary" target="_blank" rel="noopener">
-                  Parler de votre projet
+                  Parler de mon projet
                   {ARROW}
                 </a>
-                <a href={CONTACT_URL} className="btn btn-outline">Envoyer un brief</a>
+                <a href={CONTACT_URL} className="btn btn-outline">Envoyer mon brief</a>
               </div>
             </div>
           </div>
@@ -131,7 +131,7 @@ export function CityView({ city }: { city: City }) {
               <div className="faq-left reveal">
                 <span className="eyebrow line-eyebrow">FAQ</span>
                 <h2 className="h-section" style={{ marginTop: 14 }}>
-                  Questions fréquentes <em className="hl-line">{city.inCity}.</em>
+                  Ce qu&apos;on nous demande <em className="hl-line">{city.inCity}.</em>
                 </h2>
                 <div className="faq-list-v2">
                   {city.faqs.map((f, i) => (
@@ -152,11 +152,11 @@ export function CityView({ city }: { city: City }) {
               <div className="faq-right reveal">
                 <div className="wa-card">
                   <span className="wa-card-motif" aria-hidden></span>
-                  <h3>Une autre question ?<br /><em>Écrivez-nous sur WhatsApp</em></h3>
+                  <h3>Votre projet est {city.inCity} ?<br /><em>Parlons-en sur WhatsApp</em></h3>
                   <span className="wa-rule"></span>
                   <p>On répond vite, en français, en darija ou en anglais.</p>
                   <a href={WHATSAPP_URL} className="wa-btn" target="_blank" rel="noopener">
-                    Discuter sur WhatsApp
+                    Écrire sur WhatsApp
                     {ARROW}
                   </a>
                 </div>

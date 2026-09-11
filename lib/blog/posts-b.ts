@@ -33,7 +33,7 @@ export const POSTS_B: Post[] = [
       { type: "h2", text: "1. La fiche Google Business Profile, avant le site" },
       {
         type: "p",
-        text: "Pour toutes les recherches locales — « dentiste casablanca », « traiteur rabat », « garage marrakech » — Google affiche d'abord une carte avec trois établissements. Cette place ne dépend pas de votre site mais de votre fiche : catégorie exacte, zone d'intervention, horaires, photos récentes, services listés, et surtout avis clients.",
+        text: "Pour toutes les recherches locales, « dentiste casablanca », « traiteur rabat », « garage marrakech », Google affiche d'abord une carte avec trois établissements. Cette place ne dépend pas de votre site mais de votre fiche : catégorie exacte, zone d'intervention, horaires, photos récentes, services listés, et surtout avis clients.",
       },
       {
         type: "p",
@@ -42,7 +42,7 @@ export const POSTS_B: Post[] = [
       { type: "h2", text: "2. Écrire les mots que vos clients tapent réellement" },
       {
         type: "p",
-        text: "Les entreprises décrivent leur métier dans leur langage — « solutions d'ingénierie thermique » — quand leurs clients tapent « installation climatisation casablanca prix ». Le site doit contenir les seconds, dans ses titres et dans son texte.",
+        text: "Les entreprises décrivent leur métier dans leur langage, « solutions d'ingénierie thermique », quand leurs clients tapent « installation climatisation casablanca prix ». Le site doit contenir les seconds, dans ses titres et dans son texte.",
       },
       {
         type: "p",
@@ -60,7 +60,7 @@ export const POSTS_B: Post[] = [
       { type: "h2", text: "4. Une page par ville que vous couvrez réellement" },
       {
         type: "p",
-        text: "« Création site web casablanca » est cherché plus souvent, et disputé moins durement, que « création site web maroc ». Une page par ville, avec un contenu réellement différent — le tissu économique local, les secteurs, vos clients dans la zone — capte ces recherches.",
+        text: "« Création site web casablanca » est cherché plus souvent, et disputé moins durement, que « création site web maroc ». Une page par ville, avec un contenu réellement différent, le tissu économique local, les secteurs, vos clients dans la zone, capte ces recherches.",
       },
       {
         type: "note",
@@ -128,7 +128,7 @@ export const POSTS_B: Post[] = [
     excerpt:
       "Ce qui s'automatise vraiment, ce qui ne doit pas l'être, et le coût réel d'un assistant WhatsApp au Maroc.",
     answer:
-      "Un chatbot WhatsApp répond automatiquement aux questions récurrentes d'une entreprise — prix, disponibilité, horaires, suivi de commande, prise de rendez-vous — et passe la main à une personne dès que la demande sort du cadre. Au Maroc, la mise en place démarre à {{prix:whatsapp-bots/Essentiel}} DH avec un abonnement mensuel de {{mensuel:whatsapp-bots/Essentiel}} DH, et l'assistant est opérationnel en une à trois semaines.",
+      "Un chatbot WhatsApp répond automatiquement aux questions récurrentes d'une entreprise, prix, disponibilité, horaires, suivi de commande, prise de rendez-vous, et passe la main à une personne dès que la demande sort du cadre. Au Maroc, la mise en place démarre à {{prix:whatsapp-bots/Essentiel}} DH avec un abonnement mensuel de {{mensuel:whatsapp-bots/Essentiel}} DH, et l'assistant est opérationnel en une à trois semaines.",
     category: "Automatisation",
     publishedAt: "2026-09-10",
     readingMinutes: 8,
@@ -137,7 +137,7 @@ export const POSTS_B: Post[] = [
     body: [
       {
         type: "p",
-        text: "Au Maroc, WhatsApp n'est pas un canal parmi d'autres : c'est celui où la vente se fait. Le problème n'est donc pas d'y être, mais d'y répondre — le soir, le dimanche, et trente fois par jour à la même question.",
+        text: "Au Maroc, WhatsApp n'est pas un canal parmi d'autres : c'est celui où la vente se fait. Le problème n'est donc pas d'y être, mais d'y répondre, le soir, le dimanche, et trente fois par jour à la même question.",
       },
       { type: "h2", text: "Ce qu'un chatbot WhatsApp automatise réellement" },
       {
@@ -175,16 +175,16 @@ export const POSTS_B: Post[] = [
       },
       {
         type: "p",
-        text: "Le second coûte plus cher et demande un cadrage sérieux — il faut lui donner des sources fiables et des limites — mais c'est le seul qui tient face à la façon dont les gens écrivent réellement sur WhatsApp, avec des phrases mélangées et sans ponctuation.",
+        text: "Le second coûte plus cher et demande un cadrage sérieux, il faut lui donner des sources fiables et des limites, mais c'est le seul qui tient face à la façon dont les gens écrivent réellement sur WhatsApp, avec des phrases mélangées et sans ponctuation.",
       },
       { type: "h2", text: "Combien ça coûte, et en combien de temps" },
       {
         type: "table",
         head: ["Formule", "Mise en place", "Mensuel"],
         rows: [
-          ["Essentiel — jusqu'à 10 scénarios", "{{prix:whatsapp-bots/Essentiel}} DH", "{{mensuel:whatsapp-bots/Essentiel}} DH"],
-          ["Qualification — scénarios illimités, CRM", "{{prix:whatsapp-bots/Qualification}} DH", "{{mensuel:whatsapp-bots/Qualification}} DH"],
-          ["Sur mesure — compréhension libre par IA", "à partir de {{prix:whatsapp-bots/Sur mesure}} DH", "selon périmètre"],
+          ["Essentiel, jusqu'à 10 scénarios", "{{prix:whatsapp-bots/Essentiel}} DH", "{{mensuel:whatsapp-bots/Essentiel}} DH"],
+          ["Qualification, scénarios illimités, CRM", "{{prix:whatsapp-bots/Qualification}} DH", "{{mensuel:whatsapp-bots/Qualification}} DH"],
+          ["Sur mesure, compréhension libre par IA", "à partir de {{prix:whatsapp-bots/Sur mesure}} DH", "selon périmètre"],
         ],
       },
       {
@@ -198,7 +198,7 @@ export const POSTS_B: Post[] = [
       },
       {
         type: "p",
-        text: "L'API WhatsApp Business — celle qu'utilisent les assistants automatisés — exige un compte vérifié et un numéro dédié, et c'est elle qui autorise les scénarios, l'IA, les envois programmés et le travail à plusieurs sur une même conversation. Le passage de l'une à l'autre se fait sans changer de numéro dans la plupart des cas.",
+        text: "L'API WhatsApp Business, celle qu'utilisent les assistants automatisés, exige un compte vérifié et un numéro dédié, et c'est elle qui autorise les scénarios, l'IA, les envois programmés et le travail à plusieurs sur une même conversation. Le passage de l'une à l'autre se fait sans changer de numéro dans la plupart des cas.",
       },
       { type: "h2", text: "Par où commencer sans se tromper" },
       {
@@ -256,7 +256,7 @@ export const POSTS_B: Post[] = [
       { type: "h2", text: "La vitesse : l'écart le plus visible" },
       {
         type: "p",
-        text: "Un site Next.js sert des pages pré-générées, sans base de données à interroger à chaque visite. Un site WordPress construit la page à la demande, puis compense avec des extensions de cache. Sur un téléphone en 4G moyenne — le contexte marocain courant — l'écart se voit : quelques centaines de millisecondes contre deux à quatre secondes pour un WordPress chargé d'extensions.",
+        text: "Un site Next.js sert des pages pré-générées, sans base de données à interroger à chaque visite. Un site WordPress construit la page à la demande, puis compense avec des extensions de cache. Sur un téléphone en 4G moyenne, le contexte marocain courant, l'écart se voit : quelques centaines de millisecondes contre deux à quatre secondes pour un WordPress chargé d'extensions.",
       },
       {
         type: "p",
@@ -278,7 +278,7 @@ export const POSTS_B: Post[] = [
       },
       {
         type: "p",
-        text: "Un site Next.js peut offrir la même chose en lui branchant un gestionnaire de contenu, mais c'est une brique à prévoir dès le départ, avec son coût. Sans elle, chaque modification passe par un développeur — acceptable pour un site de dix pages qui bouge peu, pénible pour un site d'actualités.",
+        text: "Un site Next.js peut offrir la même chose en lui branchant un gestionnaire de contenu, mais c'est une brique à prévoir dès le départ, avec son coût. Sans elle, chaque modification passe par un développeur, acceptable pour un site de dix pages qui bouge peu, pénible pour un site d'actualités.",
       },
       { type: "h2", text: "Le coût, à la création et sur trois ans" },
       {

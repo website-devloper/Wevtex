@@ -114,7 +114,7 @@ export default function AboutPage() {
                 <figcaption className="bv-tag">Un projet livré</figcaption>
               </figure>
               <div className="bv-stat">
-                <strong>200+</strong>
+                <strong>40+</strong>
                 <span>Projets livrés</span>
               </div>
             </div>
@@ -173,12 +173,12 @@ export default function AboutPage() {
                 Vous parlerez aux personnes<br />qui <em className="hl-em">réalisent le projet</em>
               </h2>
               <p className="fd-p">
-                Nous sommes quatorze : stratégie, design, développement et référencement, dans la même
+                Stratégie, design, développement et référencement sont réunis dans la même
                 équipe. Pas de chef de projet intermédiaire, pas de relais vers des personnes que vous
                 n&apos;avez jamais rencontrées. Vous nous briefez directement, et ce sont les mêmes qui
                 écrivent le code et restent joignables après la mise en ligne.
               </p>
-              <p className="fd-sign">Wevtex — Casablanca, Maroc</p>
+              <p className="fd-sign">Wevtex, Casablanca</p>
               <a href={CONTACT_URL} className="btn btn-outline">
                 Nous écrire directement
                 <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden><path d="M5 12h14M13 6l6 6-6 6" /></svg>
@@ -194,10 +194,10 @@ export default function AboutPage() {
           <div className="ic-head reveal">
             <span className="eyebrow line-eyebrow-center">Pourquoi nous</span>
             <h2 className="h-section" style={{ marginTop: 16 }}>
-              Six raisons de nous confier <em className="hl-line">votre projet</em>
+              Six engagements <em className="hl-line">que vous pouvez vérifier</em>
             </h2>
             <p className="ic-sub">
-              Ce qui change concrètement, du devis jusqu&apos;au suivi après le lancement.
+              Chacun se vérifie, du devis jusqu&apos;au suivi après le lancement.
             </p>
           </div>
           <div className="why-grid">
@@ -216,7 +216,7 @@ export default function AboutPage() {
 
       {/* ===================== ON EN PARLE ===================== */}
       <CtaBand
-        heading={<>Parlons de <em className="hl-em">votre projet</em></>}
+        heading={<>On commence <em className="hl-em">par un échange ?</em></>}
         text={
           <>
             Décrivez-nous ce que vous voulez lancer, nous revenons vers vous sous 24 heures avec un

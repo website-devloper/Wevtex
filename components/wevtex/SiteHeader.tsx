@@ -140,7 +140,7 @@ export function SiteHeader({ current }: { current?: Current }) {
             <span className="ht-divider" aria-hidden></span>
             <span className="ht-link ht-static">
               {ic(<><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z" /><circle cx="12" cy="10" r="3" /></>)}
-              Casablanca — nous travaillons partout
+              Basés à Casablanca, actifs dans tout le Maroc
             </span>
           </div>
           <div className="ht-group">
@@ -187,11 +187,11 @@ export function SiteHeader({ current }: { current?: Current }) {
               <div className="mega-dropdown">
                 <div className="mega-cols">
                   <div className="mega-col">
-                    <div className="mega-head">CRÉER</div>
+                    <div className="mega-head">CONSTRUIRE</div>
                     {SERVICES_DEV.map((s) => <MegaItem key={s.href} item={s} />)}
                   </div>
                   <div className="mega-col">
-                    <div className="mega-head">DÉVELOPPER &amp; AUTOMATISER</div>
+                    <div className="mega-head">ATTIRER &amp; CONVERTIR</div>
                     {SERVICES_SOL.map((s) => <MegaItem key={s.href} item={s} />)}
                   </div>
                 </div>
@@ -203,7 +203,7 @@ export function SiteHeader({ current }: { current?: Current }) {
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="chevron"><path d="M6 9l6 6 6-6" /></svg>
               </a>
               <div className="mega-dropdown secteurs-dropdown">
-                <div className="mega-head">LES SECTEURS QUE NOUS SERVONS</div>
+                <div className="mega-head">CHOISISSEZ VOTRE SECTEUR</div>
                 <div className="mega-grid">
                   {INDUSTRIES.map((s) => <MegaItem key={s.href} item={s} />)}
                 </div>
@@ -223,7 +223,7 @@ export function SiteHeader({ current }: { current?: Current }) {
 
         <div className="nav-cta">
           <a href={CONTACT_URL} className="btn btn-primary">
-            Parlons-en
+            Mon devis
             <svg className="arrow" viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="1.6">
               <path d="M3 9L9 3M9 3H4M9 3V8" />
             </svg>
@@ -260,11 +260,11 @@ export function SiteHeader({ current }: { current?: Current }) {
             <div id="mnav-services" className={panel === "services" ? "mnav-panel open" : "mnav-panel"}>
               <div>
                 <div className="mnav-panel-body">
-                  <div className="mnav-head">Créer</div>
+                  <div className="mnav-head">Construire</div>
                   <div className="mnav-grid">
                     {SERVICES_DEV.map((s) => <DrawerItem key={s.href} item={s} onPick={closeMenu} />)}
                   </div>
-                  <div className="mnav-head">Développer &amp; automatiser</div>
+                  <div className="mnav-head">Attirer &amp; convertir</div>
                   <div className="mnav-grid">
                     {SERVICES_SOL.map((s) => <DrawerItem key={s.href} item={s} onPick={closeMenu} />)}
                   </div>
@@ -301,7 +301,7 @@ export function SiteHeader({ current }: { current?: Current }) {
 
           <div className="mnav-foot">
             <a href={CONTACT_URL} className="btn btn-primary" onClick={closeMenu}>
-              Parlons-en
+              Mon devis
               <svg className="arrow" viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="1.6">
                 <path d="M3 9L9 3M9 3H4M9 3V8" />
               </svg>

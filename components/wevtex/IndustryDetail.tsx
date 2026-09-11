@@ -78,10 +78,10 @@ export function IndustryDetail({ industry }: { industry: Industry }) {
 
             <div className="hero-ctas" style={{ marginTop: 34, marginBottom: 0 }}>
               <a href={WHATSAPP_URL} className="btn btn-primary" target="_blank" rel="noopener">
-                Demander un devis gratuit
+                Obtenir mon devis gratuit
                 {ARROW}
               </a>
-              <a href={PORTFOLIO_URL} className="btn btn-outline">Voir nos réalisations</a>
+              <a href={PORTFOLIO_URL} className="btn btn-outline">Voir les sites livrés</a>
             </div>
           </div>
         </div>
@@ -92,13 +92,13 @@ export function IndustryDetail({ industry }: { industry: Industry }) {
         <section className="theme-paper services-bento">
           <div className="container">
             <div className="bento-head reveal">
-              <span className="eyebrow line-eyebrow">Nos services pour ce secteur</span>
+              <span className="eyebrow line-eyebrow">Pour votre secteur</span>
               <h2 className="h-section" style={{ marginTop: 14 }}>
-                Ce que nous pouvons faire <em className="hl-line">pour vous.</em>
+                Ce qui rapporte <em className="hl-line">dans votre métier.</em>
               </h2>
               <p className="ic-sub" style={{ maxWidth: "58ch" }}>
-                Chaque prestation, appliquée aux besoins réels de votre secteur.
-                Ouvrez-en une pour le détail et les tarifs.
+                Chaque prestation, traduite dans les besoins réels de votre secteur.
+                Ouvrez-en une pour voir ce qui est inclus et son prix.
               </p>
             </div>
 
@@ -126,9 +126,9 @@ export function IndustryDetail({ industry }: { industry: Industry }) {
       <section className="ind-outcomes-ink" style={{ padding: "clamp(72px, 11vh, 120px) 0" }}>
         <div className="container">
           <div className="reveal">
-            <span className="eyebrow line-eyebrow">Ce que ça change</span>
+            <span className="eyebrow line-eyebrow">Ce que vous y gagnez</span>
             <h2 className="h-section" style={{ marginTop: 14 }}>
-              Les résultats <em className="hl-line">concrets.</em>
+              Moins de travail, <em className="hl-line">plus de clients.</em>
             </h2>
           </div>
 
@@ -152,7 +152,7 @@ export function IndustryDetail({ industry }: { industry: Industry }) {
               <div className="faq-left reveal">
                 <span className="eyebrow line-eyebrow">FAQ</span>
                 <h2 className="h-section" style={{ marginTop: 14 }}>
-                  Vos questions, <em className="hl-line">nos réponses</em>
+                  Les questions de <em className="hl-line">votre secteur</em>
                 </h2>
                 <div className="faq-list-v2">
                   {industry.faqs.map((f, i) => (
@@ -174,12 +174,12 @@ export function IndustryDetail({ industry }: { industry: Industry }) {
                 <div className="wa-card">
                   <span className="wa-card-motif" aria-hidden></span>
                   <span className="wa-icon">{WHATSAPP}</span>
-                  <h3>Une autre question ?<br /><em>Écrivez-nous sur WhatsApp</em></h3>
+                  <h3>Une question sur votre secteur ?<br /><em>Posez-la sur WhatsApp</em></h3>
                   <span className="wa-rule"></span>
-                  <p>Nous sommes là pour vous aider. Écrivez-nous quand vous voulez, nous répondons au plus vite.</p>
+                  <p>Une vraie personne vous répond, en français ou en darija, pendant les horaires de bureau.</p>
                   <a href={WHATSAPP_URL} className="wa-btn" target="_blank" rel="noopener">
                     {WHATSAPP}
-                    Discuter sur WhatsApp
+                    Poser ma question
                     {ARROW}
                   </a>
                 </div>
@@ -193,13 +193,13 @@ export function IndustryDetail({ industry }: { industry: Industry }) {
       <section className="inline-cta inline-cta-ink" style={{ paddingTop: "clamp(70px, 10vh, 110px)" }}>
         <div className="container">
           <div className="ict-inner reveal">
-            <p className="ict-text">Un projet dans {industry.name.toLowerCase()} ?</p>
+            <p className="ict-text">Un projet en {industry.name.toLowerCase()} ? On le chiffre en quinze minutes.</p>
             <div className="ict-actions">
               <a href={WHATSAPP_URL} className="btn btn-primary" target="_blank" rel="noopener">
-                Demander un devis gratuit
+                Obtenir mon devis gratuit
                 {ARROW}
               </a>
-              <a href={CONTACT_URL} className="btn btn-outline">Envoyer un brief</a>
+              <a href={CONTACT_URL} className="btn btn-outline">Envoyer mon brief</a>
             </div>
           </div>
         </div>

@@ -64,7 +64,7 @@ export type Service = {
 };
 
 const PRICE_FOOTNOTE =
-  "Prix indicatifs de départ, en dirhams. Chaque projet reçoit un devis ferme après un échange de quinze minutes — sans engagement.";
+  "Prix indicatifs de départ, en dirhams. Chaque projet reçoit un devis ferme après un échange de quinze minutes, sans engagement.";
 
 export const SERVICES: Service[] = [
   /* ================================================================== */
@@ -79,7 +79,7 @@ export const SERVICES: Service[] = [
     h1: "Création de site web au Maroc,\nrapide et pensé pour vendre.",
     h1Em: ["rapide", "et", "pensé", "pour", "vendre."],
     intro:
-      "Nous concevons et développons des sites vitrines, des boutiques en ligne et des portails sur mesure. Modernes, ultra-rapides et pensés pour le référencement dès la première ligne de code — pas seulement jolis, mais construits pour vous apporter des clients.",
+      "Votre site doit faire une chose : transformer un visiteur en appel, en message WhatsApp ou en commande. Nous le concevons pour ça, rapide sur mobile, écrit pour Google, et livré à votre nom, code et domaine compris.",
     includes: [
       "Un design sur mesure, pensé mobile d'abord, jamais un thème acheté.",
       "Une structure prête pour le référencement : balises, plan de site, données structurées.",
@@ -105,15 +105,15 @@ export const SERVICES: Service[] = [
     },
     featureSections: [
       {
-        eyebrow: "Nos spécialités",
-        title: "Ce que nous savons\nfaire de mieux.",
-        titleEm: ["faire", "de mieux."],
-        subtitle: "Quatre savoir-faire que nous appliquons à chaque site que nous livrons.",
+        eyebrow: "Ce que vous obtenez",
+        title: "Quatre façons de\ngagner des clients.",
+        titleEm: ["gagner", "des", "clients."],
+        subtitle: "Selon ce que vous vendez, votre site ne travaille pas de la même façon.",
         cards: [
-          { title: "Sites vitrines", desc: "Votre activité présentée clairement, avec les preuves au bon endroit.", checks: ["Design sur mesure", "Mobile d'abord", "Textes structurés", "Contact en un clic"] },
-          { title: "Boutiques en ligne", desc: "Catalogue, paiement sécurisé et gestion des stocks, sans friction.", checks: ["Paiement CMI & Stripe", "Gestion des stocks", "Tunnel d'achat court", "Suivi des commandes"] },
-          { title: "Performance", desc: "La vitesse est une fonctionnalité, pas une option de fin de projet.", checks: ["Images optimisées", "Rendu statique", "Cache CDN", "Score Lighthouse 90+"] },
-          { title: "Référencement technique", desc: "Google doit comprendre votre site avant de pouvoir le classer.", checks: ["Balises et titres", "Données structurées", "Plan de site & robots", "Analytics branché"] },
+          { title: "Sites vitrines", desc: "Vos services, vos preuves et votre numéro, là où le visiteur les cherche.", checks: ["Design sur mesure", "Mobile d'abord", "Textes structurés", "Contact en un clic"] },
+          { title: "Boutiques en ligne", desc: "Des clients qui choisissent, commandent et paient seuls, même la nuit.", checks: ["Paiement CMI & Stripe", "Gestion des stocks", "Tunnel d'achat court", "Suivi des commandes"] },
+          { title: "Performance", desc: "Chaque seconde de chargement en moins garde un visiteur de plus.", checks: ["Images optimisées", "Rendu statique", "Cache CDN", "Score Lighthouse 90+"] },
+          { title: "Référencement technique", desc: "Construit pour être compris et classé par Google dès le premier jour.", checks: ["Balises et titres", "Données structurées", "Plan de site & robots", "Analytics branché"] },
         ],
       },
     ],
@@ -129,9 +129,9 @@ export const SERVICES: Service[] = [
       ],
     },
     process: {
-      title: "Comment se déroule\nla création.",
-      titleEm: ["la", "création."],
-      subtitle: "Cinq étapes, des points réguliers, et vous validez avant chaque passage à la suite.",
+      title: "Du premier appel\nau site en ligne.",
+      titleEm: ["site", "en", "ligne."],
+      subtitle: "Vous validez chaque étape avant la suivante. Personne ne vous met devant le fait accompli.",
       steps: [
         { n: "01", h: "Cadrage", d: "1–2 jours", checks: ["Vos objectifs", "Vos concurrents", "Périmètre et devis ferme"] },
         { n: "02", h: "Arborescence & textes", d: "2–4 jours", checks: ["Plan des pages", "Trame de contenu", "Mots-clés visés"] },
@@ -141,9 +141,9 @@ export const SERVICES: Service[] = [
       ],
     },
     sectors: {
-      title: "La création de sites,\nsecteur par secteur.",
-      titleEm: ["secteur", "par secteur."],
-      subtitle: "Le même savoir-faire, adapté à la façon dont vos clients décident vraiment.",
+      title: "Un site qui parle\nà vos clients.",
+      titleEm: ["à", "vos", "clients."],
+      subtitle: "Un hôtelier et un avocat n'ont pas besoin du même site. Voici ce que nous mettons en avant pour le vôtre.",
       groups: [
         { label: "E-commerce & commerce de détail", cases: ["Catalogue et fiches produits", "Paiement CMI et Stripe", "Retrait en boutique"] },
         { label: "Tourisme & hôtellerie", cases: ["Réservation directe", "Site multilingue", "Galeries et visites"] },
@@ -167,9 +167,9 @@ export const SERVICES: Service[] = [
       ],
     },
     pricing: {
-      title: "Des prix clairs\npour votre site.",
-      titleEm: ["pour", "votre site."],
-      subtitle: "Trois formules, un prix ferme, aucune ligne cachée.",
+      title: "Le prix de votre site,\nsans rendez-vous.",
+      titleEm: ["sans", "rendez-vous."],
+      subtitle: "Trois formules affichées. Le devis final confirme le prix, il ne le gonfle pas.",
       tiers: [
         { name: "Vitrine", price: PRICES["website-creation"]["Vitrine"], note: "Jusqu'à 5 pages · livré en 7 à 14 jours", features: ["Design sur mesure", "Jusqu'à 5 pages responsives", "Référencement de base", "Formulaire et WhatsApp", "1 mois d'accompagnement"] },
         { name: "Business", price: PRICES["website-creation"]["Business"], note: "Jusqu'à 15 pages · livré en 3 à 4 semaines", featured: true, features: ["Tout de la formule Vitrine", "Jusqu'à 15 pages", "Rédaction des contenus", "Blog et actualités", "Référencement avancé", "3 mois d'accompagnement"] },
@@ -191,7 +191,7 @@ export const SERVICES: Service[] = [
     h1: "Agence SEO au Maroc,\nsoyez trouvé par qui vous cherche.",
     h1Em: ["soyez", "trouvé"],
     intro:
-      "Le référencement naturel est le seul canal qui continue de travailler quand vous arrêtez de payer. Nous corrigeons ce qui bloque techniquement, écrivons ce que vos clients cherchent vraiment, et construisons l'autorité qui vous fait passer devant.",
+      "Vos clients tapent déjà votre métier dans Google. La seule question : tombent-ils sur vous ou sur votre concurrent ? Nous corrigeons ce qui bloque votre site, écrivons les pages qui répondent à leurs recherches et construisons l'autorité qui vous fait passer devant.",
     includes: [
       "Un audit technique complet, avec les correctifs appliqués et non seulement listés.",
       "Une stratégie de mots-clés fondée sur l'intention d'achat, pas sur le volume brut.",
@@ -207,7 +207,7 @@ export const SERVICES: Service[] = [
     faqs: [
       { q: "En combien de temps voit-on des résultats ?", a: "Les premiers mouvements apparaissent vers le troisième mois, les gains significatifs entre le sixième et le neuvième. Le référencement se construit, il ne s'achète pas." },
       { q: "Garantissez-vous la première place ?", a: "Non, et personne ne le peut sérieusement. Nous nous engageons sur le travail effectué et sur sa transparence, pas sur une position que seul Google décide." },
-      { q: "Faut-il refaire mon site ?", a: "Pas forcément. L'audit dit si votre site actuel peut être corrigé ou s'il vaut mieux le reconstruire — et nous le disons franchement." },
+      { q: "Faut-il refaire mon site ?", a: "Pas forcément. L'audit dit si votre site actuel peut être corrigé ou s'il vaut mieux le reconstruire, et nous le disons franchement." },
     ],
     demo: {
       title: "Le référencement en action",
@@ -216,12 +216,12 @@ export const SERVICES: Service[] = [
     },
     featureSections: [
       {
-        eyebrow: "Nos spécialités",
-        title: "Les quatre leviers\ndu référencement.",
-        titleEm: ["du", "référencement."],
+        eyebrow: "Ce que nous travaillons",
+        title: "Ce qui vous fait passer\ndevant vos concurrents.",
+        titleEm: ["devant", "vos", "concurrents."],
         subtitle: "Aucun ne suffit seul. Nous les travaillons ensemble, dans cet ordre.",
         cards: [
-          { title: "Technique", desc: "Ce qui empêche Google de lire et d'aimer votre site.", checks: ["Vitesse et Core Web Vitals", "Indexation et exploration", "Données structurées", "Version mobile"] },
+          { title: "Technique", desc: "Ce qui empêche Google de lire votre site, corrigé par nous.", checks: ["Vitesse et Core Web Vitals", "Indexation et exploration", "Données structurées", "Version mobile"] },
           { title: "Mots-clés", desc: "Ce que vos clients tapent réellement avant d'acheter.", checks: ["Analyse d'intention", "Étude de la concurrence", "Requêtes longue traîne", "Plan de contenu"] },
           { title: "Contenu", desc: "Des pages qui répondent mieux que celles déjà classées.", checks: ["Optimisation des pages", "Pages manquantes créées", "Maillage interne", "Contenu rédigé en français"] },
           { title: "Autorité", desc: "Les liens et les signaux qui vous font passer devant.", checks: ["Netlinking qualitatif", "Annuaires pertinents", "Relations presse", "Suivi des liens"] },
@@ -240,9 +240,9 @@ export const SERVICES: Service[] = [
       ],
     },
     process: {
-      title: "Comment se déroule\nune mission SEO.",
-      titleEm: ["une", "mission SEO."],
-      subtitle: "Un premier mois de remise à plat, puis un rythme mensuel régulier.",
+      title: "Ce qui se passe,\nmois après mois.",
+      titleEm: ["mois", "après", "mois."],
+      subtitle: "Le premier mois, nous remettons tout à plat. Ensuite, un rythme mensuel dont vous voyez chaque action.",
       steps: [
         { n: "01", h: "Audit", d: "1 semaine", checks: ["Analyse technique", "État des positions", "Analyse concurrentielle"] },
         { n: "02", h: "Stratégie", d: "3–5 jours", checks: ["Mots-clés prioritaires", "Plan de contenu", "Objectifs chiffrés"] },
@@ -252,8 +252,8 @@ export const SERVICES: Service[] = [
       ],
     },
     sectors: {
-      title: "Le référencement,\nsecteur par secteur.",
-      titleEm: ["secteur", "par secteur."],
+      title: "Les recherches de vos clients,\npas les nôtres.",
+      titleEm: ["pas", "les", "nôtres."],
       subtitle: "Les requêtes, la concurrence et le cycle d'achat changent d'un métier à l'autre.",
       groups: [
         { label: "E-commerce & commerce de détail", cases: ["Pages catégories", "Fiches produits", "Requêtes marque"] },
@@ -280,7 +280,7 @@ export const SERVICES: Service[] = [
     pricing: {
       title: "Des forfaits SEO\nsans engagement long.",
       titleEm: ["sans", "engagement long."],
-      subtitle: "Trois rythmes selon la concurrence de votre marché.",
+      subtitle: "Trois rythmes selon la concurrence sur vos mots-clés. Trois mois minimum, puis vous êtes libre.",
       tiers: [
         { name: "Essentiel", price: PRICES["seo"]["Essentiel"], note: "Par mois · 3 mois minimum", features: ["Audit technique initial", "10 mots-clés suivis", "Optimisation des pages", "2 contenus par mois", "Rapport mensuel"] },
         { name: "Croissance", price: PRICES["seo"]["Croissance"], note: "Par mois · 3 mois minimum", featured: true, features: ["Tout de la formule Essentiel", "30 mots-clés suivis", "4 contenus par mois", "Netlinking actif", "Suivi de la concurrence", "Point mensuel en visio"] },
@@ -302,7 +302,7 @@ export const SERVICES: Service[] = [
     h1: "Référencement local Google Maps au Maroc,\nsoyez la fiche qu'on appelle.",
     h1Em: ["la", "fiche", "qu'on", "appelle."],
     intro:
-      "Quatre recherches locales sur cinq débouchent sur une visite ou un appel. Nous optimisons votre fiche Google Business, renforçons votre position sur Maps et organisons vos avis, pour que ce soit vous qu'on trouve — pas le concurrent d'à côté.",
+      "Quand quelqu'un cherche « dentiste » ou « garage » près de chez lui, Google montre trois fiches avant tout le reste. Nous faisons en sorte que la vôtre en fasse partie : fiche Google Business complète, position sur Maps et avis clients réguliers.",
     includes: [
       "La création ou la reprise complète de votre fiche Google Business.",
       "L'optimisation de votre position sur Maps dans votre zone de chalandise.",
@@ -327,12 +327,12 @@ export const SERVICES: Service[] = [
     },
     featureSections: [
       {
-        eyebrow: "Nos spécialités",
+        eyebrow: "Ce que nous travaillons",
         title: "Ce qui fait remonter\nune fiche locale.",
         titleEm: ["une", "fiche locale."],
         subtitle: "Quatre chantiers qui pèsent réellement dans le classement local de Google.",
         cards: [
-          { title: "Fiche Google Business", desc: "La vitrine que 80 % de vos prospects verront en premier.", checks: ["Catégories exactes", "Horaires et zone", "Photos et produits", "Publications régulières"] },
+          { title: "Fiche Google Business", desc: "La vitrine que vos prospects voient avant même votre site.", checks: ["Catégories exactes", "Horaires et zone", "Photos et produits", "Publications régulières"] },
           { title: "Position sur Maps", desc: "Remonter dans le trio affiché en haut des résultats.", checks: ["Zone de chalandise", "Pages locales", "Signaux de proximité", "Suivi par quartier"] },
           { title: "Citations & annuaires", desc: "Vos coordonnées identiques partout, sinon Google doute.", checks: ["Annuaires marocains", "Cohérence nom et adresse", "Nettoyage des doublons", "Réseaux sociaux"] },
           { title: "Avis clients", desc: "La preuve sociale qui déclenche l'appel ou la visite.", checks: ["Collecte automatisée", "Réponses rédigées", "Alertes en temps réel", "Gestion des litiges"] },
@@ -363,8 +363,8 @@ export const SERVICES: Service[] = [
       ],
     },
     sectors: {
-      title: "Le SEO local,\nsecteur par secteur.",
-      titleEm: ["secteur", "par secteur."],
+      title: "Ce qui fait appeler,\nmétier par métier.",
+      titleEm: ["métier", "par", "métier."],
       subtitle: "Une recherche locale ne se joue pas de la même façon selon le métier.",
       groups: [
         { label: "E-commerce & commerce de détail", cases: ["Produits sur la fiche", "Itinéraires", "Promotions locales"] },
@@ -413,7 +413,7 @@ export const SERVICES: Service[] = [
     h1: "Agence Google Ads et Meta au Maroc,\nde la publicité qui se rembourse.",
     h1Em: ["se", "rembourse."],
     intro:
-      "La publicité en ligne donne des résultats dès le premier jour — à condition de viser juste. Nous construisons vos campagnes Google, Facebook et Instagram, la page qui reçoit le clic, et le suivi qui dit exactement combien chaque dirham a rapporté.",
+      "La publicité en ligne peut vous amener des clients dès cette semaine, ou brûler votre budget en silence. Nous construisons vos campagnes Google, Facebook et Instagram, la page qui reçoit le clic et le suivi qui vous dit combien chaque dirham a rapporté.",
     includes: [
       "La création complète des campagnes, du ciblage aux visuels.",
       "Une page d'atterrissage dédiée, conçue pour transformer le clic payé.",
@@ -438,7 +438,7 @@ export const SERVICES: Service[] = [
     },
     featureSections: [
       {
-        eyebrow: "Nos spécialités",
+        eyebrow: "Ce que nous pilotons",
         title: "Ce qui fait la différence\nentre dépenser et investir.",
         titleEm: ["entre", "dépenser", "et investir."],
         subtitle: "Quatre pièces indispensables. Il en manque une, et le budget se dissipe.",
@@ -474,8 +474,8 @@ export const SERVICES: Service[] = [
       ],
     },
     sectors: {
-      title: "La publicité,\nsecteur par secteur.",
-      titleEm: ["secteur", "par secteur."],
+      title: "Le bon canal selon\nce que vous vendez.",
+      titleEm: ["ce", "que", "vous", "vendez."],
       subtitle: "Le canal, le message et le coût d'acquisition changent selon ce que vous vendez.",
       groups: [
         { label: "E-commerce & commerce de détail", cases: ["Google Shopping", "Panier abandonné", "Audiences similaires"] },
@@ -525,7 +525,7 @@ export const SERVICES: Service[] = [
     h1: "Développement d'application mobile\nau Maroc, iOS et Android.",
     h1Em: ["iOS", "et", "Android."],
     intro:
-      "Développer deux fois la même application coûte deux fois plus cher. Avec Flutter, nous écrivons un seul code qui tourne nativement sur iOS et Android, avec la même fluidité — et nous nous occupons de la publication sur les stores.",
+      "Une application ne vaut que si vos clients l'ouvrent. Nous la concevons autour de ce qu'ils font vraiment, puis nous la développons avec Flutter : un seul code pour iOS et Android, un budget divisé par deux, et la publication sur les stores prise en charge.",
     includes: [
       "Le design des écrans avant le développement, validé par vous.",
       "Une application native iOS et Android issue d'un seul code.",
@@ -550,9 +550,9 @@ export const SERVICES: Service[] = [
     },
     featureSections: [
       {
-        eyebrow: "Nos spécialités",
-        title: "Ce que nous savons\nmettre dans une app.",
-        titleEm: ["mettre", "dans une app."],
+        eyebrow: "Ce que nous intégrons",
+        title: "Les fonctions qui font\nrevenir vos clients.",
+        titleEm: ["revenir", "vos", "clients."],
         subtitle: "Les fonctions que demandent la plupart des projets, éprouvées et prêtes.",
         cards: [
           { title: "Comptes & profils", desc: "Inscription, connexion et gestion des utilisateurs.", checks: ["Email et téléphone", "Connexion Google et Apple", "Profils et préférences", "Mot de passe oublié"] },
@@ -586,8 +586,8 @@ export const SERVICES: Service[] = [
       ],
     },
     sectors: {
-      title: "Les applications,\nsecteur par secteur.",
-      titleEm: ["secteur", "par secteur."],
+      title: "Ce que votre app\ndoit faire chez vous.",
+      titleEm: ["doit", "faire", "chez", "vous."],
       subtitle: "Ce que l'application doit faire dépend entièrement de votre métier.",
       groups: [
         { label: "E-commerce & commerce de détail", cases: ["Commande en ligne", "Fidélité et points", "Suivi de livraison"] },
@@ -612,8 +612,8 @@ export const SERVICES: Service[] = [
       ],
     },
     pricing: {
-      title: "Le budget\nd'une application.",
-      titleEm: ["d'une", "application."],
+      title: "Combien coûte\nvotre application.",
+      titleEm: ["votre", "application."],
       subtitle: "Trois niveaux d'ambition, chiffrés fermement après le cadrage.",
       tiers: [
         { name: "Essentielle", price: PRICES["mobile-apps"]["Essentielle"], note: "À partir de · 4 à 6 semaines", features: ["Jusqu'à 8 écrans", "iOS et Android", "Design inclus", "Publication sur les stores", "3 mois d'accompagnement"] },
@@ -636,7 +636,7 @@ export const SERVICES: Service[] = [
     h1: "Logiciel sur mesure au Maroc,\nqui suit votre organisation.",
     h1Em: ["votre", "organisation."],
     intro:
-      "Quand aucun logiciel du marché ne correspond à votre façon de travailler, la solution n'est pas de changer votre façon de travailler. Nous développons des applications Windows et macOS taillées pour vos processus, rapides, et qui fonctionnent même sans connexion.",
+      "Si vos équipes passent leurs journées entre trois fichiers Excel et un logiciel qui ne colle pas à votre métier, le problème n'est pas vos équipes. Nous développons le logiciel Windows et macOS qui suit votre façon de travailler, sans licence par poste, et utilisable même sans connexion.",
     includes: [
       "L'analyse de vos processus actuels avant toute ligne de code.",
       "Une application Windows et macOS avec installateur et mises à jour automatiques.",
@@ -650,7 +650,7 @@ export const SERVICES: Service[] = [
     ],
     tags: ["Windows", "macOS", "Hors ligne", "Reporting"],
     faqs: [
-      { q: "Pourquoi pas un simple logiciel du marché ?", a: "Si un logiciel existant convient, nous vous le dirons — c'est moins cher pour vous. Le sur-mesure se justifie quand vos processus sont spécifiques ou quand les licences par poste deviennent plus coûteuses que le développement." },
+      { q: "Pourquoi pas un simple logiciel du marché ?", a: "Si un logiciel existant convient, nous vous le dirons, c'est moins cher pour vous. Le sur-mesure se justifie quand vos processus sont spécifiques ou quand les licences par poste deviennent plus coûteuses que le développement." },
       { q: "Peut-on récupérer nos données Excel ?", a: "Oui. La reprise des fichiers existants fait partie du projet : nous importons l'historique et vérifions la cohérence avant la mise en service." },
       { q: "Que se passe-t-il si vous n'êtes plus là ?", a: "Le code source vous est livré et documenté. N'importe quel développeur peut reprendre le projet, c'est précisément l'intérêt de ne pas dépendre d'un éditeur." },
     ],
@@ -661,9 +661,9 @@ export const SERVICES: Service[] = [
     },
     featureSections: [
       {
-        eyebrow: "Nos spécialités",
-        title: "Ce que fait\nun logiciel métier.",
-        titleEm: ["un", "logiciel métier."],
+        eyebrow: "Ce que nous construisons",
+        title: "Ce que le logiciel\nfera à votre place.",
+        titleEm: ["à", "votre", "place."],
         subtitle: "Les fonctions que réclament la plupart des entreprises que nous accompagnons.",
         cards: [
           { title: "Gestion & facturation", desc: "Le cœur administratif de votre activité, au même endroit.", checks: ["Devis et factures", "Clients et fournisseurs", "Règlements et relances", "Export comptable"] },
@@ -697,8 +697,8 @@ export const SERVICES: Service[] = [
       ],
     },
     sectors: {
-      title: "Les logiciels métier,\nsecteur par secteur.",
-      titleEm: ["secteur", "par secteur."],
+      title: "Vos règles de métier,\nenfin respectées.",
+      titleEm: ["enfin", "respectées."],
       subtitle: "Chaque métier a ses règles, ses documents et ses habitudes de saisie.",
       groups: [
         { label: "E-commerce & commerce de détail", cases: ["Caisse et encaissement", "Stock multi-boutiques", "Étiquettes et codes-barres"] },
@@ -723,8 +723,8 @@ export const SERVICES: Service[] = [
       ],
     },
     pricing: {
-      title: "Le budget\nd'un logiciel métier.",
-      titleEm: ["d'un", "logiciel métier."],
+      title: "Combien coûte\nvotre logiciel.",
+      titleEm: ["votre", "logiciel."],
       subtitle: "Chiffré fermement après la phase d'analyse, jamais avant.",
       tiers: [
         { name: "Outil simple", price: PRICES["desktop-apps"]["Outil simple"], note: "À partir de · 4 à 6 semaines", features: ["Un domaine fonctionnel", "Windows ou macOS", "Base de données locale", "Exports Excel et PDF", "Formation incluse"] },
@@ -747,7 +747,7 @@ export const SERVICES: Service[] = [
     h1: "Développement web sur mesure,\nquand rien d'existant ne suffit.",
     h1Em: ["ne", "suffit."],
     intro:
-      "Certaines entreprises fonctionnent avec des règles que personne n'a prévues. Nous concevons des plateformes SaaS, des extranets, des portails clients et des architectures d'API qui épousent exactement votre organisation — et qui tiennent la charge quand elle grandit.",
+      "Quand vos équipes recopient les mêmes données dans trois outils et que vos clients appellent pour savoir où en est leur dossier, il vous faut une plateforme à vous. Nous concevons applications web, portails clients et SaaS qui suivent exactement vos règles, et tiennent la charge quand vous grandissez.",
     includes: [
       "Un cadrage sérieux : processus, règles métier, cas particuliers.",
       "Une plateforme web sur mesure, avec rôles, permissions et traçabilité.",
@@ -761,7 +761,7 @@ export const SERVICES: Service[] = [
     ],
     tags: ["SaaS", "API", "Extranet", "Intégrations"],
     faqs: [
-      { q: "Comment évaluez-vous un projet complexe ?", a: "Par une phase de cadrage facturée à part, courte et concrète : processus, règles, priorités. Elle débouche sur un périmètre chiffré fermement — et elle vous appartient même si vous ne poursuivez pas avec nous." },
+      { q: "Comment évaluez-vous un projet complexe ?", a: "Par une phase de cadrage facturée à part, courte et concrète : processus, règles, priorités. Elle débouche sur un périmètre chiffré fermement, et elle vous appartient même si vous ne poursuivez pas avec nous." },
       { q: "Pouvez-vous vous connecter à notre ERP ?", a: "Oui, dès lors qu'il expose une API ou une base accessible. Nous avons connecté des outils de facturation, de stock et de paie à des plateformes sur mesure." },
       { q: "Qui héberge la plateforme ?", a: "Au choix : chez vous, ou sur une infrastructure que nous administrons. Dans les deux cas, les accès et le code restent à votre nom." },
     ],
@@ -772,9 +772,9 @@ export const SERVICES: Service[] = [
     },
     featureSections: [
       {
-        eyebrow: "Nos spécialités",
-        title: "Ce que nous\nconstruisons.",
-        titleEm: ["construisons."],
+        eyebrow: "Ce que nous construisons",
+        title: "Quatre projets qui\nchangent le quotidien.",
+        titleEm: ["changent", "le", "quotidien."],
         subtitle: "Quatre familles de projets qui reviennent le plus souvent.",
         cards: [
           { title: "Portails clients", desc: "Donner à vos clients un espace pour suivre ce qui les concerne.", checks: ["Espace sécurisé", "Documents et factures", "Suivi des demandes", "Messagerie intégrée"] },
@@ -808,8 +808,8 @@ export const SERVICES: Service[] = [
       ],
     },
     sectors: {
-      title: "Les solutions sur mesure,\nsecteur par secteur.",
-      titleEm: ["secteur", "par secteur."],
+      title: "Là où le sur-mesure\nfait la différence.",
+      titleEm: ["fait", "la", "différence."],
       subtitle: "Plus le métier est spécifique, plus le sur-mesure se justifie.",
       groups: [
         { label: "E-commerce & commerce de détail", cases: ["Portail fournisseurs", "Synchronisation des stocks", "Tarifs par client"] },
@@ -834,8 +834,8 @@ export const SERVICES: Service[] = [
       ],
     },
     pricing: {
-      title: "Le budget\nd'une plateforme.",
-      titleEm: ["d'une", "plateforme."],
+      title: "Combien coûte\nvotre plateforme.",
+      titleEm: ["votre", "plateforme."],
       subtitle: "Le cadrage précède toujours le chiffrage définitif.",
       tiers: [
         { name: "Cadrage", price: PRICES["custom-solutions"]["Cadrage"], note: "2 à 3 semaines · livrable à vous", features: ["Ateliers avec vos équipes", "Processus documentés", "Modèle de données", "Périmètre chiffré", "Déduit du projet si vous poursuivez"] },
@@ -858,7 +858,7 @@ export const SERVICES: Service[] = [
     h1: "Chatbot WhatsApp au Maroc,\nune réponse même à minuit.",
     h1Em: ["même", "à", "minuit."],
     intro:
-      "Au Maroc, vos clients écrivent sur WhatsApp — et attendent une réponse immédiate. Nous mettons en place des bots qui répondent aux questions courantes, qualifient les demandes sérieuses et passent la main à un humain au bon moment.",
+      "Au Maroc, vos clients écrivent sur WhatsApp et attendent une réponse tout de suite : le soir, le week-end, trente fois par jour la même question. Notre chatbot répond à leur place, en français et en darija, trie les demandes sérieuses et passe la main à votre équipe au bon moment.",
     includes: [
       "L'ouverture et la configuration de votre compte WhatsApp Business API.",
       "Des scénarios de conversation écrits pour votre activité, en français et en darija.",
@@ -868,7 +868,7 @@ export const SERVICES: Service[] = [
     outcomes: [
       { h: "Aucune demande perdue", p: "Les messages du soir et du week-end reçoivent une réponse au lieu d'attendre lundi." },
       { h: "Des prospects triés", p: "Votre équipe ne traite que les demandes sérieuses, déjà qualifiées par le bot." },
-      { h: "Du temps rendu", p: "Les questions répétitives — horaires, prix, disponibilité — ne mobilisent plus personne." },
+      { h: "Du temps rendu", p: "Les questions répétitives, horaires, prix, disponibilité, ne mobilisent plus personne." },
     ],
     tags: ["WhatsApp API", "Automatisation", "CRM", "Support"],
     faqs: [
@@ -883,7 +883,7 @@ export const SERVICES: Service[] = [
     },
     featureSections: [
       {
-        eyebrow: "Nos spécialités",
+        eyebrow: "Ce que fait votre bot",
         title: "Ce que sait faire\nun bot bien réglé.",
         titleEm: ["un", "bot bien réglé."],
         subtitle: "Quatre usages qui couvrent la grande majorité des demandes reçues.",
@@ -919,8 +919,8 @@ export const SERVICES: Service[] = [
       ],
     },
     sectors: {
-      title: "Les bots WhatsApp,\nsecteur par secteur.",
-      titleEm: ["secteur", "par secteur."],
+      title: "Les questions que\nvos clients posent.",
+      titleEm: ["vos", "clients", "posent."],
       subtitle: "Les questions que reçoit un restaurant n'ont rien à voir avec celles d'une clinique.",
       groups: [
         { label: "E-commerce & commerce de détail", cases: ["Suivi de commande", "Disponibilité produit", "Retours et échanges"] },
@@ -938,15 +938,15 @@ export const SERVICES: Service[] = [
       titleEm: ["votre", "automatisation."],
       subtitle: "Beaucoup de bots agacent plus qu'ils n'aident. Voici comment nous l'évitons.",
       points: [
-        { h: "L'API officielle, jamais autre chose", p: "Les solutions non officielles font bloquer votre numéro tôt ou tard — souvent au pire moment. Nous passons par Meta, avec votre numéro vérifié." },
+        { h: "L'API officielle, jamais autre chose", p: "Les solutions non officielles font bloquer votre numéro tôt ou tard, souvent au pire moment. Nous passons par Meta, avec votre numéro vérifié." },
         { h: "Écrit à partir de vos vrais messages", p: "Nous lisons vos conversations passées avant d'écrire quoi que ce soit. Les scénarios répondent aux questions réellement posées." },
         { h: "La main passée au bon moment", p: "Le bot sait reconnaître ce qu'il ne sait pas traiter et transmet à un humain avec tout l'historique, sans faire répéter le client." },
         { h: "Réglé chaque mois", p: "Nous relisons les conversations et corrigeons ce qui coince. Un bot qu'on n'entretient pas se dégrade en quelques semaines." },
       ],
     },
     pricing: {
-      title: "Le budget\nd'un bot WhatsApp.",
-      titleEm: ["d'un", "bot WhatsApp."],
+      title: "Combien coûte\nvotre chatbot.",
+      titleEm: ["votre", "chatbot."],
       subtitle: "Une mise en place unique, puis un abonnement pour l'entretien.",
       tiers: [
         { name: "Essentiel", price: PRICES["whatsapp-bots"]["Essentiel"], note: `Mise en place · puis ${MONTHLY["whatsapp-bots"]["Essentiel"]} DH par mois`, features: ["Compte WhatsApp API", "Jusqu'à 10 scénarios", "Réponses aux questions courantes", "Transmission à votre équipe", "Réglage mensuel"] },

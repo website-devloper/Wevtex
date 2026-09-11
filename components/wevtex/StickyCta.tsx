@@ -31,7 +31,7 @@ export function StickyCta({ whatsappUrl = WHATSAPP_URL }: { whatsappUrl?: string
         WhatsApp
       </a>
       <a href={CONTACT_URL} className="sticky-cta-btn primary">
-        Demander un devis
+        Mon devis gratuit
         <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
           <path d="M5 12h14M13 6l6 6-6 6" />
         </svg>

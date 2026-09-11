@@ -57,14 +57,14 @@ export default function PortfolioPage() {
       <section className="inline-cta inline-cta-ink" style={{ paddingTop: "clamp(70px, 10vh, 110px)" }}>
         <div className="container">
           <div className="ict-inner reveal">
-            <p className="ict-text">Votre projet mérite la même attention.</p>
+            <p className="ict-text">Le prochain projet de cette page peut être le vôtre.</p>
             <div className="ict-actions">
               <a href={WHATSAPP_URL} className="btn btn-primary" target="_blank" rel="noopener">
-                Demander un devis gratuit
+                Obtenir mon devis gratuit
                 <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden><path d="M5 12h14M13 6l6 6-6 6" /></svg>
               </a>
               <a href={CONTACT_URL} className="btn btn-outline">
-                Envoyer un brief
+                Envoyer mon brief
               </a>
             </div>
           </div>

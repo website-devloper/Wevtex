@@ -109,11 +109,11 @@ export function RealisationView({ project: p }: { project: Project }) {
                 </p>
                 <div className="ict-actions">
                   <a href={servicePath(service.slug)} className="btn btn-primary">
-                    Voir le service
+                    Voir ce service
                     {ARROW}
                   </a>
                   <a href={WHATSAPP_URL} className="btn btn-outline" target="_blank" rel="noopener">
-                    Parler de votre projet
+                    Parler de mon projet
                   </a>
                 </div>
               </div>

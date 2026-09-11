@@ -36,11 +36,11 @@ export function FaqView() {
             <div className="reveal">
               <span className="eyebrow line-eyebrow">FAQ</span>
               <h1 className="h-section" style={{ marginTop: 14 }}>
-                Vos questions, <em className="hl-line">nos réponses.</em>
+                Les réponses franches, <em className="hl-line">avant de signer.</em>
               </h1>
               <p className="ic-sub wk-lede" style={{ maxWidth: "60ch" }}>
-                Prix, délais, propriété du site, hébergement, référencement et maintenance.
-                {" "}{ALL_FAQS.length} réponses claires, sans détour — les mêmes que celles
+                Prix, délais, propriété du site, hébergement, référencement et maintenance :
+                {" "}{ALL_FAQS.length} réponses claires, les mêmes que celles
                 que nous donnons au téléphone.
               </p>
 
@@ -81,10 +81,10 @@ export function FaqView() {
               <p className="ict-text">Votre question n&apos;est pas là ? Posez-la, on répond vite.</p>
               <div className="ict-actions">
                 <a href={WHATSAPP_URL} className="btn btn-primary" target="_blank" rel="noopener">
-                  Discuter sur WhatsApp
+                  Poser ma question
                   {ARROW}
                 </a>
-                <a href={CONTACT_URL} className="btn btn-outline">Envoyer un brief</a>
+                <a href={CONTACT_URL} className="btn btn-outline">Envoyer mon brief</a>
               </div>
             </div>
           </div>

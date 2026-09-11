@@ -24,7 +24,7 @@ import { ServicesBento, SERVICE_ICONS } from "./SharedSections";
 import { WHATSAPP_URL, serviceWhatsAppUrl, GOOGLE_REVIEWS_URL, PORTFOLIO_URL, industryPath } from "@/lib/site-links";
 
 /* Claim shown in the hero — keep it accurate. */
-const GUARANTEE = "Vous ne payez qu'une fois satisfait.";
+const GUARANTEE = "Payé par étapes : vous ne réglez que ce que vous avez validé.";
 
 /* Client logo wall. Each file is pre-normalised onto the same 400x170
    transparent canvas, sized by optical weight rather than raw height — a
@@ -407,30 +407,30 @@ export function HomeClient() {
           <div className="hero-grid">
             <div className="hero-content">
               <span className="eyebrow line-eyebrow" style={{ marginBottom: 18 }}>
-                Agence marketing digital · Casablanca, Maroc
+                Agence marketing digital · Casablanca · Tout le Maroc
               </span>
               <ScrollRevealText
                 as="h1"
                 mode="load"
-                em={["travaillent"]}
+                em={["sonner", "le", "téléphone"]}
                 emClassName="hl-line"
-                text={"Agence marketing digital au Maroc :\ndes sites qui travaillent pour vous."}
+                text={"Agence marketing digital au Maroc :\ndes sites qui font sonner le téléphone."}
               />
               <p className="hero-sub">
-                Wevtex est une agence marketing digital au Maroc, basée à Casablanca. Nous construisons
-                des sites, des boutiques en ligne, des applications mobiles, des campagnes
-                Google et Meta et des outils sur mesure. Livrés en 2 à 4 semaines — pas en
-                quelques mois.
+                Wevtex est une agence marketing digital au Maroc, basée à Casablanca. Nous créons
+                votre site, votre boutique ou votre application, puis nous vous rendons visible
+                sur Google, Maps et Meta. Prix annoncé en dirhams, délai écrit sur le devis,
+                et tout reste à votre nom.
               </p>
               <div className="hero-ctas">
                 <a href={WHATSAPP_URL} className="btn btn-primary" target="_blank" rel="noopener">
-                  Demander un devis gratuit
+                  Obtenir mon devis gratuit
                   <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden style={{ marginLeft: 2 }}>
                     <path d="M5 12h14M13 6l6 6-6 6" />
                   </svg>
                 </a>
                 <a href={PORTFOLIO_URL} className="btn btn-outline">
-                  Voir nos réalisations
+                  Voir les sites livrés
                   <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden style={{ marginLeft: 2 }}>
                     <path d="M5 12h14M13 6l6 6-6 6" />
                   </svg>
@@ -464,7 +464,7 @@ export function HomeClient() {
 
           {/* Trust bar: proof of other clients, kept in the hero so it lands above the fold. */}
           <div className="hero-logos reveal">
-            <p className="ls-lead">Ils nous font confiance, au Maroc et ailleurs</p>
+            <p className="ls-lead">Ils nous ont confié leur présence en ligne</p>
             <ul className="ls-row">
               {CLIENT_LOGOS.map((c) => (
                 <li key={c.name}>
@@ -482,13 +482,13 @@ export function HomeClient() {
         <div className="container">
           <div className="problem-inner">
             <h2 className="problem-h">
-              La plupart des sites<br />
-              ne rapportent <em className="hl-em hl-underline">aucun</em> client.
+              Votre site est joli.<br />
+              Mais il vous rapporte <em className="hl-em hl-underline">combien</em> de clients ?
             </h2>
             <p className="problem-sub">
-              Ils sont jolis, mais lents, confus et impossibles à mettre à jour.{" "}<br />
-              Nous créons des sites et des applications qui fonctionnent vraiment —{" "}<br />
-              pour plus de contacts, plus de ventes et plus de temps pour vous.
+              Lent sur mobile, absent de Google, impossible à modifier sans rappeler l&apos;agence.{" "}<br />
+              Ou pas de site du tout, et une page Facebook qui ne vous appartient pas.{" "}<br />
+              Nous construisons l&apos;inverse : un site rapide, trouvé, qui fait appeler et acheter.
             </p>
 
           </div>
@@ -501,18 +501,18 @@ export function HomeClient() {
       <section className="theme-paper" style={{ padding: "clamp(72px, 11vh, 120px) 0" }}>
         <div className="container">
           <div className="reveal">
-            <span className="eyebrow line-eyebrow">Pourquoi Wevtex</span>
+            <span className="eyebrow line-eyebrow">Ce qui change avec nous</span>
             <h2 className="h-section" style={{ marginTop: 14 }}>
-              Ce que vous obtenez, <em className="hl-line">et ce que vous évitez.</em>
+              Les mauvaises surprises, <em className="hl-line">on les a supprimées.</em>
             </h2>
           </div>
 
           <div className="ind-outcomes reveal" style={{ marginTop: "clamp(38px, 6vh, 58px)" }}>
             {[
-              { h: "Un prix annoncé, pas une rallonge", p: "Le devis est ferme avant que le travail commence. Le prix que vous validez est celui que vous payez, quelle que soit la durée réelle du projet." },
-              { h: "Un code qui vous appartient", p: "Le site, le domaine et les accès sont à votre nom dès la livraison. Vous pouvez partir chez qui vous voulez, quand vous voulez, sans rien nous demander." },
-              { h: "Une équipe directe, pas un intermédiaire", p: "Vous parlez à la personne qui construit votre site. Pas de chef de projet qui transmet, pas de sous-traitance à l'autre bout du monde." },
-              { h: "Livré en semaines, pas en mois", p: "Une vitrine part en ligne en 2 à 4 semaines, une boutique en 4 à 8. Le délai est écrit dans le devis, pas estimé en cours de route." },
+              { h: "Pas de facture surprise", p: "Le prix est écrit sur le devis avant le premier jour de travail. Vous payez ce prix-là, même si le projet nous prend plus de temps que prévu." },
+              { h: "Votre domaine, jamais en otage", p: "Le site, le nom de domaine et tous les accès sont à votre nom dès la livraison. Vous pouvez changer de prestataire demain, sans rien nous demander." },
+              { h: "Quelqu'un qui répond", p: "Vous parlez à ceux qui construisent votre site, sur WhatsApp, pendant les horaires de bureau. Pas de standard, pas de sous-traitant à l'autre bout du monde." },
+              { h: "Une date tenue", p: "Une vitrine est en ligne en 2 à 4 semaines, une boutique en 4 à 8. La date est écrite sur le devis, pas improvisée en cours de route." },
             ].map((c) => (
               <div className="ind-outcome" key={c.h}>
                 <h3>{c.h}</h3>
@@ -531,7 +531,7 @@ export function HomeClient() {
       <section className="cities-band">
         <div className="container">
           <h2 className="cities-band-h">
-            Nous travaillons partout au Maroc — et près de chez vous.
+            Où que vous soyez au Maroc, on s&apos;occupe de votre site.
           </h2>
           <ul className="pb-cities reveal">
             {CITIES.map((c) => (
@@ -552,9 +552,9 @@ export function HomeClient() {
           Shared with /services so both surfaces read the same SERVICES list —
           a service added or re-linked in homeContent.ts moves on every page. */}
       <ServicesBento
-        eyebrow="Nos services"
-        heading={<>Tout pour lancer, être trouvé et <em className="hl-line">vendre.</em></>}
-        intro="Huit prestations, un même principe : chacune est pensée pour un résultat mesurable, pas pour cocher une case."
+        eyebrow="Ce que nous faisons pour vous"
+        heading={<>Être trouvé, être choisi, <em className="hl-line">être payé.</em></>}
+        intro="Huit prestations, une seule question derrière chacune : combien de clients en plus ce travail va-t-il vous rapporter ?"
       />
 
       {/* ===================== WORK =====================
@@ -572,12 +572,12 @@ export function HomeClient() {
               ic-sub. The section reads quiet because of the space around it,
               not because the heading was removed. */}
           <div className="wk-head reveal">
-            <span className="eyebrow line-eyebrow">Nos réalisations</span>
+            <span className="eyebrow line-eyebrow">Preuves en ligne</span>
             <h2 className="h-section" style={{ marginTop: 14 }}>
-              Du concret, <em className="hl-line">en ligne.</em>
+              Ne nous croyez pas sur parole, <em className="hl-line">cliquez.</em>
             </h2>
             <p className="ic-sub wk-lede">
-              Quelques projets livrés. Ouvrez-en un pour voir le détail.
+              Des sites livrés et en ligne aujourd&apos;hui. Ouvrez un projet, puis visitez le vrai site.
             </p>
           </div>
 
@@ -642,7 +642,7 @@ export function HomeClient() {
                           <p className="wk-metric-note">Résultats mesurés chez nos clients.</p>
 
                           <a href={p.liveUrl} target="_blank" rel="noopener noreferrer" className="wk-view">
-                            Voir le site web
+                            Visiter le site
                             <span className="wk-view-arrow" aria-hidden>
                               <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
                             </span>
@@ -658,7 +658,7 @@ export function HomeClient() {
 
           <div className="wk-all reveal">
             <a href={PORTFOLIO_URL} className="btn btn-outline">
-              Voir tous les projets
+              Voir tous les projets en ligne
               <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
             </a>
           </div>
@@ -667,17 +667,18 @@ export function HomeClient() {
       </section>
 
       {/* ===================== STATS (mockup 6 — clay band) ===================== */}
-      {/* Projets livrés is confirmed. The other three still need verifying
-          against something real before launch. */}
+      {/* Every figure is checkable: projects delivered is confirmed, the
+          rating is the public Google profile, eight is the service list, and
+          ownership is the promise made on every page. No unverified claim. */}
       <section className="stats-band-v2">
         <InkBackdrop variant="data" />
         <div className="container">
           <div className="sb-grid reveal">
             {[
-              { to: 40, dec: 0, suffix: "+", label: "Projets livrés", desc: "Sites, boutiques et applications en production." },
-              { to: 5, dec: 1, suffix: "", label: "Note moyenne", desc: "Note moyenne laissée par nos clients." },
-              { to: 4, dec: 0, suffix: "", label: "Ans d'expérience", desc: "À faire grandir des entreprises marocaines en ligne." },
-              { to: 98, dec: 0, suffix: "%", label: "Clients satisfaits", desc: "De clients qui recommandent et qui reviennent." },
+              { to: 40, dec: 0, suffix: "+", label: "Projets livrés", desc: "Sites, boutiques et applications, en production chez nos clients." },
+              { to: 5, dec: 1, suffix: "", label: "Note Google", desc: "Sur nos avis Google, publics et lisibles par tous." },
+              { to: 8, dec: 0, suffix: "", label: "Prestations", desc: "Du site au chatbot WhatsApp, sans jongler entre prestataires." },
+              { to: 100, dec: 0, suffix: "%", label: "À votre nom", desc: "Domaine, code et accès de chaque site sont remis au client." },
             ].map((s) => (
               <div className="sb-item" key={s.label}>
                 {/* The final value is rendered here, not a zero: if the count-up
@@ -700,9 +701,9 @@ export function HomeClient() {
         <InkBackdrop variant="data" />
         <div className="container">
           <div className="ict-inner reveal">
-            <p className="ict-text">Vous voulez ces résultats pour votre entreprise ?</p>
+            <p className="ict-text">Le prochain site de cette liste peut être le vôtre.</p>
             <a href={WHATSAPP_URL} className="btn btn-primary" target="_blank" rel="noopener">
-              Demander un devis gratuit
+              Obtenir mon devis gratuit
               <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden><path d="M5 12h14M13 6l6 6-6 6" /></svg>
             </a>
           </div>
@@ -715,10 +716,10 @@ export function HomeClient() {
           <div className="ic-head ic-head-left reveal">
             <span className="eyebrow line-eyebrow">Avis clients</span>
             <h2 className="h-section" style={{ marginTop: 16 }}>
-              Ils nous ont fait <em className="hl-line">confiance.</em>
+              Ce que disent ceux qui <em className="hl-line">ont déjà signé.</em>
             </h2>
             <p className="ic-sub">
-              Les résultats parlent, mais nos clients aussi. Voici ce qu&apos;ils disent, mot pour mot.
+              Leur avis compte plus que notre discours. Nos avis Google, eux, sont publics et vérifiables.
             </p>
           </div>
 
@@ -771,7 +772,7 @@ export function HomeClient() {
 
           <div className="testi-cta reveal">
             <a href={GOOGLE_REVIEWS_URL} className="btn btn-outline" target="_blank" rel="noopener nofollow">
-              Voir tous nos avis Google
+              Lire nos avis sur Google
               <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden style={{ marginLeft: 4 }}><path d="M5 12h14M13 6l6 6-6 6" /></svg>
             </a>
           </div>
@@ -782,26 +783,26 @@ export function HomeClient() {
       <section className="theme-cream industries-carousel" id="industries">
         <div className="container">
           <div className="ic-head reveal">
-            <span className="eyebrow line-eyebrow-center">Les secteurs que nous servons</span>
+            <span className="eyebrow line-eyebrow-center">Votre secteur</span>
             <h2 className="h-section" style={{ marginTop: 16 }}>
-              On connaît <em className="hl-line">votre métier.</em>
+              Un riad ne vend pas comme <em className="hl-line">une clinique.</em>
             </h2>
             <p className="ic-sub">
-              Chaque secteur a ses propres contraintes.<br />
-              Nos solutions sont adaptées à votre réalité pour vous faire grandir.
+              Vos clients ne décident pas comme ceux du voisin.<br />
+              Choisissez votre secteur et voyez ce qui marche vraiment chez vous.
             </p>
           </div>
 
           <div className="ic-track reveal">
             {[
-              { i: 0, label: "Commerce", desc: "Des solutions qui font venir en boutique et augmentent les ventes en ligne." },
-              { i: 1, label: "Hôtellerie", desc: "Des expériences digitales soignées qui séduisent vos clients." },
-              { i: 3, label: "Santé", desc: "Des systèmes sécurisés et conformes, au service de vos patients." },
-              { i: 5, label: "Éducation", desc: "Des outils numériques qui aident élèves et enseignants." },
-              { i: 4, label: "Logistique", desc: "Des opérations fluidifiées pour que tout continue d'avancer." },
-              { i: 2, label: "Services professionnels", desc: "Des sites qui inspirent confiance et captent des contacts qualifiés." },
-              { i: 6, label: "Création & tech", desc: "Des sites performants pour les startups et les créateurs." },
-              { i: 7, label: "Public & associations", desc: "Des sites accessibles qui informent et donnent envie d'agir." },
+              { i: 0, label: "Commerce", desc: "Vendre en ligne sans répondre cent fois au même prix sur WhatsApp." },
+              { i: 1, label: "Hôtellerie", desc: "Des réservations en direct, sans commission de plateforme." },
+              { i: 3, label: "Santé", desc: "Un agenda qui se remplit, même quand le cabinet est fermé." },
+              { i: 5, label: "Éducation", desc: "Des inscriptions qui aboutissent en ligne, pas au téléphone." },
+              { i: 4, label: "Logistique", desc: "Des demandes de devis B2B qui arrivent toutes seules." },
+              { i: 2, label: "Services professionnels", desc: "Un site qui rassure avant le premier rendez-vous." },
+              { i: 6, label: "Création & tech", desc: "Un site à la hauteur de votre travail." },
+              { i: 7, label: "Public & associations", desc: "Des dons et des bénévoles, en quelques clics." },
             ].map((it, idx) => (
               <a key={it.i} href={industryPath(INDUSTRY_LINKS[it.i])} className={`ic-card g${idx % 5}`}>
                 <Image
@@ -843,11 +844,11 @@ export function HomeClient() {
           <div className="ic-head reveal">
             <span className="eyebrow line-eyebrow-center">Tarifs</span>
             <h2 className="h-section" style={{ marginTop: 16, justifyContent: "center" }}>
-              Un prix clair, <em className="hl-line">dès le départ.</em>
+              Le prix, avant même <em className="hl-line">de nous appeler.</em>
             </h2>
             <p className="ic-sub">
-              Un prix de départ pour chacun de nos services. Dites-nous ce qu&apos;il vous faut<br />
-              et nous vous envoyons un devis ferme pour votre projet.
+              Ailleurs, il faut un rendez-vous pour connaître le prix. Ici, il est affiché.<br />
+              Dites-nous ce qu&apos;il vous faut : le devis ferme suit, et il ne bouge plus.
             </p>
           </div>
 
@@ -892,7 +893,7 @@ export function HomeClient() {
           <div className="pr-foot reveal">
             <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden><path d="M20 6L9 17l-5-5" /></svg>Aucun frais caché</span>
             <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden><path d="M20 6L9 17l-5-5" /></svg>Vous ne payez qu&apos;une fois satisfait</span>
-            <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden><path d="M20 6L9 17l-5-5" /></svg>Besoin de sur-mesure ? Écrivez-nous</span>
+            <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden><path d="M20 6L9 17l-5-5" /></svg>Un projet hors grille ? On le chiffre</span>
           </div>
 
         </div>
@@ -904,9 +905,9 @@ export function HomeClient() {
           <div className="faq-grid">
             <div className="faq-left reveal">
               <span className="eyebrow line-eyebrow">FAQ</span>
-              <h2 className="h-section" style={{ marginTop: 14 }}>Vos questions, <em className="hl-line">nos réponses.</em></h2>
+              <h2 className="h-section" style={{ marginTop: 14 }}>Ce que vous vous demandez <em className="hl-line">avant de signer.</em></h2>
               <p className="ic-sub" style={{ marginTop: 14, textAlign: "left" }}>
-                Les questions qu&apos;on nous pose le plus souvent avant de démarrer un projet.
+                Prix, délais, propriété du site : les réponses franches aux doutes qu&apos;on nous confie le plus souvent.
               </p>
               <div className="faq-list-v2">
                 {FAQS.map((f, i) => (
@@ -928,12 +929,12 @@ export function HomeClient() {
               <div className="wa-card">
                 <span className="wa-card-motif" aria-hidden></span>
                 <span className="wa-icon">{WHATSAPP}</span>
-                <h3>Une autre question ?<br /><em>Écrivez-nous sur WhatsApp</em></h3>
+                <h3>Un doute qui reste ?<br /><em>Posez-le sur WhatsApp</em></h3>
                 <span className="wa-rule"></span>
-                <p>Nous sommes là pour vous aider. Écrivez-nous quand vous voulez, nous répondons au plus vite.</p>
+                <p>Une vraie personne vous répond, en français ou en darija, pendant les horaires de bureau. Sans engagement.</p>
                 <a href={WHATSAPP_URL} className="wa-btn" target="_blank" rel="noopener">
                   {WHATSAPP}
-                  Discuter sur WhatsApp
+                  Poser ma question
                   <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden><path d="M5 12h14M13 6l6 6-6 6" /></svg>
                 </a>
               </div>
@@ -941,7 +942,7 @@ export function HomeClient() {
                 <span className="wa-lock">
                   <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><rect x="4" y="11" width="16" height="9" rx="2" /><path d="M8 11V7a4 4 0 0 1 8 0v4" /></svg>
                 </span>
-                Vos informations restent confidentielles. Nous respectons votre vie privée.
+                Vos informations restent confidentielles. Nous ne les partageons avec personne.
               </div>
             </div>
           </div>

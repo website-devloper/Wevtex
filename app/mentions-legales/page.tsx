@@ -27,7 +27,7 @@ export default function MentionsLegalesPage() {
           body: (
             <>
               <p>
-                <b>Wevtex</b> — agence web et applications.
+                <b>Wevtex</b>, agence web et applications.
                 <br />
                 Forme juridique et raison sociale&nbsp;: [À COMPLÉTER]
                 <br />
@@ -53,7 +53,7 @@ export default function MentionsLegalesPage() {
           body: (
             <p>
               Le site est hébergé par <b>Vercel Inc.</b>, 440 N Barranca Ave #4133,
-              Covina, CA 91723, États-Unis —{" "}
+              Covina, CA 91723, États-Unis,{" "}
               <a href="https://vercel.com" target="_blank" rel="noopener nofollow">
                 vercel.com
               </a>

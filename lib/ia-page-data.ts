@@ -21,7 +21,7 @@ export const IA_FAQS = [
   },
   {
     q: "L'IA peut-elle répondre en darija ?",
-    a: "Oui. Les modèles actuels gèrent le français, l'arabe classique, la darija marocaine et l'anglais dans une même conversation — un client peut poser sa question en darija et recevoir une réponse en darija. C'est ce qui rend l'automatisation utile au Maroc plutôt que théorique.",
+    a: "Oui. Les modèles actuels gèrent le français, l'arabe classique, la darija marocaine et l'anglais dans une même conversation, un client peut poser sa question en darija et recevoir une réponse en darija. C'est ce qui rend l'automatisation utile au Maroc plutôt que théorique.",
   },
   {
     q: "Mes données sont-elles en sécurité ?",
@@ -52,7 +52,7 @@ export const IA_CAPABILITIES = [
   },
   {
     h: "Recherche sur vos documents",
-    p: "Vos catalogues, contrats et procédures interrogeables en langage naturel, avec la source citée — pour que la réponse soit vérifiable plutôt que plausible.",
+    p: "Vos catalogues, contrats et procédures interrogeables en langage naturel, avec la source citée, pour que la réponse soit vérifiable plutôt que plausible.",
   },
 ];
 

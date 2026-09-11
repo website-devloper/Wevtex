@@ -84,7 +84,7 @@ export function ServicesBento({
 
         <div className="wk-all reveal">
           <a href={SERVICES_URL} className="btn btn-outline">
-            Voir tous nos services
+            Comparer les 8 prestations
             <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden><path d="M5 12h14M13 6l6 6-6 6" /></svg>
           </a>
         </div>
@@ -218,12 +218,12 @@ export function FaqSection() {
 
 /** Closing call to action — the dark band used at the foot of a page. */
 export function CtaBand({
-  eyebrow = "On en parle ?",
+  eyebrow = "Prochaine étape",
   heading,
   text,
-  primaryLabel = "Demander un devis gratuit",
+  primaryLabel = "Obtenir mon devis gratuit",
   secondaryHref = "/portfolio",
-  secondaryLabel = "Voir nos réalisations",
+  secondaryLabel = "Voir les sites livrés",
 }: {
   eyebrow?: string;
   heading: ReactNode;

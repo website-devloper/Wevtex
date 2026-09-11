@@ -97,7 +97,7 @@ export function BlogIndexView() {
               <p className="ict-text">Une question qui n&apos;a pas encore son article ? Posez-la.</p>
               <div className="ict-actions">
                 <a href={WHATSAPP_URL} className="btn btn-primary" target="_blank" rel="noopener">
-                  Discuter sur WhatsApp
+                  Poser ma question
                   {ARROW}
                 </a>
                 <a href={CONTACT_URL} className="btn btn-outline">Nous écrire</a>

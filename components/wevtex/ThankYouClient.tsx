@@ -49,12 +49,12 @@ export function ThankYouClient() {
             style={{ marginTop: 34, marginBottom: 0, justifyContent: "center" }}
           >
             <a href={WHATSAPP_URL} className="btn btn-primary" target="_blank" rel="noopener">
-              Discuter sur WhatsApp
+              Écrire sur WhatsApp en attendant
               <svg className="arrow" viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="1.6" aria-hidden>
                 <path d="M3 9L9 3M9 3H4M9 3V8" />
               </svg>
             </a>
-            <a href={PORTFOLIO_URL} className="btn btn-outline">Voir nos réalisations</a>
+            <a href={PORTFOLIO_URL} className="btn btn-outline">Voir les sites livrés</a>
           </div>
         </div>
       </section>

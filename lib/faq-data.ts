@@ -51,11 +51,11 @@ export const FAQ_GROUPS: FaqGroup[] = fillPricesDeep([
       },
       {
         q: "Comment se déroule un projet ?",
-        a: "En cinq étapes : cadrage, arborescence et textes, design, développement, mise en ligne. Vous validez chaque étape avant la suivante, et vous recevez un point d'avancement chaque semaine — vous savez donc toujours où en est le projet.",
+        a: "En cinq étapes : cadrage, arborescence et textes, design, développement, mise en ligne. Vous validez chaque étape avant la suivante, et vous recevez un point d'avancement chaque semaine, vous savez donc toujours où en est le projet.",
       },
       {
         q: "Que devez-vous nous fournir pour commencer ?",
-        a: "Votre logo s'il existe, vos textes ou les informations pour les écrire, et vos photos ou produits. Si vous n'avez rien de tout cela, nous pouvons rédiger les textes et organiser la production des visuels — c'est prévu dans le devis.",
+        a: "Votre logo s'il existe, vos textes ou les informations pour les écrire, et vos photos ou produits. Si vous n'avez rien de tout cela, nous pouvons rédiger les textes et organiser la production des visuels, c'est prévu dans le devis.",
       },
     ],
   },
@@ -69,7 +69,7 @@ export const FAQ_GROUPS: FaqGroup[] = fillPricesDeep([
       },
       {
         q: "Gérez-vous l'hébergement et le nom de domaine ?",
-        a: "Oui. Nous mettons en place un hébergement rapide et sécurisé ainsi que votre domaine, et nous pouvons continuer à les gérer — ou tout vous transmettre si vous préférez gérer vous-même.",
+        a: "Oui. Nous mettons en place un hébergement rapide et sécurisé ainsi que votre domaine, et nous pouvons continuer à les gérer, ou tout vous transmettre si vous préférez gérer vous-même.",
       },
       {
         q: "Puis-je modifier le contenu moi-même ?",
@@ -127,7 +127,7 @@ export const FAQ_GROUPS: FaqGroup[] = fillPricesDeep([
       },
       {
         q: "Comment démarrer un projet ?",
-        a: "Écrivez-nous sur WhatsApp ou remplissez le formulaire de contact. Nous revenons vers vous pendant les horaires de bureau avec un premier avis, une idée du budget et un délai réaliste — sans engagement de votre part.",
+        a: "Écrivez-nous sur WhatsApp ou remplissez le formulaire de contact. Nous revenons vers vous pendant les horaires de bureau avec un premier avis, une idée du budget et un délai réaliste, sans engagement de votre part.",
       },
     ],
   },

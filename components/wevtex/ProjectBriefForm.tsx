@@ -272,7 +272,7 @@ export function ProjectBriefForm() {
           </button>
         ) : (
           <button type="submit" className="btn btn-primary" disabled={status === "sending"} style={{ flex: 1, justifyContent: "center" }}>
-            {status === "sending" ? "Envoi en cours…" : "Envoyer ma demande"}
+            {status === "sending" ? "Envoi en cours…" : "Recevoir mon devis gratuit"}
           </button>
         )}
       </div>
@@ -282,7 +282,7 @@ export function ProjectBriefForm() {
           <rect x="4" y="10" width="16" height="10" rx="2" />
           <path d="M8 10V7a4 4 0 018 0v3" />
         </svg>
-        Vos informations restent confidentielles.
+        Vos informations restent confidentielles. Réponse pendant les horaires de bureau.
       </p>
     </form>
   );

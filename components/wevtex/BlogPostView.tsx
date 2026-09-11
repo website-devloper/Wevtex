@@ -155,10 +155,10 @@ export function BlogPostView({ post }: { post: Post }) {
               <p className="ict-text">Votre cas est particulier ? Quinze minutes suffisent pour le chiffrer.</p>
               <div className="ict-actions">
                 <a href={WHATSAPP_URL} className="btn btn-primary" target="_blank" rel="noopener">
-                  Demander un devis gratuit
+                  Obtenir mon devis gratuit
                   {ARROW}
                 </a>
-                <a href={CONTACT_URL} className="btn btn-outline">Envoyer un brief</a>
+                <a href={CONTACT_URL} className="btn btn-outline">Envoyer mon brief</a>
               </div>
             </div>
           </div>

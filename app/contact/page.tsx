@@ -66,7 +66,7 @@ export default function ContactPage() {
             <div className="cs-left reveal">
               <span className="eyebrow line-eyebrow">Nous joindre</span>
               <h2 className="h-section" style={{ marginTop: 18 }}>
-                Casablanca,<br />et à <em className="hl-em">distance.</em>
+                Trois façons de<br />nous <em className="hl-em">joindre.</em>
               </h2>
               <p className="cs-sub">
                 Le formulaire est le plus rapide : il nous donne tout ce qu&apos;il faut
@@ -124,10 +124,10 @@ export default function ContactPage() {
             <div className="faq-left reveal">
               <span className="eyebrow line-eyebrow">FAQ</span>
               <h2 className="h-section" style={{ marginTop: 14 }}>
-                Vos questions, <em className="hl-line">nos réponses</em>
+                Avant de nous écrire, <em className="hl-line">les réponses</em>
               </h2>
               <p className="ic-sub" style={{ marginTop: 14, textAlign: "left" }}>
-                Ce qu&apos;on nous demande le plus souvent avant de démarrer un projet.
+                Les réponses courtes aux questions qu&apos;on nous pose avant le premier échange.
               </p>
               <div className="faq-list-v2">
                 {FAQS.map((f, i) => (
@@ -149,12 +149,12 @@ export default function ContactPage() {
               <div className="wa-card">
                 <span className="wa-card-motif" aria-hidden></span>
                 <span className="wa-icon">{WHATSAPP}</span>
-                <h3>Une autre question ?<br /><em>Écrivez-nous sur WhatsApp</em></h3>
+                <h3>Pas le temps du formulaire ?<br /><em>Écrivez-nous sur WhatsApp</em></h3>
                 <span className="wa-rule"></span>
-                <p>Nous sommes là pour vous aider. Écrivez-nous quand vous voulez, nous répondons au plus vite.</p>
+                <p>Une vraie personne vous répond, en français ou en darija, pendant les horaires de bureau.</p>
                 <a href={WHATSAPP_URL} className="wa-btn" target="_blank" rel="noopener">
                   {WHATSAPP}
-                  Discuter sur WhatsApp
+                  Écrire sur WhatsApp
                   <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden><path d="M5 12h14M13 6l6 6-6 6" /></svg>
                 </a>
               </div>
@@ -162,7 +162,7 @@ export default function ContactPage() {
                 <span className="wa-lock">
                   <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><rect x="4" y="11" width="16" height="9" rx="2" /><path d="M8 11V7a4 4 0 0 1 8 0v4" /></svg>
                 </span>
-                Vos informations restent confidentielles. Nous respectons votre vie privée.
+                Vos informations restent confidentielles. Nous ne les partageons avec personne.
               </div>
             </div>
           </div>

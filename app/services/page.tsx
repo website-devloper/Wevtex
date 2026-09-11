@@ -35,13 +35,13 @@ export default function ServicesPage() {
           <div className="reveal">
             <span className="eyebrow line-eyebrow">Nos prestations</span>
             <h1 className="h-section" style={{ marginTop: 14 }}>
-              Huit façons de faire<br />
-              <em className="hl-line">grandir votre activité.</em>
+              Choisissez le résultat,<br />
+              <em className="hl-line">on s&apos;occupe du reste.</em>
             </h1>
             <p className="ic-sub wk-lede" style={{ maxWidth: "58ch" }}>
               Services d&apos;agence web et de marketing digital au Maroc, du site
-              vitrine à l&apos;automatisation : chaque prestation d&apos;agence digitale
-              a sa page, ce qu&apos;elle comprend, comment nous procédons, et le prix.
+              vitrine à l&apos;automatisation. Pour chaque prestation d&apos;agence digitale :
+              ce qu&apos;elle vous rapporte, comment elle se déroule et son prix, affiché.
             </p>
           </div>
         </div>
@@ -67,7 +67,7 @@ export default function ServicesPage() {
                     <div className="wk-shot srv-shot">
                       <Image
                         src={sv.image}
-                        alt={`Aperçu — ${sv.name}`}
+                        alt={`${sv.name}, illustration Wevtex`}
                         width={900}
                         height={860}
                         quality={90}
@@ -95,7 +95,7 @@ export default function ServicesPage() {
                     </div>
 
                     <a href={servicePath(sv.slug)} className="wk-view">
-                      Voir les détails
+                      Voir ce qui est inclus
                       <span className="wk-view-arrow" aria-hidden>
                         <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
                       </span>
@@ -113,8 +113,8 @@ export default function ServicesPage() {
 
       {/* ===================== CTA (composant partagé) ===================== */}
       <CtaBand
-        heading={<>Dites-nous ce que<br />vous voulez <em className="hl-line">construire.</em></>}
-        text="Envoyez-nous votre projet en deux lignes sur WhatsApp. Nous répondons sous quelques heures, avec un conseil honnête et un prix clair."
+        heading={<>Pas sûr de ce qu&apos;il<br />vous <em className="hl-line">faut vraiment ?</em></>}
+        text="Décrivez votre activité en deux lignes sur WhatsApp. Nous vous disons quelle prestation a du sens pour vous, et laquelle ne vous servirait à rien."
       />
       </main>
 

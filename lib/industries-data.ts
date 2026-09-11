@@ -36,7 +36,7 @@ export const INDUSTRIES: Industry[] = fillPricesDeep([
     h1: "Des boutiques en ligne\nqui vendent vraiment.",
     h1Em: ["vendent", "vraiment."],
     intro:
-      "Pour les marques de mode, de beauté, de décoration et les commerces alimentaires, nous créons des boutiques en ligne qui transforment les visiteurs en acheteurs : panier, paiement sécurisé et gestion des stocks simple à piloter au quotidien.",
+      "Vous vendez déjà sur Instagram ou en boutique, et vous répondez cent fois au même prix sur WhatsApp. Nous créons la boutique en ligne qui vend à votre place : catalogue clair, paiement à la livraison ou par carte, stocks à jour et commandes suivies.",
     includes: [
       "Panier et paiement sécurisé avec les moyens de paiement locaux.",
       "Gestion du catalogue, des stocks et des déclinaisons produits.",
@@ -67,7 +67,7 @@ export const INDUSTRIES: Industry[] = fillPricesDeep([
     h1: "Des réservations directes,\nmoins de commissions.",
     h1Em: ["moins", "de", "commissions."],
     intro:
-      "Pour les hôtels, riads, resorts et agences de voyage, nous créons des sites qui génèrent des réservations en direct — disponibilités en temps réel, paiement sécurisé et visites virtuelles — pour que vous dépendiez moins des plateformes à forte commission.",
+      "Chaque nuitée réservée sur une plateforme vous coûte une commission. Nous créons le site de votre hôtel, riad ou agence de voyage qui prend la réservation en direct : disponibilités en temps réel, paiement sécurisé et pages dans la langue de vos clients.",
     includes: [
       "Moteur de réservation directe avec disponibilités en temps réel.",
       "Paiements et acomptes en ligne sécurisés.",
@@ -98,7 +98,7 @@ export const INDUSTRIES: Industry[] = fillPricesDeep([
     h1: "La confiance d'abord,\nles contacts ensuite.",
     h1Em: ["les", "contacts", "ensuite."],
     intro:
-      "Pour les cabinets d'avocats, les experts-comptables, les agences immobilières et les consultants, nous créons des sites crédibles, pensés pour capter des demandes qualifiées et faciliter la prise de rendez-vous — parce que dans votre métier, c'est la confiance qui conclut.",
+      "Dans votre métier, un client choisit à qui confier son dossier avant même d'appeler. Pour les cabinets d'avocats, experts-comptables, agences immobilières et consultants, nous créons un site qui rassure, montre vos preuves et transforme une visite en rendez-vous qualifié.",
     includes: [
       "Un design qui met en avant votre expertise et vos preuves.",
       "Formulaires de contact et prise de rendez-vous en ligne.",
@@ -129,7 +129,7 @@ export const INDUSTRIES: Industry[] = fillPricesDeep([
     h1: "Des soins simples\nà réserver en ligne.",
     h1Em: ["simples", "à", "réserver"],
     intro:
-      "Pour les cliniques, les studios de sport et les thérapeutes, nous créons des sites avec formulaires sécurisés, réservation de séances et présentation claire des prestations — pour que vos futurs patients et adhérents vous trouvent et réservent sans effort.",
+      "Vos patients cherchent le soir, quand le cabinet est fermé. Pour les cliniques, cabinets, studios de sport et thérapeutes, nous créons un site qui explique vos soins simplement, présente l'équipe et prend les rendez-vous en ligne, à toute heure.",
     includes: [
       "Formulaires patients et de contact sécurisés.",
       "Réservation de séances et de rendez-vous.",
@@ -160,7 +160,7 @@ export const INDUSTRIES: Industry[] = fillPricesDeep([
     h1: "Montrez vos chantiers,\ngagnez vos appels d'offres.",
     h1Em: ["gagnez", "vos", "appels", "d'offres."],
     intro:
-      "Pour les entreprises du BTP, de l'industrie et du transport, nous créons des sites qui mettent en valeur votre flotte, vos chantiers et vos savoir-faire — et qui permettent à vos clients B2B de demander un devis en quelques clics.",
+      "Un acheteur compare trois fournisseurs en dix minutes, et il appelle celui dont le site montre des chantiers, des certifications et un formulaire de devis clair. Nous créons ce site pour les entreprises du BTP, de l'industrie et du transport.",
     includes: [
       "Portfolio de chantiers et présentation de votre flotte.",
       "Formulaires de demande de devis adaptés à vos prestations.",
@@ -191,7 +191,7 @@ export const INDUSTRIES: Industry[] = fillPricesDeep([
     h1: "Apprendre partout,\nsur tous les écrans.",
     h1Em: ["sur", "tous", "les", "écrans."],
     intro:
-      "Pour les écoles, les cours en ligne et les centres de formation, nous créons des plateformes avec espaces élèves, hébergement vidéo et modules de certification — pour enseigner, suivre la progression et augmenter vos inscriptions.",
+      "Une famille ou un futur stagiaire se décide souvent sur votre site. Pour les écoles, centres de formation et cours en ligne, nous créons des sites et des plateformes qui présentent vos programmes, prennent les inscriptions et suivent la progression des élèves.",
     includes: [
       "Espaces élèves avec suivi de progression.",
       "Hébergement vidéo et parcours de formation structurés.",
@@ -222,7 +222,7 @@ export const INDUSTRIES: Industry[] = fillPricesDeep([
     h1: "Des sites qui sortent\ndu lot, comme vous.",
     h1Em: ["comme", "vous."],
     intro:
-      "Pour les startups SaaS, les agences marketing, les médias et les artisans créateurs, nous concevons des pages d'atterrissage et des sites animés à la hauteur de votre ambition — et qui transforment les curieux en utilisateurs et en clients.",
+      "Vos clients achètent votre goût, et un site lent ou banal le contredit. Pour les startups, agences, médias et créateurs, nous concevons des sites et des pages d'atterrissage à la hauteur de votre travail, qui transforment les curieux en clients.",
     includes: [
       "Pages d'atterrissage animées et ultra-performantes.",
       "Pages produit et fonctionnalités qui expliquent vite la valeur.",
@@ -231,7 +231,7 @@ export const INDUSTRIES: Industry[] = fillPricesDeep([
     ],
     outcomes: [
       { h: "Votre travail vu en premier", p: "Un portfolio qui charge vite et met les images et les vidéos au premier plan, sans habillage qui les retarde." },
-      { h: "Des briefs mieux cadrés", p: "Un formulaire qui pose les bonnes questions — budget, délai, périmètre — avant le premier rendez-vous." },
+      { h: "Des briefs mieux cadrés", p: "Un formulaire qui pose les bonnes questions, budget, délai, périmètre, avant le premier rendez-vous." },
       { h: "Un site à votre niveau", p: "Une identité tenue jusque dans le détail des interactions, parce que c'est précisément ce que vos clients achètent." },
     ],
     faqs: [
@@ -253,7 +253,7 @@ export const INDUSTRIES: Industry[] = fillPricesDeep([
     h1: "Informer, et donner\nenvie d'agir.",
     h1Em: ["donner", "envie", "d'agir."],
     intro:
-      "Pour les associations, les fondations et les institutions publiques, nous créons des sites accessibles avec collecte de dons et outils d'animation de communauté — conçus pour informer, instaurer la confiance et donner envie de passer à l'action.",
+      "Une association vit de la confiance qu'elle inspire. Pour les associations, fondations et institutions, nous créons des sites accessibles à tous, qui expliquent votre mission, recrutent des bénévoles et recueillent les dons en quelques clics.",
     includes: [
       "Un design accessible, conforme aux recommandations WCAG.",
       "Collecte de dons sécurisée.",

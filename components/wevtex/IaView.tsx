@@ -51,10 +51,10 @@ export function IaView() {
 
               <div className="hero-ctas" style={{ marginTop: 32, marginBottom: 0 }}>
                 <a href={WHATSAPP_URL} className="btn btn-primary" target="_blank" rel="noopener">
-                  Parler de votre cas d&apos;usage
+                  Parler de mon cas d&apos;usage
                   {ARROW}
                 </a>
-                <a href={CONTACT_URL} className="btn btn-outline">Demander un devis</a>
+                <a href={CONTACT_URL} className="btn btn-outline">Obtenir mon devis</a>
               </div>
             </div>
           </div>
@@ -168,10 +168,10 @@ export function IaView() {
               </p>
               <div className="ict-actions">
                 <a href={WHATSAPP_URL} className="btn btn-primary" target="_blank" rel="noopener">
-                  Discuter sur WhatsApp
+                  Écrire sur WhatsApp
                   {ARROW}
                 </a>
-                <a href={CONTACT_URL} className="btn btn-outline">Envoyer un brief</a>
+                <a href={CONTACT_URL} className="btn btn-outline">Envoyer mon brief</a>
               </div>
             </div>
           </div>
@@ -209,7 +209,7 @@ export function IaView() {
                   <span className="wa-rule"></span>
                   <p>On répond vite, en français, en darija ou en anglais.</p>
                   <a href={WHATSAPP_URL} className="wa-btn" target="_blank" rel="noopener">
-                    Discuter sur WhatsApp
+                    Écrire sur WhatsApp
                     {ARROW}
                   </a>
                 </div>

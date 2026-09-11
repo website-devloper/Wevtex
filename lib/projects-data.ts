@@ -45,7 +45,7 @@ export const PROJECTS: Project[] = [
     metricLabel: "destinations internationales en ligne",
     screenshot: "/images/work/plateforme-agence-voyage-maroc.webp",
     metaDescription:
-      "Développement d'une plateforme de réservation de voyages au Maroc — recherche, séjours et paiement en ligne.",
+      "Développement d'une plateforme de réservation de voyages au Maroc, recherche, séjours et paiement en ligne.",
   },
   {
     title: "Epoptique",
@@ -63,7 +63,7 @@ export const PROJECTS: Project[] = [
     metricLabel: "modèles disponibles en ligne",
     screenshot: "/images/work/ecommerce-opticien-en-ligne-maroc.webp",
     metaDescription:
-      "Création d'une boutique e-commerce d'optique au Maroc — essayage virtuel, grandes marques et livraison 24/48h.",
+      "Création d'une boutique e-commerce d'optique au Maroc, essayage virtuel, grandes marques et livraison 24/48h.",
   },
   {
     title: "JPM",
@@ -81,7 +81,7 @@ export const PROJECTS: Project[] = [
     metricLabel: "support et commande en ligne",
     screenshot: "/images/work/ecommerce-informatique-hightech-maroc.webp",
     metaDescription:
-      "Création d'une boutique e-commerce informatique et high-tech au Maroc — PC, smartphones et accessoires.",
+      "Création d'une boutique e-commerce informatique et high-tech au Maroc, PC, smartphones et accessoires.",
   },
   {
     title: "EMAS Nettoyage",
@@ -99,7 +99,7 @@ export const PROJECTS: Project[] = [
     metricLabel: "types de prestations mises en avant",
     screenshot: "/images/work/site-service-nettoyage-maroc.webp",
     metaDescription:
-      "Site vitrine pour une entreprise de nettoyage professionnel au Maroc — prestations et devis en ligne.",
+      "Site vitrine pour une entreprise de nettoyage professionnel au Maroc, prestations et devis en ligne.",
   },
   {
     title: "Biougnach Electro",
@@ -117,7 +117,7 @@ export const PROJECTS: Project[] = [
     metricLabel: "une enseigne portée en ligne",
     screenshot: "/images/work/ecommerce-electromenager-maroc.webp",
     metaDescription:
-      "Boutique e-commerce d'électroménager au Maroc — catalogue multi-villes pour une enseigne établie depuis 1973.",
+      "Boutique e-commerce d'électroménager au Maroc, catalogue multi-villes pour une enseigne établie depuis 1973.",
   },
   {
     title: "Rekrify",
@@ -135,7 +135,7 @@ export const PROJECTS: Project[] = [
     metricLabel: "de candidatures complétées",
     screenshot: "/images/work/rekrify-plateforme-emploi.webp",
     metaDescription:
-      "Développement d'un portail d'emploi moderne au Maroc — offres vérifiées et matching intelligent des candidats.",
+      "Développement d'un portail d'emploi moderne au Maroc, offres vérifiées et matching intelligent des candidats.",
   },
   {
     title: "Zina Beauty",
@@ -147,13 +147,13 @@ export const PROJECTS: Project[] = [
     featured: true,
     order: 15,
     description:
-      "Boutique de cosmétiques marocains dotée d'un assistant IA conversationnel : le client décrit sa peau, l'assistant recommande les produits, construit une routine et prend la commande dans le chat — en darija, français ou anglais, 24h/24. Une nouvelle façon d'acheter, guidée et instantanée.",
+      "Boutique de cosmétiques marocains dotée d'un assistant IA conversationnel : le client décrit sa peau, l'assistant recommande les produits, construit une routine et prend la commande dans le chat, en darija, français ou anglais, 24h/24. Une nouvelle façon d'acheter, guidée et instantanée.",
     stack: ["Next.js", "Assistant IA", "Multilingue"],
     metricValue: "24/7",
     metricLabel: "de conseil et commande automatisés",
     screenshot: "/images/work/ecommerce-cosmetiques-assistant-ia.webp",
     metaDescription:
-      "E-commerce de cosmétiques marocains avec assistant IA — conseil et commande en darija, français et anglais, 24/7.",
+      "E-commerce de cosmétiques marocains avec assistant IA, conseil et commande en darija, français et anglais, 24/7.",
   },
   {
     title: "M2 Immobilier",
@@ -171,7 +171,7 @@ export const PROJECTS: Project[] = [
     metricLabel: "de demandes qualifiées",
     screenshot: "/images/work/plateforme-immobilier-prestige-maroc.webp",
     metaDescription:
-      "Développement d'une plateforme immobilière de prestige au Maroc — villas, riads et appartements haut de gamme.",
+      "Développement d'une plateforme immobilière de prestige au Maroc, villas, riads et appartements haut de gamme.",
   },
   {
     title: "Maison Couture",
@@ -207,7 +207,7 @@ export const PROJECTS: Project[] = [
     metricLabel: "de recherches locales",
     screenshot: "/images/work/site-cafe-brunch-casablanca.webp",
     metaDescription:
-      "Site vitrine et SEO local pour un café de spécialité à Casablanca — menu, avis Google et commande en ligne.",
+      "Site vitrine et SEO local pour un café de spécialité à Casablanca, menu, avis Google et commande en ligne.",
   },
   {
     title: "Dentica",
@@ -243,7 +243,7 @@ export const PROJECTS: Project[] = [
     metricLabel: "de demandes de devis",
     screenshot: "/images/work/site-agence-creative-casablanca.webp",
     metaDescription:
-      "Site portfolio pour une agence créative digitale à Casablanca — branding, vidéo et marketing.",
+      "Site portfolio pour une agence créative digitale à Casablanca, branding, vidéo et marketing.",
   },
   {
     title: "Floussy",
@@ -297,7 +297,7 @@ export const PROJECTS: Project[] = [
     metricLabel: "de demandes de réservation",
     screenshot: "/images/work/site-studio-photographie.webp",
     metaDescription:
-      "Site portfolio pour un studio de photographie professionnelle — mariages, portraits et événements.",
+      "Site portfolio pour un studio de photographie professionnelle, mariages, portraits et événements.",
   },
 ];
 
