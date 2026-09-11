@@ -412,15 +412,14 @@ export function HomeClient() {
               <ScrollRevealText
                 as="h1"
                 mode="load"
-                em={["sonner", "le", "téléphone"]}
+                em={["rapporte"]}
                 emClassName="hl-line"
-                text={"Agence marketing digital au Maroc :\ndes sites qui font sonner le téléphone."}
+                text={"Agence marketing digital\nau Maroc : un site\nqui vous rapporte."}
               />
               <p className="hero-sub">
-                Wevtex est une agence marketing digital au Maroc, basée à Casablanca. Nous créons
-                votre site, votre boutique ou votre application, puis nous vous rendons visible
-                sur Google, Maps et Meta. Prix annoncé en dirhams, délai écrit sur le devis,
-                et tout reste à votre nom.
+                Depuis Casablanca, nous créons votre site, votre boutique ou votre application,
+                puis nous vous rendons visible sur Google. Prix affiché, délai écrit, et tout
+                reste à votre nom.
               </p>
               <div className="hero-ctas">
                 <a href={WHATSAPP_URL} className="btn btn-primary" target="_blank" rel="noopener">
