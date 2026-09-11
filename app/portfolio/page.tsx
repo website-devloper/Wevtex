@@ -36,9 +36,10 @@ export default function PortfolioPage() {
               en ligne et <em className="hl-line">consultables.</em>
             </h1>
             <p className="ic-sub wk-lede">
-              {PROJECTS.length} projets réalisés pour des entreprises marocaines et
-              internationales : sites vitrines, boutiques en ligne, plateformes et
-              applications. Chacun est en ligne : ouvrez-les, ce sont de vrais sites, pas des maquettes.
+              {PROJECTS.length} exemples de sites web réalisés par notre agence web pour
+              des entreprises marocaines et internationales : exemples de sites vitrines,
+              de sites e-commerce, de plateformes et d&apos;applications. Chacun est en
+              ligne : ouvrez-les, ce sont de vrais sites, pas des maquettes.
             </p>
 
           </div>

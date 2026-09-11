@@ -30,6 +30,7 @@ export async function generateMetadata({
   return {
     title: { absolute: title },
     description: p.metaDescription,
+    keywords: [p.title, p.category.toLowerCase(), ...p.stack.map((s) => s.toLowerCase())],
     alternates: { canonical: path },
     openGraph: {
       title,

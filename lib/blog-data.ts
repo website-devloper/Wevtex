@@ -17,6 +17,7 @@
 
 import { POSTS_A } from "./blog/posts-a";
 import { POSTS_B } from "./blog/posts-b";
+import { fillPricesDeep } from "./pricing";
 
 export type PostBlock =
   | { type: "p"; text: string }
@@ -55,7 +56,8 @@ export type Post = {
   faqs?: { q: string; a: string }[];
 };
 
-export const POSTS: Post[] = [...POSTS_A, ...POSTS_B];
+/* Prices in the posts are {{prix:…}} tokens, resolved from lib/pricing.ts. */
+export const POSTS: Post[] = fillPricesDeep([...POSTS_A, ...POSTS_B]);
 
 export const POST_SLUGS = POSTS.map((p) => p.slug);
 

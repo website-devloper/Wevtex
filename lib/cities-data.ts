@@ -15,6 +15,8 @@
  * works remotely.
  */
 
+import { fillPricesDeep } from "./pricing";
+
 export type City = {
   slug: string;
   /** Hero backdrop at /images/villes/<slug>.webp. */
@@ -35,7 +37,7 @@ export type City = {
   faqs: { q: string; a: string }[];
 };
 
-export const CITIES: City[] = [
+export const CITIES: City[] = fillPricesDeep([
   {
     slug: "agence-web-casablanca",
     name: "Casablanca",
@@ -60,10 +62,11 @@ export const CITIES: City[] = [
     proximity:
       "Notre studio est à Casablanca. Nous pouvons vous rencontrer sur place quand c'est utile, et travailler à distance quand ça ne l'est pas — la plupart de nos projets avancent par des points hebdomadaires courts, sans réunion inutile.",
     faqs: [
-      { q: "Combien coûte un site web à Casablanca ?", a: "Nos formules démarrent à 990 DH pour un site vitrine simple. Une boutique en ligne ou une application se situe plus haut, selon le nombre de pages, les fonctionnalités et le contenu à produire. Vous recevez un devis ferme avant tout démarrage." },
+      { q: "Combien coûte un site web à Casablanca ?", a: "Nos formules démarrent à {{prix:website-creation/Vitrine}} DH pour un site vitrine simple. Une boutique en ligne ou une application se situe plus haut, selon le nombre de pages, les fonctionnalités et le contenu à produire. Vous recevez un devis ferme avant tout démarrage." },
       { q: "Travaillez-vous avec des entreprises hors de Casablanca ?", a: "Oui. Nous sommes basés à Casablanca et travaillons à distance avec des clients partout au Maroc et à l'international, en français, en darija ou en anglais." },
       { q: "Combien de temps pour créer un site à Casablanca ?", a: "Un site vitrine part en ligne en 2 à 4 semaines, une boutique en ligne en 4 à 8. Le délai est fixé dans le devis avant que le travail ne commence." },
       { q: "Faites-vous le référencement local sur Casablanca ?", a: "Oui. Nous optimisons votre fiche Google Business, vos pages pour les recherches locales et votre présence sur Google Maps, pour que vous apparaissiez quand quelqu'un cherche votre service près de chez lui." },
+      { q: "Êtes-vous une agence digitale et de marketing digital à Casablanca ?", a: "Oui. Basée à Casablanca, Wevtex réunit développeur web, agence SEO, agence de création de site web et agence de communication digitale dans la même équipe. Pour une entreprise de Casablanca, cela veut dire un seul interlocuteur, du site aux campagnes Google et Meta." },
     ],
   },
   {
@@ -93,6 +96,7 @@ export const CITIES: City[] = [
       { q: "Faites-vous des sites bilingues français-arabe ?", a: "Oui. Le bilinguisme est prévu dès la conception : structure des pages, sens de lecture, typographie et référencement dans les deux langues, plutôt qu'une traduction ajoutée après coup." },
       { q: "Vous déplacez-vous à Rabat ?", a: "Oui, pour les réunions qui le justifient : cadrage de projet, présentation à un comité, formation à la prise en main. Le reste du suivi se fait à distance, par points courts et réguliers." },
       { q: "Travaillez-vous avec des administrations et des associations ?", a: "Oui. Ces projets demandent surtout de l'accessibilité et de la clarté : contrastes suffisants, navigation au clavier, contenus lisibles et formulaires simples. Nous les traitons comme des exigences de départ, pas comme des options." },
+      { q: "Êtes-vous une agence de communication et de création de site web à Rabat ?", a: "Oui. Agence digitale basée à Casablanca, à une heure de train de Rabat, nous y sommes votre développeur web, votre agence SEO et votre agence de marketing digital. Nous accompagnons entreprises, cabinets et institutions, avec des réunions sur place quand le projet le justifie." },
     ],
   },
   {
@@ -122,6 +126,7 @@ export const CITIES: City[] = [
       { q: "Pouvez-vous ajouter un moteur de réservation à mon riad ?", a: "Oui. Nous intégrons un moteur de réservation en direct sur votre site, avec calendrier de disponibilités et paiement en ligne, pour que vous encaissiez sans commission de plateforme." },
       { q: "Faites-vous des sites multilingues pour les clients étrangers ?", a: "Oui. Français, anglais et espagnol sont les combinaisons les plus demandées à Marrakech. Le multilingue est prévu dès la structure du site, ce qui permet aussi d'être référencé dans chaque langue." },
       { q: "Puis-je garder Booking en parallèle de mon site ?", a: "Bien sûr. L'objectif n'est pas de quitter les plateformes, mais de récupérer les réservations des clients qui vous cherchent déjà par votre nom — ce sont celles qui vous coûtent le plus cher en commission." },
+      { q: "Êtes-vous une agence digitale et de communication à Marrakech ?", a: "Oui, à distance depuis Casablanca. Pour les riads, hôtels, restaurants, artisans et agences de voyage de Marrakech, notre rôle d'agence de marketing digital couvre la création de site web multilingue, la réservation directe, le référencement et les campagnes qui ramènent des visiteurs étrangers. À Marrakech, le même interlocuteur est votre développeur web et votre agence SEO, pour être trouvé en français comme en anglais." },
     ],
   },
   {
@@ -151,6 +156,7 @@ export const CITIES: City[] = [
       { q: "Pouvez-vous créer une boutique pour vendre l'artisanat à l'étranger ?", a: "Oui. C'est un cas fréquent : catalogue traduit, gestion multidevise, frais d'expédition internationaux et fiches produits qui expliquent la technique et l'origine — c'est ce qui rassure un acheteur qui ne peut pas toucher la pièce." },
       { q: "Faites-vous des sites pour les riads de la médina ?", a: "Oui, avec un moteur de réservation en direct. Chaque réservation prise sur votre site est une commission de plateforme que vous ne versez pas." },
       { q: "Travaillez-vous à distance avec Fès ?", a: "Oui. Tout se suit en ligne : maquettes consultables, points hebdomadaires et WhatsApp aux horaires de bureau. Le projet avance exactement comme s'il était à Casablanca." },
+      { q: "Êtes-vous une agence de création de site web et de marketing digital à Fès ?", a: "Oui, depuis Casablanca. Pour les artisans, maisons d'hôtes, écoles et commerces de Fès, notre équipe d'agence digitale et de communication crée le site, la boutique en ligne qui vend l'artisanat à l'étranger et le référencement local, en agence de marketing digital complète. À Fès, nous intervenons aussi comme développeur web et comme agence SEO pour les recherches locales." },
     ],
   },
   {
@@ -179,7 +185,8 @@ export const CITIES: City[] = [
     faqs: [
       { q: "Faites-vous des sites en anglais et en espagnol ?", a: "Oui. Pour Tanger, l'anglais et l'espagnol sont souvent aussi importants que le français, en particulier pour l'industrie et la logistique. Chaque langue est référencée séparément, pas simplement traduite." },
       { q: "Pouvez-vous connecter le site à nos outils internes ?", a: "Oui. Nous relions le site à vos outils existants — ERP, gestion de stock, suivi d'expédition — ou construisons l'outil manquant quand aucune solution du marché ne convient." },
-      { q: "Combien coûte un site vitrine industriel ?", a: "Nos formules démarrent à 990 DH pour un site vitrine simple. Un site avec catalogue technique, espace documents et demande de devis structurée se situe plus haut ; le devis est ferme avant démarrage." },
+      { q: "Combien coûte un site vitrine industriel ?", a: "Nos formules démarrent à {{prix:website-creation/Vitrine}} DH pour un site vitrine simple. Un site avec catalogue technique, espace documents et demande de devis structurée se situe plus haut ; le devis est ferme avant démarrage." },
+      { q: "Êtes-vous une agence digitale ou de communication à Tanger ?", a: "Oui, depuis Casablanca. Pour les industriels, logisticiens et exportateurs de Tanger, notre travail d'agence de marketing digital et de création de site web porte surtout sur le site multilingue, le catalogue technique et la demande de devis B2B, puis sur le SEO et les campagnes vers l'Europe. Pour une entreprise de Tanger, nous tenons aussi le rôle de développeur web et d'agence SEO, du catalogue au positionnement sur Google." },
     ],
   },
   {
@@ -209,8 +216,9 @@ export const CITIES: City[] = [
       { q: "Pouvez-vous créer un site pour une coopérative ?", a: "Oui. L'enjeu pour une coopérative est la crédibilité auprès d'acheteurs qui ne vous connaissent pas : certifications, capacités, traçabilité et contact direct, présentés clairement et traduits pour vos marchés." },
       { q: "Faites-vous le référencement local sur Agadir ?", a: "Oui. Fiche Google Business, pages optimisées pour les recherches locales et positionnement sur Maps, pour apparaître quand quelqu'un cherche votre service sur place." },
       { q: "Travaillez-vous à distance ?", a: "Oui, c'est notre mode de travail avec Agadir. Maquettes en ligne, points hebdomadaires et un interlocuteur unique — le projet avance exactement comme s'il était à Casablanca." },
+      { q: "Êtes-vous une agence digitale et de communication à Agadir ?", a: "Oui, à distance depuis Casablanca. Pour les hôtels, écoles de surf, exportateurs agricoles et commerces d'Agadir, nous sommes à la fois l'agence de développement web, l'agence de marketing digital et l'agence de création de site web ou de boutique en ligne. Les entreprises d'Agadir trouvent chez nous un développeur web et une agence SEO, joignables sur WhatsApp." },
     ],
   },
-];
+]);
 
 export const CITY_SLUGS = CITIES.map((c) => c.slug);

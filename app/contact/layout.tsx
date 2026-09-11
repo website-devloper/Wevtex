@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: { absolute: "Contact | Devis site web au Maroc | WEVTEX" },
   description: "Parlez-nous de votre projet web ou application au Maroc. Premier avis, budget et délai sous quelques heures ouvrées. Devis gratuit.",
+  keywords: ["devis site web Maroc", "demande de devis site internet", "devis création site web", "devis gratuit site web"],
   alternates: { canonical: "/contact" },
   openGraph: {
     title: "Contact | Devis site web au Maroc | WEVTEX",

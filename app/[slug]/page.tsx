@@ -71,13 +71,18 @@ export async function generateMetadata({
     return {
       title: { absolute: city.title },
       description: city.metaDescription,
+      /* The phrases people type for a city (Google autocomplete, Morocco):
+         each one appears in the page text, the FAQ included. */
       keywords: [
-        `agence web ${city.name.toLowerCase()}`,
-        `création site web ${city.name.toLowerCase()}`,
-        `création site internet ${city.name.toLowerCase()}`,
-        `agence digitale ${city.name.toLowerCase()}`,
-        "agence web Maroc",
-      ],
+        "agence web",
+        "agence marketing digital",
+        "agence digitale",
+        "agence communication",
+        "création site web",
+        "agence création site web",
+        "développeur web",
+        "agence seo",
+      ].map((k) => `${k} ${city.name.toLowerCase()}`),
       alternates: { canonical: `/${city.slug}` },
       openGraph: {
         title: city.title,

@@ -79,6 +79,14 @@ export const IA_META = {
     "intelligence artificielle entreprise maroc",
     "chatbot ia darija",
     "agence ia casablanca",
+    "agence ia maroc",
+    "agence automatisation ia maroc",
+    "automatisation ia maroc",
+    "automatisation maroc",
+    "entreprise intelligence artificielle maroc",
+    "intelligence artificielle entreprise",
+    "chatbot ia whatsapp",
+    "agence web ia",
   ],
   h1: "Agence de développement",
   h1Em: "IA au Maroc.",
@@ -91,6 +99,8 @@ export const IA_REALITY = [
   "L'IA d'entreprise n'est pas un sujet de conférence : c'est une question de temps récupéré. Une PME marocaine qui reçoit trente messages WhatsApp par jour passe une heure et demie à répondre trois fois la même chose. C'est cette heure et demie que nous rendons, pas plus, et nous le disons avant de commencer.",
   "Ce qui a changé en deux ans, c'est la langue. Les modèles comprennent maintenant la darija écrite comme le français, ce qui rend l'automatisation utilisable au Maroc au lieu d'être réservée aux marchés anglophones. Un client peut écrire « chhal taman » et recevoir une réponse juste, dans sa langue.",
   "Le travail réel n'est pas le modèle : c'est le branchement. Connecter l'agent à votre catalogue, votre stock, votre agenda ou votre CRM représente l'essentiel du projet. C'est aussi ce qui sépare un agent qui sert d'un chatbot qui récite.",
+  "Agence d'automatisation IA au Maroc, nous intervenons sur trois terrains : l'automatisation des tâches répétitives, le chatbot IA WhatsApp pour la relation client, et le chatbot IA en darija pour les clients qui écrivent comme ils parlent.",
+  "Pour une entreprise au Maroc, l'intelligence artificielle n'a de sens que si elle rend du temps. L'automatisation en entreprise au Maroc commence donc toujours par la même question : quelle tâche vous coûte le plus d'heures ?",
 ];
 
 /** Sectors where the studio has actually shipped or scoped this work. */

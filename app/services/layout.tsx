@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: { absolute: "Services web & digitaux au Maroc | WEVTEX" },
   description: "Création de sites, boutiques en ligne, applications, SEO, publicité, logiciels et chatbots WhatsApp au Maroc. Prix clairs en DH.",
+  keywords: ["services agence web Maroc", "services de marketing digital", "prestation agence digitale", "agence web Maroc"],
   alternates: { canonical: "/services" },
   openGraph: {
     title: "Services web & digitaux au Maroc | WEVTEX",

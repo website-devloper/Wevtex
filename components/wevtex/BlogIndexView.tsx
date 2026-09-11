@@ -40,7 +40,7 @@ export function BlogIndexView() {
                 les réponses <em className="hl-line">sans détour.</em>
               </h1>
               <p className="ic-sub wk-lede">
-                Ce que nous répondons au téléphone, écrit une bonne fois. Chaque article
+                Le blog marketing digital de Wevtex : conseils site web, conseils SEO et publicité, écrits comme nous répondons au téléphone. Chaque article
                 traite une question que des entreprises marocaines nous posent réellement,
                 avec des chiffres que nous publions déjà sur nos pages de prix.
               </p>

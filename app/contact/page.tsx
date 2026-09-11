@@ -46,8 +46,10 @@ export default function ContactPage() {
               construisez. <em className="hl-line">On le chiffre.</em>
             </h1>
             <p className="ic-sub wk-lede">
-              Trois étapes, deux minutes. Vous recevez un premier avis, une idée claire
-              du budget et un délai réaliste — sans engagement de votre part.
+              Votre demande de devis de site internet, d&apos;application ou de campagne,
+              en trois étapes et deux minutes. Vous recevez un premier avis, une idée
+              claire du budget et un délai réaliste, sans engagement : le devis de
+              création de site web est gratuit, partout au Maroc.
             </p>
           </div>
         </div>

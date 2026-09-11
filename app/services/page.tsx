@@ -39,8 +39,9 @@ export default function ServicesPage() {
               <em className="hl-line">grandir votre activité.</em>
             </h1>
             <p className="ic-sub wk-lede" style={{ maxWidth: "58ch" }}>
-              Du site vitrine à l&apos;automatisation, chaque prestation a sa page :
-              ce qu&apos;elle comprend, comment nous procédons, et le prix.
+              Services d&apos;agence web et de marketing digital au Maroc, du site
+              vitrine à l&apos;automatisation : chaque prestation d&apos;agence digitale
+              a sa page, ce qu&apos;elle comprend, comment nous procédons, et le prix.
             </p>
           </div>
         </div>

@@ -9,16 +9,18 @@
  *
  * REVIEW BEFORE LAUNCH — these are commitments to clients, not marketing copy.
  */
+import { fillPricesDeep } from "./pricing";
+
 export type ContactFaq = { q: string; a: string };
 
-export const CONTACT_FAQS: ContactFaq[] = [
+export const CONTACT_FAQS: ContactFaq[] = fillPricesDeep([
   {
     q: "Combien de temps faut-il pour créer un site ?",
     a: "Un site vitrine est en ligne en 2 à 4 semaines, une boutique en ligne en 4 à 8. La date de livraison est écrite dans le devis, avant que le travail ne commence.",
   },
   {
     q: "Combien coûte un site web ?",
-    a: "Nos formules démarrent à 990 DH. Le prix final dépend du nombre de pages, des fonctionnalités et du contenu à produire. Vous recevez un devis détaillé avant tout engagement.",
+    a: "Nos formules démarrent à {{prix:website-creation/Vitrine}} DH. Le prix final dépend du nombre de pages, des fonctionnalités et du contenu à produire. Vous recevez un devis détaillé avant tout engagement.",
   },
   {
     q: "Travaillez-vous avec des clients en dehors du Maroc ?",
@@ -40,4 +42,4 @@ export const CONTACT_FAQS: ContactFaq[] = [
     q: "Comment démarrer ?",
     a: "Remplissez le formulaire ci-dessus, ou écrivez-nous directement sur WhatsApp. Nous revenons vers vous avec un premier avis et une idée claire du budget.",
   },
-];
+]);

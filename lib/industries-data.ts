@@ -4,10 +4,14 @@
  * Copy is French: the site is served in French only.
  */
 
+import { fillPricesDeep } from "./pricing";
+
 export type Industry = {
   slug: string;
   name: string;
   keyword: string;
+  /** Other phrases people type for this sector (Google autocomplete, Morocco). */
+  seoKeywords?: string[];
   metaTitle: string;
   metaDescription: string;
   eyebrow: string;
@@ -19,11 +23,12 @@ export type Industry = {
   faqs: { q: string; a: string }[];
 };
 
-export const INDUSTRIES: Industry[] = [
+export const INDUSTRIES: Industry[] = fillPricesDeep([
   {
     slug: "ecommerce-retail",
     name: "E-commerce & commerce de détail",
-    keyword: "création site e-commerce Maroc",
+    keyword: "site e-commerce Maroc",
+    seoKeywords: ["boutique en ligne maroc", "site e-commerce cosmétiques maroc", "site e-commerce vêtements maroc", "boutique en ligne vêtements"],
     metaTitle: "Sites e-commerce & commerce de détail | Wevtex",
     metaDescription:
       "Boutiques en ligne pour la mode, la beauté, la maison et l'alimentaire : paiement sécurisé, stocks et commandes gérés. Devis gratuit.",
@@ -46,12 +51,15 @@ export const INDUSTRIES: Industry[] = [
     faqs: [
       { q: "Pouvez-vous migrer ma boutique actuelle ?", a: "Oui. Nous migrons produits, clients et commandes depuis la plupart des plateformes, avec une interruption minimale." },
       { q: "Gérez-vous les paiements ?", a: "Oui. Nous mettons en place Stripe ainsi que les moyens de paiement locaux adaptés à votre marché." },
+      { q: "Créez-vous des sites e-commerce de cosmétiques et de vêtements au Maroc ?", a: "Oui. Un site e-commerce de cosmétiques ou de vêtements au Maroc demande des fiches produits soignées, des déclinaisons (tailles, teintes), le paiement à la livraison et une confirmation de commande par WhatsApp. Nous avons livré une boutique de cosmétiques marocains avec un assistant de conseil et une boutique de caftans de luxe, visibles dans nos réalisations." },
+      { q: "Combien coûte un site e-commerce au Maroc ?", a: "Chez Wevtex, une boutique en ligne complète démarre à {{prix:website-creation/Boutique}} DH, livrée en 4 à 8 semaines, avec paiement, gestion des stocks et formation. Une boutique en ligne de vêtements avec beaucoup de déclinaisons se chiffre selon le catalogue." },
     ],
   },
   {
     slug: "tourism-hospitality",
     name: "Tourisme & hôtellerie",
     keyword: "site de réservation hôtel Maroc",
+    seoKeywords: ["site web hôtel maroc", "site réservation hôtel maroc", "site web riad", "site web restaurant maroc", "site web agence de voyage", "création site web hôtel"],
     metaTitle: "Sites pour le tourisme & l'hôtellerie | Wevtex",
     metaDescription:
       "Sites de réservation directe pour hôtels, riads et agences de voyage : disponibilités, paiement en ligne et visites virtuelles.",
@@ -74,12 +82,15 @@ export const INDUSTRIES: Industry[] = [
     faqs: [
       { q: "Est-ce compatible avec mon channel manager ?", a: "Oui. Nous pouvons synchroniser les disponibilités avec les principaux outils de réservation et de channel management." },
       { q: "Les clients peuvent-ils ne payer qu'un acompte ?", a: "Oui. Nous configurons l'acompte, le paiement intégral ou le paiement sur place, selon votre politique." },
+      { q: "Créez-vous des sites de réservation pour hôtels et riads au Maroc ?", a: "Oui. La création d'un site web d'hôtel ou de riad au Maroc vise la réservation directe : disponibilités, paiement et plusieurs langues, pour réduire la part laissée aux plateformes de réservation." },
+      { q: "Faites-vous des sites pour restaurants et agences de voyage ?", a: "Oui. Pour un restaurant au Maroc, le site web présente la carte, l'accès et la réservation ; pour une agence de voyage, le site web devient une plateforme avec recherche de séjours et paiement. Nous avons réalisé la plateforme d'une agence de voyages marocaine et le site d'un café-brunch à Casablanca, visibles dans nos réalisations." },
     ],
   },
   {
     slug: "professional-services",
     name: "Services professionnels",
-    keyword: "site internet cabinet avocat comptable Maroc",
+    keyword: "site internet avocat Maroc",
+    seoKeywords: ["site internet cabinet d'avocat", "site internet cabinet comptable", "site internet cabinet d'expertise comptable", "site web immobilier maroc", "site agence immobilière maroc", "site internet cabinet d'architecture"],
     metaTitle: "Sites pour les services professionnels | Wevtex",
     metaDescription:
       "Des sites qui inspirent confiance aux avocats, experts-comptables, agences immobilières et consultants, conçus pour capter des contacts qualifiés.",
@@ -102,12 +113,15 @@ export const INDUSTRIES: Industry[] = [
     faqs: [
       { q: "Mes clients peuvent-ils prendre rendez-vous en ligne ?", a: "Oui. Nous intégrons un système de prise de rendez-vous directement depuis votre site." },
       { q: "Le site sortira-t-il sur ma ville ?", a: "Chaque site est livré prêt pour le référencement et nous ciblons votre ville ainsi que vos domaines d'intervention." },
+      { q: "Un site internet de cabinet d'avocat doit-il respecter des règles ?", a: "Oui. La communication des avocats est encadrée par les règles de la profession : au Maroc, nous rédigeons un site internet de cabinet d'avocat informatif, sans promesse de résultat ni sollicitation, que vous validez avant publication. Le même soin vaut pour le site internet d'un cabinet comptable, d'expertise comptable ou d'architecture." },
+      { q: "Créez-vous des sites web pour l'immobilier au Maroc ?", a: "Oui. Un site web immobilier au Maroc, ou le site d'une agence immobilière au Maroc, permet la recherche de biens par ville, budget et type, avec des fiches soignées et un contact direct. Nous avons réalisé une plateforme immobilière de prestige, visible dans nos réalisations." },
     ],
   },
   {
     slug: "healthcare-wellness",
     name: "Santé & bien-être",
-    keyword: "site internet clinique salle de sport Maroc",
+    keyword: "site web clinique Maroc",
+    seoKeywords: ["site web médecin", "site web clinique médicale", "site web dentiste", "site internet cabinet dentaire", "site internet cabinet médical", "site web clinique dentaire"],
     metaTitle: "Sites pour la santé & le bien-être | Wevtex",
     metaDescription:
       "Sites pour cliniques, salles de sport et thérapeutes : formulaires patients sécurisés et réservation de séances en ligne.",
@@ -130,12 +144,15 @@ export const INDUSTRIES: Industry[] = [
     faqs: [
       { q: "Les formulaires patients sont-ils sécurisés ?", a: "Oui. Les données transitent en HTTPS et nous appliquons les bonnes pratiques en matière de confidentialité." },
       { q: "Les adhérents peuvent-ils réserver un cours ?", a: "Oui. Nous pouvons ajouter le planning et la réservation adaptés à votre studio ou votre cabinet." },
+      { q: "Créez-vous des sites pour cabinets dentaires, médecins et cliniques ?", a: "Oui. Un site web de dentiste, de médecin ou de clinique médicale au Maroc présente les soins, les praticiens, l'accès et la prise de rendez-vous, sur un ton informatif. Le site internet d'un cabinet dentaire ou d'un cabinet médical reste sobre et clair. Nous avons réalisé le site web d'une clinique dentaire, visible dans nos réalisations." },
+      { q: "La prise de rendez-vous en ligne est-elle possible ?", a: "Oui. Le site peut proposer des créneaux réels, un formulaire de demande ou un lien WhatsApp, selon la façon dont votre secrétariat travaille." },
     ],
   },
   {
     slug: "industry-logistics",
     name: "Industrie & logistique",
-    keyword: "site internet BTP transport Maroc",
+    keyword: "site web BTP Maroc",
+    seoKeywords: ["site web entreprise btp maroc", "site web entreprise btp casablanca", "site web industriel", "site web logistique et transport"],
     metaTitle: "Sites pour l'industrie & la logistique | Wevtex",
     metaDescription:
       "Sites pour le BTP, l'industrie et le transport : valorisez votre flotte et vos chantiers, et recevez facilement des demandes de devis B2B.",
@@ -158,12 +175,15 @@ export const INDUSTRIES: Industry[] = [
     faqs: [
       { q: "Pouvez-vous présenter nos réalisations passées ?", a: "Oui. Nous créons des sections portfolio et études de cas pour valoriser vos chantiers." },
       { q: "Peut-on demander un devis en ligne ?", a: "Oui. Nous construisons des formulaires de devis calibrés sur vos prestations." },
+      { q: "Que doit contenir le site web d'une entreprise BTP au Maroc ?", a: "Le site web d'une entreprise BTP au Maroc montre les chantiers réalisés, les corps de métier, les certifications et une demande de devis structurée. Pour le site web d'une entreprise BTP de Casablanca ou d'ailleurs, c'est ce qui rassure un maître d'ouvrage avant l'appel." },
+      { q: "Un site web industriel ou de logistique peut-il présenter un catalogue technique ?", a: "Oui. Un site web industriel, ou un site web de logistique et de transport, peut présenter un catalogue technique, des fiches téléchargeables, un espace documents et une demande de devis B2B." },
     ],
   },
   {
     slug: "education-elearning",
     name: "Éducation & e-learning",
     keyword: "plateforme e-learning Maroc",
+    seoKeywords: ["site web école privée", "site web école de formation", "plateforme e-learning maroc", "site web éducatif"],
     metaTitle: "Sites pour l'éducation & le e-learning | Wevtex",
     metaDescription:
       "Sites et plateformes pour écoles, cours en ligne et centres de formation : espaces élèves, hébergement vidéo et modules de certification.",
@@ -186,12 +206,15 @@ export const INDUSTRIES: Industry[] = [
     faqs: [
       { q: "Peut-on vendre des formations en ligne ?", a: "Oui. Nous ajoutons l'inscription et le paiement pour vendre vos formations directement." },
       { q: "Les élèves reçoivent-ils un certificat ?", a: "Oui. Nous pouvons intégrer des modules d'évaluation et de certification à la plateforme." },
+      { q: "Créez-vous des sites pour écoles privées et centres de formation ?", a: "Oui. Le site web d'une école privée ou d'une école de formation présente l'établissement, les programmes, les inscriptions en ligne et un espace parents ou élèves. C'est souvent le premier contact des familles." },
+      { q: "Combien coûte une plateforme e-learning au Maroc ?", a: "Une plateforme e-learning sur mesure au Maroc, avec comptes, cours, suivi et paiement, relève de nos plateformes web, à partir de {{prix:custom-solutions/Plateforme}} DH. Un site web éducatif plus simple suit le prix d'un site vitrine." },
     ],
   },
   {
     slug: "creative-media-tech",
     name: "Création, médias & tech",
-    keyword: "site internet startup agence Maroc",
+    keyword: "site vitrine startup Maroc",
+    seoKeywords: ["site portfolio", "site portfolio graphiste", "site web photographe professionnel"],
     metaTitle: "Sites pour la création, les médias & la tech | Wevtex",
     metaDescription:
       "Pages d'atterrissage et sites animés rapides pour startups SaaS, agences et créateurs, conçus pour convertir vos premiers utilisateurs.",
@@ -214,12 +237,15 @@ export const INDUSTRIES: Industry[] = [
     faqs: [
       { q: "Pouvez-vous faire le site vitrine et le produit ?", a: "Oui. Du site marketing jusqu'au produit lui-même, nous pouvons construire les deux." },
       { q: "En combien de temps peut-on lancer ?", a: "Une page d'atterrissage peut être en ligne en quelques jours ; un produit complet demande plus de temps. Nous vous donnons un délai ferme." },
+      { q: "Créez-vous des sites portfolio pour photographes et graphistes ?", a: "Oui. Un site web de photographe professionnel ou un site portfolio de graphiste met les images en valeur sans les ralentir : galeries optimisées, pages projet et contact direct. Nous avons réalisé le site d'un studio de photographie et celui d'une agence créative à Casablanca, visibles dans nos réalisations." },
+      { q: "Faites-vous le site vitrine d'une startup ?", a: "Oui. Au Maroc comme ailleurs, le site vitrine d'une startup explique le produit en une phrase, montre l'interface et mène à l'essai ou à la démo. Nous le construisons en Next.js pour qu'il évolue avec le produit." },
     ],
   },
   {
     slug: "public-sector-ngos",
     name: "Secteur public & associations",
-    keyword: "site internet association ONG Maroc",
+    keyword: "site web association Maroc",
+    seoKeywords: ["site web association", "site web ong humanitaire", "site web association sportive", "site web association culturelle"],
     metaTitle: "Sites pour le secteur public & les associations | Wevtex",
     metaDescription:
       "Sites accessibles pour associations, fondations et institutions publiques : collecte de dons, animation de communauté et design inclusif.",
@@ -242,9 +268,11 @@ export const INDUSTRIES: Industry[] = [
     faqs: [
       { q: "Peut-on faire un don en ligne ?", a: "Oui. Nous mettons en place une collecte de dons sécurisée avec les options dont vous avez besoin." },
       { q: "Le site est-il accessible ?", a: "Oui. Nous construisons selon les standards d'accessibilité WCAG, pour que tout le monde puisse l'utiliser." },
+      { q: "Créez-vous des sites pour associations et ONG au Maroc ?", a: "Oui. Le site web d'une association culturelle ou sportive présente la mission, les actions et les appels à bénévoles ; le site web d'une ONG humanitaire met en avant les campagnes et les dons, avec un contenu accessible à tous." },
+      { q: "Un site d'association peut-il recevoir des dons en ligne ?", a: "Oui. Le site internet d'une association peut intégrer le don en ligne par carte, avec une confirmation automatique au donateur et une page de campagne pour chaque appel." },
     ],
   },
-];
+]);
 
 export const INDUSTRY_SLUGS = INDUSTRIES.map((i) => i.slug);
 export const getIndustry = (slug: string) => INDUSTRIES.find((i) => i.slug === slug);

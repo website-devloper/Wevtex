@@ -15,7 +15,7 @@ export const POSTS_B: Post[] = [
     metaTitle: "SEO au Maroc : Par Où Commencer pour Être Trouvé | WEVTEX",
     metaDescription:
       "Les six premières actions SEO pour une entreprise marocaine, dans l'ordre : fiche Google, vrais mots-clés, pages par service et par ville.",
-    keyword: "référencement naturel maroc débutant",
+    keyword: "seo au maroc par où commencer",
     excerpt:
       "Les six premières actions, dans l'ordre, et les délais réalistes avant de voir arriver les premières demandes.",
     answer:
@@ -128,7 +128,7 @@ export const POSTS_B: Post[] = [
     excerpt:
       "Ce qui s'automatise vraiment, ce qui ne doit pas l'être, et le coût réel d'un assistant WhatsApp au Maroc.",
     answer:
-      "Un chatbot WhatsApp répond automatiquement aux questions récurrentes d'une entreprise — prix, disponibilité, horaires, suivi de commande, prise de rendez-vous — et passe la main à une personne dès que la demande sort du cadre. Au Maroc, la mise en place démarre à 2 400 DH avec un abonnement mensuel de 390 DH, et l'assistant est opérationnel en une à trois semaines.",
+      "Un chatbot WhatsApp répond automatiquement aux questions récurrentes d'une entreprise — prix, disponibilité, horaires, suivi de commande, prise de rendez-vous — et passe la main à une personne dès que la demande sort du cadre. Au Maroc, la mise en place démarre à {{prix:whatsapp-bots/Essentiel}} DH avec un abonnement mensuel de {{mensuel:whatsapp-bots/Essentiel}} DH, et l'assistant est opérationnel en une à trois semaines.",
     category: "Automatisation",
     publishedAt: "2026-09-10",
     readingMinutes: 8,
@@ -182,9 +182,9 @@ export const POSTS_B: Post[] = [
         type: "table",
         head: ["Formule", "Mise en place", "Mensuel"],
         rows: [
-          ["Essentiel — jusqu'à 10 scénarios", "2 400 DH", "390 DH"],
-          ["Qualification — scénarios illimités, CRM", "5 900 DH", "690 DH"],
-          ["Sur mesure — compréhension libre par IA", "à partir de 12 000 DH", "selon périmètre"],
+          ["Essentiel — jusqu'à 10 scénarios", "{{prix:whatsapp-bots/Essentiel}} DH", "{{mensuel:whatsapp-bots/Essentiel}} DH"],
+          ["Qualification — scénarios illimités, CRM", "{{prix:whatsapp-bots/Qualification}} DH", "{{mensuel:whatsapp-bots/Qualification}} DH"],
+          ["Sur mesure — compréhension libre par IA", "à partir de {{prix:whatsapp-bots/Sur mesure}} DH", "selon périmètre"],
         ],
       },
       {

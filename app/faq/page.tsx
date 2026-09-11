@@ -8,10 +8,10 @@ export const metadata: Metadata = {
   description:
     "Prix, délais, propriété du site, hébergement, SEO et maintenance : des réponses claires avant de lancer votre projet web au Maroc.",
   keywords: [
-    "faq création site web maroc",
     "combien de temps pour créer un site web",
-    "à qui appartient un site web",
-    "agence web maroc questions",
+    "à qui appartient le site",
+    "hébergement et nom de domaine",
+    "site visible sur Google",
   ],
   alternates: { canonical: "/faq" },
   openGraph: {

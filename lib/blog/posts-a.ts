@@ -19,12 +19,12 @@ export const POSTS_A: Post[] = [
     title: "Combien coûte un site web au Maroc en 2026 ?",
     metaTitle: "Combien Coûte un Site Web au Maroc en 2026 ? | WEVTEX",
     metaDescription:
-      "Un site vitrine au Maroc coûte de 990 à 15 000 DH, une boutique en ligne de 16 000 à 40 000 DH. Ce qui fait varier le prix.",
+      "Un site vitrine au Maroc coûte de {{prix:website-creation/Vitrine}} à 15 000 DH, une boutique en ligne de {{prix:website-creation/Boutique}} à 40 000 DH. Ce qui fait varier le prix.",
     keyword: "combien coûte un site web au maroc",
     excerpt:
       "Les fourchettes réelles par type de site, ce qui fait monter la facture, et les coûts annuels que personne ne chiffre avant de signer.",
     answer:
-      "Au Maroc, un site vitrine professionnel coûte entre 990 et 15 000 DH, un site d'entreprise complet entre 6 000 et 30 000 DH, et une boutique en ligne entre 16 000 et 40 000 DH. Une application mobile démarre autour de 12 000 DH. L'écart vient du nombre de pages, de la rédaction des contenus et des fonctions à développer, pas du prestataire.",
+      "Au Maroc, un site vitrine professionnel coûte entre {{prix:website-creation/Vitrine}} et 15 000 DH, un site d'entreprise complet entre {{prix:website-creation/Business}} et 30 000 DH, et une boutique en ligne entre {{prix:website-creation/Boutique}} et 40 000 DH. Une application mobile démarre autour de {{prix:mobile-apps/Essentielle}} DH. L'écart vient du nombre de pages, de la rédaction des contenus et des fonctions à développer, pas du prestataire.",
     category: "Prix & budget",
     publishedAt: "2026-09-10",
     readingMinutes: 8,
@@ -44,11 +44,11 @@ export const POSTS_A: Post[] = [
         type: "table",
         head: ["Type de site", "Fourchette (DH)", "Délai courant"],
         rows: [
-          ["Site vitrine (3 à 5 pages)", "990 – 15 000", "1 à 3 semaines"],
-          ["Site d'entreprise (10 à 20 pages)", "6 000 – 30 000", "3 à 6 semaines"],
-          ["Boutique en ligne", "16 000 – 40 000", "4 à 8 semaines"],
-          ["Plateforme ou logiciel métier", "18 000 – 60 000+", "8 à 16 semaines"],
-          ["Application mobile iOS + Android", "12 000 – 50 000+", "4 à 12 semaines"],
+          ["Site vitrine (3 à 5 pages)", "{{prix:website-creation/Vitrine}} – 15 000", "1 à 3 semaines"],
+          ["Site d'entreprise (10 à 20 pages)", "{{prix:website-creation/Business}} – 30 000", "3 à 6 semaines"],
+          ["Boutique en ligne", "{{prix:website-creation/Boutique}} – 40 000", "4 à 8 semaines"],
+          ["Plateforme ou logiciel métier", "{{prix:custom-solutions/Plateforme}} – 60 000+", "8 à 16 semaines"],
+          ["Application mobile iOS + Android", "{{prix:mobile-apps/Essentielle}} – 50 000+", "4 à 12 semaines"],
         ],
       },
       {
@@ -105,22 +105,22 @@ export const POSTS_A: Post[] = [
       {
         type: "ol",
         items: [
-          "Vous démarrez et vous voulez exister sur Google et sur WhatsApp : un site vitrine soigné de 3 à 5 pages suffit, autour de 990 à 6 000 DH. Vous l'enrichirez ensuite.",
-          "Vous avez une activité qui tourne et vous perdez des demandes faute de crédibilité en ligne : un site d'entreprise rédigé, entre 6 000 et 16 000 DH, avec un vrai travail sur les pages de service.",
-          "Vous vendez des produits : une boutique à partir de 16 000 DH, avec paiement CMI ou Stripe et gestion des stocks. En dessous, vous aurez un catalogue, pas un canal de vente.",
+          "Vous démarrez et vous voulez exister sur Google et sur WhatsApp : un site vitrine soigné de 3 à 5 pages suffit, autour de {{prix:website-creation/Vitrine}} à {{prix:website-creation/Business}} DH. Vous l'enrichirez ensuite.",
+          "Vous avez une activité qui tourne et vous perdez des demandes faute de crédibilité en ligne : un site d'entreprise rédigé, entre {{prix:website-creation/Business}} et {{prix:website-creation/Boutique}} DH, avec un vrai travail sur les pages de service.",
+          "Vous vendez des produits : une boutique à partir de {{prix:website-creation/Boutique}} DH, avec paiement CMI ou Stripe et gestion des stocks. En dessous, vous aurez un catalogue, pas un canal de vente.",
           "Vous avez un processus interne qui vous coûte des heures : c'est un logiciel ou une plateforme, pas un site, et le budget se chiffre après un cadrage.",
         ],
       },
       { type: "h2", text: "Notre position sur les prix" },
       {
         type: "p",
-        text: "Wevtex publie ses formules de départ sur chaque page de service : 990 DH pour une vitrine jusqu'à 5 pages livrée en 7 à 14 jours, 6 000 DH pour un site d'entreprise jusqu'à 15 pages avec rédaction, 16 000 DH pour une boutique en ligne complète. Chaque projet reçoit ensuite un devis ferme après un échange de quinze minutes, et ce devis ne bouge pas en cours de route.",
+        text: "Wevtex publie ses formules de départ sur chaque page de service : {{prix:website-creation/Vitrine}} DH pour une vitrine jusqu'à 5 pages livrée en 7 à 14 jours, {{prix:website-creation/Business}} DH pour un site d'entreprise jusqu'à 15 pages avec rédaction, {{prix:website-creation/Boutique}} DH pour une boutique en ligne complète. Chaque projet reçoit ensuite un devis ferme après un échange de quinze minutes, et ce devis ne bouge pas en cours de route.",
       },
     ],
     faqs: [
       {
         q: "Quel est le prix minimum pour un site web professionnel au Maroc ?",
-        a: "Autour de 990 DH pour un site vitrine de quelques pages, conçu sur mesure et livré à vous. En dessous, vous êtes sur un abonnement à une plateforme, où le site cesse d'exister si vous arrêtez de payer.",
+        a: "Autour de {{prix:website-creation/Vitrine}} DH pour un site vitrine de quelques pages, conçu sur mesure et livré à vous. En dessous, vous êtes sur un abonnement à une plateforme, où le site cesse d'exister si vous arrêtez de payer.",
       },
       {
         q: "Le prix inclut-il le nom de domaine et l'hébergement ?",
@@ -245,7 +245,7 @@ export const POSTS_A: Post[] = [
     metaTitle: "Site Vitrine ou E-commerce : Lequel Choisir ? | WEVTEX",
     metaDescription:
       "Vitrine ou e-commerce : la règle simple pour trancher, les coûts et le travail réel de chaque option, et les cas où le vitrine vend mieux.",
-    keyword: "site vitrine ou e-commerce",
+    keyword: "site vitrine ou boutique en ligne",
     excerpt:
       "La règle simple pour trancher, ce que chaque option demande vraiment, et pourquoi un vitrine peut rapporter plus qu'une boutique.",
     answer:
@@ -267,7 +267,7 @@ export const POSTS_A: Post[] = [
       },
       {
         type: "p",
-        text: "Techniquement, la boutique demande deux à trois fois plus de travail : fiches produits, gestion des stocks, paiement CMI ou Stripe, frais de port, retours, e-mails automatiques. C'est ce qui explique l'écart de prix, de 990–15 000 DH pour un vitrine à 16 000–40 000 DH pour une boutique.",
+        text: "Techniquement, la boutique demande deux à trois fois plus de travail : fiches produits, gestion des stocks, paiement CMI ou Stripe, frais de port, retours, e-mails automatiques. C'est ce qui explique l'écart de prix, de {{prix:website-creation/Vitrine}}–15 000 DH pour un vitrine à {{prix:website-creation/Boutique}}–40 000 DH pour une boutique.",
       },
       { type: "h2", text: "Prenez le site vitrine si…" },
       {

@@ -262,15 +262,16 @@ export function ServiceDetailView({ service }: { service: Service }) {
 
               <div style={{ marginTop: 64 }}>
                 <h2 className="h-section" style={{ fontSize: "clamp(26px, 3.2vw, 38px)" }}>
-                  {service.name} à Casablanca, Rabat, Marrakech et partout au Maroc
+                  {service.seoCityLabel ?? service.name} à Casablanca, Rabat, Marrakech et partout au Maroc
                 </h2>
                 <p className="ic-sub" style={{ marginTop: 16, textAlign: "left", maxWidth: "none" }}>
-                  Wevtex est basé à Casablanca et travaille avec des entreprises de tout le Maroc,
-                  en visio et sur WhatsApp, ainsi qu&apos;en France, en Belgique et au Canada.
+                  Wevtex est basé à Casablanca et intervient dans tout le Maroc : Rabat, Marrakech,
+                  Tanger, Agadir, Fès, Kénitra, Meknès, Oujda et Tétouan, en visio et sur WhatsApp,
+                  ainsi qu&apos;en France, en Belgique et au Canada.
                 </p>
                 <div style={{ display: "flex", flexWrap: "wrap", gap: 10, marginTop: 24 }}>
                   {CITIES.map((c) => (
-                    <a key={c.slug} href={`/${c.slug}`} className="btn btn-outline">Agence web à {c.name}</a>
+                    <a key={c.slug} href={`/${c.slug}`} className="btn btn-outline">{service.seoCityLabel ?? "Agence web"} à {c.name}</a>
                   ))}
                 </div>
               </div>

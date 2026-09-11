@@ -3,6 +3,7 @@ import { Onest, Space_Mono } from "next/font/google";
 import { AnalyticsConsent } from "../components/wevtex/AnalyticsConsent";
 import { SmoothScroll } from "../components/wevtex/SmoothScroll";
 import { SITE_URL, abs } from "@/lib/seo";
+import { PRICE_RANGE } from "@/lib/pricing";
 import { servicePath } from "@/lib/site-links";
 import { SERVICES } from "../components/wevtex/homeContent";
 
@@ -129,7 +130,7 @@ export default function RootLayout({
     inLanguage: "fr",
     /* Was "$$$", which reads as expensive against a published entry price of
        990 DH. */
-    priceRange: "990 DH – 60 000 DH",
+    priceRange: PRICE_RANGE,
     currenciesAccepted: "MAD",
     openingHoursSpecification: [
       {

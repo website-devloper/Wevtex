@@ -1,4 +1,5 @@
 import { SITE_URL, abs } from "@/lib/seo";
+import { PRICE_RANGE } from "@/lib/pricing";
 
 /**
  * Structured-data helpers.
@@ -113,7 +114,7 @@ export function localBusinessSchema(o: {
       addressCountry: "MA",
     },
     areaServed: { "@type": "City", name: o.city },
-    priceRange: "990 DH – 60 000 DH",
+    priceRange: PRICE_RANGE,
     currenciesAccepted: "MAD",
     inLanguage: "fr",
   };

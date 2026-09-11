@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: { absolute: "À propos | Agence web à Casablanca | WEVTEX" },
   description: "Wevtex est un studio web et IT à Casablanca : sites, boutiques en ligne, applications et automatisation. Découvrez notre façon de travailler.",
+  keywords: ["Wevtex", "agence web à Casablanca"],
   alternates: { canonical: "/about" },
   openGraph: {
     title: "À propos | Agence web à Casablanca | WEVTEX",

@@ -15,6 +15,7 @@
 
 import { SERVICES as MARKETED } from "@/components/wevtex/homeContent";
 import { withSeo } from "./service-seo";
+import { PRICES, MONTHLY, fillPricesDeep } from "./pricing";
 import type { SeoSection } from "./service-seo";
 
 export type FeatureCard = { title: string; desc: string; checks: string[] };
@@ -58,6 +59,8 @@ export type Service = {
   seoSections?: SeoSection[];
   /** Secondary search terms, merged in from lib/service-seo.ts. */
   seoKeywords?: string[];
+  /** Anchor prefix for the city links ("Agence SEO" -> "Agence SEO à Tanger"). */
+  seoCityLabel?: string;
 };
 
 const PRICE_FOOTNOTE =
@@ -71,7 +74,7 @@ export const SERVICES: Service[] = [
     keyword: "création site web Maroc",
     metaTitle: "Création de Site Web au Maroc | Agence Web | WEVTEX",
     metaDescription:
-      "Création de site web au Maroc dès 990 DH : sites vitrines, boutiques en ligne et sites sur mesure, rapides et prêts pour Google. Livré en 2 à 4 semaines.",
+      "Création de site web au Maroc dès {{prix:website-creation/Vitrine}} DH : sites vitrines, boutiques en ligne et sites sur mesure, rapides et prêts pour Google. Livré en 2 à 4 semaines.",
     eyebrow: "Création de sites web",
     h1: "Création de site web au Maroc,\nrapide et pensé pour vendre.",
     h1Em: ["rapide", "et", "pensé", "pour", "vendre."],
@@ -168,9 +171,9 @@ export const SERVICES: Service[] = [
       titleEm: ["pour", "votre site."],
       subtitle: "Trois formules, un prix ferme, aucune ligne cachée.",
       tiers: [
-        { name: "Vitrine", price: "990", note: "Jusqu'à 5 pages · livré en 7 à 14 jours", features: ["Design sur mesure", "Jusqu'à 5 pages responsives", "Référencement de base", "Formulaire et WhatsApp", "1 mois d'accompagnement"] },
-        { name: "Business", price: "6 000", note: "Jusqu'à 15 pages · livré en 3 à 4 semaines", featured: true, features: ["Tout de la formule Vitrine", "Jusqu'à 15 pages", "Rédaction des contenus", "Blog et actualités", "Référencement avancé", "3 mois d'accompagnement"] },
-        { name: "Boutique", price: "16 000", note: "E-commerce · livré en 4 à 8 semaines", features: ["Catalogue et fiches produits", "Paiement CMI et Stripe", "Gestion des stocks", "Tunnel d'achat optimisé", "Formation à la gestion", "6 mois d'accompagnement"] },
+        { name: "Vitrine", price: PRICES["website-creation"]["Vitrine"], note: "Jusqu'à 5 pages · livré en 7 à 14 jours", features: ["Design sur mesure", "Jusqu'à 5 pages responsives", "Référencement de base", "Formulaire et WhatsApp", "1 mois d'accompagnement"] },
+        { name: "Business", price: PRICES["website-creation"]["Business"], note: "Jusqu'à 15 pages · livré en 3 à 4 semaines", featured: true, features: ["Tout de la formule Vitrine", "Jusqu'à 15 pages", "Rédaction des contenus", "Blog et actualités", "Référencement avancé", "3 mois d'accompagnement"] },
+        { name: "Boutique", price: PRICES["website-creation"]["Boutique"], note: "E-commerce · livré en 4 à 8 semaines", features: ["Catalogue et fiches produits", "Paiement CMI et Stripe", "Gestion des stocks", "Tunnel d'achat optimisé", "Formation à la gestion", "6 mois d'accompagnement"] },
       ],
       footnote: PRICE_FOOTNOTE,
     },
@@ -183,7 +186,7 @@ export const SERVICES: Service[] = [
     keyword: "agence SEO Maroc",
     metaTitle: "Agence SEO Maroc | Référencement Naturel Google | WEVTEX",
     metaDescription:
-      "Agence SEO au Maroc : audit, mots-clés, contenus et netlinking pour remonter sur Google et attirer des clients. Référencement naturel dès 1 500 DH/mois.",
+      "Agence SEO au Maroc : audit, mots-clés, contenus et netlinking pour remonter sur Google et attirer des clients. Référencement naturel dès {{prix:seo/Essentiel}} DH/mois.",
     eyebrow: "Référencement naturel",
     h1: "Agence SEO au Maroc,\nsoyez trouvé par qui vous cherche.",
     h1Em: ["soyez", "trouvé"],
@@ -279,9 +282,9 @@ export const SERVICES: Service[] = [
       titleEm: ["sans", "engagement long."],
       subtitle: "Trois rythmes selon la concurrence de votre marché.",
       tiers: [
-        { name: "Essentiel", price: "1 500", note: "Par mois · 3 mois minimum", features: ["Audit technique initial", "10 mots-clés suivis", "Optimisation des pages", "2 contenus par mois", "Rapport mensuel"] },
-        { name: "Croissance", price: "3 500", note: "Par mois · 3 mois minimum", featured: true, features: ["Tout de la formule Essentiel", "30 mots-clés suivis", "4 contenus par mois", "Netlinking actif", "Suivi de la concurrence", "Point mensuel en visio"] },
-        { name: "Concurrentiel", price: "6 500", note: "Par mois · marchés disputés", features: ["Tout de la formule Croissance", "Mots-clés illimités", "8 contenus par mois", "Relations presse", "SEO technique avancé", "Accompagnement dédié"] },
+        { name: "Essentiel", price: PRICES["seo"]["Essentiel"], note: "Par mois · 3 mois minimum", features: ["Audit technique initial", "10 mots-clés suivis", "Optimisation des pages", "2 contenus par mois", "Rapport mensuel"] },
+        { name: "Croissance", price: PRICES["seo"]["Croissance"], note: "Par mois · 3 mois minimum", featured: true, features: ["Tout de la formule Essentiel", "30 mots-clés suivis", "4 contenus par mois", "Netlinking actif", "Suivi de la concurrence", "Point mensuel en visio"] },
+        { name: "Concurrentiel", price: PRICES["seo"]["Concurrentiel"], note: "Par mois · marchés disputés", features: ["Tout de la formule Croissance", "Mots-clés illimités", "8 contenus par mois", "Relations presse", "SEO technique avancé", "Accompagnement dédié"] },
       ],
       footnote: PRICE_FOOTNOTE,
     },
@@ -294,9 +297,9 @@ export const SERVICES: Service[] = [
     keyword: "référencement local Google Maps Maroc",
     metaTitle: "Référencement Local & Google Maps au Maroc | WEVTEX",
     metaDescription:
-      "Référencement local au Maroc : fiche Google Business optimisée, top 3 sur Google Maps et avis clients. Mise en place dès 790 DH, suivi à 490 DH/mois.",
+      "Référencement local au Maroc : fiche Google Business optimisée, top 3 sur Google Maps et avis clients. Mise en place dès {{prix:local-seo/Mise en place}} DH, suivi à {{prix:local-seo/Entretien}} DH/mois.",
     eyebrow: "Google Maps & SEO local",
-    h1: "Référencement local Google Maps,\nsoyez la fiche qu'on appelle.",
+    h1: "Référencement local Google Maps au Maroc,\nsoyez la fiche qu'on appelle.",
     h1Em: ["la", "fiche", "qu'on", "appelle."],
     intro:
       "Quatre recherches locales sur cinq débouchent sur une visite ou un appel. Nous optimisons votre fiche Google Business, renforçons votre position sur Maps et organisons vos avis, pour que ce soit vous qu'on trouve — pas le concurrent d'à côté.",
@@ -390,9 +393,9 @@ export const SERVICES: Service[] = [
       titleEm: ["pour", "être trouvé."],
       subtitle: "Une mise en place unique, puis un entretien mensuel léger.",
       tiers: [
-        { name: "Mise en place", price: "790", note: "Une fois · sous 2 semaines", features: ["Création ou reprise de la fiche", "Catégories et zone optimisées", "Photos et services", "10 annuaires locaux", "Méthode de collecte d'avis"] },
-        { name: "Entretien", price: "490", note: "Par mois · sans engagement", featured: true, features: ["Publications mensuelles", "Réponses aux avis", "Suivi de position", "Mise à jour des horaires", "Rapport mensuel"] },
-        { name: "Multi-sites", price: "1 900", note: "Par mois · à partir de 3 établissements", features: ["Toutes les fiches gérées", "Cohérence entre points de vente", "Suivi par établissement", "Avis centralisés", "Rapport consolidé"] },
+        { name: "Mise en place", price: PRICES["local-seo"]["Mise en place"], note: "Une fois · sous 2 semaines", features: ["Création ou reprise de la fiche", "Catégories et zone optimisées", "Photos et services", "10 annuaires locaux", "Méthode de collecte d'avis"] },
+        { name: "Entretien", price: PRICES["local-seo"]["Entretien"], note: "Par mois · sans engagement", featured: true, features: ["Publications mensuelles", "Réponses aux avis", "Suivi de position", "Mise à jour des horaires", "Rapport mensuel"] },
+        { name: "Multi-sites", price: PRICES["local-seo"]["Multi-sites"], note: "Par mois · à partir de 3 établissements", features: ["Toutes les fiches gérées", "Cohérence entre points de vente", "Suivi par établissement", "Avis centralisés", "Rapport consolidé"] },
       ],
       footnote: PRICE_FOOTNOTE,
     },
@@ -405,7 +408,7 @@ export const SERVICES: Service[] = [
     keyword: "agence Google Ads Maroc",
     metaTitle: "Agence Google Ads & Facebook Ads au Maroc | WEVTEX",
     metaDescription:
-      "Agence Google Ads et Meta Ads au Maroc : campagnes Google, Facebook et Instagram, page d'atterrissage et suivi des conversions. Dès 1 200 DH/mois.",
+      "Agence Google Ads et Meta Ads au Maroc : campagnes Google, Facebook et Instagram, page d'atterrissage et suivi des conversions. Dès {{prix:ads/Lancement}} DH/mois.",
     eyebrow: "Publicité en ligne",
     h1: "Agence Google Ads et Meta au Maroc,\nde la publicité qui se rembourse.",
     h1Em: ["se", "rembourse."],
@@ -501,9 +504,9 @@ export const SERVICES: Service[] = [
       titleEm: ["budget", "média à part."],
       subtitle: "Vous payez la plateforme directement. Nous facturons uniquement le pilotage.",
       tiers: [
-        { name: "Lancement", price: "1 200", note: "Par mois · 1 canal", features: ["1 plateforme au choix", "Création des campagnes", "Page d'atterrissage incluse", "Suivi des conversions", "Rapport mensuel"] },
-        { name: "Multicanal", price: "2 800", note: "Par mois · 2 à 3 canaux", featured: true, features: ["Google et Meta", "Visuels et textes renouvelés", "Tests A/B continus", "Relance des visiteurs", "Point mensuel en visio"] },
-        { name: "Performance", price: "5 500", note: "Par mois · budgets importants", features: ["Tous canaux pertinents", "Stratégie d'acquisition complète", "Pages dédiées multiples", "Analyse du parcours d'achat", "Accompagnement dédié"] },
+        { name: "Lancement", price: PRICES["ads"]["Lancement"], note: "Par mois · 1 canal", features: ["1 plateforme au choix", "Création des campagnes", "Page d'atterrissage incluse", "Suivi des conversions", "Rapport mensuel"] },
+        { name: "Multicanal", price: PRICES["ads"]["Multicanal"], note: "Par mois · 2 à 3 canaux", featured: true, features: ["Google et Meta", "Visuels et textes renouvelés", "Tests A/B continus", "Relance des visiteurs", "Point mensuel en visio"] },
+        { name: "Performance", price: PRICES["ads"]["Performance"], note: "Par mois · budgets importants", features: ["Tous canaux pertinents", "Stratégie d'acquisition complète", "Pages dédiées multiples", "Analyse du parcours d'achat", "Accompagnement dédié"] },
       ],
       footnote:
         "Honoraires de gestion uniquement. Le budget publicitaire est réglé directement à Google ou Meta, sur vos comptes et à votre nom.",
@@ -517,7 +520,7 @@ export const SERVICES: Service[] = [
     keyword: "développement application mobile Maroc",
     metaTitle: "Développement Application Mobile au Maroc | WEVTEX",
     metaDescription:
-      "Développement d'application mobile au Maroc : iOS et Android avec Flutter, un seul code, publication sur les stores incluse. Dès 12 000 DH.",
+      "Développement d'application mobile au Maroc : iOS et Android avec Flutter, un seul code, publication sur les stores incluse. Dès {{prix:mobile-apps/Essentielle}} DH.",
     eyebrow: "Applications mobiles",
     h1: "Développement d'application mobile\nau Maroc, iOS et Android.",
     h1Em: ["iOS", "et", "Android."],
@@ -613,9 +616,9 @@ export const SERVICES: Service[] = [
       titleEm: ["d'une", "application."],
       subtitle: "Trois niveaux d'ambition, chiffrés fermement après le cadrage.",
       tiers: [
-        { name: "Essentielle", price: "12 000", note: "À partir de · 4 à 6 semaines", features: ["Jusqu'à 8 écrans", "iOS et Android", "Design inclus", "Publication sur les stores", "3 mois d'accompagnement"] },
-        { name: "Complète", price: "28 000", note: "À partir de · 8 à 12 semaines", featured: true, features: ["Écrans illimités", "Comptes et profils", "Paiement intégré", "Notifications push", "Espace d'administration", "6 mois d'accompagnement"] },
-        { name: "Sur mesure", price: "50 000", note: "À partir de · périmètre défini ensemble", features: ["Logique métier complexe", "Mode hors ligne complet", "Intégrations tierces", "Tableau de bord dédié", "Accompagnement prioritaire"] },
+        { name: "Essentielle", price: PRICES["mobile-apps"]["Essentielle"], note: "À partir de · 4 à 6 semaines", features: ["Jusqu'à 8 écrans", "iOS et Android", "Design inclus", "Publication sur les stores", "3 mois d'accompagnement"] },
+        { name: "Complète", price: PRICES["mobile-apps"]["Complète"], note: "À partir de · 8 à 12 semaines", featured: true, features: ["Écrans illimités", "Comptes et profils", "Paiement intégré", "Notifications push", "Espace d'administration", "6 mois d'accompagnement"] },
+        { name: "Sur mesure", price: PRICES["mobile-apps"]["Sur mesure"], note: "À partir de · périmètre défini ensemble", features: ["Logique métier complexe", "Mode hors ligne complet", "Intégrations tierces", "Tableau de bord dédié", "Accompagnement prioritaire"] },
       ],
       footnote: PRICE_FOOTNOTE,
     },
@@ -628,7 +631,7 @@ export const SERVICES: Service[] = [
     keyword: "logiciel sur mesure Maroc",
     metaTitle: "Logiciel sur Mesure au Maroc | Développement | WEVTEX",
     metaDescription:
-      "Développement de logiciel sur mesure au Maroc : gestion, facturation, stock, Windows et macOS, utilisable hors connexion. Dès 14 000 DH, sans licence.",
+      "Développement de logiciel sur mesure au Maroc : gestion, facturation, stock, Windows et macOS, utilisable hors connexion. Dès {{prix:desktop-apps/Outil simple}} DH, sans licence.",
     eyebrow: "Logiciels bureau",
     h1: "Logiciel sur mesure au Maroc,\nqui suit votre organisation.",
     h1Em: ["votre", "organisation."],
@@ -724,9 +727,9 @@ export const SERVICES: Service[] = [
       titleEm: ["d'un", "logiciel métier."],
       subtitle: "Chiffré fermement après la phase d'analyse, jamais avant.",
       tiers: [
-        { name: "Outil simple", price: "14 000", note: "À partir de · 4 à 6 semaines", features: ["Un domaine fonctionnel", "Windows ou macOS", "Base de données locale", "Exports Excel et PDF", "Formation incluse"] },
-        { name: "Gestion complète", price: "32 000", note: "À partir de · 8 à 12 semaines", featured: true, features: ["Plusieurs modules", "Windows et macOS", "Multi-postes synchronisé", "Comptes et permissions", "Reprise des données", "6 mois d'accompagnement"] },
-        { name: "Système métier", price: "60 000", note: "À partir de · périmètre défini ensemble", features: ["Logique métier avancée", "Intégrations tierces", "Tableaux de bord dédiés", "Mode hors ligne complet", "Accompagnement prioritaire"] },
+        { name: "Outil simple", price: PRICES["desktop-apps"]["Outil simple"], note: "À partir de · 4 à 6 semaines", features: ["Un domaine fonctionnel", "Windows ou macOS", "Base de données locale", "Exports Excel et PDF", "Formation incluse"] },
+        { name: "Gestion complète", price: PRICES["desktop-apps"]["Gestion complète"], note: "À partir de · 8 à 12 semaines", featured: true, features: ["Plusieurs modules", "Windows et macOS", "Multi-postes synchronisé", "Comptes et permissions", "Reprise des données", "6 mois d'accompagnement"] },
+        { name: "Système métier", price: PRICES["desktop-apps"]["Système métier"], note: "À partir de · périmètre défini ensemble", features: ["Logique métier avancée", "Intégrations tierces", "Tableaux de bord dédiés", "Mode hors ligne complet", "Accompagnement prioritaire"] },
       ],
       footnote: PRICE_FOOTNOTE,
     },
@@ -739,7 +742,7 @@ export const SERVICES: Service[] = [
     keyword: "développement web sur mesure Maroc",
     metaTitle: "Développement Web sur Mesure au Maroc | SaaS | WEVTEX",
     metaDescription:
-      "Développement web sur mesure au Maroc : applications web, plateformes SaaS, portails clients et API, conçus autour de votre métier. Cadrage dès 6 000 DH.",
+      "Développement web sur mesure au Maroc : applications web, plateformes SaaS, portails clients et API, conçus autour de votre métier. Cadrage dès {{prix:custom-solutions/Cadrage}} DH.",
     eyebrow: "Solutions sur mesure",
     h1: "Développement web sur mesure,\nquand rien d'existant ne suffit.",
     h1Em: ["ne", "suffit."],
@@ -835,9 +838,9 @@ export const SERVICES: Service[] = [
       titleEm: ["d'une", "plateforme."],
       subtitle: "Le cadrage précède toujours le chiffrage définitif.",
       tiers: [
-        { name: "Cadrage", price: "6 000", note: "2 à 3 semaines · livrable à vous", features: ["Ateliers avec vos équipes", "Processus documentés", "Modèle de données", "Périmètre chiffré", "Déduit du projet si vous poursuivez"] },
-        { name: "Plateforme", price: "18 000", note: "À partir de · 8 à 12 semaines", featured: true, features: ["Portail ou outil métier", "Comptes, rôles et permissions", "Tableaux de bord", "Une intégration incluse", "6 mois d'accompagnement"] },
-        { name: "SaaS complet", price: "60 000", note: "À partir de · périmètre défini ensemble", features: ["Architecture multi-entreprises", "Abonnements et facturation", "Intégrations multiples", "Tests de charge", "Accompagnement prioritaire"] },
+        { name: "Cadrage", price: PRICES["custom-solutions"]["Cadrage"], note: "2 à 3 semaines · livrable à vous", features: ["Ateliers avec vos équipes", "Processus documentés", "Modèle de données", "Périmètre chiffré", "Déduit du projet si vous poursuivez"] },
+        { name: "Plateforme", price: PRICES["custom-solutions"]["Plateforme"], note: "À partir de · 8 à 12 semaines", featured: true, features: ["Portail ou outil métier", "Comptes, rôles et permissions", "Tableaux de bord", "Une intégration incluse", "6 mois d'accompagnement"] },
+        { name: "SaaS complet", price: PRICES["custom-solutions"]["SaaS complet"], note: "À partir de · périmètre défini ensemble", features: ["Architecture multi-entreprises", "Abonnements et facturation", "Intégrations multiples", "Tests de charge", "Accompagnement prioritaire"] },
       ],
       footnote: PRICE_FOOTNOTE,
     },
@@ -850,7 +853,7 @@ export const SERVICES: Service[] = [
     keyword: "chatbot WhatsApp Maroc",
     metaTitle: "Chatbot WhatsApp pour Entreprise au Maroc | WEVTEX",
     metaDescription:
-      "Chatbot WhatsApp pour entreprise au Maroc : réponses 24h/24 en français et darija, qualification des prospects, prise de rendez-vous. Dès 2 400 DH.",
+      "Chatbot WhatsApp pour entreprise au Maroc : réponses 24h/24 en français et darija, qualification des prospects, prise de rendez-vous. Dès {{prix:whatsapp-bots/Essentiel}} DH.",
     eyebrow: "Chatbots WhatsApp",
     h1: "Chatbot WhatsApp au Maroc,\nune réponse même à minuit.",
     h1Em: ["même", "à", "minuit."],
@@ -946,9 +949,9 @@ export const SERVICES: Service[] = [
       titleEm: ["d'un", "bot WhatsApp."],
       subtitle: "Une mise en place unique, puis un abonnement pour l'entretien.",
       tiers: [
-        { name: "Essentiel", price: "2 400", note: "Mise en place · puis 390 DH par mois", features: ["Compte WhatsApp API", "Jusqu'à 10 scénarios", "Réponses aux questions courantes", "Transmission à votre équipe", "Réglage mensuel"] },
-        { name: "Qualification", price: "5 900", note: "Mise en place · puis 690 DH par mois", featured: true, features: ["Tout de la formule Essentiel", "Scénarios illimités", "Qualification des prospects", "Prise de rendez-vous", "Connexion CRM", "Rapports mensuels"] },
-        { name: "Sur mesure", price: "12 000", note: "À partir de · périmètre défini ensemble", features: ["Compréhension libre par IA", "Plusieurs langues", "Intégrations multiples", "Campagnes sortantes", "Accompagnement prioritaire"] },
+        { name: "Essentiel", price: PRICES["whatsapp-bots"]["Essentiel"], note: `Mise en place · puis ${MONTHLY["whatsapp-bots"]["Essentiel"]} DH par mois`, features: ["Compte WhatsApp API", "Jusqu'à 10 scénarios", "Réponses aux questions courantes", "Transmission à votre équipe", "Réglage mensuel"] },
+        { name: "Qualification", price: PRICES["whatsapp-bots"]["Qualification"], note: `Mise en place · puis ${MONTHLY["whatsapp-bots"]["Qualification"]} DH par mois`, featured: true, features: ["Tout de la formule Essentiel", "Scénarios illimités", "Qualification des prospects", "Prise de rendez-vous", "Connexion CRM", "Rapports mensuels"] },
+        { name: "Sur mesure", price: PRICES["whatsapp-bots"]["Sur mesure"], note: "À partir de · périmètre défini ensemble", features: ["Compréhension libre par IA", "Plusieurs langues", "Intégrations multiples", "Campagnes sortantes", "Accompagnement prioritaire"] },
       ],
       footnote: PRICE_FOOTNOTE,
     },
@@ -957,7 +960,7 @@ export const SERVICES: Service[] = [
 
 /* Search layer (secondary keywords, question sections, extra FAQs) merged
    in once, here, so the page view and the FAQPage schema read the same data. */
-for (let i = 0; i < SERVICES.length; i++) SERVICES[i] = withSeo(SERVICES[i]);
+for (let i = 0; i < SERVICES.length; i++) SERVICES[i] = fillPricesDeep(withSeo(SERVICES[i]));
 
 export const SERVICE_SLUGS = SERVICES.map((s) => s.slug);
 

@@ -13,17 +13,19 @@
  * REVIEW BEFORE LAUNCH — these are commitments to clients. Confirm each one.
  */
 
+import { fillPricesDeep } from "./pricing";
+
 export type Faq = { q: string; a: string };
 export type FaqGroup = { id: string; title: string; items: Faq[] };
 
-export const FAQ_GROUPS: FaqGroup[] = [
+export const FAQ_GROUPS: FaqGroup[] = fillPricesDeep([
   {
     id: "prix",
     title: "Prix et devis",
     items: [
       {
         q: "Combien coûte un site web au Maroc ?",
-        a: "Nos formules démarrent à 990 DH pour un site vitrine simple. Une boutique en ligne ou une application se situe plus haut, selon le nombre de pages, les fonctionnalités et le contenu à produire. Le prix final est fixé dans un devis ferme avant que le travail ne commence, et il ne bouge pas ensuite.",
+        a: "Nos formules démarrent à {{prix:website-creation/Vitrine}} DH pour un site vitrine simple. Une boutique en ligne ou une application se situe plus haut, selon le nombre de pages, les fonctionnalités et le contenu à produire. Le prix final est fixé dans un devis ferme avant que le travail ne commence, et il ne bouge pas ensuite.",
       },
       {
         q: "Qu'est-ce qui fait varier le prix d'un site ?",
@@ -129,7 +131,7 @@ export const FAQ_GROUPS: FaqGroup[] = [
       },
     ],
   },
-];
+]);
 
 /** Flat list, for FAQPage structured data. */
 export const ALL_FAQS: Faq[] = FAQ_GROUPS.flatMap((g) => g.items);
