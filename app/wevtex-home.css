@@ -12,9 +12,9 @@
      lime-ink on light surfaces and bright lime on ink surfaces. */
 
   /* Ink surfaces (dark theme, footer, feature blocks) */
-  --bg-0: #101112;
-  --bg-1: #17181a;
-  --bg-2: #1f2022;
+  --bg-0: #1c2a08;
+  --bg-1: #22330c;
+  --bg-2: #2a3d10;
   --surface-d-1: rgba(255, 255, 255, 0.04);
   --surface-d-2: rgba(255, 255, 255, 0.07);
   --hairline-d: rgba(255, 255, 255, 0.16);
@@ -32,17 +32,17 @@
        paper   → recessed / secondary (FAQ, industries)
        sand    → the deepest light rung, used sparingly */
   --bg-cream: #ffffff;
-  --bg-cream-2: #f7f5ef;
-  --bg-paper: #ebe8de;
+  --bg-cream-2: #ffffff;
+  --bg-paper: #f5fbe2;
   /* Deepest light rung — used sparingly to break a run of pale sections. */
-  --bg-sand: #ddd7c7;
+  --bg-sand: #f5fbe2;
   --surface-c-1: rgba(16, 17, 18, 0.03);
   --surface-c-2: rgba(16, 17, 18, 0.06);
   --hairline-c: #dadad6;
   --hairline-c-strong: rgba(16, 17, 18, 0.32);
   --ink-on-cream: #101112;
   --ink-on-cream-2: #3a3a38;
-  --ink-on-cream-3: #6c6c63;
+  --ink-on-cream-3: #5b6650;
 
   /* Signal lime — the single accent */
   --accent: #c6f24e;
@@ -56,7 +56,7 @@
 
   /* Named aliases kept for older blocks — all resolve into the new system */
   --vermilion: #c6f24e;
-  --sand: #ddd7c7;
+  --sand: #f5fbe2;
   --clay: #4c6b10;
   --ochre: #6b6b68;
   --olive: #6b6b68;
@@ -272,7 +272,7 @@
   color: var(--ink-on-cream);
 }
 
-.wevtex .btn-outline:hover { background: #101112; color: #fff; border-color: #101112; }
+.wevtex .btn-outline:hover { background: #1c2a08; color: #fff; border-color: #1c2a08; }
 
 .wevtex .btn .arrow { width: 12px; height: 12px; }
 
@@ -288,7 +288,7 @@
 
 /* Tier 1 — utility bar */
 .wevtex .header-topbar {
-  background: #101112;
+  background: #1c2a08;
   color: rgba(255, 255, 255, 0.72);
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   overflow: hidden;
@@ -716,7 +716,7 @@
 
 .wevtex .plan.featured .btn { background: #fff; color: var(--accent-deep); }
 
-.wevtex .plan.featured .btn:hover { background: #101112; color: #fff; }
+.wevtex .plan.featured .btn:hover { background: #1c2a08; color: #fff; }
 
 .wevtex .cta {
   padding: 160px 0;
@@ -1509,7 +1509,7 @@
 
 /* ===================== PROBLEM — mockup 2 (dark band) ===================== */
 .wevtex .problem-band {
-  background: #101112;
+  background: #1c2a08;
   color: var(--ink-on-dark);
   padding: clamp(100px, 16vh, 168px) 0;
   position: relative;
@@ -1528,8 +1528,8 @@
 .wevtex .problem-band::after {
   content: ""; position: absolute; inset: 0; z-index: 1;
   background:
-    radial-gradient(120% 80% at 50% 50%, rgba(16, 17, 18, 0.62) 0%, rgba(16, 17, 18, 0.30) 45%, rgba(16, 17, 18, 0.14) 100%),
-    linear-gradient(180deg, rgba(16, 17, 18, 0.20), rgba(16, 17, 18, 0.10));
+    radial-gradient(120% 80% at 50% 50%, rgba(28, 42, 8, 0.62) 0%, rgba(28, 42, 8, 0.30) 45%, rgba(28, 42, 8, 0.14) 100%),
+    linear-gradient(180deg, rgba(28, 42, 8, 0.20), rgba(28, 42, 8, 0.10));
 }
 .wevtex .problem-inner { max-width: 1000px; margin: 0 auto; text-align: center; position: relative; z-index: 2; }
 .wevtex .problem-h {
@@ -1700,12 +1700,12 @@
 
 /* Neutral placeholder "photo" gradients (swap for real next/image later) */
 .wevtex .ic-card.g0 { background: linear-gradient(165deg, #f5f5f2, #d8d8d4); }
-.wevtex .ic-card.g1 { background: linear-gradient(165deg, #2a2b2d, #101112); }
+.wevtex .ic-card.g1 { background: linear-gradient(165deg, #2a2b2d, #1c2a08); }
 .wevtex .ic-card.g2 { background: linear-gradient(165deg, #c4c4c0, #a8a8a4); }
 .wevtex .ic-card.g3 { background: linear-gradient(165deg, #d8d8d4, #a8a8a4); }
 .wevtex .ic-card.g4 { background: linear-gradient(165deg, #c4c4c0, #8a8a86); }
 
-.wevtex .ic-overlay { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(16, 17, 18, 0.15) 0%, transparent 38%, rgba(16, 17, 18, 0.9) 100%); transition: opacity 520ms var(--ease-out); }
+.wevtex .ic-overlay { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(28, 42, 8, 0.15) 0%, transparent 38%, rgba(28, 42, 8, 0.9) 100%); transition: opacity 520ms var(--ease-out); }
 .wevtex .ic-card-inner { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: flex-end; padding: 20px; z-index: 2; }
 .wevtex .ic-badge { position: absolute; top: 20px; left: 20px; width: 46px; height: 46px; border-radius: 50%; background: #fff; display: grid; place-items: center; color: #101112; }
 .wevtex .ic-badge svg { width: 22px; height: 22px; }
@@ -1720,7 +1720,7 @@
   display: grid; place-items: center; color: var(--ink-on-cream);
   transition: background-color 320ms var(--ease-out), border-color 320ms var(--ease-out), color 320ms var(--ease-out);
 }
-.wevtex .ic-arrow:hover { background: #101112; border-color: #101112; color: #fff; }
+.wevtex .ic-arrow:hover { background: #1c2a08; border-color: #1c2a08; color: #fff; }
 .wevtex .ic-dots { display: flex; gap: 8px; }
 .wevtex .ic-dots span { width: 8px; height: 8px; border-radius: 50%; background: var(--hairline-c-strong); }
 .wevtex .ic-dots span.on { background: var(--vermilion); width: 22px; border-radius: 5px; }
@@ -1739,7 +1739,7 @@
 /* ===================== STATS — mockup 6 (clay band) ===================== */
 .wevtex .stats-band-v2 {
   position: relative; overflow: hidden; color: #ffffff;
-  background: #17181a;
+  background: #22330c;
   padding: clamp(88px, 13vh, 138px) 0;
 }
 /* Photo backdrop: a working coworking floor. Its green dividers sit in the
@@ -1755,8 +1755,8 @@
 .wevtex .stats-band-v2::after {
   content: ""; position: absolute; inset: 0; z-index: 1;
   background:
-    linear-gradient(90deg, rgba(16, 17, 18, 0.52) 0%, rgba(16, 17, 18, 0.14) 55%, rgba(16, 17, 18, 0.45) 100%),
-    linear-gradient(180deg, rgba(16, 17, 18, 0.12), rgba(16, 17, 18, 0.08));
+    linear-gradient(90deg, rgba(28, 42, 8, 0.52) 0%, rgba(28, 42, 8, 0.14) 55%, rgba(28, 42, 8, 0.45) 100%),
+    linear-gradient(180deg, rgba(28, 42, 8, 0.12), rgba(28, 42, 8, 0.08));
 }
 .wevtex .sb-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; position: relative; z-index: 2; }
 .wevtex .sb-item { padding: 0 34px; border-right: 1px solid rgba(255, 255, 255, 0.14); }
@@ -1826,7 +1826,7 @@
 /* Ink card — stays dark on the light canvas, like the featured testimonial. */
 .wevtex .wa-card {
   position: relative; overflow: hidden;
-  background: #101112; color: #fff; border-radius: 22px; padding: 36px;
+  background: #1c2a08; color: #fff; border-radius: 22px; padding: 36px;
   box-shadow: 0 32px 64px -30px rgba(16, 17, 18, 0.62);
 }
 .wevtex .wa-card-motif { position: absolute; inset: 0; background-image: url("/images/motif.svg"); background-size: 62px 62px; opacity: 0.12; -webkit-mask-image: radial-gradient(58% 70% at 100% 0%, #000, transparent 70%); mask-image: radial-gradient(58% 70% at 100% 0%, #000, transparent 70%); }
@@ -1938,7 +1938,7 @@
 }
 /* the popular tier is ALWAYS ink — it must not follow the light-mode token swap */
 .wevtex .pr-card.featured {
-  background: #101112; color: #fff; border-color: #101112;
+  background: #1c2a08; color: #fff; border-color: #1c2a08;
   padding: 40px 32px 34px;
   overflow: visible; /* let the badge overhang the top edge */
 }
@@ -2040,7 +2040,7 @@
   --ink-on-dark: #ffffff;
   --ink-on-dark-2: rgba(255, 255, 255, 0.84);
   --ink-on-dark-3: rgba(255, 255, 255, 0.64);
-  background: #101112; color: var(--ink-on-dark);
+  background: #1c2a08; color: var(--ink-on-dark);
   position: relative; overflow: hidden;
   border-top: 1px solid rgba(255, 255, 255, 0.10);
   padding: clamp(56px, 8vh, 84px) 0 30px;
@@ -2148,7 +2148,7 @@
 .site-header .nav-label::after { content: ""; position: absolute; left: 15px; right: 15px; bottom: -3px; height: 2px; width: auto; background: var(--accent); transform: scaleX(0); transform-origin: left; transition: transform 220ms var(--ease-out); }
 .site-header li:hover > .nav-label::after, .site-header a.nav-label:hover::after, .site-header .nav-label.current::after { transform: scaleX(1); }
 .site-header .mega-item { transition: background 220ms var(--ease-out); border-radius: 10px; }
-.site-header .mega-item:hover { background: rgba(16, 17, 18, 0.05); }
+.site-header .mega-item:hover { background: rgba(28, 42, 8, 0.05); }
 .site-header .mega-item:hover strong { color: var(--ink-on-dark); }
 .site-header .mega-item:hover .mega-icon { background: var(--accent); color: var(--on-lime); }
 .site-header .brand-mark { transition: opacity 160ms var(--ease-out); }
@@ -2158,11 +2158,11 @@
 /* ---- Industries carousel: overlay darken + icon fills vermilion ---- */
 .wevtex .ic-card { transition: transform 240ms var(--ease-out); }
 .wevtex .ic-overlay { transition: background 240ms var(--ease-out); }
-.wevtex .ic-card:hover .ic-overlay { background: linear-gradient(180deg, transparent 24%, rgba(16, 17, 18, 0.9)); }
+.wevtex .ic-card:hover .ic-overlay { background: linear-gradient(180deg, transparent 24%, rgba(28, 42, 8, 0.9)); }
 .wevtex .ic-badge { transition: background 520ms var(--ease-out), color 520ms var(--ease-out); }
 .wevtex .ic-card:hover .ic-badge { background: var(--accent); color: var(--on-lime); }
 .wevtex .ic-arrow { transition: background 160ms var(--ease-out), border-color 160ms var(--ease-out), color 160ms var(--ease-out); }
-.wevtex .ic-arrow:hover { background: rgba(16, 17, 18, 0.05); border-color: rgba(16, 17, 18, 0.4); color: var(--ink-on-cream); }
+.wevtex .ic-arrow:hover { background: rgba(28, 42, 8, 0.05); border-color: rgba(16, 17, 18, 0.4); color: var(--ink-on-cream); }
 .wevtex .ic-dots span { transition: transform 160ms var(--ease-out), background 160ms var(--ease-out); }
 .wevtex .ic-dots span:hover { transform: scale(1.4); }
 
@@ -2364,7 +2364,7 @@
 /* ---- Call audit band ---- */
 .wevtex .audit-band {
   position: relative; overflow: hidden;
-  background: #101112; color: var(--ink-on-dark);
+  background: #1c2a08; color: var(--ink-on-dark);
   padding: clamp(70px, 10vh, 108px) 0;
 }
 .wevtex .audit-h {
@@ -2470,9 +2470,9 @@
    about; that card avoided it by hardcoding #101112.) */
 .wevtex .pricing-ink,
 .wevtex .contact-split {
-  --bg-0: #101112;
-  --bg-1: #17181a;
-  --bg-2: #1f2022;
+  --bg-0: #1c2a08;
+  --bg-1: #22330c;
+  --bg-2: #2a3d10;
   --surface-d-1: rgba(255, 255, 255, 0.04);
   --surface-d-2: rgba(255, 255, 255, 0.07);
   --hairline-d: rgba(255, 255, 255, 0.16);
@@ -2939,7 +2939,7 @@
   height: 1px; background: rgba(255, 255, 255, 0.12);
   margin: 20px 0 18px; border: 0;
 }
-.wevtex .pr-grid-8 .pr-card.featured .pr-divider { background: rgba(16, 17, 18, 0.12); }
+.wevtex .pr-grid-8 .pr-card.featured .pr-divider { background: rgba(28, 42, 8, 0.12); }
 
 .wevtex .pr-from {
   display: block; font-size: 10.5px; font-weight: 500;
@@ -3001,7 +3001,7 @@
   height: 1px; background: rgba(255, 255, 255, 0.12);
   margin: 20px 0 18px; border: 0;
 }
-.wevtex .pr-grid-8 .pr-card.featured .pr-divider { background: rgba(16, 17, 18, 0.12); }
+.wevtex .pr-grid-8 .pr-card.featured .pr-divider { background: rgba(28, 42, 8, 0.12); }
 
 .wevtex .pr-from {
   display: block; font-size: 10.5px; font-weight: 500;
@@ -3038,7 +3038,7 @@
 /* The featured card re-scopes --ink-on-dark to near-black, so the shared hover
    rule resolved to black text on a black fill. Pin both ends explicitly. */
 .wevtex .pricing-ink .pr-card.featured .pr-btn:hover {
-  background: #101112; border-color: #101112; color: #ffffff;
+  background: #1c2a08; border-color: #1c2a08; color: #ffffff;
 }
 
 /* ---- Pricing card polish ----
@@ -3270,7 +3270,7 @@
 }
 .wevtex .srv-d-icon {
   display: inline-grid; place-items: center; width: 52px; height: 52px;
-  border-radius: 50%; background: #101112; color: #fff; margin-bottom: 20px;
+  border-radius: 50%; background: #1c2a08; color: #fff; margin-bottom: 20px;
 }
 /* La colonne de droite ne porte plus que l'illustration : même traitement que
    sur /services, l'artwork posé sur le fond de la page, sans cadre ni ombre. */
@@ -3517,7 +3517,7 @@
   bottom: 12px;
   padding: 6px 11px;
   border-radius: 999px;
-  background: rgba(16, 17, 18, 0.55);
+  background: rgba(28, 42, 8, 0.55);
   backdrop-filter: blur(6px);
   -webkit-backdrop-filter: blur(6px);
   font-family: var(--font-mono);
@@ -3643,7 +3643,7 @@
   position: fixed;
   left: 16px; right: 16px; bottom: 16px;
   z-index: 90;
-  background: #14170f;
+  background: #1c2a08;
   color: #f1f4e7;
   border-radius: 12px;
   box-shadow: 0 10px 40px -12px rgba(0, 0, 0, 0.5);
@@ -3848,7 +3848,7 @@
 .wevtex .sec-light { background: var(--bg-cream); color: var(--ink-on-cream); }
 .wevtex .sec-paper { background: var(--bg-paper); color: var(--ink-on-cream); }
 .wevtex .sec-ink {
-  background: #101112;
+  background: #1c2a08;
   /* Off-white, never pure white, on every ink section. */
   color: #f4f5f2;
   --ink-on-dark: #f4f5f2;
@@ -3910,7 +3910,7 @@
 }
 .wevtex .ink-spotlight {
   position: absolute; inset: 0; z-index: 0; pointer-events: none;
-  background: radial-gradient(60% 70% at 50% 45%, #1a1d22 0%, rgba(26, 29, 34, 0.55) 32%, rgba(16, 17, 18, 0) 62%);
+  background: radial-gradient(60% 70% at 50% 45%, #1a1d22 0%, rgba(26, 29, 34, 0.55) 32%, rgba(28, 42, 8, 0) 62%);
 }
 
 /* ---- Hover vocabulary: one idea per element, never stacked ---- */
@@ -4094,7 +4094,7 @@
    inherits it ends up with dark text on a dark ground.
    ------------------------------------------------------------------------- */
 .wevtex .inline-cta-ink {
-  background: #101112;
+  background: #1c2a08;
   position: relative;
   padding: clamp(64px, 9vh, 96px) 0;
 }
@@ -4167,7 +4167,7 @@
 .wevtex .pricing-ink .pr-card .pr-btn,
 .wevtex .pricing-ink .pr-card.featured .pr-btn { border-color: #cfccc2; color: #101112; }
 .wevtex .pricing-ink .pr-card .pr-btn:hover,
-.wevtex .pricing-ink .pr-card.featured .pr-btn:hover { border-color: #101112; }
+.wevtex .pricing-ink .pr-card.featured .pr-btn:hover { border-color: #1c2a08; }
 .wevtex .pricing-ink .pr-card.featured .pr-btn {
   background: var(--accent); border-color: var(--accent); color: var(--on-lime);
 }
@@ -4343,7 +4343,7 @@
 
 /* The method block on ink — the dark anchor that breaks the run of three pale
    sections at the top of a service page. Literals, not --ink-on-dark. */
-.wevtex .process-ink { background: #101112; color: #f4f5f2; position: relative; }
+.wevtex .process-ink { background: #1c2a08; color: #f4f5f2; position: relative; }
 .wevtex .process-ink .h-section,
 .wevtex .process-ink h3, .wevtex .process-ink h4 { color: #f4f5f2; }
 .wevtex .process-ink .eyebrow { color: rgba(244, 245, 242, 0.62); }
@@ -4415,7 +4415,7 @@
 
 /* The team block on ink — the dark anchor between the studio and the closing
    CTA, which were otherwise four pale sections in a row. Literals throughout. */
-.wevtex .founder-ink { background: #101112; color: #f4f5f2; position: relative; }
+.wevtex .founder-ink { background: #1c2a08; color: #f4f5f2; position: relative; }
 .wevtex .founder-ink .h-section,
 .wevtex .founder-ink h2, .wevtex .founder-ink h3, .wevtex .founder-ink h4 { color: #f4f5f2; }
 .wevtex .founder-ink .eyebrow { color: rgba(244, 245, 242, 0.62); }
@@ -4437,7 +4437,7 @@
 
 /* Sector outcomes on ink — the anchor that stops four pale sections running
    into the closing CTA. Literals, not --ink-on-dark. */
-.wevtex .ind-outcomes-ink { background: #101112; color: #f4f5f2; position: relative; }
+.wevtex .ind-outcomes-ink { background: #1c2a08; color: #f4f5f2; position: relative; }
 .wevtex .ind-outcomes-ink .h-section { color: #f4f5f2; }
 .wevtex .ind-outcomes-ink .eyebrow { color: rgba(244, 245, 242, 0.62); }
 .wevtex .ind-outcomes-ink .ind-outcome {
@@ -4494,7 +4494,7 @@
 .skip-link {
   position: absolute; left: 12px; top: -60px; z-index: 999;
   padding: 12px 20px; border-radius: 999px;
-  background: #101112; color: #c6f24e;
+  background: #1c2a08; color: #c6f24e;
   font-family: var(--font-display), system-ui, sans-serif;
   font-size: 14px; font-weight: 600; text-decoration: none;
   transition: top 160ms ease-out;
@@ -4629,8 +4629,8 @@
 
 /* the former hairline outline is now a solid ink button */
 .wevtex .btn-outline {
-  background: #101112;
-  border-color: #101112;
+  background: #1c2a08;
+  border-color: #1c2a08;
   color: #fff;
 }
 .wevtex .btn-outline:hover {
@@ -4759,7 +4759,7 @@
     transition: background 160ms var(--ease-out), border-color 160ms var(--ease-out);
   }
   .wevtex .nav-burger:hover { border-color: var(--ink-on-cream); }
-  .wevtex .nav-burger[aria-expanded="true"] { background: #101112; border-color: #101112; color: #fff; }
+  .wevtex .nav-burger[aria-expanded="true"] { background: #1c2a08; border-color: #1c2a08; color: #fff; }
 
   /* three bars that fold into a cross */
   .wevtex .nav-burger-bars { position: relative; width: 20px; height: 14px; }
@@ -4829,11 +4829,11 @@
     transition: background 160ms var(--ease-out);
   }
   .wevtex .mnav-item:hover,
-  .wevtex .mnav-item:active { background: rgba(16, 17, 18, 0.05); }
+  .wevtex .mnav-item:active { background: rgba(28, 42, 8, 0.05); }
   .wevtex .mnav-icon {
     width: 38px; height: 38px; flex-shrink: 0; border-radius: 10px;
     display: grid; place-items: center;
-    background: rgba(16, 17, 18, 0.05); color: var(--ink-on-cream);
+    background: rgba(28, 42, 8, 0.05); color: var(--ink-on-cream);
   }
   .wevtex .mnav-icon svg { width: 18px; height: 18px; }
   .wevtex .mnav-text strong { display: block; font-size: 15px; font-weight: 600; line-height: 1.3; }
@@ -4966,7 +4966,7 @@ html.menu-open .cc-bar { visibility: hidden; }
 
 /* blog tables: --bg-0 turns cream in light mode, so the white header text
    vanished into a white row */
-.wevtex .post-table thead th { background: #101112; }
+.wevtex .post-table thead th { background: #1c2a08; }
 
 /* blog FAQ: it never got the .faq-split reset, so the plus drew its bars over
    the base 26px circle and offset them twice. Same glyph as the home FAQ. */
@@ -5117,3 +5117,136 @@ html.menu-open .cc-bar { visibility: hidden; }
   .wevtex .nav-cta:has(.lang-switch) .btn { display: none; }
   .wevtex .nav-cta:has(.lang-switch) + .nav-burger { margin-left: 0; }
 }
+
+/* ===========================================================================
+   Energy pass — 2026-09-12
+   Restrained on purpose: ~180ms, 1-3px of movement, one colour shift per
+   element. Motion that announces itself is what makes a site read as a
+   template; this should only be felt.
+   ======================================================================== */
+
+/* ---- Buttons: lift a pixel, arrow nudges forward ---- */
+.wevtex .btn {
+  transition: transform 180ms var(--ease-out), box-shadow 180ms var(--ease-out),
+              background-color 180ms, color 180ms, border-color 180ms;
+}
+.wevtex .btn:hover { transform: translateY(-1px); }
+.wevtex .btn-primary:hover { box-shadow: 0 8px 20px -10px rgba(76, 107, 16, 0.6); }
+.wevtex .btn .arrow { transition: transform 180ms var(--ease-out); }
+.wevtex .btn:hover .arrow { transform: translate(2px, -2px); }
+
+/* ---- Cards: the same gesture everywhere, so the site feels like one hand ---- */
+.wevtex :where(.ic-card, .pr-card, .cs-chan, .seo-card) {
+  transition: transform 220ms var(--ease-out), box-shadow 220ms var(--ease-out),
+              border-color 220ms var(--ease-out);
+}
+.wevtex :where(.ic-card, .pr-card, .cs-chan, .seo-card):hover {
+  transform: translateY(-3px);
+  box-shadow: 0 16px 34px -20px rgba(28, 42, 8, 0.5);
+}
+.wevtex :where(.seo-card):hover { border-color: #b8cc86; }
+
+/* ---- Nav: a lime rule grows under the hovered item ---- */
+.wevtex .nav-label {
+  background: linear-gradient(var(--accent), var(--accent)) no-repeat 0 100% / 0 2px;
+  transition: background-size 200ms var(--ease-out);
+}
+.wevtex .nav-label:hover,
+.wevtex .nav-label.current { background-size: 100% 2px; }
+
+/* ---- Inner-page heroes: a deep-green band instead of white air ----
+   Covers every page built on .sec-first (FAQ, blog, services index,
+   réalisations, IA, legal, thank-you). Contact keeps a light hero because
+   its next section is already the deep contact slab. */
+.wevtex .sec-first:not(:has(+ .contact-split)) {
+  background: #1c2a08;
+  color: #ffffff;
+  --ink-on-cream: #ffffff;
+  --ink-on-cream-2: rgba(255, 255, 255, 0.84);
+  --ink-on-cream-3: rgba(255, 255, 255, 0.66);
+  --accent-text: var(--accent);
+  position: relative;
+  overflow: hidden;
+}
+.wevtex .sec-first:not(:has(+ .contact-split)) :where(h1, h2, .h-section) { color: #ffffff; }
+.wevtex .sec-first:not(:has(+ .contact-split)) .eyebrow { color: var(--accent); }
+.wevtex .sec-first:not(:has(+ .contact-split)) .btn-outline {
+  color: #ffffff; border-color: rgba(255, 255, 255, 0.42); background: transparent;
+}
+.wevtex .sec-first:not(:has(+ .contact-split)) .btn-outline:hover {
+  background: #ffffff; color: #1c2a08; border-color: #ffffff;
+}
+/* A faint drafting grid on the right half: structure, not decoration. */
+.wevtex .sec-first:not(:has(+ .contact-split))::before {
+  content: ""; position: absolute; inset: 0; pointer-events: none;
+  background-image:
+    linear-gradient(rgba(198, 242, 78, 0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(198, 242, 78, 0.07) 1px, transparent 1px);
+  background-size: 56px 56px;
+  -webkit-mask-image: linear-gradient(90deg, transparent 30%, #000 90%);
+  mask-image: linear-gradient(90deg, transparent 30%, #000 90%);
+}
+.wevtex .sec-first > .container { position: relative; z-index: 1; }
+
+/* Service-page heroes sit on the lime tint: their illustrations are drawn
+   for a light ground, so they stay light, but no longer flat white. */
+.wevtex .srv-d-hero { background: var(--bg-paper); }
+
+/* ---- Service-page SEO sections as editorial cards ---- */
+.wevtex .seo-grid {
+  display: grid; grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(14px, 1.6vw, 22px);
+}
+@media (max-width: 860px) { .wevtex .seo-grid { grid-template-columns: minmax(0, 1fr); } }
+.wevtex .seo-card {
+  position: relative; display: flex; flex-direction: column;
+  background: #ffffff; border: 1px solid #dde6c9; border-radius: 16px;
+  padding: clamp(26px, 2.4vw, 34px);
+}
+/* A short lime tab on the top edge marks each card as its own entry. */
+.wevtex .seo-card::before {
+  content: ""; position: absolute; top: 0; left: clamp(26px, 2.4vw, 34px);
+  width: 44px; height: 3px; border-radius: 0 0 3px 3px; background: var(--accent);
+}
+.wevtex .seo-card-wide { grid-column: 1 / -1; }
+.wevtex .seo-card-h {
+  font-size: clamp(20px, 1.9vw, 25px); font-weight: 600; letter-spacing: -0.02em;
+  line-height: 1.2; margin: 6px 0 12px; color: var(--ink-on-cream);
+}
+.wevtex .seo-card-p { font-size: 15px; line-height: 1.7; color: var(--ink-on-cream-2); margin: 0 0 12px; }
+.wevtex .seo-card-list { margin: 4px 0 12px; }
+.wevtex .seo-card-links { margin-top: auto; padding-top: 10px; display: flex; flex-wrap: wrap; gap: 10px 20px; }
+.wevtex .seo-card-link {
+  font-weight: 600; font-size: 14.5px; color: var(--ink-on-cream); text-decoration: none;
+  padding: 1px 2px 3px;
+  background: linear-gradient(var(--accent), var(--accent)) no-repeat 0 100% / 100% 2px;
+  transition: background-size 200ms var(--ease-out);
+}
+.wevtex .seo-card-link:hover { background-size: 100% 100%; }
+.wevtex .seo-card-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 4px; }
+.wevtex .seo-chip {
+  font-size: 13.5px; font-weight: 500; padding: 8px 14px; border-radius: 999px;
+  border: 1px solid #cfdcb2; background: var(--bg-paper); color: var(--ink-on-cream);
+  text-decoration: none; transition: background-color 180ms, border-color 180ms;
+}
+.wevtex .seo-chip:hover { background: var(--accent); border-color: var(--accent); color: #1c2a08; }
+
+@media (prefers-reduced-motion: reduce) {
+  .wevtex .btn, .wevtex .btn .arrow,
+  .wevtex :where(.ic-card, .pr-card, .cs-chan, .seo-card) { transition: none; }
+  .wevtex .btn:hover, .wevtex .btn:hover .arrow,
+  .wevtex :where(.ic-card, .pr-card, .cs-chan, .seo-card):hover { transform: none; }
+}
+
+/* An odd number of SEO sections would leave the last card alone beside an
+   empty cell; let it take the full row instead. The city card is always last. */
+.wevtex .seo-grid > .seo-card:nth-child(odd):nth-last-child(2) { grid-column: 1 / -1; }
+
+/* Right after the stats band the call-to-action becomes a full lime band:
+   both are deep green otherwise, and run together into one dark block.
+   Scoped to this adjacency only, so the band stays ink elsewhere. */
+.wevtex .stats-band-v2 + .inline-cta-ink { background: var(--accent); }
+.wevtex .stats-band-v2 + .inline-cta-ink .ink-grain { display: none; }
+.wevtex .stats-band-v2 + .inline-cta-ink .ict-text { color: #1c2a08; }
+.wevtex .stats-band-v2 + .inline-cta-ink .btn-primary { background: #1c2a08; color: var(--accent); border-color: #1c2a08; }
+.wevtex .stats-band-v2 + .inline-cta-ink .btn-primary:hover { background: #22330c; box-shadow: 0 8px 20px -10px rgba(28, 42, 8, 0.6); }

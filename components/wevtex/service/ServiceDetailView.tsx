@@ -347,43 +347,45 @@ export function ServiceDetailView({ service }: { service: Service }) {
           the exact term in an H2, the answer first, real published prices.
           Ends with the cities served, linked to their pages. */}
       {service.seoSections && service.seoSections.length > 0 && (
-        <section className="theme-cream srv-d-sec">
+        <section className="theme-paper srv-d-sec seo-sec">
           <div className="container">
-            <div className="reveal" style={{ maxWidth: "74ch" }}>
-              {service.seoSections.map((sec, i) => (
-                <div key={sec.h2} style={{ marginTop: i === 0 ? 0 : 64 }}>
-                  <h2 className="h-section" style={{ fontSize: "clamp(26px, 3.2vw, 38px)" }}>{sec.h2}</h2>
+            <div className="seo-grid">
+              {service.seoSections.map((sec) => (
+                <article key={sec.h2} className="seo-card reveal">
+                  <h2 className="seo-card-h">{sec.h2}</h2>
                   {sec.paras.map((p) => (
-                    <p key={p} className="ic-sub" style={{ marginTop: 16, textAlign: "left", maxWidth: "none" }}>{p}</p>
+                    <p key={p} className="seo-card-p">{p}</p>
                   ))}
                   {sec.bullets && (
-                    <ul className="srv-d-checks" style={{ marginTop: 20 }}>
+                    <ul className="srv-d-checks seo-card-list">
                       {sec.bullets.map((b) => <li key={b}>{CHECK}{b}</li>)}
                     </ul>
                   )}
                   {sec.links && (
-                    <div style={{ display: "flex", flexWrap: "wrap", gap: 10, marginTop: 24 }}>
+                    <div className="seo-card-links">
                       {sec.links.map((l) => (
-                        <a key={l.href} href={lp(l.href)} className="btn btn-outline">{l.label}</a>
+                        <a key={l.href} href={lp(l.href)} className="seo-card-link">
+                          {l.label}<span aria-hidden> →</span>
+                        </a>
                       ))}
                     </div>
                   )}
-                </div>
+                </article>
               ))}
 
-              <div style={{ marginTop: 64 }}>
-                <h2 className="h-section" style={{ fontSize: "clamp(26px, 3.2vw, 38px)" }}>
+              <article className="seo-card seo-card-wide reveal">
+                <h2 className="seo-card-h">
                   {service.seoCityLabel ?? service.name}{t.citiesH2}
                 </h2>
-                <p className="ic-sub" style={{ marginTop: 16, textAlign: "left", maxWidth: "none" }}>
-                  {t.citiesP}
-                </p>
-                <div style={{ display: "flex", flexWrap: "wrap", gap: 10, marginTop: 24 }}>
+                <p className="seo-card-p">{t.citiesP}</p>
+                <div className="seo-card-chips">
                   {cities.map((c) => (
-                    <a key={c.slug} href={c.href} className="btn btn-outline">{service.seoCityLabel ?? t.cityFallback}{t.inCity}{c.name}</a>
+                    <a key={c.slug} href={c.href} className="seo-chip">
+                      {service.seoCityLabel ?? t.cityFallback}{t.inCity}{c.name}
+                    </a>
                   ))}
                 </div>
-              </div>
+              </article>
             </div>
           </div>
         </section>
