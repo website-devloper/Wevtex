@@ -196,6 +196,9 @@ export async function POST(req: Request) {
   const source = line(body.source, 60);
   const employees = line(body.employees, 60);
   const topic = line(body.topic, 40);
+  /* The language of the page the lead came from: the confirmation email
+     follows it. Anything but "en" is French. */
+  const locale = line(body.locale, 5) === "en" ? "en" : "fr";
 
   if (name.length < 2 || contact.length < 3 || message.length < 5) {
     return json({ error: "Please add your name, a way to reach you, and a short message." }, 422);
@@ -218,7 +221,7 @@ export async function POST(req: Request) {
   const adminHtml =
     topic === "newsletter"
       ? newsletterEmail(contact)
-      : leadNotificationEmail({ name, contact, business, service, phone, budget, timeline, source, employees, message });
+      : leadNotificationEmail({ name, contact, business, service, phone, budget, timeline, source, employees, message, language: locale === "en" ? "English" : "" });
 
   // Notifying the team is the critical path: if it fails, the lead is lost.
   try {
@@ -226,7 +229,7 @@ export async function POST(req: Request) {
       apiKey,
       from,
       to: notify,
-      subject: `${topic === "newsletter" ? "Inscription newsletter" : "Nouveau prospect"} — ${name}${business ? ` (${business})` : ""}`,
+      subject: `${topic === "newsletter" ? "Inscription newsletter" : locale === "en" ? "Nouveau prospect (EN)" : "Nouveau prospect"} — ${name}${business ? ` (${business})` : ""}`,
       html: adminHtml,
       replyTo: visitorIsEmail ? contact : undefined,
     });
@@ -244,11 +247,12 @@ export async function POST(req: Request) {
         apiKey,
         from,
         to: contact,
-        subject: "Merci, nous avons bien reçu votre message",
+        subject: locale === "en" ? "Thank you, we have received your message" : "Merci, nous avons bien reçu votre message",
         html: autoReplyEmail({
           firstName: name.split(" ")[0] || name,
           whatsappUrl: WHATSAPP_URL,
           hasPhone: phone !== "" || !visitorIsEmail,
+          locale,
         }),
         // hello@wevtex.com has no MX record, so a client who hits Reply on this
         // would be writing into a void. Point them at the inbox we actually read.

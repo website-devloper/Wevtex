@@ -3,6 +3,12 @@ import { CITIES } from "@/lib/cities-data";
 import { POSTS_ORDERED, postPath } from "@/lib/blog-data";
 import { PROJECTS_ORDERED, projectPath } from "@/lib/projects-data";
 import { IA_META } from "@/lib/ia-page-data";
+import { SERVICES_EN } from "@/lib/en/services-data";
+import { CITIES_EN } from "@/lib/en/cities-data";
+import { POSTS_ORDERED_EN } from "@/lib/en/blog-data";
+import { PROJECTS_ORDERED_EN, projectPathEn } from "@/lib/en/projects-data";
+import { IA_META_EN } from "@/lib/en/ia-page-data";
+import { localize } from "@/lib/i18n-paths";
 import { abs } from "@/lib/seo";
 import { servicePath, PHONE_DISPLAY, EMAIL } from "@/lib/site-links";
 
@@ -12,7 +18,8 @@ import { servicePath, PHONE_DISPLAY, EMAIL } from "@/lib/site-links";
  *
  * Generated from the same data as the pages, at build time, so it can never
  * drift: a price changed in lib/pricing.ts or a new blog post shows up here
- * with the next build. Only facts the site already publishes.
+ * with the next build. Only facts the site already publishes. The French map
+ * comes first, then the same map for the English pages under /en.
  */
 
 export const dynamic = "force-static";
@@ -47,6 +54,35 @@ export function GET() {
     `- [Toutes les prestations](${abs("/services")})`,
     `- [Réalisations](${abs("/portfolio")})`,
     `- [Contact et devis](${abs("/contact")})`,
+    "",
+    "## English",
+    "",
+    "> Wevtex is a web design and digital marketing agency based in Casablanca, Morocco. It builds business websites and online stores, mobile apps, custom software and platforms, and makes businesses visible with SEO, Google Maps, Google and Meta ads, WhatsApp chatbots and AI agents. The full site is available in English at " + abs("/en") + ".",
+    "",
+    "- Based in Casablanca, working across Morocco (Rabat, Marrakech, Tangier, Agadir, Fez) and abroad, remotely.",
+    `- Contact: ${PHONE_DISPLAY} (phone and WhatsApp), ${EMAIL}.`,
+    "- Starting prices published on every service page, in Moroccan dirhams (MAD); firm quote before work starts; paid in approved stages.",
+    "- The website, domain name, code and logins are handed over in the client's name.",
+    "- Works in English, French and Darija.",
+    "",
+    "### Services",
+    ...SERVICES_EN.map((s) => `- [${s.name}](${abs(localize(servicePath(s.slug), "en"))}): ${s.metaDescription}`),
+    `- [AI automation agency](${abs(IA_META_EN.path)}): ${IA_META_EN.description}`,
+    "",
+    "### Cities",
+    ...CITIES_EN.map((c) => `- [Web design agency in ${c.name}](${abs(`/en/${c.slug}`)}): ${c.metaDescription}`),
+    "",
+    "### Guides",
+    ...POSTS_ORDERED_EN.map((p) => `- [${p.title}](${abs(postPath(p.slug, "en"))}): ${p.excerpt}`),
+    "",
+    "### Portfolio",
+    ...PROJECTS_ORDERED_EN.map((p) => `- [${p.title}](${abs(projectPathEn(p.slug))}): ${p.metaDescription}`),
+    "",
+    "### Useful pages",
+    `- [FAQ](${abs("/en/faq")}): prices, timelines, website ownership, hosting, SEO, maintenance.`,
+    `- [All services](${abs("/en/services")})`,
+    `- [Portfolio](${abs("/en/portfolio")})`,
+    `- [Contact and quote](${abs("/en/contact")})`,
     "",
   ];
 

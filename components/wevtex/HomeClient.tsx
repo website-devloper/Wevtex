@@ -188,7 +188,7 @@ const T = {
   },
   en: {
     guarantee: "Paid in stages: you only pay for what you have approved.",
-    eyebrow: "Digital marketing agency · Casablanca · All of Morocco",
+    eyebrow: "Digital marketing agency · Casablanca · Morocco",
     h1: "Web design & digital\nmarketing in Morocco:\na site that sells.",
     h1Em: ["sells"],
     heroSub: "From Casablanca, we build your website, online store or app, then get you found on Google. Price shown upfront, deadline in writing, and everything stays in your name.",

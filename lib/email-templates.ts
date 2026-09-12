@@ -113,6 +113,8 @@ export function leadNotificationEmail(d: {
   source: string;
   employees: string;
   message: string;
+  /** "English" when the lead came from an English page. */
+  language?: string;
 }) {
   const isEmail = EMAIL_RE.test(d.contact);
   const firstName = d.name.split(" ")[0] || d.name;
@@ -127,6 +129,7 @@ export function leadNotificationEmail(d: {
     row("Budget", d.budget),
     row("Délai", d.timeline),
     row("Source", d.source),
+    row("Langue", d.language ?? ""),
   ].join("");
 
   return shell(`
@@ -189,35 +192,61 @@ export function autoReplyEmail(d: {
   whatsappUrl: string;
   /** True when the visitor left a number — only then can we promise WhatsApp. */
   hasPhone: boolean;
+  /** The language of the page the visitor wrote from. */
+  locale?: "fr" | "en";
 }) {
-  const channel = d.hasPhone
-    ? "Nous vous répondons sur WhatsApp dans les prochaines heures ouvrées"
-    : "Nous vous répondons par e-mail dans les prochaines heures ouvrées";
+  const en = d.locale === "en";
+  const channel = en
+    ? d.hasPhone
+      ? "We will reply on WhatsApp within the next few business hours"
+      : "We will reply by email within the next few business hours"
+    : d.hasPhone
+      ? "Nous vous répondons sur WhatsApp dans les prochaines heures ouvrées"
+      : "Nous vous répondons par e-mail dans les prochaines heures ouvrées";
+
+  const t = en
+    ? {
+        eyebrow: "MESSAGE RECEIVED",
+        thanks: `Thank you ${esc(d.firstName)},<br>your message has arrived.`,
+        reply: `${channel}, with a clear view on your project and a precise price.`,
+        idea: "And if your idea is still taking shape, all the better: that is often where the best work starts. We will help you frame it.",
+        faster: "Need a faster answer? Message us on WhatsApp.",
+        button: "Chat on WhatsApp",
+        sign: "— The Wevtex team",
+        footer: "Wevtex · Web &amp; app agency · Casablanca, Morocco<br>You are receiving this email because you contacted us through wevtex.com.",
+      }
+    : {
+        eyebrow: "MESSAGE BIEN REÇU",
+        thanks: `Merci ${esc(d.firstName)},<br>votre message est bien arrivé.`,
+        reply: `${channel}, avec un avis clair sur votre projet et un prix précis.`,
+        idea: "Et si votre idée est encore en train de se préciser, tant mieux&nbsp;: c'est souvent là que le meilleur travail commence. Nous vous aiderons à la cadrer.",
+        faster: "Besoin d'une réponse plus rapide&nbsp;? Écrivez-nous sur WhatsApp.",
+        button: "Discuter sur WhatsApp",
+        sign: "— L'équipe Wevtex",
+        footer: "Wevtex · Agence web &amp; applications · Casablanca, Maroc<br>Vous recevez cet e-mail parce que vous nous avez contactés via wevtex.com.",
+      };
 
   return shell(`
-  ${header("MESSAGE BIEN REÇU")}
+  ${header(t.eyebrow)}
   <tr>
     <td style="padding:30px 32px 0;font-family:${FONT};">
-      <div style="font-size:22px;font-weight:700;color:${INK};line-height:1.3;">Merci ${esc(d.firstName)},<br>votre message est bien arrivé.</div>
+      <div style="font-size:22px;font-weight:700;color:${INK};line-height:1.3;">${t.thanks}</div>
       <div style="font-size:15px;line-height:1.7;color:${INK_2};margin-top:16px;">
-        ${channel}, avec un avis clair sur votre projet et un prix précis.
+        ${t.reply}
       </div>
       <div style="font-size:15px;line-height:1.7;color:${INK_2};margin-top:14px;">
-        Et si votre idée est encore en train de se préciser, tant mieux&nbsp;: c'est
-        souvent là que le meilleur travail commence. Nous vous aiderons à la cadrer.
+        ${t.idea}
       </div>
       <div style="font-size:15px;line-height:1.7;color:${INK_2};margin-top:14px;">
-        Besoin d'une réponse plus rapide&nbsp;? Écrivez-nous sur WhatsApp.
+        ${t.faster}
       </div>
-      ${button(d.whatsappUrl, "Discuter sur WhatsApp")}
+      ${button(d.whatsappUrl, t.button)}
     </td>
   </tr>
   <tr>
     <td style="padding:22px 32px 0;font-family:${FONT};font-size:15px;color:${INK_2};">
-      — L'équipe Wevtex
+      ${t.sign}
     </td>
   </tr>
-  ${footer(
-    "Wevtex · Agence web &amp; applications · Casablanca, Maroc<br>Vous recevez cet e-mail parce que vous nous avez contactés via wevtex.com."
-  )}`);
+  ${footer(t.footer)}`);
 }
