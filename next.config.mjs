@@ -70,16 +70,19 @@ const nextConfig = {
   },
 
   experimental: {
-    // Tree-shake barrel imports so only the used icons/motion primitives ship.
-    optimizePackageImports: ["swiper", "react-awesome-reveal"],
   },
 
   async redirects() {
-    return Object.entries(SERVICE_URLS).map(([id, url]) => ({
-      source: `/services/${id}`,
-      destination: `/${url}`,
-      statusCode: 301,
-    }));
+    return [
+      // The About page was removed on 2026-09-12. A 301 sends its link equity,
+      // and anyone following an old link, to the homepage instead of a 404.
+      { source: "/about", destination: "/", statusCode: 301 },
+      ...Object.entries(SERVICE_URLS).map(([id, url]) => ({
+        source: `/services/${id}`,
+        destination: `/${url}`,
+        statusCode: 301,
+      })),
+    ];
   },
 
   async headers() {

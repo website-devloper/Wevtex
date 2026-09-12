@@ -9,6 +9,6 @@ export const SITE_URL = (
   process.env.NEXT_PUBLIC_SITE_URL || "https://wevtex.com"
 ).replace(/\/$/, "");
 
-/** Build an absolute URL from a path: abs("/about") -> "https://wevtex.com/about". */
+/** Build an absolute URL from a path: abs("/contact") -> "https://wevtex.com/contact". */
 export const abs = (path = "/") =>
   `${SITE_URL}${path.startsWith("/") ? path : `/${path}`}`;

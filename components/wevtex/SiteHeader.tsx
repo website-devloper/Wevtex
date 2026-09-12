@@ -4,9 +4,9 @@ import Image from "next/image";
 import { useEffect, useRef, useState, type ReactNode } from "react";
 import { useLenis } from "lenis/react";
 import { SERVICES } from "./homeContent";
-import { WHATSAPP_URL, TEL_URL, PHONE_DISPLAY, EMAIL, EMAIL_URL, CONTACT_URL, servicePath, industryPath, socialUrl, HOME_URL, SERVICES_URL, PORTFOLIO_URL, ABOUT_URL } from "@/lib/site-links";
+import { WHATSAPP_URL, TEL_URL, PHONE_DISPLAY, EMAIL, EMAIL_URL, CONTACT_URL, servicePath, industryPath, socialUrl, HOME_URL, SERVICES_URL, PORTFOLIO_URL } from "@/lib/site-links";
 
-type Current = "services" | "about" | "work" | "reviews" | "contact";
+type Current = "services" | "work" | "reviews" | "contact";
 
 type NavItem = { href: string; title: string; sub: string; icon: ReactNode };
 
@@ -213,9 +213,6 @@ export function SiteHeader({ current }: { current?: Current }) {
               <a href={PORTFOLIO_URL} className={current === "work" ? "nav-label current" : "nav-label"}>Réalisations</a>
             </li>
             <li>
-              <a href={ABOUT_URL} className={current === "about" ? "nav-label current" : "nav-label"}>À propos</a>
-            </li>
-            <li>
               <a href={CONTACT_URL} className={current === "contact" ? "nav-label current" : "nav-label"}>Contact</a>
             </li>
           </ul>
@@ -295,7 +292,6 @@ export function SiteHeader({ current }: { current?: Current }) {
             </div>
 
             <a href={PORTFOLIO_URL} className={current === "work" ? "mnav-row current" : "mnav-row"} onClick={closeMenu}>Réalisations</a>
-            <a href={ABOUT_URL} className={current === "about" ? "mnav-row current" : "mnav-row"} onClick={closeMenu}>À propos</a>
             <a href={CONTACT_URL} className={current === "contact" ? "mnav-row current" : "mnav-row"} onClick={closeMenu}>Contact</a>
           </nav>
 

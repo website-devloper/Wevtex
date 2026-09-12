@@ -46,7 +46,6 @@ export function GET() {
     `- [Questions fréquentes](${abs("/faq")}): prix, délais, propriété du site, hébergement, référencement, maintenance.`,
     `- [Toutes les prestations](${abs("/services")})`,
     `- [Réalisations](${abs("/portfolio")})`,
-    `- [À propos](${abs("/about")})`,
     `- [Contact et devis](${abs("/contact")})`,
     "",
   ];

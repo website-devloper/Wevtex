@@ -1,13 +1,13 @@
 import Image from "next/image";
 import { SERVICES } from "./homeContent";
 import { CITY_LINKS as CITIES } from "@/lib/city-list";
-import { CONTACT_URL, HOME_URL, ABOUT_URL, SERVICES_URL, PORTFOLIO_URL, servicePath, industryPath, SOCIALS } from "@/lib/site-links";
+import { CONTACT_URL, HOME_URL, SERVICES_URL, PORTFOLIO_URL, servicePath, industryPath, SOCIALS } from "@/lib/site-links";
 
 /** Wevtex site footer — shared across the homepage and all inner pages. */
 /* Every entry resolves to a page or to a section id that actually exists:
    #process is rendered on /services, #pricing on the homepage. */
 const PAGES: [string, string][] = [
-  ["Accueil", HOME_URL], ["À propos", ABOUT_URL], ["Services", SERVICES_URL], ["Réalisations", PORTFOLIO_URL],
+  ["Accueil", HOME_URL], ["Services", SERVICES_URL], ["Réalisations", PORTFOLIO_URL],
   ["Notre méthode", `${SERVICES_URL}#process`], ["Tarifs", `${HOME_URL}#pricing`], ["FAQ", "/faq"], ["Blog", "/blog"], ["Agence IA", "/agence-developpement-ia-maroc"], ["Contact", CONTACT_URL],
 ];
 /* Several labels share a page on purpose — one sector page covers both
