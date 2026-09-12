@@ -4,9 +4,10 @@ import "../../app/wevtex-home.css";
 import { SiteHeader } from "./SiteHeader";
 import { SiteFooter } from "./SiteFooter";
 import { useReveal } from "./useReveal";
+import { useLocale, useLp } from "./locale";
 import type { Post, PostBlock } from "@/lib/blog-data";
 import { postPath, formatPostDate, type PostCard } from "@/lib/blog-utils";
-import { SERVICES } from "./homeContent";
+import { useHomeContent } from "./useHomeContent";
 import { WHATSAPP_URL, CONTACT_URL, servicePath } from "@/lib/site-links";
 import { frenchSpacing } from "@/lib/typo";
 
@@ -18,6 +19,41 @@ import { frenchSpacing } from "@/lib/typo";
  * design. The lede (`answer`) is set apart because it is the passage an answer
  * engine is most likely to lift.
  */
+
+const T = {
+  fr: {
+    home: "Accueil",
+    crumbs: "Fil d'Ariane",
+    minRead: " min de lecture",
+    min: " min",
+    serviceEyebrow: "Le service lié",
+    seePage: "Voir la page ",
+    faqA: "Ce qu'on nous demande ",
+    faqEm: "ensuite.",
+    ctaText: "Votre cas est particulier ? Quinze minutes suffisent pour le chiffrer.",
+    quote: "Obtenir mon devis gratuit",
+    brief: "Envoyer mon brief",
+    nextEyebrow: "À lire ensuite",
+    nextA: "Sur le même ",
+    nextEm: "sujet.",
+  },
+  en: {
+    home: "Home",
+    crumbs: "Breadcrumb",
+    minRead: " min read",
+    min: " min",
+    serviceEyebrow: "Related service",
+    seePage: "Read about our ",
+    faqA: "What people ask ",
+    faqEm: "next.",
+    ctaText: "Is your case a bit different? Fifteen minutes is enough to price it.",
+    quote: "Get my free quote",
+    brief: "Send my brief",
+    nextEyebrow: "Read next",
+    nextA: "On the same ",
+    nextEm: "topic.",
+  },
+};
 
 const ARROW = (
   <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
@@ -67,6 +103,11 @@ function Block({ block }: { block: PostBlock }) {
 
 export function BlogPostView({ post, related }: { post: Post; related: PostCard[] }) {
   useReveal();
+  const locale = useLocale();
+  const t = T[locale];
+  const lp = useLp();
+  const spacing = locale === "fr" ? frenchSpacing : (s: string) => s;
+  const { SERVICES } = useHomeContent();
 
   const service = SERVICES.find((s) => s.slug === post.relatedService);
 
@@ -78,19 +119,19 @@ export function BlogPostView({ post, related }: { post: Post; related: PostCard[
         {/* ===================== HEADER ===================== */}
         <section className="theme-cream sec-first" style={{ paddingBottom: "clamp(24px, 4vh, 40px)" }}>
           <div className="container">
-            <nav className="post-crumbs reveal" aria-label="Fil d'Ariane">
-              <a href="/">Accueil</a>
+            <nav className="post-crumbs reveal" aria-label={t.crumbs}>
+              <a href={lp("/")}>{t.home}</a>
               <span aria-hidden>›</span>
-              <a href="/blog">Blog</a>
+              <a href={lp("/blog")}>Blog</a>
             </nav>
 
             <div className="post-head reveal">
               <span className="blog-meta">
                 <span className="blog-cat">{post.category}</span>
-                <time dateTime={post.publishedAt}>{formatPostDate(post.publishedAt)}</time>
-                <span>{post.readingMinutes} min de lecture</span>
+                <time dateTime={post.publishedAt}>{formatPostDate(post.publishedAt, locale)}</time>
+                <span>{post.readingMinutes}{t.minRead}</span>
               </span>
-              <h1 className="h-section" style={{ marginTop: 16 }}>{frenchSpacing(post.title)}</h1>
+              <h1 className="h-section" style={{ marginTop: 16 }}>{spacing(post.title)}</h1>
               {/* The answer-first paragraph: a self-contained reply, before any
                   build-up, so it survives being quoted on its own. */}
               <p className="post-answer">{post.answer}</p>
@@ -106,11 +147,11 @@ export function BlogPostView({ post, related }: { post: Post; related: PostCard[
 
               {service && (
                 <aside className="post-service">
-                  <span className="eyebrow line-eyebrow">Le service lié</span>
+                  <span className="eyebrow line-eyebrow">{t.serviceEyebrow}</span>
                   <h2>{service.name}</h2>
                   <p>{service.desc}</p>
-                  <a href={servicePath(service.slug)} className="btn btn-outline">
-                    Voir la page {service.name.toLowerCase()}
+                  <a href={lp(servicePath(service.slug))} className="btn btn-outline">
+                    {t.seePage}{service.name.toLowerCase()}
                     {ARROW}
                   </a>
                 </aside>
@@ -126,7 +167,7 @@ export function BlogPostView({ post, related }: { post: Post; related: PostCard[
               <div className="post-faq reveal">
                 <span className="eyebrow line-eyebrow">FAQ</span>
                 <h2 className="h-section" style={{ marginTop: 14 }}>
-                  Ce qu&apos;on nous demande <em className="hl-line">ensuite.</em>
+                  {t.faqA}<em className="hl-line">{t.faqEm}</em>
                 </h2>
                 <div className="faq-list-v2" style={{ marginTop: 28 }}>
                   {post.faqs.map((f, i) => (
@@ -151,13 +192,13 @@ export function BlogPostView({ post, related }: { post: Post; related: PostCard[
         <section className="inline-cta inline-cta-ink">
           <div className="container">
             <div className="ict-inner reveal">
-              <p className="ict-text">Votre cas est particulier ? Quinze minutes suffisent pour le chiffrer.</p>
+              <p className="ict-text">{t.ctaText}</p>
               <div className="ict-actions">
                 <a href={WHATSAPP_URL} className="btn btn-primary" target="_blank" rel="noopener">
-                  Obtenir mon devis gratuit
+                  {t.quote}
                   {ARROW}
                 </a>
-                <a href={CONTACT_URL} className="btn btn-outline">Envoyer mon brief</a>
+                <a href={lp(CONTACT_URL)} className="btn btn-outline">{t.brief}</a>
               </div>
             </div>
           </div>
@@ -168,23 +209,23 @@ export function BlogPostView({ post, related }: { post: Post; related: PostCard[
           <section className="theme-cream" style={{ padding: "clamp(64px, 9vh, 100px) 0 clamp(80px, 12vh, 130px)" }}>
             <div className="container">
               <div className="reveal">
-                <span className="eyebrow line-eyebrow">À lire ensuite</span>
+                <span className="eyebrow line-eyebrow">{t.nextEyebrow}</span>
                 <h2 className="h-section" style={{ marginTop: 14 }}>
-                  Sur le même <em className="hl-line">sujet.</em>
+                  {t.nextA}<em className="hl-line">{t.nextEm}</em>
                 </h2>
               </div>
               <div className="blog-grid reveal" style={{ marginTop: 36 }}>
                 {related.map((p) => (
                   <article className="blog-card" key={p.slug}>
-                    <a href={postPath(p.slug)} className="blog-card-link">
+                    <a href={postPath(p.slug, locale)} className="blog-card-link">
                       <span className="blog-meta">
                         <span className="blog-cat">{p.category}</span>
-                        <span>{p.readingMinutes} min</span>
+                        <span>{p.readingMinutes}{t.min}</span>
                       </span>
-                      <h3>{frenchSpacing(p.title)}</h3>
+                      <h3>{spacing(p.title)}</h3>
                       <p>{p.excerpt}</p>
                       <span className="blog-card-foot">
-                        <time dateTime={p.publishedAt}>{formatPostDate(p.publishedAt)}</time>
+                        <time dateTime={p.publishedAt}>{formatPostDate(p.publishedAt, locale)}</time>
                         <span className="blog-card-arrow" aria-hidden>{ARROW}</span>
                       </span>
                     </a>

@@ -1,0 +1,47 @@
+"use client";
+
+import { useEffect } from "react";
+import { WHATSAPP_URL } from "@/lib/site-links";
+
+export default function Error({ error, reset }: { error: Error & { digest?: string }; reset: () => void }) {
+  useEffect(() => {
+    console.error(error);
+  }, [error]);
+
+  return (
+    <div
+      style={{
+        minHeight: "70vh",
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        justifyContent: "center",
+        gap: 20,
+        textAlign: "center",
+        padding: "40px 24px",
+        fontFamily: "system-ui, sans-serif",
+      }}
+    >
+      <h1 style={{ fontSize: 28, fontWeight: 600 }}>Something went wrong</h1>
+      <p style={{ color: "#6b6b68", maxWidth: 440 }}>
+        Sorry — an unexpected error occurred. You can try again, or reach us on WhatsApp.
+      </p>
+      <div style={{ display: "flex", gap: 12, flexWrap: "wrap", justifyContent: "center" }}>
+        <button
+          onClick={reset}
+          style={{ padding: "12px 22px", borderRadius: 15, border: "none", background: "#c6f24e", color: "#1c2a08", cursor: "pointer", fontWeight: 700 }}
+        >
+          Try again
+        </button>
+        <a
+          href={WHATSAPP_URL}
+          target="_blank"
+          rel="noopener"
+          style={{ padding: "12px 22px", borderRadius: 15, border: "1px solid #e6e6e3", color: "inherit", textDecoration: "none", fontWeight: 700 }}
+        >
+          Chat on WhatsApp
+        </a>
+      </div>
+    </div>
+  );
+}

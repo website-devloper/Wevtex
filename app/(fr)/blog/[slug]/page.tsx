@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { languageAlternates } from "@/lib/i18n-paths";
 import { notFound } from "next/navigation";
 import { BlogPostView } from "@/components/wevtex/BlogPostView";
 import { POST_SLUGS, getPost, postPath } from "@/lib/blog-data";
@@ -24,7 +25,7 @@ export async function generateMetadata({
     title: { absolute: post.metaTitle },
     description: post.metaDescription,
     keywords: [post.keyword],
-    alternates: { canonical: path },
+    alternates: { canonical: path, languages: languageAlternates(path) },
     openGraph: {
       title: post.metaTitle,
       description: post.metaDescription,

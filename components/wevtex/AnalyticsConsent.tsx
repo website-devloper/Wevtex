@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { GoogleAnalytics } from "@next/third-parties/google";
+import { useLocale, useLp } from "./locale";
 
 /**
  * Consent gate for analytics.
@@ -18,6 +19,23 @@ import { GoogleAnalytics } from "@next/third-parties/google";
 
 const KEY = "wevtex-analytics-consent";
 type Choice = "granted" | "denied";
+
+const T = {
+  fr: {
+    label: "Mesure d'audience",
+    text: "Nous aimerions mesurer l'audience du site pour savoir quelles pages vous sont utiles. Rien n'est chargé tant que vous n'avez pas accepté, et nous ne faisons aucune publicité ciblée.",
+    link: "Lire notre politique de confidentialité",
+    refuse: "Refuser",
+    accept: "Accepter",
+  },
+  en: {
+    label: "Analytics",
+    text: "We would like to measure visits to learn which pages are useful to you. Nothing loads until you accept, and we run no targeted advertising.",
+    link: "Read our privacy policy",
+    refuse: "Decline",
+    accept: "Accept",
+  },
+};
 
 function readChoice(): Choice | null {
   try {
@@ -41,6 +59,8 @@ export function AnalyticsConsent({ gaId }: { gaId?: string }) {
   // Nothing renders until we have read storage, so the banner never flashes
   // at someone who already answered.
   const [ready, setReady] = useState(false);
+  const t = T[useLocale()];
+  const lp = useLp();
 
   useEffect(() => {
     setChoice(readChoice());
@@ -59,20 +79,18 @@ export function AnalyticsConsent({ gaId }: { gaId?: string }) {
       {gaId && choice === "granted" ? <GoogleAnalytics gaId={gaId} /> : null}
 
       {choice === null && (
-        <div className="cc-bar" role="dialog" aria-label="Mesure d'audience">
+        <div className="cc-bar" role="dialog" aria-label={t.label}>
           <div className="cc-inner">
             <p className="cc-text">
-              Nous aimerions mesurer l&apos;audience du site pour savoir quelles pages
-              vous sont utiles. Rien n&apos;est chargé tant que vous n&apos;avez pas
-              accepté, et nous ne faisons aucune publicité ciblée.{" "}
-              <a href="/confidentialite">Lire notre politique de confidentialité</a>
+              {t.text}{" "}
+              <a href={lp("/confidentialite")}>{t.link}</a>
             </p>
             <div className="cc-actions">
               <button type="button" className="cc-btn cc-refuse" onClick={() => decide("denied")}>
-                Refuser
+                {t.refuse}
               </button>
               <button type="button" className="cc-btn cc-accept" onClick={() => decide("granted")}>
-                Accepter
+                {t.accept}
               </button>
             </div>
           </div>

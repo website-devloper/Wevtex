@@ -1,5 +1,6 @@
 import { SITE_URL, abs } from "@/lib/seo";
-import { PRICE_RANGE } from "@/lib/pricing";
+import { PRICE_RANGE, PRICE_RANGE_EN } from "@/lib/pricing";
+import type { Locale } from "@/lib/i18n";
 
 /**
  * Structured-data helpers.
@@ -7,6 +8,8 @@ import { PRICE_RANGE } from "@/lib/pricing";
  * One component emits a JSON-LD block; the builders below produce the shapes
  * the site needs. Everything references the organisation by @id rather than
  * repeating it, so a crawler resolves one entity across the whole graph.
+ * Each builder takes the page's language (French by default), which sets
+ * inLanguage and the few words the schema itself contains.
  *
  * Nothing here invents data. Notably there is no aggregateRating builder:
  * ratings must match a real Google Business Profile, and inventing one is the
@@ -30,11 +33,12 @@ export function JsonLd({ data }: { data: object }) {
 }
 
 /** Accueil › … › current page. Every non-home page should carry one. */
-export function breadcrumb(trail: { name: string; path: string }[]) {
+export function breadcrumb(trail: { name: string; path: string }[], locale: Locale = "fr") {
+  const home = locale === "en" ? { name: "Home", path: "/en" } : { name: "Accueil", path: "/" };
   return {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
-    itemListElement: [{ name: "Accueil", path: "/" }, ...trail].map((c, i) => ({
+    itemListElement: [home, ...trail].map((c, i) => ({
       "@type": "ListItem",
       position: i + 1,
       name: c.name,
@@ -51,7 +55,9 @@ export function serviceSchema(o: {
   serviceType?: string;
   startingPrice?: number;
   areaServed?: string[];
+  locale?: Locale;
 }) {
+  const locale = o.locale ?? "fr";
   return {
     "@context": "https://schema.org",
     "@type": "Service",
@@ -60,8 +66,8 @@ export function serviceSchema(o: {
     serviceType: o.serviceType ?? o.name,
     url: abs(o.path),
     provider: { "@id": ORG_ID },
-    areaServed: (o.areaServed ?? ["Maroc"]).map((n) => ({ "@type": "Place", name: n })),
-    inLanguage: "fr",
+    areaServed: (o.areaServed ?? [locale === "en" ? "Morocco" : "Maroc"]).map((n) => ({ "@type": "Place", name: n })),
+    inLanguage: locale,
     ...(o.startingPrice
       ? {
           offers: {
@@ -83,11 +89,11 @@ export function serviceSchema(o: {
 }
 
 /** FAQPage. Answers must be the ones visible on the page, verbatim. */
-export function faqSchema(items: { q: string; a: string }[]) {
+export function faqSchema(items: readonly { q: string; a: string }[], locale: Locale = "fr") {
   return {
     "@context": "https://schema.org",
     "@type": "FAQPage",
-    inLanguage: "fr",
+    inLanguage: locale,
     mainEntity: items.map((f) => ({
       "@type": "Question",
       name: f.q,
@@ -101,12 +107,14 @@ export function localBusinessSchema(o: {
   city: string;
   path: string;
   description: string;
+  locale?: Locale;
 }) {
+  const locale = o.locale ?? "fr";
   return {
     "@context": "https://schema.org",
     "@type": "ProfessionalService",
     "@id": `${abs(o.path)}#localbusiness`,
-    name: `Wevtex — Agence web à ${o.city}`,
+    name: locale === "en" ? `Wevtex — Web design agency in ${o.city}` : `Wevtex — Agence web à ${o.city}`,
     parentOrganization: { "@id": ORG_ID },
     url: abs(o.path),
     description: o.description,
@@ -119,9 +127,9 @@ export function localBusinessSchema(o: {
       addressCountry: "MA",
     },
     areaServed: { "@type": "City", name: o.city },
-    priceRange: PRICE_RANGE,
+    priceRange: locale === "en" ? PRICE_RANGE_EN : PRICE_RANGE,
     currenciesAccepted: "MAD",
-    inLanguage: "fr",
+    inLanguage: locale,
   };
 }
 
@@ -134,6 +142,7 @@ export function articleSchema(o: {
   dateModified?: string;
   keywords?: string[];
   image?: string;
+  locale?: Locale;
 }) {
   return {
     "@context": "https://schema.org",
@@ -148,7 +157,7 @@ export function articleSchema(o: {
     author: { "@id": ORG_ID },
     publisher: { "@id": ORG_ID },
     image: abs(o.image ?? "/images/og-image.jpg"),
-    inLanguage: "fr",
+    inLanguage: o.locale ?? "fr",
     ...(o.keywords ? { keywords: o.keywords.join(", ") } : {}),
   };
 }
@@ -163,6 +172,7 @@ export function creativeWorkSchema(o: {
   year: number;
   keywords: string[];
   genre: string;
+  locale?: Locale;
 }) {
   return {
     "@context": "https://schema.org",
@@ -177,6 +187,6 @@ export function creativeWorkSchema(o: {
     genre: o.genre,
     keywords: o.keywords.join(", "),
     creator: { "@id": ORG_ID },
-    inLanguage: "fr",
+    inLanguage: o.locale ?? "fr",
   };
 }

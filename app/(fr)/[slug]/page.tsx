@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { languageAlternates } from "@/lib/i18n-paths";
 import { notFound } from "next/navigation";
 import { CITIES, CITY_SLUGS } from "@/lib/cities-data";
 import { SERVICE_SLUGS, getService } from "@/lib/services-data";
@@ -83,7 +84,7 @@ export async function generateMetadata({
         "développeur web",
         "agence seo",
       ].map((k) => `${k} ${city.name.toLowerCase()}`),
-      alternates: { canonical: `/${city.slug}` },
+      alternates: { canonical: `/${city.slug}`, languages: languageAlternates(`/${city.slug}`) },
       openGraph: {
         title: city.title,
         description: city.metaDescription,
@@ -99,7 +100,7 @@ export async function generateMetadata({
     title: { absolute: service.metaTitle },
     description: service.metaDescription,
     keywords: [service.keyword, ...(service.seoKeywords ?? [])],
-    alternates: { canonical: url },
+    alternates: { canonical: url, languages: languageAlternates(url) },
     openGraph: {
       title: service.metaTitle,
       description: service.metaDescription,

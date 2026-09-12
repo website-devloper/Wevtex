@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
+import { languageAlternates } from "@/lib/i18n-paths";
 import { notFound } from "next/navigation";
-import { IndustryDetail } from "../../../components/wevtex/IndustryDetail";
-import { INDUSTRY_SLUGS, getIndustry } from "../../../lib/industries-data";
+import { IndustryDetail } from "@/components/wevtex/IndustryDetail";
+import { INDUSTRY_SLUGS, INDUSTRY_SERVICES, getIndustry } from "@/lib/industries-data";
 import { JsonLd, breadcrumb, faqSchema, serviceSchema } from "@/components/seo/JsonLd";
 
 export function generateStaticParams() {
@@ -21,7 +22,7 @@ export async function generateMetadata({
     title: { absolute: industry.metaTitle },
     description: industry.metaDescription,
     keywords: [industry.keyword, ...(industry.seoKeywords ?? [])],
-    alternates: { canonical: url },
+    alternates: { canonical: url, languages: languageAlternates(url) },
     openGraph: {
       title: industry.metaTitle,
       description: industry.metaDescription,
@@ -48,7 +49,7 @@ export default async function IndustryPage({
       {/* IndustryDetail renders these same answers on the page, verbatim. */}
       <JsonLd data={faqSchema(industry.faqs)} />
       <JsonLd data={breadcrumb([{ name: "Secteurs", path: "/#industries" }, { name: industry.name, path }])} />
-      <IndustryDetail industry={industry} />
+      <IndustryDetail industry={industry} services={INDUSTRY_SERVICES[industry.slug] ?? []} />
     </>
   );
 }

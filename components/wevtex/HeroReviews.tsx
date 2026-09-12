@@ -1,3 +1,5 @@
+"use client";
+
 /**
  * Hero review badge — the Google Business profile, with the brand mark
  * recreated as inline SVG (no asset file needed).
@@ -6,6 +8,13 @@
  * to a page that does not exist costs more trust than it buys.
  */
 import { GOOGLE_REVIEWS_URL } from "@/lib/site-links";
+import { useLocale } from "./locale";
+
+/* Rating and count are shown to visitors — keep them matching the profile. */
+const T = {
+  fr: { aria: "Lire nos avis Google", count: "2 avis Google" },
+  en: { aria: "Read our Google reviews", count: "2 Google reviews" },
+};
 
 function GoogleMark() {
   return (
@@ -34,8 +43,8 @@ function Stars({ tone }: { tone: "gold" | "green" }) {
   return <span className={`rv-stars rv-stars-${tone}`}>★★★★★</span>;
 }
 
-/* Rating and count are shown to visitors — keep them matching the profile. */
 export function HeroReviews() {
+  const t = T[useLocale()];
   return (
     <div className="hero-reviews">
       <a
@@ -43,7 +52,7 @@ export function HeroReviews() {
         href={GOOGLE_REVIEWS_URL}
         target="_blank"
         rel="noopener nofollow"
-        aria-label="Lire nos avis Google"
+        aria-label={t.aria}
       >
         <span className="rv-brand">
           <GoogleMark />
@@ -53,7 +62,7 @@ export function HeroReviews() {
           <Stars tone="gold" />
           <strong>5.0</strong>
         </span>
-        <span className="rv-count">2 avis Google</span>
+        <span className="rv-count">{t.count}</span>
       </a>
 
     </div>

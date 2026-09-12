@@ -4,18 +4,12 @@ import "../../app/wevtex-home.css";
 import { SiteHeader } from "./SiteHeader";
 import { SiteFooter } from "./SiteFooter";
 import { useReveal } from "./useReveal";
-import {
-  IA_META,
-  IA_REALITY,
-  IA_CAPABILITIES,
-  IA_STEPS,
-  IA_SECTORS,
-  IA_FAQS,
-} from "@/lib/ia-page-data";
+import { useLocale, useLp } from "./locale";
 import { WHATSAPP_URL, CONTACT_URL, servicePath } from "@/lib/site-links";
 
 /**
- * /agence-developpement-ia-maroc — the AI-forward service page.
+ * /agence-developpement-ia-maroc — the AI-forward service page, and its
+ * English twin /en/ai-automation-agency-morocco.
  *
  * Same design language as the city and sector pages: line-eyebrow → h-section
  * with the lime marker → ic-sub, on grounds that alternate cream → paper → ink.
@@ -23,7 +17,17 @@ import { WHATSAPP_URL, CONTACT_URL, servicePath } from "@/lib/site-links";
  * Every section is written to survive being quoted on its own, and every claim
  * maps to work the studio already ships — the WhatsApp chatbot service and the
  * cosmetics assistant are both real, and nothing here invents a figure.
+ * The copy arrives as a prop (lib/ia-page-data.ts, lib/en/ia-page-data.ts).
  */
+
+export type IaData = {
+  meta: { h1: string; h1Em: string; lede: string };
+  reality: readonly string[];
+  capabilities: readonly { h: string; p: string }[];
+  steps: readonly { n: string; h: string; p: string; d: string }[];
+  sectors: readonly { h: string; p: string }[];
+  faqs: readonly { q: string; a: string }[];
+};
 
 const ARROW = (
   <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
@@ -31,8 +35,88 @@ const ARROW = (
   </svg>
 );
 
-export function IaView() {
+const T = {
+  fr: {
+    eyebrow: "Intelligence artificielle · Maroc",
+    useCase: "Parler de mon cas d'usage",
+    quote: "Obtenir mon devis",
+    realityEyebrow: "Ce que l'IA change vraiment",
+    realityA: "Du temps rendu, ",
+    realityEm: "pas de la magie.",
+    buildEyebrow: "Ce que nous construisons",
+    buildA: "Quatre familles ",
+    buildEm: "d'agents.",
+    methodEyebrow: "Notre méthode",
+    methodA: "Quatre étapes, ",
+    methodEm: "un agent en service.",
+    methodP: "Un premier agent utile est en production en 1 à 4 semaines selon le nombre d'outils à connecter. Vous validez un prototype avant d'engager l'intégration complète.",
+    whoEyebrow: "Pour qui",
+    whoA: "Les métiers où ça ",
+    whoEm: "paie tout de suite.",
+    links: (lp: (p: string) => string) => (
+      <>
+        L&apos;automatisation se branche sur ce qui existe déjà : notre{" "}
+        <a href={lp(servicePath("whatsapp-bots"))}>service de chatbots WhatsApp</a> pour la
+        relation client, nos{" "}
+        <a href={lp(servicePath("custom-solutions"))}>solutions sur mesure</a> pour les
+        connexions internes, et le{" "}
+        <a href={lp(servicePath("website-creation"))}>site</a> ou l&apos;
+        <a href={lp(servicePath("mobile-apps"))}>application</a> sur lesquels l&apos;agent
+        s&apos;appuie.
+      </>
+    ),
+    ctaText: "Dites-nous la tâche qui vous coûte le plus de temps. On vous dira honnêtement si elle s'automatise.",
+    wa: "Écrire sur WhatsApp",
+    brief: "Envoyer mon brief",
+    faqA: "Questions sur ",
+    faqEm: "l'IA en entreprise.",
+    waH3: "Un cas d'usage en tête ?",
+    waEm: "Écrivez-nous sur WhatsApp",
+    waP: "On répond vite, en français, en darija ou en anglais.",
+  },
+  en: {
+    eyebrow: "Artificial intelligence · Morocco",
+    useCase: "Discuss my use case",
+    quote: "Get my quote",
+    realityEyebrow: "What AI really changes",
+    realityA: "Time given back, ",
+    realityEm: "not magic.",
+    buildEyebrow: "What we build",
+    buildA: "Four kinds ",
+    buildEm: "of agents.",
+    methodEyebrow: "Our process",
+    methodA: "Four steps, ",
+    methodEm: "one agent in production.",
+    methodP: "A first useful agent is in production within 1 to 4 weeks, depending on how many tools it connects to. You approve a prototype before committing to the full integration.",
+    whoEyebrow: "Who it's for",
+    whoA: "The trades where it ",
+    whoEm: "pays off right away.",
+    links: (lp: (p: string) => string) => (
+      <>
+        Automation plugs into what you already have: our{" "}
+        <a href={lp(servicePath("whatsapp-bots"))}>WhatsApp chatbot service</a> for customer
+        relations, our{" "}
+        <a href={lp(servicePath("custom-solutions"))}>custom web applications</a> for internal
+        connections, and the{" "}
+        <a href={lp(servicePath("website-creation"))}>website</a> or{" "}
+        <a href={lp(servicePath("mobile-apps"))}>mobile app</a> the agent relies on.
+      </>
+    ),
+    ctaText: "Tell us the task that costs you the most time. We'll tell you honestly whether it can be automated.",
+    wa: "Message us on WhatsApp",
+    brief: "Send my brief",
+    faqA: "Questions about ",
+    faqEm: "AI in business.",
+    waH3: "Got a use case in mind?",
+    waEm: "Message us on WhatsApp",
+    waP: "We reply fast, in English, French or Darija.",
+  },
+};
+
+export function IaView({ data }: { data: IaData }) {
   useReveal();
+  const t = T[useLocale()];
+  const lp = useLp();
 
   return (
     <div className="wevtex mode-light">
@@ -43,18 +127,18 @@ export function IaView() {
         <section className="theme-cream sec-first" style={{ paddingBottom: "clamp(48px, 7vh, 80px)" }}>
           <div className="container">
             <div className="reveal">
-              <span className="eyebrow line-eyebrow">Intelligence artificielle · Maroc</span>
+              <span className="eyebrow line-eyebrow">{t.eyebrow}</span>
               <h1 className="h-section" style={{ marginTop: 14 }}>
-                {IA_META.h1} <em className="hl-line">{IA_META.h1Em}</em>
+                {data.meta.h1} <em className="hl-line">{data.meta.h1Em}</em>
               </h1>
-              <p className="ic-sub wk-lede" style={{ maxWidth: "62ch" }}>{IA_META.lede}</p>
+              <p className="ic-sub wk-lede" style={{ maxWidth: "62ch" }}>{data.meta.lede}</p>
 
               <div className="hero-ctas" style={{ marginTop: 32, marginBottom: 0 }}>
                 <a href={WHATSAPP_URL} className="btn btn-primary" target="_blank" rel="noopener">
-                  Parler de mon cas d&apos;usage
+                  {t.useCase}
                   {ARROW}
                 </a>
-                <a href={CONTACT_URL} className="btn btn-outline">Obtenir mon devis</a>
+                <a href={lp(CONTACT_URL)} className="btn btn-outline">{t.quote}</a>
               </div>
             </div>
           </div>
@@ -64,11 +148,11 @@ export function IaView() {
         <section className="theme-paper" style={{ padding: "clamp(72px, 11vh, 120px) 0" }}>
           <div className="container">
             <div className="reveal" style={{ maxWidth: "68ch" }}>
-              <span className="eyebrow line-eyebrow">Ce que l&apos;IA change vraiment</span>
+              <span className="eyebrow line-eyebrow">{t.realityEyebrow}</span>
               <h2 className="h-section" style={{ marginTop: 14 }}>
-                Du temps rendu, <em className="hl-line">pas de la magie.</em>
+                {t.realityA}<em className="hl-line">{t.realityEm}</em>
               </h2>
-              {IA_REALITY.map((p, i) => (
+              {data.reality.map((p, i) => (
                 <p key={i} className="ic-sub" style={{ marginTop: i === 0 ? 20 : 16 }}>{p}</p>
               ))}
             </div>
@@ -79,14 +163,14 @@ export function IaView() {
         <section className="ind-outcomes-ink" style={{ padding: "clamp(72px, 11vh, 120px) 0" }}>
           <div className="container">
             <div className="reveal">
-              <span className="eyebrow line-eyebrow">Ce que nous construisons</span>
+              <span className="eyebrow line-eyebrow">{t.buildEyebrow}</span>
               <h2 className="h-section" style={{ marginTop: 14 }}>
-                Quatre familles <em className="hl-line">d&apos;agents.</em>
+                {t.buildA}<em className="hl-line">{t.buildEm}</em>
               </h2>
             </div>
 
             <div className="ind-outcomes reveal">
-              {IA_CAPABILITIES.map((c) => (
+              {data.capabilities.map((c) => (
                 <div className="ind-outcome" key={c.h}>
                   <h3>{c.h}</h3>
                   <span className="ind-outcome-rule" aria-hidden></span>
@@ -101,19 +185,17 @@ export function IaView() {
         <section className="theme-cream" style={{ padding: "clamp(72px, 11vh, 120px) 0" }}>
           <div className="container">
             <div className="reveal" style={{ maxWidth: "62ch" }}>
-              <span className="eyebrow line-eyebrow">Notre méthode</span>
+              <span className="eyebrow line-eyebrow">{t.methodEyebrow}</span>
               <h2 className="h-section" style={{ marginTop: 14 }}>
-                Quatre étapes, <em className="hl-line">un agent en service.</em>
+                {t.methodA}<em className="hl-line">{t.methodEm}</em>
               </h2>
               <p className="ic-sub" style={{ marginTop: 18 }}>
-                Un premier agent utile est en production en 1 à 4 semaines selon le nombre
-                d&apos;outils à connecter. Vous validez un prototype avant d&apos;engager
-                l&apos;intégration complète.
+                {t.methodP}
               </p>
             </div>
 
             <div className="proc-grid reveal" style={{ marginTop: 44 }}>
-              {IA_STEPS.map((s) => (
+              {data.steps.map((s) => (
                 <article className="proc-card" key={s.n}>
                   <span className="proc-num">{s.n}</span>
                   <h4>{s.h}</h4>
@@ -129,14 +211,14 @@ export function IaView() {
         <section className="theme-paper" style={{ padding: "clamp(72px, 11vh, 120px) 0" }}>
           <div className="container">
             <div className="reveal">
-              <span className="eyebrow line-eyebrow">Pour qui</span>
+              <span className="eyebrow line-eyebrow">{t.whoEyebrow}</span>
               <h2 className="h-section" style={{ marginTop: 14 }}>
-                Les métiers où ça <em className="hl-line">paie tout de suite.</em>
+                {t.whoA}<em className="hl-line">{t.whoEm}</em>
               </h2>
             </div>
 
             <div className="ind-outcomes reveal">
-              {IA_SECTORS.map((s) => (
+              {data.sectors.map((s) => (
                 <div className="ind-outcome" key={s.h}>
                   <h3>{s.h}</h3>
                   <span className="ind-outcome-rule" aria-hidden></span>
@@ -146,14 +228,7 @@ export function IaView() {
             </div>
 
             <p className="ic-sub reveal" style={{ marginTop: 34, maxWidth: "62ch" }}>
-              L&apos;automatisation se branche sur ce qui existe déjà : notre{" "}
-              <a href={servicePath("whatsapp-bots")}>service de chatbots WhatsApp</a> pour la
-              relation client, nos{" "}
-              <a href={servicePath("custom-solutions")}>solutions sur mesure</a> pour les
-              connexions internes, et le{" "}
-              <a href={servicePath("website-creation")}>site</a> ou l&apos;
-              <a href={servicePath("mobile-apps")}>application</a> sur lesquels l&apos;agent
-              s&apos;appuie.
+              {t.links(lp)}
             </p>
           </div>
         </section>
@@ -163,15 +238,14 @@ export function IaView() {
           <div className="container">
             <div className="ict-inner reveal">
               <p className="ict-text">
-                Dites-nous la tâche qui vous coûte le plus de temps. On vous dira honnêtement
-                si elle s&apos;automatise.
+                {t.ctaText}
               </p>
               <div className="ict-actions">
                 <a href={WHATSAPP_URL} className="btn btn-primary" target="_blank" rel="noopener">
-                  Écrire sur WhatsApp
+                  {t.wa}
                   {ARROW}
                 </a>
-                <a href={CONTACT_URL} className="btn btn-outline">Envoyer mon brief</a>
+                <a href={lp(CONTACT_URL)} className="btn btn-outline">{t.brief}</a>
               </div>
             </div>
           </div>
@@ -184,10 +258,10 @@ export function IaView() {
               <div className="faq-left reveal">
                 <span className="eyebrow line-eyebrow">FAQ</span>
                 <h2 className="h-section" style={{ marginTop: 14 }}>
-                  Questions sur <em className="hl-line">l&apos;IA en entreprise.</em>
+                  {t.faqA}<em className="hl-line">{t.faqEm}</em>
                 </h2>
                 <div className="faq-list-v2">
-                  {IA_FAQS.map((f, i) => (
+                  {data.faqs.map((f, i) => (
                     <details className="faq-item-v2" key={i}>
                       <summary>
                         <span className="faq-num" aria-hidden>{String(i + 1).padStart(2, "0")}</span>
@@ -205,11 +279,11 @@ export function IaView() {
               <div className="faq-right reveal">
                 <div className="wa-card">
                   <span className="wa-card-motif" aria-hidden></span>
-                  <h3>Un cas d&apos;usage en tête ?<br /><em>Écrivez-nous sur WhatsApp</em></h3>
+                  <h3>{t.waH3}<br /><em>{t.waEm}</em></h3>
                   <span className="wa-rule"></span>
-                  <p>On répond vite, en français, en darija ou en anglais.</p>
+                  <p>{t.waP}</p>
                   <a href={WHATSAPP_URL} className="wa-btn" target="_blank" rel="noopener">
-                    Écrire sur WhatsApp
+                    {t.wa}
                     {ARROW}
                   </a>
                 </div>

@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
-import { LegalPage } from "../../components/wevtex/LegalPage";
+import { languageAlternates } from "@/lib/i18n-paths";
+import { LegalPage } from "@/components/wevtex/LegalPage";
 
 export const metadata: Metadata = {
   title: "Mentions légales",
   description:
     "Éditeur, hébergeur, propriété intellectuelle et conditions d'utilisation du site wevtex.com.",
-  alternates: { canonical: "/mentions-legales" },
+  alternates: { canonical: "/mentions-legales", languages: languageAlternates("/mentions-legales") },
 };
 
 /* PLACEHOLDERS TO REPLACE BEFORE LAUNCH — every [À COMPLÉTER] below is a

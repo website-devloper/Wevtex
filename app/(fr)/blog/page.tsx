@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { languageAlternates } from "@/lib/i18n-paths";
 import { BlogIndexView } from "@/components/wevtex/BlogIndexView";
 import { POSTS_ORDERED, postPath } from "@/lib/blog-data";
 import { toCard } from "@/lib/blog-utils";
@@ -10,7 +11,7 @@ export const metadata: Metadata = {
   description:
     "Prix d'un site au Maroc, choix d'une agence, SEO, chatbots WhatsApp : des réponses claires, chiffrées, écrites par un studio de Casablanca.",
   keywords: ["blog marketing digital", "conseils site web", "conseils SEO", "blog Wevtex"],
-  alternates: { canonical: "/blog" },
+  alternates: { canonical: "/blog", languages: languageAlternates("/blog") },
   openGraph: {
     title: "Blog | Conseils Site Web, SEO & IA au Maroc | WEVTEX",
     description:

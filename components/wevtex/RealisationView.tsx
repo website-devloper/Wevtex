@@ -5,9 +5,9 @@ import "../../app/wevtex-home.css";
 import { SiteHeader } from "./SiteHeader";
 import { SiteFooter } from "./SiteFooter";
 import { useReveal } from "./useReveal";
-import { SERVICES } from "./homeContent";
+import { useHomeContent } from "./useHomeContent";
+import { useLocale, useLp } from "./locale";
 import type { Project } from "@/lib/projects-data";
-import { PROJECTS_ORDERED, projectPath } from "@/lib/projects-data";
 import { WHATSAPP_URL, CONTACT_URL, PORTFOLIO_URL, servicePath } from "@/lib/site-links";
 
 /**
@@ -16,6 +16,8 @@ import { WHATSAPP_URL, CONTACT_URL, PORTFOLIO_URL, servicePath } from "@/lib/sit
  * Everything shown comes from projects-data. The page adds structure (a real
  * H1, facts, a link to the matching service, neighbours) so each project can
  * rank and be cited on its own, without adding claims nobody signed off on.
+ * The neighbours are chosen by the server page and passed in, so the whole
+ * project list is not shipped to the browser for three cards.
  */
 
 const ARROW = (
@@ -30,16 +32,62 @@ const SERVICE_FOR_CATEGORY: Record<string, string> = {
   Application: "mobile-apps",
   "Application web": "custom-solutions",
   SaaS: "custom-solutions",
+  Platform: "custom-solutions",
+  "Web app": "custom-solutions",
 };
 
-export function RealisationView({ project: p }: { project: Project }) {
+const T = {
+  fr: {
+    home: "Accueil",
+    crumbs: "Fil d'Ariane",
+    work: "Réalisations",
+    built: " réalisé par Wevtex",
+    visit: "Voir ",
+    similar: "Un projet similaire ?",
+    open: "Ouvrir le site ",
+    shot: (title: string, cat: string) => `Capture du site ${title}, ${cat} réalisé par Wevtex`,
+    result: "Résultat",
+    delivered: "Ce que nous avons livré",
+    live: "En ligne",
+    sep: " : ",
+    seeService: "Voir ce service",
+    talk: "Parler de mon projet",
+    moreEyebrow: "Autres réalisations",
+    moreA: "D'autres projets ",
+    moreEm: "en ligne.",
+    all: "Toutes les réalisations",
+  },
+  en: {
+    home: "Home",
+    crumbs: "Breadcrumb",
+    work: "Portfolio",
+    built: " built by Wevtex",
+    visit: "Visit ",
+    similar: "A similar project?",
+    open: "Open the website of ",
+    shot: (title: string, cat: string) => `Screenshot of the ${title} website, ${cat} built by Wevtex`,
+    result: "Result",
+    delivered: "What we delivered",
+    live: "Live",
+    sep: ": ",
+    seeService: "See this service",
+    talk: "Talk about my project",
+    moreEyebrow: "More work",
+    moreA: "More projects, ",
+    moreEm: "live online.",
+    all: "All our work",
+  },
+};
+
+export function RealisationView({ project: p, neighbours }: { project: Project; neighbours: Project[] }) {
   useReveal();
+  const locale = useLocale();
+  const t = T[locale];
+  const lp = useLp();
+  const { SERVICES } = useHomeContent();
+  const projectHref = (slug: string) => (locale === "en" ? `/en/portfolio/${slug}` : `/realisations/${slug}`);
 
   const service = SERVICES.find((s) => s.slug === (SERVICE_FOR_CATEGORY[p.category] ?? "website-creation"));
-  const idx = PROJECTS_ORDERED.findIndex((x) => x.slug === p.slug);
-  const neighbours = [1, 2, 3]
-    .map((n) => PROJECTS_ORDERED[(idx + n) % PROJECTS_ORDERED.length])
-    .filter((x) => x.slug !== p.slug);
 
   return (
     <div className="wevtex mode-light">
@@ -49,32 +97,32 @@ export function RealisationView({ project: p }: { project: Project }) {
         {/* ===================== HERO ===================== */}
         <section className="theme-cream sec-first" style={{ paddingBottom: "clamp(48px, 7vh, 80px)" }}>
           <div className="container">
-            <nav className="post-crumbs reveal" aria-label="Fil d'Ariane">
-              <a href="/">Accueil</a>
+            <nav className="post-crumbs reveal" aria-label={t.crumbs}>
+              <a href={lp("/")}>{t.home}</a>
               <span aria-hidden>›</span>
-              <a href={PORTFOLIO_URL}>Réalisations</a>
+              <a href={lp(PORTFOLIO_URL)}>{t.work}</a>
             </nav>
 
             <div className="reveal">
               <span className="eyebrow line-eyebrow">{p.category} · {p.year}</span>
               <h1 className="h-section" style={{ marginTop: 14 }}>
-                {p.title}, <em className="hl-line">{p.category.toLowerCase()}</em> réalisé par Wevtex
+                {p.title}, <em className="hl-line">{p.category.toLowerCase()}</em>{t.built}
               </h1>
               <p className="ic-sub wk-lede" style={{ maxWidth: "68ch" }}>{p.description}</p>
 
               <div className="hero-ctas" style={{ marginTop: 32, marginBottom: 0 }}>
                 <a href={p.liveUrl} className="btn btn-primary" target="_blank" rel="noopener noreferrer">
-                  Voir {p.clientUrl}
+                  {t.visit}{p.clientUrl}
                   {ARROW}
                 </a>
-                <a href={CONTACT_URL} className="btn btn-outline">Un projet similaire ?</a>
+                <a href={lp(CONTACT_URL)} className="btn btn-outline">{t.similar}</a>
               </div>
             </div>
 
-            <a className="rz-shot reveal" href={p.liveUrl} target="_blank" rel="noopener noreferrer" aria-label={`Ouvrir le site ${p.title}`}>
+            <a className="rz-shot reveal" href={p.liveUrl} target="_blank" rel="noopener noreferrer" aria-label={`${t.open}${p.title}`}>
               <Image
                 src={p.screenshot}
-                alt={`Capture du site ${p.title}, ${p.category.toLowerCase()} réalisé par Wevtex`}
+                alt={t.shot(p.title, p.category.toLowerCase())}
                 width={1600}
                 height={1000}
                 sizes="(max-width: 1320px) 100vw, 1280px"
@@ -84,15 +132,15 @@ export function RealisationView({ project: p }: { project: Project }) {
 
             <dl className="rz-facts reveal">
               <div className="rz-fact">
-                <dt>Résultat</dt>
+                <dt>{t.result}</dt>
                 <dd>{p.metricValue} {p.metricLabel}</dd>
               </div>
               <div className="rz-fact">
-                <dt>Ce que nous avons livré</dt>
+                <dt>{t.delivered}</dt>
                 <dd>{p.stack.join(" · ")}</dd>
               </div>
               <div className="rz-fact">
-                <dt>En ligne</dt>
+                <dt>{t.live}</dt>
                 <dd>{p.clientUrl} · {p.year}</dd>
               </div>
             </dl>
@@ -105,15 +153,15 @@ export function RealisationView({ project: p }: { project: Project }) {
             <div className="container">
               <div className="ict-inner reveal">
                 <p className="ict-text">
-                  {service.name} : {service.desc}
+                  {service.name}{t.sep}{service.desc}
                 </p>
                 <div className="ict-actions">
-                  <a href={servicePath(service.slug)} className="btn btn-primary">
-                    Voir ce service
+                  <a href={lp(servicePath(service.slug))} className="btn btn-primary">
+                    {t.seeService}
                     {ARROW}
                   </a>
                   <a href={WHATSAPP_URL} className="btn btn-outline" target="_blank" rel="noopener">
-                    Parler de mon projet
+                    {t.talk}
                   </a>
                 </div>
               </div>
@@ -125,15 +173,15 @@ export function RealisationView({ project: p }: { project: Project }) {
         <section className="theme-cream" style={{ padding: "clamp(72px, 11vh, 120px) 0" }}>
           <div className="container">
             <div className="reveal">
-              <span className="eyebrow line-eyebrow">Autres réalisations</span>
+              <span className="eyebrow line-eyebrow">{t.moreEyebrow}</span>
               <h2 className="h-section" style={{ marginTop: 14 }}>
-                D&apos;autres projets <em className="hl-line">en ligne.</em>
+                {t.moreA}<em className="hl-line">{t.moreEm}</em>
               </h2>
             </div>
             <div className="blog-grid reveal" style={{ marginTop: 36 }}>
               {neighbours.map((x) => (
                 <article className="blog-card" key={x.slug}>
-                  <a href={projectPath(x.slug)} className="blog-card-link">
+                  <a href={projectHref(x.slug)} className="blog-card-link">
                     <span className="blog-meta">
                       <span className="blog-cat">{x.category}</span>
                       <span>{x.year}</span>
@@ -149,7 +197,7 @@ export function RealisationView({ project: p }: { project: Project }) {
               ))}
             </div>
             <p className="reveal" style={{ marginTop: 32 }}>
-              <a href={PORTFOLIO_URL} className="btn btn-outline">Toutes les réalisations</a>
+              <a href={lp(PORTFOLIO_URL)} className="btn btn-outline">{t.all}</a>
             </p>
           </div>
         </section>

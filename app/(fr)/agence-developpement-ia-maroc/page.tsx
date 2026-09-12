@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
+import { languageAlternates } from "@/lib/i18n-paths";
 import { IaView } from "@/components/wevtex/IaView";
-import { IA_META, IA_FAQS } from "@/lib/ia-page-data";
+import { IA_META, IA_FAQS, IA_REALITY, IA_CAPABILITIES, IA_STEPS, IA_SECTORS } from "@/lib/ia-page-data";
 import { JsonLd, breadcrumb, faqSchema, serviceSchema } from "@/components/seo/JsonLd";
 
 /**
@@ -14,7 +15,7 @@ export const metadata: Metadata = {
   title: { absolute: IA_META.title },
   description: IA_META.description,
   keywords: [...IA_META.keywords],
-  alternates: { canonical: IA_META.path },
+  alternates: { canonical: IA_META.path, languages: languageAlternates(IA_META.path) },
   openGraph: {
     title: IA_META.title,
     description: IA_META.description,
@@ -38,7 +39,7 @@ export default function IaPage() {
       {/* Answers are the ones rendered on the page, verbatim. */}
       <JsonLd data={faqSchema(IA_FAQS)} />
       <JsonLd data={breadcrumb([{ name: "Développement IA au Maroc", path: IA_META.path }])} />
-      <IaView />
+      <IaView data={{ meta: IA_META, reality: IA_REALITY, capabilities: IA_CAPABILITIES, steps: IA_STEPS, sectors: IA_SECTORS, faqs: IA_FAQS }} />
     </>
   );
 }

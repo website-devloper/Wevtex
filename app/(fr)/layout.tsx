@@ -1,30 +1,15 @@
 import type { Metadata, Viewport } from "next";
 import { serializeJsonLd } from "@/components/seo/JsonLd";
-import { Onest, Space_Mono } from "next/font/google";
-import { AnalyticsConsent } from "../components/wevtex/AnalyticsConsent";
-import { SmoothScroll } from "../components/wevtex/SmoothScroll";
+import { fontVars } from "@/lib/fonts";
+import { LocaleProvider } from "@/components/wevtex/locale";
+import { AnalyticsConsent } from "@/components/wevtex/AnalyticsConsent";
+import { SmoothScroll } from "@/components/wevtex/SmoothScroll";
 import { SITE_URL, abs } from "@/lib/seo";
 import { PRICE_RANGE } from "@/lib/pricing";
 import { servicePath } from "@/lib/site-links";
-import { SERVICES } from "../components/wevtex/homeContent";
+import { SERVICES } from "@/components/wevtex/homeContent";
 
 const GA_ID = process.env.NEXT_PUBLIC_GA_ID;
-
-// Self-hosted via next/font (no render-blocking Google Fonts request, no layout shift).
-// Design system: Onest for display + body, Space Mono for eyebrows / labels / data.
-const onest = Onest({
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-  variable: "--font-display",
-  display: "swap",
-});
-const spaceMono = Space_Mono({
-  subsets: ["latin"],
-  weight: ["400", "700"],
-  variable: "--font-mono-face",
-  display: "swap",
-});
-const fontVars = `${onest.variable} ${spaceMono.variable}`;
 
 export const viewport: Viewport = {
   width: 'device-width',
@@ -197,10 +182,12 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: serializeJsonLd(siteJsonLd) }}
         />
         <a href="#main" className="skip-link">Aller au contenu</a>
-        <SmoothScroll>
-          {children}
-        </SmoothScroll>
-        <AnalyticsConsent gaId={GA_ID} />
+        <LocaleProvider locale="fr">
+          <SmoothScroll>
+            {children}
+          </SmoothScroll>
+          <AnalyticsConsent gaId={GA_ID} />
+        </LocaleProvider>
       </body>
     </html>
   );

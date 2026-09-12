@@ -2,8 +2,11 @@
 
 import Image from "next/image";
 import { useEffect, useRef, useState, type ReactNode } from "react";
+import { usePathname } from "next/navigation";
 import { useLenis } from "lenis/react";
-import { SERVICES } from "./homeContent";
+import { useHomeContent } from "./useHomeContent";
+import { useLocale, useLp } from "./locale";
+import { switchPath } from "@/lib/i18n-paths";
 import { WHATSAPP_URL, TEL_URL, PHONE_DISPLAY, EMAIL, EMAIL_URL, CONTACT_URL, servicePath, industryPath, socialUrl, HOME_URL, SERVICES_URL, PORTFOLIO_URL } from "@/lib/site-links";
 
 type Current = "services" | "work" | "reviews" | "contact";
@@ -28,26 +31,84 @@ const SERVICE_ICONS: Record<string, ReactNode> = {
   "whatsapp-bots": ic(<><path d="M20.5 11.5a8 8 0 0 1-11.9 7L4 20l1.6-4.4A8 8 0 1 1 20.5 11.5z" /><path d="M9.5 11.5v.8M14.5 11.5v.8" /><path d="M9.8 15c1.4 1 3 1 4.4 0" /></>),
 };
 
-/* Two columns, grouped by what the service does rather than by list order. */
-const toNav = (slugs: string[]): NavItem[] =>
-  slugs.map((slug) => {
-    const sv = SERVICES.find((x) => x.slug === slug)!;
-    return { href: servicePath(sv.slug), title: sv.name, sub: sv.short, icon: SERVICE_ICONS[slug] };
-  });
-const SERVICES_DEV = toNav(["website-creation", "mobile-apps", "desktop-apps", "custom-solutions"]);
-const SERVICES_SOL = toNav(["seo", "local-seo", "ads", "whatsapp-bots"]);
+/* Industries — links to the real /industries/[slug] detail pages. Icons are
+   shared; the labels come from the page's language below. */
+const INDUSTRY_ICONS: Record<string, ReactNode> = {
+  "ecommerce-retail": ic(<><path d="M3 9l1-4h16l1 4" /><path d="M3 9v11a1 1 0 001 1h16a1 1 0 001-1V9" /><path d="M9 21V13h6v8" /></>),
+  "tourism-hospitality": ic(<><path d="M2 4v16" /><path d="M2 8h18a2 2 0 012 2v10" /><path d="M2 17h20" /><path d="M6 8v3" /></>),
+  "professional-services": ic(<><rect x="2" y="7" width="20" height="14" rx="2" ry="2" /><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16" /></>),
+  "healthcare-wellness": ic(<path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0016.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 002 8.5c0 2.3 1.5 4.05 3 5.5l7 7z" />),
+  "industry-logistics": ic(<path d="M2 20a2 2 0 002 2h16a2 2 0 002-2V8l-7 5V8l-7 5V4a2 2 0 00-2-2H4a2 2 0 00-2 2z" />),
+  "education-elearning": ic(<><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" /><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" /></>),
+  "creative-media-tech": ic(<><path d="M12 19l7-7 3 3-7 7-3-3z" /><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z" /><path d="M2 2l7.586 7.586" /><circle cx="11" cy="11" r="2" /></>),
+  "public-sector-ngos": ic(<path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />),
+};
 
-/* Industries — links to the real /industries/[slug] detail pages */
-const INDUSTRIES: NavItem[] = [
-  { href: industryPath("ecommerce-retail"), title: "E-commerce & commerce de détail", sub: "Mode, beauté, maison, alimentaire", icon: ic(<><path d="M3 9l1-4h16l1 4" /><path d="M3 9v11a1 1 0 001 1h16a1 1 0 001-1V9" /><path d="M9 21V13h6v8" /></>) },
-  { href: industryPath("tourism-hospitality"), title: "Tourisme & hôtellerie", sub: "Hôtels, agences de voyage, restaurants", icon: ic(<><path d="M2 4v16" /><path d="M2 8h18a2 2 0 012 2v10" /><path d="M2 17h20" /><path d="M6 8v3" /></>) },
-  { href: industryPath("professional-services"), title: "Services professionnels", sub: "Droit, finance, immobilier, conseil", icon: ic(<><rect x="2" y="7" width="20" height="14" rx="2" ry="2" /><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16" /></>) },
-  { href: industryPath("healthcare-wellness"), title: "Santé & bien-être", sub: "Cliniques, salles de sport, thérapeutes", icon: ic(<path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0016.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 002 8.5c0 2.3 1.5 4.05 3 5.5l7 7z" />) },
-  { href: industryPath("industry-logistics"), title: "Industrie & logistique", sub: "BTP, production, transport", icon: ic(<path d="M2 20a2 2 0 002 2h16a2 2 0 002-2V8l-7 5V8l-7 5V4a2 2 0 00-2-2H4a2 2 0 00-2 2z" />) },
-  { href: industryPath("education-elearning"), title: "Éducation & e-learning", sub: "Écoles, EdTech, centres de formation", icon: ic(<><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" /><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" /></>) },
-  { href: industryPath("creative-media-tech"), title: "Création, médias & tech", sub: "SaaS, marketing, médias, artisans", icon: ic(<><path d="M12 19l7-7 3 3-7 7-3-3z" /><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z" /><path d="M2 2l7.586 7.586" /><circle cx="11" cy="11" r="2" /></>) },
-  { href: industryPath("public-sector-ngos"), title: "Secteur public & associations", sub: "ONG, administrations, fondations", icon: ic(<path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />) },
-];
+const T = {
+  fr: {
+    based: "Basés à Casablanca, actifs dans tout le Maroc",
+    available: "Disponibles pour de nouveaux projets",
+    homeAria: "Wevtex — accueil",
+    services: "Services",
+    buildHead: "CONSTRUIRE",
+    attractHead: "ATTIRER & CONVERTIR",
+    sectors: "Secteurs",
+    sectorsHead: "CHOISISSEZ VOTRE SECTEUR",
+    work: "Réalisations",
+    contact: "Contact",
+    quote: "Mon devis",
+    closeMenu: "Fermer le menu",
+    openMenu: "Ouvrir le menu",
+    mainMenu: "Menu principal",
+    build: "Construire",
+    attract: "Attirer & convertir",
+    allServices: "Tous les services",
+    allSectors: "Tous les secteurs",
+    /* Read out in the target language: the link carries lang="en". */
+    switchLabel: "English version",
+    industries: [
+      ["ecommerce-retail", "E-commerce & commerce de détail", "Mode, beauté, maison, alimentaire"],
+      ["tourism-hospitality", "Tourisme & hôtellerie", "Hôtels, agences de voyage, restaurants"],
+      ["professional-services", "Services professionnels", "Droit, finance, immobilier, conseil"],
+      ["healthcare-wellness", "Santé & bien-être", "Cliniques, salles de sport, thérapeutes"],
+      ["industry-logistics", "Industrie & logistique", "BTP, production, transport"],
+      ["education-elearning", "Éducation & e-learning", "Écoles, EdTech, centres de formation"],
+      ["creative-media-tech", "Création, médias & tech", "SaaS, marketing, médias, artisans"],
+      ["public-sector-ngos", "Secteur public & associations", "ONG, administrations, fondations"],
+    ],
+  },
+  en: {
+    based: "Based in Casablanca, working across Morocco",
+    available: "Available for new projects",
+    homeAria: "Wevtex — home",
+    services: "Services",
+    buildHead: "BUILD",
+    attractHead: "ATTRACT & CONVERT",
+    sectors: "Industries",
+    sectorsHead: "CHOOSE YOUR INDUSTRY",
+    work: "Portfolio",
+    contact: "Contact",
+    quote: "Get a quote",
+    closeMenu: "Close menu",
+    openMenu: "Open menu",
+    mainMenu: "Main menu",
+    build: "Build",
+    attract: "Attract & convert",
+    allServices: "All services",
+    allSectors: "All industries",
+    switchLabel: "Version française",
+    industries: [
+      ["ecommerce-retail", "E-commerce & retail", "Fashion, beauty, home, food"],
+      ["tourism-hospitality", "Tourism & hospitality", "Hotels, riads, travel agencies, restaurants"],
+      ["professional-services", "Professional services", "Law, finance, real estate, consulting"],
+      ["healthcare-wellness", "Health & wellness", "Clinics, gyms, therapists"],
+      ["industry-logistics", "Industry & logistics", "Construction, manufacturing, transport"],
+      ["education-elearning", "Education & e-learning", "Schools, EdTech, training centers"],
+      ["creative-media-tech", "Creative, media & tech", "SaaS, marketing, media, makers"],
+      ["public-sector-ngos", "Public sector & NGOs", "NGOs, public bodies, foundations"],
+    ],
+  },
+} as const;
 
 function MegaItem({ item }: { item: NavItem }) {
   return (
@@ -73,6 +134,9 @@ const chevron = (
 const arrowRight = (
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden><path d="M5 12h14M13 6l6 6-6 6" /></svg>
 );
+const globe = (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden><circle cx="12" cy="12" r="9" /><path d="M3 12h18M12 3c2.5 2.6 2.5 15.4 0 18M12 3c-2.5 2.6-2.5 15.4 0 18" /></svg>
+);
 
 export function SiteHeader({ current }: { current?: Current }) {
   const [scrolled, setScrolled] = useState(false);
@@ -81,8 +145,32 @@ export function SiteHeader({ current }: { current?: Current }) {
   const barRef = useRef<HTMLDivElement>(null);
   const burgerRef = useRef<HTMLButtonElement>(null);
   const lenis = useLenis();
+  const locale = useLocale();
+  const t = T[locale];
+  const lp = useLp();
+  const pathname = usePathname();
+  const { SERVICES } = useHomeContent();
   const closeMenu = () => setMenuOpen(false);
   const togglePanel = (id: "services" | "secteurs") => setPanel((p) => (p === id ? null : id));
+
+  /* Two columns, grouped by what the service does rather than by list order. */
+  const toNav = (slugs: string[]): NavItem[] =>
+    slugs.map((slug) => {
+      const sv = SERVICES.find((x) => x.slug === slug)!;
+      return { href: lp(servicePath(sv.slug)), title: sv.name, sub: sv.short, icon: SERVICE_ICONS[slug] };
+    });
+  const SERVICES_DEV = toNav(["website-creation", "mobile-apps", "desktop-apps", "custom-solutions"]);
+  const SERVICES_SOL = toNav(["seo", "local-seo", "ads", "whatsapp-bots"]);
+  const INDUSTRIES: NavItem[] = t.industries.map(([slug, title, sub]) => ({
+    href: lp(industryPath(slug)),
+    title,
+    sub,
+    icon: INDUSTRY_ICONS[slug],
+  }));
+
+  /* The same page in the other language. */
+  const other = locale === "fr" ? "en" : "fr";
+  const switchHref = switchPath(pathname || "/", locale);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 16);
@@ -140,11 +228,11 @@ export function SiteHeader({ current }: { current?: Current }) {
             <span className="ht-divider" aria-hidden></span>
             <span className="ht-link ht-static">
               {ic(<><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z" /><circle cx="12" cy="10" r="3" /></>)}
-              Basés à Casablanca, actifs dans tout le Maroc
+              {t.based}
             </span>
           </div>
           <div className="ht-group">
-            <span className="ht-status"><span className="ht-pulse" aria-hidden></span>Disponibles pour de nouveaux projets</span>
+            <span className="ht-status"><span className="ht-pulse" aria-hidden></span>{t.available}</span>
             <span className="ht-divider" aria-hidden></span>
             <a href={WHATSAPP_URL} className="ht-social" target="_blank" rel="noopener" aria-label="WhatsApp">
               <svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor" aria-hidden><path d="M17.5 14.4c-.3-.15-1.74-.86-2-.96-.27-.1-.46-.15-.65.15-.2.29-.75.95-.92 1.15-.17.2-.34.22-.63.07-1.7-.85-2.82-1.52-3.94-3.44-.3-.51.3-.48.85-1.58.1-.2.05-.36-.02-.5-.08-.15-.65-1.58-.9-2.16-.23-.56-.47-.48-.65-.49h-.55c-.2 0-.5.07-.77.36-.26.29-1 .98-1 2.4 0 1.41 1.03 2.78 1.17 2.97.15.2 2.03 3.1 4.92 4.35 2.88 1.24 2.88.83 3.4.78.52-.05 1.69-.69 1.93-1.36.24-.67.24-1.24.17-1.36-.07-.12-.26-.19-.55-.34zM12 2.1A9.9 9.9 0 0 0 3.5 17l-1.32 4.82 4.94-1.3A9.9 9.9 0 1 0 12 2.1z" /></svg>
@@ -165,7 +253,7 @@ export function SiteHeader({ current }: { current?: Current }) {
 
       {/* Tier 2 — main navigation bar */}
       <div className="site-header-inner" ref={barRef}>
-        <a href={HOME_URL} className="brand" aria-label="Wevtex — accueil">
+        <a href={lp(HOME_URL)} className="brand" aria-label={t.homeAria}>
           <Image
             className="brand-mark"
             src="/images/logo/wevtex-mark-ink.png"
@@ -180,47 +268,52 @@ export function SiteHeader({ current }: { current?: Current }) {
         <nav>
           <ul className="nav-links">
             <li className="has-mega">
-              <a href={SERVICES_URL} className={current === "services" ? "nav-label current" : "nav-label"}>
-                Services
+              <a href={lp(SERVICES_URL)} className={current === "services" ? "nav-label current" : "nav-label"}>
+                {t.services}
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="chevron"><path d="M6 9l6 6 6-6" /></svg>
               </a>
               <div className="mega-dropdown">
                 <div className="mega-cols">
                   <div className="mega-col">
-                    <div className="mega-head">CONSTRUIRE</div>
+                    <div className="mega-head">{t.buildHead}</div>
                     {SERVICES_DEV.map((s) => <MegaItem key={s.href} item={s} />)}
                   </div>
                   <div className="mega-col">
-                    <div className="mega-head">ATTIRER &amp; CONVERTIR</div>
+                    <div className="mega-head">{t.attractHead}</div>
                     {SERVICES_SOL.map((s) => <MegaItem key={s.href} item={s} />)}
                   </div>
                 </div>
               </div>
             </li>
             <li className="has-mega">
-              <a href={`${HOME_URL}#industries`} className="nav-label">
-                Secteurs
+              <a href={`${lp(HOME_URL)}#industries`} className="nav-label">
+                {t.sectors}
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="chevron"><path d="M6 9l6 6 6-6" /></svg>
               </a>
               <div className="mega-dropdown secteurs-dropdown">
-                <div className="mega-head">CHOISISSEZ VOTRE SECTEUR</div>
+                <div className="mega-head">{t.sectorsHead}</div>
                 <div className="mega-grid">
                   {INDUSTRIES.map((s) => <MegaItem key={s.href} item={s} />)}
                 </div>
               </div>
             </li>
             <li>
-              <a href={PORTFOLIO_URL} className={current === "work" ? "nav-label current" : "nav-label"}>Réalisations</a>
+              <a href={lp(PORTFOLIO_URL)} className={current === "work" ? "nav-label current" : "nav-label"}>{t.work}</a>
             </li>
             <li>
-              <a href={CONTACT_URL} className={current === "contact" ? "nav-label current" : "nav-label"}>Contact</a>
+              <a href={lp(CONTACT_URL)} className={current === "contact" ? "nav-label current" : "nav-label"}>{t.contact}</a>
             </li>
           </ul>
         </nav>
 
         <div className="nav-cta">
-          <a href={CONTACT_URL} className="btn btn-primary">
-            Mon devis
+          {/* FR / EN: the same page in the other language, at every width. */}
+          <a href={switchHref} className="lang-switch" hrefLang={other} lang={other} aria-label={t.switchLabel} title={t.switchLabel}>
+            {globe}
+            {other.toUpperCase()}
+          </a>
+          <a href={lp(CONTACT_URL)} className="btn btn-primary">
+            {t.quote}
             <svg className="arrow" viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="1.6">
               <path d="M3 9L9 3M9 3H4M9 3V8" />
             </svg>
@@ -233,7 +326,7 @@ export function SiteHeader({ current }: { current?: Current }) {
           className="nav-burger"
           aria-expanded={menuOpen}
           aria-controls="mnav"
-          aria-label={menuOpen ? "Fermer le menu" : "Ouvrir le menu"}
+          aria-label={menuOpen ? t.closeMenu : t.openMenu}
           onClick={() => setMenuOpen((o) => !o)}
         >
           <span className="nav-burger-bars" aria-hidden><i /><i /><i /></span>
@@ -243,7 +336,7 @@ export function SiteHeader({ current }: { current?: Current }) {
       {/* Drawer — the whole nav, for widths where the hover mega menus can't work */}
       <div id="mnav" className={menuOpen ? "mnav open" : "mnav"} data-lenis-prevent>
         <div className="mnav-inner">
-          <nav aria-label="Menu principal">
+          <nav aria-label={t.mainMenu}>
             <button
               type="button"
               className={current === "services" ? "mnav-row current" : "mnav-row"}
@@ -251,21 +344,21 @@ export function SiteHeader({ current }: { current?: Current }) {
               aria-controls="mnav-services"
               onClick={() => togglePanel("services")}
             >
-              Services
+              {t.services}
               {chevron}
             </button>
             <div id="mnav-services" className={panel === "services" ? "mnav-panel open" : "mnav-panel"}>
               <div>
                 <div className="mnav-panel-body">
-                  <div className="mnav-head">Construire</div>
+                  <div className="mnav-head">{t.build}</div>
                   <div className="mnav-grid">
                     {SERVICES_DEV.map((s) => <DrawerItem key={s.href} item={s} onPick={closeMenu} />)}
                   </div>
-                  <div className="mnav-head">Attirer &amp; convertir</div>
+                  <div className="mnav-head">{t.attract}</div>
                   <div className="mnav-grid">
                     {SERVICES_SOL.map((s) => <DrawerItem key={s.href} item={s} onPick={closeMenu} />)}
                   </div>
-                  <a href={SERVICES_URL} className="mnav-all" onClick={closeMenu}>Tous les services {arrowRight}</a>
+                  <a href={lp(SERVICES_URL)} className="mnav-all" onClick={closeMenu}>{t.allServices} {arrowRight}</a>
                 </div>
               </div>
             </div>
@@ -277,7 +370,7 @@ export function SiteHeader({ current }: { current?: Current }) {
               aria-controls="mnav-secteurs"
               onClick={() => togglePanel("secteurs")}
             >
-              Secteurs
+              {t.sectors}
               {chevron}
             </button>
             <div id="mnav-secteurs" className={panel === "secteurs" ? "mnav-panel open" : "mnav-panel"}>
@@ -286,18 +379,18 @@ export function SiteHeader({ current }: { current?: Current }) {
                   <div className="mnav-grid">
                     {INDUSTRIES.map((s) => <DrawerItem key={s.href} item={s} onPick={closeMenu} />)}
                   </div>
-                  <a href={`${HOME_URL}#industries`} className="mnav-all" onClick={closeMenu}>Tous les secteurs {arrowRight}</a>
+                  <a href={`${lp(HOME_URL)}#industries`} className="mnav-all" onClick={closeMenu}>{t.allSectors} {arrowRight}</a>
                 </div>
               </div>
             </div>
 
-            <a href={PORTFOLIO_URL} className={current === "work" ? "mnav-row current" : "mnav-row"} onClick={closeMenu}>Réalisations</a>
-            <a href={CONTACT_URL} className={current === "contact" ? "mnav-row current" : "mnav-row"} onClick={closeMenu}>Contact</a>
+            <a href={lp(PORTFOLIO_URL)} className={current === "work" ? "mnav-row current" : "mnav-row"} onClick={closeMenu}>{t.work}</a>
+            <a href={lp(CONTACT_URL)} className={current === "contact" ? "mnav-row current" : "mnav-row"} onClick={closeMenu}>{t.contact}</a>
           </nav>
 
           <div className="mnav-foot">
-            <a href={CONTACT_URL} className="btn btn-primary" onClick={closeMenu}>
-              Mon devis
+            <a href={lp(CONTACT_URL)} className="btn btn-primary" onClick={closeMenu}>
+              {t.quote}
               <svg className="arrow" viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="1.6">
                 <path d="M3 9L9 3M9 3H4M9 3V8" />
               </svg>
@@ -316,7 +409,7 @@ export function SiteHeader({ current }: { current?: Current }) {
                 {EMAIL}
               </a>
             </div>
-            <span className="mnav-status"><span className="ht-pulse" aria-hidden></span>Disponibles pour de nouveaux projets</span>
+            <span className="mnav-status"><span className="ht-pulse" aria-hidden></span>{t.available}</span>
           </div>
         </div>
       </div>

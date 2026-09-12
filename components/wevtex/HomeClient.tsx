@@ -3,8 +3,12 @@
 /**
  * Wevtex homepage — a lean conversion funnel:
  * Hero → Problem → Services → Work → Proof → Testimonials → Industries → Pricing → FAQ → Contact.
- * Deeper material (process, comparison, add-ons, founder) lives on /services and /about.
+ * Deeper material (process, comparison, add-ons, founder) lives on /services.
  * Primary actions everywhere are WhatsApp and email.
+ *
+ * One component for both languages: the copy sits in T below, the projects
+ * arrive as a prop from the server page (so the portfolio text is not shipped
+ * twice), and every internal link goes through useLp().
  */
 
 import { useEffect, useRef, useState } from "react";
@@ -15,16 +19,14 @@ import { SiteFooter } from "./SiteFooter";
 import { ScrollRevealText } from "./ScrollRevealText";
 import { HeroReviews } from "./HeroReviews";
 import { InkBackdrop } from "./primitives";
-import { CITY_LINKS as CITIES } from "@/lib/city-list";
+import { CITY_LINKS, CITY_LINKS_EN, cityImage } from "@/lib/city-list";
 import { StickyCta } from "./StickyCta";
-import { FAQS, SERVICES } from "./homeContent";
-import { PROJECTS_ORDERED } from "@/lib/projects-data";
+import { useHomeContent } from "./useHomeContent";
+import { useLocale, useLp } from "./locale";
+import type { Project } from "@/lib/projects-data";
 import { ServicesBento, SERVICE_ICONS } from "./SharedSections";
 /* Contact channels — one definition for the whole site, see lib/site-links.ts */
 import { WHATSAPP_URL, serviceWhatsAppUrl, GOOGLE_REVIEWS_URL, PORTFOLIO_URL, industryPath } from "@/lib/site-links";
-
-/* Claim shown in the hero — keep it accurate. */
-const GUARANTEE = "Payé par étapes : vous ne réglez que ce que vous avez validé.";
 
 /* Client logo wall. Each file is pre-normalised onto the same 400x170
    transparent canvas, sized by optical weight rather than raw height — a
@@ -63,49 +65,231 @@ const IC_IMAGES = [
   "/images/industries/public-sector-ngos.webp",     // 7 Public Sector & NGOs
 ];
 
-/* Service cards */
-const INDUSTRIES = [
-  {
-    icon: <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><path d="M3 9l1-4h16l1 4"></path><path d="M3 9v11a1 1 0 001 1h16a1 1 0 001-1V9"></path><path d="M9 21V13h6v8"></path></svg>,
-    head: "E-commerce & commerce de détail",
-    body: "Plus de passage en boutique, plus de ventes en ligne."
-  },
-  {
-    icon: <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><path d="M2 4v16"></path><path d="M2 8h18a2 2 0 012 2v10"></path><path d="M2 17h20"></path><path d="M6 8v3"></path></svg>,
-    head: "Tourisme & hôtellerie",
-    body: "Hôtels, riads et agences de voyage. Moteur de réservation en direct, calendrier de disponibilités et visites virtuelles."
-  },
-  {
-    icon: <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"></path></svg>,
-    head: "Services professionnels",
-    body: "Cabinets d'avocats, comptabilité, immobilier et conseil. Des sites qui inspirent confiance, captent des contacts et gèrent la prise de rendez-vous."
-  },
-  {
-    icon: <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0016.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 002 8.5c0 2.3 1.5 4.05 3 5.5l7 7z"></path></svg>,
-    head: "Santé & bien-être",
-    body: "Cliniques, salles de sport et thérapeutes. Formulaires patients sécurisés, réservation de séances et annuaire des prestations."
-  },
-  {
-    icon: <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><path d="M2 20a2 2 0 002 2h16a2 2 0 002-2V8l-7 5V8l-7 5V4a2 2 0 00-2-2H4a2 2 0 00-2 2z"></path></svg>,
-    head: "Industrie & logistique",
-    body: "BTP, production et transport. Mettez en avant votre flotte et vos réalisations, et recevez des demandes de devis B2B."
-  },
-  {
-    icon: <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>,
-    head: "Éducation & e-learning",
-    body: "Écoles, cours en ligne et centres de formation. Espace élève intégré, hébergement vidéo et modules de certification."
-  },
-  {
-    icon: <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><path d="M12 19l7-7 3 3-7 7-3-3z"></path><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"></path><path d="M2 2l7.586 7.586"></path><circle cx="11" cy="11" r="2"></circle></svg>,
-    head: "Création, médias & tech",
-    body: "Startups SaaS, agences marketing et artisans. Des pages d'atterrissage rapides et animées qui convertissent vos premiers clients."
-  },
-  {
-    icon: <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>,
-    head: "Secteur public & associations",
-    body: "Associations, fondations et institutions publiques. Design accessible, collecte de dons et animation de communauté."
-  }
+/* Industry card icons, by the same position. */
+const IC_ICONS = [
+  <svg key="0" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><path d="M3 9l1-4h16l1 4"></path><path d="M3 9v11a1 1 0 001 1h16a1 1 0 001-1V9"></path><path d="M9 21V13h6v8"></path></svg>,
+  <svg key="1" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><path d="M2 4v16"></path><path d="M2 8h18a2 2 0 012 2v10"></path><path d="M2 17h20"></path><path d="M6 8v3"></path></svg>,
+  <svg key="2" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"></path></svg>,
+  <svg key="3" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0016.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 002 8.5c0 2.3 1.5 4.05 3 5.5l7 7z"></path></svg>,
+  <svg key="4" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><path d="M2 20a2 2 0 002 2h16a2 2 0 002-2V8l-7 5V8l-7 5V4a2 2 0 00-2-2H4a2 2 0 00-2 2z"></path></svg>,
+  <svg key="5" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>,
+  <svg key="6" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><path d="M12 19l7-7 3 3-7 7-3-3z"></path><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"></path><path d="M2 2l7.586 7.586"></path><circle cx="11" cy="11" r="2"></circle></svg>,
+  <svg key="7" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>,
 ];
+
+/* Sample testimonials — placeholder content shown for layout only.
+   TODO: replace with real, attributed client reviews (name, company, photo) before launch. */
+type Quote = { q: string; em?: string; name: string; role: string; a: string };
+
+const T = {
+  fr: {
+    /* Claim shown in the hero — keep it accurate. */
+    guarantee: "Payé par étapes : vous ne réglez que ce que vous avez validé.",
+    eyebrow: "Agence marketing digital · Casablanca · Tout le Maroc",
+    h1: "Agence marketing digital\nau Maroc : un site\nqui vous rapporte.",
+    h1Em: ["rapporte"],
+    heroSub: "Depuis Casablanca, nous créons votre site, votre boutique ou votre application, puis nous vous rendons visible sur Google. Prix affiché, délai écrit, et tout reste à votre nom.",
+    quote: "Obtenir mon devis gratuit",
+    seeWork: "Voir les sites livrés",
+    heroAlt: "Une boutique en ligne affichée sur un ordinateur portable et un téléphone, avec la croissance du trafic et des ventes",
+    logosLead: "Ils nous ont confié leur présence en ligne",
+    problemA: "Votre site est joli.",
+    problemB: "Mais il vous rapporte ",
+    problemEm: "combien",
+    problemC: " de clients ?",
+    problemLines: [
+      "Lent sur mobile, absent de Google, impossible à modifier sans rappeler l'agence.",
+      "Ou pas de site du tout, et une page Facebook qui ne vous appartient pas.",
+      "Nous construisons l'inverse : un site rapide, trouvé, qui fait appeler et acheter.",
+    ],
+    whyEyebrow: "Ce qui change avec nous",
+    whyA: "Les mauvaises surprises, ",
+    whyEm: "on les a supprimées.",
+    promises: [
+      { h: "Pas de facture surprise", p: "Le prix est écrit sur le devis avant le premier jour de travail. Vous payez ce prix-là, même si le projet nous prend plus de temps que prévu." },
+      { h: "Votre domaine, jamais en otage", p: "Le site, le nom de domaine et tous les accès sont à votre nom dès la livraison. Vous pouvez changer de prestataire demain, sans rien nous demander." },
+      { h: "Quelqu'un qui répond", p: "Vous parlez à ceux qui construisent votre site, sur WhatsApp, pendant les horaires de bureau. Pas de standard, pas de sous-traitant à l'autre bout du monde." },
+      { h: "Une date tenue", p: "Une vitrine est en ligne en 2 à 4 semaines, une boutique en 4 à 8. La date est écrite sur le devis, pas improvisée en cours de route." },
+    ],
+    citiesH2: "Où que vous soyez au Maroc, on s'occupe de votre site.",
+    cityAria: (name: string) => `Agence web à ${name}`,
+    bentoEyebrow: "Ce que nous faisons pour vous",
+    bentoA: "Être trouvé, être choisi, ",
+    bentoEm: "être payé.",
+    bentoIntro: "Huit prestations, une seule question derrière chacune : combien de clients en plus ce travail va-t-il vous rapporter ?",
+    workEyebrow: "Preuves en ligne",
+    workA: "Ne nous croyez pas sur parole, ",
+    workEm: "cliquez.",
+    workLede: "Des sites livrés et en ligne aujourd'hui. Ouvrez un projet, puis visitez le vrai site.",
+    openSite: (title: string) => `Ouvrir le site ${title}`,
+    metricNote: "Résultats mesurés chez nos clients.",
+    visit: "Visiter le site",
+    allWork: "Voir tous les projets en ligne",
+    stats: [
+      { to: 40, dec: 0, suffix: "+", label: "Projets livrés", desc: "Sites, boutiques et applications, en production chez nos clients." },
+      { to: 5, dec: 1, suffix: "", label: "Note Google", desc: "Sur nos avis Google, publics et lisibles par tous." },
+      { to: 8, dec: 0, suffix: "", label: "Prestations", desc: "Du site au chatbot WhatsApp, sans jongler entre prestataires." },
+      { to: 100, dec: 0, suffix: "%", label: "À votre nom", desc: "Domaine, code et accès de chaque site sont remis au client." },
+    ],
+    nextSite: "Le prochain site de cette liste peut être le vôtre.",
+    testiEyebrow: "Avis clients",
+    testiA: "Ce que disent ceux qui ",
+    testiEm: "ont déjà signé.",
+    testiSub: "Leur avis compte plus que notre discours. Nos avis Google, eux, sont publics et vérifiables.",
+    rated: "Noté 5 sur 5",
+    prevReviews: "Avis précédents",
+    nextReviews: "Avis suivants",
+    readGoogle: "Lire nos avis sur Google",
+    tpool: [
+      { q: "Le nouveau site est non seulement très beau, il nous apporte nettement plus de demandes. L'équipe est réactive, professionnelle et agréable.", name: "James Carter", role: "Directeur, Luxora Interiors", a: "J" },
+      { q: "Dès le premier jour, ils ont compris nos objectifs et sont allés au-delà. Nos ventes en ligne ont ", em: "doublé.", name: "Sarah Mitchell", role: "Directrice générale, Petrocore Solutions", a: "S" },
+      { q: "Leur solution d'automatisation nous fait gagner plus de 20 heures par semaine. Tout fonctionne sans accroc et le support est excellent.", name: "Daniel Rahman", role: "Responsable d'exploitation, Clinique Wellcare", a: "D" },
+      { q: "They explained everything in plain language, kept to the timeline, and the price never moved. Easiest project we've run.", name: "Gareth Morris", role: "Gérant, Atlas Trading", a: "G" },
+      { q: "Notre boutique était en ligne en trois semaines et nous avons pris notre première commande le jour même. Le support répond toujours vite.", name: "Naomi Reyes", role: "Propriétaire, Marlow & Co.", a: "N" },
+      { q: "We went from invisible to page one for our main keywords. The SEO work paid for itself within a couple of months.", name: "Theo Lindahl", role: "Directeur, Northbound", a: "T" },
+    ] as Quote[],
+    icEyebrow: "Votre secteur",
+    icA: "Un riad ne vend pas comme ",
+    icEm: "une clinique.",
+    icSubA: "Vos clients ne décident pas comme ceux du voisin.",
+    icSubB: "Choisissez votre secteur et voyez ce qui marche vraiment chez vous.",
+    icCards: [
+      { i: 0, label: "Commerce", desc: "Vendre en ligne sans répondre cent fois au même prix sur WhatsApp." },
+      { i: 1, label: "Hôtellerie", desc: "Des réservations en direct, sans commission de plateforme." },
+      { i: 3, label: "Santé", desc: "Un agenda qui se remplit, même quand le cabinet est fermé." },
+      { i: 5, label: "Éducation", desc: "Des inscriptions qui aboutissent en ligne, pas au téléphone." },
+      { i: 4, label: "Logistique", desc: "Des demandes de devis B2B qui arrivent toutes seules." },
+      { i: 2, label: "Services professionnels", desc: "Un site qui rassure avant le premier rendez-vous." },
+      { i: 6, label: "Création & tech", desc: "Un site à la hauteur de votre travail." },
+      { i: 7, label: "Public & associations", desc: "Des dons et des bénévoles, en quelques clics." },
+    ],
+    icAlt: (label: string) => `Site web pour le secteur ${label.toLowerCase()} au Maroc`,
+    prevSectors: "Secteurs précédents",
+    nextSectors: "Secteurs suivants",
+    pricingEyebrow: "Tarifs",
+    pricingA: "Le prix, avant même ",
+    pricingEm: "de nous appeler.",
+    pricingSubA: "Ailleurs, il faut un rendez-vous pour connaître le prix. Ici, il est affiché.",
+    pricingSubB: "Dites-nous ce qu'il vous faut : le devis ferme suit, et il ne bouge plus.",
+    popular: "Le plus demandé",
+    from: "À partir de",
+    cur: "DH",
+    noHidden: "Aucun frais caché",
+    paySatisfied: "Vous ne payez qu'une fois satisfait",
+    offGrid: "Un projet hors grille ? On le chiffre",
+    faqA: "Ce que vous vous demandez ",
+    faqEm: "avant de signer.",
+    faqSub: "Prix, délais, propriété du site : les réponses franches aux doutes qu'on nous confie le plus souvent.",
+    waH3: "Un doute qui reste ?",
+    waEm: "Posez-le sur WhatsApp",
+    waP: "Une vraie personne vous répond, en français ou en darija, pendant les horaires de bureau. Sans engagement.",
+    waBtn: "Poser ma question",
+    privacy: "Vos informations restent confidentielles. Nous ne les partageons avec personne.",
+  },
+  en: {
+    guarantee: "Paid in stages: you only pay for what you have approved.",
+    eyebrow: "Digital marketing agency · Casablanca · All of Morocco",
+    h1: "Web design & digital\nmarketing in Morocco:\na site that sells.",
+    h1Em: ["sells"],
+    heroSub: "From Casablanca, we build your website, online store or app, then get you found on Google. Price shown upfront, deadline in writing, and everything stays in your name.",
+    quote: "Get my free quote",
+    seeWork: "See delivered websites",
+    heroAlt: "An online store shown on a laptop and a phone, with traffic and sales growing",
+    logosLead: "They trusted us with their online presence",
+    problemA: "Your website looks good.",
+    problemB: "But how many ",
+    problemEm: "customers",
+    problemC: " does it bring you?",
+    problemLines: [
+      "Slow on mobile, missing from Google, impossible to change without calling the agency back.",
+      "Or no website at all, just a Facebook page you don't own.",
+      "We build the opposite: a fast website that gets found and makes people call and buy.",
+    ],
+    whyEyebrow: "What changes with us",
+    whyA: "Bad surprises? ",
+    whyEm: "We removed them.",
+    promises: [
+      { h: "No surprise invoice", p: "The price is written on the quote before the first day of work. You pay that price, even if the project takes us longer than planned." },
+      { h: "Your domain, never held hostage", p: "The website, the domain name and every login are in your name from delivery. You can change provider tomorrow without asking us for anything." },
+      { h: "Someone who answers", p: "You talk to the people building your website, on WhatsApp, during office hours. No switchboard, no subcontractor on the other side of the world." },
+      { h: "A deadline that holds", p: "A business website goes live in 2 to 4 weeks, an online store in 4 to 8. The date is written on the quote, not improvised along the way." },
+    ],
+    citiesH2: "Wherever you are in Morocco, we take care of your website.",
+    cityAria: (name: string) => `Web design agency in ${name}`,
+    bentoEyebrow: "What we do for you",
+    bentoA: "Get found, get chosen, ",
+    bentoEm: "get paid.",
+    bentoIntro: "Eight services, one question behind each: how many more customers will this work bring you?",
+    workEyebrow: "Live proof",
+    workA: "Don't take our word for it, ",
+    workEm: "click.",
+    workLede: "Websites delivered and live today. Open a project, then visit the real site.",
+    openSite: (title: string) => `Open the website of ${title}`,
+    metricNote: "Results measured at our clients.",
+    visit: "Visit the website",
+    allWork: "See all live projects",
+    stats: [
+      { to: 40, dec: 0, suffix: "+", label: "Projects delivered", desc: "Websites, online stores and apps, live with our clients." },
+      { to: 5, dec: 1, suffix: "", label: "Google rating", desc: "From our Google reviews, public and readable by anyone." },
+      { to: 8, dec: 0, suffix: "", label: "Services", desc: "From websites to WhatsApp chatbots, without juggling providers." },
+      { to: 100, dec: 0, suffix: "%", label: "In your name", desc: "Domain, code and logins of every site are handed to the client." },
+    ],
+    nextSite: "The next website on this list could be yours.",
+    testiEyebrow: "Client reviews",
+    testiA: "What clients say ",
+    testiEm: "after signing.",
+    testiSub: "Their word counts for more than ours. Our Google reviews are public and verifiable.",
+    rated: "Rated 5 out of 5",
+    prevReviews: "Previous reviews",
+    nextReviews: "Next reviews",
+    readGoogle: "Read our reviews on Google",
+    tpool: [
+      { q: "The new website isn't just beautiful, it brings us far more enquiries. The team is responsive, professional and a pleasure to work with.", name: "James Carter", role: "Director, Luxora Interiors", a: "J" },
+      { q: "From day one they understood our goals and went beyond them. Our online sales ", em: "doubled.", name: "Sarah Mitchell", role: "CEO, Petrocore Solutions", a: "S" },
+      { q: "Their automation saves us more than 20 hours a week. Everything runs smoothly and the support is excellent.", name: "Daniel Rahman", role: "Operations Manager, Wellcare Clinic", a: "D" },
+      { q: "They explained everything in plain language, kept to the timeline, and the price never moved. Easiest project we've run.", name: "Gareth Morris", role: "Manager, Atlas Trading", a: "G" },
+      { q: "Our store was live in three weeks and we took our first order the same day. Support always answers fast.", name: "Naomi Reyes", role: "Owner, Marlow & Co.", a: "N" },
+      { q: "We went from invisible to page one for our main keywords. The SEO work paid for itself within a couple of months.", name: "Theo Lindahl", role: "Director, Northbound", a: "T" },
+    ] as Quote[],
+    icEyebrow: "Your industry",
+    icA: "A riad doesn't sell like ",
+    icEm: "a clinic.",
+    icSubA: "Your customers don't decide like your neighbor's.",
+    icSubB: "Choose your industry and see what really works for you.",
+    icCards: [
+      { i: 0, label: "Retail", desc: "Sell online without answering the same price question a hundred times on WhatsApp." },
+      { i: 1, label: "Hospitality", desc: "Direct bookings, with no platform commission." },
+      { i: 3, label: "Health", desc: "A calendar that fills up, even when the practice is closed." },
+      { i: 5, label: "Education", desc: "Enrollments that go through online, not over the phone." },
+      { i: 4, label: "Logistics", desc: "B2B quote requests that come in on their own." },
+      { i: 2, label: "Professional services", desc: "A website that reassures before the first meeting." },
+      { i: 6, label: "Creative & tech", desc: "A website that lives up to your work." },
+      { i: 7, label: "Public sector & NGOs", desc: "Donations and volunteers in a few clicks." },
+    ],
+    icAlt: (label: string) => `Website for the ${label.toLowerCase()} industry in Morocco`,
+    prevSectors: "Previous industries",
+    nextSectors: "Next industries",
+    pricingEyebrow: "Pricing",
+    pricingA: "The price, before you ",
+    pricingEm: "even call us.",
+    pricingSubA: "Elsewhere you need a meeting to learn the price. Here, it's on the page.",
+    pricingSubB: "Tell us what you need: the firm quote follows, and it doesn't move.",
+    popular: "Most popular",
+    from: "From",
+    cur: "MAD",
+    noHidden: "No hidden fees",
+    paySatisfied: "You only pay once you're satisfied",
+    offGrid: "A project off the grid? We'll price it",
+    faqA: "What you're wondering ",
+    faqEm: "before signing.",
+    faqSub: "Price, timelines, site ownership: straight answers to the doubts people share with us most often.",
+    waH3: "Still unsure about something?",
+    waEm: "Ask on WhatsApp",
+    waP: "A real person answers, in English, French or Darija, during office hours. No commitment.",
+    waBtn: "Ask my question",
+    privacy: "Your details stay confidential. We never share them with anyone.",
+  },
+};
 
 /* WORK — one accordion, one project open at a time.
    Every entry carries its own detail panel, so the list stays a tight index
@@ -128,46 +312,38 @@ type WorkItem = {
   metricLabel: string;
   /** Fallback gradient, kept for any entry without a screenshot yet. */
   shot: string;
-  /** True once /images/work/<slug>.webp exists. */
+  /** The capture at /images/work/<French slug>.webp. */
+  screenshot: string;
   capture?: boolean;
 };
 
-const WORK: WorkItem[] = PROJECTS_ORDERED.slice(0, 6).map((p, i) => ({
-  slug: p.slug,
-  title: p.title,
-  cat: p.category,
-  year: String(p.year),
-  url: p.clientUrl,
-  liveUrl: p.liveUrl,
-  outcome: p.description,
-  stack: p.stack,
-  metric: p.metricValue,
-  metricLabel: p.metricLabel,
-  shot: `g${i % 5}`,
-  capture: true,
-}));
+export function HomeClient({ projects }: { projects: Project[] }) {
+  const locale = useLocale();
+  const t = T[locale];
+  const lp = useLp();
+  const { SERVICES, FAQS } = useHomeContent();
+  const TPOOL = t.tpool;
+  const cities =
+    locale === "en"
+      ? CITY_LINKS_EN.map((c) => ({ slug: c.slug, name: c.name, href: `/en/${c.slug}`, img: cityImage(c) }))
+      : CITY_LINKS.map((c) => ({ slug: c.slug, name: c.name, href: `/${c.slug}`, img: cityImage(c) }));
 
-/* Sample testimonials — placeholder content shown for layout only.
-   TODO: replace with real, attributed client reviews (name, company, photo) before launch. */
-const TESTIMONIALS = [
-  { featured: true, q: "Wevtex a refait notre site et les appels ont commencé à arriver. Il charge vite, il a de l'allure, et nos clients nous trouvent enfin sur Google. Chaque dirham est justifié.", a: "S", n: "Client exemple", r: "Fondateur · Studio exemple" },
-  { q: "Ils ont tout expliqué simplement, tenu les délais, et le prix n'a jamais bougé. Le projet le plus simple qu'on ait mené.", a: "G", n: "Client exemple", r: "Gérant · Trading exemple" },
-  { q: "Notre boutique en ligne était prête en trois semaines et nous avons pris notre première commande le jour même. Le support répond vite à chaque fois.", a: "N", n: "Client exemple", r: "Propriétaire · Exemple & Cie" },
-  { q: "Nous sommes passés d'invisibles à la première page sur nos mots-clés principaux. Le travail SEO s'est rentabilisé en deux mois.", a: "T", n: "Client exemple", r: "Directeur · Growth exemple" },
-  { q: "Une vraie équipe, qui décroche le téléphone. Ils gèrent notre hébergement, on n'y pense plus : le site tourne, tout simplement.", a: "A", n: "Client exemple", r: "Responsable · Société exemple" },
-  { q: "Professionnels du premier appel jusqu'à la mise en ligne. Le nouveau site a l'air bien plus cher que ce que nous avons payé.", a: "D", n: "Client exemple", r: "Fondateur · Desktop exemple" },
-];
+  const WORK: WorkItem[] = projects.slice(0, 6).map((p, i) => ({
+    slug: p.slug,
+    title: p.title,
+    cat: p.category,
+    year: String(p.year),
+    url: p.clientUrl,
+    liveUrl: p.liveUrl,
+    outcome: p.description,
+    stack: p.stack,
+    metric: p.metricValue,
+    metricLabel: p.metricLabel,
+    shot: `g${i % 5}`,
+    screenshot: p.screenshot,
+    capture: true,
+  }));
 
-const TPOOL = [
-  { q: "Le nouveau site est non seulement très beau, il nous apporte nettement plus de demandes. L'équipe est réactive, professionnelle et agréable.", name: "James Carter", role: "Directeur, Luxora Interiors", a: "J" },
-  { q: "Dès le premier jour, ils ont compris nos objectifs et sont allés au-delà. Nos ventes en ligne ont ", em: "doublé.", name: "Sarah Mitchell", role: "Directrice générale, Petrocore Solutions", a: "S" },
-  { q: "Leur solution d'automatisation nous fait gagner plus de 20 heures par semaine. Tout fonctionne sans accroc et le support est excellent.", name: "Daniel Rahman", role: "Responsable d'exploitation, Clinique Wellcare", a: "D" },
-  { q: "They explained everything in plain language, kept to the timeline, and the price never moved. Easiest project we've run.", name: "Gareth Morris", role: "Gérant, Atlas Trading", a: "G" },
-  { q: "Notre boutique était en ligne en trois semaines et nous avons pris notre première commande le jour même. Le support répond toujours vite.", name: "Naomi Reyes", role: "Propriétaire, Marlow & Co.", a: "N" },
-  { q: "We went from invisible to page one for our main keywords. The SEO work paid for itself within a couple of months.", name: "Theo Lindahl", role: "Directeur, Northbound", a: "T" },
-];
-
-export function HomeClient() {
   const [ti, setTi] = useState(0);
   /* Work accordion — a single open index, so opening one closes the rest.
      Index 0 is open on load: a wall of closed rows reads as an empty section. */
@@ -177,7 +353,7 @@ export function HomeClient() {
   useEffect(() => {
     const id = window.setInterval(() => setTi((p) => (p + 1) % TPOOL.length), 6000);
     return () => clearInterval(id);
-  }, []);
+  }, [TPOOL.length]);
 
   const rootRef = useRef<HTMLDivElement>(null);
 
@@ -367,10 +543,10 @@ export function HomeClient() {
       const dur = 1500;
       const start = performance.now();
       const tick = (now: number) => {
-        const t = Math.min(1, (now - start) / dur);
-        const eased = 1 - Math.pow(1 - t, 3); // ease-out cubic
+        const k = Math.min(1, (now - start) / dur);
+        const eased = 1 - Math.pow(1 - k, 3); // ease-out cubic
         el.textContent = (to * eased).toFixed(dec) + suffix;
-        if (t < 1) requestAnimationFrame(tick);
+        if (k < 1) requestAnimationFrame(tick);
         else el.textContent = to.toFixed(dec) + suffix;
       };
       requestAnimationFrame(tick);
@@ -407,29 +583,27 @@ export function HomeClient() {
           <div className="hero-grid">
             <div className="hero-content">
               <span className="eyebrow line-eyebrow" style={{ marginBottom: 18 }}>
-                Agence marketing digital · Casablanca · Tout le Maroc
+                {t.eyebrow}
               </span>
               <ScrollRevealText
                 as="h1"
                 mode="load"
-                em={["rapporte"]}
+                em={t.h1Em}
                 emClassName="hl-line"
-                text={"Agence marketing digital\nau Maroc : un site\nqui vous rapporte."}
+                text={t.h1}
               />
               <p className="hero-sub">
-                Depuis Casablanca, nous créons votre site, votre boutique ou votre application,
-                puis nous vous rendons visible sur Google. Prix affiché, délai écrit, et tout
-                reste à votre nom.
+                {t.heroSub}
               </p>
               <div className="hero-ctas">
                 <a href={WHATSAPP_URL} className="btn btn-primary" target="_blank" rel="noopener">
-                  Obtenir mon devis gratuit
+                  {t.quote}
                   <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden style={{ marginLeft: 2 }}>
                     <path d="M5 12h14M13 6l6 6-6 6" />
                   </svg>
                 </a>
-                <a href={PORTFOLIO_URL} className="btn btn-outline">
-                  Voir les sites livrés
+                <a href={lp(PORTFOLIO_URL)} className="btn btn-outline">
+                  {t.seeWork}
                   <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden style={{ marginLeft: 2 }}>
                     <path d="M5 12h14M13 6l6 6-6 6" />
                   </svg>
@@ -443,7 +617,7 @@ export function HomeClient() {
               <ul className="hero-reassure">
                 <li>
                   <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round" aria-hidden><path d="M20 6L9 17l-5-5" /></svg>
-                  {GUARANTEE}
+                  {t.guarantee}
                 </li>
               </ul>
             </div>
@@ -451,7 +625,7 @@ export function HomeClient() {
             <div className="hero-visual">
               <Image
                 src="/images/feature/hero-shot.webp"
-                alt="Une boutique en ligne affichée sur un ordinateur portable et un téléphone, avec la croissance du trafic et des ventes"
+                alt={t.heroAlt}
                 width={1536}
                 height={1024}
                 priority
@@ -463,7 +637,7 @@ export function HomeClient() {
 
           {/* Trust bar: proof of other clients, kept in the hero so it lands above the fold. */}
           <div className="hero-logos reveal">
-            <p className="ls-lead">Ils nous ont confié leur présence en ligne</p>
+            <p className="ls-lead">{t.logosLead}</p>
             <ul className="ls-row">
               {CLIENT_LOGOS.map((c) => (
                 <li key={c.name}>
@@ -481,13 +655,13 @@ export function HomeClient() {
         <div className="container">
           <div className="problem-inner">
             <h2 className="problem-h">
-              Votre site est joli.<br />
-              Mais il vous rapporte <em className="hl-em hl-underline">combien</em> de clients ?
+              {t.problemA}<br />
+              {t.problemB}<em className="hl-em hl-underline">{t.problemEm}</em>{t.problemC}
             </h2>
             <p className="problem-sub">
-              Lent sur mobile, absent de Google, impossible à modifier sans rappeler l&apos;agence.{" "}<br />
-              Ou pas de site du tout, et une page Facebook qui ne vous appartient pas.{" "}<br />
-              Nous construisons l&apos;inverse : un site rapide, trouvé, qui fait appeler et acheter.
+              {t.problemLines[0]}{" "}<br />
+              {t.problemLines[1]}{" "}<br />
+              {t.problemLines[2]}
             </p>
 
           </div>
@@ -500,19 +674,14 @@ export function HomeClient() {
       <section className="theme-paper" style={{ padding: "clamp(72px, 11vh, 120px) 0" }}>
         <div className="container">
           <div className="reveal">
-            <span className="eyebrow line-eyebrow">Ce qui change avec nous</span>
+            <span className="eyebrow line-eyebrow">{t.whyEyebrow}</span>
             <h2 className="h-section" style={{ marginTop: 14 }}>
-              Les mauvaises surprises, <em className="hl-line">on les a supprimées.</em>
+              {t.whyA}<em className="hl-line">{t.whyEm}</em>
             </h2>
           </div>
 
           <div className="ind-outcomes reveal" style={{ marginTop: "clamp(38px, 6vh, 58px)" }}>
-            {[
-              { h: "Pas de facture surprise", p: "Le prix est écrit sur le devis avant le premier jour de travail. Vous payez ce prix-là, même si le projet nous prend plus de temps que prévu." },
-              { h: "Votre domaine, jamais en otage", p: "Le site, le nom de domaine et tous les accès sont à votre nom dès la livraison. Vous pouvez changer de prestataire demain, sans rien nous demander." },
-              { h: "Quelqu'un qui répond", p: "Vous parlez à ceux qui construisent votre site, sur WhatsApp, pendant les horaires de bureau. Pas de standard, pas de sous-traitant à l'autre bout du monde." },
-              { h: "Une date tenue", p: "Une vitrine est en ligne en 2 à 4 semaines, une boutique en 4 à 8. La date est écrite sur le devis, pas improvisée en cours de route." },
-            ].map((c) => (
+            {t.promises.map((c) => (
               <div className="ind-outcome" key={c.h}>
                 <h3>{c.h}</h3>
                 <span className="ind-outcome-rule" aria-hidden></span>
@@ -530,15 +699,15 @@ export function HomeClient() {
       <section className="cities-band">
         <div className="container">
           <h2 className="cities-band-h">
-            Où que vous soyez au Maroc, on s&apos;occupe de votre site.
+            {t.citiesH2}
           </h2>
           <ul className="pb-cities reveal">
-            {CITIES.map((c) => (
+            {cities.map((c) => (
               <li key={c.slug}>
-                <a href={`/${c.slug}`} aria-label={`Agence web à ${c.name}`}>
+                <a href={c.href} aria-label={t.cityAria(c.name)}>
                   <span
                     className="pb-city-img"
-                    style={{ backgroundImage: `url(/images/villes/${c.slug}.webp)` }}
+                    style={{ backgroundImage: `url(${c.img})` }}
                   />
                 </a>
               </li>
@@ -551,9 +720,9 @@ export function HomeClient() {
           Shared with /services so both surfaces read the same SERVICES list —
           a service added or re-linked in homeContent.ts moves on every page. */}
       <ServicesBento
-        eyebrow="Ce que nous faisons pour vous"
-        heading={<>Être trouvé, être choisi, <em className="hl-line">être payé.</em></>}
-        intro="Huit prestations, une seule question derrière chacune : combien de clients en plus ce travail va-t-il vous rapporter ?"
+        eyebrow={t.bentoEyebrow}
+        heading={<>{t.bentoA}<em className="hl-line">{t.bentoEm}</em></>}
+        intro={t.bentoIntro}
       />
 
       {/* ===================== WORK =====================
@@ -571,12 +740,12 @@ export function HomeClient() {
               ic-sub. The section reads quiet because of the space around it,
               not because the heading was removed. */}
           <div className="wk-head reveal">
-            <span className="eyebrow line-eyebrow">Preuves en ligne</span>
+            <span className="eyebrow line-eyebrow">{t.workEyebrow}</span>
             <h2 className="h-section" style={{ marginTop: 14 }}>
-              Ne nous croyez pas sur parole, <em className="hl-line">cliquez.</em>
+              {t.workA}<em className="hl-line">{t.workEm}</em>
             </h2>
             <p className="ic-sub wk-lede">
-              Des sites livrés et en ligne aujourd&apos;hui. Ouvrez un projet, puis visitez le vrai site.
+              {t.workLede}
             </p>
           </div>
 
@@ -622,26 +791,26 @@ export function HomeClient() {
                           href={p.liveUrl}
                           target="_blank"
                           rel="noopener noreferrer"
-                          aria-label={`Ouvrir le site ${p.title}`}
+                          aria-label={t.openSite(p.title)}
                           className={p.capture ? "wk-shot" : `wk-shot ${p.shot}`}
-                          style={p.capture ? { backgroundImage: `url(/images/work/${p.slug}.webp)` } : undefined}
+                          style={p.capture ? { backgroundImage: `url(${p.screenshot})` } : undefined}
                         ></a>
 
                         <div className="wk-body">
                           <p className="wk-outcome">{p.outcome}</p>
 
                           <ul className="wk-stack">
-                            {p.stack.map((t) => <li key={t}>{t}</li>)}
+                            {p.stack.map((s) => <li key={s}>{s}</li>)}
                           </ul>
 
                           <div className="wk-metric">
                             <span className="wk-metric-n">{p.metric}</span>
                             <span className="wk-metric-l">{p.metricLabel}</span>
                           </div>
-                          <p className="wk-metric-note">Résultats mesurés chez nos clients.</p>
+                          <p className="wk-metric-note">{t.metricNote}</p>
 
                           <a href={p.liveUrl} target="_blank" rel="noopener noreferrer" className="wk-view">
-                            Visiter le site
+                            {t.visit}
                             <span className="wk-view-arrow" aria-hidden>
                               <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
                             </span>
@@ -656,8 +825,8 @@ export function HomeClient() {
           </ol>
 
           <div className="wk-all reveal">
-            <a href={PORTFOLIO_URL} className="btn btn-outline">
-              Voir tous les projets en ligne
+            <a href={lp(PORTFOLIO_URL)} className="btn btn-outline">
+              {t.allWork}
               <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
             </a>
           </div>
@@ -673,12 +842,7 @@ export function HomeClient() {
         <InkBackdrop variant="data" />
         <div className="container">
           <div className="sb-grid reveal">
-            {[
-              { to: 40, dec: 0, suffix: "+", label: "Projets livrés", desc: "Sites, boutiques et applications, en production chez nos clients." },
-              { to: 5, dec: 1, suffix: "", label: "Note Google", desc: "Sur nos avis Google, publics et lisibles par tous." },
-              { to: 8, dec: 0, suffix: "", label: "Prestations", desc: "Du site au chatbot WhatsApp, sans jongler entre prestataires." },
-              { to: 100, dec: 0, suffix: "%", label: "À votre nom", desc: "Domaine, code et accès de chaque site sont remis au client." },
-            ].map((s) => (
+            {t.stats.map((s) => (
               <div className="sb-item" key={s.label}>
                 {/* The final value is rendered here, not a zero: if the count-up
                     never runs — no JS, reduced data, an observer that never
@@ -700,9 +864,9 @@ export function HomeClient() {
         <InkBackdrop variant="data" />
         <div className="container">
           <div className="ict-inner reveal">
-            <p className="ict-text">Le prochain site de cette liste peut être le vôtre.</p>
+            <p className="ict-text">{t.nextSite}</p>
             <a href={WHATSAPP_URL} className="btn btn-primary" target="_blank" rel="noopener">
-              Obtenir mon devis gratuit
+              {t.quote}
               <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden><path d="M5 12h14M13 6l6 6-6 6" /></svg>
             </a>
           </div>
@@ -713,12 +877,12 @@ export function HomeClient() {
       <section className="theme-paper testi-v2" id="testimonials">
         <div className="container">
           <div className="ic-head ic-head-left reveal">
-            <span className="eyebrow line-eyebrow">Avis clients</span>
+            <span className="eyebrow line-eyebrow">{t.testiEyebrow}</span>
             <h2 className="h-section" style={{ marginTop: 16 }}>
-              Ce que disent ceux qui <em className="hl-line">ont déjà signé.</em>
+              {t.testiA}<em className="hl-line">{t.testiEm}</em>
             </h2>
             <p className="ic-sub">
-              Leur avis compte plus que notre discours. Nos avis Google, eux, sont publics et vérifiables.
+              {t.testiSub}
             </p>
           </div>
 
@@ -728,18 +892,18 @@ export function HomeClient() {
               fixes both: a quote is content, not an object. */}
           <div className="testi-grid reveal">
             {[0, 1, 2].map((off) => {
-              const t = TPOOL[(ti + off) % TPOOL.length];
+              const q = TPOOL[(ti + off) % TPOOL.length];
               return (
                 <figure className="testi-col" key={off}>
                   <blockquote className="testi-q">
-                    &ldquo;{t.q}{t.em ? <em className="hl-line">{t.em}</em> : null}&rdquo;
+                    &ldquo;{q.q}{q.em ? <em className="hl-line">{q.em}</em> : null}&rdquo;
                   </blockquote>
                   <figcaption className="testi-person">
-                    <span className="testi-avatar">{t.a}</span>
+                    <span className="testi-avatar">{q.a}</span>
                     <div>
                       <div className="testi-name-row">
-                        <span className="testi-name">{t.name}</span>
-                        <span className="testi-stars" aria-label="Noté 5 sur 5">
+                        <span className="testi-name">{q.name}</span>
+                        <span className="testi-stars" aria-label={t.rated}>
                           {[0, 1, 2, 3, 4].map((n) => (
                             <svg key={n} viewBox="0 0 24 24" width="14" height="14" fill="currentColor" aria-hidden>
                               <path d="M12 2l2.9 6.3 6.9.6-5.2 4.6 1.6 6.7L12 17.3 5.8 20.8l1.6-6.7L2.2 8.9l6.9-.6z" />
@@ -747,7 +911,7 @@ export function HomeClient() {
                           ))}
                         </span>
                       </div>
-                      <div className="testi-role">{t.role}</div>
+                      <div className="testi-role">{q.role}</div>
                     </div>
                   </figcaption>
                 </figure>
@@ -756,7 +920,7 @@ export function HomeClient() {
           </div>
 
           <div className="testi-controls reveal">
-            <button className="ic-arrow" aria-label="Avis précédents" onClick={() => setTi((p) => (p - 1 + TPOOL.length) % TPOOL.length)}>
+            <button className="ic-arrow" aria-label={t.prevReviews} onClick={() => setTi((p) => (p - 1 + TPOOL.length) % TPOOL.length)}>
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M15 18l-6-6 6-6" /></svg>
             </button>
             <div className="ic-dots testi-dots">
@@ -764,14 +928,14 @@ export function HomeClient() {
                 <span key={d} className={d === ti ? "on" : ""} onClick={() => setTi(d)} role="button" aria-label={`Go to review ${d + 1}`}></span>
               ))}
             </div>
-            <button className="ic-arrow" aria-label="Avis suivants" onClick={() => setTi((p) => (p + 1) % TPOOL.length)}>
+            <button className="ic-arrow" aria-label={t.nextReviews} onClick={() => setTi((p) => (p + 1) % TPOOL.length)}>
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M9 18l6-6-6-6" /></svg>
             </button>
           </div>
 
           <div className="testi-cta reveal">
             <a href={GOOGLE_REVIEWS_URL} className="btn btn-outline" target="_blank" rel="noopener nofollow">
-              Lire nos avis sur Google
+              {t.readGoogle}
               <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden style={{ marginLeft: 4 }}><path d="M5 12h14M13 6l6 6-6 6" /></svg>
             </a>
           </div>
@@ -782,38 +946,29 @@ export function HomeClient() {
       <section className="theme-cream industries-carousel" id="industries">
         <div className="container">
           <div className="ic-head reveal">
-            <span className="eyebrow line-eyebrow-center">Votre secteur</span>
+            <span className="eyebrow line-eyebrow-center">{t.icEyebrow}</span>
             <h2 className="h-section" style={{ marginTop: 16 }}>
-              Un riad ne vend pas comme <em className="hl-line">une clinique.</em>
+              {t.icA}<em className="hl-line">{t.icEm}</em>
             </h2>
             <p className="ic-sub">
-              Vos clients ne décident pas comme ceux du voisin.<br />
-              Choisissez votre secteur et voyez ce qui marche vraiment chez vous.
+              {t.icSubA}<br />
+              {t.icSubB}
             </p>
           </div>
 
           <div className="ic-track reveal">
-            {[
-              { i: 0, label: "Commerce", desc: "Vendre en ligne sans répondre cent fois au même prix sur WhatsApp." },
-              { i: 1, label: "Hôtellerie", desc: "Des réservations en direct, sans commission de plateforme." },
-              { i: 3, label: "Santé", desc: "Un agenda qui se remplit, même quand le cabinet est fermé." },
-              { i: 5, label: "Éducation", desc: "Des inscriptions qui aboutissent en ligne, pas au téléphone." },
-              { i: 4, label: "Logistique", desc: "Des demandes de devis B2B qui arrivent toutes seules." },
-              { i: 2, label: "Services professionnels", desc: "Un site qui rassure avant le premier rendez-vous." },
-              { i: 6, label: "Création & tech", desc: "Un site à la hauteur de votre travail." },
-              { i: 7, label: "Public & associations", desc: "Des dons et des bénévoles, en quelques clics." },
-            ].map((it, idx) => (
-              <a key={it.i} href={industryPath(INDUSTRY_LINKS[it.i])} className={`ic-card g${idx % 5}`}>
+            {t.icCards.map((it, idx) => (
+              <a key={it.i} href={lp(industryPath(INDUSTRY_LINKS[it.i]))} className={`ic-card g${idx % 5}`}>
                 <Image
                   src={IC_IMAGES[it.i]}
-                  alt={`Site web pour le secteur ${it.label.toLowerCase()} au Maroc`}
+                  alt={t.icAlt(it.label)}
                   fill
                   style={{ objectFit: "cover", objectPosition: "center top" }}
                   sizes="(max-width: 768px) 80vw, 25vw"
                 />
                 <span className="ic-overlay" aria-hidden></span>
                 <span className="ic-card-inner">
-                  <span className="ic-badge">{INDUSTRIES[it.i].icon}</span>
+                  <span className="ic-badge">{IC_ICONS[it.i]}</span>
                   <span className="ic-card-text">
                     <span className="ic-card-h">{it.label}</span>
                     <span className="ic-card-p">{it.desc}</span>
@@ -824,13 +979,13 @@ export function HomeClient() {
           </div>
 
           <div className="ic-controls reveal">
-            <button className="ic-arrow" aria-label="Secteurs précédents" onClick={(e) => { const t = e.currentTarget.closest(".industries-carousel")?.querySelector(".ic-track") as HTMLElement | null; t?.scrollBy({ left: -340, behavior: "smooth" }); }}>
+            <button className="ic-arrow" aria-label={t.prevSectors} onClick={(e) => { const tr = e.currentTarget.closest(".industries-carousel")?.querySelector(".ic-track") as HTMLElement | null; tr?.scrollBy({ left: -340, behavior: "smooth" }); }}>
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M15 18l-6-6 6-6" /></svg>
             </button>
             <div className="ic-dots" aria-hidden>
               <span className="on"></span><span></span><span></span><span></span><span></span>
             </div>
-            <button className="ic-arrow" aria-label="Secteurs suivants" onClick={(e) => { const t = e.currentTarget.closest(".industries-carousel")?.querySelector(".ic-track") as HTMLElement | null; t?.scrollBy({ left: 340, behavior: "smooth" }); }}>
+            <button className="ic-arrow" aria-label={t.nextSectors} onClick={(e) => { const tr = e.currentTarget.closest(".industries-carousel")?.querySelector(".ic-track") as HTMLElement | null; tr?.scrollBy({ left: 340, behavior: "smooth" }); }}>
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M9 18l6-6-6-6" /></svg>
             </button>
           </div>
@@ -841,13 +996,13 @@ export function HomeClient() {
       <section className="pricing-v2 pricing-ink" id="pricing">
         <div className="container">
           <div className="ic-head reveal">
-            <span className="eyebrow line-eyebrow-center">Tarifs</span>
+            <span className="eyebrow line-eyebrow-center">{t.pricingEyebrow}</span>
             <h2 className="h-section" style={{ marginTop: 16, justifyContent: "center" }}>
-              Le prix, avant même <em className="hl-line">de nous appeler.</em>
+              {t.pricingA}<em className="hl-line">{t.pricingEm}</em>
             </h2>
             <p className="ic-sub">
-              Ailleurs, il faut un rendez-vous pour connaître le prix. Ici, il est affiché.<br />
-              Dites-nous ce qu&apos;il vous faut : le devis ferme suit, et il ne bouge plus.
+              {t.pricingSubA}<br />
+              {t.pricingSubB}
             </p>
           </div>
 
@@ -859,7 +1014,7 @@ export function HomeClient() {
                 {sv.featured && (
                   <span className="pr-badge">
                     <svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor" aria-hidden><path d="M12 2l2.9 6.3 6.9.6-5.2 4.6 1.6 6.7L12 17.3 5.8 20.8l1.6-6.7L2.2 8.9l6.9-.6z" /></svg>
-                    Le plus demandé
+                    {t.popular}
                   </span>
                 )}
                 <div className="pr-top">
@@ -870,8 +1025,8 @@ export function HomeClient() {
                   </div>
                 </div>
                 <div className="pr-divider"></div>
-                <span className="pr-from">À partir de</span>
-                <div className="pr-price">{sv.price}<span className="cur">DH</span></div>
+                <span className="pr-from">{t.from}</span>
+                <div className="pr-price">{sv.price}<span className="cur">{t.cur}</span></div>
                 <div className="pr-note">{sv.note}</div>
                 <ul className="pr-feats">
                   {sv.features.map((f) => (
@@ -881,7 +1036,7 @@ export function HomeClient() {
                     </li>
                   ))}
                 </ul>
-                <a href={serviceWhatsAppUrl(sv.name)} className={`pr-btn${sv.featured ? " solid" : ""}`} target="_blank" rel="noopener">
+                <a href={serviceWhatsAppUrl(sv.name, locale)} className={`pr-btn${sv.featured ? " solid" : ""}`} target="_blank" rel="noopener">
                   {sv.cta}
                   <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden style={{ marginLeft: 4 }}><path d="M5 12h14M13 6l6 6-6 6" /></svg>
                 </a>
@@ -890,9 +1045,9 @@ export function HomeClient() {
           </div>
 
           <div className="pr-foot reveal">
-            <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden><path d="M20 6L9 17l-5-5" /></svg>Aucun frais caché</span>
-            <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden><path d="M20 6L9 17l-5-5" /></svg>Vous ne payez qu&apos;une fois satisfait</span>
-            <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden><path d="M20 6L9 17l-5-5" /></svg>Un projet hors grille ? On le chiffre</span>
+            <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden><path d="M20 6L9 17l-5-5" /></svg>{t.noHidden}</span>
+            <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden><path d="M20 6L9 17l-5-5" /></svg>{t.paySatisfied}</span>
+            <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden><path d="M20 6L9 17l-5-5" /></svg>{t.offGrid}</span>
           </div>
 
         </div>
@@ -904,9 +1059,9 @@ export function HomeClient() {
           <div className="faq-grid">
             <div className="faq-left reveal">
               <span className="eyebrow line-eyebrow">FAQ</span>
-              <h2 className="h-section" style={{ marginTop: 14 }}>Ce que vous vous demandez <em className="hl-line">avant de signer.</em></h2>
+              <h2 className="h-section" style={{ marginTop: 14 }}>{t.faqA}<em className="hl-line">{t.faqEm}</em></h2>
               <p className="ic-sub" style={{ marginTop: 14, textAlign: "left" }}>
-                Prix, délais, propriété du site : les réponses franches aux doutes qu&apos;on nous confie le plus souvent.
+                {t.faqSub}
               </p>
               <div className="faq-list-v2">
                 {FAQS.map((f, i) => (
@@ -928,12 +1083,12 @@ export function HomeClient() {
               <div className="wa-card">
                 <span className="wa-card-motif" aria-hidden></span>
                 <span className="wa-icon">{WHATSAPP}</span>
-                <h3>Un doute qui reste ?<br /><em>Posez-le sur WhatsApp</em></h3>
+                <h3>{t.waH3}<br /><em>{t.waEm}</em></h3>
                 <span className="wa-rule"></span>
-                <p>Une vraie personne vous répond, en français ou en darija, pendant les horaires de bureau. Sans engagement.</p>
+                <p>{t.waP}</p>
                 <a href={WHATSAPP_URL} className="wa-btn" target="_blank" rel="noopener">
                   {WHATSAPP}
-                  Poser ma question
+                  {t.waBtn}
                   <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden><path d="M5 12h14M13 6l6 6-6 6" /></svg>
                 </a>
               </div>
@@ -941,7 +1096,7 @@ export function HomeClient() {
                 <span className="wa-lock">
                   <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><rect x="4" y="11" width="16" height="9" rx="2" /><path d="M8 11V7a4 4 0 0 1 8 0v4" /></svg>
                 </span>
-                Vos informations restent confidentielles. Nous ne les partageons avec personne.
+                {t.privacy}
               </div>
             </div>
           </div>

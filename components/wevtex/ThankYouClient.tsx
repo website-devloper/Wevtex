@@ -5,6 +5,7 @@ import { SiteHeader } from "./SiteHeader";
 import { SiteFooter } from "./SiteFooter";
 import { ConversionTracker } from "./ConversionTracker";
 import { WHATSAPP_URL, PORTFOLIO_URL } from "@/lib/site-links";
+import { useLocale, useLp } from "./locale";
 
 /**
  * Post-submit confirmation — one centred message, nothing else.
@@ -18,7 +19,31 @@ import { WHATSAPP_URL, PORTFOLIO_URL } from "@/lib/site-links";
  * would depend on JavaScript running. It rendered blank in production that way.
  */
 
+const T = {
+  fr: {
+    eyebrow: "Message bien reçu",
+    h1: "Merci, votre demande",
+    h1b: "nous est bien ",
+    h1Em: "parvenue.",
+    p: "Un e-mail de confirmation vient de vous être envoyé. Nous revenons vers vous pendant les horaires de bureau, du lundi au vendredi de 9h à 18h et le samedi de 10h à 14h.",
+    wa: "Écrire sur WhatsApp en attendant",
+    work: "Voir les sites livrés",
+  },
+  en: {
+    eyebrow: "Message received",
+    h1: "Thank you, your request",
+    h1b: "has safely ",
+    h1Em: "reached us.",
+    p: "A confirmation email is on its way to you. We will get back to you during office hours, Monday to Friday from 9am to 6pm and Saturday from 10am to 2pm (Morocco time).",
+    wa: "Message us on WhatsApp meanwhile",
+    work: "See delivered websites",
+  },
+};
+
 export function ThankYouClient() {
+  const t = T[useLocale()];
+  const lp = useLp();
+
   return (
     <div className="wevtex mode-light">
       <ConversionTracker />
@@ -31,17 +56,15 @@ export function ThankYouClient() {
         style={{ paddingBottom: "clamp(110px, 16vh, 180px)", textAlign: "center" }}
       >
         <div className="container">
-          <span className="eyebrow line-eyebrow-center">Message bien reçu</span>
+          <span className="eyebrow line-eyebrow-center">{t.eyebrow}</span>
 
           <h1 className="h-section" style={{ marginTop: 18 }}>
-            Merci, votre demande<br />
-            nous est bien <em className="hl-line">parvenue.</em>
+            {t.h1}<br />
+            {t.h1b}<em className="hl-line">{t.h1Em}</em>
           </h1>
 
           <p className="ic-sub" style={{ maxWidth: "54ch", margin: "20px auto 0" }}>
-            Un e-mail de confirmation vient de vous être envoyé. Nous revenons vers
-            vous pendant les horaires de bureau, du lundi au vendredi de 9h à 18h
-            et le samedi de 10h à 14h.
+            {t.p}
           </p>
 
           <div
@@ -49,12 +72,12 @@ export function ThankYouClient() {
             style={{ marginTop: 34, marginBottom: 0, justifyContent: "center" }}
           >
             <a href={WHATSAPP_URL} className="btn btn-primary" target="_blank" rel="noopener">
-              Écrire sur WhatsApp en attendant
+              {t.wa}
               <svg className="arrow" viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="1.6" aria-hidden>
                 <path d="M3 9L9 3M9 3H4M9 3V8" />
               </svg>
             </a>
-            <a href={PORTFOLIO_URL} className="btn btn-outline">Voir les sites livrés</a>
+            <a href={lp(PORTFOLIO_URL)} className="btn btn-outline">{t.work}</a>
           </div>
         </div>
       </section>

@@ -1,12 +1,13 @@
 import type { Metadata } from "next";
-import { LegalPage } from "../../components/wevtex/LegalPage";
+import { languageAlternates } from "@/lib/i18n-paths";
+import { LegalPage } from "@/components/wevtex/LegalPage";
 import { CONTACT_URL } from "@/lib/site-links";
 
 export const metadata: Metadata = {
   title: "Politique de confidentialité",
   description:
     "Comment Wevtex collecte, utilise et conserve vos données personnelles : formulaire de contact, mesure d'audience, cookies et vos droits.",
-  alternates: { canonical: "/confidentialite" },
+  alternates: { canonical: "/confidentialite", languages: languageAlternates("/confidentialite") },
 };
 
 /* PLACEHOLDERS TO REPLACE BEFORE LAUNCH — marked [À COMPLÉTER] in the copy:

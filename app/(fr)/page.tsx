@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
+import { languageAlternates } from "@/lib/i18n-paths";
 import { serializeJsonLd } from "@/components/seo/JsonLd";
-import { HomeClient } from "../components/wevtex/HomeClient";
-import { FAQS } from "../components/wevtex/homeContent";
+import { HomeClient } from "@/components/wevtex/HomeClient";
+import { FAQS } from "@/components/wevtex/homeContent";
+import { PROJECTS_ORDERED } from "@/lib/projects-data";
 
 /**
  * Home route — a Server Component.
@@ -32,6 +34,7 @@ export const metadata: Metadata = {
   ],
   alternates: {
     canonical: "/",
+    languages: languageAlternates("/"),
   },
   openGraph: {
     title: "Agence Marketing Digital au Maroc | Sites & SEO | WEVTEX",
@@ -59,7 +62,7 @@ export default function HomePage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: serializeJsonLd(faqJsonLd) }}
       />
-      <HomeClient />
+      <HomeClient projects={PROJECTS_ORDERED.slice(0, 6)} />
     </>
   );
 }

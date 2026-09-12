@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
+import { languageAlternates } from "@/lib/i18n-paths";
 import { notFound } from "next/navigation";
 import { RealisationView } from "@/components/wevtex/RealisationView";
-import { PROJECT_SLUGS, getProject, projectPath } from "@/lib/projects-data";
+import { PROJECT_SLUGS, PROJECTS_ORDERED, getProject, projectPath } from "@/lib/projects-data";
 import { JsonLd, breadcrumb, creativeWorkSchema } from "@/components/seo/JsonLd";
 
 /**
@@ -12,6 +13,14 @@ import { JsonLd, breadcrumb, creativeWorkSchema } from "@/components/seo/JsonLd"
  */
 
 export const dynamicParams = false;
+
+/* The three projects after this one, in the portfolio's order. */
+function neighbours(slug: string) {
+  const idx = PROJECTS_ORDERED.findIndex((x) => x.slug === slug);
+  return [1, 2, 3]
+    .map((n) => PROJECTS_ORDERED[(idx + n) % PROJECTS_ORDERED.length])
+    .filter((x) => x.slug !== slug);
+}
 
 export function generateStaticParams() {
   return PROJECT_SLUGS.map((slug) => ({ slug }));
@@ -31,7 +40,7 @@ export async function generateMetadata({
     title: { absolute: title },
     description: p.metaDescription,
     keywords: [p.title, p.category.toLowerCase(), ...p.stack.map((s) => s.toLowerCase())],
-    alternates: { canonical: path },
+    alternates: { canonical: path, languages: languageAlternates(path) },
     openGraph: {
       title,
       description: p.metaDescription,
@@ -72,7 +81,7 @@ export default async function RealisationPage({
           { name: p.title, path },
         ])}
       />
-      <RealisationView project={p} />
+      <RealisationView project={p} neighbours={neighbours(p.slug)} />
     </>
   );
 }

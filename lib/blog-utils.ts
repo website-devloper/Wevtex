@@ -1,4 +1,5 @@
 import type { Post } from "./blog-data";
+import type { Locale } from "./i18n";
 
 /**
  * The light half of the blog: helpers and the card shape the client views
@@ -7,11 +8,12 @@ import type { Post } from "./blog-data";
  * the cards and pass them down as props.
  */
 
-export const postPath = (slug: string) => `/blog/${slug}`;
+export const postPath = (slug: string, locale: Locale = "fr") =>
+  locale === "en" ? `/en/blog/${slug}` : `/blog/${slug}`;
 
-/** "10 septembre 2026", the visible date, in French. */
-export const formatPostDate = (iso: string) =>
-  new Date(`${iso}T12:00:00Z`).toLocaleDateString("fr-FR", {
+/** "10 septembre 2026" in French, "10 September 2026" in English. */
+export const formatPostDate = (iso: string, locale: Locale = "fr") =>
+  new Date(`${iso}T12:00:00Z`).toLocaleDateString(locale === "en" ? "en-GB" : "fr-FR", {
     day: "numeric",
     month: "long",
     year: "numeric",

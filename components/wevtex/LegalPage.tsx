@@ -4,6 +4,7 @@ import "../../app/wevtex-home.css";
 import { SiteHeader } from "./SiteHeader";
 import { SiteFooter } from "./SiteFooter";
 import { useReveal } from "./useReveal";
+import { useLocale } from "./locale";
 
 /**
  * Shared shell for the legal pages. Same design language as the rest of the
@@ -16,6 +17,9 @@ import { useReveal } from "./useReveal";
  */
 
 export type LegalSection = { h: string; body: React.ReactNode };
+
+/* French sets a no-break space before the colon. */
+const T = { fr: { updated: "Mise à jour\u00a0: " }, en: { updated: "Last updated: " } };
 
 export function LegalPage({
   eyebrow,
@@ -33,6 +37,7 @@ export function LegalPage({
   sections: LegalSection[];
 }) {
   useReveal();
+  const t = T[useLocale()];
 
   return (
     <div className="wevtex mode-light">
@@ -51,7 +56,7 @@ export function LegalPage({
             className="eyebrow"
             style={{ marginTop: 26, fontFamily: "var(--font-mono)", letterSpacing: "0.12em" }}
           >
-            Mise à jour&nbsp;: {updated}
+            {t.updated}{updated}
           </p>
         </div>
       </section>

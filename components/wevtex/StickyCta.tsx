@@ -11,9 +11,14 @@
 
 import { useEffect, useState } from "react";
 import { WHATSAPP_URL, CONTACT_URL } from "@/lib/site-links";
+import { useLocale, useLp } from "./locale";
+
+const T = { fr: { quote: "Mon devis gratuit" }, en: { quote: "Get a free quote" } };
 
 export function StickyCta({ whatsappUrl = WHATSAPP_URL }: { whatsappUrl?: string }) {
   const [shown, setShown] = useState(false);
+  const t = T[useLocale()];
+  const lp = useLp();
 
   useEffect(() => {
     const onScroll = () => setShown(window.scrollY > 620);
@@ -30,8 +35,8 @@ export function StickyCta({ whatsappUrl = WHATSAPP_URL }: { whatsappUrl?: string
         </svg>
         WhatsApp
       </a>
-      <a href={CONTACT_URL} className="sticky-cta-btn primary">
-        Mon devis gratuit
+      <a href={lp(CONTACT_URL)} className="sticky-cta-btn primary">
+        {t.quote}
         <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
           <path d="M5 12h14M13 6l6 6-6 6" />
         </svg>

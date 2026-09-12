@@ -5,13 +5,61 @@
  *
  * The markup and class names are the homepage's, so both pages render the same
  * components with the same fonts, colours and hover behaviour. Content comes
- * from the shared SERVICES / FAQS lists in homeContent.ts, so a service added
- * there appears on every surface at once.
+ * from the shared SERVICES / FAQS lists in homeContent.ts (homeContent.en.ts
+ * on English pages), so a service added there appears on every surface at once.
  */
 
 import type { ReactNode } from "react";
-import { FAQS, SERVICES } from "./homeContent";
+import { useHomeContent } from "./useHomeContent";
+import { useLocale, useLp } from "./locale";
 import { WHATSAPP_URL, SERVICES_URL, serviceWhatsAppUrl, servicePath } from "@/lib/site-links";
+
+const T = {
+  fr: {
+    bentoEyebrow: "Services",
+    compare: "Comparer les 8 prestations",
+    pricingEyebrow: "Tarifs",
+    popular: "Le plus demandé",
+    from: "À partir de",
+    cur: "DH",
+    noHidden: "Aucun frais caché",
+    paySatisfied: "Vous ne payez qu'une fois satisfait",
+    special: "Un besoin particulier ? Parlons-en",
+    faqH2: "Vos questions, ",
+    faqEm: "nos réponses",
+    faqSub: "Les questions qu'on nous pose le plus souvent sur notre méthode, nos services et notre façon de travailler.",
+    waH3: "Une autre question ?",
+    waEm: "Écrivez-nous sur WhatsApp",
+    waP: "Nous sommes là pour vous aider. Écrivez-nous quand vous voulez, nous répondons au plus vite.",
+    waBtn: "Discuter sur WhatsApp",
+    privacy: "Vos informations restent confidentielles. Nous respectons votre vie privée.",
+    ctaEyebrow: "Prochaine étape",
+    ctaPrimary: "Obtenir mon devis gratuit",
+    ctaSecondary: "Voir les sites livrés",
+  },
+  en: {
+    bentoEyebrow: "Services",
+    compare: "Compare all 8 services",
+    pricingEyebrow: "Pricing",
+    popular: "Most popular",
+    from: "From",
+    cur: "MAD",
+    noHidden: "No hidden fees",
+    paySatisfied: "You only pay once you're satisfied",
+    special: "Something specific in mind? Let's talk",
+    faqH2: "Your questions, ",
+    faqEm: "our answers",
+    faqSub: "The questions we hear most often about our method, our services and the way we work.",
+    waH3: "Another question?",
+    waEm: "Message us on WhatsApp",
+    waP: "We're here to help. Write whenever you like and we'll answer as fast as we can.",
+    waBtn: "Chat on WhatsApp",
+    privacy: "Your details stay confidential. We respect your privacy.",
+    ctaEyebrow: "Next step",
+    ctaPrimary: "Get my free quote",
+    ctaSecondary: "See delivered websites",
+  },
+};
 
 export const WHATSAPP_MARK = (
   <svg viewBox="0 0 24 24" width="17" height="17" fill="currentColor" aria-hidden style={{ marginRight: 2 }}>
@@ -46,7 +94,7 @@ export { serviceWhatsAppUrl };
 /* ------------------------------------------------------------------ */
 
 export function ServicesBento({
-  eyebrow = "Services",
+  eyebrow,
   heading,
   intro,
 }: {
@@ -54,12 +102,16 @@ export function ServicesBento({
   heading: ReactNode;
   intro: string;
 }) {
+  const t = T[useLocale()];
+  const lp = useLp();
+  const { SERVICES } = useHomeContent();
+
   return (
     <section className="theme-cream services-bento" id="services">
       <div className="container">
         <div className="bento-head reveal">
           <div className="bento-head-left">
-            <span className="eyebrow line-eyebrow">{eyebrow}</span>
+            <span className="eyebrow line-eyebrow">{eyebrow ?? t.bentoEyebrow}</span>
             <h2 className="h-section" style={{ marginTop: 16 }}>{heading}</h2>
           </div>
           <p className="bento-head-right">{intro}</p>
@@ -67,7 +119,7 @@ export function ServicesBento({
 
         <div className="bento-grid reveal">
           {SERVICES.map((sv, i) => (
-            <a key={sv.slug} href={servicePath(sv.slug)} className="bento-card">
+            <a key={sv.slug} href={lp(servicePath(sv.slug))} className="bento-card">
               <span className="bento-top">
                 <span className="bento-icon">{SERVICE_ICONS[sv.slug]}</span>
               </span>
@@ -83,8 +135,8 @@ export function ServicesBento({
         </div>
 
         <div className="wk-all reveal">
-          <a href={SERVICES_URL} className="btn btn-outline">
-            Comparer les 8 prestations
+          <a href={lp(SERVICES_URL)} className="btn btn-outline">
+            {t.compare}
             <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden><path d="M5 12h14M13 6l6 6-6 6" /></svg>
           </a>
         </div>
@@ -96,7 +148,7 @@ export function ServicesBento({
 /* ------------------------------------------------------------------ */
 
 export function PricingGrid({
-  eyebrow = "Tarifs",
+  eyebrow,
   heading,
   intro,
 }: {
@@ -104,11 +156,15 @@ export function PricingGrid({
   heading: ReactNode;
   intro: ReactNode;
 }) {
+  const locale = useLocale();
+  const t = T[locale];
+  const { SERVICES } = useHomeContent();
+
   return (
     <section className="pricing-v2 pricing-ink" id="pricing">
       <div className="container">
         <div className="ic-head reveal">
-          <span className="eyebrow line-eyebrow-center">{eyebrow}</span>
+          <span className="eyebrow line-eyebrow-center">{eyebrow ?? t.pricingEyebrow}</span>
           <h2 className="h-section" style={{ marginTop: 16, justifyContent: "center" }}>{heading}</h2>
           <p className="ic-sub">{intro}</p>
         </div>
@@ -119,7 +175,7 @@ export function PricingGrid({
               {sv.featured && (
                 <span className="pr-badge">
                   <svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor" aria-hidden><path d="M12 2l2.9 6.3 6.9.6-5.2 4.6 1.6 6.7L12 17.3 5.8 20.8l1.6-6.7L2.2 8.9l6.9-.6z" /></svg>
-                  Le plus demandé
+                  {t.popular}
                 </span>
               )}
               <div className="pr-top">
@@ -130,8 +186,8 @@ export function PricingGrid({
                 </div>
               </div>
               <div className="pr-divider"></div>
-              <span className="pr-from">À partir de</span>
-              <div className="pr-price">{sv.price}<span className="cur">DH</span></div>
+              <span className="pr-from">{t.from}</span>
+              <div className="pr-price">{sv.price}<span className="cur">{t.cur}</span></div>
               <div className="pr-note">{sv.note}</div>
               <ul className="pr-feats">
                 {sv.features.map((f) => (
@@ -141,7 +197,7 @@ export function PricingGrid({
                   </li>
                 ))}
               </ul>
-              <a href={serviceWhatsAppUrl(sv.name)} className={`pr-btn${sv.featured ? " solid" : ""}`} target="_blank" rel="noopener">
+              <a href={serviceWhatsAppUrl(sv.name, locale)} className={`pr-btn${sv.featured ? " solid" : ""}`} target="_blank" rel="noopener">
                 {sv.cta}
                 <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden style={{ marginLeft: 4 }}><path d="M5 12h14M13 6l6 6-6 6" /></svg>
               </a>
@@ -150,9 +206,9 @@ export function PricingGrid({
         </div>
 
         <div className="pr-foot reveal">
-          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden><path d="M20 6L9 17l-5-5" /></svg>Aucun frais caché</span>
-          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden><path d="M20 6L9 17l-5-5" /></svg>Vous ne payez qu&apos;une fois satisfait</span>
-          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden><path d="M20 6L9 17l-5-5" /></svg>Un besoin particulier ? Parlons-en</span>
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden><path d="M20 6L9 17l-5-5" /></svg>{t.noHidden}</span>
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden><path d="M20 6L9 17l-5-5" /></svg>{t.paySatisfied}</span>
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden><path d="M20 6L9 17l-5-5" /></svg>{t.special}</span>
         </div>
       </div>
     </section>
@@ -162,15 +218,18 @@ export function PricingGrid({
 /* ------------------------------------------------------------------ */
 
 export function FaqSection() {
+  const t = T[useLocale()];
+  const { FAQS } = useHomeContent();
+
   return (
     <section className="theme-paper faq-split" id="faq">
       <div className="container">
         <div className="faq-grid">
           <div className="faq-left reveal">
             <span className="eyebrow line-eyebrow">FAQ</span>
-            <h2 className="h-section" style={{ marginTop: 14 }}>Vos questions, <em className="hl-line">nos réponses</em></h2>
+            <h2 className="h-section" style={{ marginTop: 14 }}>{t.faqH2}<em className="hl-line">{t.faqEm}</em></h2>
             <p className="ic-sub" style={{ marginTop: 14, textAlign: "left" }}>
-              Les questions qu&apos;on nous pose le plus souvent sur notre méthode, nos services et notre façon de travailler.
+              {t.faqSub}
             </p>
             <div className="faq-list-v2">
               {FAQS.map((f, i) => (
@@ -192,12 +251,12 @@ export function FaqSection() {
             <div className="wa-card">
               <span className="wa-card-motif" aria-hidden></span>
               <span className="wa-icon">{WHATSAPP_MARK}</span>
-              <h3>Une autre question ?<br /><em>Écrivez-nous sur WhatsApp</em></h3>
+              <h3>{t.waH3}<br /><em>{t.waEm}</em></h3>
               <span className="wa-rule"></span>
-              <p>Nous sommes là pour vous aider. Écrivez-nous quand vous voulez, nous répondons au plus vite.</p>
+              <p>{t.waP}</p>
               <a href={WHATSAPP_URL} className="wa-btn" target="_blank" rel="noopener">
                 {WHATSAPP_MARK}
-                Discuter sur WhatsApp
+                {t.waBtn}
                 {ARROW}
               </a>
             </div>
@@ -205,7 +264,7 @@ export function FaqSection() {
               <span className="wa-lock">
                 <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><rect x="4" y="11" width="16" height="9" rx="2" /><path d="M8 11V7a4 4 0 0 1 8 0v4" /></svg>
               </span>
-              Vos informations restent confidentielles. Nous respectons votre vie privée.
+              {t.privacy}
             </div>
           </div>
         </div>
@@ -218,12 +277,12 @@ export function FaqSection() {
 
 /** Closing call to action — the dark band used at the foot of a page. */
 export function CtaBand({
-  eyebrow = "Prochaine étape",
+  eyebrow,
   heading,
   text,
-  primaryLabel = "Obtenir mon devis gratuit",
+  primaryLabel,
   secondaryHref = "/portfolio",
-  secondaryLabel = "Voir les sites livrés",
+  secondaryLabel,
 }: {
   eyebrow?: string;
   heading: ReactNode;
@@ -232,6 +291,9 @@ export function CtaBand({
   secondaryHref?: string;
   secondaryLabel?: string;
 }) {
+  const t = T[useLocale()];
+  const lp = useLp();
+
   return (
     /* Split, not centred: the problem band is already a centred statement on
        ink, and two sections sharing a container pattern is what makes a page
@@ -241,17 +303,17 @@ export function CtaBand({
       <div className="container">
         <div className="ctab-inner reveal">
           <div className="ctab-copy">
-            <span className="eyebrow line-eyebrow">{eyebrow}</span>
+            <span className="eyebrow line-eyebrow">{eyebrow ?? t.ctaEyebrow}</span>
             <h2 className="audit-h" style={{ marginTop: 16 }}>{heading}</h2>
             <p className="audit-p">{text}</p>
           </div>
           <div className="ctab-btns">
             <a href={WHATSAPP_URL} className="btn btn-primary" target="_blank" rel="noopener">
-              {primaryLabel}
+              {primaryLabel ?? t.ctaPrimary}
               {ARROW}
             </a>
-            <a href={secondaryHref} className="btn btn-outline">
-              {secondaryLabel}
+            <a href={lp(secondaryHref)} className="btn btn-outline">
+              {secondaryLabel ?? t.ctaSecondary}
               {ARROW}
             </a>
           </div>

@@ -5,7 +5,9 @@ import { SiteHeader } from "./SiteHeader";
 import { SiteFooter } from "./SiteFooter";
 import { ServicesBento } from "./SharedSections";
 import { useReveal } from "./useReveal";
+import { useLocale, useLp } from "./locale";
 import type { City } from "@/lib/cities-data";
+import { cityImage } from "@/lib/city-list";
 import { WHATSAPP_URL, CONTACT_URL, PORTFOLIO_URL } from "@/lib/site-links";
 
 /**
@@ -20,14 +22,65 @@ import { WHATSAPP_URL, CONTACT_URL, PORTFOLIO_URL } from "@/lib/site-links";
  * without the surrounding page.
  */
 
+const T = {
+  fr: {
+    eyebrow: "Agence web · ",
+    quote: "Obtenir mon devis gratuit",
+    work: "Voir les sites livrés",
+    marketEyebrow: "Votre marché local",
+    sells: "Ce qui fait vendre ",
+    sectorsEyebrow: "Les secteurs ",
+    trades: "Les métiers qu'on ",
+    tradesEm: "connaît ici.",
+    bentoEyebrow: "Ce qu'on peut faire pour vous",
+    foundA: "Être trouvé ",
+    foundB: ", ",
+    foundEm: "puis choisi.",
+    intro: (inCity: string) => `Huit prestations pour les entreprises ${inCity}, chacune avec son prix affiché.`,
+    talk: "Parler de mon projet",
+    brief: "Envoyer mon brief",
+    faqH2: "Ce qu'on nous demande ",
+    waA: "Votre projet est ",
+    waB: " ?",
+    waEm: "Parlons-en sur WhatsApp",
+    waP: "On répond vite, en français, en darija ou en anglais.",
+    waBtn: "Écrire sur WhatsApp",
+  },
+  en: {
+    eyebrow: "Web design · ",
+    quote: "Get my free quote",
+    work: "See delivered websites",
+    marketEyebrow: "Your local market",
+    sells: "What sells ",
+    sectorsEyebrow: "Industries ",
+    trades: "The trades we ",
+    tradesEm: "know here.",
+    bentoEyebrow: "What we can do for you",
+    foundA: "Get found ",
+    foundB: ", ",
+    foundEm: "then chosen.",
+    intro: (inCity: string) => `Eight services for businesses ${inCity}, each with its price shown upfront.`,
+    talk: "Talk about my project",
+    brief: "Send my brief",
+    faqH2: "What clients ask us ",
+    waA: "Is your project ",
+    waB: "?",
+    waEm: "Let's talk on WhatsApp",
+    waP: "We reply fast, in English, French or Darija.",
+    waBtn: "Message us on WhatsApp",
+  },
+};
+
 const ARROW = (
   <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
     <path d="M5 12h14M13 6l6 6-6 6" />
   </svg>
 );
 
-export function CityView({ city }: { city: City }) {
+export function CityView({ city }: { city: City & { fr?: string } }) {
   useReveal();
+  const t = T[useLocale()];
+  const lp = useLp();
 
   return (
     <div className="wevtex mode-light">
@@ -41,13 +94,13 @@ export function CityView({ city }: { city: City }) {
           className="theme-cream sec-first ind-hero"
           style={{
             paddingBottom: "clamp(48px, 7vh, 80px)",
-            ["--ind-hero-img" as string]: `url(/images/villes/${city.slug}.webp)`,
+            ["--ind-hero-img" as string]: `url(${cityImage(city)})`,
           }}
         >
           <span className="ind-hero-bg" aria-hidden></span>
           <div className="container">
             <div className="reveal">
-              <span className="eyebrow line-eyebrow">Agence web · {city.name}</span>
+              <span className="eyebrow line-eyebrow">{t.eyebrow}{city.name}</span>
               <h1 className="h-section" style={{ marginTop: 14 }}>
                 {city.h1} <em className="hl-line">{city.h1Em}</em>
               </h1>
@@ -55,10 +108,10 @@ export function CityView({ city }: { city: City }) {
 
               <div className="hero-ctas" style={{ marginTop: 32, marginBottom: 0 }}>
                 <a href={WHATSAPP_URL} className="btn btn-primary" target="_blank" rel="noopener">
-                  Obtenir mon devis gratuit
+                  {t.quote}
                   {ARROW}
                 </a>
-                <a href={PORTFOLIO_URL} className="btn btn-outline">Voir les sites livrés</a>
+                <a href={lp(PORTFOLIO_URL)} className="btn btn-outline">{t.work}</a>
               </div>
             </div>
           </div>
@@ -68,9 +121,9 @@ export function CityView({ city }: { city: City }) {
         <section className="theme-paper" style={{ padding: "clamp(72px, 11vh, 120px) 0" }}>
           <div className="container">
             <div className="reveal" style={{ maxWidth: "68ch" }}>
-              <span className="eyebrow line-eyebrow">Votre marché local</span>
+              <span className="eyebrow line-eyebrow">{t.marketEyebrow}</span>
               <h2 className="h-section" style={{ marginTop: 14 }}>
-                Ce qui fait vendre <em className="hl-line">{city.inCity}.</em>
+                {t.sells}<em className="hl-line">{city.inCity}.</em>
               </h2>
               {city.context.map((p, i) => (
                 <p key={i} className="ic-sub" style={{ marginTop: i === 0 ? 20 : 16 }}>{p}</p>
@@ -83,9 +136,9 @@ export function CityView({ city }: { city: City }) {
         <section className="ind-outcomes-ink" style={{ padding: "clamp(72px, 11vh, 120px) 0" }}>
           <div className="container">
             <div className="reveal">
-              <span className="eyebrow line-eyebrow">Les secteurs {city.inCity}</span>
+              <span className="eyebrow line-eyebrow">{t.sectorsEyebrow}{city.inCity}</span>
               <h2 className="h-section" style={{ marginTop: 14 }}>
-                Les métiers qu&apos;on <em className="hl-line">connaît ici.</em>
+                {t.trades}<em className="hl-line">{t.tradesEm}</em>
               </h2>
             </div>
 
@@ -103,9 +156,9 @@ export function CityView({ city }: { city: City }) {
 
         {/* ===================== SERVICES ===================== */}
         <ServicesBento
-          eyebrow="Ce qu'on peut faire pour vous"
-          heading={<>Être trouvé {city.inCity}, <em className="hl-line">puis choisi.</em></>}
-          intro={`Huit prestations pour les entreprises ${city.inCity}, chacune avec son prix affiché.`}
+          eyebrow={t.bentoEyebrow}
+          heading={<>{t.foundA}{city.inCity}{t.foundB}<em className="hl-line">{t.foundEm}</em></>}
+          intro={t.intro(city.inCity)}
         />
 
         {/* ===================== PROXIMITY ===================== */}
@@ -115,10 +168,10 @@ export function CityView({ city }: { city: City }) {
               <p className="ict-text">{city.proximity}</p>
               <div className="ict-actions">
                 <a href={WHATSAPP_URL} className="btn btn-primary" target="_blank" rel="noopener">
-                  Parler de mon projet
+                  {t.talk}
                   {ARROW}
                 </a>
-                <a href={CONTACT_URL} className="btn btn-outline">Envoyer mon brief</a>
+                <a href={lp(CONTACT_URL)} className="btn btn-outline">{t.brief}</a>
               </div>
             </div>
           </div>
@@ -131,7 +184,7 @@ export function CityView({ city }: { city: City }) {
               <div className="faq-left reveal">
                 <span className="eyebrow line-eyebrow">FAQ</span>
                 <h2 className="h-section" style={{ marginTop: 14 }}>
-                  Ce qu&apos;on nous demande <em className="hl-line">{city.inCity}.</em>
+                  {t.faqH2}<em className="hl-line">{city.inCity}.</em>
                 </h2>
                 <div className="faq-list-v2">
                   {city.faqs.map((f, i) => (
@@ -152,11 +205,11 @@ export function CityView({ city }: { city: City }) {
               <div className="faq-right reveal">
                 <div className="wa-card">
                   <span className="wa-card-motif" aria-hidden></span>
-                  <h3>Votre projet est {city.inCity} ?<br /><em>Parlons-en sur WhatsApp</em></h3>
+                  <h3>{t.waA}{city.inCity}{t.waB}<br /><em>{t.waEm}</em></h3>
                   <span className="wa-rule"></span>
-                  <p>On répond vite, en français, en darija ou en anglais.</p>
+                  <p>{t.waP}</p>
                   <a href={WHATSAPP_URL} className="wa-btn" target="_blank" rel="noopener">
-                    Écrire sur WhatsApp
+                    {t.waBtn}
                     {ARROW}
                   </a>
                 </div>

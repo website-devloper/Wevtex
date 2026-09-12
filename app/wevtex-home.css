@@ -5089,3 +5089,31 @@ html.menu-open .cc-bar { visibility: hidden; }
   .wevtex .post-faq .faq-item-v2 summary { padding: 18px 18px; gap: 12px; font-size: 15px; line-height: 1.45; }
   .wevtex .post-faq .faq-body > p { padding: 0 18px 18px 52px; }
 }
+
+/* ---- Language switch (FR / EN) ----------------------------------------
+   Sits in .nav-cta beside the quote button, in the burger's outline style,
+   so the bar keeps its spacing. It stays on the narrowest phones, where the
+   quote button steps aside and the drawer carries it. */
+.wevtex .lang-switch {
+  display: inline-flex; align-items: center; gap: 6px; align-self: stretch;
+  padding: 0 12px; flex-shrink: 0;
+  border: 1px solid var(--hairline-c-strong);
+  border-radius: var(--radius-btn);
+  font-family: var(--font-mono); font-size: 12px; font-weight: 700; letter-spacing: 0.08em;
+  color: var(--ink-on-cream); background: transparent; white-space: nowrap;
+  transition: border-color 160ms var(--ease-out), background 160ms var(--ease-out);
+}
+.wevtex .lang-switch svg { width: 15px; height: 15px; flex-shrink: 0; }
+.wevtex .lang-switch:hover { border-color: var(--ink-on-cream); }
+.wevtex .lang-switch:focus-visible { outline: 2px solid var(--ink-on-cream); outline-offset: 2px; }
+@media (max-width: 1100px) {
+  .wevtex .lang-switch { min-height: 46px; }
+}
+@media (max-width: 620px) {
+  .wevtex .lang-switch { min-height: 44px; padding: 0 11px; }
+}
+@media (max-width: 400px) {
+  .wevtex .nav-cta:has(.lang-switch) { display: flex; }
+  .wevtex .nav-cta:has(.lang-switch) .btn { display: none; }
+  .wevtex .nav-cta:has(.lang-switch) + .nav-burger { margin-left: 0; }
+}

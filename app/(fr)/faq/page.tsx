@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
+import { languageAlternates } from "@/lib/i18n-paths";
 import { FaqView } from "@/components/wevtex/FaqView";
-import { ALL_FAQS } from "@/lib/faq-data";
+import { ALL_FAQS, FAQ_GROUPS } from "@/lib/faq-data";
 import { JsonLd, breadcrumb, faqSchema } from "@/components/seo/JsonLd";
 
 export const metadata: Metadata = {
@@ -13,7 +14,7 @@ export const metadata: Metadata = {
     "hébergement et nom de domaine",
     "site visible sur Google",
   ],
-  alternates: { canonical: "/faq" },
+  alternates: { canonical: "/faq", languages: languageAlternates("/faq") },
   openGraph: {
     title: "Questions fréquentes | WEVTEX",
     description:
@@ -30,7 +31,7 @@ export default function FaqPage() {
           content is against Google's FAQPage guidelines. */}
       <JsonLd data={faqSchema(ALL_FAQS)} />
       <JsonLd data={breadcrumb([{ name: "Questions fréquentes", path: "/faq" }])} />
-      <FaqView />
+      <FaqView groups={FAQ_GROUPS} />
     </>
   );
 }

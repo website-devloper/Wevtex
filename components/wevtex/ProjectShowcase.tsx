@@ -1,4 +1,7 @@
-import { PROJECTS_ORDERED, projectPath } from "@/lib/projects-data";
+"use client";
+
+import type { Project } from "@/lib/projects-data";
+import { useLocale } from "./locale";
 
 /**
  * Every delivered project, laid out open.
@@ -10,7 +13,15 @@ import { PROJECTS_ORDERED, projectPath } from "@/lib/projects-data";
  *
  * Rows alternate which side the screenshot sits on, so the eye is not walking
  * down one straight edge for ten items.
+ *
+ * The projects arrive as props from the server page, in the page's language,
+ * so the portfolio text is not shipped a second time in the page's JavaScript.
  */
+
+const T = {
+  fr: { open: "Ouvrir le site ", visit: "Voir le site web" },
+  en: { open: "Open the website of ", visit: "Visit the website" },
+};
 
 const ARROW = (
   <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
@@ -18,17 +29,21 @@ const ARROW = (
   </svg>
 );
 
-export function ProjectShowcase() {
+export function ProjectShowcase({ projects }: { projects: Project[] }) {
+  const locale = useLocale();
+  const t = T[locale];
+  const href = (slug: string) => (locale === "en" ? `/en/portfolio/${slug}` : `/realisations/${slug}`);
+
   return (
     <div className="pj-list">
-      {PROJECTS_ORDERED.map((p) => (
+      {projects.map((p) => (
         <article className="pj-row reveal" key={p.slug}>
           <a
             className="pj-shot"
             href={p.liveUrl}
             target="_blank"
             rel="noopener noreferrer"
-            aria-label={`Ouvrir le site ${p.title}`}
+            aria-label={`${t.open}${p.title}`}
             style={{ backgroundImage: `url(${p.screenshot})` }}
           />
 
@@ -39,12 +54,12 @@ export function ProjectShowcase() {
               <span>{p.year}</span>
             </div>
 
-            <h2 className="pj-title"><a href={projectPath(p.slug)}>{p.title}</a></h2>
+            <h2 className="pj-title"><a href={href(p.slug)}>{p.title}</a></h2>
             <p className="pj-desc">{p.description}</p>
 
             <ul className="pj-stack">
-              {p.stack.map((t) => (
-                <li key={t}>{t}</li>
+              {p.stack.map((s) => (
+                <li key={s}>{s}</li>
               ))}
             </ul>
 
@@ -54,7 +69,7 @@ export function ProjectShowcase() {
             </div>
 
             <a className="pj-visit" href={p.liveUrl} target="_blank" rel="noopener noreferrer">
-              Voir le site web
+              {t.visit}
               {ARROW}
             </a>
           </div>

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { languageAlternates } from "@/lib/i18n-paths";
 import { serializeJsonLd } from "@/components/seo/JsonLd";
 import { PROJECTS_ORDERED } from "@/lib/projects-data";
 import { SITE_URL, abs } from "@/lib/seo";
@@ -7,7 +8,7 @@ export const metadata: Metadata = {
   title: { absolute: "Réalisations | Agence web au Maroc | WEVTEX" },
   description: "Nos réalisations au Maroc : boutiques en ligne, SaaS, réservation et sites vitrines. Des sites en production, cliquables. Voyez le travail.",
   keywords: ["exemples de sites web", "exemples de sites vitrines", "exemples de sites e-commerce"],
-  alternates: { canonical: "/portfolio" },
+  alternates: { canonical: "/portfolio", languages: languageAlternates("/portfolio") },
   openGraph: {
     title: "Réalisations | Agence web au Maroc | WEVTEX",
     description: "Nos réalisations : boutiques en ligne, SaaS, systèmes de réservation et sites vitrines, au Maroc et à l'international.",

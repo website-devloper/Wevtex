@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import { ScrollRevealText } from "./ScrollRevealText";
+import { useLocale } from "./locale";
 
 /**
  * The method section: a numbered list of steps, the current one marked as you
@@ -24,12 +25,30 @@ export type ProcessStep = {
   d: string;
 };
 
-const DEFAULT_STEPS: ProcessStep[] = [
-  { n: "01", h: "Cadrage", p: "Un appel pour comprendre votre activité, vos clients et vos objectifs. Vous repartez avec un plan clair avant que quoi que ce soit ne commence.", d: "1–2 jours" },
-  { n: "02", h: "Design", p: "Nous concevons votre site et l'affinons avec vous — ce que vous validez est exactement ce qui sera construit.", d: "3–5 jours" },
-  { n: "03", h: "Développement", p: "Un site rapide, sécurisé et pensé pour le mobile, avec un point chaque semaine pour que vous sachiez toujours où en est le projet.", d: "1–3 semaines" },
-  { n: "04", h: "Mise en ligne", p: "Nous publions le site, testons tout, connectons les statistiques et vous le remettons — avec un accompagnement qui continue après le lancement.", d: "1–2 jours" },
-];
+const DEFAULTS: Record<"fr" | "en", { eyebrow: string; title: string; titleEm: string[]; steps: ProcessStep[] }> = {
+  fr: {
+    eyebrow: "Notre méthode",
+    title: "Du premier appel\nà la mise en ligne.",
+    titleEm: ["mise", "en", "ligne."],
+    steps: [
+      { n: "01", h: "Cadrage", p: "Un appel pour comprendre votre activité, vos clients et vos objectifs. Vous repartez avec un plan clair avant que quoi que ce soit ne commence.", d: "1–2 jours" },
+      { n: "02", h: "Design", p: "Nous concevons votre site et l'affinons avec vous — ce que vous validez est exactement ce qui sera construit.", d: "3–5 jours" },
+      { n: "03", h: "Développement", p: "Un site rapide, sécurisé et pensé pour le mobile, avec un point chaque semaine pour que vous sachiez toujours où en est le projet.", d: "1–3 semaines" },
+      { n: "04", h: "Mise en ligne", p: "Nous publions le site, testons tout, connectons les statistiques et vous le remettons — avec un accompagnement qui continue après le lancement.", d: "1–2 jours" },
+    ],
+  },
+  en: {
+    eyebrow: "Our process",
+    title: "From the first call\nto launch day.",
+    titleEm: ["launch", "day."],
+    steps: [
+      { n: "01", h: "Discovery", p: "A call to understand your business, your customers and your goals. You leave with a clear plan before anything starts.", d: "1–2 days" },
+      { n: "02", h: "Design", p: "We design your website and refine it with you: what you approve is exactly what gets built.", d: "3–5 days" },
+      { n: "03", h: "Development", p: "A fast, secure, mobile-first website, with a check-in every week so you always know where the project stands.", d: "1–3 weeks" },
+      { n: "04", h: "Launch", p: "We publish the site, test everything, connect analytics and hand it over, with support that continues after launch.", d: "1–2 days" },
+    ],
+  },
+};
 
 type Props = {
   eyebrow?: string;
@@ -48,14 +67,12 @@ function proseFor(st: ProcessStep): string {
   return "";
 }
 
-export function ProcessSection({
-  eyebrow = "Notre méthode",
-  title = "Du premier appel\nà la mise en ligne.",
-  titleEm = ["mise", "en", "ligne."],
-  subtitle,
-  steps = DEFAULT_STEPS,
-  tone = "cream",
-}: Props) {
+export function ProcessSection({ eyebrow, title, titleEm, subtitle, steps, tone = "cream" }: Props) {
+  const d = DEFAULTS[useLocale()];
+  eyebrow = eyebrow ?? d.eyebrow;
+  title = title ?? d.title;
+  titleEm = titleEm ?? d.titleEm;
+  const list = steps ?? d.steps;
   const ref = useRef<HTMLElement>(null);
 
   useEffect(() => {
@@ -95,7 +112,7 @@ export function ProcessSection({
       io.disconnect();
       cleanups.forEach((c) => c());
     };
-  }, [steps]);
+  }, [list]);
 
   return (
     <section ref={ref} id="process" className={tone === "ink" ? "process process-ink" : "theme-cream process"}>
@@ -120,7 +137,7 @@ export function ProcessSection({
         <div className="process-wrap">
           <div className="process-steps">
             <div className="process-progress"><div className="process-progress-fill" id="processProgress"></div></div>
-            {steps.map((s, i) => (
+            {list.map((s, i) => (
               <div className={i === 0 ? "process-step active reveal" : "process-step reveal"} data-i={i} data-delay={i || undefined} key={s.n}>
                 <div className="num">{s.n}</div>
                 <div>

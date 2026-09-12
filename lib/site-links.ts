@@ -5,7 +5,12 @@
  * social href, and they drifted apart (two different Instagram URLs, dead "#"
  * socials, contact CTAs split between "/#contact" and "/contact"). Import from
  * here so a number or a profile changes in exactly one spot.
+ *
+ * Internal routes here are the French ones. English pages pass them through
+ * useLp() / localize() (lib/i18n-paths.ts), which returns the /en address.
  */
+
+import type { Locale } from "./i18n";
 
 /* --- Contact channels ---------------------------------------------------- */
 
@@ -59,14 +64,28 @@ export const serviceIdFromUrl = (urlSlug: string) =>
 /** The detail page for a sector — see INDUSTRY_SLUGS in lib/industries-data.ts. */
 export const industryPath = (slug: string) => `/industries/${slug}`;
 
-/** Pre-writes the WhatsApp message so the enquiry arrives already labelled. */
-export const serviceWhatsAppUrl = (service: string) =>
+/**
+ * Pre-writes the WhatsApp message so the enquiry arrives already labelled.
+ * On English pages the message is in English, so the team knows at a glance
+ * which language to answer in.
+ */
+export const serviceWhatsAppUrl = (service: string, locale: Locale = "fr") =>
   `${WHATSAPP_URL}?text=` +
-  encodeURIComponent(`Bonjour Wevtex — je suis intéressé(e) par « ${service} ». Pouvez-vous m'envoyer un devis ?`);
+  encodeURIComponent(
+    locale === "en"
+      ? `Hello Wevtex, I'm interested in “${service}”. Could you send me a quote?`
+      : `Bonjour Wevtex — je suis intéressé(e) par « ${service} ». Pouvez-vous m'envoyer un devis ?`,
+  );
 
-export const AUDIT_WHATSAPP_URL =
+export const auditWhatsAppUrl = (locale: Locale = "fr") =>
   `${WHATSAPP_URL}?text=` +
-  encodeURIComponent("Bonjour Wevtex, je souhaite profiter de l'audit gratuit de 15 minutes pour mon site.");
+  encodeURIComponent(
+    locale === "en"
+      ? "Hello Wevtex, I'd like the free 15-minute audit of my website."
+      : "Bonjour Wevtex, je souhaite profiter de l'audit gratuit de 15 minutes pour mon site.",
+  );
+
+export const AUDIT_WHATSAPP_URL = auditWhatsAppUrl("fr");
 
 /* --- Social & review profiles ---------------------------------------------
  * Only profiles that exist are listed. The header and footer render this list,

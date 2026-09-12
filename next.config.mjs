@@ -70,6 +70,11 @@ const nextConfig = {
   },
 
   experimental: {
+    // French and English each have their own root layout (app/(fr), app/(en))
+    // so every page carries the right <html lang>. With no single root layout,
+    // an address that matches no route at all is answered by
+    // app/global-not-found.tsx.
+    globalNotFound: true,
   },
 
   async redirects() {

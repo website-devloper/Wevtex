@@ -1,23 +1,60 @@
+"use client";
+
 import Image from "next/image";
-import { SERVICES } from "./homeContent";
-import { CITY_LINKS as CITIES } from "@/lib/city-list";
+import { useHomeContent } from "./useHomeContent";
+import { useLocale, useLp } from "./locale";
+import { CITY_LINKS, CITY_LINKS_EN } from "@/lib/city-list";
 import { CONTACT_URL, HOME_URL, SERVICES_URL, PORTFOLIO_URL, servicePath, industryPath, SOCIALS } from "@/lib/site-links";
 
 /** Wevtex site footer — shared across the homepage and all inner pages. */
 /* Every entry resolves to a page or to a section id that actually exists:
-   #process is rendered on /services, #pricing on the homepage. */
-const PAGES: [string, string][] = [
-  ["Accueil", HOME_URL], ["Services", SERVICES_URL], ["Réalisations", PORTFOLIO_URL],
-  ["Notre méthode", `${SERVICES_URL}#process`], ["Tarifs", `${HOME_URL}#pricing`], ["FAQ", "/faq"], ["Blog", "/blog"], ["Agence IA", "/agence-developpement-ia-maroc"], ["Contact", CONTACT_URL],
-];
-/* Several labels share a page on purpose — one sector page covers both
+   #process is rendered on /services, #pricing on the homepage.
+   Several sector labels share a page on purpose — one sector page covers both
    "Immobilier" and "Finance" under Services professionnels. */
-const SECTEURS: [string, string][] = [
-  ["Santé & bien-être", industryPath("healthcare-wellness")], ["Immobilier", industryPath("professional-services")],
-  ["Éducation", industryPath("education-elearning")], ["E-commerce", industryPath("ecommerce-retail")],
-  ["Hôtellerie", industryPath("tourism-hospitality")], ["Finance", industryPath("professional-services")],
-  ["Technologie", industryPath("creative-media-tech")],
-];
+const T = {
+  fr: {
+    pages: [
+      ["Accueil", HOME_URL], ["Services", SERVICES_URL], ["Réalisations", PORTFOLIO_URL],
+      ["Notre méthode", `${SERVICES_URL}#process`], ["Tarifs", `${HOME_URL}#pricing`], ["FAQ", "/faq"], ["Blog", "/blog"], ["Agence IA", "/agence-developpement-ia-maroc"], ["Contact", CONTACT_URL],
+    ],
+    sectors: [
+      ["Santé & bien-être", "healthcare-wellness"], ["Immobilier", "professional-services"],
+      ["Éducation", "education-elearning"], ["E-commerce", "ecommerce-retail"],
+      ["Hôtellerie", "tourism-hospitality"], ["Finance", "professional-services"],
+      ["Technologie", "creative-media-tech"],
+    ],
+    homeAria: "Wevtex — accueil",
+    about: "Agence marketing digital à Casablanca. Des sites et des campagnes qui ramènent des clients aux entreprises marocaines, avec un prix annoncé et tout à votre nom.",
+    navigation: "Navigation",
+    services: "Services",
+    sectorsTitle: "Secteurs",
+    cities: "Villes",
+    rights: "© 2026 Wevtex. Tous droits réservés.",
+    privacy: "Politique de confidentialité",
+    legal: "Mentions légales",
+  },
+  en: {
+    pages: [
+      ["Home", HOME_URL], ["Services", SERVICES_URL], ["Portfolio", PORTFOLIO_URL],
+      ["Our process", `${SERVICES_URL}#process`], ["Pricing", `${HOME_URL}#pricing`], ["FAQ", "/faq"], ["Blog", "/blog"], ["AI agency", "/agence-developpement-ia-maroc"], ["Contact", CONTACT_URL],
+    ],
+    sectors: [
+      ["Health & wellness", "healthcare-wellness"], ["Real estate", "professional-services"],
+      ["Education", "education-elearning"], ["E-commerce", "ecommerce-retail"],
+      ["Hospitality", "tourism-hospitality"], ["Finance", "professional-services"],
+      ["Technology", "creative-media-tech"],
+    ],
+    homeAria: "Wevtex — home",
+    about: "Web design and digital marketing agency in Casablanca. Websites and campaigns that bring customers to businesses in Morocco and abroad, with the price upfront and everything in your name.",
+    navigation: "Navigation",
+    services: "Services",
+    sectorsTitle: "Industries",
+    cities: "Cities",
+    rights: "© 2026 Wevtex. All rights reserved.",
+    privacy: "Privacy policy",
+    legal: "Legal notice",
+  },
+} as const;
 
 /* Icons keyed to SOCIALS in lib/site-links.ts — an entry with an empty url is
    not rendered, so the footer never shows a dead href="#". */
@@ -41,29 +78,41 @@ function FooterCol({ title, items, split }: { title: string; items: [string, str
 }
 
 export function SiteFooter() {
+  const locale = useLocale();
+  const t = T[locale];
+  const lp = useLp();
+  const { SERVICES } = useHomeContent();
+
+  const pages = t.pages.map(([label, href]) => [label, lp(href)] as [string, string]);
+  const sectors = t.sectors.map(([label, slug]) => [label, lp(industryPath(slug))] as [string, string]);
+  const cities: [string, string][] =
+    locale === "en"
+      ? CITY_LINKS_EN.map((c) => [c.name, `/en/${c.slug}`])
+      : CITY_LINKS.map((c) => [c.name, `/${c.slug}`]);
+
   return (
     <footer className="footer-v2">
       <div className="container">
         <div className="footer-cols">
           <div className="footer-brandcol">
-            <a href={HOME_URL} className="footer-wordmark" aria-label="Wevtex — accueil">
+            <a href={lp(HOME_URL)} className="footer-wordmark" aria-label={t.homeAria}>
               <Image className="footer-mark" src="/images/logo/wevtex-mark-ink.png" alt="" width={1192} height={791} sizes="34px" />
               <span className="footer-word">WEVT<span>EX</span></span>
             </a>
-            <p className="footer-about">Agence marketing digital à Casablanca. Des sites et des campagnes qui ramènent des clients aux entreprises marocaines, avec un prix annoncé et tout à votre nom.</p>
+            <p className="footer-about">{t.about}</p>
           </div>
 
-          <FooterCol title="Navigation" items={PAGES} split />
-          <FooterCol title="Services" items={SERVICES.map((sv) => [sv.name, servicePath(sv.slug)] as [string, string])} />
-          <FooterCol title="Secteurs" items={SECTEURS} split />
-          <FooterCol title="Villes" items={CITIES.map((c) => [c.name, `/${c.slug}`] as [string, string])} split />
+          <FooterCol title={t.navigation} items={pages} split />
+          <FooterCol title={t.services} items={SERVICES.map((sv) => [sv.name, lp(servicePath(sv.slug))] as [string, string])} />
+          <FooterCol title={t.sectorsTitle} items={sectors} split />
+          <FooterCol title={t.cities} items={cities} split />
         </div>
 
         <div className="footer-bottom-v2">
-          <span>© 2026 Wevtex. Tous droits réservés.</span>
+          <span>{t.rights}</span>
           <span className="footer-legal">
-            <a href="/confidentialite">Politique de confidentialité</a>
-            <a href="/mentions-legales">Mentions légales</a>
+            <a href={lp("/confidentialite")}>{t.privacy}</a>
+            <a href={lp("/mentions-legales")}>{t.legal}</a>
           </span>
           <div className="footer-social">
             {SOCIAL_ICONS.filter(({ label }) => SOCIALS.some((x) => x.label === label && x.url)).map(({ label, icon }) => (

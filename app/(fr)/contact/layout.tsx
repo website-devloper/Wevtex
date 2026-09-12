@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
+import { languageAlternates } from "@/lib/i18n-paths";
 import { serializeJsonLd } from "@/components/seo/JsonLd";
 
 export const metadata: Metadata = {
   title: { absolute: "Contact | Devis site web au Maroc | WEVTEX" },
   description: "Parlez-nous de votre projet web ou application au Maroc. Premier avis, budget et délai sous quelques heures ouvrées. Devis gratuit.",
   keywords: ["devis site web Maroc", "demande de devis site internet", "devis création site web", "devis gratuit site web"],
-  alternates: { canonical: "/contact" },
+  alternates: { canonical: "/contact", languages: languageAlternates("/contact") },
   openGraph: {
     title: "Contact | Devis site web au Maroc | WEVTEX",
     description: "Agence web et applications basée à Casablanca. Sites internet, boutiques en ligne, SEO et automatisation.",
