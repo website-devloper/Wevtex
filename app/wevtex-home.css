@@ -5250,3 +5250,67 @@ html.menu-open .cc-bar { visibility: hidden; }
 .wevtex .stats-band-v2 + .inline-cta-ink .ict-text { color: #1c2a08; }
 .wevtex .stats-band-v2 + .inline-cta-ink .btn-primary { background: #1c2a08; color: var(--accent); border-color: #1c2a08; }
 .wevtex .stats-band-v2 + .inline-cta-ink .btn-primary:hover { background: #22330c; box-shadow: 0 8px 20px -10px rgba(28, 42, 8, 0.6); }
+
+/* ---------------------------------------------------------------------------
+   Hero bands v2 — the square grid across the whole band, no image, no circles.
+   Overrides the half-width masked grid above.
+   ------------------------------------------------------------------------- */
+.wevtex .sec-first:not(:has(+ .contact-split)) {
+  background: linear-gradient(115deg, #1c2a08 0%, #22330c 55%, #2c4011 100%);
+}
+.wevtex .sec-first:not(:has(+ .contact-split))::before {
+  background-image:
+    linear-gradient(rgba(198, 242, 78, 0.09) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(198, 242, 78, 0.09) 1px, transparent 1px);
+  background-size: 64px 64px;
+  -webkit-mask-image: none;
+  mask-image: none;
+}
+/* Service heroes stay light (their artwork is drawn for it) but share the grid. */
+.wevtex .srv-d-hero {
+  background-color: var(--bg-paper);
+  background-image:
+    linear-gradient(rgba(28, 42, 8, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(28, 42, 8, 0.06) 1px, transparent 1px);
+  background-size: 64px 64px;
+}
+
+/* ---------------------------------------------------------------------------
+   Legal documents — a white page, numbered sections, readable measure.
+   ------------------------------------------------------------------------- */
+.wevtex .legal-doc { background: #ffffff; padding: clamp(56px, 9vh, 96px) 0 clamp(80px, 12vh, 130px); }
+.wevtex .legal-col { max-width: 88ch; }
+.wevtex .legal-sec + .legal-sec { margin-top: clamp(34px, 4.6vh, 48px); }
+.wevtex .legal-sec-h {
+  font-size: clamp(19px, 1.9vw, 22px); font-weight: 600; letter-spacing: -0.015em;
+  line-height: 1.3; margin: 0 0 14px; color: var(--ink-on-cream);
+}
+.wevtex .legal-body ul { list-style: none; padding: 0; margin: 4px 0 14px; }
+.wevtex .legal-body li { position: relative; padding-left: 18px; margin: 6px 0; color: var(--ink-on-cream-2); line-height: 1.7; }
+.wevtex .legal-body li::before {
+  content: ""; position: absolute; left: 2px; top: 0.72em;
+  width: 6px; height: 6px; border-radius: 50%; background: #4c6b10;
+}
+
+/* ---------------------------------------------------------------------------
+   Homepage hero lead form — replaces the mockup on the right.
+   ------------------------------------------------------------------------- */
+.wevtex .hero-visual.hero-form-slot { display: flex; align-items: center; justify-content: flex-end; }
+.wevtex .hero-form {
+  position: relative; width: 100%; max-width: 440px;
+  background: #ffffff; border: 1px solid #dde6c9; border-radius: 18px;
+  padding: clamp(24px, 2.4vw, 32px);
+  box-shadow: 0 30px 60px -34px rgba(28, 42, 8, 0.45);
+}
+.wevtex .hero-form::before {
+  content: ""; position: absolute; top: 0; left: clamp(24px, 2.4vw, 32px);
+  width: 48px; height: 3px; border-radius: 0 0 3px 3px; background: var(--accent);
+}
+.wevtex .hero-form .form-grid { gap: 12px; }
+.wevtex .hero-form-btn { width: 100%; justify-content: center; margin-top: 6px; }
+.wevtex .hero-form-note { margin: 12px 0 0; font-size: 12.5px; color: var(--ink-on-cream-3); text-align: center; }
+.wevtex .hero-form-error { color: #9c2a14; font-weight: 500; font-size: 14px; margin: 0 0 10px; }
+@media (max-width: 960px) {
+  .wevtex .hero-visual.hero-form-slot { justify-content: stretch; }
+  .wevtex .hero-form { max-width: none; }
+}

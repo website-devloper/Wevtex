@@ -13,6 +13,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
+import { HeroLeadForm } from "./HeroLeadForm";
 import "../../app/wevtex-home.css";
 import { SiteHeader } from "./SiteHeader";
 import { SiteFooter } from "./SiteFooter";
@@ -622,16 +623,10 @@ export function HomeClient({ projects }: { projects: Project[] }) {
               </ul>
             </div>
 
-            <div className="hero-visual">
-              <Image
-                src="/images/feature/hero-shot.webp"
-                alt={t.heroAlt}
-                width={1536}
-                height={1024}
-                priority
-                sizes="(max-width: 960px) 92vw, 46vw"
-                className="hero-shot"
-              />
+            <div className="hero-visual hero-form-slot">
+              {/* Conversion: the short lead form sits where the eye lands after
+                  the headline. The long qualifying brief stays on /contact. */}
+              <HeroLeadForm />
             </div>
           </div>
 

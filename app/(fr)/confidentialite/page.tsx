@@ -17,11 +17,12 @@ export const metadata: Metadata = {
 export default function ConfidentialitePage() {
   return (
     <LegalPage
-      eyebrow="Confidentialité"
-      title="Vos données,"
-      accent="et ce que nous en faisons."
-      lede="Nous collectons le strict nécessaire pour répondre à votre demande, et rien de plus. Cette page explique quoi, pourquoi, combien de temps, et comment reprendre la main."
+      eyebrow="Politique de confidentialité"
+      title="Politique de"
+      accent="confidentialité."
+      lede="Document légal · Wevtex. Ce que nous collectons, pourquoi, combien de temps, et comment reprendre la main."
       updated="5 septembre 2026"
+      cta={{ label: "Demander un devis gratuit", href: CONTACT_URL }}
       sections={[
         {
           h: "Qui est responsable de vos données",

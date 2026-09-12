@@ -7,19 +7,20 @@ import { useReveal } from "./useReveal";
 import { useLocale } from "./locale";
 
 /**
- * Shared shell for the legal pages. Same design language as the rest of the
- * site — `line-eyebrow` → `h-section` with the `hl-line` lime underline →
- * `ic-sub` — so /confidentialite and /mentions-legales do not read as
- * bolted-on boilerplate.
+ * Shared shell for the legal pages (FR and EN).
  *
- * Body copy is set narrow (68ch) because these are the only pages on the site
- * anyone actually reads top to bottom.
+ * Hero: the site's deep-green .sec-first band with its square grid.
+ * Body: a white document with numbered sections — legal texts are cited by
+ * article ("section 3"), so the numbers carry meaning. Set to ~88ch.
+ *
+ * The hero CTA is optional: a page passes it in its own language, so the
+ * English pages are unaffected until they choose to add one.
  */
 
 export type LegalSection = { h: string; body: React.ReactNode };
 
 /* French sets a no-break space before the colon. */
-const T = { fr: { updated: "Mise à jour\u00a0: " }, en: { updated: "Last updated: " } };
+const T = { fr: { updated: "Mise à jour : " }, en: { updated: "Last updated: " } };
 
 export function LegalPage({
   eyebrow,
@@ -28,6 +29,7 @@ export function LegalPage({
   lede,
   updated,
   sections,
+  cta,
 }: {
   eyebrow: string;
   title: string;
@@ -35,6 +37,7 @@ export function LegalPage({
   lede: string;
   updated: string;
   sections: LegalSection[];
+  cta?: { label: string; href: string };
 }) {
   useReveal();
   const t = T[useLocale()];
@@ -45,7 +48,7 @@ export function LegalPage({
 
       <main id="main">
 
-      <section className="theme-cream sec-first" style={{ paddingBottom: "clamp(48px, 7vh, 76px)" }}>
+      <section className="theme-cream sec-first" style={{ paddingBottom: "clamp(52px, 8vh, 84px)" }}>
         <div className="container">
           <span className="eyebrow line-eyebrow">{eyebrow}</span>
           <h1 className="h-section" style={{ marginTop: 14 }}>
@@ -54,35 +57,29 @@ export function LegalPage({
           <p className="ic-sub wk-lede">{lede}</p>
           <p
             className="eyebrow"
-            style={{ marginTop: 26, fontFamily: "var(--font-mono)", letterSpacing: "0.12em" }}
+            style={{ marginTop: 22, fontFamily: "var(--font-mono)", letterSpacing: "0.12em" }}
           >
             {t.updated}{updated}
           </p>
+          {cta && (
+            <div className="hero-ctas" style={{ marginTop: 28, marginBottom: 0 }}>
+              <a href={cta.href} className="btn btn-primary">
+                {cta.label}
+                <svg className="arrow" viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="1.6" aria-hidden>
+                  <path d="M3 9L9 3M9 3H4M9 3V8" />
+                </svg>
+              </a>
+            </div>
+          )}
         </div>
       </section>
 
-      <section className="theme-paper" style={{ padding: "clamp(56px, 9vh, 96px) 0 clamp(80px, 12vh, 130px)" }}>
+      <section className="legal-doc">
         <div className="container">
-          <div style={{ maxWidth: "68ch" }}>
+          <div className="legal-col">
             {sections.map((s, i) => (
-              <div
-                key={s.h}
-                style={{
-                  paddingTop: i === 0 ? 0 : "clamp(30px, 4vh, 42px)",
-                  marginTop: i === 0 ? 0 : "clamp(30px, 4vh, 42px)",
-                  borderTop: i === 0 ? "none" : "1px solid var(--hairline-c)",
-                }}
-              >
-                <h2
-                  style={{
-                    fontSize: "clamp(19px, 2vw, 23px)",
-                    fontWeight: 500,
-                    letterSpacing: "-0.02em",
-                    margin: "0 0 12px",
-                  }}
-                >
-                  {s.h}
-                </h2>
+              <div key={s.h} className="legal-sec">
+                <h2 className="legal-sec-h">{i + 1}. {s.h}</h2>
                 <div className="legal-body">{s.body}</div>
               </div>
             ))}

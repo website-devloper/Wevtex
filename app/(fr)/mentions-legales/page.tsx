@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { languageAlternates } from "@/lib/i18n-paths";
 import { LegalPage } from "@/components/wevtex/LegalPage";
+import { CONTACT_URL } from "@/lib/site-links";
 
 export const metadata: Metadata = {
   title: "Mentions légales",
@@ -18,10 +19,11 @@ export default function MentionsLegalesPage() {
   return (
     <LegalPage
       eyebrow="Mentions légales"
-      title="Qui édite"
-      accent="ce site."
-      lede="Les informations légales relatives à wevtex.com : éditeur, hébergeur, propriété intellectuelle et conditions d'utilisation."
+      title="Mentions"
+      accent="légales."
+      lede="Document légal · Wevtex. Éditeur, hébergeur, propriété intellectuelle et conditions d'utilisation."
       updated="5 septembre 2026"
+      cta={{ label: "Demander un devis gratuit", href: CONTACT_URL }}
       sections={[
         {
           h: "Éditeur du site",
