@@ -13,7 +13,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
-import { HeroLeadForm } from "./HeroLeadForm";
+import { ProjectBriefForm } from "./ProjectBriefForm";
 import "../../app/wevtex-home.css";
 import { SiteHeader } from "./SiteHeader";
 import { SiteFooter } from "./SiteFooter";
@@ -624,9 +624,11 @@ export function HomeClient({ projects }: { projects: Project[] }) {
             </div>
 
             <div className="hero-visual hero-form-slot">
-              {/* Conversion: the short lead form sits where the eye lands after
-                  the headline. The long qualifying brief stays on /contact. */}
-              <HeroLeadForm />
+              {/* Conversion: the full project brief — the same fields and the
+                  same backend as /contact — where the eye lands after the headline. */}
+              <div className="hero-form">
+                <ProjectBriefForm />
+              </div>
             </div>
           </div>
 
