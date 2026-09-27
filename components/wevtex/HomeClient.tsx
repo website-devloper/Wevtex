@@ -632,7 +632,13 @@ export function HomeClient({ projects }: { projects: Project[] }) {
             </div>
           </div>
 
-          {/* Trust bar: proof of other clients, kept in the hero so it lands above the fold. */}
+        </div>
+      </section>
+
+      {/* Trust bar: its own white band under the hero, so the marks are read
+          on their own ground rather than inside the deep-green screen. */}
+      <section className="logos-band">
+        <div className="container">
           <div className="hero-logos reveal">
             <p className="ls-lead">{t.logosLead}</p>
             <ul className="ls-row">
@@ -986,59 +992,6 @@ export function HomeClient({ projects }: { projects: Project[] }) {
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M9 18l6-6-6-6" /></svg>
             </button>
           </div>
-        </div>
-      </section>
-
-      {/* ===================== PRICING (mockup 10) ===================== */}
-      <section className="pricing-v2 pricing-ink" id="pricing">
-        <div className="container">
-          <div className="ic-head reveal">
-            <span className="eyebrow line-eyebrow-center">{t.pricingEyebrow}</span>
-            <h2 className="h-section" style={{ marginTop: 16, justifyContent: "center" }}>
-              {t.pricingA}<em className="hl-line">{t.pricingEm}</em>
-            </h2>
-            <p className="ic-sub">
-              {t.pricingSubA}<br />
-              {t.pricingSubB}
-            </p>
-          </div>
-
-          {/* One card per service — the price is the entry point for that service,
-              not a bundle, so a visitor sees what their own job costs. */}
-          <div className="pr-grid pr-grid-8 reveal">
-            {SERVICES.map((sv) => (
-              <div className={sv.featured ? "pr-card featured" : "pr-card"} key={sv.slug}>
-                {sv.featured && (
-                  <span className="pr-badge">
-                    <svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor" aria-hidden><path d="M12 2l2.9 6.3 6.9.6-5.2 4.6 1.6 6.7L12 17.3 5.8 20.8l1.6-6.7L2.2 8.9l6.9-.6z" /></svg>
-                    {t.popular}
-                  </span>
-                )}
-                <div className="pr-top">
-                  <span className="pr-icon">{SERVICE_ICONS[sv.slug]}</span>
-                  <div>
-                    <div className="pr-name">{sv.name}</div>
-                    <div className="pr-sub">{sv.short}</div>
-                  </div>
-                </div>
-                <div className="pr-divider"></div>
-                <span className="pr-from">{t.from}</span>
-                <div className="pr-price">{sv.price}<span className="cur">{t.cur}</span></div>
-                <div className="pr-note">{sv.note}</div>
-                <a href={serviceWhatsAppUrl(sv.name, locale)} className={`pr-btn${sv.featured ? " solid" : ""}`} target="_blank" rel="noopener">
-                  {sv.cta}
-                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden style={{ marginLeft: 4 }}><path d="M5 12h14M13 6l6 6-6 6" /></svg>
-                </a>
-              </div>
-            ))}
-          </div>
-
-          <div className="pr-foot reveal">
-            <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden><path d="M20 6L9 17l-5-5" /></svg>{t.noHidden}</span>
-            <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden><path d="M20 6L9 17l-5-5" /></svg>{t.paySatisfied}</span>
-            <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden><path d="M20 6L9 17l-5-5" /></svg>{t.offGrid}</span>
-          </div>
-
         </div>
       </section>
 

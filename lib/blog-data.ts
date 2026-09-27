@@ -18,6 +18,7 @@
 import { POSTS_A } from "./blog/posts-a";
 import { POSTS_B } from "./blog/posts-b";
 import { POSTS_C } from "./blog/posts-c";
+import { POSTS_SEO } from "./blog/posts-seo";
 import { fillPricesDeep } from "./pricing";
 
 export type PostBlock =
@@ -27,7 +28,8 @@ export type PostBlock =
   | { type: "ul"; items: string[] }
   | { type: "ol"; items: string[] }
   | { type: "note"; text: string }
-  | { type: "table"; head: string[]; rows: string[][] };
+  | { type: "table"; head: string[]; rows: string[][] }
+  | { type: "links"; items: { label: string; href: string }[] };
 
 export type Post = {
   slug: string;
@@ -58,7 +60,7 @@ export type Post = {
 };
 
 /* Prices in the posts are {{prix:…}} tokens, resolved from lib/pricing.ts. */
-export const POSTS: Post[] = fillPricesDeep([...POSTS_A, ...POSTS_B, ...POSTS_C]);
+export const POSTS: Post[] = fillPricesDeep([...POSTS_A, ...POSTS_B, ...POSTS_C, ...POSTS_SEO]);
 
 export const POST_SLUGS = POSTS.map((p) => p.slug);
 

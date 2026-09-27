@@ -81,6 +81,16 @@ function Block({ block }: { block: PostBlock }) {
       );
     case "note":
       return <aside className="post-note">{block.text}</aside>;
+    case "links":
+      return (
+        <div className="post-links">
+          {block.items.map((l) => (
+            <a key={l.href} href={l.href} className="post-link">
+              {l.label}<span aria-hidden> →</span>
+            </a>
+          ))}
+        </div>
+      );
     case "table":
       return (
         <div className="post-table-wrap">

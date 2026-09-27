@@ -10,8 +10,9 @@ import { POST_SLUGS_EN } from "../i18n-paths";
 import { POSTS_A_EN } from "./blog/posts-a";
 import { POSTS_B_EN } from "./blog/posts-b";
 import { POSTS_C_EN } from "./blog/posts-c";
+import { POSTS_SEO_EN } from "./blog/posts-seo";
 
-export const POSTS_EN: Post[] = fillPricesDeep([...POSTS_A_EN, ...POSTS_B_EN, ...POSTS_C_EN], "en");
+export const POSTS_EN: Post[] = fillPricesDeep([...POSTS_A_EN, ...POSTS_B_EN, ...POSTS_C_EN, ...POSTS_SEO_EN], "en");
 
 export const POST_SLUGS_LIST_EN = POSTS_EN.map((p) => p.slug);
 

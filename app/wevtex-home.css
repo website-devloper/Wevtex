@@ -5600,18 +5600,20 @@ html.menu-open .cc-bar { visibility: hidden; }
 .wevtex .hero-split .eyebrow::before,
 .wevtex .hero-split .line-eyebrow::after { display: none; }
 
-/* Client logos: a white band inside the hero, so the marks show in their own
-   colours instead of being flattened to white silhouettes. */
-.wevtex .hero-split .hero-logos {
+/* Client logos: their own white band under the hero, so the marks are read on
+   their own ground and keep their colours. */
+.wevtex .logos-band {
   background: #ffffff;
-  border: 1px solid #e3e8d8;
-  border-radius: 12px;
-  padding: 22px clamp(18px, 2.4vw, 30px) 24px;
-  margin-top: clamp(38px, 4.4vw, 56px);
-  border-top: 1px solid #e3e8d8;
+  padding: clamp(30px, 4vw, 46px) 0;
+  border-bottom: 1px solid #e9eede;
 }
-.wevtex .hero-split .ls-row img { filter: none; opacity: 1; }
-.wevtex .hero-split .ls-lead { color: #6b7a58; }
+.wevtex .logos-band .hero-logos {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+.wevtex .logos-band .ls-row img { filter: none; opacity: 1; }
+.wevtex .logos-band .ls-lead { color: #6b7a58; }
 
 /* A service sold as one pack: the card keeps a card's width instead of
    stretching across the three-column grid. */
@@ -5623,4 +5625,57 @@ html.menu-open .cc-bar { visibility: hidden; }
   letter-spacing: 0.02em;
   margin-left: 2px;
   opacity: 0.72;
+}
+
+/* Internal links inside a post, the same chips the service pages used. */
+.wevtex .post-links { display: flex; flex-wrap: wrap; gap: 10px; margin: 22px 0 26px; }
+.wevtex .post-link {
+  display: inline-flex; align-items: center; gap: 4px;
+  padding: 9px 15px; border: 1px solid #dde6c9; border-radius: 999px;
+  background: #ffffff; color: #1c2a08;
+  font-size: 13.5px; font-weight: 600; text-decoration: none;
+  transition: border-color 180ms var(--ease-out), background 180ms var(--ease-out);
+}
+.wevtex .post-link:hover { border-color: #1c2a08; background: #f2f9dd; }
+
+/* ---------------------------------------------------------------------------
+   Floating actions: WhatsApp, and back to top once there is a way back.
+   ------------------------------------------------------------------------- */
+.wevtex .float-actions {
+  position: fixed;
+  right: clamp(14px, 2vw, 24px);
+  bottom: calc(clamp(14px, 2vw, 24px) + env(safe-area-inset-bottom, 0px));
+  z-index: 60;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+.wevtex .float-btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  border-radius: 999px; border: 0; cursor: pointer;
+  box-shadow: 0 14px 30px -14px rgba(28, 42, 8, 0.55);
+  transition: transform 180ms var(--ease-out), background 180ms var(--ease-out), opacity 180ms var(--ease-out);
+}
+.wevtex .float-btn:hover { transform: translateY(-2px); }
+.wevtex .float-wa {
+  width: 56px; height: 56px;
+  background: #25d366; color: #ffffff;
+  text-decoration: none;
+}
+.wevtex .float-wa:hover { background: #1fb457; }
+.wevtex .float-top {
+  width: 44px; height: 44px;
+  background: #1c2a08; color: #ffffff;
+  opacity: 0; visibility: hidden; transform: translateY(8px);
+  pointer-events: none;
+}
+.wevtex .float-top.is-in { opacity: 1; visibility: visible; transform: none; pointer-events: auto; }
+.wevtex .float-top:hover { background: #2a3d10; }
+@media (max-width: 600px) {
+  .wevtex .float-wa { width: 50px; height: 50px; }
+  .wevtex .float-top { width: 40px; height: 40px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .wevtex .float-btn { transition: none; }
 }

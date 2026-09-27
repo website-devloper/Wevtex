@@ -40,6 +40,14 @@ export const POST_SLUGS_EN: Record<string, string> = {
   "google-ads-ou-facebook-ads-maroc": "google-ads-or-facebook-ads-morocco",
   "site-web-ou-page-facebook": "website-or-facebook-page",
   "vendre-en-ligne-au-maroc": "how-to-sell-online-in-morocco",
+  "guide-creation-site-web-maroc": "guide-to-building-a-website-in-morocco",
+  "guide-referencement-naturel-maroc": "guide-to-seo-in-morocco",
+  "guide-seo-local-google-maps-maroc": "guide-to-local-seo-google-maps-morocco",
+  "guide-google-ads-meta-ads-maroc": "guide-to-google-ads-meta-ads-morocco",
+  "guide-application-mobile-maroc": "guide-to-mobile-app-development-morocco",
+  "guide-logiciel-sur-mesure-maroc": "guide-to-custom-software-morocco",
+  "guide-developpement-web-sur-mesure-maroc": "guide-to-custom-web-development-morocco",
+  "guide-chatbot-whatsapp-maroc": "guide-to-whatsapp-chatbots-morocco",
 };
 
 /** Delivered projects: French slug -> English slug. */

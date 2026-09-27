@@ -342,55 +342,6 @@ export function ServiceDetailView({ service }: { service: Service }) {
         </section>
       )}
 
-      {/* ===================== RECHERCHE =====================
-          The questions buyers type, answered on the page (lib/service-seo.ts):
-          the exact term in an H2, the answer first, real published prices.
-          Ends with the cities served, linked to their pages. */}
-      {service.seoSections && service.seoSections.length > 0 && (
-        <section className="theme-paper srv-d-sec seo-sec">
-          <div className="container">
-            <div className="seo-grid">
-              {service.seoSections.map((sec) => (
-                <article key={sec.h2} className="seo-card reveal">
-                  <h2 className="seo-card-h">{sec.h2}</h2>
-                  {sec.paras.map((p) => (
-                    <p key={p} className="seo-card-p">{p}</p>
-                  ))}
-                  {sec.bullets && (
-                    <ul className="srv-d-checks seo-card-list">
-                      {sec.bullets.map((b) => <li key={b}>{CHECK}{b}</li>)}
-                    </ul>
-                  )}
-                  {sec.links && (
-                    <div className="seo-card-links">
-                      {sec.links.map((l) => (
-                        <a key={l.href} href={lp(l.href)} className="seo-card-link">
-                          {l.label}<span aria-hidden> →</span>
-                        </a>
-                      ))}
-                    </div>
-                  )}
-                </article>
-              ))}
-
-              <article className="seo-card seo-card-wide reveal">
-                <h2 className="seo-card-h">
-                  {service.seoCityLabel ?? service.name}{t.citiesH2}
-                </h2>
-                <p className="seo-card-p">{t.citiesP}</p>
-                <div className="seo-card-chips">
-                  {cities.map((c) => (
-                    <a key={c.slug} href={c.href} className="seo-chip">
-                      {service.seoCityLabel ?? t.cityFallback}{t.inCity}{c.name}
-                    </a>
-                  ))}
-                </div>
-              </article>
-            </div>
-          </div>
-        </section>
-      )}
-
       {/* ===================== TARIFS ===================== */}
       {service.pricing && (
         <section className="pricing-v2 pricing-ink srv-d-pricing" id="tarifs">
