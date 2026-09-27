@@ -52,3 +52,6 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 *.log
+
+# Content exported for the Strapi import (regenerate with scripts/export-content.ts)
+exports/
