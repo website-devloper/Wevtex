@@ -5560,3 +5560,20 @@ html.menu-open .cc-bar { visibility: hidden; }
 .wevtex .contact-split .cs-form-card .pb-count { color: #6b7a58; font-weight: 600; }
 .wevtex .contact-split .cs-form-card .pb-track { background: #e7ecdb; }
 .wevtex .contact-split .cs-form-card .pb-note { color: #6b7a58; font-size: 12px; }
+
+/* ---------------------------------------------------------------------------
+   Nav: one underline, and a hover that belongs to the brand (2026-09-27)
+   Two rules drew a lime rule under the hovered item: the ::after bar inset to
+   the label's padding, and a full-width gradient painted as the label's own
+   background. Both fired at once, so the item hovered with two strokes of
+   different widths. The ::after stays; the gradient goes.
+   ------------------------------------------------------------------------- */
+.wevtex .site-header .nav-label { background-image: none; }
+
+/* The dropdown row lifted on a grey wash that read as black against the white
+   panel. A lime tint puts it in the palette. */
+.wevtex .site-header .mega-item:hover,
+.wevtex .nav-links .mega-item:hover {
+  background-color: #f2f9dd;
+}
+.wevtex .site-header .mega-item:hover strong { color: #1c2a08; }
