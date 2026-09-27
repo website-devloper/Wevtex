@@ -179,8 +179,7 @@ export function ServiceDetailView({ service }: { service: Service }) {
           <div className="srv-d-hero-grid">
             <div className="srv-d-hero-body reveal">
               <div className="crumb">
-                <a href={lp("/")} style={{ color: "inherit" }}>{t.home}</a> &nbsp;/&nbsp;{" "}
-                <a href={lp("/services")} style={{ color: "inherit" }}>Services</a> &nbsp;/&nbsp; {service.name}
+                <a href={lp("/")} style={{ color: "inherit" }}>{t.home}</a> &nbsp;/&nbsp; {service.name}
               </div>
               <Title as="h1" text={service.h1} em={service.h1Em} />
               <p className="ic-sub srv-d-lede">{service.intro}</p>
@@ -464,7 +463,7 @@ export function ServiceDetailView({ service }: { service: Service }) {
       <CtaBand
         heading={<>{service.name}<br /><em className="hl-line">{t.ctaEm}</em></>}
         text={t.ctaText}
-        secondaryHref="/services"
+        secondaryHref="/tarifs"
         secondaryLabel={t.compare}
       />
       </main>

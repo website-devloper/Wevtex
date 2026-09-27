@@ -5734,3 +5734,43 @@ html.menu-open .cc-bar { visibility: hidden; }
   display: flex; flex-direction: column; align-items: center; gap: 18px; text-align: center;
 }
 .wevtex .tp-foot p { margin: 0; color: var(--ink-on-dark-2); font-size: 15.5px; line-height: 1.7; }
+
+/* ---------------------------------------------------------------------------
+   "Pourquoi nous" cards (2026-09-28)
+   The cards were left on #191b1f with a #2a2d33 hairline, a cold neutral grey
+   from the old ink palette, so they read as black boxes dropped on the green.
+   They move into the same family as the ground: a lighter green surface, a
+   lime-tinted hairline, and a lift on hover instead of a colour change.
+   ------------------------------------------------------------------------- */
+.wevtex .ind-outcomes-ink .ind-outcome {
+  background: linear-gradient(158deg, rgba(198, 242, 78, 0.07), rgba(198, 242, 78, 0.02) 60%), #22330c;
+  border: 1px solid rgba(198, 242, 78, 0.16);
+  transition: transform 220ms var(--ease-out), border-color 220ms var(--ease-out), box-shadow 220ms var(--ease-out);
+}
+.wevtex .ind-outcomes-ink .ind-outcome:hover {
+  transform: translateY(-3px);
+  border-color: rgba(198, 242, 78, 0.42);
+  box-shadow: 0 20px 38px -26px rgba(0, 0, 0, 0.75);
+}
+.wevtex .ind-outcomes-ink .ind-outcome p { color: rgba(255, 255, 255, 0.76); }
+.wevtex .ind-outcomes-ink .eyebrow { color: rgba(255, 255, 255, 0.66); }
+@media (prefers-reduced-motion: reduce) {
+  .wevtex .ind-outcomes-ink .ind-outcome:hover { transform: none; }
+}
+
+/* Services opens the panel rather than going anywhere, so its label is a
+   button: it needs the browser's own chrome stripped to match the links. */
+.wevtex .site-header .nav-label-btn {
+  appearance: none;
+  background: none;
+  border: 0;
+  margin: 0;
+  /* padding stays as .nav-label sets it: the underline is inset from it. */
+  font: inherit;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  cursor: pointer;
+  text-align: left;
+}

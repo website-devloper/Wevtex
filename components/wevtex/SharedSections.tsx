@@ -12,7 +12,7 @@
 import type { ReactNode } from "react";
 import { useHomeContent } from "./useHomeContent";
 import { useLocale, useLp } from "./locale";
-import { WHATSAPP_URL, SERVICES_URL, serviceWhatsAppUrl, servicePath } from "@/lib/site-links";
+import { WHATSAPP_URL, PRICING_URL, serviceWhatsAppUrl, servicePath } from "@/lib/site-links";
 
 const T = {
   fr: {
@@ -135,7 +135,7 @@ export function ServicesBento({
         </div>
 
         <div className="wk-all reveal">
-          <a href={lp(SERVICES_URL)} className="btn btn-outline">
+          <a href={lp(PRICING_URL)} className="btn btn-outline">
             {t.compare}
             <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden><path d="M5 12h14M13 6l6 6-6 6" /></svg>
           </a>

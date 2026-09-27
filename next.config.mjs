@@ -82,6 +82,10 @@ const nextConfig = {
       // The About page was removed on 2026-09-12. A 301 sends its link equity,
       // and anyone following an old link, to the homepage instead of a 404.
       { source: "/about", destination: "/", statusCode: 301 },
+      // The services index was removed on 2026-09-28: the nav opens the
+      // dropdown instead, and /tarifs is the page that lists everything.
+      { source: "/services", destination: "/tarifs", statusCode: 301 },
+      { source: "/en/services", destination: "/en/pricing", statusCode: 301 },
       ...Object.entries(SERVICE_URLS).map(([id, url]) => ({
         source: `/services/${id}`,
         destination: `/${url}`,

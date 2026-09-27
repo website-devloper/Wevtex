@@ -51,7 +51,7 @@ export function GET() {
     "",
     "## Pages utiles",
     `- [Questions fréquentes](${abs("/faq")}): prix, délais, propriété du site, hébergement, référencement, maintenance.`,
-    `- [Toutes les prestations](${abs("/services")})`,
+    `- [Tarifs et formules](${abs("/tarifs")})`,
     `- [Réalisations](${abs("/portfolio")})`,
     `- [Contact et devis](${abs("/contact")})`,
     "",

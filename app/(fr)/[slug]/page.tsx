@@ -146,10 +146,7 @@ export default async function KeywordPage({
       {/* ServiceDetailView renders these same answers on the page, verbatim. */}
       {service.faqs.length > 0 && <JsonLd data={faqSchema(service.faqs)} />}
       <JsonLd
-        data={breadcrumb([
-          { name: "Services", path: "/services" },
-          { name: service.name, path },
-        ])}
+        data={breadcrumb([{ name: service.name, path }])}
       />
       <ServiceDetailView service={service} />
     </>

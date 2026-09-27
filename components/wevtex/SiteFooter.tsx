@@ -5,18 +5,17 @@ import { useHomeContent } from "./useHomeContent";
 import { FloatingActions } from "./FloatingActions";
 import { useLocale, useLp } from "./locale";
 import { CITY_LINKS, CITY_LINKS_EN } from "@/lib/city-list";
-import { CONTACT_URL, HOME_URL, SERVICES_URL, PORTFOLIO_URL, servicePath, industryPath, SOCIALS } from "@/lib/site-links";
+import { CONTACT_URL, HOME_URL, PORTFOLIO_URL, servicePath, industryPath, SOCIALS } from "@/lib/site-links";
 
 /** Wevtex site footer — shared across the homepage and all inner pages. */
 /* Every entry resolves to a page or to a section id that actually exists:
-   #process is rendered on /services; the packs have their own page, /tarifs.
+   The packs have their own page, /tarifs.
    Several sector labels share a page on purpose — one sector page covers both
    "Immobilier" and "Finance" under Services professionnels. */
 const T = {
   fr: {
     pages: [
-      ["Accueil", HOME_URL], ["Services", SERVICES_URL], ["Réalisations", PORTFOLIO_URL],
-      ["Notre méthode", `${SERVICES_URL}#process`], ["Tarifs", "/tarifs"], ["FAQ", "/faq"], ["Blog", "/blog"], ["Agence IA", "/agence-developpement-ia-maroc"], ["Contact", CONTACT_URL],
+      ["Accueil", HOME_URL], ["Tarifs", "/tarifs"], ["Réalisations", PORTFOLIO_URL], ["FAQ", "/faq"], ["Blog", "/blog"], ["Agence IA", "/agence-developpement-ia-maroc"], ["Contact", CONTACT_URL],
     ],
     sectors: [
       ["Santé & bien-être", "healthcare-wellness"], ["Immobilier", "professional-services"],
@@ -36,8 +35,7 @@ const T = {
   },
   en: {
     pages: [
-      ["Home", HOME_URL], ["Services", SERVICES_URL], ["Portfolio", PORTFOLIO_URL],
-      ["Our process", `${SERVICES_URL}#process`], ["Pricing", "/tarifs"], ["FAQ", "/faq"], ["Blog", "/blog"], ["AI agency", "/agence-developpement-ia-maroc"], ["Contact", CONTACT_URL],
+      ["Home", HOME_URL], ["Pricing", "/tarifs"], ["Portfolio", PORTFOLIO_URL], ["FAQ", "/faq"], ["Blog", "/blog"], ["AI agency", "/agence-developpement-ia-maroc"], ["Contact", CONTACT_URL],
     ],
     sectors: [
       ["Health & wellness", "healthcare-wellness"], ["Real estate", "professional-services"],

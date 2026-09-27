@@ -7,7 +7,7 @@ import { useLenis } from "lenis/react";
 import { useHomeContent } from "./useHomeContent";
 import { useLocale, useLp } from "./locale";
 import { switchPath } from "@/lib/i18n-paths";
-import { WHATSAPP_URL, TEL_URL, PHONE_DISPLAY, EMAIL, EMAIL_URL, CONTACT_URL, servicePath, industryPath, socialUrl, HOME_URL, SERVICES_URL, PORTFOLIO_URL, PRICING_URL } from "@/lib/site-links";
+import { WHATSAPP_URL, TEL_URL, PHONE_DISPLAY, EMAIL, EMAIL_URL, CONTACT_URL, servicePath, industryPath, socialUrl, HOME_URL, PORTFOLIO_URL, PRICING_URL } from "@/lib/site-links";
 
 type Current = "services" | "work" | "reviews" | "pricing" | "contact";
 
@@ -269,10 +269,10 @@ export function SiteHeader({ current }: { current?: Current }) {
         <nav>
           <ul className="nav-links">
             <li className="has-mega">
-              <a href={lp(SERVICES_URL)} className={current === "services" ? "nav-label current" : "nav-label"}>
+              <button type="button" className={current === "services" ? "nav-label nav-label-btn current" : "nav-label nav-label-btn"} aria-haspopup="true">
                 {t.services}
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="chevron"><path d="M6 9l6 6 6-6" /></svg>
-              </a>
+              </button>
               <div className="mega-dropdown">
                 <div className="mega-cols">
                   <div className="mega-col">
@@ -362,7 +362,6 @@ export function SiteHeader({ current }: { current?: Current }) {
                   <div className="mnav-grid">
                     {SERVICES_SOL.map((s) => <DrawerItem key={s.href} item={s} onPick={closeMenu} />)}
                   </div>
-                  <a href={lp(SERVICES_URL)} className="mnav-all" onClick={closeMenu}>{t.allServices} {arrowRight}</a>
                 </div>
               </div>
             </div>

@@ -39,7 +39,6 @@ export const CONTACT_URL = "/contact";
  * App Router actually serves. */
 
 export const HOME_URL = "/";
-export const SERVICES_URL = "/services";
 /** Every published pack, on one page. */
 export const PRICING_URL = "/tarifs";
 export const PORTFOLIO_URL = "/portfolio";
