@@ -5428,3 +5428,10 @@ html.menu-open .cc-bar { visibility: hidden; }
 }
 
 .wevtex .sec-first + .contact-split { border-top: 1px solid rgba(255, 255, 255, 0.10); }
+
+/* The two marks stand alone now, so they are sized as marks rather than as a
+   glyph set against a word. */
+.wevtex .site-header .brand-mark { height: 44px; width: auto; }
+@media (max-width: 720px) { .wevtex .site-header .brand-mark { height: 36px; } }
+.wevtex .footer-v2 .footer-mark { height: 72px; width: auto; display: block; }
+@media (max-width: 720px) { .wevtex .footer-v2 .footer-mark { height: 56px; } }
