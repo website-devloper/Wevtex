@@ -99,7 +99,7 @@ export default function EnglishRootLayout({ children }: Readonly<{ children: Rea
     name: "Wevtex",
     alternateName: "Wevtex web design agency",
     url: SITE_URL,
-    logo: { "@type": "ImageObject", url: abs("/images/logo/wevtex-mark-ink.png"), caption: "Wevtex" },
+    logo: { "@type": "ImageObject", url: abs("/images/logo/wevtex-mark.png"), caption: "Wevtex" },
     image: abs("/images/og-image.jpg"),
     description:
       "Web design and digital marketing agency based in Casablanca: business websites, online stores, mobile apps, SEO and automation for businesses in Morocco and abroad.",

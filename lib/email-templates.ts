@@ -20,7 +20,7 @@ const GROUND = "#F4F5EC";
 const FONT =
   "-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif";
 
-const LOGO = "https://wevtex.com/images/logo/wevtex-mark-ink.png";
+const LOGO = "https://wevtex.com/images/logo/wevtex-mark.png";
 
 export const esc = (s: string) =>
   s.replace(/[&<>"']/g, (c) =>
@@ -35,7 +35,7 @@ function header(eyebrow: string) {
       <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%">
         <tr>
           <td align="left" style="vertical-align:middle;">
-            <img src="${LOGO}" width="26" height="17" alt="Wevtex"
+            <img src="${LOGO}" width="22" height="22" alt="Wevtex"
                  style="display:inline-block;vertical-align:middle;border:0;margin-right:9px;">
             <span style="font-family:${FONT};font-size:17px;font-weight:700;letter-spacing:.16em;color:${INK};vertical-align:middle;">WEVTEX</span>
           </td>

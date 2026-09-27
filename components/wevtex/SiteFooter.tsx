@@ -96,7 +96,7 @@ export function SiteFooter() {
         <div className="footer-cols">
           <div className="footer-brandcol">
             <a href={lp(HOME_URL)} className="footer-wordmark" aria-label={t.homeAria}>
-              <Image className="footer-mark" src="/images/logo/wevtex-mark-ink.png" alt="" width={1192} height={791} sizes="34px" />
+              <Image className="footer-mark" src="/images/logo/wevtex-mark-light.png" alt="" width={512} height={512} sizes="34px" />
               <span className="footer-word">WEVT<span>EX</span></span>
             </a>
             <p className="footer-about">{t.about}</p>

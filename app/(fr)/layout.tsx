@@ -91,7 +91,7 @@ export default function RootLayout({
     url: SITE_URL,
     logo: {
       "@type": "ImageObject",
-      url: abs("/images/logo/wevtex-mark-ink.png"),
+      url: abs("/images/logo/wevtex-mark.png"),
       caption: "Wevtex",
     },
     image: abs("/images/og-image.jpg"),

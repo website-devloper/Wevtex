@@ -1493,13 +1493,6 @@
 }
 
 /* Moroccan motif, faint, top-right */
-.wevtex .hero-motif {
-  position: absolute; inset: 0; z-index: 0; pointer-events: none;
-  background-image: url("/images/motif.svg"); background-size: 84px 84px; background-repeat: repeat;
-  opacity: 0.05;
-  -webkit-mask-image: radial-gradient(58% 58% at 100% 0%, #000, transparent 72%);
-  mask-image: radial-gradient(58% 58% at 100% 0%, #000, transparent 72%);
-}
 
 /* Device visual — hero product shot (flat, no frame) */
 .wevtex .hero-visual { position: relative; z-index: 2; }
@@ -1545,13 +1538,6 @@
   font-size: clamp(15px, 1.35vw, 18px);
   line-height: 1.75;
   color: var(--ink-on-dark-2);
-}
-.wevtex .problem-motif {
-  position: absolute; inset: 0; z-index: 0; pointer-events: none;
-  background-image: url("/images/motif.svg"); background-size: 80px 80px; background-repeat: repeat;
-  opacity: 0.07;
-  -webkit-mask-image: radial-gradient(62% 70% at 100% 100%, #000, transparent 78%);
-  mask-image: radial-gradient(62% 70% at 100% 100%, #000, transparent 78%);
 }
 
 /* ===================== Consistent heading sizes (match hero) ===================== */
@@ -1829,7 +1815,6 @@
   background: #1c2a08; color: #fff; border-radius: 22px; padding: 36px;
   box-shadow: 0 32px 64px -30px rgba(16, 17, 18, 0.62);
 }
-.wevtex .wa-card-motif { position: absolute; inset: 0; background-image: url("/images/motif.svg"); background-size: 62px 62px; opacity: 0.12; -webkit-mask-image: radial-gradient(58% 70% at 100% 0%, #000, transparent 70%); mask-image: radial-gradient(58% 70% at 100% 0%, #000, transparent 70%); }
 .wevtex .wa-icon { position: relative; z-index: 1; width: 54px; height: 54px; border-radius: 50%; border: 1px solid rgba(255, 255, 255, 0.5); display: grid; place-items: center; color: #fff; margin-bottom: 26px; }
 .wevtex .wa-icon svg { width: 24px; height: 24px; }
 .wevtex .wa-card h3 { position: relative; z-index: 1; font-size: clamp(26px, 3vw, 34px); font-weight: 400; letter-spacing: -0.02em; line-height: 1.18; color: #fff; }
@@ -2045,22 +2030,13 @@
   border-top: 1px solid rgba(255, 255, 255, 0.10);
   padding: clamp(56px, 8vh, 84px) 0 30px;
 }
-/* Same motif wash as .audit-band, mirrored to the opposite corner so the
-   two ink blocks do not repeat the identical gradient back to back. */
-.footer-v2::before {
-  content: ""; position: absolute; inset: 0; z-index: 0; pointer-events: none;
-  background-image: url("/images/motif.svg"); background-size: 80px 80px; background-repeat: repeat;
-  opacity: 0.06;
-  -webkit-mask-image: radial-gradient(58% 70% at 100% 0%, #000, transparent 76%);
-  mask-image: radial-gradient(58% 70% at 100% 0%, #000, transparent 76%);
-}
 .footer-v2 .container { position: relative; z-index: 1; }
 
 .footer-v2 .footer-wordmark { display: inline-flex; align-items: center; gap: 13px; font-size: 25px; font-weight: 500; letter-spacing: 0.07em; color: var(--ink-on-dark); text-decoration: none; }
 .footer-v2 .footer-wordmark span { color: var(--accent); margin-left: -0.07em; }
 /* The only mark we ship is solid ink on transparent, so it is knocked out to
    white here rather than shipping a second file. */
-.footer-v2 .footer-mark { height: 1em; width: auto; display: block; filter: brightness(0) invert(1); }
+.footer-v2 .footer-mark { height: 1em; width: auto; display: block; }
 
 .footer-v2 .footer-cols {
   display: grid;
@@ -2571,14 +2547,6 @@
   background: var(--bg-0);
   color: var(--ink-on-dark);
   padding: clamp(88px, 13vh, 150px) 0;
-}
-.wevtex .contact-split .cs-motif {
-  position: absolute; inset: 0; pointer-events: none;
-  background-image: url("/images/motif.svg");
-  background-size: 74px 74px;
-  opacity: 0.05;
-  -webkit-mask-image: radial-gradient(62% 78% at 100% 0%, #000, transparent 72%);
-  mask-image: radial-gradient(62% 78% at 100% 0%, #000, transparent 72%);
 }
 .wevtex .contact-split .container { position: relative; z-index: 1; max-width: var(--container); }
 
@@ -5158,7 +5126,7 @@ html.menu-open .cc-bar { visibility: hidden; }
    Covers every page built on .sec-first (FAQ, blog, services index,
    réalisations, IA, legal, thank-you). Contact keeps a light hero because
    its next section is already the deep contact slab. */
-.wevtex .sec-first:not(:has(+ .contact-split)) {
+.wevtex .sec-first {
   background: #1c2a08;
   color: #ffffff;
   --ink-on-cream: #ffffff;
@@ -5168,16 +5136,16 @@ html.menu-open .cc-bar { visibility: hidden; }
   position: relative;
   overflow: hidden;
 }
-.wevtex .sec-first:not(:has(+ .contact-split)) :where(h1, h2, .h-section) { color: #ffffff; }
-.wevtex .sec-first:not(:has(+ .contact-split)) .eyebrow { color: var(--accent); }
-.wevtex .sec-first:not(:has(+ .contact-split)) .btn-outline {
+.wevtex .sec-first :where(h1, h2, .h-section) { color: #ffffff; }
+.wevtex .sec-first .eyebrow { color: var(--accent); }
+.wevtex .sec-first .btn-outline {
   color: #ffffff; border-color: rgba(255, 255, 255, 0.42); background: transparent;
 }
-.wevtex .sec-first:not(:has(+ .contact-split)) .btn-outline:hover {
+.wevtex .sec-first .btn-outline:hover {
   background: #ffffff; color: #1c2a08; border-color: #ffffff;
 }
 /* A faint drafting grid on the right half: structure, not decoration. */
-.wevtex .sec-first:not(:has(+ .contact-split))::before {
+.wevtex .sec-first::before {
   content: ""; position: absolute; inset: 0; pointer-events: none;
   background-image:
     linear-gradient(rgba(198, 242, 78, 0.07) 1px, transparent 1px),
@@ -5255,10 +5223,10 @@ html.menu-open .cc-bar { visibility: hidden; }
    Hero bands v2 — the square grid across the whole band, no image, no circles.
    Overrides the half-width masked grid above.
    ------------------------------------------------------------------------- */
-.wevtex .sec-first:not(:has(+ .contact-split)) {
+.wevtex .sec-first {
   background: linear-gradient(115deg, #1c2a08 0%, #22330c 55%, #2c4011 100%);
 }
-.wevtex .sec-first:not(:has(+ .contact-split))::before {
+.wevtex .sec-first::before {
   background-image:
     linear-gradient(rgba(198, 242, 78, 0.09) 1px, transparent 1px),
     linear-gradient(90deg, rgba(198, 242, 78, 0.09) 1px, transparent 1px);
@@ -5314,3 +5282,149 @@ html.menu-open .cc-bar { visibility: hidden; }
   .wevtex .hero-visual.hero-form-slot { justify-content: stretch; }
   .wevtex .hero-form { max-width: none; }
 }
+
+/* ---------------------------------------------------------------------------
+   Every hero on the deep-green band (2026-09-27)
+   The homepage, service and 404 heroes join the rest, so the header can be
+   transparent over any page without a light/dark text problem.
+   ------------------------------------------------------------------------- */
+.wevtex.mode-light .hero-split,
+.wevtex.mode-light .srv-d-hero,
+.wevtex.mode-light .page-hero,
+.wevtex .hero-split,
+.wevtex .srv-d-hero,
+.wevtex .page-hero {
+  position: relative;
+  background-color: #1c2a08;
+  background-image: linear-gradient(115deg, #1c2a08 0%, #22330c 55%, #2c4011 100%);
+  background-size: auto;
+  color: #ffffff;
+  --ink-on-cream: #ffffff;
+  --ink-on-cream-2: rgba(255, 255, 255, 0.84);
+  --ink-on-cream-3: rgba(255, 255, 255, 0.66);
+  --accent-text: var(--accent);
+  --hairline-c: rgba(255, 255, 255, 0.16);
+  overflow: hidden;
+}
+.wevtex .hero-split::after,
+.wevtex .srv-d-hero::after,
+.wevtex .page-hero::after {
+  content: ""; position: absolute; inset: 0; z-index: 0; pointer-events: none;
+  background-image:
+    linear-gradient(rgba(198, 242, 78, 0.09) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(198, 242, 78, 0.09) 1px, transparent 1px);
+  background-size: 64px 64px;
+}
+.wevtex .hero-split > .container,
+.wevtex .srv-d-hero > .container,
+.wevtex .page-hero > .container { position: relative; z-index: 1; }
+.wevtex .hero-split :where(h1, h2, .h-section),
+.wevtex .srv-d-hero :where(h1, h2, .h-section),
+.wevtex .page-hero :where(h1, h2, .h-section) { color: #ffffff; }
+.wevtex .hero-split .eyebrow,
+.wevtex .srv-d-hero .eyebrow,
+.wevtex .page-hero .eyebrow { color: var(--accent); }
+.wevtex .hero-split .btn-outline,
+.wevtex .srv-d-hero .btn-outline,
+.wevtex .page-hero .btn-outline { color: #fff; border-color: rgba(255, 255, 255, 0.42); background: transparent; }
+.wevtex .hero-split .btn-outline:hover,
+.wevtex .srv-d-hero .btn-outline:hover,
+.wevtex .page-hero .btn-outline:hover { background: #fff; color: #1c2a08; border-color: #fff; }
+/* Client logos are drawn in ink for a white page; on the dark band they read
+   as one white row instead of a set of dark smudges. */
+.wevtex .hero-split .ls-row img { filter: brightness(0) invert(1); opacity: 0.82; }
+.wevtex .hero-split .hero-arc { display: none; }
+
+/* ---------------------------------------------------------------------------
+   Header: transparent over the hero, olive once you scroll.
+   ------------------------------------------------------------------------- */
+.wevtex.mode-light .site-header-inner,
+.wevtex .site-header-inner {
+  background: transparent;
+  border-bottom-color: transparent;
+  box-shadow: none;
+}
+.wevtex.mode-light .site-header.scrolled .site-header-inner,
+.wevtex .site-header.scrolled .site-header-inner {
+  background: #1c2a08;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.10);
+  box-shadow: 0 10px 30px -24px rgba(0, 0, 0, 0.6);
+}
+.wevtex .site-header .brand-word,
+.wevtex .site-header .nav-label { color: #ffffff; }
+.wevtex .site-header .nav-label:hover,
+.wevtex .site-header .nav-label.current { color: var(--accent); }
+.wevtex .site-header .lang-switch { color: #ffffff; border-color: rgba(255, 255, 255, 0.28); background: transparent; }
+.wevtex .site-header .lang-switch:hover { border-color: #ffffff; }
+.wevtex .site-header .nav-burger-bars i { background: #ffffff; }
+.wevtex .site-header .brand-mark { height: 1.5em; width: auto; }
+
+/* The homepage hero already carries its own wash and grid, drawn for a pale
+   ground: one grid is enough, and the lime wash needs to be a glow, not a haze. */
+.wevtex .hero-split .hero-grid-bg { display: none; }
+.wevtex .hero-split .hero-wash {
+  background:
+    radial-gradient(60% 44% at 50% 0%, rgba(198, 242, 78, 0.16), transparent 74%),
+    radial-gradient(45% 60% at 88% 18%, rgba(198, 242, 78, 0.10), transparent 60%);
+}
+
+/* White cards sitting on the dark hero keep the light-ground tokens, or their
+   own text would come out white on white. */
+.wevtex .hero-split .hero-form,
+.wevtex .srv-d-hero .card,
+.wevtex .page-hero .card {
+  color: var(--ink);
+  --ink-on-cream: #1c2a08;
+  --ink-on-cream-2: #35402a;
+  --ink-on-cream-3: #5b6650;
+  --hairline-c: #dde6c9;
+}
+.wevtex .hero-split .hero-form :where(h2, h3, .h-section, label, .form-label) { color: #1c2a08; }
+
+/* These heroes are ink islands in light mode, so they re-assert the dark
+   palette the same way .pricing-ink and .contact-split do above — otherwise
+   .hero-sub, the review badge and the hairlines resolve to their light values
+   and disappear into the green. */
+.wevtex .hero-split,
+.wevtex .srv-d-hero,
+.wevtex .page-hero {
+  --bg-0: #1c2a08;
+  --bg-1: #22330c;
+  --bg-2: #2a3d10;
+  --surface-d-1: rgba(255, 255, 255, 0.04);
+  --surface-d-2: rgba(255, 255, 255, 0.07);
+  --hairline-d: rgba(255, 255, 255, 0.16);
+  --hairline-d-strong: rgba(255, 255, 255, 0.30);
+  --ink-on-dark: #ffffff;
+  --ink-on-dark-2: rgba(255, 255, 255, 0.84);
+  --ink-on-dark-3: rgba(255, 255, 255, 0.64);
+  --ink-on-dark-4: rgba(255, 255, 255, 0.42);
+  --accent-deep: var(--accent);
+}
+/* The white form card is a light surface again. */
+.wevtex .hero-split .hero-form {
+  --hairline-d: var(--hairline-c);
+  --hairline-d-strong: var(--hairline-c);
+  --ink-on-dark: var(--ink-on-cream);
+  --ink-on-dark-2: var(--ink-on-cream-2);
+  --ink-on-dark-3: var(--ink-on-cream-3);
+  --accent-deep: #4c6b10;
+}
+.wevtex .hero-split .hero-logos { border-top-color: rgba(255, 255, 255, 0.14); }
+
+/* The header carries the mark alone, so it stands a little taller than it did
+   beside the wordmark. */
+.wevtex .site-header .brand-mark { height: 30px; width: auto; }
+@media (max-width: 720px) { .wevtex .site-header .brand-mark { height: 26px; } }
+
+/* The footer carries the same square grid as the heroes, so the page opens and
+   closes on the same surface. */
+.wevtex .footer-v2::before {
+  content: ""; position: absolute; inset: 0; z-index: 0; pointer-events: none;
+  background-image:
+    linear-gradient(rgba(198, 242, 78, 0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(198, 242, 78, 0.07) 1px, transparent 1px);
+  background-size: 64px 64px;
+}
+
+.wevtex .sec-first + .contact-split { border-top: 1px solid rgba(255, 255, 255, 0.10); }

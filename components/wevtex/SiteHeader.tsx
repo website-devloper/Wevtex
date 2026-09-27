@@ -256,13 +256,12 @@ export function SiteHeader({ current }: { current?: Current }) {
         <a href={lp(HOME_URL)} className="brand" aria-label={t.homeAria}>
           <Image
             className="brand-mark"
-            src="/images/logo/wevtex-mark-ink.png"
+            src="/images/logo/wevtex-mark-light.png"
             alt=""
-            width={1192}
-            height={791}
+            width={512}
+            height={512}
             priority
           />
-          <span className="brand-word">wevtex</span>
         </a>
 
         <nav>
