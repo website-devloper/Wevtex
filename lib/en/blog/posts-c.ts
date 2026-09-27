@@ -19,7 +19,7 @@ export const POSTS_C_EN: Post[] = [
     excerpt:
       "The three levels of app and their price, what pushes the bill up, and the costs nobody mentions before publishing.",
     answer:
-      "At Wevtex, an iOS and Android mobile app starts at MAD {{prix:mobile-apps/Essentielle}} for an essential app of up to 8 screens, MAD {{prix:mobile-apps/Complète}} for a complete app with accounts, payments and notifications, and MAD {{prix:mobile-apps/Sur mesure}} for a project with complex business logic. The price depends mostly on the number of screens, the features and the systems to connect.",
+      "At Wevtex, an iOS and Android mobile app starts at MAD {{prix:mobile-apps/Essentielle}}, publishing to both stores included. Beyond that the price depends on the number of screens, user accounts, in-app payment and the systems to connect: the scope is quoted before we start.",
     category: "Pricing & budget",
     publishedAt: "2026-09-11",
     readingMinutes: 7,
@@ -35,9 +35,9 @@ export const POSTS_C_EN: Post[] = [
         type: "table",
         head: ["Level", "From", "Usual timeline", "Typically"],
         rows: [
-          ["Essential", "MAD {{prix:mobile-apps/Essentielle}}", "4 to 6 weeks", "Catalog, information, appointment booking, up to 8 screens"],
-          ["Complete", "MAD {{prix:mobile-apps/Complète}}", "8 to 12 weeks", "Customer accounts, in-app payments, notifications, admin area"],
-          ["Custom", "MAD {{prix:mobile-apps/Sur mesure}}", "Depends on scope", "Complex business logic, offline mode, multiple integrations"],
+          ["Essential", "From MAD {{prix:mobile-apps/Essentielle}}", "4 to 6 weeks", "Catalog, information, appointment booking, up to 8 screens"],
+          ["Complete", "On quote", "8 to 12 weeks", "Customer accounts, in-app payments, notifications, admin area"],
+          ["Custom", "On quote", "Depends on scope", "Complex business logic, offline mode, multiple integrations"],
         ],
       },
       {
@@ -167,7 +167,7 @@ export const POSTS_C_EN: Post[] = [
       { type: "h2", text: "Budget: two lines not to confuse" },
       {
         type: "p",
-        text: "A campaign always has two costs. The media budget, paid directly to Google or Meta, which pays for impressions and clicks: plan at least MAD 2,000 to 3,000 a month so the campaigns have enough data to learn. And management fees, which pay for design and running: at Wevtex, from MAD {{prix:ads/Lancement}} a month for one channel, MAD {{prix:ads/Multicanal}} for Google and Meta together.",
+        text: "A campaign always has two costs. The media budget, paid directly to Google or Meta, which pays for impressions and clicks: plan at least MAD 2,000 to 3,000 a month so the campaigns have enough data to learn. And management fees, which pay for design and running: at Wevtex, MAD {{prix:ads/Lancement}} a day, whether we run one channel or Google and Meta together.",
       },
       { type: "h2", text: "The trap that wastes half the clicks" },
       {

@@ -25,7 +25,7 @@ export const POSTS_C: Post[] = [
     excerpt:
       "Les trois niveaux d'application et leur prix, ce qui fait grimper la facture, et les coûts que personne ne mentionne avant la publication.",
     answer:
-      "Chez Wevtex, une application mobile iOS et Android démarre à {{prix:mobile-apps/Essentielle}} DH pour une application essentielle jusqu'à 8 écrans, à {{prix:mobile-apps/Complète}} DH pour une application complète avec comptes, paiement et notifications, et à {{prix:mobile-apps/Sur mesure}} DH pour un projet à logique métier complexe. Le prix dépend surtout du nombre d'écrans, des fonctions et des systèmes à connecter.",
+      "Chez Wevtex, une application mobile iOS et Android démarre à {{prix:mobile-apps/Essentielle}} DH, publication sur les deux stores comprise. Au-delà, le prix dépend du nombre d'écrans, des comptes utilisateurs, du paiement en ligne et des systèmes à connecter : le périmètre est chiffré avant de commencer.",
     category: "Prix & budget",
     publishedAt: "2026-09-11",
     readingMinutes: 7,
@@ -41,9 +41,9 @@ export const POSTS_C: Post[] = [
         type: "table",
         head: ["Niveau", "À partir de", "Délai courant", "Typiquement"],
         rows: [
-          ["Essentielle", "{{prix:mobile-apps/Essentielle}} DH", "4 à 6 semaines", "Catalogue, informations, prise de rendez-vous, jusqu'à 8 écrans"],
-          ["Complète", "{{prix:mobile-apps/Complète}} DH", "8 à 12 semaines", "Comptes clients, paiement intégré, notifications, espace d'administration"],
-          ["Sur mesure", "{{prix:mobile-apps/Sur mesure}} DH", "Selon périmètre", "Logique métier complexe, mode hors ligne, intégrations multiples"],
+          ["Essentielle", "À partir de {{prix:mobile-apps/Essentielle}} DH", "4 à 6 semaines", "Catalogue, informations, prise de rendez-vous, jusqu'à 8 écrans"],
+          ["Complète", "Sur devis", "8 à 12 semaines", "Comptes clients, paiement intégré, notifications, espace d'administration"],
+          ["Sur mesure", "Sur devis", "Selon périmètre", "Logique métier complexe, mode hors ligne, intégrations multiples"],
         ],
       },
       {
@@ -173,7 +173,7 @@ export const POSTS_C: Post[] = [
       { type: "h2", text: "Le budget : deux lignes à ne pas confondre" },
       {
         type: "p",
-        text: "Une campagne a toujours deux coûts. Le budget média, versé directement à Google ou à Meta, qui paie l'affichage et les clics : comptez au minimum 2 000 à 3 000 DH par mois pour que les campagnes aient assez de données pour apprendre. Et les frais de gestion, qui paient la conception et le pilotage : chez Wevtex, à partir de {{prix:ads/Lancement}} DH par mois pour un canal, {{prix:ads/Multicanal}} DH pour Google et Meta ensemble.",
+        text: "Une campagne a toujours deux coûts. Le budget média, versé directement à Google ou à Meta, qui paie l'affichage et les clics : comptez au minimum 2 000 à 3 000 DH par mois pour que les campagnes aient assez de données pour apprendre. Et les frais de gestion, qui paient la conception et le pilotage : chez Wevtex, {{prix:ads/Lancement}} DH par jour, que l'on pilote un canal ou Google et Meta ensemble.",
       },
       { type: "h2", text: "Le piège qui fait perdre la moitié des clics" },
       {

@@ -444,7 +444,7 @@ export const SERVICE_SEO: Record<string, ServiceSeo> = {
       {
         h2: "Combien coûte une campagne Google Ads ou Facebook Ads au Maroc ?",
         paras: [
-          "Les frais de gestion Wevtex démarrent à {{prix:ads/Lancement}} DH par mois pour un canal (formule Lancement), {{prix:ads/Multicanal}} DH par mois pour Google et Meta ensemble (formule Multicanal), et {{prix:ads/Performance}} DH par mois pour les budgets importants. Le budget publicitaire, versé directement à Google ou à Meta, s'ajoute à ces frais et reste sous votre contrôle. En résumé, le prix de Google Ads au Maroc, comme le prix de Facebook Ads ou de la publicité Instagram, tient en deux lignes : nos frais de gestion et votre budget. Le prix de Google Ads par mois dépend donc surtout du budget que vous fixez.",
+          "Les frais de gestion Wevtex sont de {{prix:ads/Lancement}} DH par jour, quel que soit le canal : Google, Facebook ou Instagram, ensemble ou séparément. Le budget publicitaire, versé directement à Google ou à Meta, s'ajoute à ces frais et reste sous votre contrôle. En résumé, le prix de Google Ads au Maroc, comme le prix de Facebook Ads ou de la publicité Instagram, tient en deux lignes : nos frais de gestion et votre budget. Le prix de Google Ads par mois dépend donc surtout du budget que vous fixez.",
           "Le coût par clic sur Google Ads n'a pas de prix fixe : il se fixe aux enchères et varie selon le secteur et la concurrence sur chaque mot-clé. Avant de lancer, nous estimons ce coût avec l'outil de planification de Google et le rapportons au coût d'un client, pour décider si la campagne vaut d'être lancée.",
         ],
         links: [
@@ -514,7 +514,7 @@ export const SERVICE_SEO: Record<string, ServiceSeo> = {
       {
         h2: "Combien coûte une application mobile au Maroc ?",
         paras: [
-          "Le prix du développement d'une application mobile au Maroc démarre chez Wevtex à {{prix:mobile-apps/Essentielle}} DH pour une application essentielle jusqu'à 8 écrans, livrée en 4 à 6 semaines. Une application complète avec comptes, paiement et notifications démarre à {{prix:mobile-apps/Complète}} DH, en 8 à 12 semaines. Une application sur mesure à logique métier complexe démarre à {{prix:mobile-apps/Sur mesure}} DH, sur un périmètre défini ensemble.",
+          "Le prix du développement d'une application mobile au Maroc démarre chez Wevtex à {{prix:mobile-apps/Essentielle}} DH, pour une application iOS et Android publiée sur les deux stores. Ce qui fait monter le prix, c'est le nombre d'écrans, les comptes utilisateurs, le paiement en ligne et la complexité de la logique métier. Le périmètre est défini ensemble et chiffré avant de commencer, en 4 à 12 semaines selon l'ampleur.",
           "Le coût d'une application mobile dépend du nombre d'écrans, des fonctions (paiement, géolocalisation, mode hors ligne) et des systèmes à connecter. Le devis est ferme avant le démarrage.",
         ],
       },
@@ -602,7 +602,7 @@ export const SERVICE_SEO: Record<string, ServiceSeo> = {
       {
         h2: "Combien coûte un logiciel sur mesure au Maroc ?",
         paras: [
-          "Le prix d'un logiciel sur mesure dépend du nombre de modules : un outil simple couvrant un domaine fonctionnel démarre à {{prix:desktop-apps/Outil simple}} DH, livré en 4 à 6 semaines. Un logiciel de gestion complète en plusieurs modules, multi-postes, démarre à {{prix:desktop-apps/Gestion complète}} DH, en 8 à 12 semaines. Un système métier avancé avec intégrations démarre à {{prix:desktop-apps/Système métier}} DH, sur un périmètre défini ensemble.",
+          "Le prix d'un logiciel sur mesure démarre chez Wevtex à {{prix:desktop-apps/Outil simple}} DH, pour un outil couvrant un domaine fonctionnel, livré en 4 à 6 semaines. Le prix monte avec le nombre de modules, le travail en multi-postes et les intégrations à vos outils existants. Le périmètre est défini ensemble et chiffré avant de commencer.",
         ],
         links: [
           { label: "Développement web sur mesure", href: "/solution-digitale-sur-mesure-maroc" },

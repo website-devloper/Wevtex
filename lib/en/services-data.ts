@@ -115,9 +115,9 @@ const BASE: Service[] = [
       titleEm: ["without", "a", "meeting."],
       subtitle: "Three packages on display. The final quote confirms the price, it doesn't inflate it.",
       tiers: [
-        { name: "Starter", price: en(PRICES["website-creation"]["Vitrine"]), note: "Up to 5 pages · delivered in 7 to 14 days", features: ["Custom design", "Up to 5 responsive pages", "Basic SEO", "Form and WhatsApp", "1 month of support"] },
-        { name: "Business", price: en(PRICES["website-creation"]["Business"]), note: "Up to 15 pages · delivered in 3 to 4 weeks", featured: true, features: ["Everything in Starter", "Up to 15 pages", "Copywriting included", "Blog and news", "Advanced SEO", "3 months of support"] },
-        { name: "Store", price: en(PRICES["website-creation"]["Boutique"]), note: "E-commerce · delivered in 4 to 8 weeks", features: ["Catalog and product pages", "CMI and Stripe payments", "Stock management", "Optimized checkout", "Store management training", "6 months of support"] },
+        { name: "Basic", price: en(PRICES["website-creation"]["Vitrine"]), note: "Front-end brochure site, delivered in 5 to 7 days", from: false, features: ["Up to 5 pages: home, services, about, contact", "Custom design in your brand's colours", "Reads perfectly on phone, tablet and desktop", "Contact form wired to your email address", "WhatsApp button and links to your social accounts", "Domain name and hosting free for the first year", "Static pages, no admin area"] },
+        { name: "Standard", price: en(PRICES["website-creation"]["Business"]), note: "Front-end and back-end, delivered in 2 to 3 weeks", featured: true, from: false, features: ["Everything in Basic", "Up to 12 pages", "Custom back-end with a database", "Admin area: change your own text and images", "Blog or news, managed from your dashboard", "Form submissions stored, with email alerts", "Baseline SEO: tags, sitemap, Search Console"] },
+        { name: "Premium", price: en(PRICES["website-creation"]["Boutique"]), note: "Online store with an admin page, delivered in 4 to 6 weeks", from: false, features: ["Everything in Standard", "Product catalogue, variants and stock control", "Cart, checkout and online payment", "Admin page: orders, customers, stock, promotions", "Customer accounts and order history", "Shipping costs configurable by city", "One hour of handover training over video"] },
       ],
       footnote: PRICE_FOOTNOTE,
     },
@@ -210,9 +210,9 @@ const BASE: Service[] = [
       titleEm: ["no", "long", "commitment."],
       subtitle: "Three paces depending on the competition for your keywords. Three months minimum, then you're free.",
       tiers: [
-        { name: "Essential", price: en(PRICES["seo"]["Essentiel"]), note: "Per month · 3-month minimum", features: ["Initial technical audit", "10 tracked keywords", "Page optimization", "2 pieces of content a month", "Monthly report"] },
-        { name: "Growth", price: en(PRICES["seo"]["Croissance"]), note: "Per month · 3-month minimum", featured: true, features: ["Everything in Essential", "30 tracked keywords", "4 pieces of content a month", "Active link building", "Competitor monitoring", "Monthly video call"] },
-        { name: "Competitive", price: en(PRICES["seo"]["Concurrentiel"]), note: "Per month · contested markets", features: ["Everything in Growth", "Unlimited keywords", "8 pieces of content a month", "Press relations", "Advanced technical SEO", "Dedicated support"] },
+        { name: "Basic", price: en(PRICES["seo"]["Essentiel"]), note: "Per month, 3-month minimum", from: false, features: ["Research on the core keywords of your trade", "Titles, meta descriptions and tags optimised", "XML sitemap and robots.txt, submitted to Google", "Search Console and Analytics installed and configured", "Technical errors blocking indexing fixed", "Monthly ranking report"] },
+        { name: "Intermediate", price: en(PRICES["seo"]["Croissance"]), note: "Per month, 3-month minimum", featured: true, from: false, features: ["Everything in Basic", "Google Maps profile optimised, photos and posts", "AI-assisted keyword research on buying intent", "Your existing pages rewritten for those keywords", "Local SEO: city pages and Moroccan directories", "Tracking of calls and enquiries coming from Google"] },
+        { name: "Advanced", price: en(PRICES["seo"]["Concurrentiel"]), note: "Per month, contested markets", from: false, features: ["Everything in Intermediate", "Advanced keyword research and competitor analysis", "Content strategy and optimised article writing", "Listings on Clutch, Sortlist and reference directories", "Link building and citations to build your authority", "Deep technical work, speed and Core Web Vitals", "Aiming for page one on your priority searches"] },
       ],
       footnote: PRICE_FOOTNOTE,
     },
@@ -400,9 +400,7 @@ const BASE: Service[] = [
       titleEm: ["ad", "spend", "separate."],
       subtitle: "You pay the platform directly. We only invoice the management.",
       tiers: [
-        { name: "Launch", price: en(PRICES["ads"]["Lancement"]), note: "Per month · 1 channel", features: ["1 platform of your choice", "Campaign setup", "Landing page included", "Conversion tracking", "Monthly report"] },
-        { name: "Multichannel", price: en(PRICES["ads"]["Multicanal"]), note: "Per month · 2 to 3 channels", featured: true, features: ["Google and Meta", "Fresh visuals and copy", "Continuous A/B tests", "Visitor retargeting", "Monthly video call"] },
-        { name: "Performance", price: en(PRICES["ads"]["Performance"]), note: "Per month · large budgets", features: ["All relevant channels", "Full acquisition strategy", "Multiple dedicated pages", "Customer journey analysis", "Dedicated support"] },
+        { name: "Campaign management", price: en(PRICES["ads"]["Lancement"]), note: "Management fee, ad budget not included", from: false, unit: "/ day", features: ["Google, Facebook and Instagram campaigns", "Visuals designed and ad copy written", "Targeting by city, age and interests", "Landing page built to convert", "Conversion tracking: calls, WhatsApp, forms", "Bids and budget adjusted continuously", "Performance report every week"] },
       ],
       footnote:
         "Management fees only. The ad budget is paid directly to Google or Meta, on your accounts and in your name.",
@@ -496,9 +494,7 @@ const BASE: Service[] = [
       titleEm: ["your", "app", "costs."],
       subtitle: "Three levels of ambition, priced firmly after scoping.",
       tiers: [
-        { name: "Essential", price: en(PRICES["mobile-apps"]["Essentielle"]), note: "From · 4 to 6 weeks", features: ["Up to 8 screens", "iOS and Android", "Design included", "Store publishing", "3 months of support"] },
-        { name: "Complete", price: en(PRICES["mobile-apps"]["Complète"]), note: "From · 8 to 12 weeks", featured: true, features: ["Unlimited screens", "Accounts and profiles", "In-app payments", "Push notifications", "Admin area", "6 months of support"] },
-        { name: "Custom", price: en(PRICES["mobile-apps"]["Sur mesure"]), note: "From · scope defined together", features: ["Complex business logic", "Full offline mode", "Third-party integrations", "Dedicated dashboard", "Priority support"] },
+        { name: "iOS and Android app", price: en(PRICES["mobile-apps"]["Essentielle"]), note: "Scope agreed together before we start", features: ["One codebase for iOS and Android, with Flutter", "Custom interface design, screen by screen", "User accounts and push notifications", "Back-end, database and API", "Dashboard to manage your content", "Published to the App Store and Google Play", "Three months of fixes included after launch"] },
       ],
       footnote: PRICE_FOOTNOTE,
     },
@@ -591,9 +587,7 @@ const BASE: Service[] = [
       titleEm: ["your", "software", "costs."],
       subtitle: "Priced firmly after the analysis phase, never before.",
       tiers: [
-        { name: "Simple tool", price: en(PRICES["desktop-apps"]["Outil simple"]), note: "From · 4 to 6 weeks", features: ["One functional area", "Windows or macOS", "Local database", "Excel and PDF exports", "Training included"] },
-        { name: "Full management", price: en(PRICES["desktop-apps"]["Gestion complète"]), note: "From · 8 to 12 weeks", featured: true, features: ["Several modules", "Windows and macOS", "Multi-workstation sync", "Accounts and permissions", "Data import", "6 months of support"] },
-        { name: "Business system", price: en(PRICES["desktop-apps"]["Système métier"]), note: "From · scope defined together", features: ["Advanced business logic", "Third-party integrations", "Dedicated dashboards", "Full offline mode", "Priority support"] },
+        { name: "Custom desktop software", price: en(PRICES["desktop-apps"]["Outil simple"]), note: "Scope agreed together before we start", features: ["Windows and macOS, works offline", "Management, invoicing, stock or production, to your trade", "Local database or shared across workstations", "Printing and Excel or PDF export", "Automatic backup of your data", "No monthly licence, the software is yours", "Training for your team on handover"] },
       ],
       footnote: PRICE_FOOTNOTE,
     },

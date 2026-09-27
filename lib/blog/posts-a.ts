@@ -4,7 +4,7 @@ import type { Post } from "../blog-data";
  * Posts 1–3 — prix, choix d'agence, vitrine ou boutique.
  *
  * Prices quoted here are the ones published on the service pages (990 /
- * 6 000 / 16 000 DH pour un site, 12 000 DH pour une application…), so a reader
+ * 1 899 / 6 999 DH pour un site, 8 000 DH pour une application…), so a reader
  * who compares the blog and the pricing tables finds the same numbers.
  *
  * `publishedAt` is the day the post was actually written. If you stagger the
@@ -48,7 +48,7 @@ export const POSTS_A: Post[] = [
           ["Site d'entreprise (10 à 20 pages)", "{{prix:website-creation/Business}} – 30 000", "3 à 6 semaines"],
           ["Boutique en ligne", "{{prix:website-creation/Boutique}} – 40 000", "4 à 8 semaines"],
           ["Plateforme ou logiciel métier", "{{prix:custom-solutions/Plateforme}} – 60 000+", "8 à 16 semaines"],
-          ["Application mobile iOS + Android", "{{prix:mobile-apps/Essentielle}} – 50 000+", "4 à 12 semaines"],
+          ["Application mobile iOS + Android", "À partir de {{prix:mobile-apps/Essentielle}}", "4 à 12 semaines"],
         ],
       },
       {

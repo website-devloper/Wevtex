@@ -403,7 +403,7 @@ export function ServiceDetailView({ service }: { service: Service }) {
               {service.pricing.subtitle && <p className="ic-sub">{service.pricing.subtitle}</p>}
             </div>
 
-            <div className="pr-grid pr-grid-3 reveal">
+            <div className={`pr-grid pr-grid-${service.pricing.tiers.length} reveal`}>
               {service.pricing.tiers.map((tier) => (
                 <div className={tier.featured ? "pr-card featured" : "pr-card"} key={tier.name}>
                   {tier.featured && (
@@ -414,8 +414,12 @@ export function ServiceDetailView({ service }: { service: Service }) {
                   )}
                   <div className="pr-name">{tier.name}</div>
                   <div className="pr-divider"></div>
-                  <span className="pr-from">{t.from}</span>
-                  <div className="pr-price">{tier.price}<span className="cur">{t.cur}</span></div>
+                  {tier.from !== false && <span className="pr-from">{t.from}</span>}
+                  <div className="pr-price">
+                    {tier.price}
+                    <span className="cur">{t.cur}</span>
+                    {tier.unit && <span className="pr-unit">{tier.unit}</span>}
+                  </div>
                   <div className="pr-note">{tier.note}</div>
                   <ul className="pr-feats">
                     {tier.features.map((f) => (

@@ -1025,14 +1025,6 @@ export function HomeClient({ projects }: { projects: Project[] }) {
                 <span className="pr-from">{t.from}</span>
                 <div className="pr-price">{sv.price}<span className="cur">{t.cur}</span></div>
                 <div className="pr-note">{sv.note}</div>
-                <ul className="pr-feats">
-                  {sv.features.map((f) => (
-                    <li key={f}>
-                      <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><path d="M20 6L9 17l-5-5" /></svg>
-                      {f}
-                    </li>
-                  ))}
-                </ul>
                 <a href={serviceWhatsAppUrl(sv.name, locale)} className={`pr-btn${sv.featured ? " solid" : ""}`} target="_blank" rel="noopener">
                   {sv.cta}
                   <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden style={{ marginLeft: 4 }}><path d="M5 12h14M13 6l6 6-6 6" /></svg>

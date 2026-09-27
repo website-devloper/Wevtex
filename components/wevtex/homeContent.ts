@@ -59,7 +59,7 @@ export const SERVICES: Service[] = [
     short: "Un site qui fait appeler et acheter",
     desc: "Un site rapide, trouvé sur Google, qui transforme les visites en appels. Et il est à votre nom.",
     price: PRICES["website-creation"]["Vitrine"],
-    note: "Livré en 7 à 14 jours",
+    note: "Formule Basic, livrée en 5 à 7 jours",
     featured: true,
     features: [
       "Jusqu'à 5 pages, responsive",
@@ -111,7 +111,7 @@ export const SERVICES: Service[] = [
     short: "Des clients dès la première semaine",
     desc: "Google et Meta pilotés au coût par client : vous savez ce que rapporte chaque dirham.",
     price: PRICES["ads"]["Lancement"],
-    note: "Par mois · hors budget publicitaire",
+    note: "Par jour · hors budget publicitaire",
     features: [
       "Google, Facebook et Instagram",
       "Ciblage audience et mots-clés",

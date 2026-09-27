@@ -24,7 +24,17 @@ export type TechGroup = { label: string; items: string[]; desc?: string };
 export type ProcessStep = { n: string; h: string; checks: string[]; d: string };
 export type SectorGroup = { label: string; cases: string[] };
 /** Formules tarifaires propres à la prestation. */
-export type PriceTier = { name: string; price: string; note: string; features: string[]; featured?: boolean };
+export type PriceTier = {
+  name: string;
+  price: string;
+  note: string;
+  features: string[];
+  featured?: boolean;
+  /** false for a fixed price: the card drops its "from" line. */
+  from?: boolean;
+  /** e.g. "/ jour" — printed after the currency. */
+  unit?: string;
+};
 /** Arguments différenciants, propres à la prestation. */
 export type WhyPoint = { h: string; p: string };
 
@@ -171,9 +181,9 @@ export const SERVICES: Service[] = [
       titleEm: ["sans", "rendez-vous."],
       subtitle: "Trois formules affichées. Le devis final confirme le prix, il ne le gonfle pas.",
       tiers: [
-        { name: "Vitrine", price: PRICES["website-creation"]["Vitrine"], note: "Jusqu'à 5 pages · livré en 7 à 14 jours", features: ["Design sur mesure", "Jusqu'à 5 pages responsives", "Référencement de base", "Formulaire et WhatsApp", "1 mois d'accompagnement"] },
-        { name: "Business", price: PRICES["website-creation"]["Business"], note: "Jusqu'à 15 pages · livré en 3 à 4 semaines", featured: true, features: ["Tout de la formule Vitrine", "Jusqu'à 15 pages", "Rédaction des contenus", "Blog et actualités", "Référencement avancé", "3 mois d'accompagnement"] },
-        { name: "Boutique", price: PRICES["website-creation"]["Boutique"], note: "E-commerce · livré en 4 à 8 semaines", features: ["Catalogue et fiches produits", "Paiement CMI et Stripe", "Gestion des stocks", "Tunnel d'achat optimisé", "Formation à la gestion", "6 mois d'accompagnement"] },
+        { name: "Basic", price: PRICES["website-creation"]["Vitrine"], note: "Site vitrine front-end, livré en 5 à 7 jours", from: false, features: ["Jusqu'à 5 pages : accueil, services, à propos, contact", "Design sur mesure, aux couleurs de votre marque", "Affichage parfait sur mobile, tablette et ordinateur", "Formulaire de contact relié à votre adresse e-mail", "Bouton WhatsApp et liens vers vos réseaux sociaux", "Nom de domaine et hébergement offerts la première année", "Pages statiques, sans espace d'administration"] },
+        { name: "Standard", price: PRICES["website-creation"]["Business"], note: "Front-end et back-end, livré en 2 à 3 semaines", featured: true, from: false, features: ["Tout ce que contient la formule Basic", "Jusqu'à 12 pages", "Back-end sur mesure, avec base de données", "Espace d'administration : vous changez vos textes et vos images", "Blog ou actualités, gérés depuis votre tableau de bord", "Formulaires enregistrés, avec alerte par e-mail", "Référencement de base : balises, sitemap, Search Console"] },
+        { name: "Premium", price: PRICES["website-creation"]["Boutique"], note: "Boutique en ligne et page admin, livrée en 4 à 6 semaines", from: false, features: ["Tout ce que contient la formule Standard", "Catalogue produits, variantes et gestion du stock", "Panier, commande et paiement en ligne", "Page admin : commandes, clients, stock, promotions", "Comptes clients et historique des commandes", "Frais de livraison paramétrables par ville", "Formation à la prise en main, une heure en visio"] },
       ],
       footnote: PRICE_FOOTNOTE,
     },
@@ -282,9 +292,9 @@ export const SERVICES: Service[] = [
       titleEm: ["sans", "engagement long."],
       subtitle: "Trois rythmes selon la concurrence sur vos mots-clés. Trois mois minimum, puis vous êtes libre.",
       tiers: [
-        { name: "Essentiel", price: PRICES["seo"]["Essentiel"], note: "Par mois · 3 mois minimum", features: ["Audit technique initial", "10 mots-clés suivis", "Optimisation des pages", "2 contenus par mois", "Rapport mensuel"] },
-        { name: "Croissance", price: PRICES["seo"]["Croissance"], note: "Par mois · 3 mois minimum", featured: true, features: ["Tout de la formule Essentiel", "30 mots-clés suivis", "4 contenus par mois", "Netlinking actif", "Suivi de la concurrence", "Point mensuel en visio"] },
-        { name: "Concurrentiel", price: PRICES["seo"]["Concurrentiel"], note: "Par mois · marchés disputés", features: ["Tout de la formule Croissance", "Mots-clés illimités", "8 contenus par mois", "Relations presse", "SEO technique avancé", "Accompagnement dédié"] },
+        { name: "Basic", price: PRICES["seo"]["Essentiel"], note: "Par mois, engagement de 3 mois", from: false, features: ["Recherche des mots-clés de base de votre activité", "Optimisation des titres, méta-descriptions et balises", "Sitemap XML et robots.txt, envoyés à Google", "Search Console et Analytics installés et configurés", "Correction des erreurs techniques qui bloquent l'indexation", "Rapport mensuel de positions"] },
+        { name: "Intermédiaire", price: PRICES["seo"]["Croissance"], note: "Par mois, engagement de 3 mois", featured: true, from: false, features: ["Tout ce que contient la formule Basic", "Fiche Google Maps optimisée, photos et publications", "Recherche de mots-clés assistée par IA, sur l'intention d'achat", "Réécriture de vos pages existantes pour ces mots-clés", "SEO local : pages villes et annuaires marocains", "Suivi des appels et des demandes venus de Google"] },
+        { name: "Avancé", price: PRICES["seo"]["Concurrentiel"], note: "Par mois, marchés disputés", from: false, features: ["Tout ce que contient la formule Intermédiaire", "Recherche de mots-clés avancée et analyse des concurrents", "Stratégie de contenu et rédaction d'articles optimisés", "Inscription sur Clutch, Sortlist et annuaires de référence", "Netlinking et citations pour asseoir votre autorité", "Optimisation technique poussée, vitesse et Core Web Vitals", "Objectif première page sur vos requêtes prioritaires"] },
       ],
       footnote: PRICE_FOOTNOTE,
     },
@@ -504,9 +514,7 @@ export const SERVICES: Service[] = [
       titleEm: ["budget", "média à part."],
       subtitle: "Vous payez la plateforme directement. Nous facturons uniquement le pilotage.",
       tiers: [
-        { name: "Lancement", price: PRICES["ads"]["Lancement"], note: "Par mois · 1 canal", features: ["1 plateforme au choix", "Création des campagnes", "Page d'atterrissage incluse", "Suivi des conversions", "Rapport mensuel"] },
-        { name: "Multicanal", price: PRICES["ads"]["Multicanal"], note: "Par mois · 2 à 3 canaux", featured: true, features: ["Google et Meta", "Visuels et textes renouvelés", "Tests A/B continus", "Relance des visiteurs", "Point mensuel en visio"] },
-        { name: "Performance", price: PRICES["ads"]["Performance"], note: "Par mois · budgets importants", features: ["Tous canaux pertinents", "Stratégie d'acquisition complète", "Pages dédiées multiples", "Analyse du parcours d'achat", "Accompagnement dédié"] },
+        { name: "Gestion de campagnes", price: PRICES["ads"]["Lancement"], note: "Frais de gestion, budget publicitaire non compris", from: false, unit: "/ jour", features: ["Campagnes Google, Facebook et Instagram", "Création des visuels et rédaction des annonces", "Ciblage par ville, âge et centres d'intérêt", "Page d'atterrissage pensée pour la conversion", "Suivi des conversions : appels, WhatsApp, formulaires", "Enchères et budget ajustés en continu", "Rapport de performance chaque semaine"] },
       ],
       footnote:
         "Honoraires de gestion uniquement. Le budget publicitaire est réglé directement à Google ou Meta, sur vos comptes et à votre nom.",
@@ -616,9 +624,7 @@ export const SERVICES: Service[] = [
       titleEm: ["votre", "application."],
       subtitle: "Trois niveaux d'ambition, chiffrés fermement après le cadrage.",
       tiers: [
-        { name: "Essentielle", price: PRICES["mobile-apps"]["Essentielle"], note: "À partir de · 4 à 6 semaines", features: ["Jusqu'à 8 écrans", "iOS et Android", "Design inclus", "Publication sur les stores", "3 mois d'accompagnement"] },
-        { name: "Complète", price: PRICES["mobile-apps"]["Complète"], note: "À partir de · 8 à 12 semaines", featured: true, features: ["Écrans illimités", "Comptes et profils", "Paiement intégré", "Notifications push", "Espace d'administration", "6 mois d'accompagnement"] },
-        { name: "Sur mesure", price: PRICES["mobile-apps"]["Sur mesure"], note: "À partir de · périmètre défini ensemble", features: ["Logique métier complexe", "Mode hors ligne complet", "Intégrations tierces", "Tableau de bord dédié", "Accompagnement prioritaire"] },
+        { name: "Application iOS et Android", price: PRICES["mobile-apps"]["Essentielle"], note: "Périmètre défini ensemble avant de commencer", features: ["Un seul code pour iOS et Android, avec Flutter", "Design d'interface sur mesure, écran par écran", "Comptes utilisateurs et notifications push", "Back-end, base de données et API", "Tableau de bord pour piloter vos contenus", "Publication sur l'App Store et Google Play", "Trois mois de corrections comprises après la mise en ligne"] },
       ],
       footnote: PRICE_FOOTNOTE,
     },
@@ -727,9 +733,7 @@ export const SERVICES: Service[] = [
       titleEm: ["votre", "logiciel."],
       subtitle: "Chiffré fermement après la phase d'analyse, jamais avant.",
       tiers: [
-        { name: "Outil simple", price: PRICES["desktop-apps"]["Outil simple"], note: "À partir de · 4 à 6 semaines", features: ["Un domaine fonctionnel", "Windows ou macOS", "Base de données locale", "Exports Excel et PDF", "Formation incluse"] },
-        { name: "Gestion complète", price: PRICES["desktop-apps"]["Gestion complète"], note: "À partir de · 8 à 12 semaines", featured: true, features: ["Plusieurs modules", "Windows et macOS", "Multi-postes synchronisé", "Comptes et permissions", "Reprise des données", "6 mois d'accompagnement"] },
-        { name: "Système métier", price: PRICES["desktop-apps"]["Système métier"], note: "À partir de · périmètre défini ensemble", features: ["Logique métier avancée", "Intégrations tierces", "Tableaux de bord dédiés", "Mode hors ligne complet", "Accompagnement prioritaire"] },
+        { name: "Logiciel sur mesure", price: PRICES["desktop-apps"]["Outil simple"], note: "Périmètre défini ensemble avant de commencer", features: ["Windows et macOS, utilisable hors connexion", "Gestion, facturation, stock ou production, selon votre métier", "Base de données locale ou partagée entre plusieurs postes", "Impression et export Excel et PDF", "Sauvegarde automatique de vos données", "Aucune licence mensuelle, le logiciel vous appartient", "Formation de vos équipes à la prise en main"] },
       ],
       footnote: PRICE_FOOTNOTE,
     },

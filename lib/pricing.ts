@@ -15,12 +15,18 @@
 import type { Locale } from "./i18n";
 
 export const PRICES = {
-  "website-creation": { Vitrine: "990", Business: "6 000", Boutique: "16 000" },
-  seo: { Essentiel: "1 500", Croissance: "3 500", Concurrentiel: "6 500" },
+  // Basic / Standard / Premium on the page.
+  "website-creation": { Vitrine: "1 899", Business: "2 999", Boutique: "6 999" },
+  // Basic / Intermédiaire / Avancé on the page, per month.
+  seo: { Essentiel: "1 000", Croissance: "1 500", Concurrentiel: "2 500" },
   "local-seo": { "Mise en place": "790", Entretien: "490", "Multi-sites": "1 900" },
-  ads: { Lancement: "1 200", Multicanal: "2 800", Performance: "5 500" },
-  "mobile-apps": { Essentielle: "12 000", Complète: "28 000", "Sur mesure": "50 000" },
-  "desktop-apps": { "Outil simple": "14 000", "Gestion complète": "32 000", "Système métier": "60 000" },
+  // One pack, priced per day of management. The two other keys are kept at
+  // the same rate so older copy tokens still resolve to the published price.
+  ads: { Lancement: "200", Multicanal: "200", Performance: "200" },
+  // One pack each, quoted from the entry price; the other keys follow it so
+  // no sentence quotes a tier that is no longer sold.
+  "mobile-apps": { Essentielle: "8 000", Complète: "8 000", "Sur mesure": "8 000" },
+  "desktop-apps": { "Outil simple": "4 999", "Gestion complète": "4 999", "Système métier": "4 999" },
   "custom-solutions": { Cadrage: "6 000", Plateforme: "18 000", "SaaS complet": "60 000" },
   "whatsapp-bots": { Essentiel: "2 400", Qualification: "5 900", "Sur mesure": "12 000" },
 } as const;

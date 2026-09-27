@@ -358,7 +358,7 @@ export const SERVICE_SEO_EN: Record<string, ServiceSeo> = {
       {
         h2: "How much does a Google Ads or Facebook Ads campaign cost in Morocco?",
         paras: [
-          "Wevtex management fees start at MAD {{prix:ads/Lancement}} a month for one channel (Launch plan), MAD {{prix:ads/Multicanal}} a month for Google and Meta together (Multichannel plan), and MAD {{prix:ads/Performance}} a month for large budgets. The ad spend, paid directly to Google or Meta, comes on top and stays under your control. In short, Google Ads and Facebook Ads prices in Morocco come down to two lines: our management fee and your budget.",
+          "Wevtex management fees are MAD {{prix:ads/Lancement}} a day, whichever channels we run: Google, Facebook or Instagram, together or separately. The ad spend, paid directly to Google or Meta, comes on top and stays under your control. In short, Google Ads and Facebook Ads prices in Morocco come down to two lines: our management fee and your budget.",
           "Google Ads has no fixed cost per click: it is set by auction and varies by industry and by competition on each keyword. Before launching, we estimate that cost with Google's planning tool and compare it with the value of a customer, to decide whether the campaign is worth running.",
         ],
         links: [
@@ -422,7 +422,7 @@ export const SERVICE_SEO_EN: Record<string, ServiceSeo> = {
       {
         h2: "How much does an app cost in Morocco?",
         paras: [
-          "Mobile app development in Morocco starts at MAD {{prix:mobile-apps/Essentielle}} at Wevtex for an essential app of up to 8 screens, delivered in 4 to 6 weeks. A complete app with accounts, payments and notifications starts at MAD {{prix:mobile-apps/Complète}}, in 8 to 12 weeks. A custom app with complex business logic starts at MAD {{prix:mobile-apps/Sur mesure}}, on a scope defined together.",
+          "Mobile app development in Morocco starts at MAD {{prix:mobile-apps/Essentielle}} at Wevtex, for an iOS and Android app published to both stores. What moves the price is the number of screens, user accounts, in-app payment and how complex the business logic is. The scope is agreed and quoted before we start, in 4 to 12 weeks depending on size.",
           "The cost of an app depends on the number of screens, the features (payments, geolocation, offline mode) and the systems to connect. The quote is firm before work starts.",
         ],
         links: [{ label: "How much does an app cost in Morocco", href: "/en/blog/how-much-does-an-app-cost-in-morocco" }],
@@ -505,7 +505,7 @@ export const SERVICE_SEO_EN: Record<string, ServiceSeo> = {
       {
         h2: "How much does custom software cost in Morocco?",
         paras: [
-          "The price of custom software depends on the number of modules: a simple tool covering one area starts at MAD {{prix:desktop-apps/Outil simple}}, delivered in 4 to 6 weeks. Complete multi-module, multi-workstation management software starts at MAD {{prix:desktop-apps/Gestion complète}}, in 8 to 12 weeks. An advanced business system with integrations starts at MAD {{prix:desktop-apps/Système métier}}, on a scope defined together.",
+          "Custom software starts at MAD {{prix:desktop-apps/Outil simple}} at Wevtex, for a tool covering one functional area, delivered in 4 to 6 weeks. The price rises with the number of modules, multi-workstation use and integrations with the tools you already run. The scope is agreed and quoted before we start.",
         ],
         links: [
           { label: "Custom web applications", href: "/en/web-application-development-morocco" },

@@ -43,7 +43,7 @@ export const POSTS_A_EN: Post[] = [
           ["Company website (10 to 20 pages)", "{{prix:website-creation/Business}} – 30,000", "3 to 6 weeks"],
           ["Online store", "{{prix:website-creation/Boutique}} – 40,000", "4 to 8 weeks"],
           ["Platform or business software", "{{prix:custom-solutions/Plateforme}} – 60,000+", "8 to 16 weeks"],
-          ["iOS + Android mobile app", "{{prix:mobile-apps/Essentielle}} – 50,000+", "4 to 12 weeks"],
+          ["iOS + Android mobile app", "From MAD {{prix:mobile-apps/Essentielle}}", "4 to 12 weeks"],
         ],
       },
       {

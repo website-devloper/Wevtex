@@ -5577,3 +5577,50 @@ html.menu-open .cc-bar { visibility: hidden; }
   background-color: #f2f9dd;
 }
 .wevtex .site-header .mega-item:hover strong { color: #1c2a08; }
+
+/* ---------------------------------------------------------------------------
+   Nav, form type and the hero's client strip (2026-09-27)
+   ------------------------------------------------------------------------- */
+
+/* Moving the pointer into the open panel leaves the label itself un-hovered,
+   and .has-mega:hover resolved --ink-on-dark to its light-mode ink: a black
+   word on the olive bar. It stays lime for as long as the panel is open. */
+.wevtex .site-header .has-mega:hover > .nav-label { color: var(--accent); }
+
+/* Labels lead, placeholders follow. */
+.wevtex .hero-form .field label,
+.wevtex .contact-split .cs-form-card .field label { font-size: 13.5px; }
+.wevtex .hero-form .field input::placeholder,
+.wevtex .hero-form .field textarea::placeholder,
+.wevtex .contact-split .cs-form-card .field input::placeholder,
+.wevtex .contact-split .cs-form-card .field textarea::placeholder { font-size: 13px; }
+
+/* The hero eyebrow drops its marker and its rule: the line reads as a plain
+   location line, which is what it is. */
+.wevtex .hero-split .eyebrow::before,
+.wevtex .hero-split .line-eyebrow::after { display: none; }
+
+/* Client logos: a white band inside the hero, so the marks show in their own
+   colours instead of being flattened to white silhouettes. */
+.wevtex .hero-split .hero-logos {
+  background: #ffffff;
+  border: 1px solid #e3e8d8;
+  border-radius: 12px;
+  padding: 22px clamp(18px, 2.4vw, 30px) 24px;
+  margin-top: clamp(38px, 4.4vw, 56px);
+  border-top: 1px solid #e3e8d8;
+}
+.wevtex .hero-split .ls-row img { filter: none; opacity: 1; }
+.wevtex .hero-split .ls-lead { color: #6b7a58; }
+
+/* A service sold as one pack: the card keeps a card's width instead of
+   stretching across the three-column grid. */
+.wevtex .pr-grid-1 { grid-template-columns: minmax(0, 520px); justify-content: center; }
+.wevtex .pr-grid-2 { grid-template-columns: repeat(2, minmax(0, 440px)); justify-content: center; }
+.wevtex .pr-unit {
+  font-size: 0.42em;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  margin-left: 2px;
+  opacity: 0.72;
+}
