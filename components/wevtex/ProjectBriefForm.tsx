@@ -34,7 +34,7 @@ const T = {
     employees: ["Indépendant / 1 personne", "2 à 10", "11 à 50", "51 à 200", "Plus de 200"],
     budgets: ["Moins de 5 000 DH", "5 000 – 15 000 DH", "15 000 – 30 000 DH", "30 000 – 60 000 DH", "Plus de 60 000 DH", "À définir ensemble"],
     timelines: ["Dès que possible", "Sous 1 mois", "1 à 3 mois", "Plus de 3 mois", "Je me renseigne"],
-    steps: ["Vos coordonnées", "Votre projet", "Votre brief"],
+    steps: ["Vos coordonnées", "Votre entreprise et votre projet", "Votre brief"],
     err: {
       name: "Merci d'indiquer votre nom.",
       email: "Merci d'indiquer une adresse e-mail valide.",
@@ -88,7 +88,7 @@ const T = {
     employees: ["Freelancer / 1 person", "2 to 10", "11 to 50", "51 to 200", "More than 200"],
     budgets: ["Under MAD 5,000", "MAD 5,000 – 15,000", "MAD 15,000 – 30,000", "MAD 30,000 – 60,000", "Over MAD 60,000", "To be defined together"],
     timelines: ["As soon as possible", "Within 1 month", "1 to 3 months", "More than 3 months", "Just exploring"],
-    steps: ["Your details", "Your project", "Your brief"],
+    steps: ["Your details", "Your company and project", "Your brief"],
     err: {
       name: "Please enter your name.",
       email: "Please enter a valid email address.",
@@ -175,10 +175,10 @@ export function ProjectBriefForm() {
       if (v.name.trim().length < 2) return t.err.name;
       if (!EMAIL_RE.test(v.contact.trim())) return t.err.email;
       if (v.phone.replace(/\D/g, "").length < 8) return t.err.phone;
-      if (v.business.trim().length < 2) return t.err.business;
-      if (!v.employees) return t.err.employees;
     }
     if (s === 1) {
+      if (v.business.trim().length < 2) return t.err.business;
+      if (!v.employees) return t.err.employees;
       if (!v.service) return t.err.service;
       if (!v.budget) return t.err.budget;
       if (!v.timeline) return t.err.timeline;
@@ -272,6 +272,11 @@ export function ProjectBriefForm() {
             <input id="pb-phone" type="tel" value={v.phone} onChange={set("phone")}
                    placeholder="+212 6 XX XX XX XX" autoComplete="tel" />
           </div>
+        </div>
+      )}
+
+      {step === 1 && (
+        <div className="form-grid">
           <div className="field full">
             <label htmlFor="pb-business">{t.business}</label>
             <input id="pb-business" type="text" value={v.business} onChange={set("business")}
@@ -284,11 +289,6 @@ export function ProjectBriefForm() {
               {t.employees.map((s) => <option key={s}>{s}</option>)}
             </select>
           </div>
-        </div>
-      )}
-
-      {step === 1 && (
-        <div className="form-grid">
           <div className="field full">
             <label htmlFor="pb-service">{t.service}</label>
             <select id="pb-service" value={v.service} onChange={set("service")}>
