@@ -5435,3 +5435,11 @@ html.menu-open .cc-bar { visibility: hidden; }
 @media (max-width: 720px) { .wevtex .site-header .brand-mark { height: 36px; } }
 .wevtex .footer-v2 .footer-mark { height: 72px; width: auto; display: block; }
 @media (max-width: 720px) { .wevtex .footer-v2 .footer-mark { height: 56px; } }
+
+/* The bar grows with the mark: 58px of logo needs more than the 74px it had. */
+.wevtex .site-header-inner { height: 88px; }
+.wevtex .site-header .brand-mark { height: 58px; width: auto; }
+@media (max-width: 720px) {
+  .wevtex .site-header-inner { height: 72px; }
+  .wevtex .site-header .brand-mark { height: 46px; }
+}
