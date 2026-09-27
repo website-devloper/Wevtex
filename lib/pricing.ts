@@ -31,6 +31,39 @@ export const PRICES = {
   "whatsapp-bots": { Essentiel: "2 400", Qualification: "5 900", "Sur mesure": "12 000" },
 } as const;
 
+/**
+ * Options sold on top of a pack, listed on /tarifs.
+ *
+ * `unit` is printed after the amount ("par page", "par mois"). Amounts follow
+ * the same French display format as PRICES.
+ */
+export const ADDONS = [
+  { id: "extra-page", price: "250", unit: { fr: "par page", en: "per page" },
+    fr: { h: "Page supplémentaire", p: "Au-delà des pages comprises dans votre formule, mise en page et intégration comprises." },
+    en: { h: "Extra page", p: "Beyond the pages included in your package, layout and build included." } },
+  { id: "copywriting", price: "200", unit: { fr: "par page", en: "per page" },
+    fr: { h: "Rédaction du contenu", p: "Nous écrivons vos textes, en français ou en anglais, pensés pour Google et pour vos clients." },
+    en: { h: "Copywriting", p: "We write your text, in French or English, for Google and for your customers." } },
+  { id: "second-language", price: "900", unit: { fr: "par langue", en: "per language" },
+    fr: { h: "Deuxième langue", p: "Votre site en anglais ou en arabe, avec le sélecteur de langue et les balises hreflang." },
+    en: { h: "Second language", p: "Your site in English or Arabic, with the language switch and hreflang tags." } },
+  { id: "logo", price: "900", unit: { fr: "forfait", en: "one-off" },
+    fr: { h: "Logo et identité visuelle", p: "Trois pistes, une retenue, déclinée en fichiers vectoriels et en formats réseaux sociaux." },
+    en: { h: "Logo and brand identity", p: "Three routes, one chosen, delivered as vector files and social formats." } },
+  { id: "payment", price: "900", unit: { fr: "forfait", en: "one-off" },
+    fr: { h: "Paiement en ligne", p: "Intégration du paiement par carte (CMI) ou PayPal, tests de bout en bout compris." },
+    en: { h: "Online payment", p: "Card payment (CMI) or PayPal integration, end-to-end testing included." } },
+  { id: "maintenance", price: "300", unit: { fr: "par mois", en: "per month" },
+    fr: { h: "Maintenance", p: "Mises à jour, sauvegardes, corrections et une heure de petites modifications par mois." },
+    en: { h: "Maintenance", p: "Updates, backups, fixes and one hour of small changes a month." } },
+  { id: "hosting", price: "600", unit: { fr: "par an", en: "per year" },
+    fr: { h: "Hébergement et nom de domaine", p: "À partir de la deuxième année : hébergement, domaine, certificat SSL et boîtes e-mail." },
+    en: { h: "Hosting and domain", p: "From the second year: hosting, domain, SSL certificate and mailboxes." } },
+  { id: "training", price: "300", unit: { fr: "l'heure", en: "per hour" },
+    fr: { h: "Formation supplémentaire", p: "Prise en main de votre espace d'administration, en visio, enregistrée pour votre équipe." },
+    en: { h: "Extra training", p: "A walkthrough of your admin area, over video, recorded for your team." } },
+] as const;
+
 /** Monthly fees quoted alongside a one-off set-up price. */
 export const MONTHLY = {
   "whatsapp-bots": { Essentiel: "390", Qualification: "690" },

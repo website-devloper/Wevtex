@@ -73,6 +73,7 @@ export const PROJECT_SLUGS_EN: Record<string, string> = {
 const STATIC_EN: Record<string, string> = {
   "/": "/en",
   "/services": "/en/services",
+  "/tarifs": "/en/pricing",
   "/portfolio": "/en/portfolio",
   "/contact": "/en/contact",
   "/faq": "/en/faq",

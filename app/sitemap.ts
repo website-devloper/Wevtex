@@ -22,6 +22,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const staticPages: Page[] = [
     { path: '/', lastModified: now, changeFrequency: 'weekly', priority: 1 },
     { path: '/services', lastModified: now, changeFrequency: 'weekly', priority: 0.9 },
+    { path: '/tarifs', lastModified: now, changeFrequency: 'monthly', priority: 0.9 },
     { path: '/agence-developpement-ia-maroc', lastModified: now, changeFrequency: 'monthly', priority: 0.8 },
     { path: '/portfolio', lastModified: now, changeFrequency: 'weekly', priority: 0.9 },
     { path: '/blog', lastModified: now, changeFrequency: 'weekly', priority: 0.7 },

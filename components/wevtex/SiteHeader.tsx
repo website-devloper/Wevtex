@@ -7,9 +7,9 @@ import { useLenis } from "lenis/react";
 import { useHomeContent } from "./useHomeContent";
 import { useLocale, useLp } from "./locale";
 import { switchPath } from "@/lib/i18n-paths";
-import { WHATSAPP_URL, TEL_URL, PHONE_DISPLAY, EMAIL, EMAIL_URL, CONTACT_URL, servicePath, industryPath, socialUrl, HOME_URL, SERVICES_URL, PORTFOLIO_URL } from "@/lib/site-links";
+import { WHATSAPP_URL, TEL_URL, PHONE_DISPLAY, EMAIL, EMAIL_URL, CONTACT_URL, servicePath, industryPath, socialUrl, HOME_URL, SERVICES_URL, PORTFOLIO_URL, PRICING_URL } from "@/lib/site-links";
 
-type Current = "services" | "work" | "reviews" | "contact";
+type Current = "services" | "work" | "reviews" | "pricing" | "contact";
 
 type NavItem = { href: string; title: string; sub: string; icon: ReactNode };
 
@@ -55,6 +55,7 @@ const T = {
     sectors: "Secteurs",
     sectorsHead: "CHOISISSEZ VOTRE SECTEUR",
     work: "Réalisations",
+    pricing: "Tarifs",
     contact: "Contact",
     quote: "Mon devis",
     closeMenu: "Fermer le menu",
@@ -87,6 +88,7 @@ const T = {
     sectors: "Industries",
     sectorsHead: "CHOOSE YOUR INDUSTRY",
     work: "Portfolio",
+    pricing: "Pricing",
     contact: "Contact",
     quote: "Get a quote",
     closeMenu: "Close menu",
@@ -300,6 +302,9 @@ export function SiteHeader({ current }: { current?: Current }) {
               <a href={lp(PORTFOLIO_URL)} className={current === "work" ? "nav-label current" : "nav-label"}>{t.work}</a>
             </li>
             <li>
+              <a href={lp(PRICING_URL)} className={current === "pricing" ? "nav-label current" : "nav-label"}>{t.pricing}</a>
+            </li>
+            <li>
               <a href={lp(CONTACT_URL)} className={current === "contact" ? "nav-label current" : "nav-label"}>{t.contact}</a>
             </li>
           </ul>
@@ -384,6 +389,7 @@ export function SiteHeader({ current }: { current?: Current }) {
             </div>
 
             <a href={lp(PORTFOLIO_URL)} className={current === "work" ? "mnav-row current" : "mnav-row"} onClick={closeMenu}>{t.work}</a>
+            <a href={lp(PRICING_URL)} className={current === "pricing" ? "mnav-row current" : "mnav-row"} onClick={closeMenu}>{t.pricing}</a>
             <a href={lp(CONTACT_URL)} className={current === "contact" ? "mnav-row current" : "mnav-row"} onClick={closeMenu}>{t.contact}</a>
           </nav>
 

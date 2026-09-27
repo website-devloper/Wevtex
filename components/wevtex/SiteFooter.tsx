@@ -9,14 +9,14 @@ import { CONTACT_URL, HOME_URL, SERVICES_URL, PORTFOLIO_URL, servicePath, indust
 
 /** Wevtex site footer — shared across the homepage and all inner pages. */
 /* Every entry resolves to a page or to a section id that actually exists:
-   #process and #pricing are both rendered on /services.
+   #process is rendered on /services; the packs have their own page, /tarifs.
    Several sector labels share a page on purpose — one sector page covers both
    "Immobilier" and "Finance" under Services professionnels. */
 const T = {
   fr: {
     pages: [
       ["Accueil", HOME_URL], ["Services", SERVICES_URL], ["Réalisations", PORTFOLIO_URL],
-      ["Notre méthode", `${SERVICES_URL}#process`], ["Tarifs", `${SERVICES_URL}#pricing`], ["FAQ", "/faq"], ["Blog", "/blog"], ["Agence IA", "/agence-developpement-ia-maroc"], ["Contact", CONTACT_URL],
+      ["Notre méthode", `${SERVICES_URL}#process`], ["Tarifs", "/tarifs"], ["FAQ", "/faq"], ["Blog", "/blog"], ["Agence IA", "/agence-developpement-ia-maroc"], ["Contact", CONTACT_URL],
     ],
     sectors: [
       ["Santé & bien-être", "healthcare-wellness"], ["Immobilier", "professional-services"],
@@ -37,7 +37,7 @@ const T = {
   en: {
     pages: [
       ["Home", HOME_URL], ["Services", SERVICES_URL], ["Portfolio", PORTFOLIO_URL],
-      ["Our process", `${SERVICES_URL}#process`], ["Pricing", `${SERVICES_URL}#pricing`], ["FAQ", "/faq"], ["Blog", "/blog"], ["AI agency", "/agence-developpement-ia-maroc"], ["Contact", CONTACT_URL],
+      ["Our process", `${SERVICES_URL}#process`], ["Pricing", "/tarifs"], ["FAQ", "/faq"], ["Blog", "/blog"], ["AI agency", "/agence-developpement-ia-maroc"], ["Contact", CONTACT_URL],
     ],
     sectors: [
       ["Health & wellness", "healthcare-wellness"], ["Real estate", "professional-services"],
