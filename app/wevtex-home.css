@@ -5443,3 +5443,120 @@ html.menu-open .cc-bar { visibility: hidden; }
   .wevtex .site-header-inner { height: 72px; }
   .wevtex .site-header .brand-mark { height: 46px; }
 }
+
+/* ---------------------------------------------------------------------------
+   Hero form: one white surface (2026-09-27)
+   The card was a white shell wrapped around the form's own paper panel, which
+   read as two cards and two paddings. The panel goes; what is left is a single
+   white card with a small radius, and type with enough weight to be read
+   against the deep green behind it.
+   ------------------------------------------------------------------------- */
+.wevtex .hero-form {
+  background: #ffffff;
+  border: 1px solid #e3e8d8;
+  border-radius: 10px;
+  padding: clamp(22px, 2.2vw, 30px);
+  box-shadow: 0 24px 50px -30px rgba(28, 42, 8, 0.4);
+}
+.wevtex .hero-form::before { display: none; }
+
+.wevtex .hero-form .form {
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  padding: 0;
+}
+
+/* Labels and the step line carry the structure now that the panel is gone, so
+   they are set in the page face at full weight rather than light mono caps. */
+.wevtex .hero-form .form-eyebrow,
+.wevtex .hero-form .pb-step-label {
+  font-family: inherit;
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: #6b7a58;
+}
+.wevtex .hero-form .form h3 {
+  font-size: clamp(21px, 1.7vw, 25px);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: #141415;
+  margin-bottom: 22px;
+}
+.wevtex .hero-form .field label {
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: none;
+  color: #1c2a08;
+}
+.wevtex .hero-form .field input,
+.wevtex .hero-form .field select,
+.wevtex .hero-form .field textarea {
+  background: #ffffff;
+  border: 1px solid #d9e0cb;
+  border-radius: 6px;
+  padding: 12px 13px;
+  font-size: 15px;
+  font-weight: 500;
+  color: #141415;
+}
+.wevtex .hero-form .field input::placeholder,
+.wevtex .hero-form .field textarea::placeholder { color: #98a189; font-weight: 400; }
+.wevtex .hero-form .field input:focus,
+.wevtex .hero-form .field select:focus,
+.wevtex .hero-form .field textarea:focus {
+  border-color: #1c2a08;
+  box-shadow: 0 0 0 3px rgba(198, 242, 78, 0.45);
+}
+.wevtex .hero-form .btn-primary,
+.wevtex .hero-form .pb-back { border-radius: 6px; }
+.wevtex .hero-form .btn-primary { font-weight: 700; }
+.wevtex .hero-form .pb-count { color: #6b7a58; font-weight: 600; }
+.wevtex .hero-form .pb-track { background: #e7ecdb; }
+.wevtex .hero-form .pb-note { color: #6b7a58; font-size: 12px; }
+
+/* A validation message set in olive read as a caption, not as something to
+   act on. */
+.wevtex .pb-error {
+  margin: 0 0 12px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #9c2a14;
+}
+
+/* The contact page runs the same form, so it gets the same minimal treatment:
+   one white surface, a small radius, and labels set in the page face. */
+.wevtex .contact-split .cs-form-card { border-radius: 10px; }
+.wevtex .contact-split .cs-form-card .form {
+  background: transparent; border: 0; border-radius: 0; padding: 0;
+}
+.wevtex .contact-split .cs-form-card .pb-step-label {
+  font-family: inherit; font-size: 11.5px; font-weight: 700;
+  letter-spacing: 0.1em; color: #6b7a58;
+}
+.wevtex .contact-split .cs-form-card .field label {
+  font-family: inherit; font-size: 12px; font-weight: 700;
+  letter-spacing: 0.04em; text-transform: none; color: #1c2a08;
+}
+.wevtex .contact-split .cs-form-card .field input,
+.wevtex .contact-split .cs-form-card .field select,
+.wevtex .contact-split .cs-form-card .field textarea {
+  background: #ffffff; border: 1px solid #d9e0cb; border-radius: 6px;
+  padding: 12px 13px; font-size: 15px; font-weight: 500; color: #141415;
+}
+.wevtex .contact-split .cs-form-card .field input::placeholder,
+.wevtex .contact-split .cs-form-card .field textarea::placeholder { color: #98a189; font-weight: 400; }
+.wevtex .contact-split .cs-form-card .field input:focus,
+.wevtex .contact-split .cs-form-card .field select:focus,
+.wevtex .contact-split .cs-form-card .field textarea:focus {
+  border-color: #1c2a08; box-shadow: 0 0 0 3px rgba(198, 242, 78, 0.45);
+}
+.wevtex .contact-split .cs-form-card .btn-primary,
+.wevtex .contact-split .cs-form-card .pb-back { border-radius: 6px; }
+.wevtex .contact-split .cs-form-card .btn-primary { font-weight: 700; }
+.wevtex .contact-split .cs-form-card .pb-count { color: #6b7a58; font-weight: 600; }
+.wevtex .contact-split .cs-form-card .pb-track { background: #e7ecdb; }
+.wevtex .contact-split .cs-form-card .pb-note { color: #6b7a58; font-size: 12px; }

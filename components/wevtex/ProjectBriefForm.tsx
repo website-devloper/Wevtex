@@ -329,7 +329,7 @@ export function ProjectBriefForm() {
       )}
 
       {status === "error" && (
-        <p role="alert" style={{ color: "var(--lime-ink, #4c6b10)", fontWeight: 500, margin: "0 0 12px" }}>
+        <p role="alert" className="pb-error">
           {error}
         </p>
       )}
