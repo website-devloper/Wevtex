@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { BlogIndexView } from "@/components/wevtex/BlogIndexView";
-import { POSTS_ORDERED_EN } from "@/lib/en/blog-data";
+import { getPosts } from "@/lib/content";
 import { postPath, toCard } from "@/lib/blog-utils";
 import { JsonLd, breadcrumb } from "@/components/seo/JsonLd";
 import { abs, SITE_URL } from "@/lib/seo";
@@ -21,7 +21,8 @@ export const metadata: Metadata = {
   },
 };
 
-export default function EnglishBlogPage() {
+export default async function EnglishBlogPage() {
+  const posts = await getPosts("en");
   const blogJsonLd = {
     "@context": "https://schema.org",
     "@type": "Blog",
@@ -30,7 +31,7 @@ export default function EnglishBlogPage() {
     url: abs("/en/blog"),
     inLanguage: "en",
     publisher: { "@id": `${SITE_URL}#organization` },
-    blogPost: POSTS_ORDERED_EN.map((p) => ({
+    blogPost: posts.map((p) => ({
       "@type": "BlogPosting",
       headline: p.title,
       url: abs(postPath(p.slug, "en")),
@@ -42,7 +43,7 @@ export default function EnglishBlogPage() {
     <>
       <JsonLd data={blogJsonLd} />
       <JsonLd data={breadcrumb([{ name: "Blog", path: "/en/blog" }], "en")} />
-      <BlogIndexView posts={POSTS_ORDERED_EN.map(toCard)} />
+      <BlogIndexView posts={posts.map(toCard)} />
     </>
   );
 }

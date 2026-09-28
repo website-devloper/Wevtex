@@ -28,27 +28,16 @@ export const SERVICE_URLS_EN: Record<string, string> = {
   "whatsapp-bots": "whatsapp-chatbot-morocco",
 };
 
-/** Blog posts: French slug -> English slug. */
-export const POST_SLUGS_EN: Record<string, string> = {
-  "combien-coute-un-site-web-au-maroc": "how-much-does-a-website-cost-in-morocco",
-  "comment-choisir-une-agence-web-au-maroc": "how-to-choose-a-web-design-agency-in-morocco",
-  "site-vitrine-ou-boutique-en-ligne": "business-website-or-online-store",
-  "seo-au-maroc-par-ou-commencer": "seo-in-morocco-where-to-start",
-  "chatbot-whatsapp-pme-marocaine": "whatsapp-chatbot-for-moroccan-businesses",
-  "nextjs-ou-wordpress-quel-choix": "nextjs-or-wordpress",
-  "combien-coute-une-application-mobile-au-maroc": "how-much-does-an-app-cost-in-morocco",
-  "google-ads-ou-facebook-ads-maroc": "google-ads-or-facebook-ads-morocco",
-  "site-web-ou-page-facebook": "website-or-facebook-page",
-  "vendre-en-ligne-au-maroc": "how-to-sell-online-in-morocco",
-  "guide-creation-site-web-maroc": "guide-to-building-a-website-in-morocco",
-  "guide-referencement-naturel-maroc": "guide-to-seo-in-morocco",
-  "guide-seo-local-google-maps-maroc": "guide-to-local-seo-google-maps-morocco",
-  "guide-google-ads-meta-ads-maroc": "guide-to-google-ads-meta-ads-morocco",
-  "guide-application-mobile-maroc": "guide-to-mobile-app-development-morocco",
-  "guide-logiciel-sur-mesure-maroc": "guide-to-custom-software-morocco",
-  "guide-developpement-web-sur-mesure-maroc": "guide-to-custom-web-development-morocco",
-  "guide-chatbot-whatsapp-maroc": "guide-to-whatsapp-chatbots-morocco",
-};
+/**
+ * Blog posts: French slug -> English slug.
+ *
+ * Generated from the content files by scripts/sync-pairs.ts before every
+ * build, so a post written in the dashboard is paired without anyone editing
+ * this file. The JSON import keeps it usable from client components.
+ */
+import POST_PAIRS from "./post-pairs.json";
+
+export const POST_SLUGS_EN: Record<string, string> = POST_PAIRS;
 
 /** Delivered projects: French slug -> English slug. */
 export const PROJECT_SLUGS_EN: Record<string, string> = {

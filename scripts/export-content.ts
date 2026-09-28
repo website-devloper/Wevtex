@@ -1,21 +1,20 @@
 /**
- * Exports today's content as Keystatic-shaped files, so tomorrow's migration is
- * a copy rather than a retyping job. See wevtex-keystatic-plan.md.
+ * Exports the content still held in lib/ as Keystatic-shaped files, so each
+ * migration is a copy rather than a retyping job. See wevtex-keystatic-plan.md.
+ *
+ * The blog has already moved: it lives in content/fr/posts and content/en/posts,
+ * and is edited in the dashboard.
  *
  *   npx tsx scripts/export-content.ts
  *
  * Writes to exports/keystatic/ (git-ignored), laid out exactly like the
  * content/ tree in the plan. Reads only; nothing in lib/ is touched.
  *
- * Blog bodies are converted here, from PostBlock[] to Markdoc, because that is
- * the one mapping a human would get wrong by hand.
  */
 
 import { mkdirSync, writeFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 
-import { POSTS } from "../lib/blog-data";
-import { POSTS_EN } from "../lib/en/blog-data";
 import { PROJECTS } from "../lib/projects-data";
 import { SERVICES } from "../lib/services-data";
 import { SERVICES_EN } from "../lib/en/services-data";
@@ -29,7 +28,7 @@ import { INDUSTRIES_EN } from "../lib/en/industries-data";
 import { CITIES } from "../lib/cities-data";
 import { CITIES_EN } from "../lib/en/cities-data";
 import { SERVICE_URLS, PHONE_DISPLAY, PHONE_E164, EMAIL, SOCIALS, GOOGLE_REVIEWS_URL } from "../lib/site-links";
-import { SERVICE_URLS_EN, POST_SLUGS_EN, PROJECT_SLUGS_EN } from "../lib/i18n-paths";
+import { SERVICE_URLS_EN, PROJECT_SLUGS_EN } from "../lib/i18n-paths";
 
 const OUT = join(process.cwd(), "exports", "keystatic");
 
@@ -80,44 +79,6 @@ function dump(value: unknown, indent: number): string {
 /** A whole file of YAML. */
 const yamlFile = (o: unknown) => dump(o, 0) + "\n";
 
-/* ------------------------------------------------------------ blog bodies -- */
-
-/** PostBlock[] -> Markdoc, with the three tags the plan defines. */
-function toMarkdoc(body: any[]): string {
-  const out: string[] = [];
-  for (const b of body) {
-    switch (b.type) {
-      case "p":
-        out.push(b.text);
-        break;
-      case "h2":
-        out.push(`## ${b.text}`);
-        break;
-      case "h3":
-        out.push(`### ${b.text}`);
-        break;
-      case "ul":
-        out.push(b.items.map((i: string) => `- ${i}`).join("\n"));
-        break;
-      case "ol":
-        out.push(b.items.map((i: string, n: number) => `${n + 1}. ${i}`).join("\n"));
-        break;
-      case "note":
-        out.push(`{% note %}\n${b.text}\n{% /note %}`);
-        break;
-      case "table":
-        out.push(`{% table head=${JSON.stringify(b.head)} rows=${JSON.stringify(b.rows)} /%}`);
-        break;
-      case "links":
-        out.push(`{% links items=${JSON.stringify(b.items)} /%}`);
-        break;
-      default:
-        throw new Error(`Unknown block type "${b.type}" — add it to the mapping.`);
-    }
-  }
-  return out.join("\n\n") + "\n";
-}
-
 const seo = (o: { metaTitle: string; metaDescription: string; keyword: string }) => ({
   metaTitle: o.metaTitle,
   metaDescription: o.metaDescription,
@@ -128,30 +89,6 @@ const seo = (o: { metaTitle: string; metaDescription: string; keyword: string })
 /* ------------------------------------------------------------- collections -- */
 
 let files = 0;
-
-function exportPosts(list: typeof POSTS, locale: "fr" | "en") {
-  // pairKey ties the two languages together; the French slug is the natural key.
-  const frByEn = Object.fromEntries(Object.entries(POST_SLUGS_EN).map(([fr, en]) => [en, fr]));
-  for (const p of list) {
-    const pairKey = locale === "fr" ? p.slug : frByEn[p.slug] ?? p.slug;
-    const front = yamlFile({
-      title: p.title,
-      excerpt: p.excerpt,
-      answer: p.answer,
-      category: p.category,
-      publishedAt: p.publishedAt,
-      updatedAt: p.updatedAt ?? null,
-      readingMinutes: p.readingMinutes,
-      relatedService: p.relatedService,
-      relatedPosts: p.relatedPosts,
-      pairKey,
-      faqs: p.faqs ?? [],
-      seo: seo(p),
-    });
-    write(`${locale}/posts/${p.slug}.mdoc`, `---\n${front}---\n\n${toMarkdoc(p.body as any[])}`);
-    files++;
-  }
-}
 
 function exportProjects(locale: "fr" | "en") {
   for (const p of PROJECTS) {
@@ -286,8 +223,6 @@ function exportPageCollections() {
 
 /* -------------------------------------------------------------------- run -- */
 
-exportPosts(POSTS, "fr");
-exportPosts(POSTS_EN, "en");
 exportProjects("fr");
 exportProjects("en");
 exportServices(SERVICES, "fr");

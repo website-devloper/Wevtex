@@ -1,25 +1,19 @@
 /**
  * Blog content model.
  *
- * Posts are structured data, not hardcoded JSX — same pattern as the services,
- * cities and sectors: one typed entry per post, rendered by a single view. That
- * keeps the markup identical across posts and lets metadata, Article JSON-LD,
- * the sitemap and the index page all read from the same source.
+ * The posts themselves live in content/fr/posts and content/en/posts, written
+ * in the dashboard at /keystatic and read by lib/content.ts. This file keeps
+ * the shape they are rendered in, which BlogPostView and blog-utils both
+ * depend on.
  *
- * Writing rules these posts follow (from the SEO/GEO brief):
+ * Writing rules the posts follow (from the SEO/GEO brief):
  *  - `answer` states the reply to the post's question in 1–3 sentences, before
  *    any build-up, so an answer engine can quote it whole.
  *  - Each H2 section stands on its own if quoted without the ones above it.
- *  - Every price, delay and figure is one the site already publishes; nothing
- *    is invented, and no client name appears that isn't in projects-data.
- *  - One primary keyword per post, and no two posts share one.
+ *  - Every price, delay and figure is one the site already publishes.
+ *  - One primary keyword per post, and no two posts share one — checked at
+ *    build time in lib/content.ts.
  */
-
-import { POSTS_A } from "./blog/posts-a";
-import { POSTS_B } from "./blog/posts-b";
-import { POSTS_C } from "./blog/posts-c";
-import { POSTS_SEO } from "./blog/posts-seo";
-import { fillPricesDeep } from "./pricing";
 
 export type PostBlock =
   | { type: "p"; text: string }
@@ -59,26 +53,4 @@ export type Post = {
   faqs?: { q: string; a: string }[];
 };
 
-/* Prices in the posts are {{prix:…}} tokens, resolved from lib/pricing.ts. */
-export const POSTS: Post[] = fillPricesDeep([...POSTS_A, ...POSTS_B, ...POSTS_C, ...POSTS_SEO]);
-
-export const POST_SLUGS = POSTS.map((p) => p.slug);
-
-export const getPost = (slug: string) => POSTS.find((p) => p.slug === slug);
-
-/** Newest first — the order the index page renders. */
-export const POSTS_ORDERED = [...POSTS].sort((a, b) =>
-  (b.updatedAt ?? b.publishedAt).localeCompare(a.updatedAt ?? a.publishedAt),
-);
-
 export { postPath, formatPostDate } from "./blog-utils";
-
-/* Two posts targeting the same term would compete with each other, so the
-   keyword set is checked at module load rather than left to review. */
-const seen = new Set<string>();
-for (const p of POSTS) {
-  if (seen.has(p.keyword)) {
-    throw new Error(`Two blog posts target the same keyword: "${p.keyword}" (${p.slug}).`);
-  }
-  seen.add(p.keyword);
-}

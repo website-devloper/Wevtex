@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { languageAlternates } from "@/lib/i18n-paths";
 import { BlogIndexView } from "@/components/wevtex/BlogIndexView";
-import { POSTS_ORDERED, postPath } from "@/lib/blog-data";
+import { postPath } from "@/lib/blog-data";
+import { getPosts } from "@/lib/content";
 import { toCard } from "@/lib/blog-utils";
 import { JsonLd, breadcrumb } from "@/components/seo/JsonLd";
 import { abs, SITE_URL } from "@/lib/seo";
@@ -21,7 +22,9 @@ export const metadata: Metadata = {
   },
 };
 
-export default function BlogPage() {
+export default async function BlogPage() {
+  // Written in the dashboard, read from content/ at build time.
+  const posts = await getPosts("fr");
   /* The index as a Blog entity listing its posts, so crawlers see the set
      rather than only the individual articles. */
   const blogJsonLd = {
@@ -32,7 +35,7 @@ export default function BlogPage() {
     url: abs("/blog"),
     inLanguage: "fr",
     publisher: { "@id": `${SITE_URL}#organization` },
-    blogPost: POSTS_ORDERED.map((p) => ({
+    blogPost: posts.map((p) => ({
       "@type": "BlogPosting",
       headline: p.title,
       url: abs(postPath(p.slug)),
@@ -44,7 +47,7 @@ export default function BlogPage() {
     <>
       <JsonLd data={blogJsonLd} />
       <JsonLd data={breadcrumb([{ name: "Blog", path: "/blog" }])} />
-      <BlogIndexView posts={POSTS_ORDERED.map(toCard)} />
+      <BlogIndexView posts={posts.map(toCard)} />
     </>
   );
 }

@@ -2,14 +2,15 @@ import type { Metadata } from "next";
 import { languageAlternates } from "@/lib/i18n-paths";
 import { notFound } from "next/navigation";
 import { BlogPostView } from "@/components/wevtex/BlogPostView";
-import { POST_SLUGS, getPost, postPath } from "@/lib/blog-data";
+import { postPath } from "@/lib/blog-data";
+import { getPost, getPostSlugs, getPosts } from "@/lib/content";
 import { toCard } from "@/lib/blog-utils";
 import { JsonLd, articleSchema, breadcrumb, faqSchema } from "@/components/seo/JsonLd";
 
 export const dynamicParams = false;
 
-export function generateStaticParams() {
-  return POST_SLUGS.map((slug) => ({ slug }));
+export async function generateStaticParams() {
+  return (await getPostSlugs("fr")).map((slug) => ({ slug }));
 }
 
 export async function generateMetadata({
@@ -18,7 +19,7 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
   const { slug } = await params;
-  const post = getPost(slug);
+  const post = await getPost(slug, "fr");
   if (!post) return {};
   const path = postPath(post.slug);
   return {
@@ -44,9 +45,14 @@ export default async function BlogPostPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const post = getPost(slug);
+  const post = await getPost(slug, "fr");
   if (!post) notFound();
   const path = postPath(post.slug);
+  const all = await getPosts("fr");
+  const related = post.relatedPosts.flatMap((s) => {
+    const r = all.find((p) => p.slug === s);
+    return r ? [r] : [];
+  });
 
   return (
     <>
@@ -70,10 +76,7 @@ export default async function BlogPostPage({
       />
       <BlogPostView
         post={post}
-        related={post.relatedPosts.flatMap((s) => {
-          const r = getPost(s);
-          return r ? [toCard(r)] : [];
-        })}
+        related={related.map(toCard)}
       />
     </>
   );

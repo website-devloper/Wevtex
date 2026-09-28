@@ -1,15 +1,15 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { BlogPostView } from "@/components/wevtex/BlogPostView";
-import { POST_SLUGS_LIST_EN, getPostEn } from "@/lib/en/blog-data";
+import { getPost, getPostSlugs, getPosts } from "@/lib/content";
 import { postPath, toCard } from "@/lib/blog-utils";
 import { POST_SLUGS_EN, languageAlternates } from "@/lib/i18n-paths";
 import { JsonLd, articleSchema, breadcrumb, faqSchema } from "@/components/seo/JsonLd";
 
 export const dynamicParams = false;
 
-export function generateStaticParams() {
-  return POST_SLUGS_LIST_EN.map((slug) => ({ slug }));
+export async function generateStaticParams() {
+  return (await getPostSlugs("en")).map((slug) => ({ slug }));
 }
 
 /** The French post this one mirrors. */
@@ -17,7 +17,7 @@ const frSlugOf = (slug: string) => Object.keys(POST_SLUGS_EN).find((fr) => POST_
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
-  const post = getPostEn(slug);
+  const post = await getPost(slug, "en");
   if (!post) return {};
   const path = postPath(post.slug, "en");
   return {
@@ -40,9 +40,14 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 
 export default async function EnglishBlogPostPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  const post = getPostEn(slug);
+  const post = await getPost(slug, "en");
   if (!post) notFound();
   const path = postPath(post.slug, "en");
+  const all = await getPosts("en");
+  const related = post.relatedPosts.flatMap((s) => {
+    const r = all.find((p) => p.slug === s);
+    return r ? [r] : [];
+  });
 
   return (
     <>
@@ -70,10 +75,7 @@ export default async function EnglishBlogPostPage({ params }: { params: Promise<
       />
       <BlogPostView
         post={post}
-        related={post.relatedPosts.flatMap((s) => {
-          const r = getPostEn(s);
-          return r ? [toCard(r)] : [];
-        })}
+        related={related.map(toCard)}
       />
     </>
   );
