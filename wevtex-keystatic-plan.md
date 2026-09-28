@@ -1,4 +1,21 @@
-# CMS setup plan — Keystatic. Prepared 2026-09-28, to run 2026-09-29
+# CMS setup plan — Keystatic
+
+**Status, 2026-09-28.** The dashboard is live at `/keystatic`, and three
+surfaces are migrated and proved:
+
+| Surface | State |
+|---|---|
+| Blog, FR + EN | ✅ in `content/*/posts`, 18 + 18 posts |
+| Réalisations, FR + EN | ✅ in `content/*/projects`, 15 + 15 |
+| Tarifs (formules, options, abonnements) | ✅ in `content/pricing.yaml` |
+| Avis clients, logos clients | collections exist, nothing written yet, no page renders them |
+| Services (wording), FAQ, secteurs, villes, accueil, réglages | still in code — §3.4 onward |
+
+How it runs: `npm run build` first executes `scripts/sync-pairs.ts`, which
+regenerates `lib/post-pairs.json`, `lib/project-pairs.json` and
+`lib/pricing.generated.json` from the content files, then builds. Use
+`npm run check:content` to read everything back through Keystatic and report
+duplicate keywords, unpaired translations or unparseable content.
 
 The goal: **write blog posts and edit the projects, reviews, prices, services
 and the rest of the site's text from a dashboard**, with every SEO field owned
@@ -329,8 +346,10 @@ not a polish pass.
 
 Blog first: it is the SEO surface and the one edited weekly.
 
-1. **Blog** → 2. **Reviews** → 3. **Projects** → 4. **Pricing** →
-5. **Services** → 6. **FAQ, homepage, sectors, cities, clients, settings**
+~~1. Blog~~ → ~~2. Projects~~ → ~~3. Pricing~~ → 4. **Reviews** (needs a section
+on the page before the collection is worth filling) → 5. **Services** (the
+wording; the formules already come from Tarifs) → 6. **FAQ, homepage, sectors,
+cities, clients, settings**
 
 For each, in order:
 
@@ -362,17 +381,20 @@ Never delete the local data before the diff is clean — that file is the rollba
 
 ## 12. Checklist for tomorrow
 
-- [ ] Install `@keystatic/core`, `@keystatic/next`, `@markdoc/markdoc`
-- [ ] `keystatic.config.ts` + dashboard route + API route, local storage
-- [ ] Sidebar groups, French labels and descriptions, defaults (§8)
-- [ ] `posts` collection with the SEO object, then copy the exported files in
-- [ ] `lib/content.ts` reader + the invariant assertions
-- [ ] `/blog` and one post from `content/`, parity diff, delete `lib/blog/*`
-- [ ] Reviews → Projects → Pricing → Services, the same loop each
-- [ ] FAQ, homepage, sectors, cities, clients, settings
-- [ ] GitHub App + env vars on the host, editing verified in production
-- [ ] `/keystatic` noindex, out of the sitemap, build green, one real edit made
-      end to end from the dashboard
+- [x] Install `@keystatic/core`, `@keystatic/next`, `@markdoc/markdoc`
+- [x] `keystatic.config.ts` + dashboard route + API route, local storage
+- [x] Sidebar groups, French labels and descriptions, defaults (§8)
+- [x] `posts` collection with the SEO object, content imported
+- [x] `lib/content.ts` reader + the invariant assertions
+- [x] `/blog` and the posts from `content/`, parity diff, `lib/blog/*` deleted
+- [x] Réalisations, same loop, `lib/projects-data.ts` reduced to its type
+- [x] Tarifs: formules, options and abonnements, generated into the code path
+- [ ] Avis clients: build the section that renders them, then fill the collection
+- [ ] Services wording, FAQ, homepage, sectors, cities, clients, settings
+- [ ] **GitHub App + env vars on the host** — until then the dashboard only
+      works locally (`storage: { kind: "local" }`)
+- [ ] `/keystatic` out of the sitemap, and one real edit made end to end in
+      production
 
 ---
 
