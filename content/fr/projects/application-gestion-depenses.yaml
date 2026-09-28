@@ -1,0 +1,20 @@
+title: "Floussy"
+category: "Application"
+description: "Application web de gestion de budget personnel et familial : suivi des dépenses par catégorie, marchand et mois, scan de reçus, catégorisation automatique et questions en langage naturel sur son propre historique. Chaque donnée est cloisonnée par utilisateur, avec export et suppression à tout moment."
+screenshot: "/images/work/application-gestion-depenses.webp"
+clientUrl: "floussy.app"
+liveUrl: "https://floussy-five.vercel.app/"
+year: 2026
+order: 10
+featured: false
+stack:
+  - "Next.js"
+  - "Dashboard"
+  - "Auth sécurisée"
+metricValue: "100 %"
+metricLabel: "des données cloisonnées par utilisateur"
+seo:
+  metaTitle: "Floussy"
+  metaDescription: "Développement d'une application web de gestion des dépenses personnelles et familiales."
+  keyword: "application gestion depenses"
+  noindex: false

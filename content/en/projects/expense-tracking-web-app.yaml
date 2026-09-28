@@ -1,0 +1,15 @@
+title: "Floussy"
+frenchProject: "application-gestion-depenses"
+category: "Web app"
+description: "Web app for personal and family budgets: spending by category, merchant and month, receipt scanning, automatic categorization and plain-language questions about your own history. Every user's data is isolated, with export and deletion at any time."
+stack:
+  - "Next.js"
+  - "Dashboard"
+  - "Secure auth"
+metricValue: "100%"
+metricLabel: "of data isolated per user"
+seo:
+  metaTitle: "Floussy"
+  metaDescription: "Development of a web app to track personal and family expenses."
+  keyword: "expense tracking web app"
+  noindex: false

@@ -1,0 +1,20 @@
+title: "Koffee Kuento"
+category: "Site vitrine"
+description: "Site vitrine bilingue pour un café de spécialité aux Palmiers : menu illustré, mise en avant des signatures, intégration commande Glovo et référencement local optimisé (horaires, avis Google, itinéraire). Conçu pour transformer les recherches locales en clients au comptoir."
+screenshot: "/images/work/site-cafe-brunch-casablanca.webp"
+clientUrl: "koffeekuento.ma"
+liveUrl: "https://koffee-kuento-seven.vercel.app/"
+year: 2026
+order: 8
+featured: false
+stack:
+  - "Next.js"
+  - "SEO Local"
+  - "Glovo"
+metricValue: "+63 %"
+metricLabel: "de recherches locales"
+seo:
+  metaTitle: "Koffee Kuento"
+  metaDescription: "Site vitrine et SEO local pour un café de spécialité à Casablanca, menu, avis Google et commande en ligne."
+  keyword: "site cafe brunch casablanca"
+  noindex: false

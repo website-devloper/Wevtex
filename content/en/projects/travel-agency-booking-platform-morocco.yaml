@@ -1,0 +1,15 @@
+title: "Follow Me Travel"
+frenchProject: "plateforme-agence-voyage-maroc"
+category: "Platform"
+description: "Booking platform for a Moroccan travel agency: search by destination, theme and trip type, detailed tour pages, domestic, international and Umrah trips, customer accounts and online payment. The comfort of a high-street agency at online prices."
+stack:
+  - "Web development"
+  - "Online booking"
+  - "Payments"
+metricValue: "6"
+metricLabel: "international destinations online"
+seo:
+  metaTitle: "Follow Me Travel"
+  metaDescription: "Development of a travel booking platform in Morocco: search, tours and online payment."
+  keyword: "travel agency booking platform morocco"
+  noindex: false

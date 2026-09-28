@@ -1,0 +1,20 @@
+title: "EMAS Nettoyage"
+category: "Site vitrine"
+description: "Site vitrine pour une entreprise de nettoyage professionnel : présentation claire des prestations (maisons, bureaux, commerces, fin de chantier, vitres, désinfection), zones d'intervention et demande de devis simplifiée. Conçu pour transformer une recherche en demande de service."
+screenshot: "/images/work/site-service-nettoyage-maroc.webp"
+clientUrl: "emas-nettoyage.ma"
+liveUrl: "https://emas-nettoyage.vercel.app/"
+year: 2026
+order: 4
+featured: false
+stack:
+  - "Next.js"
+  - "Site vitrine"
+  - "SEO"
+metricValue: "6"
+metricLabel: "types de prestations mises en avant"
+seo:
+  metaTitle: "EMAS Nettoyage"
+  metaDescription: "Site vitrine pour une entreprise de nettoyage professionnel au Maroc, prestations et devis en ligne."
+  keyword: "site service nettoyage maroc"
+  noindex: false

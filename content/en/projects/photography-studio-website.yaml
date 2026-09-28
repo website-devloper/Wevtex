@@ -1,0 +1,15 @@
+title: "Studio Photo"
+frenchProject: "site-studio-photographie"
+category: "Portfolio"
+description: "Portfolio website for an award-winning photography studio: galleries by specialty (weddings, portraits, events, commercial), full-screen imagery and easy contact. A quiet setting where the pictures speak for themselves."
+stack:
+  - "Gallery"
+  - "SEO"
+  - "Responsive"
+metricValue: "+44%"
+metricLabel: "booking requests"
+seo:
+  metaTitle: "Studio Photo"
+  metaDescription: "Portfolio website for a professional photography studio: weddings, portraits and events."
+  keyword: "photography studio website"
+  noindex: false

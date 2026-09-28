@@ -1,0 +1,15 @@
+title: "Dentica"
+frenchProject: "site-clinique-dentaire"
+category: "Healthcare website"
+description: "Modern dental clinic website built around booking: treatments (implants, orthodontics, cosmetic dentistry), the team of practitioners, a clear price list and an online booking system. A reassuring design that turns visitors into patients."
+stack:
+  - "HTML5"
+  - "Online booking"
+  - "Responsive"
+metricValue: "+47%"
+metricLabel: "online appointments"
+seo:
+  metaTitle: "Dentica"
+  metaDescription: "Dental clinic website with online booking and a clear presentation of treatments."
+  keyword: "dental clinic website"
+  noindex: false

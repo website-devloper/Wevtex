@@ -4,7 +4,8 @@ import { servicePath } from '@/lib/site-links';
 import { SERVICE_SLUGS } from '@/lib/services-data';
 import { INDUSTRY_SLUGS } from '@/lib/industries-data';
 import { CITY_SLUGS } from '@/lib/cities-data';
-import { PROJECT_SLUGS, projectPath } from '@/lib/projects-data';
+import { projectPath } from '@/lib/projects-data';
+import { getProjectSlugs } from '@/lib/content';
 import { postPath } from '@/lib/blog-data';
 import { getPosts } from '@/lib/content';
 import { localize } from '@/lib/i18n-paths';
@@ -19,6 +20,7 @@ type Page = {
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const POSTS = await getPosts('fr');
+  const PROJECT_SLUGS = await getProjectSlugs('fr');
   const now = new Date();
 
   const staticPages: Page[] = [

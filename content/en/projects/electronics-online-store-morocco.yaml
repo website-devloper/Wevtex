@@ -1,0 +1,15 @@
+title: "JPM"
+frenchProject: "ecommerce-informatique-hightech-maroc"
+category: "E-commerce"
+description: "High-tech online store: laptops, smartphones, monitors and accessories, with category search, clear product pages, dynamic promotions and secure payment. A fast shopping experience built for a catalog that changes quickly."
+stack:
+  - "Shopify"
+  - "E-commerce"
+  - "Product catalog"
+metricValue: "7/7"
+metricLabel: "support and online ordering"
+seo:
+  metaTitle: "JPM"
+  metaDescription: "Electronics and high-tech online store in Morocco: PCs, smartphones and accessories."
+  keyword: "electronics online store morocco"
+  noindex: false

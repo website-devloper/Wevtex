@@ -1,0 +1,20 @@
+title: "Dentica"
+category: "Santé"
+description: "Site de clinique dentaire moderne axé sur la prise de rendez-vous : présentation des soins (implants, orthodontie, esthétique), équipe de praticiens, grille tarifaire claire et système de réservation en ligne. Design rassurant pensé pour convertir le visiteur en patient."
+screenshot: "/images/work/site-clinique-dentaire.webp"
+clientUrl: "dentica.ma"
+liveUrl: "https://dentist-project-three.vercel.app/"
+year: 2026
+order: 16
+featured: false
+stack:
+  - "HTML5"
+  - "Prise de RDV"
+  - "Responsive"
+metricValue: "+47 %"
+metricLabel: "de rendez-vous en ligne"
+seo:
+  metaTitle: "Dentica"
+  metaDescription: "Création d'un site de clinique dentaire avec réservation en ligne et présentation des soins."
+  keyword: "site clinique dentaire"
+  noindex: false

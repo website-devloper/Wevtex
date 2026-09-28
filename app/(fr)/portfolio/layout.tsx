@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { languageAlternates } from "@/lib/i18n-paths";
 import { serializeJsonLd } from "@/components/seo/JsonLd";
-import { PROJECTS_ORDERED } from "@/lib/projects-data";
+import { getProjects } from "@/lib/content";
 import { SITE_URL, abs } from "@/lib/seo";
 
 export const metadata: Metadata = {
@@ -16,11 +16,12 @@ export const metadata: Metadata = {
   },
 };
 
-export default function PortfolioLayout({
+export default async function PortfolioLayout({
   children,
 }: {
   children: React.ReactNode
 }) {
+  const projects = await getProjects("fr");
   /* An ItemList of the delivered work. The page listed ten real projects with
      live URLs and carried no structured data at all, so none of it was legible
      to a crawler as a portfolio. */
@@ -28,8 +29,8 @@ export default function PortfolioLayout({
     "@context": "https://schema.org",
     "@type": "ItemList",
     name: "Réalisations Wevtex",
-    numberOfItems: PROJECTS_ORDERED.length,
-    itemListElement: PROJECTS_ORDERED.map((p, i) => ({
+    numberOfItems: projects.length,
+    itemListElement: projects.map((p, i) => ({
       "@type": "ListItem",
       position: i + 1,
       item: {

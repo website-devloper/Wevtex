@@ -1,0 +1,15 @@
+title: "Maison Couture"
+frenchProject: "boutique-caftan-luxe"
+category: "E-commerce"
+description: "High-end online store for Moroccan couture: handmade kaftans, djellabas, takchitas and gandouras. Browsing by collection, carefully crafted product pages, multi-currency (MAD) and a checkout designed for international customers."
+stack:
+  - "E-commerce"
+  - "Laravel"
+  - "Multi-currency"
+metricValue: "+41%"
+metricLabel: "conversion rate"
+seo:
+  metaTitle: "Maison Couture"
+  metaDescription: "Online store for luxury Moroccan kaftans, handmade in Marrakech."
+  keyword: "luxury kaftan online store"
+  noindex: false

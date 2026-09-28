@@ -1,0 +1,20 @@
+title: "Maison Couture"
+category: "E-commerce"
+description: "Boutique en ligne haut de gamme dédiée à la couture marocaine : caftans, djellabas, takchitas et gandouras faits main. Navigation par collections, fiches produits soignées, gestion multidevise (MAD) et parcours d'achat pensé pour une clientèle internationale."
+screenshot: "/images/work/boutique-caftan-luxe.webp"
+clientUrl: "maisoncouture.ma"
+liveUrl: "https://oku.rpg.temporary.site/"
+year: 2026
+order: 11
+featured: false
+stack:
+  - "E-commerce"
+  - "Laravel"
+  - "Multi-devise"
+metricValue: "+41 %"
+metricLabel: "de taux de conversion"
+seo:
+  metaTitle: "Maison Couture"
+  metaDescription: "Création d'une boutique e-commerce de caftans marocains de luxe, faits main à Marrakech."
+  keyword: "boutique caftan luxe"
+  noindex: false

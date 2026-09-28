@@ -1,7 +1,7 @@
 import { PortfolioView } from "@/components/wevtex/PortfolioView";
-import { PROJECTS_ORDERED } from "@/lib/projects-data";
+import { getProjects } from "@/lib/content";
 
 /* Metadata and the ItemList schema live in ./layout.tsx. */
-export default function PortfolioPage() {
-  return <PortfolioView projects={PROJECTS_ORDERED} />;
+export default async function PortfolioPage() {
+  return <PortfolioView projects={await getProjects("fr")} />;
 }

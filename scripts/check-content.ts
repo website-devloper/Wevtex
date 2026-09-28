@@ -59,6 +59,20 @@ async function main() {
   for (const k of frKeys) if (!enKeys.has(k)) { console.log(`\n  ✗ no English version for "${k}"`); problems++; }
   for (const k of enKeys) if (!frKeys.has(k)) { console.log(`\n  ✗ no French version for "${k}"`); problems++; }
 
+  // Réalisations: every English entry must point at a French one that exists.
+  const frProjects = await reader.collections.projects.all();
+  const enProjects = await reader.collections.projectsEn.all();
+  const frProjectSlugs = new Set(frProjects.map((p) => p.slug));
+  console.log(`
+projects: ${frProjects.length} FR, ${enProjects.length} EN`);
+  for (const { slug, entry } of enProjects) {
+    const twin = (entry as any).frenchProject;
+    if (!frProjectSlugs.has(twin)) {
+      console.log(`  ✗ ${slug} points at "${twin}", which does not exist`);
+      problems++;
+    }
+  }
+
   for (const name of ["reviews", "clients"] as const) {
     const all = await reader.collections[name].all();
     console.log(`\n${name}: ${all.length} entries`);

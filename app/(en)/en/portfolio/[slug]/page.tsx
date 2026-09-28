@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { RealisationView } from "@/components/wevtex/RealisationView";
-import { PROJECTS_ORDERED_EN, PROJECT_SLUGS_LIST_EN, getProjectEn, projectPathEn } from "@/lib/en/projects-data";
+import { projectPathEn } from "@/lib/projects-data";
+import { getProject, getProjects, getProjectSlugs } from "@/lib/content";
 import { languageAlternates } from "@/lib/i18n-paths";
 import { JsonLd, breadcrumb, creativeWorkSchema } from "@/components/seo/JsonLd";
 
@@ -9,21 +10,20 @@ import { JsonLd, breadcrumb, creativeWorkSchema } from "@/components/seo/JsonLd"
 
 export const dynamicParams = false;
 
-export function generateStaticParams() {
-  return PROJECT_SLUGS_LIST_EN.map((slug) => ({ slug }));
+export async function generateStaticParams() {
+  return (await getProjectSlugs("en")).map((slug) => ({ slug }));
 }
 
 /* The three projects after this one, in the portfolio's order. */
-function neighbours(slug: string) {
-  const idx = PROJECTS_ORDERED_EN.findIndex((x) => x.slug === slug);
-  return [1, 2, 3]
-    .map((n) => PROJECTS_ORDERED_EN[(idx + n) % PROJECTS_ORDERED_EN.length])
-    .filter((x) => x.slug !== slug);
+async function neighbours(slug: string) {
+  const all = await getProjects("en");
+  const idx = all.findIndex((x) => x.slug === slug);
+  return [1, 2, 3].map((n) => all[(idx + n) % all.length]).filter((x) => x.slug !== slug);
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
-  const p = getProjectEn(slug);
+  const p = await getProject(slug, "en");
   if (!p) return {};
   const title = `${p.title}: ${p.category} built in Morocco | WEVTEX`;
   const path = projectPathEn(p.slug);
@@ -45,7 +45,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 
 export default async function EnglishProjectPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  const p = getProjectEn(slug);
+  const p = await getProject(slug, "en");
   if (!p) notFound();
   const path = projectPathEn(p.slug);
 
@@ -73,7 +73,7 @@ export default async function EnglishProjectPage({ params }: { params: Promise<{
           "en",
         )}
       />
-      <RealisationView project={p} neighbours={neighbours(p.slug)} />
+      <RealisationView project={p} neighbours={await neighbours(p.slug)} />
     </>
   );
 }

@@ -1,0 +1,15 @@
+title: "VEIL"
+frenchProject: "landing-page-casque-vr"
+category: "Landing page"
+description: "Immersive product landing page for a standalone VR headset: scroll-driven storytelling, an animated image sequence, 3D spatial audio and a showcase of the game library. A cinematic scroll experience designed to pull you into the game."
+stack:
+  - "Scroll animation"
+  - "WebGL"
+  - "Performance"
+metricValue: "2×"
+metricLabel: "time spent on page"
+seo:
+  metaTitle: "VEIL"
+  metaDescription: "Immersive, animated landing page for the launch of a virtual reality headset."
+  keyword: "vr headset landing page"
+  noindex: false

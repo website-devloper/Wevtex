@@ -3,7 +3,7 @@ import { languageAlternates } from "@/lib/i18n-paths";
 import { serializeJsonLd } from "@/components/seo/JsonLd";
 import { HomeClient } from "@/components/wevtex/HomeClient";
 import { FAQS } from "@/components/wevtex/homeContent";
-import { PROJECTS_ORDERED } from "@/lib/projects-data";
+import { getProjects } from "@/lib/content";
 
 /**
  * Home route — a Server Component.
@@ -45,7 +45,8 @@ export const metadata: Metadata = {
   },
 };
 
-export default function HomePage() {
+export default async function HomePage() {
+  const projects = await getProjects("fr");
   const faqJsonLd = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
@@ -62,7 +63,7 @@ export default function HomePage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: serializeJsonLd(faqJsonLd) }}
       />
-      <HomeClient projects={PROJECTS_ORDERED.slice(0, 6)} />
+      <HomeClient projects={projects.slice(0, 6)} />
     </>
   );
 }

@@ -1,0 +1,15 @@
+title: "Zina Beauty"
+frenchProject: "ecommerce-cosmetiques-assistant-ia"
+category: "E-commerce"
+description: "Moroccan cosmetics store with a conversational AI assistant: customers describe their skin, the assistant recommends products, builds a routine and takes the order in the chat, in Darija, French or English, 24/7. A new, guided and instant way to shop."
+stack:
+  - "Next.js"
+  - "AI assistant"
+  - "Multilingual"
+metricValue: "24/7"
+metricLabel: "automated advice and ordering"
+seo:
+  metaTitle: "Zina Beauty"
+  metaDescription: "Moroccan cosmetics e-commerce with an AI assistant: advice and ordering in Darija, French and English, 24/7."
+  keyword: "cosmetics store ai assistant"
+  noindex: false

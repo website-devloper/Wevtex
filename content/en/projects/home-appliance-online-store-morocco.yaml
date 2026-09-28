@@ -1,0 +1,15 @@
+title: "Biougnach Electro"
+frenchProject: "ecommerce-electromenager-maroc"
+category: "E-commerce"
+description: "Online store for a home appliance specialist in Morocco since 1973: multi-category catalog, product search, availability across several cities and a clear buying journey. A long-established brand taken online."
+stack:
+  - "E-commerce"
+  - "Product catalog"
+  - "SEO"
+metricValue: "1973"
+metricLabel: "a heritage brand taken online"
+seo:
+  metaTitle: "Biougnach Electro"
+  metaDescription: "Home appliance online store in Morocco: a multi-city catalog for a brand established in 1973."
+  keyword: "home appliance online store morocco"
+  noindex: false

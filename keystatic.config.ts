@@ -326,6 +326,103 @@ const clients = collection({
   },
 });
 
+
+/* ------------------------------------------------------------- projects -- */
+
+/**
+ * Réalisations. The French entry holds everything; the English one holds only
+ * the translated copy and points at its French twin, so the year, the links,
+ * the screenshot and the order can never drift between the two languages —
+ * the guarantee lib/en/projects-data.ts used to make in code.
+ */
+const projects = collection({
+  label: "Réalisations",
+  path: "content/fr/projects/*",
+  format: { data: "yaml" },
+  slugField: "title",
+  columns: ["title", "category", "year"],
+  schema: {
+    title: fields.slug({
+      name: { label: "Nom du projet", validation: { isRequired: true } },
+      slug: {
+        label: "Adresse de la page",
+        description: "Une fois publiée, ne la changez plus : les liens existants casseraient.",
+      },
+    }),
+    category: fields.text({
+      label: "Catégorie",
+      description: "Affichée sur la carte : E-commerce, Site vitrine, Plateforme…",
+      validation: { isRequired: true },
+    }),
+    description: fields.text({
+      label: "Description",
+      description: "Ce que le projet fait, pour qui, et ce qu'il a changé.",
+      multiline: true,
+      validation: { isRequired: true },
+    }),
+    screenshot: fields.image({
+      label: "Capture d'écran",
+      description: "La page d'accueil du site livré. WebP de préférence, moins de 200 Ko.",
+      directory: "public/images/work",
+      publicPath: "/images/work",
+      validation: { isRequired: true },
+    }),
+    clientUrl: fields.text({ label: "Domaine du client", description: "Sans https://, par exemple exemple.ma" }),
+    liveUrl: fields.url({ label: "Lien vers le site en ligne" }),
+    year: fields.integer({ label: "Année", defaultValue: new Date().getFullYear() }),
+    order: fields.integer({
+      label: "Ordre d'affichage",
+      description: "Le plus petit nombre passe en premier.",
+      defaultValue: 50,
+    }),
+    featured: fields.checkbox({
+      label: "Mettre en avant",
+      description: "Les projets cochés remontent sur la page d'accueil.",
+      defaultValue: false,
+    }),
+    stack: fields.array(fields.text({ label: "Technologie" }), {
+      label: "Technologies",
+      description: "Trois ou quatre suffisent.",
+      itemLabel: (props) => props.value || "Technologie",
+    }),
+    metricValue: fields.text({
+      label: "Le chiffre",
+      description: "Par exemple +38 % ou 3 200. C'est ce que le visiteur retient.",
+    }),
+    metricLabel: fields.text({ label: "Ce que le chiffre mesure", description: "Par exemple : demandes de devis" }),
+    seo: seo("fr"),
+  },
+});
+
+const projectsEn = collection({
+  label: "Réalisations (anglais)",
+  path: "content/en/projects/*",
+  format: { data: "yaml" },
+  slugField: "title",
+  columns: ["title", "frenchProject"],
+  schema: {
+    title: fields.slug({
+      name: { label: "Project name", validation: { isRequired: true } },
+      slug: { label: "Page address", description: "The English URL, which differs from the French one on purpose." },
+    }),
+    frenchProject: fields.relationship({
+      label: "French version",
+      description: "Pick the project this one translates. Everything else — year, links, screenshot, order — comes from it.",
+      collection: "projects",
+      validation: { isRequired: true },
+    }),
+    category: fields.text({ label: "Category", validation: { isRequired: true } }),
+    description: fields.text({ label: "Description", multiline: true, validation: { isRequired: true } }),
+    stack: fields.array(fields.text({ label: "Technology" }), {
+      label: "Technologies",
+      itemLabel: (props) => props.value || "Technology",
+    }),
+    metricValue: fields.text({ label: "The number" }),
+    metricLabel: fields.text({ label: "What it measures" }),
+    seo: seo("en"),
+  },
+});
+
 /* ---------------------------------------------------------------- config -- */
 
 export default config({
@@ -333,12 +430,14 @@ export default config({
   ui: {
     brand: { name: "Wevtex" },
     navigation: {
-      Contenu: ["posts", "postsEn", "reviews", "clients"],
+      Contenu: ["posts", "postsEn", "projects", "projectsEn", "reviews", "clients"],
     },
   },
   collections: {
     posts: post("fr"),
     postsEn: post("en"),
+    projects,
+    projectsEn,
     reviews,
     clients,
   },

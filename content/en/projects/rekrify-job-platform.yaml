@@ -1,0 +1,15 @@
+title: "Rekrify"
+frenchProject: "rekrify-plateforme-emploi"
+category: "Platform"
+description: "Full recruitment platform connecting Moroccan candidates and employers: verified job offers, smart matching, company profiles and real-time recruiter messaging. Built for speed and trust, with a simplified application journey."
+stack:
+  - "Next.js"
+  - "React"
+  - "Tailwind"
+metricValue: "+52%"
+metricLabel: "more completed applications"
+seo:
+  metaTitle: "Rekrify"
+  metaDescription: "Development of a modern job board in Morocco with verified offers and smart candidate matching."
+  keyword: "rekrify job platform"
+  noindex: false

@@ -2,11 +2,11 @@ import { SERVICES } from "@/lib/services-data";
 import { CITIES } from "@/lib/cities-data";
 import { postPath } from "@/lib/blog-data";
 import { getPosts } from "@/lib/content";
-import { PROJECTS_ORDERED, projectPath } from "@/lib/projects-data";
+import { projectPath, projectPathEn } from "@/lib/projects-data";
+import { getProjects } from "@/lib/content";
 import { IA_META } from "@/lib/ia-page-data";
 import { SERVICES_EN } from "@/lib/en/services-data";
 import { CITIES_EN } from "@/lib/en/cities-data";
-import { PROJECTS_ORDERED_EN, projectPathEn } from "@/lib/en/projects-data";
 import { IA_META_EN } from "@/lib/en/ia-page-data";
 import { localize } from "@/lib/i18n-paths";
 import { abs } from "@/lib/seo";
@@ -28,6 +28,8 @@ export async function GET() {
   // The blog list comes from content/, written in the dashboard.
   const POSTS_ORDERED = await getPosts("fr");
   const POSTS_ORDERED_EN = await getPosts("en");
+  const PROJECTS_ORDERED = await getProjects("fr");
+  const PROJECTS_ORDERED_EN = await getProjects("en");
   const lines = [
     "# Wevtex",
     "",

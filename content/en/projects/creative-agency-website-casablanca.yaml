@@ -1,0 +1,15 @@
+title: "Raiide Media"
+frenchProject: "site-agence-creative-casablanca"
+category: "Portfolio"
+description: "Website for a Casablanca creative agency: filterable portfolio, brand identity showcases, embedded video reels, detailed service pages and client testimonials. An immersive showcase that puts the creative work first."
+stack:
+  - "Next.js"
+  - "Portfolio"
+  - "Video"
+metricValue: "+58%"
+metricLabel: "quote requests"
+seo:
+  metaTitle: "Raiide Media"
+  metaDescription: "Portfolio website for a digital creative agency in Casablanca: branding, video and marketing."
+  keyword: "creative agency website casablanca"
+  noindex: false

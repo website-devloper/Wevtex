@@ -1,0 +1,20 @@
+title: "M2 Immobilier"
+category: "Immobilier"
+description: "Plateforme immobilière haut de gamme pour Marrakech et tout le Maroc : recherche multicritères (ville, type, budget, chambres), fiches biens détaillées, estimation gratuite et prise de contact WhatsApp. Blog immobilier intégré pour renforcer le référencement."
+screenshot: "/images/work/plateforme-immobilier-prestige-maroc.webp"
+clientUrl: "m2immobilier.ma"
+liveUrl: "https://m2maroc.vercel.app/"
+year: 2026
+order: 12
+featured: true
+stack:
+  - "Next.js"
+  - "Recherche avancée"
+  - "SEO"
+metricValue: "+38 %"
+metricLabel: "de demandes qualifiées"
+seo:
+  metaTitle: "M2 Immobilier"
+  metaDescription: "Développement d'une plateforme immobilière de prestige au Maroc, villas, riads et appartements haut de gamme."
+  keyword: "plateforme immobilier prestige maroc"
+  noindex: false

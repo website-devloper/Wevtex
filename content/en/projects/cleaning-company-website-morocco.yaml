@@ -1,0 +1,15 @@
+title: "EMAS Nettoyage"
+frenchProject: "site-service-nettoyage-maroc"
+category: "Business website"
+description: "Business website for a professional cleaning company: a clear presentation of services (homes, offices, shops, post-construction, windows, disinfection), service areas and a simple quote request. Built to turn a search into a service request."
+stack:
+  - "Next.js"
+  - "Business website"
+  - "SEO"
+metricValue: "6"
+metricLabel: "service types showcased"
+seo:
+  metaTitle: "EMAS Nettoyage"
+  metaDescription: "Business website for a professional cleaning company in Morocco, with services and online quotes."
+  keyword: "cleaning company website morocco"
+  noindex: false

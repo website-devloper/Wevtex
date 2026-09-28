@@ -1,0 +1,15 @@
+title: "M2 Immobilier"
+frenchProject: "plateforme-immobilier-prestige-maroc"
+category: "Real estate platform"
+description: "Luxury real estate platform for Marrakech and all of Morocco: multi-criteria search (city, type, budget, bedrooms), detailed property pages, free valuation and WhatsApp contact. A built-in real estate blog strengthens SEO."
+stack:
+  - "Next.js"
+  - "Advanced search"
+  - "SEO"
+metricValue: "+38%"
+metricLabel: "more qualified enquiries"
+seo:
+  metaTitle: "M2 Immobilier"
+  metaDescription: "Development of a luxury real estate platform in Morocco: villas, riads and high-end apartments."
+  keyword: "luxury real estate platform morocco"
+  noindex: false

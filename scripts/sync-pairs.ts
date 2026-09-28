@@ -1,5 +1,6 @@
 /**
- * Writes lib/post-pairs.json from the content files: French slug -> English slug.
+ * Writes lib/post-pairs.json and lib/project-pairs.json from the content files:
+ * French slug -> English slug, for the blog and for the réalisations.
  *
  * Runs before every build (see the "prebuild" script). The pairing used to be a
  * map maintained by hand in lib/i18n-paths.ts, which meant a post added from the
@@ -45,10 +46,45 @@ async function main() {
     process.exit(1);
   }
 
+  writePairs("post-pairs.json", pairs, "posts");
+
+  // Réalisations: each English entry names its French twin outright, so the
+  // pairing is read from that rather than from a key typed on both sides.
+  const [frProjects, enProjects] = await Promise.all([
+    reader.collections.projects.all(),
+    reader.collections.projectsEn.all(),
+  ]);
+
+  const projectPairs: Record<string, string> = {};
+  const frSlugs = new Set(frProjects.map((p) => p.slug));
+  const projectProblems: string[] = [];
+
+  for (const { slug, entry } of enProjects) {
+    const twin = (entry as any).frenchProject;
+    if (!twin || !frSlugs.has(twin)) {
+      projectProblems.push(`  the English project "${slug}" points at "${twin}", which does not exist`);
+      continue;
+    }
+    projectPairs[twin] = slug;
+  }
+  for (const slug of frSlugs) {
+    if (!projectPairs[slug]) projectProblems.push(`  "${slug}" has no English version`);
+  }
+
+  if (projectProblems.length) {
+    console.error("\nEvery réalisation needs a version in both languages:\n");
+    console.error(projectProblems.join("\n"));
+    console.error("\nOpen the English one in the dashboard and pick its French version.\n");
+    process.exit(1);
+  }
+
+  writePairs("project-pairs.json", projectPairs, "projects");
+}
+
+function writePairs(file: string, pairs: Record<string, string>, label: string) {
   const sorted = Object.fromEntries(Object.entries(pairs).sort(([a], [b]) => a.localeCompare(b)));
-  const out = join(process.cwd(), "lib", "post-pairs.json");
-  writeFileSync(out, JSON.stringify(sorted, null, 2) + "\n", "utf8");
-  console.log(`lib/post-pairs.json — ${Object.keys(sorted).length} posts paired`);
+  writeFileSync(join(process.cwd(), "lib", file), JSON.stringify(sorted, null, 2) + "\n", "utf8");
+  console.log(`lib/${file} — ${Object.keys(sorted).length} ${label} paired`);
 }
 
 main();

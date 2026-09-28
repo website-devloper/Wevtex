@@ -1,0 +1,20 @@
+title: "VEIL"
+category: "Landing"
+description: "Landing page produit immersive pour un casque VR autonome : narration au défilement, séquence d'images animée, audio spatial 3D et présentation de la bibliothèque de jeux. Une expérience scroll cinématique conçue pour donner envie de rentrer dans le jeu."
+screenshot: "/images/work/landing-page-casque-vr.webp"
+clientUrl: "veil.gg"
+liveUrl: "https://veil-headset.vercel.app/"
+year: 2026
+order: 17
+featured: false
+stack:
+  - "Animation scroll"
+  - "WebGL"
+  - "Performance"
+metricValue: "2×"
+metricLabel: "de temps passé sur la page"
+seo:
+  metaTitle: "VEIL"
+  metaDescription: "Landing page immersive et animée pour le lancement d'un casque de réalité virtuelle."
+  keyword: "landing page casque vr"
+  noindex: false

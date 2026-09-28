@@ -1,0 +1,20 @@
+title: "JPM"
+category: "E-commerce"
+description: "Boutique en ligne high-tech : ordinateurs portables, smartphones, écrans et accessoires, avec recherche par catégorie, fiches produits claires, promotions dynamiques et paiement sécurisé. Une expérience d'achat rapide, pensée pour un catalogue qui bouge vite."
+screenshot: "/images/work/ecommerce-informatique-hightech-maroc.webp"
+clientUrl: "jpm.ma"
+liveUrl: "https://jpm.ma/"
+year: 2026
+order: 3
+featured: true
+stack:
+  - "Shopify"
+  - "E-commerce"
+  - "Catalogue produits"
+metricValue: "7/7"
+metricLabel: "support et commande en ligne"
+seo:
+  metaTitle: "JPM"
+  metaDescription: "Création d'une boutique e-commerce informatique et high-tech au Maroc, PC, smartphones et accessoires."
+  keyword: "ecommerce informatique hightech maroc"
+  noindex: false

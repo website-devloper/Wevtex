@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { PortfolioView } from "@/components/wevtex/PortfolioView";
-import { PROJECTS_ORDERED_EN } from "@/lib/en/projects-data";
+import { getProjects } from "@/lib/content";
 import { languageAlternates } from "@/lib/i18n-paths";
 import { SITE_URL, abs } from "@/lib/seo";
 
@@ -19,14 +19,15 @@ export const metadata: Metadata = {
   },
 };
 
-export default function EnglishPortfolioPage() {
+export default async function EnglishPortfolioPage() {
+  const projects = await getProjects("en");
   /* The delivered work as an ItemList, as on the French page. */
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "ItemList",
     name: "Wevtex portfolio",
-    numberOfItems: PROJECTS_ORDERED_EN.length,
-    itemListElement: PROJECTS_ORDERED_EN.map((p, i) => ({
+    numberOfItems: projects.length,
+    itemListElement: projects.map((p, i) => ({
       "@type": "ListItem",
       position: i + 1,
       item: {
@@ -46,7 +47,7 @@ export default function EnglishPortfolioPage() {
   return (
     <>
       <JsonLd data={jsonLd} />
-      <PortfolioView projects={PROJECTS_ORDERED_EN} />
+      <PortfolioView projects={projects} />
     </>
   );
 }

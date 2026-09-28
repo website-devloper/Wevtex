@@ -2,8 +2,8 @@
  * Exports the content still held in lib/ as Keystatic-shaped files, so each
  * migration is a copy rather than a retyping job. See wevtex-keystatic-plan.md.
  *
- * The blog has already moved: it lives in content/fr/posts and content/en/posts,
- * and is edited in the dashboard.
+ * The blog and the réalisations have already moved: they live under content/
+ * and are edited in the dashboard.
  *
  *   npx tsx scripts/export-content.ts
  *
@@ -15,7 +15,6 @@
 import { mkdirSync, writeFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 
-import { PROJECTS } from "../lib/projects-data";
 import { SERVICES } from "../lib/services-data";
 import { SERVICES_EN } from "../lib/en/services-data";
 import { ADDONS } from "../lib/pricing";
@@ -28,7 +27,7 @@ import { INDUSTRIES_EN } from "../lib/en/industries-data";
 import { CITIES } from "../lib/cities-data";
 import { CITIES_EN } from "../lib/en/cities-data";
 import { SERVICE_URLS, PHONE_DISPLAY, PHONE_E164, EMAIL, SOCIALS, GOOGLE_REVIEWS_URL } from "../lib/site-links";
-import { SERVICE_URLS_EN, PROJECT_SLUGS_EN } from "../lib/i18n-paths";
+import { SERVICE_URLS_EN } from "../lib/i18n-paths";
 
 const OUT = join(process.cwd(), "exports", "keystatic");
 
@@ -89,37 +88,6 @@ const seo = (o: { metaTitle: string; metaDescription: string; keyword: string })
 /* ------------------------------------------------------------- collections -- */
 
 let files = 0;
-
-function exportProjects(locale: "fr" | "en") {
-  for (const p of PROJECTS) {
-    const slug = locale === "fr" ? p.slug : PROJECT_SLUGS_EN[p.slug] ?? p.slug;
-    write(
-      `${locale}/projects/${slug}.yaml`,
-      yamlFile({
-        title: p.title,
-        clientUrl: p.clientUrl,
-        liveUrl: p.liveUrl,
-        category: p.category,
-        year: p.year,
-        featured: p.featured,
-        order: p.order,
-        description: p.description,
-        stack: p.stack,
-        metricValue: p.metricValue,
-        metricLabel: p.metricLabel,
-        screenshot: p.screenshot,
-        pairKey: p.slug,
-        seo: {
-          metaTitle: p.title,
-          metaDescription: p.metaDescription,
-          keyword: p.slug.replace(/-/g, " "),
-          noindex: false,
-        },
-      }),
-    );
-    files++;
-  }
-}
 
 function exportServices(list: typeof SERVICES, locale: "fr" | "en") {
   const urls = locale === "fr" ? SERVICE_URLS : SERVICE_URLS_EN;
@@ -223,8 +191,6 @@ function exportPageCollections() {
 
 /* -------------------------------------------------------------------- run -- */
 
-exportProjects("fr");
-exportProjects("en");
 exportServices(SERVICES, "fr");
 exportServices(SERVICES_EN, "en");
 exportSingletons();

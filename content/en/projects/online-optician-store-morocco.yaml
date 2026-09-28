@@ -1,0 +1,15 @@
+title: "Epoptique"
+frenchProject: "ecommerce-opticien-en-ligne-maroc"
+category: "E-commerce"
+description: "Online store for a Moroccan optician: over 500 prescription glasses and sunglasses, virtual try-on, 2-in-1 clip-ons, major brands, 24/48h delivery and free returns. A shopping experience designed to convert online as well as in store."
+stack:
+  - "Shopify"
+  - "Virtual try-on"
+  - "E-commerce"
+metricValue: "+500"
+metricLabel: "models available online"
+seo:
+  metaTitle: "Epoptique"
+  metaDescription: "Online optician store in Morocco with virtual try-on, major brands and 24/48h delivery."
+  keyword: "online optician store morocco"
+  noindex: false

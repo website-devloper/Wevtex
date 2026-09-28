@@ -1,0 +1,20 @@
+title: "Biougnach Electro"
+category: "E-commerce"
+description: "Boutique en ligne pour un spécialiste de l'électroménager présent au Maroc depuis 1973 : catalogue multi-catégories, recherche produits, disponibilité multi-villes et parcours d'achat clair. Une enseigne historique portée sur le web."
+screenshot: "/images/work/ecommerce-electromenager-maroc.webp"
+clientUrl: "biougnach.ma"
+liveUrl: "https://www.biougnach.ma/"
+year: 2026
+order: 5
+featured: false
+stack:
+  - "E-commerce"
+  - "Catalogue produits"
+  - "SEO"
+metricValue: "1973"
+metricLabel: "une enseigne portée en ligne"
+seo:
+  metaTitle: "Biougnach Electro"
+  metaDescription: "Boutique e-commerce d'électroménager au Maroc, catalogue multi-villes pour une enseigne établie depuis 1973."
+  keyword: "ecommerce electromenager maroc"
+  noindex: false

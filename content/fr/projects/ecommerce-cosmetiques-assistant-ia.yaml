@@ -1,0 +1,20 @@
+title: "Zina Beauty"
+category: "E-commerce"
+description: "Boutique de cosmétiques marocains dotée d'un assistant IA conversationnel : le client décrit sa peau, l'assistant recommande les produits, construit une routine et prend la commande dans le chat, en darija, français ou anglais, 24h/24. Une nouvelle façon d'acheter, guidée et instantanée."
+screenshot: "/images/work/ecommerce-cosmetiques-assistant-ia.webp"
+clientUrl: "zinabeauty.ma"
+liveUrl: "https://agent-ecommerce.vercel.app/"
+year: 2026
+order: 15
+featured: true
+stack:
+  - "Next.js"
+  - "Assistant IA"
+  - "Multilingue"
+metricValue: "24/7"
+metricLabel: "de conseil et commande automatisés"
+seo:
+  metaTitle: "Zina Beauty"
+  metaDescription: "E-commerce de cosmétiques marocains avec assistant IA, conseil et commande en darija, français et anglais, 24/7."
+  keyword: "ecommerce cosmetiques assistant ia"
+  noindex: false

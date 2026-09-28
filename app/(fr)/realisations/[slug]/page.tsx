@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import { languageAlternates } from "@/lib/i18n-paths";
 import { notFound } from "next/navigation";
 import { RealisationView } from "@/components/wevtex/RealisationView";
-import { PROJECT_SLUGS, PROJECTS_ORDERED, getProject, projectPath } from "@/lib/projects-data";
+import { projectPath } from "@/lib/projects-data";
+import { getProject, getProjects, getProjectSlugs } from "@/lib/content";
 import { JsonLd, breadcrumb, creativeWorkSchema } from "@/components/seo/JsonLd";
 
 /**
@@ -15,15 +16,14 @@ import { JsonLd, breadcrumb, creativeWorkSchema } from "@/components/seo/JsonLd"
 export const dynamicParams = false;
 
 /* The three projects after this one, in the portfolio's order. */
-function neighbours(slug: string) {
-  const idx = PROJECTS_ORDERED.findIndex((x) => x.slug === slug);
-  return [1, 2, 3]
-    .map((n) => PROJECTS_ORDERED[(idx + n) % PROJECTS_ORDERED.length])
-    .filter((x) => x.slug !== slug);
+async function neighbours(slug: string) {
+  const all = await getProjects("fr");
+  const idx = all.findIndex((x) => x.slug === slug);
+  return [1, 2, 3].map((n) => all[(idx + n) % all.length]).filter((x) => x.slug !== slug);
 }
 
-export function generateStaticParams() {
-  return PROJECT_SLUGS.map((slug) => ({ slug }));
+export async function generateStaticParams() {
+  return (await getProjectSlugs("fr")).map((slug) => ({ slug }));
 }
 
 export async function generateMetadata({
@@ -32,7 +32,7 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
   const { slug } = await params;
-  const p = getProject(slug);
+  const p = await getProject(slug, "fr");
   if (!p) return {};
   const title = `${p.title} : ${p.category} réalisé au Maroc | WEVTEX`;
   const path = projectPath(p.slug);
@@ -57,7 +57,7 @@ export default async function RealisationPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const p = getProject(slug);
+  const p = await getProject(slug, "fr");
   if (!p) notFound();
   const path = projectPath(p.slug);
 
@@ -81,7 +81,7 @@ export default async function RealisationPage({
           { name: p.title, path },
         ])}
       />
-      <RealisationView project={p} neighbours={neighbours(p.slug)} />
+      <RealisationView project={p} neighbours={await neighbours(p.slug)} />
     </>
   );
 }

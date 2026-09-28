@@ -1,0 +1,15 @@
+title: "Koffee Kuento"
+frenchProject: "site-cafe-brunch-casablanca"
+category: "Business website"
+description: "Bilingual website for a specialty coffee shop in Les Palmiers: illustrated menu, signature drinks, Glovo ordering and local SEO (opening hours, Google reviews, directions). Built to turn local searches into customers at the counter."
+stack:
+  - "Next.js"
+  - "Local SEO"
+  - "Glovo"
+metricValue: "+63%"
+metricLabel: "local searches"
+seo:
+  metaTitle: "Koffee Kuento"
+  metaDescription: "Website and local SEO for a specialty coffee shop in Casablanca: menu, Google reviews and online ordering."
+  keyword: "cafe website casablanca"
+  noindex: false
