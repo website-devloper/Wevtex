@@ -15,7 +15,7 @@
 
 import { SERVICES as MARKETED } from "@/components/wevtex/homeContent";
 import { withSeo } from "./service-seo";
-import { PRICES, MONTHLY, fillPricesDeep } from "./pricing";
+import { PRICES, MONTHLY, PACKS, fillPricesDeep } from "./pricing";
 import type { SeoSection } from "./service-seo";
 
 export type FeatureCard = { title: string; desc: string; checks: string[] };
@@ -72,6 +72,22 @@ export type Service = {
   /** Anchor prefix for the city links ("Agence SEO" -> "Agence SEO à Tanger"). */
   seoCityLabel?: string;
 };
+
+
+/**
+ * The formules of a service, as written on the Tarifs page of the dashboard.
+ * The number is stored once; each language takes its own wording.
+ */
+const tiersFor = (service: string, locale: "fr" | "en" = "fr"): PriceTier[] =>
+  (PACKS[service] ?? []).map((t) => ({
+    name: t[locale].name,
+    price: t.price,
+    note: t[locale].note,
+    features: [...t[locale].features],
+    ...(t.featured ? { featured: true } : {}),
+    ...(t.showFrom ? {} : { from: false }),
+    ...(t.unit ? { unit: t.unit } : {}),
+  }));
 
 const PRICE_FOOTNOTE =
   "Prix indicatifs de départ, en dirhams. Chaque projet reçoit un devis ferme après un échange de quinze minutes, sans engagement.";
@@ -180,11 +196,7 @@ export const SERVICES: Service[] = [
       title: "Le prix de votre site,\nsans rendez-vous.",
       titleEm: ["sans", "rendez-vous."],
       subtitle: "Trois formules affichées. Le devis final confirme le prix, il ne le gonfle pas.",
-      tiers: [
-        { name: "Basic", price: PRICES["website-creation"]["Vitrine"], note: "Site vitrine front-end, livré en 5 à 7 jours", from: false, features: ["Jusqu'à 5 pages : accueil, services, à propos, contact", "Design sur mesure, aux couleurs de votre marque", "Affichage parfait sur mobile, tablette et ordinateur", "Formulaire de contact relié à votre adresse e-mail", "Bouton WhatsApp et liens vers vos réseaux sociaux", "Nom de domaine et hébergement offerts la première année", "Pages statiques, sans espace d'administration"] },
-        { name: "Standard", price: PRICES["website-creation"]["Business"], note: "Front-end et back-end, livré en 2 à 3 semaines", featured: true, from: false, features: ["Tout ce que contient la formule Basic", "Jusqu'à 12 pages", "Back-end sur mesure, avec base de données", "Espace d'administration : vous changez vos textes et vos images", "Blog ou actualités, gérés depuis votre tableau de bord", "Formulaires enregistrés, avec alerte par e-mail", "Référencement de base : balises, sitemap, Search Console"] },
-        { name: "Premium", price: PRICES["website-creation"]["Boutique"], note: "Boutique en ligne et page admin, livrée en 4 à 6 semaines", from: false, features: ["Tout ce que contient la formule Standard", "Catalogue produits, variantes et gestion du stock", "Panier, commande et paiement en ligne", "Page admin : commandes, clients, stock, promotions", "Comptes clients et historique des commandes", "Frais de livraison paramétrables par ville", "Formation à la prise en main, une heure en visio"] },
-      ],
+      tiers: tiersFor("website-creation"),
       footnote: PRICE_FOOTNOTE,
     },
   },
@@ -291,11 +303,7 @@ export const SERVICES: Service[] = [
       title: "Des forfaits SEO\nsans engagement long.",
       titleEm: ["sans", "engagement long."],
       subtitle: "Trois rythmes selon la concurrence sur vos mots-clés. Trois mois minimum, puis vous êtes libre.",
-      tiers: [
-        { name: "Basic", price: PRICES["seo"]["Essentiel"], note: "Par mois, engagement de 3 mois", from: false, features: ["Recherche des mots-clés de base de votre activité", "Optimisation des titres, méta-descriptions et balises", "Sitemap XML et robots.txt, envoyés à Google", "Search Console et Analytics installés et configurés", "Correction des erreurs techniques qui bloquent l'indexation", "Rapport mensuel de positions"] },
-        { name: "Intermédiaire", price: PRICES["seo"]["Croissance"], note: "Par mois, engagement de 3 mois", featured: true, from: false, features: ["Tout ce que contient la formule Basic", "Fiche Google Maps optimisée, photos et publications", "Recherche de mots-clés assistée par IA, sur l'intention d'achat", "Réécriture de vos pages existantes pour ces mots-clés", "SEO local : pages villes et annuaires marocains", "Suivi des appels et des demandes venus de Google"] },
-        { name: "Avancé", price: PRICES["seo"]["Concurrentiel"], note: "Par mois, marchés disputés", from: false, features: ["Tout ce que contient la formule Intermédiaire", "Recherche de mots-clés avancée et analyse des concurrents", "Stratégie de contenu et rédaction d'articles optimisés", "Inscription sur Clutch, Sortlist et annuaires de référence", "Netlinking et citations pour asseoir votre autorité", "Optimisation technique poussée, vitesse et Core Web Vitals", "Objectif première page sur vos requêtes prioritaires"] },
-      ],
+      tiers: tiersFor("seo"),
       footnote: PRICE_FOOTNOTE,
     },
   },
@@ -402,11 +410,7 @@ export const SERVICES: Service[] = [
       title: "Des tarifs simples\npour être trouvé.",
       titleEm: ["pour", "être trouvé."],
       subtitle: "Une mise en place unique, puis un entretien mensuel léger.",
-      tiers: [
-        { name: "Mise en place", price: PRICES["local-seo"]["Mise en place"], note: "Une fois · sous 2 semaines", features: ["Création ou reprise de la fiche", "Catégories et zone optimisées", "Photos et services", "10 annuaires locaux", "Méthode de collecte d'avis"] },
-        { name: "Entretien", price: PRICES["local-seo"]["Entretien"], note: "Par mois · sans engagement", featured: true, features: ["Publications mensuelles", "Réponses aux avis", "Suivi de position", "Mise à jour des horaires", "Rapport mensuel"] },
-        { name: "Multi-sites", price: PRICES["local-seo"]["Multi-sites"], note: "Par mois · à partir de 3 établissements", features: ["Toutes les fiches gérées", "Cohérence entre points de vente", "Suivi par établissement", "Avis centralisés", "Rapport consolidé"] },
-      ],
+      tiers: tiersFor("local-seo"),
       footnote: PRICE_FOOTNOTE,
     },
   },
@@ -513,9 +517,7 @@ export const SERVICES: Service[] = [
       title: "Des honoraires fixes,\nbudget média à part.",
       titleEm: ["budget", "média à part."],
       subtitle: "Vous payez la plateforme directement. Nous facturons uniquement le pilotage.",
-      tiers: [
-        { name: "Gestion de campagnes", price: PRICES["ads"]["Lancement"], note: "Frais de gestion, budget publicitaire non compris", from: false, unit: "/ jour", features: ["Campagnes Google, Facebook et Instagram", "Création des visuels et rédaction des annonces", "Ciblage par ville, âge et centres d'intérêt", "Page d'atterrissage pensée pour la conversion", "Suivi des conversions : appels, WhatsApp, formulaires", "Enchères et budget ajustés en continu", "Rapport de performance chaque semaine"] },
-      ],
+      tiers: tiersFor("ads"),
       footnote:
         "Honoraires de gestion uniquement. Le budget publicitaire est réglé directement à Google ou Meta, sur vos comptes et à votre nom.",
     },
@@ -623,9 +625,7 @@ export const SERVICES: Service[] = [
       title: "Combien coûte\nvotre application.",
       titleEm: ["votre", "application."],
       subtitle: "Trois niveaux d'ambition, chiffrés fermement après le cadrage.",
-      tiers: [
-        { name: "Application iOS et Android", price: PRICES["mobile-apps"]["Essentielle"], note: "Périmètre défini ensemble avant de commencer", features: ["Un seul code pour iOS et Android, avec Flutter", "Design d'interface sur mesure, écran par écran", "Comptes utilisateurs et notifications push", "Back-end, base de données et API", "Tableau de bord pour piloter vos contenus", "Publication sur l'App Store et Google Play", "Trois mois de corrections comprises après la mise en ligne"] },
-      ],
+      tiers: tiersFor("mobile-apps"),
       footnote: PRICE_FOOTNOTE,
     },
   },
@@ -732,9 +732,7 @@ export const SERVICES: Service[] = [
       title: "Combien coûte\nvotre logiciel.",
       titleEm: ["votre", "logiciel."],
       subtitle: "Chiffré fermement après la phase d'analyse, jamais avant.",
-      tiers: [
-        { name: "Logiciel sur mesure", price: PRICES["desktop-apps"]["Outil simple"], note: "Périmètre défini ensemble avant de commencer", features: ["Windows et macOS, utilisable hors connexion", "Gestion, facturation, stock ou production, selon votre métier", "Base de données locale ou partagée entre plusieurs postes", "Impression et export Excel et PDF", "Sauvegarde automatique de vos données", "Aucune licence mensuelle, le logiciel vous appartient", "Formation de vos équipes à la prise en main"] },
-      ],
+      tiers: tiersFor("desktop-apps"),
       footnote: PRICE_FOOTNOTE,
     },
   },
@@ -841,11 +839,7 @@ export const SERVICES: Service[] = [
       title: "Combien coûte\nvotre plateforme.",
       titleEm: ["votre", "plateforme."],
       subtitle: "Le cadrage précède toujours le chiffrage définitif.",
-      tiers: [
-        { name: "Cadrage", price: PRICES["custom-solutions"]["Cadrage"], note: "2 à 3 semaines · livrable à vous", features: ["Ateliers avec vos équipes", "Processus documentés", "Modèle de données", "Périmètre chiffré", "Déduit du projet si vous poursuivez"] },
-        { name: "Plateforme", price: PRICES["custom-solutions"]["Plateforme"], note: "À partir de · 8 à 12 semaines", featured: true, features: ["Portail ou outil métier", "Comptes, rôles et permissions", "Tableaux de bord", "Une intégration incluse", "6 mois d'accompagnement"] },
-        { name: "SaaS complet", price: PRICES["custom-solutions"]["SaaS complet"], note: "À partir de · périmètre défini ensemble", features: ["Architecture multi-entreprises", "Abonnements et facturation", "Intégrations multiples", "Tests de charge", "Accompagnement prioritaire"] },
-      ],
+      tiers: tiersFor("custom-solutions"),
       footnote: PRICE_FOOTNOTE,
     },
   },
@@ -952,11 +946,7 @@ export const SERVICES: Service[] = [
       title: "Combien coûte\nvotre chatbot.",
       titleEm: ["votre", "chatbot."],
       subtitle: "Une mise en place unique, puis un abonnement pour l'entretien.",
-      tiers: [
-        { name: "Essentiel", price: PRICES["whatsapp-bots"]["Essentiel"], note: `Mise en place · puis ${MONTHLY["whatsapp-bots"]["Essentiel"]} DH par mois`, features: ["Compte WhatsApp API", "Jusqu'à 10 scénarios", "Réponses aux questions courantes", "Transmission à votre équipe", "Réglage mensuel"] },
-        { name: "Qualification", price: PRICES["whatsapp-bots"]["Qualification"], note: `Mise en place · puis ${MONTHLY["whatsapp-bots"]["Qualification"]} DH par mois`, featured: true, features: ["Tout de la formule Essentiel", "Scénarios illimités", "Qualification des prospects", "Prise de rendez-vous", "Connexion CRM", "Rapports mensuels"] },
-        { name: "Sur mesure", price: PRICES["whatsapp-bots"]["Sur mesure"], note: "À partir de · périmètre défini ensemble", features: ["Compréhension libre par IA", "Plusieurs langues", "Intégrations multiples", "Campagnes sortantes", "Accompagnement prioritaire"] },
-      ],
+      tiers: tiersFor("whatsapp-bots"),
       footnote: PRICE_FOOTNOTE,
     },
   },

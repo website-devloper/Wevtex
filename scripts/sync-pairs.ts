@@ -79,6 +79,62 @@ async function main() {
   }
 
   writePairs("project-pairs.json", projectPairs, "projects");
+
+  await writePricing();
+}
+
+/**
+ * Turns the Tarifs page of the dashboard into lib/pricing.generated.json.
+ *
+ * lib/pricing.ts reads that file, so a price changed in the dashboard reaches
+ * the pricing tables, the service pages and every sentence in the copy that
+ * quotes it through a {{prix:…}} token — all from one edit.
+ */
+async function writePricing() {
+  const doc = (await reader.singletons.pricing.read()) as any;
+  if (!doc) throw new Error("content/pricing.yaml is missing.");
+
+  const prices: Record<string, Record<string, string>> = {};
+  const monthly: Record<string, Record<string, string>> = {};
+  const packs: Record<string, any[]> = {};
+
+  for (const pack of doc.packs ?? []) {
+    prices[pack.service] ??= {};
+    packs[pack.service] = [];
+    for (const t of pack.tiers ?? []) {
+      if (prices[pack.service][t.key]) {
+        throw new Error(`Two formules of "${pack.service}" share the internal key "${t.key}".`);
+      }
+      prices[pack.service][t.key] = t.price;
+      packs[pack.service].push({
+        key: t.key,
+        price: t.price,
+        unit: t.unit || undefined,
+        showFrom: t.showFrom !== false,
+        featured: !!t.featured,
+        fr: { name: t.nameFr, note: t.noteFr ?? "", features: [...(t.featuresFr ?? [])] },
+        en: { name: t.nameEn, note: t.noteEn ?? "", features: [...(t.featuresEn ?? [])] },
+      });
+    }
+  }
+
+  for (const m of doc.monthly ?? []) {
+    monthly[m.service] ??= {};
+    monthly[m.service][m.key] = m.price;
+  }
+
+  const addons = (doc.addons ?? []).map((a: any) => ({
+    id: a.key,
+    price: a.price,
+    unit: { fr: a.unitFr ?? "", en: a.unitEn ?? "" },
+    fr: { h: a.titleFr, p: a.descriptionFr ?? "" },
+    en: { h: a.titleEn, p: a.descriptionEn ?? "" },
+  }));
+
+  const out = join(process.cwd(), "lib", "pricing.generated.json");
+  writeFileSync(out, JSON.stringify({ prices, monthly, packs, addons }, null, 2) + "\n", "utf8");
+  const tiers = Object.values(packs).reduce((n, list) => n + list.length, 0);
+  console.log(`lib/pricing.generated.json — ${tiers} formules, ${addons.length} options`);
 }
 
 function writePairs(file: string, pairs: Record<string, string>, label: string) {

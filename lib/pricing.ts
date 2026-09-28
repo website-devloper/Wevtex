@@ -1,6 +1,10 @@
 /**
  * Every published price, in one place.
  *
+ * The numbers are written in the dashboard, on the Tarifs page, and land here
+ * through lib/pricing.generated.json, which scripts/sync-pairs.ts writes before
+ * every build. Nothing in this file is edited by hand any more.
+ *
  * The pricing tables on the service pages read from here, and so does every
  * sentence that quotes a price (service copy, FAQs, blog posts, city pages,
  * meta descriptions) through a {{prix:<service>/<formule>}} token. Change a
@@ -14,60 +18,35 @@
 
 import type { Locale } from "./i18n";
 
-export const PRICES = {
-  // Basic / Standard / Premium on the page.
-  "website-creation": { Vitrine: "1 899", Business: "2 999", Boutique: "6 999" },
-  // Basic / Intermédiaire / Avancé on the page, per month.
-  seo: { Essentiel: "1 000", Croissance: "1 500", Concurrentiel: "2 500" },
-  "local-seo": { "Mise en place": "790", Entretien: "490", "Multi-sites": "1 900" },
-  // One pack, priced per day of management. The two other keys are kept at
-  // the same rate so older copy tokens still resolve to the published price.
-  ads: { Lancement: "200", Multicanal: "200", Performance: "200" },
-  // One pack each, quoted from the entry price; the other keys follow it so
-  // no sentence quotes a tier that is no longer sold.
-  "mobile-apps": { Essentielle: "8 000", Complète: "8 000", "Sur mesure": "8 000" },
-  "desktop-apps": { "Outil simple": "4 999", "Gestion complète": "4 999", "Système métier": "4 999" },
-  "custom-solutions": { Cadrage: "6 000", Plateforme: "18 000", "SaaS complet": "60 000" },
-  "whatsapp-bots": { Essentiel: "2 400", Qualification: "5 900", "Sur mesure": "12 000" },
-} as const;
+import GENERATED from "./pricing.generated.json";
 
-/**
- * Options sold on top of a pack, listed on /tarifs.
- *
- * `unit` is printed after the amount ("par page", "par mois"). Amounts follow
- * the same French display format as PRICES.
- */
-export const ADDONS = [
-  { id: "extra-page", price: "250", unit: { fr: "par page", en: "per page" },
-    fr: { h: "Page supplémentaire", p: "Au-delà des pages comprises dans votre formule, mise en page et intégration comprises." },
-    en: { h: "Extra page", p: "Beyond the pages included in your package, layout and build included." } },
-  { id: "copywriting", price: "200", unit: { fr: "par page", en: "per page" },
-    fr: { h: "Rédaction du contenu", p: "Nous écrivons vos textes, en français ou en anglais, pensés pour Google et pour vos clients." },
-    en: { h: "Copywriting", p: "We write your text, in French or English, for Google and for your customers." } },
-  { id: "second-language", price: "900", unit: { fr: "par langue", en: "per language" },
-    fr: { h: "Deuxième langue", p: "Votre site en anglais ou en arabe, avec le sélecteur de langue et les balises hreflang." },
-    en: { h: "Second language", p: "Your site in English or Arabic, with the language switch and hreflang tags." } },
-  { id: "logo", price: "900", unit: { fr: "forfait", en: "one-off" },
-    fr: { h: "Logo et identité visuelle", p: "Trois pistes, une retenue, déclinée en fichiers vectoriels et en formats réseaux sociaux." },
-    en: { h: "Logo and brand identity", p: "Three routes, one chosen, delivered as vector files and social formats." } },
-  { id: "payment", price: "900", unit: { fr: "forfait", en: "one-off" },
-    fr: { h: "Paiement en ligne", p: "Intégration du paiement par carte (CMI) ou PayPal, tests de bout en bout compris." },
-    en: { h: "Online payment", p: "Card payment (CMI) or PayPal integration, end-to-end testing included." } },
-  { id: "maintenance", price: "300", unit: { fr: "par mois", en: "per month" },
-    fr: { h: "Maintenance", p: "Mises à jour, sauvegardes, corrections et une heure de petites modifications par mois." },
-    en: { h: "Maintenance", p: "Updates, backups, fixes and one hour of small changes a month." } },
-  { id: "hosting", price: "600", unit: { fr: "par an", en: "per year" },
-    fr: { h: "Hébergement et nom de domaine", p: "À partir de la deuxième année : hébergement, domaine, certificat SSL et boîtes e-mail." },
-    en: { h: "Hosting and domain", p: "From the second year: hosting, domain, SSL certificate and mailboxes." } },
-  { id: "training", price: "300", unit: { fr: "l'heure", en: "per hour" },
-    fr: { h: "Formation supplémentaire", p: "Prise en main de votre espace d'administration, en visio, enregistrée pour votre équipe." },
-    en: { h: "Extra training", p: "A walkthrough of your admin area, over video, recorded for your team." } },
-] as const;
+/** Tier wording, both languages, for the pricing tables. */
+export type PackTier = {
+  key: string;
+  price: string;
+  unit?: string;
+  showFrom: boolean;
+  featured: boolean;
+  fr: { name: string; note: string; features: string[] };
+  en: { name: string; note: string; features: string[] };
+};
+
+export const PRICES: Record<string, Record<string, string>> = GENERATED.prices;
 
 /** Monthly fees quoted alongside a one-off set-up price. */
-export const MONTHLY = {
-  "whatsapp-bots": { Essentiel: "390", Qualification: "690" },
-} as const;
+export const MONTHLY: Record<string, Record<string, string>> = GENERATED.monthly;
+
+/** The formules of each service, in the order the dashboard lists them. */
+export const PACKS = GENERATED.packs as unknown as Record<string, PackTier[]>;
+
+/** Options sold on top of a pack, listed on /tarifs. */
+export const ADDONS = GENERATED.addons as unknown as {
+  id: string;
+  price: string;
+  unit: { fr: string; en: string };
+  fr: { h: string; p: string };
+  en: { h: string; p: string };
+}[];
 
 type Table = Record<string, Record<string, string>>;
 

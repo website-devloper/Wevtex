@@ -17,7 +17,7 @@ import { dirname, join } from "node:path";
 
 import { SERVICES } from "../lib/services-data";
 import { SERVICES_EN } from "../lib/en/services-data";
-import { ADDONS } from "../lib/pricing";
+import { ADDONS, PRICES, MONTHLY } from "../lib/pricing";
 import { FAQ_GROUPS } from "../lib/faq-data";
 import { FAQ_GROUPS_EN } from "../lib/en/faq-data";
 import { CONTACT_FAQS } from "../lib/contact-content";
@@ -136,9 +136,38 @@ function exportServices(list: typeof SERVICES, locale: "fr" | "en") {
 }
 
 function exportSingletons() {
+  // One entry per pack, holding the number once and both languages' wording
+  // beside it, so a price cannot be current in French and stale in English.
+  const byId = new Map(SERVICES_EN.map((s) => [s.slug, s]));
+
+  const packs = SERVICES.filter((s) => s.pricing?.tiers.length).map((s) => {
+    const en = byId.get(s.slug);
+    return {
+      service: s.slug,
+      tiers: (s.pricing?.tiers ?? []).map((t, i) => {
+        const te = en?.pricing?.tiers[i];
+        return {
+          // The key ties the price to the {{prix:…}} tokens written in the copy.
+          key: Object.keys(PRICES[s.slug as keyof typeof PRICES] ?? {})[i] ?? t.name,
+          price: t.price,
+          unit: t.unit ?? null,
+          showFrom: t.from !== false,
+          featured: t.featured ?? false,
+          nameFr: t.name,
+          nameEn: te?.name ?? t.name,
+          noteFr: t.note,
+          noteEn: te?.note ?? t.note,
+          featuresFr: t.features,
+          featuresEn: te?.features ?? t.features,
+        };
+      }),
+    };
+  });
+
   write(
     "pricing.yaml",
     yamlFile({
+      packs,
       addons: ADDONS.map((a) => ({
         key: a.id,
         price: a.price,
@@ -149,6 +178,9 @@ function exportSingletons() {
         descriptionFr: a.fr.p,
         descriptionEn: a.en.p,
       })),
+      monthly: Object.entries(MONTHLY).flatMap(([service, tiers]) =>
+        Object.entries(tiers).map(([key, price]) => ({ service, key, price })),
+      ),
     }),
   );
   files++;

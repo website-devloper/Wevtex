@@ -1,4 +1,4 @@
-import { config, fields, collection } from "@keystatic/core";
+import { config, fields, collection, singleton } from "@keystatic/core";
 import { block, wrapper } from "@keystatic/core/content-components";
 
 /**
@@ -423,6 +423,97 @@ const projectsEn = collection({
   },
 });
 
+
+/* -------------------------------------------------------------- pricing -- */
+
+/**
+ * Every published price, in one place.
+ *
+ * The number is written once and both languages' wording sits beside it, so a
+ * price cannot be current in French and stale in English. scripts/sync-pairs.ts
+ * turns this file into lib/pricing.generated.json before each build, which is
+ * what the pages and the {{prix:…}} tokens in the copy read.
+ */
+const pricing = singleton({
+  label: "Tarifs",
+  path: "content/pricing",
+  format: { data: "yaml" },
+  schema: {
+    packs: fields.array(
+      fields.object({
+        service: fields.select({
+          label: "Prestation",
+          options: SERVICES,
+          defaultValue: "website-creation",
+        }),
+        tiers: fields.array(
+          fields.object({
+            key: fields.text({
+              label: "Clé interne",
+              description:
+                "Ne la changez pas : c'est elle qui relie ce prix aux phrases du site qui le citent.",
+              validation: { isRequired: true },
+            }),
+            price: fields.text({
+              label: "Prix",
+              description: "Le nombre seul, espaces compris : 1 899. Sans « DH ».",
+              validation: { isRequired: true },
+            }),
+            unit: fields.text({ label: "Unité (optionnelle)", description: "Par exemple : / jour" }),
+            showFrom: fields.checkbox({
+              label: "Afficher « à partir de »",
+              description: "Décochez pour un prix ferme.",
+              defaultValue: true,
+            }),
+            featured: fields.checkbox({ label: "Mettre en avant (le plus demandé)", defaultValue: false }),
+            nameFr: fields.text({ label: "Nom de la formule (FR)", validation: { isRequired: true } }),
+            nameEn: fields.text({ label: "Nom de la formule (EN)", validation: { isRequired: true } }),
+            noteFr: fields.text({ label: "Sous-titre (FR)", description: "Ce que couvre la formule, en une ligne." }),
+            noteEn: fields.text({ label: "Sous-titre (EN)" }),
+            featuresFr: fields.array(fields.text({ label: "Ligne" }), {
+              label: "Ce qui est compris (FR)",
+              itemLabel: (props) => props.value || "Ligne",
+            }),
+            featuresEn: fields.array(fields.text({ label: "Line" }), {
+              label: "Ce qui est compris (EN)",
+              itemLabel: (props) => props.value || "Line",
+            }),
+          }),
+          { label: "Formules", itemLabel: (props) => `${props.fields.nameFr.value} — ${props.fields.price.value} DH` },
+        ),
+      }),
+      { label: "Formules par prestation", itemLabel: (props) => props.fields.service.value },
+    ),
+
+    addons: fields.array(
+      fields.object({
+        key: fields.text({ label: "Clé interne", validation: { isRequired: true } }),
+        price: fields.text({ label: "Prix", validation: { isRequired: true } }),
+        unitFr: fields.text({ label: "Unité (FR)", description: "par page, par mois, forfait…" }),
+        unitEn: fields.text({ label: "Unité (EN)" }),
+        titleFr: fields.text({ label: "Titre (FR)", validation: { isRequired: true } }),
+        titleEn: fields.text({ label: "Titre (EN)", validation: { isRequired: true } }),
+        descriptionFr: fields.text({ label: "Description (FR)", multiline: true }),
+        descriptionEn: fields.text({ label: "Description (EN)", multiline: true }),
+      }),
+      { label: "Options (add-ons)", itemLabel: (props) => `${props.fields.titleFr.value} — ${props.fields.price.value} DH` },
+    ),
+
+    monthly: fields.array(
+      fields.object({
+        service: fields.select({ label: "Prestation", options: SERVICES, defaultValue: "whatsapp-bots" }),
+        key: fields.text({ label: "Clé de la formule", validation: { isRequired: true } }),
+        price: fields.text({ label: "Abonnement mensuel", validation: { isRequired: true } }),
+      }),
+      {
+        label: "Abonnements mensuels",
+        description: "Cités à côté d'un prix de mise en place.",
+        itemLabel: (props) => `${props.fields.service.value} · ${props.fields.key.value}`,
+      },
+    ),
+  },
+});
+
 /* ---------------------------------------------------------------- config -- */
 
 export default config({
@@ -431,8 +522,10 @@ export default config({
     brand: { name: "Wevtex" },
     navigation: {
       Contenu: ["posts", "postsEn", "projects", "projectsEn", "reviews", "clients"],
+      "Réglages": ["pricing"],
     },
   },
+  singletons: { pricing },
   collections: {
     posts: post("fr"),
     postsEn: post("en"),

@@ -5,12 +5,25 @@
  * and merged with the English search layer (lib/en/service-seo.ts).
  */
 
-import type { Service } from "../services-data";
+import type { Service, PriceTier } from "../services-data";
 import { SERVICE_SEO_EN } from "./service-seo";
-import { PRICES, MONTHLY, fillPricesDeep, formatAmount } from "../pricing";
+import { PRICES, MONTHLY, PACKS, fillPricesDeep, formatAmount } from "../pricing";
 import { SERVICES_EN as MARKETED_EN } from "@/components/wevtex/homeContent.en";
 
 const en = (v: string) => formatAmount(v, "en");
+
+
+/** The same formules as the French page, with the English wording. */
+const tiersFor = (service: string, locale: "fr" | "en" = "en"): PriceTier[] =>
+  (PACKS[service] ?? []).map((t) => ({
+    name: t[locale].name,
+    price: en(t.price),
+    note: t[locale].note,
+    features: [...t[locale].features],
+    ...(t.featured ? { featured: true } : {}),
+    ...(t.showFrom ? {} : { from: false }),
+    ...(t.unit ? { unit: t.unit } : {}),
+  }));
 
 const PRICE_FOOTNOTE =
   "Indicative starting prices, in Moroccan dirhams (MAD). Every project gets a firm quote after a fifteen-minute call, with no commitment.";
@@ -114,11 +127,7 @@ const BASE: Service[] = [
       title: "Your website's price,\nwithout a meeting.",
       titleEm: ["without", "a", "meeting."],
       subtitle: "Three packages on display. The final quote confirms the price, it doesn't inflate it.",
-      tiers: [
-        { name: "Basic", price: en(PRICES["website-creation"]["Vitrine"]), note: "Front-end brochure site, delivered in 5 to 7 days", from: false, features: ["Up to 5 pages: home, services, about, contact", "Custom design in your brand's colours", "Reads perfectly on phone, tablet and desktop", "Contact form wired to your email address", "WhatsApp button and links to your social accounts", "Domain name and hosting free for the first year", "Static pages, no admin area"] },
-        { name: "Standard", price: en(PRICES["website-creation"]["Business"]), note: "Front-end and back-end, delivered in 2 to 3 weeks", featured: true, from: false, features: ["Everything in Basic", "Up to 12 pages", "Custom back-end with a database", "Admin area: change your own text and images", "Blog or news, managed from your dashboard", "Form submissions stored, with email alerts", "Baseline SEO: tags, sitemap, Search Console"] },
-        { name: "Premium", price: en(PRICES["website-creation"]["Boutique"]), note: "Online store with an admin page, delivered in 4 to 6 weeks", from: false, features: ["Everything in Standard", "Product catalogue, variants and stock control", "Cart, checkout and online payment", "Admin page: orders, customers, stock, promotions", "Customer accounts and order history", "Shipping costs configurable by city", "One hour of handover training over video"] },
-      ],
+      tiers: tiersFor("website-creation", "en"),
       footnote: PRICE_FOOTNOTE,
     },
   },
@@ -209,11 +218,7 @@ const BASE: Service[] = [
       title: "SEO plans\nwith no long commitment.",
       titleEm: ["no", "long", "commitment."],
       subtitle: "Three paces depending on the competition for your keywords. Three months minimum, then you're free.",
-      tiers: [
-        { name: "Basic", price: en(PRICES["seo"]["Essentiel"]), note: "Per month, 3-month minimum", from: false, features: ["Research on the core keywords of your trade", "Titles, meta descriptions and tags optimised", "XML sitemap and robots.txt, submitted to Google", "Search Console and Analytics installed and configured", "Technical errors blocking indexing fixed", "Monthly ranking report"] },
-        { name: "Intermediate", price: en(PRICES["seo"]["Croissance"]), note: "Per month, 3-month minimum", featured: true, from: false, features: ["Everything in Basic", "Google Maps profile optimised, photos and posts", "AI-assisted keyword research on buying intent", "Your existing pages rewritten for those keywords", "Local SEO: city pages and Moroccan directories", "Tracking of calls and enquiries coming from Google"] },
-        { name: "Advanced", price: en(PRICES["seo"]["Concurrentiel"]), note: "Per month, contested markets", from: false, features: ["Everything in Intermediate", "Advanced keyword research and competitor analysis", "Content strategy and optimised article writing", "Listings on Clutch, Sortlist and reference directories", "Link building and citations to build your authority", "Deep technical work, speed and Core Web Vitals", "Aiming for page one on your priority searches"] },
-      ],
+      tiers: tiersFor("seo", "en"),
       footnote: PRICE_FOOTNOTE,
     },
   },
@@ -304,11 +309,7 @@ const BASE: Service[] = [
       title: "Simple prices\nto get found.",
       titleEm: ["to", "get", "found."],
       subtitle: "A one-time setup, then light monthly upkeep.",
-      tiers: [
-        { name: "Setup", price: en(PRICES["local-seo"]["Mise en place"]), note: "One-time · within 2 weeks", features: ["Profile created or taken over", "Categories and area optimized", "Photos and services", "10 local directories", "Review collection method"] },
-        { name: "Upkeep", price: en(PRICES["local-seo"]["Entretien"]), note: "Per month · no commitment", featured: true, features: ["Monthly posts", "Review replies", "Rank tracking", "Hours kept up to date", "Monthly report"] },
-        { name: "Multi-location", price: en(PRICES["local-seo"]["Multi-sites"]), note: "Per month · from 3 locations", features: ["All profiles managed", "Consistency across locations", "Tracking per location", "Centralized reviews", "Consolidated report"] },
-      ],
+      tiers: tiersFor("local-seo", "en"),
       footnote: PRICE_FOOTNOTE,
     },
   },
@@ -399,9 +400,7 @@ const BASE: Service[] = [
       title: "Fixed fees,\nad spend separate.",
       titleEm: ["ad", "spend", "separate."],
       subtitle: "You pay the platform directly. We only invoice the management.",
-      tiers: [
-        { name: "Campaign management", price: en(PRICES["ads"]["Lancement"]), note: "Management fee, ad budget not included", from: false, unit: "/ day", features: ["Google, Facebook and Instagram campaigns", "Visuals designed and ad copy written", "Targeting by city, age and interests", "Landing page built to convert", "Conversion tracking: calls, WhatsApp, forms", "Bids and budget adjusted continuously", "Performance report every week"] },
-      ],
+      tiers: tiersFor("ads", "en"),
       footnote:
         "Management fees only. The ad budget is paid directly to Google or Meta, on your accounts and in your name.",
     },
@@ -493,9 +492,7 @@ const BASE: Service[] = [
       title: "How much\nyour app costs.",
       titleEm: ["your", "app", "costs."],
       subtitle: "Three levels of ambition, priced firmly after scoping.",
-      tiers: [
-        { name: "iOS and Android app", price: en(PRICES["mobile-apps"]["Essentielle"]), note: "Scope agreed together before we start", features: ["One codebase for iOS and Android, with Flutter", "Custom interface design, screen by screen", "User accounts and push notifications", "Back-end, database and API", "Dashboard to manage your content", "Published to the App Store and Google Play", "Three months of fixes included after launch"] },
-      ],
+      tiers: tiersFor("mobile-apps", "en"),
       footnote: PRICE_FOOTNOTE,
     },
   },
@@ -586,9 +583,7 @@ const BASE: Service[] = [
       title: "How much\nyour software costs.",
       titleEm: ["your", "software", "costs."],
       subtitle: "Priced firmly after the analysis phase, never before.",
-      tiers: [
-        { name: "Custom desktop software", price: en(PRICES["desktop-apps"]["Outil simple"]), note: "Scope agreed together before we start", features: ["Windows and macOS, works offline", "Management, invoicing, stock or production, to your trade", "Local database or shared across workstations", "Printing and Excel or PDF export", "Automatic backup of your data", "No monthly licence, the software is yours", "Training for your team on handover"] },
-      ],
+      tiers: tiersFor("desktop-apps", "en"),
       footnote: PRICE_FOOTNOTE,
     },
   },
@@ -679,11 +674,7 @@ const BASE: Service[] = [
       title: "How much\nyour platform costs.",
       titleEm: ["your", "platform", "costs."],
       subtitle: "Discovery always comes before the final price.",
-      tiers: [
-        { name: "Discovery", price: en(PRICES["custom-solutions"]["Cadrage"]), note: "2 to 3 weeks · the deliverable is yours", features: ["Workshops with your teams", "Documented processes", "Data model", "Priced scope", "Deducted from the project if you continue"] },
-        { name: "Platform", price: en(PRICES["custom-solutions"]["Plateforme"]), note: "From · 8 to 12 weeks", featured: true, features: ["Portal or business tool", "Accounts, roles and permissions", "Dashboards", "One integration included", "6 months of support"] },
-        { name: "Full SaaS", price: en(PRICES["custom-solutions"]["SaaS complet"]), note: "From · scope defined together", features: ["Multi-tenant architecture", "Subscriptions and billing", "Multiple integrations", "Load testing", "Priority support"] },
-      ],
+      tiers: tiersFor("custom-solutions", "en"),
       footnote: PRICE_FOOTNOTE,
     },
   },
@@ -774,11 +765,7 @@ const BASE: Service[] = [
       title: "How much\nyour chatbot costs.",
       titleEm: ["your", "chatbot", "costs."],
       subtitle: "A one-time setup, then a subscription for upkeep.",
-      tiers: [
-        { name: "Essential", price: en(PRICES["whatsapp-bots"]["Essentiel"]), note: `Setup · then MAD ${en(MONTHLY["whatsapp-bots"]["Essentiel"])} a month`, features: ["WhatsApp API account", "Up to 10 flows", "Answers to common questions", "Handover to your team", "Monthly tuning"] },
-        { name: "Qualification", price: en(PRICES["whatsapp-bots"]["Qualification"]), note: `Setup · then MAD ${en(MONTHLY["whatsapp-bots"]["Qualification"])} a month`, featured: true, features: ["Everything in Essential", "Unlimited flows", "Lead qualification", "Appointment booking", "CRM connection", "Monthly reports"] },
-        { name: "Custom", price: en(PRICES["whatsapp-bots"]["Sur mesure"]), note: "From · scope defined together", features: ["Free-text understanding by AI", "Several languages", "Multiple integrations", "Outbound campaigns", "Priority support"] },
-      ],
+      tiers: tiersFor("whatsapp-bots", "en"),
       footnote: PRICE_FOOTNOTE,
     },
   },
