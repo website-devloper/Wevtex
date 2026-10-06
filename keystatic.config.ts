@@ -533,7 +533,17 @@ const pricing = singleton({
  *    normally local — so `KEYSTATIC_STORAGE=github` forces that mode on this
  *    machine for the few minutes the setup flow takes.
  */
-const FORCE_GITHUB = process.env.KEYSTATIC_STORAGE === "github";
+/* Tolerant on purpose: this value gets pasted into .env by hand, and a stray
+   quote or a trailing word used to flip the dashboard back to local mode with
+   nothing said about it. */
+const STORAGE_OVERRIDE = (process.env.KEYSTATIC_STORAGE ?? "").trim().toLowerCase();
+const FORCE_GITHUB = STORAGE_OVERRIDE.split(/\s+/)[0] === "github";
+
+if (STORAGE_OVERRIDE && !FORCE_GITHUB) {
+  console.warn(
+    `[keystatic] KEYSTATIC_STORAGE is set to "${process.env.KEYSTATIC_STORAGE}", which is not "github", so the dashboard stays in local mode.`,
+  );
+}
 const GITHUB_READY =
   !!process.env.KEYSTATIC_GITHUB_CLIENT_ID && !!process.env.KEYSTATIC_GITHUB_CLIENT_SECRET;
 
