@@ -9,7 +9,8 @@
     "lint": "next lint",
     "prebuild": "tsx scripts/sync-pairs.ts",
     "check:content": "tsx scripts/check-content.ts",
-    "cms:setup": "node scripts/cms-setup.mjs"
+    "cms:setup": "node scripts/cms-setup.mjs",
+    "cms:check": "node scripts/cms-check.mjs"
   },
   "dependencies": {
     "@keystatic/core": "^0.6.9",
