@@ -10,7 +10,8 @@
     "prebuild": "tsx scripts/sync-pairs.ts",
     "check:content": "tsx scripts/check-content.ts",
     "cms:setup": "node scripts/cms-setup.mjs",
-    "cms:check": "node scripts/cms-check.mjs"
+    "cms:check": "node scripts/cms-check.mjs",
+    "cms:code": "node scripts/cms-code.mjs"
   },
   "dependencies": {
     "@keystatic/core": "^0.6.9",

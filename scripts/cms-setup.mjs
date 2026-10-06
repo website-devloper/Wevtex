@@ -165,6 +165,8 @@ server.listen(PORT, "127.0.0.1", () => {
       "  If the browser does not open, paste that address yourself.",
       "",
       "  Nothing else needs to be running: this does not use the dev server.",
+      "  Leave this window open until GitHub sends you back — it is what catches",
+      "  the credentials. If it closes first, run:  npm run cms:code -- <the URL>",
       "",
     ].join("\n"),
   );
