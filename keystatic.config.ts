@@ -514,10 +514,53 @@ const pricing = singleton({
   },
 });
 
+/* --------------------------------------------------------------- storage -- */
+
+/**
+ * Where the dashboard saves.
+ *
+ * Locally it writes straight to the files in this folder and asks for no login.
+ * Deployed with the GitHub App configured, it commits as whoever is signed in,
+ * so every change carries an author and can be undone.
+ *
+ * Two details this encodes, both learned the hard way:
+ *
+ * 1. Keystatic refuses to build in "github" mode without the two credentials,
+ *    which would take the whole site down over a CMS setting. So the mode
+ *    follows the credentials: deploy first, add the variables when the App
+ *    exists, and the dashboard switches over on the next build.
+ * 2. The App is created from the dashboard running in github mode, which is
+ *    normally local — so `KEYSTATIC_STORAGE=github` forces that mode on this
+ *    machine for the few minutes the setup flow takes.
+ */
+const FORCE_GITHUB = process.env.KEYSTATIC_STORAGE === "github";
+const GITHUB_READY =
+  !!process.env.KEYSTATIC_GITHUB_CLIENT_ID && !!process.env.KEYSTATIC_GITHUB_CLIENT_SECRET;
+
+if (process.env.NODE_ENV !== "development" && !GITHUB_READY) {
+  console.warn(
+    [
+      "[keystatic] No GitHub App configured, so the dashboard cannot save on this deploy.",
+      "            Run the site locally with KEYSTATIC_STORAGE=github, open /keystatic,",
+      "            and follow the setup. It creates the App and writes the four",
+      "            KEYSTATIC_* values, which then go into the host's settings.",
+    ].join("\n"),
+  );
+}
+
+const IS_DEV = process.env.NODE_ENV === "development";
+
+/* In development the override decides, so the setup flow can be run locally.
+   Deployed, only the credentials decide — an override left in the host's
+   settings would otherwise fail every build. */
+const STORAGE = (IS_DEV ? FORCE_GITHUB : GITHUB_READY)
+  ? ({ kind: "github", repo: { owner: "website-devloper", name: "Wevtex" } } as const)
+  : ({ kind: "local" } as const);
+
 /* ---------------------------------------------------------------- config -- */
 
 export default config({
-  storage: { kind: "local" },
+  storage: STORAGE,
   ui: {
     brand: { name: "Wevtex" },
     navigation: {
