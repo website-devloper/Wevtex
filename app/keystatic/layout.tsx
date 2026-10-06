@@ -12,7 +12,11 @@ export const metadata = {
 export default function KeystaticLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="fr">
-      <body>{children}</body>
+      {/* Browser extensions add attributes to <body> before React hydrates —
+          cz-shortcut-listen from ColorZilla, and others like it — which React
+          then reports as a mismatch. The site's own two layouts suppress it the
+          same way. */}
+      <body suppressHydrationWarning>{children}</body>
     </html>
   );
 }
