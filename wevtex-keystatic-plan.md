@@ -8,8 +8,10 @@ surfaces are migrated and proved:
 | Blog, FR + EN | ✅ in `content/*/posts`, 18 + 18 posts |
 | Réalisations, FR + EN | ✅ in `content/*/projects`, 15 + 15 |
 | Tarifs (formules, options, abonnements) | ✅ in `content/pricing.yaml` |
-| Avis clients, logos clients | collections exist, nothing written yet, no page renders them |
-| Services (wording), FAQ, secteurs, villes, accueil, réglages | still in code — §3.4 onward |
+| Avis clients | ✅ renders on the homepage; nothing published yet |
+| Logos clients | ✅ the six logos, from the dashboard |
+| Prestations, FR + EN | ✅ the whole page, prices still from Tarifs |
+| FAQ, secteurs, villes, accueil, réglages | still in code |
 
 How it runs: `npm run build` first executes `scripts/sync-pairs.ts`, which
 regenerates `lib/post-pairs.json`, `lib/project-pairs.json` and
@@ -346,10 +348,9 @@ not a polish pass.
 
 Blog first: it is the SEO surface and the one edited weekly.
 
-~~1. Blog~~ → ~~2. Projects~~ → ~~3. Pricing~~ → 4. **Reviews** (needs a section
-on the page before the collection is worth filling) → 5. **Services** (the
-wording; the formules already come from Tarifs) → 6. **FAQ, homepage, sectors,
-cities, clients, settings**
+~~1. Blog~~ → ~~2. Projects~~ → ~~3. Pricing~~ → ~~4. Reviews and client logos~~
+→ ~~5. Services~~ → 6. **FAQ, homepage, sectors, cities, settings** — what is
+left, and the least often edited.
 
 For each, in order:
 
@@ -389,8 +390,9 @@ Never delete the local data before the diff is clean — that file is the rollba
 - [x] `/blog` and the posts from `content/`, parity diff, `lib/blog/*` deleted
 - [x] Réalisations, same loop, `lib/projects-data.ts` reduced to its type
 - [x] Tarifs: formules, options and abonnements, generated into the code path
-- [ ] Avis clients: build the section that renders them, then fill the collection
-- [ ] Services wording, FAQ, homepage, sectors, cities, clients, settings
+- [x] Avis clients and logos clients render on the homepage
+- [x] Service page wording, both languages, with the URL map generated
+- [ ] FAQ, homepage, sectors, cities, settings
 - [ ] **GitHub App + env vars on the host** — until then the dashboard only
       works locally (`storage: { kind: "local" }`)
 - [ ] `/keystatic` out of the sitemap, and one real edit made end to end in
