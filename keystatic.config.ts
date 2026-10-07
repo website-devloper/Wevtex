@@ -765,6 +765,57 @@ const STORAGE = (IS_DEV ? FORCE_GITHUB : GITHUB_READY)
   ? ({ kind: "github", repo: { owner: "website-devloper", name: "Wevtex" } } as const)
   : ({ kind: "local" } as const);
 
+
+/* ------------------------------------------------------------- settings -- */
+
+/**
+ * The contact details, written once.
+ *
+ * The header, the footer, the contact page, the WhatsApp buttons, the e-mails
+ * and the structured data all read these. Before this they were typed in two
+ * files, so changing the phone number changed it in some places only.
+ *
+ * scripts/sync-pairs.ts turns this into lib/settings.generated.json before each
+ * build, which lib/site-links.ts reads — that keeps it usable from client
+ * components, which cannot read the filesystem.
+ */
+const settings = singleton({
+  label: "Coordonnees",
+  path: "content/settings",
+  format: { data: "yaml" },
+  schema: {
+    phoneDisplay: fields.text({
+      label: "Telephone affiche",
+      description: "Tel qu'il apparait sur le site : +212 783 180 806.",
+      validation: { isRequired: true },
+    }),
+    phoneE164: fields.text({
+      label: "Telephone international",
+      description: "Chiffres seulement, sans + ni espaces : 212783180806. C'est ce que WhatsApp utilise.",
+      validation: { isRequired: true },
+    }),
+    email: fields.text({
+      label: "Adresse e-mail",
+      description: "Celle qui recoit les demandes.",
+      validation: { isRequired: true },
+    }),
+    city: fields.text({ label: "Ville", description: "Pour les donnees structurees envoyees a Google." }),
+    country: fields.text({ label: "Pays (code)", description: "MA pour le Maroc." }),
+    googleReviewsUrl: fields.url({ label: "Lien pour laisser un avis Google" }),
+    socials: fields.array(
+      fields.object({
+        label: fields.text({ label: "Reseau", description: "Instagram, LinkedIn, Facebook...", validation: { isRequired: true } }),
+        url: fields.url({ label: "Adresse du profil", validation: { isRequired: true } }),
+      }),
+      {
+        label: "Reseaux sociaux",
+        description: "Ajouter un reseau ici fait apparaitre son icone dans l'en-tete et le pied de page.",
+        itemLabel: (props) => props.fields.label.value || "Reseau",
+      },
+    ),
+  },
+});
+
 /* ---------------------------------------------------------------- config -- */
 
 export default config({
@@ -774,10 +825,10 @@ export default config({
     navigation: {
       Contenu: ["posts", "postsEn", "projects", "projectsEn", "reviews", "clients"],
       Pages: ["services", "servicesEn"],
-      "Réglages": ["pricing"],
+      "Réglages": ["pricing", "settings"],
     },
   },
-  singletons: { pricing },
+  singletons: { pricing, settings },
   collections: {
     posts: post("fr"),
     postsEn: post("en"),

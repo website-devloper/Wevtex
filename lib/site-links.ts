@@ -14,15 +14,20 @@ import type { Locale } from "./i18n";
 
 /* --- Contact channels ---------------------------------------------------- */
 
+/* Written on the Coordonnees page of the dashboard; scripts/sync-pairs.ts
+   turns it into this JSON before each build. Plain JSON so the header, the
+   footer and the forms — all client components — can import it. */
+import SETTINGS from "./settings.generated.json";
+
 /** International format, no "+" — required by wa.me. */
-export const PHONE_E164 = "212783180806";
+export const PHONE_E164 = SETTINGS.phoneE164;
 /** Display / tel: format. */
-export const PHONE_TEL = "+212783180806";
-export const PHONE_DISPLAY = "+212 783 180 806";
+export const PHONE_TEL = `+${SETTINGS.phoneE164}`;
+export const PHONE_DISPLAY = SETTINGS.phoneDisplay;
 
 export const WHATSAPP_URL = `https://wa.me/${PHONE_E164}`;
 export const TEL_URL = `tel:${PHONE_TEL}`;
-export const EMAIL = "hello@wevtex.com";
+export const EMAIL = SETTINGS.email;
 export const EMAIL_URL = `mailto:${EMAIL}`;
 
 /**
@@ -92,11 +97,13 @@ export const AUDIT_WHATSAPP_URL = auditWhatsAppUrl("fr");
  * Only profiles that exist are listed. The header and footer render this list,
  * so adding one here makes its icon appear on both surfaces at once. */
 
-export const SOCIALS: { label: string; url: string }[] = [
-  { label: "Instagram", url: "https://www.instagram.com/wevtex.agency/" },
-];
+export const SOCIALS: { label: string; url: string }[] = SETTINGS.socials;
 
 /** Google Business review profile. */
-export const GOOGLE_REVIEWS_URL = "https://g.page/r/Cb_3eKvoUpkmEAE/review";
+export const GOOGLE_REVIEWS_URL = SETTINGS.googleReviewsUrl;
+
+/** Where the business is, for the structured data. */
+export const CITY = SETTINGS.city;
+export const COUNTRY = SETTINGS.country;
 
 export const socialUrl = (label: string) => SOCIALS.find((s) => s.label === label)?.url ?? "";

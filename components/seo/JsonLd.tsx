@@ -1,6 +1,7 @@
 import { SITE_URL, abs } from "@/lib/seo";
 import { PRICE_RANGE, PRICE_RANGE_EN } from "@/lib/pricing";
 import type { Locale } from "@/lib/i18n";
+import { PHONE_TEL, EMAIL, CITY, COUNTRY } from "@/lib/site-links";
 
 /**
  * Structured-data helpers.
@@ -118,13 +119,13 @@ export function localBusinessSchema(o: {
     parentOrganization: { "@id": ORG_ID },
     url: abs(o.path),
     description: o.description,
-    telephone: "+212783180806",
-    email: "hello@wevtex.com",
+    telephone: PHONE_TEL,
+    email: EMAIL,
     image: abs("/images/og-image.jpg"),
     address: {
       "@type": "PostalAddress",
-      addressLocality: "Casablanca",
-      addressCountry: "MA",
+      addressLocality: CITY,
+      addressCountry: COUNTRY,
     },
     areaServed: { "@type": "City", name: o.city },
     priceRange: locale === "en" ? PRICE_RANGE_EN : PRICE_RANGE,

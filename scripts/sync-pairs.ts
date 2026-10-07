@@ -81,6 +81,7 @@ async function main() {
   writePairs("project-pairs.json", projectPairs, "projects");
 
   await writeServiceUrls();
+  await writeSettings();
   await writePricing();
 }
 
@@ -120,6 +121,29 @@ async function writeServiceUrls() {
 
   writePairs("service-urls.json", frMap, "services (FR)");
   writePairs("service-urls-en.json", enMap, "services (EN)");
+}
+
+/** The contact details, for lib/site-links.ts to import. */
+async function writeSettings() {
+  const doc = (await reader.singletons.settings.read()) as any;
+  if (!doc) throw new Error("content/settings.yaml is missing.");
+
+  const digits = String(doc.phoneE164 ?? "").replace(/\D/g, "");
+  if (digits.length < 8) throw new Error(`The international phone number looks wrong: "${doc.phoneE164}".`);
+  if (!String(doc.email ?? "").includes("@")) throw new Error(`The e-mail address looks wrong: "${doc.email}".`);
+
+  const out = {
+    phoneDisplay: doc.phoneDisplay,
+    phoneE164: digits,
+    email: doc.email,
+    city: doc.city || "Casablanca",
+    country: doc.country || "MA",
+    googleReviewsUrl: doc.googleReviewsUrl ?? "",
+    socials: (doc.socials ?? []).map((s: any) => ({ label: s.label, url: s.url })),
+  };
+
+  writeFileSync(join(process.cwd(), "lib", "settings.generated.json"), JSON.stringify(out, null, 2) + "\n", "utf8");
+  console.log(`lib/settings.generated.json — ${out.phoneDisplay}, ${out.socials.length} social link(s)`);
 }
 
 /**

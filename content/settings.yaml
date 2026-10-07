@@ -1,0 +1,10 @@
+phoneDisplay: "+212 783 180 806"
+phoneE164: "abc"
+email: "hello@wevtex.com"
+city: "Casablanca"
+country: "MA"
+googleReviewsUrl: "https://g.page/r/Cb_3eKvoUpkmEAE/review"
+socials:
+  -
+    label: "Instagram"
+    url: "https://www.instagram.com/wevtex.agency/"
