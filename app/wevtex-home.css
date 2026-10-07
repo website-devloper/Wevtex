@@ -5774,3 +5774,19 @@ html.menu-open .cc-bar { visibility: hidden; }
   cursor: pointer;
   text-align: left;
 }
+
+/* A review can carry the client's photo; without one the initial stands in. */
+.wevtex .testi-avatar.testi-photo {
+  padding: 0;
+  object-fit: cover;
+  border-radius: 999px;
+}
+
+/* One or two published reviews should fill the row rather than huddle in the
+   left third of a three-column grid. */
+.wevtex .testi-grid-1 { grid-template-columns: minmax(0, 620px); }
+.wevtex .testi-grid-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+@media (max-width: 760px) {
+  .wevtex .testi-grid-1,
+  .wevtex .testi-grid-2 { grid-template-columns: 1fr; }
+}

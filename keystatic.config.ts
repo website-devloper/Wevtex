@@ -318,8 +318,8 @@ const clients = collection({
     logo: fields.image({
       label: "Logo",
       description: "PNG sur fond transparent, environ 400 × 170, moins de 100 Ko.",
-      directory: "public/images/uploads/clients",
-      publicPath: "/images/uploads/clients",
+      directory: "public/images/clients/wall",
+      publicPath: "/images/clients/wall",
       validation: { isRequired: true },
     }),
     order: fields.integer({ label: "Ordre d'affichage", defaultValue: 10 }),

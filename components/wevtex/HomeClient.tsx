@@ -25,6 +25,7 @@ import { StickyCta } from "./StickyCta";
 import { useHomeContent } from "./useHomeContent";
 import { useLocale, useLp } from "./locale";
 import type { Project } from "@/lib/projects-data";
+import type { Review, ClientLogo } from "@/lib/content";
 import { ServicesBento, SERVICE_ICONS } from "./SharedSections";
 /* Contact channels — one definition for the whole site, see lib/site-links.ts */
 import { WHATSAPP_URL, serviceWhatsAppUrl, GOOGLE_REVIEWS_URL, PORTFOLIO_URL, industryPath } from "@/lib/site-links";
@@ -33,14 +34,6 @@ import { WHATSAPP_URL, serviceWhatsAppUrl, GOOGLE_REVIEWS_URL, PORTFOLIO_URL, in
    transparent canvas, sized by optical weight rather than raw height — a
    square mark is drawn larger than a wide wordmark so the two carry equal
    presence in the row. Originals live in assets/clients-src. */
-const CLIENT_LOGOS = [
-  { name: "CMPF", src: "/images/clients/wall/cmpf.png" },
-  { name: "M2 Maroc", src: "/images/clients/wall/m2-maroc.png" },
-  { name: "Meowy", src: "/images/clients/wall/meowy.png" },
-  { name: "Raiide Media", src: "/images/clients/wall/raiide-media.png" },
-  { name: "RedMed", src: "/images/clients/wall/redmed.png" },
-  { name: "Tripway", src: "/images/clients/wall/tripway.png" },
-];
 
 const WHATSAPP = (
   <svg viewBox="0 0 24 24" width="17" height="17" fill="currentColor" aria-hidden style={{ marginRight: 2 }}>
@@ -80,7 +73,16 @@ const IC_ICONS = [
 
 /* Sample testimonials — placeholder content shown for layout only.
    TODO: replace with real, attributed client reviews (name, company, photo) before launch. */
-type Quote = { q: string; em?: string; name: string; role: string; a: string };
+type Quote = {
+  q: string;
+  em?: string;
+  name: string;
+  role: string;
+  /** Initial, shown when there is no photo. */
+  a: string;
+  avatar?: string;
+  rating?: number;
+};
 
 const T = {
   fr: {
@@ -141,14 +143,8 @@ const T = {
     prevReviews: "Avis précédents",
     nextReviews: "Avis suivants",
     readGoogle: "Lire nos avis sur Google",
-    tpool: [
-      { q: "Le nouveau site est non seulement très beau, il nous apporte nettement plus de demandes. L'équipe est réactive, professionnelle et agréable.", name: "James Carter", role: "Directeur, Luxora Interiors", a: "J" },
-      { q: "Dès le premier jour, ils ont compris nos objectifs et sont allés au-delà. Nos ventes en ligne ont ", em: "doublé.", name: "Sarah Mitchell", role: "Directrice générale, Petrocore Solutions", a: "S" },
-      { q: "Leur solution d'automatisation nous fait gagner plus de 20 heures par semaine. Tout fonctionne sans accroc et le support est excellent.", name: "Daniel Rahman", role: "Responsable d'exploitation, Clinique Wellcare", a: "D" },
-      { q: "They explained everything in plain language, kept to the timeline, and the price never moved. Easiest project we've run.", name: "Gareth Morris", role: "Gérant, Atlas Trading", a: "G" },
-      { q: "Notre boutique était en ligne en trois semaines et nous avons pris notre première commande le jour même. Le support répond toujours vite.", name: "Naomi Reyes", role: "Propriétaire, Marlow & Co.", a: "N" },
-      { q: "We went from invisible to page one for our main keywords. The SEO work paid for itself within a couple of months.", name: "Theo Lindahl", role: "Directeur, Northbound", a: "T" },
-    ] as Quote[],
+    viaGoogle: "Avis Google",
+    viaDirect: "Client Wevtex",
     icEyebrow: "Votre secteur",
     icA: "Un riad ne vend pas comme ",
     icEm: "une clinique.",
@@ -244,14 +240,8 @@ const T = {
     prevReviews: "Previous reviews",
     nextReviews: "Next reviews",
     readGoogle: "Read our reviews on Google",
-    tpool: [
-      { q: "The new website isn't just beautiful, it brings us far more enquiries. The team is responsive, professional and a pleasure to work with.", name: "James Carter", role: "Director, Luxora Interiors", a: "J" },
-      { q: "From day one they understood our goals and went beyond them. Our online sales ", em: "doubled.", name: "Sarah Mitchell", role: "CEO, Petrocore Solutions", a: "S" },
-      { q: "Their automation saves us more than 20 hours a week. Everything runs smoothly and the support is excellent.", name: "Daniel Rahman", role: "Operations Manager, Wellcare Clinic", a: "D" },
-      { q: "They explained everything in plain language, kept to the timeline, and the price never moved. Easiest project we've run.", name: "Gareth Morris", role: "Manager, Atlas Trading", a: "G" },
-      { q: "Our store was live in three weeks and we took our first order the same day. Support always answers fast.", name: "Naomi Reyes", role: "Owner, Marlow & Co.", a: "N" },
-      { q: "We went from invisible to page one for our main keywords. The SEO work paid for itself within a couple of months.", name: "Theo Lindahl", role: "Director, Northbound", a: "T" },
-    ] as Quote[],
+    viaGoogle: "Google review",
+    viaDirect: "Wevtex client",
     icEyebrow: "Your industry",
     icA: "A riad doesn't sell like ",
     icEm: "a clinic.",
@@ -318,12 +308,29 @@ type WorkItem = {
   capture?: boolean;
 };
 
-export function HomeClient({ projects }: { projects: Project[] }) {
+export function HomeClient({
+  projects,
+  reviews,
+  clients,
+}: {
+  projects: Project[];
+  reviews: Review[];
+  clients: ClientLogo[];
+}) {
   const locale = useLocale();
   const t = T[locale];
   const lp = useLp();
   const { SERVICES, FAQS } = useHomeContent();
-  const TPOOL = t.tpool;
+  /* Real reviews only. When none are published the section does not render:
+     an empty band is better than invented praise. */
+  const TPOOL: Quote[] = reviews.map((r) => ({
+    q: r.text,
+    name: r.author,
+    role: r.source === "google" ? t.viaGoogle : t.viaDirect,
+    a: r.author.trim().slice(0, 1).toUpperCase(),
+    avatar: r.avatar,
+    rating: r.rating,
+  }));
   const cities =
     locale === "en"
       ? CITY_LINKS_EN.map((c) => ({ slug: c.slug, name: c.name, href: `/en/${c.slug}`, img: cityImage(c) }))
@@ -642,9 +649,9 @@ export function HomeClient({ projects }: { projects: Project[] }) {
           <div className="hero-logos reveal">
             <p className="ls-lead">{t.logosLead}</p>
             <ul className="ls-row">
-              {CLIENT_LOGOS.map((c) => (
+              {clients.map((c) => (
                 <li key={c.name}>
-                  <Image src={c.src} alt={c.name} width={400} height={170} sizes="136px" />
+                  <Image src={c.logo} alt={c.name} width={400} height={170} sizes="136px" />
                 </li>
               ))}
             </ul>
@@ -876,7 +883,10 @@ export function HomeClient({ projects }: { projects: Project[] }) {
         </div>
       </section>
 
-      {/* ===================== TESTIMONIALS (mockup 9 — featured + 2) ===================== */}
+      {/* ===================== TESTIMONIALS =====================
+          Fed by the Avis clients collection in the dashboard. No reviews
+          published means no section: an invented quote is worse than none. */}
+      {TPOOL.length > 0 && (
       <section className="theme-paper testi-v2" id="testimonials">
         <div className="container">
           <div className="ic-head ic-head-left reveal">
@@ -893,8 +903,8 @@ export function HomeClient({ projects }: { projects: Project[] }) {
               middle one a dark card and the outer two plain, so nothing lined
               up and short quotes left a void under them. Uniform treatment
               fixes both: a quote is content, not an object. */}
-          <div className="testi-grid reveal">
-            {[0, 1, 2].map((off) => {
+          <div className={`testi-grid testi-grid-${Math.min(3, TPOOL.length)} reveal`}>
+            {Array.from({ length: Math.min(3, TPOOL.length) }, (_, off) => off).map((off) => {
               const q = TPOOL[(ti + off) % TPOOL.length];
               return (
                 <figure className="testi-col" key={off}>
@@ -902,12 +912,16 @@ export function HomeClient({ projects }: { projects: Project[] }) {
                     &ldquo;{q.q}{q.em ? <em className="hl-line">{q.em}</em> : null}&rdquo;
                   </blockquote>
                   <figcaption className="testi-person">
-                    <span className="testi-avatar">{q.a}</span>
+                    {q.avatar ? (
+                      <Image className="testi-avatar testi-photo" src={q.avatar} alt="" width={96} height={96} />
+                    ) : (
+                      <span className="testi-avatar">{q.a}</span>
+                    )}
                     <div>
                       <div className="testi-name-row">
                         <span className="testi-name">{q.name}</span>
                         <span className="testi-stars" aria-label={t.rated}>
-                          {[0, 1, 2, 3, 4].map((n) => (
+                          {Array.from({ length: q.rating ?? 5 }, (_, n) => n).map((n) => (
                             <svg key={n} viewBox="0 0 24 24" width="14" height="14" fill="currentColor" aria-hidden>
                               <path d="M12 2l2.9 6.3 6.9.6-5.2 4.6 1.6 6.7L12 17.3 5.8 20.8l1.6-6.7L2.2 8.9l6.9-.6z" />
                             </svg>
@@ -922,6 +936,7 @@ export function HomeClient({ projects }: { projects: Project[] }) {
             })}
           </div>
 
+          {TPOOL.length > 3 && (
           <div className="testi-controls reveal">
             <button className="ic-arrow" aria-label={t.prevReviews} onClick={() => setTi((p) => (p - 1 + TPOOL.length) % TPOOL.length)}>
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M15 18l-6-6 6-6" /></svg>
@@ -935,6 +950,7 @@ export function HomeClient({ projects }: { projects: Project[] }) {
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M9 18l6-6-6-6" /></svg>
             </button>
           </div>
+          )}
 
           <div className="testi-cta reveal">
             <a href={GOOGLE_REVIEWS_URL} className="btn btn-outline" target="_blank" rel="noopener nofollow">
@@ -944,6 +960,7 @@ export function HomeClient({ projects }: { projects: Project[] }) {
           </div>
         </div>
       </section>
+      )}
 
       {/* ===================== INDUSTRIES (mockup 4 — carousel) ===================== */}
       <section className="theme-cream industries-carousel" id="industries">

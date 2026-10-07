@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { JsonLd, faqSchema } from "@/components/seo/JsonLd";
 import { HomeClient } from "@/components/wevtex/HomeClient";
 import { FAQS_EN } from "@/components/wevtex/homeContent.en";
-import { getProjects } from "@/lib/content";
+import { getProjects, getReviews, getClients } from "@/lib/content";
 import { languageAlternates } from "@/lib/i18n-paths";
 
 /**
@@ -39,11 +39,11 @@ export const metadata: Metadata = {
 };
 
 export default async function EnglishHomePage() {
-  const projects = await getProjects("en");
+  const [projects, reviews, clients] = await Promise.all([getProjects("en"), getReviews(), getClients()]);
   return (
     <>
       <JsonLd data={faqSchema(FAQS_EN, "en")} />
-      <HomeClient projects={projects.slice(0, 6)} />
+      <HomeClient projects={projects.slice(0, 6)} reviews={reviews} clients={clients} />
     </>
   );
 }

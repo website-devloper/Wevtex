@@ -312,3 +312,54 @@ export async function getProjectPairs(): Promise<Record<string, string>> {
   }
   return pairs;
 }
+
+/* ------------------------------------------------- reviews and clients -- */
+
+export type Review = {
+  id: string;
+  author: string;
+  avatar?: string;
+  rating: number;
+  text: string;
+  source: "google" | "whatsapp" | "email" | "direct";
+  sourceUrl?: string;
+  date?: string;
+  featured: boolean;
+};
+
+/**
+ * Real client reviews, newest first. Not translated: a review is shown in the
+ * language it was written in, in both versions of the site.
+ */
+export async function getReviews(): Promise<Review[]> {
+  const entries = await reader.collections.reviews.all();
+  return entries
+    .map(({ slug, entry }) => {
+      const e = entry as any;
+      return {
+        id: slug,
+        author: e.author,
+        avatar: e.avatar ?? undefined,
+        rating: Number(e.rating ?? 5),
+        text: e.text,
+        source: e.source ?? "google",
+        sourceUrl: e.sourceUrl ?? undefined,
+        date: e.date ?? undefined,
+        featured: !!e.featured,
+      } as Review;
+    })
+    .sort((a, b) => (b.date ?? "").localeCompare(a.date ?? ""));
+}
+
+export type ClientLogo = { name: string; logo: string; order: number };
+
+/** The logo wall, in the order set in the dashboard. */
+export async function getClients(): Promise<ClientLogo[]> {
+  const entries = await reader.collections.clients.all();
+  return entries
+    .map(({ entry }) => {
+      const e = entry as any;
+      return { name: e.name, logo: e.logo, order: Number(e.order ?? 50) };
+    })
+    .sort((a, b) => a.order - b.order);
+}
