@@ -1,4 +1,21 @@
 import { readFileSync } from "node:fs";
+import { execFileSync } from "node:child_process";
+
+/* ------------------------------------------------------- generated content
+ * The dashboard writes YAML under content/; the site reads a few JSON files
+ * derived from it — the price table, the contact details, the FR/EN pairs and
+ * the service URLs. They are regenerated here rather than only in a "prebuild"
+ * script, because a host that runs `next build` directly would skip that step,
+ * and an editor's change would never reach the pages. This runs for `next dev`
+ * too, so a save shows up on the next refresh.
+ */
+try {
+  execFileSync("npx", ["tsx", "scripts/sync-pairs.ts"], { stdio: "inherit", shell: true });
+} catch {
+  // The script prints what is wrong and exits non-zero; stop the build here so
+  // a broken entry cannot ship as stale data.
+  throw new Error("Content could not be generated — see the message above.");
+}
 
 /* Service id -> public URL slug. Shared with lib/site-links.ts, so every old
    /services/<id> address 301s to the page that replaced it. */
