@@ -21,6 +21,8 @@ import type { ServiceSeo } from "../service-seo";
  * the answer comes first, and every price is a published one.
  */
 
+import type { Service } from "../services-data";
+
 export const SERVICE_SEO_EN: Record<string, ServiceSeo> = {
   /* ================================================================== */
   "website-creation": {
@@ -686,3 +688,16 @@ export const SERVICE_SEO_EN: Record<string, ServiceSeo> = {
     ],
   },
 };
+
+/** A service with its English search layer merged in. */
+export function withSeoEn(s: Service): Service {
+  const seo = SERVICE_SEO_EN[s.slug];
+  if (!seo) return s;
+  return {
+    ...s,
+    faqs: [...s.faqs, ...seo.faqs],
+    seoSections: seo.sections,
+    seoKeywords: seo.keywords,
+    seoCityLabel: seo.cityLabel,
+  };
+}

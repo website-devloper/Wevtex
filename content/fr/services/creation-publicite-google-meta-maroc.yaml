@@ -1,0 +1,274 @@
+name: "Création & gestion de publicités"
+serviceId: "ads"
+order: 3
+eyebrow: "Publicité en ligne"
+keyword: "agence Google Ads Maroc"
+h1: "Agence Google Ads et Meta au Maroc,\nde la publicité qui se rembourse."
+h1Em:
+  - "se"
+  - "rembourse."
+intro: "La publicité en ligne peut vous amener des clients dès cette semaine, ou brûler votre budget en silence. Nous construisons vos campagnes Google, Facebook et Instagram, la page qui reçoit le clic et le suivi qui vous dit combien chaque dirham a rapporté."
+tags:
+  - "Google Ads"
+  - "Meta Ads"
+  - "Landing page"
+  - "Tracking"
+includes:
+  - "La création complète des campagnes, du ciblage aux visuels."
+  - "Une page d'atterrissage dédiée, conçue pour transformer le clic payé."
+  - "Le suivi des conversions installé et vérifié, jusqu'à l'appel ou l'achat."
+  - "Un rapport mensuel qui rapporte le coût par contact obtenu."
+outcomes:
+  -
+    h: "Des résultats immédiats"
+    p: "Contrairement au référencement, une campagne bien réglée apporte des demandes dès la première semaine."
+  -
+    h: "Un budget maîtrisé"
+    p: "Vous fixez l'enveloppe, nous optimisons ce qu'elle rapporte. Rien ne part sans être mesuré."
+  -
+    h: "Un coût par client connu"
+    p: "Vous savez ce que coûte un contact, et donc si l'opération vaut d'être amplifiée."
+faqs:
+  -
+    q: "Quel budget publicitaire prévoir ?"
+    a: "Comptez au minimum 2 000 à 3 000 DH de budget média par mois pour obtenir des données exploitables. En dessous, les campagnes n'ont pas de quoi apprendre."
+  -
+    q: "Le budget publicitaire est-il inclus ?"
+    a: "Non. Nos honoraires couvrent la conception et la gestion ; le budget média est payé directement à Google ou Meta, à votre nom et sur votre carte."
+  -
+    q: "Faut-il refaire ma page d'accueil ?"
+    a: "Nous créons plutôt une page dédiée à la campagne. Envoyer du trafic payant vers une page d'accueil généraliste divise les conversions."
+  -
+    q: "Sponsoring Facebook : comment ça marche ?"
+    a: "Le sponsoring Facebook consiste à payer Meta pour montrer une publication ou une annonce à un public choisi (ville, âge, centres d'intérêt), sur Facebook et Instagram. Vous fixez un budget par jour ou par campagne, et Meta facture à l'affichage ou au clic."
+  -
+    q: "Google Ads est-il gratuit ?"
+    a: "Créer un compte Google Ads au Maroc est gratuit, mais la diffusion se paie : vous réglez à Google chaque clic sur vos annonces, dans la limite du budget que vous fixez."
+  -
+    q: "Peut-on cibler uniquement une ville au Maroc ?"
+    a: "Oui. Google Ads et Meta Ads permettent de cibler une ville, un rayon autour d'une adresse ou une région. Une entreprise de Casablanca peut ne diffuser qu'à Casablanca et ses environs."
+  -
+    q: "En combien de temps une campagne donne-t-elle des résultats ?"
+    a: "Les premières demandes arrivent en général dès la première semaine. Il faut ensuite deux à quatre semaines d'optimisation pour stabiliser le coût par contact."
+  -
+    q: "Qui possède les comptes publicitaires ?"
+    a: "Vous. Les comptes Google Ads et Meta Business sont créés à votre nom, et vous gardez l'accès complet à l'historique et aux audiences si vous changez de prestataire."
+whyUs:
+  title: "Pourquoi nous confier\nvos campagnes."
+  titleEm:
+    - "vos"
+    - "campagnes."
+  subtitle: "Un métier où l'opacité est fréquente et coûte cher."
+  points:
+    -
+      h: "Vos comptes vous appartiennent"
+      p: "Les campagnes sont créées sur vos propres comptes Google et Meta. Si nous nous quittons, vous gardez tout : historique, audiences, apprentissage."
+    -
+      h: "La page d'atterrissage est incluse"
+      p: "Nous ne renvoyons pas le trafic payant vers une page inadaptée. Une page dédiée est créée avec la campagne."
+    -
+      h: "Nous mesurons jusqu'au contact"
+      p: "Pas seulement les clics : les appels, les formulaires et les messages WhatsApp sont tracés et attribués."
+    -
+      h: "Honoraires fixes"
+      p: "Un montant mensuel connu, pas un pourcentage du budget média qui nous pousserait à vous faire dépenser plus."
+demo:
+  title: "La publicité en action"
+  subtitle: "Du ciblage au contact reçu, la chaîne complète."
+  caption: "Tableau de suivi d'une campagne : coût par contact et volume."
+featureSections:
+  -
+    eyebrow: "Ce que nous pilotons"
+    title: "Ce qui fait la différence\nentre dépenser et investir."
+    titleEm:
+      - "entre"
+      - "dépenser"
+      - "et investir."
+    subtitle: "Quatre pièces indispensables. Il en manque une, et le budget se dissipe."
+    cards:
+      -
+        title: "Ciblage"
+        desc: "Parler aux gens qui peuvent réellement acheter chez vous."
+        checks:
+          - "Intention de recherche"
+          - "Audiences similaires"
+          - "Zones géographiques"
+          - "Exclusions coûteuses"
+      -
+        title: "Création"
+        desc: "Des visuels et des textes qui arrêtent le pouce."
+        checks:
+          - "Visuels adaptés au format"
+          - "Accroches testées"
+          - "Variantes A/B"
+          - "Adaptation mobile"
+      -
+        title: "Page d'atterrissage"
+        desc: "Le clic est payé : la page n'a pas droit à l'erreur."
+        checks:
+          - "Page dédiée à la campagne"
+          - "Chargement instantané"
+          - "Formulaire court"
+          - "Preuves et garanties"
+      -
+        title: "Mesure"
+        desc: "Sans suivi fiable, l'optimisation n'est que du ressenti."
+        checks:
+          - "Conversions vérifiées"
+          - "Appels tracés"
+          - "Coût par contact"
+          - "Retour sur dépense"
+tech:
+  title: "Les plateformes\nque nous pilotons."
+  titleEm:
+    - "que"
+    - "nous pilotons."
+  subtitle: "Là où se trouve votre audience, avec la mesure qui va avec."
+  groups:
+    -
+      label: "Recherche"
+      desc: "Capter une intention déjà formulée."
+      items:
+        - "Google Ads"
+        - "Bing Ads"
+        - "Google Shopping"
+    -
+      label: "Réseaux sociaux"
+      desc: "Créer l'envie chez ceux qui ne vous cherchaient pas."
+      items:
+        - "Facebook"
+        - "Instagram"
+        - "TikTok"
+        - "LinkedIn"
+    -
+      label: "Mesure"
+      desc: "Relier chaque dirham dépensé à un résultat."
+      items:
+        - "GA4"
+        - "Meta Pixel"
+        - "GTM"
+        - "Appels tracés"
+    -
+      label: "Conversion"
+      desc: "Transformer le clic payé en contact réel."
+      items:
+        - "Landing pages"
+        - "Tests A/B"
+        - "Formulaires"
+        - "WhatsApp"
+process:
+  title: "Comment nous lançons\nvos campagnes."
+  titleEm:
+    - "vos"
+    - "campagnes."
+  subtitle: "Deux semaines de préparation, puis une optimisation continue."
+  steps:
+    -
+      n: "01"
+      h: "Stratégie"
+      d: "2–3 jours"
+      checks:
+        - "Objectif chiffré"
+        - "Audiences visées"
+        - "Budget et canaux"
+    -
+      n: "02"
+      h: "Création"
+      d: "3–5 jours"
+      checks:
+        - "Visuels et textes"
+        - "Page d'atterrissage"
+        - "Variantes à tester"
+    -
+      n: "03"
+      h: "Installation"
+      d: "2 jours"
+      checks:
+        - "Comptes et accès"
+        - "Suivi des conversions"
+        - "Vérification bout en bout"
+    -
+      n: "04"
+      h: "Lancement"
+      d: "1 semaine"
+      checks:
+        - "Diffusion progressive"
+        - "Surveillance quotidienne"
+        - "Premiers arbitrages"
+    -
+      n: "05"
+      h: "Optimisation"
+      d: "en continu"
+      checks:
+        - "Tests permanents"
+        - "Coupe des annonces faibles"
+        - "Rapport mensuel"
+sectors:
+  title: "Le bon canal selon\nce que vous vendez."
+  titleEm:
+    - "ce"
+    - "que"
+    - "vous"
+    - "vendez."
+  subtitle: "Le canal, le message et le coût d'acquisition changent selon ce que vous vendez."
+  groups:
+    -
+      label: "E-commerce & commerce de détail"
+      cases:
+        - "Google Shopping"
+        - "Panier abandonné"
+        - "Audiences similaires"
+    -
+      label: "Tourisme & hôtellerie"
+      cases:
+        - "Campagnes saisonnières"
+        - "Ciblage par pays"
+        - "Relance des visiteurs"
+    -
+      label: "Services professionnels"
+      cases:
+        - "Recherche à forte intention"
+        - "LinkedIn ciblé"
+        - "Formulaires qualifiés"
+    -
+      label: "Santé & bien-être"
+      cases:
+        - "Ciblage local strict"
+        - "Conformité des annonces"
+        - "Prise de rendez-vous"
+    -
+      label: "Industrie & logistique"
+      cases:
+        - "Requêtes techniques"
+        - "Demandes de devis"
+        - "Ciblage B2B"
+    -
+      label: "Éducation & e-learning"
+      cases:
+        - "Campagnes de rentrée"
+        - "Ciblage parents"
+        - "Inscriptions suivies"
+    -
+      label: "Création, médias & tech"
+      cases:
+        - "Essais gratuits"
+        - "Ciblage par centres d'intérêt"
+        - "Tests créatifs"
+    -
+      label: "Secteur public & associations"
+      cases:
+        - "Campagnes de dons"
+        - "Sensibilisation"
+        - "Recrutement de bénévoles"
+pricingHead:
+  title: "Des honoraires fixes,\nbudget média à part."
+  titleEm:
+    - "budget"
+    - "média à part."
+  subtitle: "Vous payez la plateforme directement. Nous facturons uniquement le pilotage."
+  footnote: "Honoraires de gestion uniquement. Le budget publicitaire est réglé directement à Google ou Meta, sur vos comptes et à votre nom."
+seo:
+  metaTitle: "Agence Google Ads & Facebook Ads au Maroc | WEVTEX"
+  metaDescription: "Agence Google Ads et Meta Ads au Maroc : campagnes Google, Facebook et Instagram, page d'atterrissage et suivi des conversions. Dès 200 DH/mois."
+  keyword: "agence Google Ads Maroc"
+  noindex: false

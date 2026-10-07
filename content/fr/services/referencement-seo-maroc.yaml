@@ -1,0 +1,280 @@
+name: "Référencement naturel (SEO)"
+serviceId: "seo"
+order: 1
+eyebrow: "Référencement naturel"
+keyword: "agence SEO Maroc"
+h1: "Agence SEO au Maroc,\nsoyez trouvé par qui vous cherche."
+h1Em:
+  - "soyez"
+  - "trouvé"
+intro: "Vos clients tapent déjà votre métier dans Google. La seule question : tombent-ils sur vous ou sur votre concurrent ? Nous corrigeons ce qui bloque votre site, écrivons les pages qui répondent à leurs recherches et construisons l'autorité qui vous fait passer devant."
+tags:
+  - "Audit technique"
+  - "Mots-clés"
+  - "Contenu"
+  - "Netlinking"
+includes:
+  - "Un audit technique complet, avec les correctifs appliqués et non seulement listés."
+  - "Une stratégie de mots-clés fondée sur l'intention d'achat, pas sur le volume brut."
+  - "L'optimisation de vos pages existantes et la création de celles qui manquent."
+  - "Un rapport mensuel lisible : positions, trafic, contacts générés."
+outcomes:
+  -
+    h: "Un trafic qui dure"
+    p: "Une position gagnée continue d'apporter des visiteurs des mois après, sans budget publicitaire."
+  -
+    h: "Des visiteurs qualifiés"
+    p: "Nous visons les requêtes proches de l'achat, pas celles qui gonflent les statistiques."
+  -
+    h: "Des progrès mesurés"
+    p: "Vous voyez chaque mois ce qui a bougé, ce qui a été fait et ce qui vient ensuite."
+faqs:
+  -
+    q: "En combien de temps voit-on des résultats ?"
+    a: "Les premiers mouvements apparaissent vers le troisième mois, les gains significatifs entre le sixième et le neuvième. Le référencement se construit, il ne s'achète pas."
+  -
+    q: "Garantissez-vous la première place ?"
+    a: "Non, et personne ne le peut sérieusement. Nous nous engageons sur le travail effectué et sur sa transparence, pas sur une position que seul Google décide."
+  -
+    q: "Faut-il refaire mon site ?"
+    a: "Pas forcément. L'audit dit si votre site actuel peut être corrigé ou s'il vaut mieux le reconstruire, et nous le disons franchement."
+  -
+    q: "Quel est le prix d'une agence SEO au Maroc ?"
+    a: "Chez Wevtex, de 1 000 DH par mois pour 10 mots-clés suivis à 2 500 DH par mois pour les marchés disputés, avec trois mois minimum. Le prix dépend surtout de la concurrence sur vos mots-clés."
+  -
+    q: "Le référencement sur Google est-il gratuit ?"
+    a: "Apparaître dans les résultats naturels de Google ne se paie pas à Google : les positions se gagnent par la qualité du site. Le travail pour y arriver, lui, demande du temps ou un prestataire. Les annonces en haut de page sont payantes, c'est Google Ads."
+  -
+    q: "Comment choisir la meilleure agence SEO au Maroc ?"
+    a: "La meilleure agence SEO au Maroc pour vous, ou le meilleur expert SEO au Maroc, est celui qui montre des positions réelles, explique ce qui sera fait chaque mois et vous laisse propriétaire de vos accès. À Casablanca comme ailleurs, un expert SEO sérieux ne promet jamais la première place garantie."
+  -
+    q: "Faut-il choisir le SEO ou Google Ads ?"
+    a: "Les deux se complètent. Google Ads apporte des demandes dès la première semaine mais s'arrête avec le budget ; le référencement naturel est plus lent mais construit des positions qui restent. Beaucoup d'entreprises lancent la publicité pendant que le SEO monte en puissance."
+  -
+    q: "Faites-vous le SEO de sites WordPress, Shopify ou WooCommerce ?"
+    a: "Oui. Le référencement ne dépend pas de la plateforme mais de la structure, du contenu et de la vitesse. Nous travaillons sur WordPress, WooCommerce, Shopify et Next.js."
+  -
+    q: "Intervenez-vous à Casablanca, Rabat, Tanger et Marrakech ?"
+    a: "Oui. Notre agence SEO intervient à Kénitra, Oujda, Tétouan et dans tout le Maroc depuis Casablanca, et nous travaillons le référencement naturel à Marrakech, Rabat ou Tanger, y compris pour des recherches locales du type « dentiste tanger » ou « avocat rabat »."
+  -
+    q: "Le SEO fonctionne-t-il avec les réponses générées par l'IA ?"
+    a: "Oui, à condition d'écrire des pages qui répondent clairement aux questions, avec des faits vérifiables et des sections compréhensibles seules. C'est ainsi que Google AI Overviews, ChatGPT ou Perplexity choisissent les sources qu'ils citent."
+  -
+    q: "Qui reste propriétaire des contenus et des accès ?"
+    a: "Vous. Les textes rédigés, les comptes Google Search Console et Analytics, et la fiche Google Business sont à votre nom. Si vous arrêtez l'accompagnement, tout reste en place."
+whyUs:
+  title: "Pourquoi nous confier\nvotre référencement."
+  titleEm:
+    - "votre"
+    - "référencement."
+  subtitle: "Le SEO attire les promesses faciles. Voici ce que nous faisons différemment."
+  points:
+    -
+      h: "Nous corrigeons, pas seulement conseillons"
+      p: "L'audit ne vous laisse pas une liste de tâches à faire faire ailleurs : nous appliquons les correctifs nous-mêmes."
+    -
+      h: "Aucune promesse de position"
+      p: "Nous nous engageons sur un volume de travail précis et transparent, jamais sur une place que Google seul décide."
+    -
+      h: "Des rapports qu'on comprend"
+      p: "Pas de tableau de bord illisible : ce qui a été fait, ce que ça a donné, ce qui suit. En une page."
+    -
+      h: "Sans engagement long"
+      p: "Trois mois minimum le temps que le travail porte, puis mois par mois. Vous partez quand vous voulez, avec tout."
+demo:
+  title: "Le référencement en action"
+  subtitle: "Ce que nous regardons, corrigeons et suivons chaque mois."
+  caption: "Progression des positions sur les requêtes visées."
+featureSections:
+  -
+    eyebrow: "Ce que nous travaillons"
+    title: "Ce qui vous fait passer\ndevant vos concurrents."
+    titleEm:
+      - "devant"
+      - "vos"
+      - "concurrents."
+    subtitle: "Aucun ne suffit seul. Nous les travaillons ensemble, dans cet ordre."
+    cards:
+      -
+        title: "Technique"
+        desc: "Ce qui empêche Google de lire votre site, corrigé par nous."
+        checks:
+          - "Vitesse et Core Web Vitals"
+          - "Indexation et exploration"
+          - "Données structurées"
+          - "Version mobile"
+      -
+        title: "Mots-clés"
+        desc: "Ce que vos clients tapent réellement avant d'acheter."
+        checks:
+          - "Analyse d'intention"
+          - "Étude de la concurrence"
+          - "Requêtes longue traîne"
+          - "Plan de contenu"
+      -
+        title: "Contenu"
+        desc: "Des pages qui répondent mieux que celles déjà classées."
+        checks:
+          - "Optimisation des pages"
+          - "Pages manquantes créées"
+          - "Maillage interne"
+          - "Contenu rédigé en français"
+      -
+        title: "Autorité"
+        desc: "Les liens et les signaux qui vous font passer devant."
+        checks:
+          - "Netlinking qualitatif"
+          - "Annuaires pertinents"
+          - "Relations presse"
+          - "Suivi des liens"
+tech:
+  title: "Les outils\nqui nous servent."
+  titleEm:
+    - "qui"
+    - "nous servent."
+  subtitle: "Des données, pas des intuitions : chaque décision s'appuie sur un chiffre."
+  groups:
+    -
+      label: "Analyse"
+      desc: "Comprendre d'où vient le trafic et ce qu'il fait."
+      items:
+        - "Search Console"
+        - "GA4"
+        - "Looker Studio"
+    -
+      label: "Recherche"
+      desc: "Trouver les requêtes qui valent le travail."
+      items:
+        - "Ahrefs"
+        - "Semrush"
+        - "Google Trends"
+    -
+      label: "Technique"
+      desc: "Détecter ce qui bloque l'exploration et la vitesse."
+      items:
+        - "Screaming Frog"
+        - "PageSpeed"
+        - "Schema.org"
+    -
+      label: "Suivi"
+      desc: "Mesurer les positions et prouver la progression."
+      items:
+        - "Rank tracking"
+        - "Logs serveur"
+        - "Rapports mensuels"
+process:
+  title: "Ce qui se passe,\nmois après mois."
+  titleEm:
+    - "mois"
+    - "après"
+    - "mois."
+  subtitle: "Le premier mois, nous remettons tout à plat. Ensuite, un rythme mensuel dont vous voyez chaque action."
+  steps:
+    -
+      n: "01"
+      h: "Audit"
+      d: "1 semaine"
+      checks:
+        - "Analyse technique"
+        - "État des positions"
+        - "Analyse concurrentielle"
+    -
+      n: "02"
+      h: "Stratégie"
+      d: "3–5 jours"
+      checks:
+        - "Mots-clés prioritaires"
+        - "Plan de contenu"
+        - "Objectifs chiffrés"
+    -
+      n: "03"
+      h: "Corrections"
+      d: "2–3 semaines"
+      checks:
+        - "Correctifs techniques"
+        - "Optimisation des pages"
+        - "Maillage interne"
+    -
+      n: "04"
+      h: "Contenu & liens"
+      d: "en continu"
+      checks:
+        - "Nouvelles pages"
+        - "Netlinking"
+        - "Mises à jour"
+    -
+      n: "05"
+      h: "Rapport"
+      d: "chaque mois"
+      checks:
+        - "Positions et trafic"
+        - "Actions réalisées"
+        - "Priorités du mois suivant"
+sectors:
+  title: "Les recherches de vos clients,\npas les nôtres."
+  titleEm:
+    - "pas"
+    - "les"
+    - "nôtres."
+  subtitle: "Les requêtes, la concurrence et le cycle d'achat changent d'un métier à l'autre."
+  groups:
+    -
+      label: "E-commerce & commerce de détail"
+      cases:
+        - "Pages catégories"
+        - "Fiches produits"
+        - "Requêtes marque"
+    -
+      label: "Tourisme & hôtellerie"
+      cases:
+        - "Requêtes saisonnières"
+        - "Pages destinations"
+        - "Référencement multilingue"
+    -
+      label: "Services professionnels"
+      cases:
+        - "Requêtes métier"
+        - "Contenu d'expertise"
+        - "Pages par ville"
+    -
+      label: "Santé & bien-être"
+      cases:
+        - "Requêtes symptômes"
+        - "Pages spécialités"
+        - "Sources et confiance"
+    -
+      label: "Industrie & logistique"
+      cases:
+        - "Requêtes techniques"
+        - "Pages solutions"
+        - "Longue traîne B2B"
+    -
+      label: "Éducation & e-learning"
+      cases:
+        - "Requêtes formations"
+        - "Contenu pédagogique"
+        - "Pages diplômes"
+    -
+      label: "Création, médias & tech"
+      cases:
+        - "Requêtes produit"
+        - "Contenu de fond"
+        - "Autorité thématique"
+    -
+      label: "Secteur public & associations"
+      cases:
+        - "Requêtes d'information"
+        - "Accessibilité technique"
+        - "Contenu institutionnel"
+pricingHead:
+  title: "Des forfaits SEO\nsans engagement long."
+  titleEm:
+    - "sans"
+    - "engagement long."
+  subtitle: "Trois rythmes selon la concurrence sur vos mots-clés. Trois mois minimum, puis vous êtes libre."
+  footnote: "Prix indicatifs de départ, en dirhams. Chaque projet reçoit un devis ferme après un échange de quinze minutes, sans engagement."
+seo:
+  metaTitle: "Agence SEO Maroc | Référencement Naturel Google | WEVTEX"
+  metaDescription: "Agence SEO au Maroc : audit, mots-clés, contenus et netlinking pour remonter sur Google et attirer des clients. Référencement naturel dès 1 000 DH/mois."
+  keyword: "agence SEO Maroc"
+  noindex: false

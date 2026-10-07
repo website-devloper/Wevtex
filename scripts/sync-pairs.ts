@@ -80,7 +80,46 @@ async function main() {
 
   writePairs("project-pairs.json", projectPairs, "projects");
 
+  await writeServiceUrls();
   await writePricing();
+}
+
+/**
+ * The address of each service page, per language, keyed by its internal id.
+ *
+ * Generated because three things read it — the routes, the 301s in
+ * next.config.mjs and the hreflang pairing — and a slug changed in the
+ * dashboard used to leave all three pointing at the old one.
+ */
+async function writeServiceUrls() {
+  const [fr, en] = await Promise.all([
+    reader.collections.services.all(),
+    reader.collections.servicesEn.all(),
+  ]);
+
+  const build = (entries: typeof fr, label: string) => {
+    const map: Record<string, string> = {};
+    for (const { slug, entry } of entries) {
+      const id = (entry as any).serviceId;
+      if (!id) throw new Error(`The ${label} service "${slug}" has no internal id.`);
+      if (map[id]) throw new Error(`Two ${label} services share the internal id "${id}".`);
+      map[id] = slug;
+    }
+    return map;
+  };
+
+  const frMap = build(fr, "French");
+  const enMap = build(en, "English");
+
+  for (const id of Object.keys(frMap)) {
+    if (!enMap[id]) throw new Error(`The service "${id}" has no English version.`);
+  }
+  for (const id of Object.keys(enMap)) {
+    if (!frMap[id]) throw new Error(`The English service "${id}" has no French version.`);
+  }
+
+  writePairs("service-urls.json", frMap, "services (FR)");
+  writePairs("service-urls-en.json", enMap, "services (EN)");
 }
 
 /**

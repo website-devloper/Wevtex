@@ -1,0 +1,242 @@
+name: "WhatsApp chatbots"
+serviceId: "whatsapp-bots"
+order: 7
+eyebrow: "WhatsApp chatbots"
+keyword: "WhatsApp chatbot Morocco"
+h1: "WhatsApp chatbot in Morocco,\nan answer even at midnight."
+h1Em:
+  - "even"
+  - "at"
+  - "midnight."
+intro: "In Morocco, your customers write on WhatsApp and expect an answer right away: in the evening, at the weekend, the same question thirty times a day. Our chatbot answers for you, in English, French and Darija, sorts the serious requests and hands over to your team at the right moment."
+tags:
+  - "WhatsApp API"
+  - "Automation"
+  - "CRM"
+  - "Support"
+includes:
+  - "Opening and configuring your WhatsApp Business API account."
+  - "Conversation flows written for your business, in English, French and Darija."
+  - "Lead qualification and handover to your team."
+  - "Connection to your CRM, spreadsheet or inbox."
+outcomes:
+  -
+    h: "No enquiry lost"
+    p: "Evening and weekend messages get an answer instead of waiting for Monday."
+  -
+    h: "Sorted leads"
+    p: "Your team only handles serious requests, already qualified by the bot."
+  -
+    h: "Time given back"
+    p: "Repetitive questions, opening hours, prices, availability, no longer tie anyone up."
+faqs:
+  -
+    q: "Is it official WhatsApp?"
+    a: "Yes. We use Meta's official WhatsApp Business API, with your verified number. No unofficial tools: those end up blocked."
+  -
+    q: "Does the bot replace my team?"
+    a: "No, it protects it. It handles repetitive questions and hands over as soon as a request goes beyond the script, with the full history."
+  -
+    q: "Does it speak Darija?"
+    a: "Yes. Flows are written in English, French and Darija, based on how your customers actually write."
+  -
+    q: "Is there a free WhatsApp chatbot?"
+    a: "The free WhatsApp Business app offers a greeting message and quick replies, which isn't a real chatbot. Automation goes through the WhatsApp Business API, whose conversations are billed by Meta, on top of the setup."
+  -
+    q: "Does the chatbot understand Darija?"
+    a: "Yes. Flows are written in English, French and Darija, and the custom plan understands freely worded messages, including Darija written in Latin letters."
+  -
+    q: "Can the chatbot book appointments?"
+    a: "Yes, with the Qualification plan: it offers time slots, confirms the appointment and notifies your team."
+  -
+    q: "How long does it take to set up a WhatsApp chatbot?"
+    a: "One to three weeks for an assistant that answers common questions. A bot connected to your catalog or CRM takes longer, because most of the work is the integration."
+  -
+    q: "Can I keep my current WhatsApp number?"
+    a: "In most cases, yes: an existing number can be migrated to the WhatsApp Business API. It just has to be released from the regular app before the migration."
+whyUs:
+  title: "Why trust us\nwith your automation."
+  titleEm:
+    - "your"
+    - "automation."
+  subtitle: "Many bots annoy more than they help. Here is how we avoid that."
+  points:
+    -
+      h: "The official API, nothing else"
+      p: "Unofficial solutions get your number blocked sooner or later, often at the worst moment. We go through Meta, with your verified number."
+    -
+      h: "Written from your real messages"
+      p: "We read your past conversations before writing anything. The flows answer the questions actually asked."
+    -
+      h: "Handover at the right moment"
+      p: "The bot recognizes what it can't handle and passes to a person with the full history, without making the customer repeat themselves."
+    -
+      h: "Tuned every month"
+      p: "We reread the conversations and fix what jams. A bot nobody maintains degrades within weeks."
+demo:
+  title: ""
+  subtitle: ""
+  caption: ""
+featureSections:
+  -
+    eyebrow: "What your bot does"
+    title: "What a well-tuned\nbot can do."
+    titleEm:
+      - "can"
+      - "do."
+    subtitle: "Four uses that cover the vast majority of incoming requests."
+    cards:
+      -
+        title: "Instant answers"
+        desc: "The questions asked twenty times a day, handled on their own."
+        checks:
+          - "Hours and address"
+          - "Prices and services"
+          - "Availability"
+          - "Frequent questions"
+      -
+        title: "Qualification"
+        desc: "Sorting the curious from the buyers before spending time."
+        checks:
+          - "Scoping questions"
+          - "Budget and timeline"
+          - "Lead scoring"
+          - "Targeted handover"
+      -
+        title: "Appointment booking"
+        desc: "Filling the calendar without ten messages back and forth."
+        checks:
+          - "Suggested slots"
+          - "Automatic confirmation"
+          - "Reminders the day before"
+          - "Rescheduling and cancelling"
+      -
+        title: "Follow-up & reminders"
+        desc: "Getting back in touch at the right time, without thinking about it."
+        checks:
+          - "Order tracking"
+          - "Quote follow-ups"
+          - "Satisfaction surveys"
+          - "Targeted campaigns"
+tech:
+  title: ""
+  titleEm: []
+  subtitle: ""
+  groups: []
+process:
+  title: "How a bot\nis set up."
+  titleEm:
+    - "is"
+    - "set"
+    - "up."
+  subtitle: "Three to four weeks, most of it spent writing the right answers."
+  steps:
+    -
+      n: "01"
+      h: "Analysis"
+      d: "3–5 days"
+      checks:
+        - "Your real messages"
+        - "Recurring questions"
+        - "Cases to hand over"
+    -
+      n: "02"
+      h: "Flows"
+      d: "1 week"
+      checks:
+        - "Conversation tree"
+        - "Writing in EN, FR and Darija"
+        - "Handover rules"
+    -
+      n: "03"
+      h: "Configuration"
+      d: "3–5 days"
+      checks:
+        - "WhatsApp API account"
+        - "Verified number"
+        - "Templates approved by Meta"
+    -
+      n: "04"
+      h: "Connection"
+      d: "3–5 days"
+      checks:
+        - "CRM or spreadsheet"
+        - "Team notifications"
+        - "End-to-end tests"
+    -
+      n: "05"
+      h: "Tuning"
+      d: "every month"
+      checks:
+        - "Reading conversations"
+        - "Answers refined"
+        - "New flows"
+sectors:
+  title: "The questions\nyour customers ask."
+  titleEm:
+    - "your"
+    - "customers"
+    - "ask."
+  subtitle: "The questions a restaurant gets have nothing to do with a clinic's."
+  groups:
+    -
+      label: "E-commerce & retail"
+      cases:
+        - "Order tracking"
+        - "Product availability"
+        - "Returns and exchanges"
+    -
+      label: "Tourism & hospitality"
+      cases:
+        - "Bookings"
+        - "Stay information"
+        - "Special requests"
+    -
+      label: "Professional services"
+      cases:
+        - "Request qualification"
+        - "Appointment booking"
+        - "Sending documents"
+    -
+      label: "Health & wellness"
+      cases:
+        - "Appointments and reminders"
+        - "Documents to bring"
+        - "On-call hours"
+    -
+      label: "Industry & logistics"
+      cases:
+        - "Shipment tracking"
+        - "Quote requests"
+        - "Sales contact"
+    -
+      label: "Education & e-learning"
+      cases:
+        - "Enrollment information"
+        - "Class reminders"
+        - "Answers to parents"
+    -
+      label: "Creative, media & tech"
+      cases:
+        - "First-level support"
+        - "Trials and demos"
+        - "Feedback collection"
+    -
+      label: "Public sector & NGOs"
+      cases:
+        - "Practical information"
+        - "Request routing"
+        - "Event sign-ups"
+pricingHead:
+  title: "How much\nyour chatbot costs."
+  titleEm:
+    - "your"
+    - "chatbot"
+    - "costs."
+  subtitle: "A one-time setup, then a subscription for upkeep."
+  footnote: "Indicative starting prices, in Moroccan dirhams (MAD). Every project gets a firm quote after a fifteen-minute call, with no commitment."
+seo:
+  metaTitle: "WhatsApp Chatbot for Business in Morocco | WEVTEX"
+  metaDescription: "WhatsApp chatbot for businesses in Morocco: 24/7 answers in English, French and Darija, lead qualification and appointment booking. From MAD 2,400."
+  keyword: "WhatsApp chatbot Morocco"
+  noindex: false

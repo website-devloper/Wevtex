@@ -1,0 +1,245 @@
+name: "Google Maps & local SEO"
+serviceId: "local-seo"
+order: 2
+eyebrow: "Google Maps & local SEO"
+keyword: "local SEO Morocco"
+h1: "Local SEO and Google Maps in Morocco,\nbe the listing people call."
+h1Em:
+  - "the"
+  - "listing"
+  - "people"
+  - "call."
+intro: "When someone searches for a “dentist” or a “garage” near them, Google shows three listings before anything else. We make sure yours is one of them: a complete Google Business Profile, a strong position on Maps and a steady flow of customer reviews."
+tags:
+  - "Google Business"
+  - "Maps"
+  - "Customer reviews"
+  - "Directories"
+includes:
+  - "Creation or full takeover of your Google Business Profile."
+  - "Optimization of your Maps position in your catchment area."
+  - "Consistent listings in the directories that matter in Morocco."
+  - "A simple method to collect customer reviews continuously."
+outcomes:
+  -
+    h: "Direct calls"
+    p: "A well-ranked profile generates calls and directions without going through your website."
+  -
+    h: "Visible in your area"
+    p: "You rise on the searches made a few kilometers from your door."
+  -
+    h: "A reputation kept up"
+    p: "Regular reviews and careful replies: the first thing a hesitant customer sees."
+faqs:
+  -
+    q: "Does it work if I don't have a shop?"
+    a: "Yes. A service area can be declared without a displayed address: that is the case for tradespeople, plumbers or consultants who travel to their clients."
+  -
+    q: "How long before I climb on Maps?"
+    a: "The first effects often show in four to six weeks. The position then strengthens with reviews and regular posts."
+  -
+    q: "Do you handle negative reviews?"
+    a: "We prepare replies and a method to reduce their impact. A negative review handled well often reassures more than a perfect score."
+  -
+    q: "Is Google Business Profile free?"
+    a: "Yes. In Morocco as everywhere, Google Business Profile (formerly Google My Business) is free. What we charge for is the work: careful setup, optimization, posts and review management, which decide your position on Maps."
+  -
+    q: "My Google profile is suspended, what should I do?"
+    a: "A suspension often comes from a non-compliant address, a name stuffed with keywords or too many changes. The cause must be fixed, then reinstatement requested from Google with supporting documents. We handle this when we take over a profile."
+  -
+    q: "How long does it take to show up on Google Maps?"
+    a: "A new or corrected profile is visible within days. Reaching the top three on the map usually takes two to eight weeks, depending on competition in your area and your number of reviews."
+  -
+    q: "Do Google reviews affect rankings?"
+    a: "Yes, it is one of the most visible factors. The number of reviews, how regularly they come and your replies all count. We set up a simple review request, by direct link, at the moment the customer is happy."
+  -
+    q: "Do I need a website for local SEO?"
+    a: "It isn't required to exist on Maps, but a website linked to the profile clearly strengthens rankings and converts better those who want to know more before calling."
+whyUs:
+  title: "Why trust us\nwith your local visibility."
+  titleEm:
+    - "your"
+    - "local"
+    - "visibility."
+  subtitle: "A field where many sell a listing and stop there."
+  points:
+    -
+      h: "We know the Moroccan ground"
+      p: "The directories that matter here aren't the ones in international guides. We work on the ones that really count."
+    -
+      h: "Measured street by street"
+      p: "We track your position from several points in your city, not from a distant server that always says yes."
+    -
+      h: "Reviews, without the fakes"
+      p: "We set up collection from your real customers. Bought reviews show, get penalized and backfire."
+    -
+      h: "Light upkeep"
+      p: "After setup, a few hundred dirhams a month are enough to hold the position."
+demo:
+  title: ""
+  subtitle: ""
+  caption: ""
+featureSections:
+  -
+    eyebrow: "What we work on"
+    title: "What lifts\na local listing."
+    titleEm:
+      - "a"
+      - "local"
+      - "listing."
+    subtitle: "Four workstreams that really weigh in Google's local ranking."
+    cards:
+      -
+        title: "Google Business Profile"
+        desc: "The storefront prospects see before your website."
+        checks:
+          - "Exact categories"
+          - "Hours and area"
+          - "Photos and products"
+          - "Regular posts"
+      -
+        title: "Maps ranking"
+        desc: "Climbing into the three shown at the top of the results."
+        checks:
+          - "Catchment area"
+          - "Local pages"
+          - "Proximity signals"
+          - "Tracking by neighborhood"
+      -
+        title: "Citations & directories"
+        desc: "The same details everywhere, or Google starts to doubt."
+        checks:
+          - "Moroccan directories"
+          - "Consistent name and address"
+          - "Duplicates cleaned up"
+          - "Social networks"
+      -
+        title: "Customer reviews"
+        desc: "The social proof that triggers the call or the visit."
+        checks:
+          - "Automated collection"
+          - "Written replies"
+          - "Real-time alerts"
+          - "Dispute handling"
+tech:
+  title: ""
+  titleEm: []
+  subtitle: ""
+  groups: []
+process:
+  title: "How we\nmake you visible."
+  titleEm:
+    - "make"
+    - "you"
+    - "visible."
+  subtitle: "Setup in a few weeks, then light monthly upkeep."
+  steps:
+    -
+      n: "01"
+      h: "Audit"
+      d: "2–3 days"
+      checks:
+        - "Current Maps position"
+        - "Competing profiles"
+        - "Duplicates and errors"
+    -
+      n: "02"
+      h: "Optimization"
+      d: "1 week"
+      checks:
+        - "Profile completed"
+        - "Categories and area"
+        - "Photos and services"
+    -
+      n: "03"
+      h: "Citations"
+      d: "1–2 weeks"
+      checks:
+        - "Local directories"
+        - "Consistent details"
+        - "Links to the website"
+    -
+      n: "04"
+      h: "Reviews"
+      d: "ongoing"
+      checks:
+        - "Collection method"
+        - "Written replies"
+        - "Rating tracking"
+    -
+      n: "05"
+      h: "Upkeep"
+      d: "every month"
+      checks:
+        - "Posts"
+        - "Rank tracking"
+        - "Local report"
+sectors:
+  title: "What makes people call,\ntrade by trade."
+  titleEm:
+    - "trade"
+    - "by"
+    - "trade."
+  subtitle: "A local search doesn't play out the same way in every trade."
+  groups:
+    -
+      label: "E-commerce & retail"
+      cases:
+        - "Products on the profile"
+        - "Directions"
+        - "Local promotions"
+    -
+      label: "Tourism & hospitality"
+      cases:
+        - "Photos and amenities"
+        - "Guest reviews"
+        - "Booking from Maps"
+    -
+      label: "Professional services"
+      cases:
+        - "Hours and contact"
+        - "Service area"
+        - "Client reviews"
+    -
+      label: "Health & wellness"
+      cases:
+        - "Appointment booking"
+        - "On-call hours"
+        - "Patient reviews"
+    -
+      label: "Industry & logistics"
+      cases:
+        - "Sites and depots"
+        - "Delivery hours"
+        - "Sales contact"
+    -
+      label: "Education & e-learning"
+      cases:
+        - "Open days"
+        - "Campus location"
+        - "Parent reviews"
+    -
+      label: "Creative, media & tech"
+      cases:
+        - "Office and team"
+        - "Work in photos"
+        - "Client reviews"
+    -
+      label: "Public sector & NGOs"
+      cases:
+        - "Opening hours"
+        - "Collection points"
+        - "Local events"
+pricingHead:
+  title: "Simple prices\nto get found."
+  titleEm:
+    - "to"
+    - "get"
+    - "found."
+  subtitle: "A one-time setup, then light monthly upkeep."
+  footnote: "Indicative starting prices, in Moroccan dirhams (MAD). Every project gets a firm quote after a fifteen-minute call, with no commitment."
+seo:
+  metaTitle: "Local SEO & Google Maps Ranking in Morocco | WEVTEX"
+  metaDescription: "Local SEO in Morocco: optimized Google Business Profile, top 3 on Google Maps and customer reviews. Setup from MAD 790, then MAD 490 a month."
+  keyword: "local SEO Morocco"
+  noindex: false

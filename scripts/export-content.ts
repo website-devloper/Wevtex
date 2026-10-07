@@ -2,8 +2,8 @@
  * Exports the content still held in lib/ as Keystatic-shaped files, so each
  * migration is a copy rather than a retyping job. See wevtex-keystatic-plan.md.
  *
- * The blog and the réalisations have already moved: they live under content/
- * and are edited in the dashboard.
+ * The blog, the réalisations, the services and the prices have already moved:
+ * they live under content/ and are edited in the dashboard.
  *
  *   npx tsx scripts/export-content.ts
  *
@@ -15,9 +15,6 @@
 import { mkdirSync, writeFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 
-import { SERVICES } from "../lib/services-data";
-import { SERVICES_EN } from "../lib/en/services-data";
-import { ADDONS, PRICES, MONTHLY } from "../lib/pricing";
 import { FAQ_GROUPS } from "../lib/faq-data";
 import { FAQ_GROUPS_EN } from "../lib/en/faq-data";
 import { CONTACT_FAQS } from "../lib/contact-content";
@@ -89,102 +86,9 @@ const seo = (o: { metaTitle: string; metaDescription: string; keyword: string })
 
 let files = 0;
 
-function exportServices(list: typeof SERVICES, locale: "fr" | "en") {
-  const urls = locale === "fr" ? SERVICE_URLS : SERVICE_URLS_EN;
-  list.forEach((s, i) => {
-    write(
-      `${locale}/services/${s.slug}.yaml`,
-      yamlFile({
-        serviceId: s.slug,
-        slug: urls[s.slug] ?? s.slug,
-        name: s.name,
-        eyebrow: s.eyebrow,
-        keyword: s.keyword,
-        h1: s.h1,
-        h1Em: s.h1Em,
-        intro: s.intro,
-        includes: s.includes,
-        outcomes: s.outcomes,
-        tags: s.tags,
-        faqs: s.faqs,
-        order: i,
-        pricingHead: s.pricing
-          ? { title: s.pricing.title, subtitle: s.pricing.subtitle ?? null, footnote: s.pricing.footnote ?? null }
-          : null,
-        pricingTiers: (s.pricing?.tiers ?? []).map((t) => ({
-          name: t.name,
-          price: t.price,
-          note: t.note,
-          features: t.features,
-          featured: t.featured ?? false,
-          showFrom: t.from !== false,
-          unit: t.unit ?? null,
-        })),
-        whyUs: s.whyUs ?? null,
-        // The deeper sections, kept verbatim so the schema can be shaped to them.
-        featureSections: s.featureSections ?? null,
-        tech: s.tech ?? null,
-        process: s.process ?? null,
-        sectors: s.sectors ?? null,
-        demo: s.demo ?? null,
-        pairKey: s.slug,
-        seo: seo(s),
-      }),
-    );
-    files++;
-  });
-}
-
 function exportSingletons() {
-  // One entry per pack, holding the number once and both languages' wording
-  // beside it, so a price cannot be current in French and stale in English.
-  const byId = new Map(SERVICES_EN.map((s) => [s.slug, s]));
-
-  const packs = SERVICES.filter((s) => s.pricing?.tiers.length).map((s) => {
-    const en = byId.get(s.slug);
-    return {
-      service: s.slug,
-      tiers: (s.pricing?.tiers ?? []).map((t, i) => {
-        const te = en?.pricing?.tiers[i];
-        return {
-          // The key ties the price to the {{prix:…}} tokens written in the copy.
-          key: Object.keys(PRICES[s.slug as keyof typeof PRICES] ?? {})[i] ?? t.name,
-          price: t.price,
-          unit: t.unit ?? null,
-          showFrom: t.from !== false,
-          featured: t.featured ?? false,
-          nameFr: t.name,
-          nameEn: te?.name ?? t.name,
-          noteFr: t.note,
-          noteEn: te?.note ?? t.note,
-          featuresFr: t.features,
-          featuresEn: te?.features ?? t.features,
-        };
-      }),
-    };
-  });
-
-  write(
-    "pricing.yaml",
-    yamlFile({
-      packs,
-      addons: ADDONS.map((a) => ({
-        key: a.id,
-        price: a.price,
-        unitFr: a.unit.fr,
-        unitEn: a.unit.en,
-        titleFr: a.fr.h,
-        titleEn: a.en.h,
-        descriptionFr: a.fr.p,
-        descriptionEn: a.en.p,
-      })),
-      monthly: Object.entries(MONTHLY).flatMap(([service, tiers]) =>
-        Object.entries(tiers).map(([key, price]) => ({ service, key, price })),
-      ),
-    }),
-  );
-  files++;
-
+  // Prices already live in content/pricing.yaml and are edited there, so they
+  // are not re-exported: doing so would overwrite what the dashboard holds.
   write(
     "settings.yaml",
     yamlFile({
@@ -223,8 +127,6 @@ function exportPageCollections() {
 
 /* -------------------------------------------------------------------- run -- */
 
-exportServices(SERVICES, "fr");
-exportServices(SERVICES_EN, "en");
 exportSingletons();
 exportPageCollections();
 

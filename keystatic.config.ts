@@ -424,6 +424,204 @@ const projectsEn = collection({
 });
 
 
+
+/* ------------------------------------------------------------- services -- */
+
+/** Lists of short lines appear all over a service page. */
+const lines = (label: string, description?: string) =>
+  fields.array(fields.text({ label: "Ligne" }), {
+    label,
+    description,
+    itemLabel: (props) => props.value || "Ligne",
+  });
+
+/**
+ * The wording of a service page.
+ *
+ * Prices are not here: they live on the Tarifs page, so one number serves the
+ * table, the page and every sentence that quotes it. Everything else a visitor
+ * reads is in this collection, including the sections further down the page,
+ * because those are copy too, even if they are shaped.
+ */
+const service = (locale: "fr" | "en") =>
+  collection({
+    label: locale === "fr" ? "Prestations" : "Prestations (anglais)",
+    path: `content/${locale}/services/*`,
+    format: { data: "yaml" },
+    slugField: "name",
+    columns: ["name", "order"],
+    schema: {
+      name: fields.slug({
+        name: {
+          label: locale === "fr" ? "Nom de la prestation" : "Service name",
+          description: locale === "fr" ? "Court : il sert dans le menu et les cartes." : "Short: used in the menu and on cards.",
+          validation: { isRequired: true },
+        },
+        slug: {
+          label: locale === "fr" ? "Adresse de la page" : "Page address",
+          description:
+            locale === "fr"
+              ? "L'adresse exacte, sans barre oblique. Ne la changez pas sur une page publiee."
+              : "The exact address, no slash. Do not change it once published.",
+        },
+      }),
+      serviceId: fields.text({
+        label: locale === "fr" ? "Identifiant interne" : "Internal id",
+        description:
+          locale === "fr"
+            ? "Le meme en francais et en anglais. Il relie la prestation a ses tarifs, a son icone et aux articles. Ne le changez pas."
+            : "The same in both languages. It ties the service to its prices, its icon and the posts. Do not change it.",
+        validation: { isRequired: true },
+      }),
+      order: fields.integer({ label: locale === "fr" ? "Ordre d'affichage" : "Display order", defaultValue: 10 }),
+      eyebrow: fields.text({ label: locale === "fr" ? "Sur-titre" : "Eyebrow" }),
+      keyword: fields.text({
+        label: locale === "fr" ? "Mot-cle principal" : "Primary keyword",
+        description: locale === "fr" ? "Celui que vise la page. Un seul." : "The one the page targets. Only one.",
+      }),
+      h1: fields.text({
+        label: locale === "fr" ? "Titre de la page (H1)" : "Page heading (H1)",
+        description:
+          locale === "fr"
+            ? "Un retour a la ligne coupe le titre a l'endroit choisi."
+            : "A line break splits the heading where you choose.",
+        multiline: true,
+        validation: { isRequired: true },
+      }),
+      h1Em: lines(
+        locale === "fr" ? "Mots soulignes dans le titre" : "Highlighted words in the heading",
+        locale === "fr" ? "Un mot par ligne, tel qu'il apparait dans le titre." : "One word per line, exactly as in the heading.",
+      ),
+      intro: fields.text({
+        label: locale === "fr" ? "Introduction" : "Intro",
+        description: locale === "fr" ? "Deux ou trois phrases sous le titre." : "Two or three sentences under the heading.",
+        multiline: true,
+        validation: { isRequired: true },
+      }),
+      tags: lines(locale === "fr" ? "Etiquettes" : "Tags", locale === "fr" ? "Affichees sous l'introduction." : "Shown under the intro."),
+      includes: lines(
+        locale === "fr" ? "Ce qui est compris" : "What is included",
+        locale === "fr" ? "Des livrables concrets, pas des promesses." : "Concrete deliverables, not promises.",
+      ),
+      outcomes: fields.array(
+        fields.object({
+          h: fields.text({ label: locale === "fr" ? "Benefice" : "Outcome", validation: { isRequired: true } }),
+          p: fields.text({ label: locale === "fr" ? "Explication" : "Explanation", multiline: true }),
+        }),
+        {
+          label: locale === "fr" ? "Ce que ca change pour le client" : "What it changes for the client",
+          itemLabel: (props) => props.fields.h.value || "Benefice",
+        },
+      ),
+      faqs: faqs(locale),
+      whyUs: fields.object(
+        {
+          title: fields.text({ label: locale === "fr" ? "Titre" : "Title", multiline: true }),
+          titleEm: lines(locale === "fr" ? "Mots soulignes" : "Highlighted words"),
+          subtitle: fields.text({ label: locale === "fr" ? "Sous-titre" : "Subtitle", multiline: true }),
+          points: fields.array(
+            fields.object({
+              h: fields.text({ label: locale === "fr" ? "Argument" : "Point", validation: { isRequired: true } }),
+              p: fields.text({ label: locale === "fr" ? "Explication" : "Explanation", multiline: true }),
+            }),
+            { label: locale === "fr" ? "Arguments" : "Points", itemLabel: (props) => props.fields.h.value || "Argument" },
+          ),
+        },
+        { label: locale === "fr" ? "Pourquoi nous" : "Why us" },
+      ),
+      demo: fields.object(
+        {
+          title: fields.text({ label: locale === "fr" ? "Titre" : "Title" }),
+          subtitle: fields.text({ label: locale === "fr" ? "Sous-titre" : "Subtitle", multiline: true }),
+          caption: fields.text({ label: locale === "fr" ? "Legende" : "Caption", multiline: true }),
+        },
+        { label: locale === "fr" ? "Demonstration" : "Demo" },
+      ),
+      featureSections: fields.array(
+        fields.object({
+          eyebrow: fields.text({ label: locale === "fr" ? "Sur-titre" : "Eyebrow" }),
+          title: fields.text({ label: locale === "fr" ? "Titre" : "Title", multiline: true }),
+          titleEm: lines(locale === "fr" ? "Mots soulignes" : "Highlighted words"),
+          subtitle: fields.text({ label: locale === "fr" ? "Sous-titre" : "Subtitle", multiline: true }),
+          cards: fields.array(
+            fields.object({
+              title: fields.text({ label: locale === "fr" ? "Titre de la carte" : "Card title", validation: { isRequired: true } }),
+              desc: fields.text({ label: locale === "fr" ? "Description" : "Description", multiline: true }),
+              checks: lines(locale === "fr" ? "Points" : "Checks"),
+            }),
+            { label: locale === "fr" ? "Cartes" : "Cards", itemLabel: (props) => props.fields.title.value || "Carte" },
+          ),
+        }),
+        {
+          label: locale === "fr" ? "Sections detaillees" : "Detailed sections",
+          itemLabel: (props) => props.fields.title.value || "Section",
+        },
+      ),
+      tech: fields.object(
+        {
+          title: fields.text({ label: locale === "fr" ? "Titre" : "Title", multiline: true }),
+          titleEm: lines(locale === "fr" ? "Mots soulignes" : "Highlighted words"),
+          subtitle: fields.text({ label: locale === "fr" ? "Sous-titre" : "Subtitle", multiline: true }),
+          groups: fields.array(
+            fields.object({
+              label: fields.text({ label: locale === "fr" ? "Groupe" : "Group", validation: { isRequired: true } }),
+              desc: fields.text({ label: locale === "fr" ? "Description" : "Description", multiline: true }),
+              items: lines(locale === "fr" ? "Outils" : "Tools"),
+            }),
+            { label: locale === "fr" ? "Groupes" : "Groups", itemLabel: (props) => props.fields.label.value || "Groupe" },
+          ),
+        },
+        { label: locale === "fr" ? "Outils et technologies" : "Tools and technology" },
+      ),
+      process: fields.object(
+        {
+          title: fields.text({ label: locale === "fr" ? "Titre" : "Title", multiline: true }),
+          titleEm: lines(locale === "fr" ? "Mots soulignes" : "Highlighted words"),
+          subtitle: fields.text({ label: locale === "fr" ? "Sous-titre" : "Subtitle", multiline: true }),
+          steps: fields.array(
+            fields.object({
+              n: fields.text({ label: locale === "fr" ? "Numero" : "Number" }),
+              h: fields.text({ label: locale === "fr" ? "Etape" : "Step", validation: { isRequired: true } }),
+              d: fields.text({ label: locale === "fr" ? "Description" : "Description", multiline: true }),
+              checks: lines(locale === "fr" ? "Points" : "Checks"),
+            }),
+            { label: locale === "fr" ? "Etapes" : "Steps", itemLabel: (props) => props.fields.h.value || "Etape" },
+          ),
+        },
+        { label: locale === "fr" ? "Notre methode" : "Our method" },
+      ),
+      sectors: fields.object(
+        {
+          title: fields.text({ label: locale === "fr" ? "Titre" : "Title", multiline: true }),
+          titleEm: lines(locale === "fr" ? "Mots soulignes" : "Highlighted words"),
+          subtitle: fields.text({ label: locale === "fr" ? "Sous-titre" : "Subtitle", multiline: true }),
+          groups: fields.array(
+            fields.object({
+              label: fields.text({ label: locale === "fr" ? "Secteur" : "Sector", validation: { isRequired: true } }),
+              cases: lines(locale === "fr" ? "Exemples" : "Examples"),
+            }),
+            { label: locale === "fr" ? "Secteurs" : "Sectors", itemLabel: (props) => props.fields.label.value || "Secteur" },
+          ),
+        },
+        { label: locale === "fr" ? "Pour qui" : "Who it is for" },
+      ),
+      pricingHead: fields.object(
+        {
+          title: fields.text({ label: locale === "fr" ? "Titre des tarifs" : "Pricing heading", multiline: true }),
+          titleEm: lines(locale === "fr" ? "Mots soulignes" : "Highlighted words"),
+          subtitle: fields.text({ label: locale === "fr" ? "Sous-titre" : "Subtitle", multiline: true }),
+          footnote: fields.text({ label: locale === "fr" ? "Note sous le tableau" : "Note under the table", multiline: true }),
+        },
+        {
+          label: locale === "fr" ? "En-tete des tarifs" : "Pricing heading",
+          description:
+            locale === "fr" ? "Les prix eux-memes se modifient dans Tarifs." : "The prices themselves are edited on the Tarifs page.",
+        },
+      ),
+      seo: seo(locale),
+    },
+  });
+
 /* -------------------------------------------------------------- pricing -- */
 
 /**
@@ -575,6 +773,7 @@ export default config({
     brand: { name: "Wevtex" },
     navigation: {
       Contenu: ["posts", "postsEn", "projects", "projectsEn", "reviews", "clients"],
+      Pages: ["services", "servicesEn"],
       "Réglages": ["pricing"],
     },
   },
@@ -584,6 +783,8 @@ export default config({
     postsEn: post("en"),
     projects,
     projectsEn,
+    services: service("fr"),
+    servicesEn: service("en"),
     reviews,
     clients,
   },

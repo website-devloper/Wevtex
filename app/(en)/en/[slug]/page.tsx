@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { CITIES_EN, CITY_SLUGS_EN, getCityEn } from "@/lib/en/cities-data";
-import { getServiceEn } from "@/lib/en/services-data";
+import { getService, getServiceSlugs } from "@/lib/content";
 import type { Service } from "@/lib/services-data";
 import { SERVICE_URLS_EN, languageAlternates } from "@/lib/i18n-paths";
 import { servicePath } from "@/lib/site-links";
@@ -26,11 +26,10 @@ export function generateStaticParams() {
   return [...CITY_SLUGS_EN.map((slug) => ({ slug })), ...Object.values(SERVICE_URLS_EN).map((slug) => ({ slug }))];
 }
 
-function resolve(slug: string) {
+async function resolve(slug: string) {
   const city = getCityEn(slug);
   if (city) return { kind: "city" as const, city };
-  const id = serviceIdFromEnUrl(slug);
-  const service = id ? getServiceEn(id) : undefined;
+  const service = await getService(slug, "en");
   if (service) return { kind: "service" as const, service };
   return null;
 }
@@ -44,7 +43,7 @@ function startingPrice(service: Service) {
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
-  const page = resolve(slug);
+  const page = await resolve(slug);
   if (!page) return {};
   const url = `/en/${slug}`;
 
@@ -81,7 +80,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 
 export default async function EnglishKeywordPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  const page = resolve(slug);
+  const page = await resolve(slug);
   if (!page) notFound();
   const path = `/en/${slug}`;
 

@@ -17,7 +17,10 @@ import "server-only";
 import { createReader } from "@keystatic/core/reader";
 import config from "../keystatic.config";
 import type { Post, PostBlock } from "./blog-data";
-import { fillPricesDeep } from "./pricing";
+import { fillPricesDeep, formatAmount, PACKS } from "./pricing";
+import type { Service, PriceTier } from "./services-data";
+import { SERVICE_SEO } from "./service-seo";
+import { SERVICE_SEO_EN } from "./en/service-seo";
 import type { Locale } from "./i18n";
 
 const reader = createReader(process.cwd(), config);
@@ -362,4 +365,153 @@ export async function getClients(): Promise<ClientLogo[]> {
       return { name: e.name, logo: e.logo, order: Number(e.order ?? 50) };
     })
     .sort((a, b) => a.order - b.order);
+}
+
+
+/* ------------------------------------------------------------- services -- */
+
+/**
+ * Service pages.
+ *
+ * The wording comes from the dashboard; the formules come from the Tarifs page
+ * through PACKS, so a price is written once and read everywhere. The SEO extras
+ * in lib/service-seo.ts (secondary keywords and the extra FAQs) are merged on
+ * top, exactly as they were when the data lived in code.
+ */
+function tiersFor(serviceId: string, locale: Locale): PriceTier[] {
+  return (PACKS[serviceId] ?? []).map((t) => ({
+    name: t[locale].name,
+    price: locale === "en" ? formatAmount(t.price, "en") : t.price,
+    note: t[locale].note,
+    features: [...t[locale].features],
+    ...(t.featured ? { featured: true } : {}),
+    ...(t.showFrom ? {} : { from: false }),
+    ...(t.unit ? { unit: t.unit } : {}),
+  }));
+}
+
+/** Drops the empty objects the dashboard writes for a section left blank. */
+const presence = <T extends Record<string, any>>(value: T, has: (v: T) => boolean) => (has(value) ? value : undefined);
+
+async function readServices(locale: Locale): Promise<Service[]> {
+  const entries = await (locale === "fr" ? reader.collections.services : reader.collections.servicesEn).all();
+
+  const services = entries
+    .map(({ slug, entry }) => {
+      const e = entry as any;
+      const tiers = tiersFor(e.serviceId, locale);
+
+      const service: Service = {
+        slug: e.serviceId,
+        name: e.name,
+        keyword: e.keyword,
+        metaTitle: e.seo.metaTitle,
+        metaDescription: e.seo.metaDescription,
+        eyebrow: e.eyebrow,
+        h1: e.h1,
+        h1Em: [...(e.h1Em ?? [])],
+        intro: e.intro,
+        includes: [...(e.includes ?? [])],
+        outcomes: (e.outcomes ?? []).map((o: any) => ({ h: o.h, p: o.p })),
+        tags: [...(e.tags ?? [])],
+        faqs: (e.faqs ?? []).map((f: any) => ({ q: f.q, a: f.a })),
+        demo: presence(e.demo ?? {}, (d) => !!d.title),
+        featureSections: (e.featureSections ?? []).length
+          ? (e.featureSections ?? []).map((f: any) => ({
+              eyebrow: f.eyebrow,
+              title: f.title,
+              titleEm: [...(f.titleEm ?? [])],
+              subtitle: f.subtitle || undefined,
+              cards: (f.cards ?? []).map((c: any) => ({ title: c.title, desc: c.desc, checks: [...(c.checks ?? [])] })),
+            }))
+          : undefined,
+        tech: presence(
+          {
+            title: e.tech?.title,
+            titleEm: [...(e.tech?.titleEm ?? [])],
+            subtitle: e.tech?.subtitle || undefined,
+            groups: (e.tech?.groups ?? []).map((g: any) => ({
+              label: g.label,
+              desc: g.desc || undefined,
+              items: [...(g.items ?? [])],
+            })),
+          },
+          (t) => !!t.title,
+        ),
+        process: presence(
+          {
+            title: e.process?.title,
+            titleEm: [...(e.process?.titleEm ?? [])],
+            subtitle: e.process?.subtitle || undefined,
+            steps: (e.process?.steps ?? []).map((st: any) => ({
+              n: st.n,
+              h: st.h,
+              d: st.d,
+              checks: [...(st.checks ?? [])],
+            })),
+          },
+          (p) => !!p.title,
+        ),
+        sectors: presence(
+          {
+            title: e.sectors?.title,
+            titleEm: [...(e.sectors?.titleEm ?? [])],
+            subtitle: e.sectors?.subtitle || undefined,
+            groups: (e.sectors?.groups ?? []).map((g: any) => ({ label: g.label, cases: [...(g.cases ?? [])] })),
+          },
+          (s) => !!s.title,
+        ),
+        pricing: tiers.length
+          ? {
+              title: e.pricingHead?.title ?? "",
+              titleEm: [...(e.pricingHead?.titleEm ?? [])],
+              subtitle: e.pricingHead?.subtitle || undefined,
+              footnote: e.pricingHead?.footnote || undefined,
+              tiers,
+            }
+          : undefined,
+        whyUs: presence(
+          {
+            title: e.whyUs?.title,
+            titleEm: [...(e.whyUs?.titleEm ?? [])],
+            subtitle: e.whyUs?.subtitle || undefined,
+            points: (e.whyUs?.points ?? []).map((p: any) => ({ h: p.h, p: p.p })),
+          },
+          (w) => !!w.title,
+        ),
+        /** Kept off the Service type: the page address in this language. */
+        ...( { urlSlug: slug } as any ),
+        order: e.order,
+      } as Service & { urlSlug: string; order: number };
+
+      return service as Service & { urlSlug: string; order: number };
+    })
+    .sort((a, b) => (a as any).order - (b as any).order);
+
+  /* The questions from the search layer are already part of the content: they
+     were merged in when it was exported, so an editor sees and owns them. Only
+     the two fields that are not in the content are added here. */
+  const table = locale === "fr" ? SERVICE_SEO : SERVICE_SEO_EN;
+  const merged = services.map((s) => {
+    const seo = table[s.slug];
+    return seo ? { ...s, seoKeywords: seo.keywords, seoCityLabel: seo.cityLabel } : s;
+  });
+  return fillPricesDeep(merged, locale);
+}
+
+const serviceCache = new Map<Locale, Promise<Service[]>>();
+
+/** Every service in a language, in the order set in the dashboard. */
+export function getServices(locale: Locale = "fr") {
+  if (!serviceCache.has(locale)) serviceCache.set(locale, readServices(locale));
+  return serviceCache.get(locale)!;
+}
+
+/** Looked up by the address in the URL, not by the internal id. */
+export async function getService(urlSlug: string, locale: Locale = "fr") {
+  return (await getServices(locale)).find((s) => (s as any).urlSlug === urlSlug);
+}
+
+export async function getServiceSlugs(locale: Locale = "fr") {
+  return (await getServices(locale)).map((s) => (s as any).urlSlug as string);
 }

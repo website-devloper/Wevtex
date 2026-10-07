@@ -1,0 +1,268 @@
+name: "Logiciels bureau"
+serviceId: "desktop-apps"
+order: 5
+eyebrow: "Logiciels bureau"
+keyword: "logiciel sur mesure Maroc"
+h1: "Logiciel sur mesure au Maroc,\nqui suit votre organisation."
+h1Em:
+  - "votre"
+  - "organisation."
+intro: "Si vos équipes passent leurs journées entre trois fichiers Excel et un logiciel qui ne colle pas à votre métier, le problème n'est pas vos équipes. Nous développons le logiciel Windows et macOS qui suit votre façon de travailler, sans licence par poste, et utilisable même sans connexion."
+tags:
+  - "Windows"
+  - "macOS"
+  - "Hors ligne"
+  - "Reporting"
+includes:
+  - "L'analyse de vos processus actuels avant toute ligne de code."
+  - "Une application Windows et macOS avec installateur et mises à jour automatiques."
+  - "La reprise de vos données existantes, Excel compris."
+  - "La formation de vos équipes et la documentation d'utilisation."
+outcomes:
+  -
+    h: "Zéro abonnement par poste"
+    p: "Vous payez le développement une fois, pas une licence mensuelle multipliée par vos salariés."
+  -
+    h: "Fonctionne sans internet"
+    p: "Vos équipes continuent de travailler quand la connexion tombe, la synchronisation se fait au retour."
+  -
+    h: "Exactement vos processus"
+    p: "Le logiciel épouse votre organisation, au lieu de vous forcer à entrer dans un moule générique."
+faqs:
+  -
+    q: "Pourquoi pas un simple logiciel du marché ?"
+    a: "Si un logiciel existant convient, nous vous le dirons, c'est moins cher pour vous. Le sur-mesure se justifie quand vos processus sont spécifiques ou quand les licences par poste deviennent plus coûteuses que le développement."
+  -
+    q: "Peut-on récupérer nos données Excel ?"
+    a: "Oui. La reprise des fichiers existants fait partie du projet : nous importons l'historique et vérifions la cohérence avant la mise en service."
+  -
+    q: "Que se passe-t-il si vous n'êtes plus là ?"
+    a: "Le code source vous est livré et documenté. N'importe quel développeur peut reprendre le projet, c'est précisément l'intérêt de ne pas dépendre d'un éditeur."
+  -
+    q: "Existe-t-il un logiciel de gestion commerciale gratuit au Maroc ?"
+    a: "Des logiciels gratuits ou open source existent et suffisent souvent pour démarrer. Ils montrent leurs limites quand vos règles de gestion sortent du standard ou que plusieurs postes doivent travailler ensemble ; c'est là qu'un logiciel sur mesure se justifie."
+  -
+    q: "Logiciel de bureau ou application web ?"
+    a: "Un logiciel de bureau convient quand vos équipes travaillent sur des postes fixes, parfois sans connexion. Une application web convient quand il faut y accéder de partout, depuis un navigateur. Nous vous conseillons selon votre usage réel."
+  -
+    q: "Pouvez-vous reprendre nos fichiers Excel existants ?"
+    a: "Oui. La reprise de vos données, depuis Excel ou un ancien logiciel, fait partie de la prestation, pour que l'outil soit utilisable dès le premier jour."
+  -
+    q: "Le code source nous appartient-il ?"
+    a: "Oui. Le code source et la documentation vous sont remis à la livraison, ce qui vous laisse libre de le faire évoluer avec nous ou avec un autre prestataire."
+whyUs:
+  title: "Pourquoi nous confier\nvotre logiciel."
+  titleEm:
+    - "votre"
+    - "logiciel."
+  subtitle: "Le sur-mesure a mauvaise réputation. Souvent pour de bonnes raisons."
+  points:
+    -
+      h: "Nous vous dirons si c'est inutile"
+      p: "Si un logiciel du marché couvre 90 % de votre besoin, nous vous le dirons plutôt que de vendre un développement."
+    -
+      h: "L'analyse avant le code"
+      p: "Nous passons du temps dans vos bureaux à regarder comment vous travaillez. C'est ce qui évite de livrer un outil que personne n'ouvre."
+    -
+      h: "Livré par lots"
+      p: "Vous utilisez les premières fonctions au bout de quelques semaines, sans attendre la fin du projet pour découvrir le résultat."
+    -
+      h: "Aucune licence par poste"
+      p: "Vous installez le logiciel sur autant de postes que nécessaire. Le prix ne dépend pas de votre effectif."
+demo:
+  title: "Le logiciel en action"
+  subtitle: "Une interface pensée pour la saisie rapide et l'usage quotidien."
+  caption: "Application de gestion : tableau de bord, saisie et exports."
+featureSections:
+  -
+    eyebrow: "Ce que nous construisons"
+    title: "Ce que le logiciel\nfera à votre place."
+    titleEm:
+      - "à"
+      - "votre"
+      - "place."
+    subtitle: "Les fonctions que réclament la plupart des entreprises que nous accompagnons."
+    cards:
+      -
+        title: "Gestion & facturation"
+        desc: "Le cœur administratif de votre activité, au même endroit."
+        checks:
+          - "Devis et factures"
+          - "Clients et fournisseurs"
+          - "Règlements et relances"
+          - "Export comptable"
+      -
+        title: "Stock & production"
+        desc: "Savoir ce que vous avez, où, et ce qu'il faut commander."
+        checks:
+          - "Entrées et sorties"
+          - "Inventaires"
+          - "Alertes de seuil"
+          - "Codes-barres"
+      -
+        title: "Reporting"
+        desc: "Les chiffres qui servent à décider, pas à remplir un classeur."
+        checks:
+          - "Tableaux de bord"
+          - "Exports Excel et PDF"
+          - "Rapports planifiés"
+          - "Historique complet"
+      -
+        title: "Accès & traçabilité"
+        desc: "Qui a le droit de faire quoi, et qui a fait quoi."
+        checks:
+          - "Comptes et rôles"
+          - "Journal des actions"
+          - "Sauvegardes automatiques"
+          - "Restauration"
+tech:
+  title: "Les technologies\nde vos logiciels."
+  titleEm:
+    - "de"
+    - "vos logiciels."
+  subtitle: "Des applications légères et rapides, sans les lourdeurs habituelles."
+  groups:
+    -
+      label: "Application"
+      desc: "Un exécutable léger, pas un navigateur déguisé."
+      items:
+        - "Tauri"
+        - "Rust"
+        - "React"
+        - "TypeScript"
+    -
+      label: "Données"
+      desc: "Vos données restent chez vous, et restent lisibles."
+      items:
+        - "SQLite"
+        - "PostgreSQL"
+        - "Sauvegardes"
+    -
+      label: "Synchronisation"
+      desc: "Travailler hors ligne, se resynchroniser ensuite."
+      items:
+        - "Mode hors ligne"
+        - "Sync différée"
+        - "Multi-postes"
+    -
+      label: "Déploiement"
+      desc: "Installer et mettre à jour sans mobiliser un informaticien."
+      items:
+        - "Installateur"
+        - "Mise à jour auto"
+        - "Windows"
+        - "macOS"
+process:
+  title: "Comment se construit\nvotre logiciel."
+  titleEm:
+    - "votre"
+    - "logiciel."
+  subtitle: "L'analyse pèse plus lourd que le code : c'est là que le projet se gagne."
+  steps:
+    -
+      n: "01"
+      h: "Analyse"
+      d: "1–2 semaines"
+      checks:
+        - "Observation sur site"
+        - "Processus actuels"
+        - "Cahier des charges"
+    -
+      n: "02"
+      h: "Maquettes"
+      d: "1 semaine"
+      checks:
+        - "Écrans principaux"
+        - "Validation avec les équipes"
+        - "Ajustements"
+    -
+      n: "03"
+      h: "Développement"
+      d: "6–10 semaines"
+      checks:
+        - "Livraisons par lots"
+        - "Tests avec vos données"
+        - "Points hebdomadaires"
+    -
+      n: "04"
+      h: "Reprise des données"
+      d: "1 semaine"
+      checks:
+        - "Import de l'existant"
+        - "Contrôle de cohérence"
+        - "Double saisie temporaire"
+    -
+      n: "05"
+      h: "Déploiement"
+      d: "1 semaine"
+      checks:
+        - "Installation des postes"
+        - "Formation des équipes"
+        - "Documentation"
+sectors:
+  title: "Vos règles de métier,\nenfin respectées."
+  titleEm:
+    - "enfin"
+    - "respectées."
+  subtitle: "Chaque métier a ses règles, ses documents et ses habitudes de saisie."
+  groups:
+    -
+      label: "E-commerce & commerce de détail"
+      cases:
+        - "Caisse et encaissement"
+        - "Stock multi-boutiques"
+        - "Étiquettes et codes-barres"
+    -
+      label: "Tourisme & hôtellerie"
+      cases:
+        - "Planning des chambres"
+        - "Facturation séjour"
+        - "États de nuitées"
+    -
+      label: "Services professionnels"
+      cases:
+        - "Dossiers clients"
+        - "Devis et facturation"
+        - "Temps passé"
+    -
+      label: "Santé & bien-être"
+      cases:
+        - "Dossiers patients"
+        - "Planning praticiens"
+        - "Facturation et mutuelles"
+    -
+      label: "Industrie & logistique"
+      cases:
+        - "Ordres de fabrication"
+        - "Traçabilité"
+        - "Contrôle qualité"
+    -
+      label: "Éducation & e-learning"
+      cases:
+        - "Inscriptions et notes"
+        - "Emplois du temps"
+        - "Bulletins"
+    -
+      label: "Création, médias & tech"
+      cases:
+        - "Gestion de projets"
+        - "Suivi budgétaire"
+        - "Bibliothèque de médias"
+    -
+      label: "Secteur public & associations"
+      cases:
+        - "Suivi des adhérents"
+        - "Reçus fiscaux"
+        - "Rapports d'activité"
+pricingHead:
+  title: "Combien coûte\nvotre logiciel."
+  titleEm:
+    - "votre"
+    - "logiciel."
+  subtitle: "Chiffré fermement après la phase d'analyse, jamais avant."
+  footnote: "Prix indicatifs de départ, en dirhams. Chaque projet reçoit un devis ferme après un échange de quinze minutes, sans engagement."
+seo:
+  metaTitle: "Logiciel sur Mesure au Maroc | Développement | WEVTEX"
+  metaDescription: "Développement de logiciel sur mesure au Maroc : gestion, facturation, stock, Windows et macOS, utilisable hors connexion. Dès 4 999 DH, sans licence."
+  keyword: "logiciel sur mesure Maroc"
+  noindex: false

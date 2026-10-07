@@ -1,0 +1,294 @@
+name: "Création de sites web"
+serviceId: "website-creation"
+order: 0
+eyebrow: "Création de sites web"
+keyword: "création site web Maroc"
+h1: "Création de site web au Maroc,\nrapide et pensé pour vendre."
+h1Em:
+  - "rapide"
+  - "et"
+  - "pensé"
+  - "pour"
+  - "vendre."
+intro: "Votre site doit faire une chose : transformer un visiteur en appel, en message WhatsApp ou en commande. Nous le concevons pour ça, rapide sur mobile, écrit pour Google, et livré à votre nom, code et domaine compris."
+tags:
+  - "Next.js"
+  - "React"
+  - "WordPress"
+  - "TypeScript"
+  - "SEO"
+includes:
+  - "Un design sur mesure, pensé mobile d'abord, jamais un thème acheté."
+  - "Une structure prête pour le référencement : balises, plan de site, données structurées."
+  - "Un formulaire de contact relié à WhatsApp et à votre boîte mail."
+  - "La remise complète : code, domaine et accès à votre nom."
+outcomes:
+  -
+    h: "Rapide par défaut"
+    p: "Des Core Web Vitals au vert : vos pages s'affichent vite, Google le remarque, vos visiteurs restent."
+  -
+    h: "Conçu pour convertir"
+    p: "Une hiérarchie claire et des appels à l'action placés là où la décision se prend."
+  -
+    h: "Facile à faire vivre"
+    p: "Vous modifiez vos textes et vos images sans nous appeler, ni casser quoi que ce soit."
+faqs:
+  -
+    q: "Combien de temps prend la création du site ?"
+    a: "Deux à quatre semaines pour un site vitrine, quatre à huit pour une boutique en ligne. Le délai est ferme et figuré sur le devis."
+  -
+    q: "Puis-je modifier le contenu moi-même ?"
+    a: "Oui. Vous recevez une interface simple pour vos textes, vos images et vos pages, avec une prise en main d'une heure."
+  -
+    q: "Le site m'appartient-il vraiment ?"
+    a: "Entièrement. Code, contenu, domaine et hébergement sont mis à votre nom et vous sont remis à la livraison."
+  -
+    q: "Next.js ou WordPress ?"
+    a: "Next.js pour la vitesse maximale et le sur-mesure ; WordPress quand vous voulez une administration familière et publier sans nous. Nous vous conseillons selon votre équipe et votre budget, pas selon nos préférences."
+  -
+    q: "Quel est le prix d'un site web au Maroc chez Wevtex ?"
+    a: "Un site vitrine démarre à 1 899 DH, un site d'entreprise de 15 pages à 2 999 DH et une boutique en ligne à 6 999 DH. Chaque projet reçoit un devis ferme après un échange de quinze minutes."
+  -
+    q: "Peut-on créer un site web gratuit au Maroc ?"
+    a: "Oui, avec des outils gratuits comme Google Sites ou les versions gratuites des créateurs de sites. Le site est alors sur un sous-domaine, affiche la marque de la plateforme et reste chez elle. Pour un site professionnel à votre nom, sur votre domaine et prêt pour Google, notre formule démarre à 1 899 DH."
+  -
+    q: "Combien coûte un site internet par mois ?"
+    a: "Une fois créé, un site coûte surtout son nom de domaine (100 à 400 DH par an) et son hébergement, de zéro pour un site vitrine sur les plateformes modernes à quelques centaines de dirhams par mois pour une boutique avec du trafic. La maintenance est en option."
+  -
+    q: "Combien coûte un site Shopify ou WordPress ?"
+    a: "La création suit nos formules, à partir de 1 899 DH pour une vitrine et 6 999 DH pour une boutique. Shopify ajoute un abonnement mensuel payé directement à Shopify ; WordPress n'a pas de licence mais demande un hébergement et des mises à jour régulières."
+  -
+    q: "Site vitrine ou site e-commerce : que choisir ?"
+    a: "Un site vitrine si la vente se conclut par un échange (devis, rendez-vous, conseil). Une boutique en ligne si le client peut choisir, payer et recevoir un produit seul. La question n'est pas la taille de l'entreprise mais la façon dont vous vendez aujourd'hui."
+  -
+    q: "Pouvez-vous refaire mon site internet existant ?"
+    a: "Oui. Nous auditons le site actuel, reprenons ce qui fonctionne, redirigeons chaque ancienne adresse et livrons un site plus rapide et mieux référencé, sur votre domaine actuel."
+  -
+    q: "Peut-on créer un site web avec l'IA ?"
+    a: "La création de site web par IA donne un premier jet rapide, utile pour tester une idée. Elle produit rarement un site structuré pour le référencement, rédigé pour vos clients et à votre nom. Dès que le site doit apporter des demandes, un site conçu sur mesure reste le bon choix."
+  -
+    q: "Créez-vous des sites internet pour toutes les villes du Maroc ?"
+    a: "Oui. Basés à Casablanca, nous assurons la création de site web à Kénitra, Rabat, Marrakech, Tanger, Agadir, Fès et dans tout le Maroc, avec des points en visio et un suivi sur WhatsApp."
+  -
+    q: "Le site sera-t-il bien référencé sur Google ?"
+    a: "Chaque site est livré avec les bases du référencement : titres et descriptions uniques, structure des pages, vitesse, plan de site et données structurées. Pour viser des recherches disputées, un accompagnement SEO mensuel prend le relais."
+whyUs:
+  title: "Pourquoi nous confier\nvotre site."
+  titleEm:
+    - "votre"
+    - "site."
+  subtitle: "Ce qui change concrètement par rapport à un thème acheté ou à un prestataire injoignable."
+  points:
+    -
+      h: "Un prix fixe, annoncé"
+      p: "Le devis est ferme avant de commencer. Pas de rallonge en cours de route, pas de surprise à la livraison."
+    -
+      h: "Livré en semaines, pas en mois"
+      p: "Deux à quatre semaines pour un site vitrine, avec une date d'ouverture engagée dès le devis."
+    -
+      h: "Vous parlez à ceux qui codent"
+      p: "Pas de chef de projet intermédiaire : vous briefez directement les personnes qui construisent votre site."
+    -
+      h: "Rien ne vous enferme"
+      p: "Code, domaine, hébergement et accès sont à vous. Vous pouvez partir demain sans rien perdre."
+demo:
+  title: "La création de sites en action"
+  subtitle: "Du site vitrine à la boutique complète, la même exigence de vitesse."
+  caption: "Un projet Next.js : rapide, accessible et prêt pour le référencement."
+featureSections:
+  -
+    eyebrow: "Ce que vous obtenez"
+    title: "Quatre façons de\ngagner des clients."
+    titleEm:
+      - "gagner"
+      - "des"
+      - "clients."
+    subtitle: "Selon ce que vous vendez, votre site ne travaille pas de la même façon."
+    cards:
+      -
+        title: "Sites vitrines"
+        desc: "Vos services, vos preuves et votre numéro, là où le visiteur les cherche."
+        checks:
+          - "Design sur mesure"
+          - "Mobile d'abord"
+          - "Textes structurés"
+          - "Contact en un clic"
+      -
+        title: "Boutiques en ligne"
+        desc: "Des clients qui choisissent, commandent et paient seuls, même la nuit."
+        checks:
+          - "Paiement CMI & Stripe"
+          - "Gestion des stocks"
+          - "Tunnel d'achat court"
+          - "Suivi des commandes"
+      -
+        title: "Performance"
+        desc: "Chaque seconde de chargement en moins garde un visiteur de plus."
+        checks:
+          - "Images optimisées"
+          - "Rendu statique"
+          - "Cache CDN"
+          - "Score Lighthouse 90+"
+      -
+        title: "Référencement technique"
+        desc: "Construit pour être compris et classé par Google dès le premier jour."
+        checks:
+          - "Balises et titres"
+          - "Données structurées"
+          - "Plan de site & robots"
+          - "Analytics branché"
+tech:
+  title: "Les technologies\nque nous utilisons."
+  titleEm:
+    - "que"
+    - "nous utilisons."
+  subtitle: "Des outils modernes et durables, choisis pour la vitesse et pour ne pas vous enfermer."
+  groups:
+    -
+      label: "Next.js & React"
+      desc: "Notre socle par défaut : rendu statique, images optimisées et navigation instantanée entre les pages."
+      items:
+        - "Next.js"
+        - "React"
+        - "TypeScript"
+        - "Tailwind"
+    -
+      label: "WordPress"
+      desc: "Quand vous voulez tout gérer vous-même, avec une administration que vos équipes connaissent déjà."
+      items:
+        - "WordPress"
+        - "ACF"
+        - "WooCommerce"
+        - "Elementor"
+    -
+      label: "Contenu & e-commerce"
+      desc: "Vos textes, vos produits et vos paiements, en dirhams comme à l'international."
+      items:
+        - "Strapi"
+        - "Sanity"
+        - "Stripe"
+        - "CMI"
+    -
+      label: "Hébergement & mesure"
+      desc: "Un site rapide partout, sauvegardé, surveillé et mesuré dès le premier jour."
+      items:
+        - "Vercel"
+        - "CDN"
+        - "SSL"
+        - "Analytics"
+process:
+  title: "Du premier appel\nau site en ligne."
+  titleEm:
+    - "site"
+    - "en"
+    - "ligne."
+  subtitle: "Vous validez chaque étape avant la suivante. Personne ne vous met devant le fait accompli."
+  steps:
+    -
+      n: "01"
+      h: "Cadrage"
+      d: "1–2 jours"
+      checks:
+        - "Vos objectifs"
+        - "Vos concurrents"
+        - "Périmètre et devis ferme"
+    -
+      n: "02"
+      h: "Arborescence & textes"
+      d: "2–4 jours"
+      checks:
+        - "Plan des pages"
+        - "Trame de contenu"
+        - "Mots-clés visés"
+    -
+      n: "03"
+      h: "Design"
+      d: "3–5 jours"
+      checks:
+        - "Maquettes réelles"
+        - "Vos retours"
+        - "Validation avant code"
+    -
+      n: "04"
+      h: "Développement"
+      d: "1–2 semaines"
+      checks:
+        - "Intégration responsive"
+        - "Optimisation vitesse"
+        - "Formulaires et suivi"
+    -
+      n: "05"
+      h: "Mise en ligne"
+      d: "1–2 jours"
+      checks:
+        - "Tests sur mobile"
+        - "Référencement vérifié"
+        - "Formation d'une heure"
+sectors:
+  title: "Un site qui parle\nà vos clients."
+  titleEm:
+    - "à"
+    - "vos"
+    - "clients."
+  subtitle: "Un hôtelier et un avocat n'ont pas besoin du même site. Voici ce que nous mettons en avant pour le vôtre."
+  groups:
+    -
+      label: "E-commerce & commerce de détail"
+      cases:
+        - "Catalogue et fiches produits"
+        - "Paiement CMI et Stripe"
+        - "Retrait en boutique"
+    -
+      label: "Tourisme & hôtellerie"
+      cases:
+        - "Réservation directe"
+        - "Site multilingue"
+        - "Galeries et visites"
+    -
+      label: "Services professionnels"
+      cases:
+        - "Prise de rendez-vous"
+        - "Références et preuves"
+        - "Formulaire qualifié"
+    -
+      label: "Santé & bien-être"
+      cases:
+        - "Présentation des soins"
+        - "Fiches praticiens"
+        - "Prise de rendez-vous"
+    -
+      label: "Industrie & logistique"
+      cases:
+        - "Catalogue technique"
+        - "Demande de devis B2B"
+        - "Espace documents"
+    -
+      label: "Éducation & e-learning"
+      cases:
+        - "Présentation des formations"
+        - "Inscription en ligne"
+        - "Espace élèves"
+    -
+      label: "Création, médias & tech"
+      cases:
+        - "Portfolio soigné"
+        - "Pages produit SaaS"
+        - "Blog et actualités"
+    -
+      label: "Secteur public & associations"
+      cases:
+        - "Site accessible RGAA"
+        - "Dons en ligne"
+        - "Actualités et appels"
+pricingHead:
+  title: "Le prix de votre site,\nsans rendez-vous."
+  titleEm:
+    - "sans"
+    - "rendez-vous."
+  subtitle: "Trois formules affichées. Le devis final confirme le prix, il ne le gonfle pas."
+  footnote: "Prix indicatifs de départ, en dirhams. Chaque projet reçoit un devis ferme après un échange de quinze minutes, sans engagement."
+seo:
+  metaTitle: "Création de Site Web au Maroc | Agence Web | WEVTEX"
+  metaDescription: "Création de site web au Maroc dès 1 899 DH : sites vitrines, boutiques en ligne et sites sur mesure, rapides et prêts pour Google. Livré en 2 à 4 semaines."
+  keyword: "création site web Maroc"
+  noindex: false

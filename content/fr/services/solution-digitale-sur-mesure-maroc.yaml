@@ -1,0 +1,270 @@
+name: "Solutions digitales sur mesure"
+serviceId: "custom-solutions"
+order: 6
+eyebrow: "Solutions sur mesure"
+keyword: "développement web sur mesure Maroc"
+h1: "Développement web sur mesure,\nquand rien d'existant ne suffit."
+h1Em:
+  - "ne"
+  - "suffit."
+intro: "Quand vos équipes recopient les mêmes données dans trois outils et que vos clients appellent pour savoir où en est leur dossier, il vous faut une plateforme à vous. Nous concevons applications web, portails clients et SaaS qui suivent exactement vos règles, et tiennent la charge quand vous grandissez."
+tags:
+  - "SaaS"
+  - "API"
+  - "Extranet"
+  - "Intégrations"
+includes:
+  - "Un cadrage sérieux : processus, règles métier, cas particuliers."
+  - "Une plateforme web sur mesure, avec rôles, permissions et traçabilité."
+  - "L'intégration à vos outils existants par API."
+  - "Une documentation technique et fonctionnelle complète."
+outcomes:
+  -
+    h: "Vos règles, respectées"
+    p: "Les cas particuliers qui font la valeur de votre métier sont codés, pas contournés."
+  -
+    h: "Tout relié"
+    p: "Vos outils se parlent enfin : plus de double saisie ni de fichiers échangés par mail."
+  -
+    h: "Prêt à grandir"
+    p: "Une architecture qui accepte dix fois plus d'utilisateurs sans être réécrite."
+faqs:
+  -
+    q: "Comment évaluez-vous un projet complexe ?"
+    a: "Par une phase de cadrage facturée à part, courte et concrète : processus, règles, priorités. Elle débouche sur un périmètre chiffré fermement, et elle vous appartient même si vous ne poursuivez pas avec nous."
+  -
+    q: "Pouvez-vous vous connecter à notre ERP ?"
+    a: "Oui, dès lors qu'il expose une API ou une base accessible. Nous avons connecté des outils de facturation, de stock et de paie à des plateformes sur mesure."
+  -
+    q: "Qui héberge la plateforme ?"
+    a: "Au choix : chez vous, ou sur une infrastructure que nous administrons. Dans les deux cas, les accès et le code restent à votre nom."
+  -
+    q: "Quel est le tarif d'un développeur web au Maroc ?"
+    a: "Plutôt qu'un prix de développeur web à la journée, nous chiffrons au projet, pour que le prix soit ferme : un cadrage à partir de 6 000 DH, une plateforme ou un outil métier à partir de 18 000 DH, un SaaS complet à partir de 60 000 DH."
+  -
+    q: "Quelle différence entre un site web et une application web ?"
+    a: "Un site web présente votre activité et génère des contacts. Une application web est un outil : les utilisateurs se connectent, saisissent, consultent et traitent des données, avec des droits différents selon leur rôle."
+  -
+    q: "Quelles technologies utilisez-vous pour le développement web ?"
+    a: "Next.js et React pour l'interface, Node.js et PostgreSQL pour le serveur et les données, et des API documentées pour relier vos outils. Des technologies répandues, pour que votre plateforme ne dépende pas de nous."
+  -
+    q: "Pouvez-vous reprendre une application existante ?"
+    a: "Oui, après un audit du code existant. Nous vous disons honnêtement s'il vaut mieux faire évoluer l'application ou la reconstruire, et pourquoi."
+whyUs:
+  title: "Pourquoi nous confier\nvotre plateforme."
+  titleEm:
+    - "votre"
+    - "plateforme."
+  subtitle: "Les projets sur mesure échouent rarement pour des raisons techniques."
+  points:
+    -
+      h: "Le cadrage est un livrable"
+      p: "Il est facturé, court, et vous repartez avec : processus documentés, règles écrites, périmètre chiffré. Même si vous ne poursuivez pas avec nous."
+    -
+      h: "Livré par lots utilisables"
+      p: "Chaque lot est mis en service et utilisé. Vous ne découvrez pas la plateforme entière le dernier jour."
+    -
+      h: "Une équipe qui reste"
+      p: "Les mêmes personnes du cadrage à la mise en service. Aucune passation interne, aucune reprise en cours de route."
+    -
+      h: "Code et données à vous"
+      p: "Dépôt de code, documentation, accès à l'infrastructure. Vous n'êtes jamais captif d'un prestataire, nous compris."
+demo:
+  title: "La plateforme en action"
+  subtitle: "Rôles, tableaux de bord et flux métier réunis au même endroit."
+  caption: "Portail sur mesure : permissions, données et intégrations."
+featureSections:
+  -
+    eyebrow: "Ce que nous construisons"
+    title: "Quatre projets qui\nchangent le quotidien."
+    titleEm:
+      - "changent"
+      - "le"
+      - "quotidien."
+    subtitle: "Quatre familles de projets qui reviennent le plus souvent."
+    cards:
+      -
+        title: "Portails clients"
+        desc: "Donner à vos clients un espace pour suivre ce qui les concerne."
+        checks:
+          - "Espace sécurisé"
+          - "Documents et factures"
+          - "Suivi des demandes"
+          - "Messagerie intégrée"
+      -
+        title: "Plateformes SaaS"
+        desc: "Un produit que vous vendez par abonnement."
+        checks:
+          - "Multi-entreprises"
+          - "Abonnements et facturation"
+          - "Onboarding"
+          - "Tableau de bord"
+      -
+        title: "Extranets & outils métier"
+        desc: "Ce que vos équipes utilisent tous les jours."
+        checks:
+          - "Flux de validation"
+          - "Rôles et permissions"
+          - "Journal des actions"
+          - "Rapports"
+      -
+        title: "Architectures d'API"
+        desc: "Faire dialoguer des systèmes qui s'ignoraient."
+        checks:
+          - "API REST documentée"
+          - "Synchronisation"
+          - "Webhooks"
+          - "Gestion des erreurs"
+tech:
+  title: "Les technologies\nde nos plateformes."
+  titleEm:
+    - "de"
+    - "nos plateformes."
+  subtitle: "Des choix conservateurs et documentés : ce code vivra plusieurs années."
+  groups:
+    -
+      label: "Application"
+      desc: "Une interface qui reste rapide même chargée de données."
+      items:
+        - "Next.js"
+        - "React"
+        - "TypeScript"
+    -
+      label: "Serveur & données"
+      desc: "La logique métier et les données, solidement tenues."
+      items:
+        - "Node.js"
+        - "PostgreSQL"
+        - "Prisma"
+        - "Redis"
+    -
+      label: "Intégrations"
+      desc: "Se brancher sur ce que vous utilisez déjà."
+      items:
+        - "API REST"
+        - "Webhooks"
+        - "Stripe"
+        - "ERP"
+    -
+      label: "Exploitation"
+      desc: "Déployer, surveiller et restaurer sans stress."
+      items:
+        - "Docker"
+        - "CI/CD"
+        - "Monitoring"
+        - "Sauvegardes"
+process:
+  title: "Comment se conçoit\nune plateforme."
+  titleEm:
+    - "une"
+    - "plateforme."
+  subtitle: "Un cadrage payant et sérieux, puis des livraisons par lots utilisables."
+  steps:
+    -
+      n: "01"
+      h: "Cadrage"
+      d: "2–3 semaines"
+      checks:
+        - "Ateliers métier"
+        - "Règles et cas limites"
+        - "Périmètre chiffré"
+    -
+      n: "02"
+      h: "Architecture"
+      d: "1 semaine"
+      checks:
+        - "Modèle de données"
+        - "Choix techniques"
+        - "Plan d'intégration"
+    -
+      n: "03"
+      h: "Développement"
+      d: "8–16 semaines"
+      checks:
+        - "Livraisons par lots"
+        - "Recette à chaque lot"
+        - "Points hebdomadaires"
+    -
+      n: "04"
+      h: "Intégrations"
+      d: "2–3 semaines"
+      checks:
+        - "Connexion aux outils"
+        - "Reprise des données"
+        - "Tests de charge"
+    -
+      n: "05"
+      h: "Mise en service"
+      d: "1–2 semaines"
+      checks:
+        - "Bascule progressive"
+        - "Formation"
+        - "Documentation"
+sectors:
+  title: "Là où le sur-mesure\nfait la différence."
+  titleEm:
+    - "fait"
+    - "la"
+    - "différence."
+  subtitle: "Plus le métier est spécifique, plus le sur-mesure se justifie."
+  groups:
+    -
+      label: "E-commerce & commerce de détail"
+      cases:
+        - "Portail fournisseurs"
+        - "Synchronisation des stocks"
+        - "Tarifs par client"
+    -
+      label: "Tourisme & hôtellerie"
+      cases:
+        - "Channel manager"
+        - "Portail agences"
+        - "Tableau de bord multi-sites"
+    -
+      label: "Services professionnels"
+      cases:
+        - "Portail client"
+        - "Suivi des prestations"
+        - "Facturation récurrente"
+    -
+      label: "Santé & bien-être"
+      cases:
+        - "Dossiers partagés"
+        - "Planning multi-sites"
+        - "Traçabilité et conformité"
+    -
+      label: "Industrie & logistique"
+      cases:
+        - "Suivi des expéditions"
+        - "Portail transporteurs"
+        - "Preuves de livraison"
+    -
+      label: "Éducation & e-learning"
+      cases:
+        - "Plateforme de cours"
+        - "Scolarité en ligne"
+        - "Suivi des acquis"
+    -
+      label: "Création, médias & tech"
+      cases:
+        - "Produit SaaS"
+        - "Abonnements"
+        - "API publique"
+    -
+      label: "Secteur public & associations"
+      cases:
+        - "Guichet en ligne"
+        - "Gestion des demandes"
+        - "Rapports réglementaires"
+pricingHead:
+  title: "Combien coûte\nvotre plateforme."
+  titleEm:
+    - "votre"
+    - "plateforme."
+  subtitle: "Le cadrage précède toujours le chiffrage définitif."
+  footnote: "Prix indicatifs de départ, en dirhams. Chaque projet reçoit un devis ferme après un échange de quinze minutes, sans engagement."
+seo:
+  metaTitle: "Développement Web sur Mesure au Maroc | SaaS | WEVTEX"
+  metaDescription: "Développement web sur mesure au Maroc : applications web, plateformes SaaS, portails clients et API, conçus autour de votre métier. Cadrage dès 6 000 DH."
+  keyword: "développement web sur mesure Maroc"
+  noindex: false

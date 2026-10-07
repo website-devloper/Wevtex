@@ -1,11 +1,10 @@
 import { MetadataRoute } from 'next';
 import { SITE_URL } from '@/lib/seo';
 import { servicePath } from '@/lib/site-links';
-import { SERVICE_SLUGS } from '@/lib/services-data';
 import { INDUSTRY_SLUGS } from '@/lib/industries-data';
 import { CITY_SLUGS } from '@/lib/cities-data';
 import { projectPath } from '@/lib/projects-data';
-import { getProjectSlugs } from '@/lib/content';
+import { getProjectSlugs, getServiceSlugs } from '@/lib/content';
 import { postPath } from '@/lib/blog-data';
 import { getPosts } from '@/lib/content';
 import { localize } from '@/lib/i18n-paths';
@@ -21,6 +20,7 @@ type Page = {
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const POSTS = await getPosts('fr');
   const PROJECT_SLUGS = await getProjectSlugs('fr');
+  const SERVICE_PAGES = await getServiceSlugs('fr');
   const now = new Date();
 
   const staticPages: Page[] = [
@@ -35,8 +35,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { path: '/mentions-legales', lastModified: now, changeFrequency: 'yearly', priority: 0.2 },
   ];
 
-  const servicePages: Page[] = SERVICE_SLUGS.map((slug) => ({
-    path: servicePath(slug),
+  const servicePages: Page[] = SERVICE_PAGES.map((slug) => ({
+    path: `/${slug}`,
     lastModified: now,
     changeFrequency: 'monthly',
     priority: 0.8,

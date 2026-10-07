@@ -1,0 +1,242 @@
+name: "Custom web applications"
+serviceId: "custom-solutions"
+order: 6
+eyebrow: "Custom web applications"
+keyword: "web application development Morocco"
+h1: "Custom web application development\nin Morocco, when nothing else fits."
+h1Em:
+  - "nothing"
+  - "else"
+  - "fits."
+intro: "When your teams copy the same data into three tools and your clients call to ask where their file stands, you need a platform of your own. We design web applications, client portals and SaaS that follow your rules exactly, and hold up as you grow."
+tags:
+  - "SaaS"
+  - "API"
+  - "Extranet"
+  - "Integrations"
+includes:
+  - "Serious discovery: processes, business rules, edge cases."
+  - "A custom web platform, with roles, permissions and an audit trail."
+  - "Integration with your existing tools through APIs."
+  - "Complete technical and functional documentation."
+outcomes:
+  -
+    h: "Your rules, respected"
+    p: "The edge cases that make your business valuable are coded, not worked around."
+  -
+    h: "Everything connected"
+    p: "Your tools finally talk to each other: no more double entry or files sent by email."
+  -
+    h: "Ready to grow"
+    p: "An architecture that handles ten times more users without being rewritten."
+faqs:
+  -
+    q: "How do you assess a complex project?"
+    a: "Through a separately invoiced discovery phase, short and concrete: processes, rules, priorities. It ends with a firmly priced scope, and it's yours even if you don't continue with us."
+  -
+    q: "Can you connect to our ERP?"
+    a: "Yes, as long as it exposes an API or an accessible database. We have connected invoicing, stock and payroll tools to custom platforms."
+  -
+    q: "Who hosts the platform?"
+    a: "Your choice: on your side, or on infrastructure we manage. Either way, access and code stay in your name."
+  -
+    q: "What does a web developer cost in Morocco?"
+    a: "Rather than a daily rate, we price per project, so the price is firm: discovery from MAD 6,000, a platform or business tool from MAD 18,000, a complete SaaS from MAD 60,000."
+  -
+    q: "Do you work with companies outside Morocco?"
+    a: "Yes. We work remotely with clients in France, Belgium and Canada, in English or French, with weekly check-ins, a shared staging environment and fixed-price quotes."
+  -
+    q: "What is the difference between a website and a web application?"
+    a: "A website presents your business and generates leads. A web application is a tool: users log in, enter, look up and process data, with different rights depending on their role."
+  -
+    q: "Which technologies do you use for web development?"
+    a: "Next.js and React for the interface, Node.js and PostgreSQL for the server and data, and documented APIs to connect your tools. Widely used technologies, so your platform doesn't depend on us."
+  -
+    q: "Can you take over an existing application?"
+    a: "Yes, after an audit of the existing code. We tell you honestly whether it is better to improve the application or rebuild it, and why."
+whyUs:
+  title: "Why trust us\nwith your platform."
+  titleEm:
+    - "your"
+    - "platform."
+  subtitle: "Custom projects rarely fail for technical reasons."
+  points:
+    -
+      h: "Discovery is a deliverable"
+      p: "It's invoiced, short, and you leave with it: documented processes, written rules, a priced scope. Even if you don't continue with us."
+    -
+      h: "Delivered in usable batches"
+      p: "Each batch goes live and gets used. You don't discover the whole platform on the last day."
+    -
+      h: "A team that stays"
+      p: "The same people from discovery to go-live. No internal handovers, no takeover midway."
+    -
+      h: "Your code and your data"
+      p: "Code repository, documentation, infrastructure access. You're never captive to a provider, us included."
+demo:
+  title: ""
+  subtitle: ""
+  caption: ""
+featureSections:
+  -
+    eyebrow: "What we build"
+    title: "Four projects that\nchange day-to-day work."
+    titleEm:
+      - "change"
+      - "day-to-day"
+      - "work."
+    subtitle: "The four kinds of project that come up most often."
+    cards:
+      -
+        title: "Client portals"
+        desc: "Giving your clients a space to follow what concerns them."
+        checks:
+          - "Secure area"
+          - "Documents and invoices"
+          - "Request tracking"
+          - "Built-in messaging"
+      -
+        title: "SaaS platforms"
+        desc: "A product you sell by subscription."
+        checks:
+          - "Multi-tenant"
+          - "Subscriptions and billing"
+          - "Onboarding"
+          - "Dashboard"
+      -
+        title: "Extranets & business tools"
+        desc: "What your teams use every day."
+        checks:
+          - "Approval workflows"
+          - "Roles and permissions"
+          - "Action log"
+          - "Reports"
+      -
+        title: "API architectures"
+        desc: "Making systems that ignored each other talk."
+        checks:
+          - "Documented REST API"
+          - "Synchronization"
+          - "Webhooks"
+          - "Error handling"
+tech:
+  title: ""
+  titleEm: []
+  subtitle: ""
+  groups: []
+process:
+  title: "How a platform\nis designed."
+  titleEm:
+    - "is"
+    - "designed."
+  subtitle: "Paid, serious discovery, then usable deliveries in batches."
+  steps:
+    -
+      n: "01"
+      h: "Discovery"
+      d: "2–3 weeks"
+      checks:
+        - "Business workshops"
+        - "Rules and edge cases"
+        - "Priced scope"
+    -
+      n: "02"
+      h: "Architecture"
+      d: "1 week"
+      checks:
+        - "Data model"
+        - "Technical choices"
+        - "Integration plan"
+    -
+      n: "03"
+      h: "Development"
+      d: "8–16 weeks"
+      checks:
+        - "Delivered in batches"
+        - "Acceptance at each batch"
+        - "Weekly check-ins"
+    -
+      n: "04"
+      h: "Integrations"
+      d: "2–3 weeks"
+      checks:
+        - "Connection to your tools"
+        - "Data migration"
+        - "Load testing"
+    -
+      n: "05"
+      h: "Go-live"
+      d: "1–2 weeks"
+      checks:
+        - "Gradual switchover"
+        - "Training"
+        - "Documentation"
+sectors:
+  title: "Where custom\nmakes the difference."
+  titleEm:
+    - "makes"
+    - "the"
+    - "difference."
+  subtitle: "The more specific the trade, the more custom makes sense."
+  groups:
+    -
+      label: "E-commerce & retail"
+      cases:
+        - "Supplier portal"
+        - "Stock synchronization"
+        - "Per-customer pricing"
+    -
+      label: "Tourism & hospitality"
+      cases:
+        - "Channel manager"
+        - "Agency portal"
+        - "Multi-site dashboard"
+    -
+      label: "Professional services"
+      cases:
+        - "Client portal"
+        - "Service tracking"
+        - "Recurring billing"
+    -
+      label: "Health & wellness"
+      cases:
+        - "Shared records"
+        - "Multi-site scheduling"
+        - "Traceability and compliance"
+    -
+      label: "Industry & logistics"
+      cases:
+        - "Shipment tracking"
+        - "Carrier portal"
+        - "Proof of delivery"
+    -
+      label: "Education & e-learning"
+      cases:
+        - "Course platform"
+        - "Online school admin"
+        - "Learning tracking"
+    -
+      label: "Creative, media & tech"
+      cases:
+        - "SaaS product"
+        - "Subscriptions"
+        - "Public API"
+    -
+      label: "Public sector & NGOs"
+      cases:
+        - "Online service desk"
+        - "Request management"
+        - "Regulatory reports"
+pricingHead:
+  title: "How much\nyour platform costs."
+  titleEm:
+    - "your"
+    - "platform"
+    - "costs."
+  subtitle: "Discovery always comes before the final price."
+  footnote: "Indicative starting prices, in Moroccan dirhams (MAD). Every project gets a firm quote after a fifteen-minute call, with no commitment."
+seo:
+  metaTitle: "Web Application & SaaS Development in Morocco | WEVTEX"
+  metaDescription: "Custom web application development in Morocco: SaaS platforms, client portals and APIs built around your business, nearshore for European companies. Discovery from MAD 6,000."
+  keyword: "web application development Morocco"
+  noindex: false

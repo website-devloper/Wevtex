@@ -1,0 +1,241 @@
+name: "Google & Meta ads"
+serviceId: "ads"
+order: 3
+eyebrow: "Online advertising"
+keyword: "Google Ads agency Morocco"
+h1: "Google Ads and Meta ads agency in Morocco,\nadvertising that pays for itself."
+h1Em:
+  - "pays"
+  - "for"
+  - "itself."
+intro: "Online advertising can bring you customers this week, or silently burn your budget. We build your Google, Facebook and Instagram campaigns, the page that receives the click and the tracking that tells you what every dirham brought back."
+tags:
+  - "Google Ads"
+  - "Meta Ads"
+  - "Landing page"
+  - "Tracking"
+includes:
+  - "Complete campaign setup, from targeting to visuals."
+  - "A dedicated landing page, built to convert the paid click."
+  - "Conversion tracking installed and verified, down to the call or the purchase."
+  - "A monthly report showing the cost per lead."
+outcomes:
+  -
+    h: "Immediate results"
+    p: "Unlike SEO, a well-tuned campaign brings enquiries from the very first week."
+  -
+    h: "A controlled budget"
+    p: "You set the envelope, we optimize what it brings back. Nothing is spent without being measured."
+  -
+    h: "A known cost per customer"
+    p: "You know what a lead costs, and so whether the campaign is worth scaling up."
+faqs:
+  -
+    q: "What ad budget should I plan?"
+    a: "Plan at least MAD 2,000 to 3,000 of media spend a month to get usable data. Below that, campaigns don't have enough to learn from."
+  -
+    q: "Is the ad budget included?"
+    a: "No. Our fees cover design and management; the media budget is paid directly to Google or Meta, in your name and on your card."
+  -
+    q: "Do I need to redo my homepage?"
+    a: "We'd rather build a page dedicated to the campaign. Sending paid traffic to a general homepage cuts conversions."
+  -
+    q: "How do Facebook ads work?"
+    a: "You pay Meta to show a post or an ad to a chosen audience (city, age, interests) on Facebook and Instagram. You set a budget per day or per campaign, and Meta charges per impression or per click."
+  -
+    q: "Is Google Ads free?"
+    a: "Opening a Google Ads account in Morocco is free, but ads are paid: you pay Google for each click on your ads, within the budget you set."
+  -
+    q: "How quickly does a campaign bring results?"
+    a: "The first enquiries usually arrive in the first week. Then it takes two to four weeks of optimization to stabilize the cost per lead."
+  -
+    q: "Can I target a single city in Morocco, or foreign countries?"
+    a: "Yes. Google Ads and Meta ads can target a city, a radius around an address, a region or other countries. A Casablanca business can advertise only in Casablanca; a Marrakech riad can target guests in France or the UK."
+  -
+    q: "Who owns the ad accounts?"
+    a: "You do. The Google Ads and Meta Business accounts are created in your name, and you keep full access to the history and audiences if you change provider."
+whyUs:
+  title: "Why trust us\nwith your campaigns."
+  titleEm:
+    - "your"
+    - "campaigns."
+  subtitle: "A trade where opacity is common, and costly."
+  points:
+    -
+      h: "Your accounts belong to you"
+      p: "Campaigns are created on your own Google and Meta accounts. If we part ways, you keep everything: history, audiences, learning."
+    -
+      h: "The landing page is included"
+      p: "We don't send paid traffic to an unsuitable page. A dedicated page is built with the campaign."
+    -
+      h: "We measure down to the lead"
+      p: "Not just clicks: calls, forms and WhatsApp messages are tracked and attributed."
+    -
+      h: "Fixed fees"
+      p: "A known monthly amount, not a percentage of media spend that would push us to make you spend more."
+demo:
+  title: ""
+  subtitle: ""
+  caption: ""
+featureSections:
+  -
+    eyebrow: "What we manage"
+    title: "What separates spending\nfrom investing."
+    titleEm:
+      - "from"
+      - "investing."
+    subtitle: "Four essential pieces. Miss one and the budget evaporates."
+    cards:
+      -
+        title: "Targeting"
+        desc: "Speaking to the people who can really buy from you."
+        checks:
+          - "Search intent"
+          - "Lookalike audiences"
+          - "Geographic areas"
+          - "Costly exclusions"
+      -
+        title: "Creative"
+        desc: "Visuals and copy that stop the scroll."
+        checks:
+          - "Visuals sized per format"
+          - "Tested hooks"
+          - "A/B variants"
+          - "Mobile-ready"
+      -
+        title: "Landing page"
+        desc: "The click is paid for: the page can't afford mistakes."
+        checks:
+          - "Page dedicated to the campaign"
+          - "Instant loading"
+          - "Short form"
+          - "Proof and guarantees"
+      -
+        title: "Measurement"
+        desc: "Without reliable tracking, optimization is guesswork."
+        checks:
+          - "Verified conversions"
+          - "Tracked calls"
+          - "Cost per lead"
+          - "Return on ad spend"
+tech:
+  title: ""
+  titleEm: []
+  subtitle: ""
+  groups: []
+process:
+  title: "How we launch\nyour campaigns."
+  titleEm:
+    - "your"
+    - "campaigns."
+  subtitle: "Two weeks of preparation, then continuous optimization."
+  steps:
+    -
+      n: "01"
+      h: "Strategy"
+      d: "2–3 days"
+      checks:
+        - "Measurable goal"
+        - "Target audiences"
+        - "Budget and channels"
+    -
+      n: "02"
+      h: "Creative"
+      d: "3–5 days"
+      checks:
+        - "Visuals and copy"
+        - "Landing page"
+        - "Variants to test"
+    -
+      n: "03"
+      h: "Setup"
+      d: "2 days"
+      checks:
+        - "Accounts and access"
+        - "Conversion tracking"
+        - "End-to-end check"
+    -
+      n: "04"
+      h: "Launch"
+      d: "1 week"
+      checks:
+        - "Gradual rollout"
+        - "Daily monitoring"
+        - "First adjustments"
+    -
+      n: "05"
+      h: "Optimization"
+      d: "ongoing"
+      checks:
+        - "Constant testing"
+        - "Weak ads cut"
+        - "Monthly report"
+sectors:
+  title: "The right channel for\nwhat you sell."
+  titleEm:
+    - "what"
+    - "you"
+    - "sell."
+  subtitle: "Channel, message and acquisition cost change with what you sell."
+  groups:
+    -
+      label: "E-commerce & retail"
+      cases:
+        - "Google Shopping"
+        - "Abandoned carts"
+        - "Lookalike audiences"
+    -
+      label: "Tourism & hospitality"
+      cases:
+        - "Seasonal campaigns"
+        - "Targeting by country"
+        - "Visitor retargeting"
+    -
+      label: "Professional services"
+      cases:
+        - "High-intent search"
+        - "Targeted LinkedIn"
+        - "Qualified forms"
+    -
+      label: "Health & wellness"
+      cases:
+        - "Strict local targeting"
+        - "Ad compliance"
+        - "Appointment booking"
+    -
+      label: "Industry & logistics"
+      cases:
+        - "Technical queries"
+        - "Quote requests"
+        - "B2B targeting"
+    -
+      label: "Education & e-learning"
+      cases:
+        - "Back-to-school campaigns"
+        - "Parent targeting"
+        - "Tracked enrollments"
+    -
+      label: "Creative, media & tech"
+      cases:
+        - "Free trials"
+        - "Interest targeting"
+        - "Creative testing"
+    -
+      label: "Public sector & NGOs"
+      cases:
+        - "Donation campaigns"
+        - "Awareness"
+        - "Volunteer recruitment"
+pricingHead:
+  title: "Fixed fees,\nad spend separate."
+  titleEm:
+    - "ad"
+    - "spend"
+    - "separate."
+  subtitle: "You pay the platform directly. We only invoice the management."
+  footnote: "Management fees only. The ad budget is paid directly to Google or Meta, on your accounts and in your name."
+seo:
+  metaTitle: "Google Ads & Facebook Ads Agency in Morocco | WEVTEX"
+  metaDescription: "Google Ads and Meta ads agency in Morocco: Google, Facebook and Instagram campaigns, landing page and conversion tracking. From MAD 200 a month."
+  keyword: "Google Ads agency Morocco"
+  noindex: false

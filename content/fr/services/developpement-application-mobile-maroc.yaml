@@ -1,0 +1,273 @@
+name: "Applications mobiles"
+serviceId: "mobile-apps"
+order: 4
+eyebrow: "Applications mobiles"
+keyword: "développement application mobile Maroc"
+h1: "Développement d'application mobile\nau Maroc, iOS et Android."
+h1Em:
+  - "iOS"
+  - "et"
+  - "Android."
+intro: "Une application ne vaut que si vos clients l'ouvrent. Nous la concevons autour de ce qu'ils font vraiment, puis nous la développons avec Flutter : un seul code pour iOS et Android, un budget divisé par deux, et la publication sur les stores prise en charge."
+tags:
+  - "Flutter"
+  - "iOS"
+  - "Android"
+  - "API"
+includes:
+  - "Le design des écrans avant le développement, validé par vous."
+  - "Une application native iOS et Android issue d'un seul code."
+  - "La connexion à votre système existant : site, stock, paiement."
+  - "La publication sur l'App Store et Google Play, comptes compris."
+outcomes:
+  -
+    h: "Un budget divisé"
+    p: "Un seul développement au lieu de deux, pour un rendu natif sur les deux plateformes."
+  -
+    h: "Présent sur l'écran d'accueil"
+    p: "Une icône sur le téléphone de vos clients vaut mieux qu'un favori oublié."
+  -
+    h: "Notifications directes"
+    p: "Vous touchez vos utilisateurs sans passer par un algorithme ni acheter de la portée."
+faqs:
+  -
+    q: "Pourquoi Flutter plutôt que du natif ?"
+    a: "Un seul code pour les deux plateformes, pour un rendu et des performances équivalents au natif dans la grande majorité des cas. Le budget et les délais sont réduits de moitié."
+  -
+    q: "Gérez-vous la publication sur les stores ?"
+    a: "Oui, de bout en bout : création des comptes développeur, fiches, captures, conformité et soumission. Comptez une à deux semaines de validation côté Apple et Google."
+  -
+    q: "Que se passe-t-il après la mise en ligne ?"
+    a: "Trois mois d'accompagnement sont inclus. Ensuite, un forfait de maintenance couvre les mises à jour imposées par iOS et Android, qui sortent chaque année."
+  -
+    q: "Peut-on créer une application mobile gratuitement ?"
+    a: "Pour une création d'application mobile, le gratuit a ses limites : des outils no code permettent de monter une maquette ou une application très simple. Pour une application publiée sur l'App Store et Google Play, avec paiement et comptes clients, il faut un développement : chez Wevtex, à partir de 8 000 DH."
+  -
+    q: "Flutter ou développement natif ?"
+    a: "Flutter pour la grande majorité des projets : un seul code produit une application mobile native pour iOS et Android, avec un budget réduit. Le développement natif séparé se justifie pour des besoins très spécifiques du matériel, rares dans les applications d'entreprise."
+  -
+    q: "Qui publie l'application sur l'App Store et Google Play ?"
+    a: "Nous. La publication, la préparation des fiches et les échanges avec Apple et Google font partie de la prestation. Les comptes développeur sont ouverts à votre nom."
+  -
+    q: "Combien de temps pour développer une application mobile ?"
+    a: "Quatre à six semaines pour une application essentielle, huit à douze semaines pour une application complète avec comptes et paiement. Le délai figure sur le devis."
+whyUs:
+  title: "Pourquoi nous confier\nvotre application."
+  titleEm:
+    - "votre"
+    - "application."
+  subtitle: "Le mobile est le poste où les projets dérapent le plus souvent."
+  points:
+    -
+      h: "Un devis ferme avant de coder"
+      p: "Le périmètre est écrit et chiffré. Les évolutions en cours de route sont chiffrées à part, jamais imposées."
+    -
+      h: "Une version testable à mi-parcours"
+      p: "Vous manipulez l'application avant qu'elle ne soit finie. Les corrections coûtent bien moins cher à ce moment-là."
+    -
+      h: "La publication comprise"
+      p: "Les refus de l'App Store sont fréquents et déroutants. Nous gérons la soumission et les allers-retours jusqu'à la validation."
+    -
+      h: "Le code source est à vous"
+      p: "Livré, documenté et transférable. Un autre prestataire peut reprendre le projet sans repartir de zéro."
+demo:
+  title: "L'application en action"
+  subtitle: "Le même code, le même rendu, sur les deux plateformes."
+  caption: "Application Flutter : navigation fluide et interface native."
+featureSections:
+  -
+    eyebrow: "Ce que nous intégrons"
+    title: "Les fonctions qui font\nrevenir vos clients."
+    titleEm:
+      - "revenir"
+      - "vos"
+      - "clients."
+    subtitle: "Les fonctions que demandent la plupart des projets, éprouvées et prêtes."
+    cards:
+      -
+        title: "Comptes & profils"
+        desc: "Inscription, connexion et gestion des utilisateurs."
+        checks:
+          - "Email et téléphone"
+          - "Connexion Google et Apple"
+          - "Profils et préférences"
+          - "Mot de passe oublié"
+      -
+        title: "Paiement"
+        desc: "Encaisser dans l'application, en toute conformité."
+        checks:
+          - "Cartes bancaires"
+          - "Abonnements"
+          - "Achats intégrés"
+          - "Historique des paiements"
+      -
+        title: "Notifications"
+        desc: "Revenir vers l'utilisateur au bon moment."
+        checks:
+          - "Notifications push"
+          - "Messages ciblés"
+          - "Programmation"
+          - "Statistiques d'ouverture"
+      -
+        title: "Hors ligne & données"
+        desc: "Une application qui reste utile sans réseau."
+        checks:
+          - "Mode hors ligne"
+          - "Synchronisation"
+          - "Cache local"
+          - "Géolocalisation"
+tech:
+  title: "Les technologies\nde vos applications."
+  titleEm:
+    - "de"
+    - "vos applications."
+  subtitle: "Un socle unique côté mobile, des services éprouvés côté serveur."
+  groups:
+    -
+      label: "Mobile"
+      desc: "Un code, deux plateformes, un rendu natif."
+      items:
+        - "Flutter"
+        - "Dart"
+        - "iOS"
+        - "Android"
+    -
+      label: "Serveur"
+      desc: "Les données, les comptes et la logique métier."
+      items:
+        - "Firebase"
+        - "Supabase"
+        - "Node.js"
+        - "REST"
+    -
+      label: "Services"
+      desc: "Ce qui rend l'application vivante au quotidien."
+      items:
+        - "Push"
+        - "Stripe"
+        - "Maps"
+        - "Analytics"
+    -
+      label: "Publication"
+      desc: "Passer la validation des stores sans allers-retours."
+      items:
+        - "App Store"
+        - "Google Play"
+        - "TestFlight"
+        - "CI/CD"
+process:
+  title: "Comment naît\nvotre application."
+  titleEm:
+    - "votre"
+    - "application."
+  subtitle: "Du cadrage à la publication, avec une version testable à mi-parcours."
+  steps:
+    -
+      n: "01"
+      h: "Cadrage"
+      d: "1 semaine"
+      checks:
+        - "Parcours utilisateur"
+        - "Fonctions prioritaires"
+        - "Devis ferme"
+    -
+      n: "02"
+      h: "Design"
+      d: "1–2 semaines"
+      checks:
+        - "Tous les écrans"
+        - "Prototype cliquable"
+        - "Validation avant code"
+    -
+      n: "03"
+      h: "Développement"
+      d: "4–8 semaines"
+      checks:
+        - "Version testable"
+        - "Points hebdomadaires"
+        - "Connexion aux services"
+    -
+      n: "04"
+      h: "Tests"
+      d: "1–2 semaines"
+      checks:
+        - "Test sur appareils réels"
+        - "Bêta TestFlight"
+        - "Corrections"
+    -
+      n: "05"
+      h: "Publication"
+      d: "1–2 semaines"
+      checks:
+        - "Fiches des stores"
+        - "Soumission"
+        - "Suivi de validation"
+sectors:
+  title: "Ce que votre app\ndoit faire chez vous."
+  titleEm:
+    - "doit"
+    - "faire"
+    - "chez"
+    - "vous."
+  subtitle: "Ce que l'application doit faire dépend entièrement de votre métier."
+  groups:
+    -
+      label: "E-commerce & commerce de détail"
+      cases:
+        - "Commande en ligne"
+        - "Fidélité et points"
+        - "Suivi de livraison"
+    -
+      label: "Tourisme & hôtellerie"
+      cases:
+        - "Réservation et séjour"
+        - "Guide de destination"
+        - "Clé de chambre"
+    -
+      label: "Services professionnels"
+      cases:
+        - "Espace client"
+        - "Documents partagés"
+        - "Prise de rendez-vous"
+    -
+      label: "Santé & bien-être"
+      cases:
+        - "Rendez-vous et rappels"
+        - "Suivi patient"
+        - "Programmes de séances"
+    -
+      label: "Industrie & logistique"
+      cases:
+        - "Suivi de flotte"
+        - "Preuve de livraison"
+        - "Feuilles de route"
+    -
+      label: "Éducation & e-learning"
+      cases:
+        - "Cours et vidéos"
+        - "Quiz et progression"
+        - "Espace parents"
+    -
+      label: "Création, médias & tech"
+      cases:
+        - "Application produit"
+        - "Communauté"
+        - "Notifications ciblées"
+    -
+      label: "Secteur public & associations"
+      cases:
+        - "Signalements citoyens"
+        - "Dons mobiles"
+        - "Agenda des actions"
+pricingHead:
+  title: "Combien coûte\nvotre application."
+  titleEm:
+    - "votre"
+    - "application."
+  subtitle: "Trois niveaux d'ambition, chiffrés fermement après le cadrage."
+  footnote: "Prix indicatifs de départ, en dirhams. Chaque projet reçoit un devis ferme après un échange de quinze minutes, sans engagement."
+seo:
+  metaTitle: "Développement Application Mobile au Maroc | WEVTEX"
+  metaDescription: "Développement d'application mobile au Maroc : iOS et Android avec Flutter, un seul code, publication sur les stores incluse. Dès 8 000 DH."
+  keyword: "développement application mobile Maroc"
+  noindex: false

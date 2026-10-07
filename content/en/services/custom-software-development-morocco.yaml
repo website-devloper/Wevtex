@@ -1,0 +1,237 @@
+name: "Custom software"
+serviceId: "desktop-apps"
+order: 5
+eyebrow: "Custom software"
+keyword: "custom software development Morocco"
+h1: "Custom software development in Morocco,\nbuilt around how you work."
+h1Em:
+  - "how"
+  - "you"
+  - "work."
+intro: "If your teams spend their days between three Excel files and software that doesn't fit your trade, the problem isn't your teams. We develop the Windows and macOS software that follows the way you work, with no per-seat license, usable even offline."
+tags:
+  - "Windows"
+  - "macOS"
+  - "Offline"
+  - "Reporting"
+includes:
+  - "An analysis of your current processes before any code."
+  - "A Windows and macOS application with an installer and automatic updates."
+  - "Your existing data imported, Excel included."
+  - "Training for your teams and user documentation."
+outcomes:
+  -
+    h: "No per-seat subscription"
+    p: "You pay for development once, not a monthly license multiplied by your staff."
+  -
+    h: "Works without internet"
+    p: "Your teams keep working when the connection drops, and sync happens when it's back."
+  -
+    h: "Exactly your processes"
+    p: "The software follows your organization instead of forcing you into a generic mold."
+faqs:
+  -
+    q: "Why not simply buy software off the shelf?"
+    a: "If existing software fits, we'll tell you, it's cheaper for you. Custom makes sense when your processes are specific or when per-seat licenses end up costing more than the development."
+  -
+    q: "Can you recover our Excel data?"
+    a: "Yes. Importing your existing files is part of the project: we import the history and check its consistency before go-live."
+  -
+    q: "What if you're no longer around?"
+    a: "The source code is delivered to you, documented. Any developer can take over the project, which is precisely the point of not depending on a software vendor."
+  -
+    q: "Is there free sales management software in Morocco?"
+    a: "Free and open-source software exists and is often enough to start. It shows its limits when your management rules fall outside the standard or several workstations must work together; that is when custom software makes sense."
+  -
+    q: "Desktop software or web application?"
+    a: "Desktop software suits teams working at fixed workstations, sometimes offline. A web application suits access from anywhere, through a browser. We advise based on how you actually work."
+  -
+    q: "Can you import our existing Excel files?"
+    a: "Yes. Importing your data, from Excel or old software, is part of the service, so the tool is usable from day one."
+  -
+    q: "Do we own the source code?"
+    a: "Yes. The source code and documentation are handed over at delivery, which leaves you free to develop it further with us or with another provider."
+whyUs:
+  title: "Why trust us\nwith your software."
+  titleEm:
+    - "your"
+    - "software."
+  subtitle: "Custom software has a bad reputation. Often for good reasons."
+  points:
+    -
+      h: "We'll tell you if it's pointless"
+      p: "If software on the market covers 90% of your needs, we'll tell you rather than sell you a build."
+    -
+      h: "Analysis before code"
+      p: "We spend time in your offices watching how you work. That is what avoids delivering a tool nobody opens."
+    -
+      h: "Delivered in batches"
+      p: "You use the first features within a few weeks, without waiting for the end of the project to discover the result."
+    -
+      h: "No per-seat license"
+      p: "Install the software on as many workstations as you need. The price doesn't depend on your headcount."
+demo:
+  title: ""
+  subtitle: ""
+  caption: ""
+featureSections:
+  -
+    eyebrow: "What we build"
+    title: "What the software\nwill do for you."
+    titleEm:
+      - "for"
+      - "you."
+    subtitle: "The features most of the companies we work with ask for."
+    cards:
+      -
+        title: "Management & invoicing"
+        desc: "The administrative heart of your business, in one place."
+        checks:
+          - "Quotes and invoices"
+          - "Customers and suppliers"
+          - "Payments and reminders"
+          - "Accounting export"
+      -
+        title: "Stock & production"
+        desc: "Knowing what you have, where, and what to order."
+        checks:
+          - "Stock in and out"
+          - "Inventories"
+          - "Threshold alerts"
+          - "Barcodes"
+      -
+        title: "Reporting"
+        desc: "Figures that serve decisions, not a binder."
+        checks:
+          - "Dashboards"
+          - "Excel and PDF exports"
+          - "Scheduled reports"
+          - "Full history"
+      -
+        title: "Access & audit trail"
+        desc: "Who can do what, and who did what."
+        checks:
+          - "Accounts and roles"
+          - "Action log"
+          - "Automatic backups"
+          - "Restore"
+tech:
+  title: ""
+  titleEm: []
+  subtitle: ""
+  groups: []
+process:
+  title: "How your\nsoftware is built."
+  titleEm:
+    - "is"
+    - "built."
+  subtitle: "Analysis weighs more than code: that's where the project is won."
+  steps:
+    -
+      n: "01"
+      h: "Analysis"
+      d: "1–2 weeks"
+      checks:
+        - "On-site observation"
+        - "Current processes"
+        - "Specification"
+    -
+      n: "02"
+      h: "Mockups"
+      d: "1 week"
+      checks:
+        - "Main screens"
+        - "Approval with the teams"
+        - "Adjustments"
+    -
+      n: "03"
+      h: "Development"
+      d: "6–10 weeks"
+      checks:
+        - "Delivered in batches"
+        - "Tests with your data"
+        - "Weekly check-ins"
+    -
+      n: "04"
+      h: "Data import"
+      d: "1 week"
+      checks:
+        - "Existing data imported"
+        - "Consistency checks"
+        - "Temporary double entry"
+    -
+      n: "05"
+      h: "Deployment"
+      d: "1 week"
+      checks:
+        - "Workstation setup"
+        - "Team training"
+        - "Documentation"
+sectors:
+  title: "Your trade's rules,\nfinally respected."
+  titleEm:
+    - "finally"
+    - "respected."
+  subtitle: "Every trade has its rules, its documents and its data-entry habits."
+  groups:
+    -
+      label: "E-commerce & retail"
+      cases:
+        - "Checkout and payments"
+        - "Multi-store stock"
+        - "Labels and barcodes"
+    -
+      label: "Tourism & hospitality"
+      cases:
+        - "Room planning"
+        - "Stay invoicing"
+        - "Night reports"
+    -
+      label: "Professional services"
+      cases:
+        - "Client files"
+        - "Quotes and invoicing"
+        - "Time tracking"
+    -
+      label: "Health & wellness"
+      cases:
+        - "Patient records"
+        - "Practitioner schedules"
+        - "Billing and insurers"
+    -
+      label: "Industry & logistics"
+      cases:
+        - "Production orders"
+        - "Traceability"
+        - "Quality control"
+    -
+      label: "Education & e-learning"
+      cases:
+        - "Enrollment and grades"
+        - "Timetables"
+        - "Report cards"
+    -
+      label: "Creative, media & tech"
+      cases:
+        - "Project management"
+        - "Budget tracking"
+        - "Media library"
+    -
+      label: "Public sector & NGOs"
+      cases:
+        - "Member tracking"
+        - "Donation receipts"
+        - "Activity reports"
+pricingHead:
+  title: "How much\nyour software costs."
+  titleEm:
+    - "your"
+    - "software"
+    - "costs."
+  subtitle: "Priced firmly after the analysis phase, never before."
+  footnote: "Indicative starting prices, in Moroccan dirhams (MAD). Every project gets a firm quote after a fifteen-minute call, with no commitment."
+seo:
+  metaTitle: "Custom Software Development in Morocco | WEVTEX"
+  metaDescription: "Custom software development in Morocco: management, invoicing and inventory software for Windows and macOS, usable offline. From MAD 4,999, with no per-seat license."
+  keyword: "custom software development Morocco"
+  noindex: false

@@ -1,0 +1,271 @@
+name: "Google Maps & SEO local"
+serviceId: "local-seo"
+order: 2
+eyebrow: "Google Maps & SEO local"
+keyword: "référencement local Google Maps Maroc"
+h1: "Référencement local Google Maps au Maroc,\nsoyez la fiche qu'on appelle."
+h1Em:
+  - "la"
+  - "fiche"
+  - "qu'on"
+  - "appelle."
+intro: "Quand quelqu'un cherche « dentiste » ou « garage » près de chez lui, Google montre trois fiches avant tout le reste. Nous faisons en sorte que la vôtre en fasse partie : fiche Google Business complète, position sur Maps et avis clients réguliers."
+tags:
+  - "Google Business"
+  - "Maps"
+  - "Avis clients"
+  - "Annuaires"
+includes:
+  - "La création ou la reprise complète de votre fiche Google Business."
+  - "L'optimisation de votre position sur Maps dans votre zone de chalandise."
+  - "L'inscription cohérente dans les annuaires qui comptent au Maroc."
+  - "Une méthode simple pour collecter des avis clients en continu."
+outcomes:
+  -
+    h: "Des appels directs"
+    p: "Une fiche bien classée génère des appels et des itinéraires sans passer par votre site."
+  -
+    h: "Visible dans votre zone"
+    p: "Vous remontez sur les recherches qui se font à quelques kilomètres de votre porte."
+  -
+    h: "Une réputation tenue"
+    p: "Des avis réguliers et des réponses soignées : la première chose que voit un client hésitant."
+faqs:
+  -
+    q: "Fonctionne-t-il si je n'ai pas de boutique ?"
+    a: "Oui. Une zone d'intervention peut être déclarée sans adresse affichée : c'est le cas des artisans, plombiers ou consultants qui se déplacent."
+  -
+    q: "Combien de temps avant de remonter sur Maps ?"
+    a: "Les premiers effets se voient souvent en quatre à six semaines. La position se consolide ensuite avec les avis et la régularité des publications."
+  -
+    q: "Gérez-vous les avis négatifs ?"
+    a: "Nous préparons des réponses et une méthode pour en réduire l'impact. Un avis négatif bien traité rassure souvent plus qu'une note parfaite."
+  -
+    q: "Google My Business est-il gratuit ?"
+    a: "Oui. Au Maroc comme ailleurs, Google My Business (aujourd'hui Google Business Profile) est gratuit : le prix de Google My Business est nul. Ce que nous facturons, c'est le travail : la création soignée, l'optimisation, les publications et la gestion des avis, qui décident de votre position sur Maps."
+  -
+    q: "Ma fiche Google est suspendue, que faire ?"
+    a: "Une suspension vient souvent d'une adresse non conforme, d'un nom modifié avec des mots-clés ou de changements trop fréquents. Il faut corriger la cause puis demander le rétablissement à Google avec des justificatifs. Nous prenons en charge cette procédure lors de la reprise de fiche."
+  -
+    q: "Combien de temps pour apparaître sur Google Maps ?"
+    a: "Une fiche créée ou corrigée est visible en quelques jours. Remonter dans les trois premières positions de la carte prend en général deux à huit semaines, selon la concurrence dans votre quartier et le nombre d'avis."
+  -
+    q: "Les avis Google influencent-ils le classement ?"
+    a: "Oui, c'est l'un des facteurs les plus visibles. Le nombre d'avis, leur régularité et vos réponses comptent. Nous mettons en place une demande d'avis simple, par lien direct, au moment où le client est satisfait."
+  -
+    q: "Faut-il un site web pour le référencement local ?"
+    a: "Ce n'est pas obligatoire pour exister sur Maps, mais un site relié à la fiche renforce nettement le classement et convertit mieux ceux qui veulent en savoir plus avant d'appeler."
+whyUs:
+  title: "Pourquoi nous confier\nvotre visibilité locale."
+  titleEm:
+    - "votre"
+    - "visibilité locale."
+  subtitle: "Un domaine où beaucoup vendent une inscription et s'arrêtent là."
+  points:
+    -
+      h: "Nous connaissons le terrain marocain"
+      p: "Les annuaires qui comptent ici ne sont pas ceux des guides internationaux. Nous travaillons ceux qui pèsent vraiment."
+    -
+      h: "Mesuré rue par rue"
+      p: "Nous suivons votre position depuis plusieurs points de votre ville, pas depuis un serveur lointain qui dit toujours oui."
+    -
+      h: "Les avis sans les faux"
+      p: "Nous mettons en place une collecte auprès de vos vrais clients. Acheter des avis se voit, se sanctionne, et se retourne contre vous."
+    -
+      h: "Un entretien léger"
+      p: "Après la mise en place, quelques centaines de dirhams par mois suffisent à tenir la position."
+demo:
+  title: "Le référencement local en action"
+  subtitle: "Ce que voit un client qui vous cherche depuis son téléphone."
+  caption: "Fiche Google Business optimisée et position sur Maps."
+featureSections:
+  -
+    eyebrow: "Ce que nous travaillons"
+    title: "Ce qui fait remonter\nune fiche locale."
+    titleEm:
+      - "une"
+      - "fiche locale."
+    subtitle: "Quatre chantiers qui pèsent réellement dans le classement local de Google."
+    cards:
+      -
+        title: "Fiche Google Business"
+        desc: "La vitrine que vos prospects voient avant même votre site."
+        checks:
+          - "Catégories exactes"
+          - "Horaires et zone"
+          - "Photos et produits"
+          - "Publications régulières"
+      -
+        title: "Position sur Maps"
+        desc: "Remonter dans le trio affiché en haut des résultats."
+        checks:
+          - "Zone de chalandise"
+          - "Pages locales"
+          - "Signaux de proximité"
+          - "Suivi par quartier"
+      -
+        title: "Citations & annuaires"
+        desc: "Vos coordonnées identiques partout, sinon Google doute."
+        checks:
+          - "Annuaires marocains"
+          - "Cohérence nom et adresse"
+          - "Nettoyage des doublons"
+          - "Réseaux sociaux"
+      -
+        title: "Avis clients"
+        desc: "La preuve sociale qui déclenche l'appel ou la visite."
+        checks:
+          - "Collecte automatisée"
+          - "Réponses rédigées"
+          - "Alertes en temps réel"
+          - "Gestion des litiges"
+tech:
+  title: "Les outils\ndu référencement local."
+  titleEm:
+    - "du"
+    - "référencement local."
+  subtitle: "Mesurer la visibilité rue par rue, pas seulement à l'échelle du pays."
+  groups:
+    -
+      label: "Google"
+      desc: "La source de vérité pour tout ce qui est local."
+      items:
+        - "Google Business"
+        - "Maps"
+        - "Search Console"
+    -
+      label: "Suivi local"
+      desc: "Voir votre position selon l'endroit d'où l'on cherche."
+      items:
+        - "Local Falcon"
+        - "BrightLocal"
+        - "Geo-grid"
+    -
+      label: "Avis"
+      desc: "Collecter et répondre sans y passer vos journées."
+      items:
+        - "Avis Google"
+        - "QR codes"
+        - "Relances SMS"
+    -
+      label: "Données"
+      desc: "Aider Google à relier votre site à votre établissement."
+      items:
+        - "Schema LocalBusiness"
+        - "NAP"
+        - "Pages locales"
+process:
+  title: "Comment nous\nvous rendons visible."
+  titleEm:
+    - "vous"
+    - "rendons visible."
+  subtitle: "Une mise en place en quelques semaines, puis un entretien mensuel léger."
+  steps:
+    -
+      n: "01"
+      h: "État des lieux"
+      d: "2–3 jours"
+      checks:
+        - "Position actuelle sur Maps"
+        - "Fiches concurrentes"
+        - "Doublons et erreurs"
+    -
+      n: "02"
+      h: "Optimisation"
+      d: "1 semaine"
+      checks:
+        - "Fiche complétée"
+        - "Catégories et zone"
+        - "Photos et services"
+    -
+      n: "03"
+      h: "Citations"
+      d: "1–2 semaines"
+      checks:
+        - "Annuaires locaux"
+        - "Coordonnées uniformisées"
+        - "Liens vers le site"
+    -
+      n: "04"
+      h: "Avis"
+      d: "en continu"
+      checks:
+        - "Méthode de collecte"
+        - "Réponses rédigées"
+        - "Suivi de la note"
+    -
+      n: "05"
+      h: "Entretien"
+      d: "chaque mois"
+      checks:
+        - "Publications"
+        - "Suivi de position"
+        - "Rapport local"
+sectors:
+  title: "Ce qui fait appeler,\nmétier par métier."
+  titleEm:
+    - "métier"
+    - "par"
+    - "métier."
+  subtitle: "Une recherche locale ne se joue pas de la même façon selon le métier."
+  groups:
+    -
+      label: "E-commerce & commerce de détail"
+      cases:
+        - "Produits sur la fiche"
+        - "Itinéraires"
+        - "Promotions locales"
+    -
+      label: "Tourisme & hôtellerie"
+      cases:
+        - "Photos et équipements"
+        - "Avis voyageurs"
+        - "Réservation depuis Maps"
+    -
+      label: "Services professionnels"
+      cases:
+        - "Horaires et contact"
+        - "Zone d'intervention"
+        - "Avis clients"
+    -
+      label: "Santé & bien-être"
+      cases:
+        - "Prise de rendez-vous"
+        - "Horaires de garde"
+        - "Avis patients"
+    -
+      label: "Industrie & logistique"
+      cases:
+        - "Sites et dépôts"
+        - "Horaires de livraison"
+        - "Contact commercial"
+    -
+      label: "Éducation & e-learning"
+      cases:
+        - "Portes ouvertes"
+        - "Localisation du campus"
+        - "Avis parents"
+    -
+      label: "Création, médias & tech"
+      cases:
+        - "Bureau et équipe"
+        - "Réalisations en photo"
+        - "Avis clients"
+    -
+      label: "Secteur public & associations"
+      cases:
+        - "Horaires d'accueil"
+        - "Points de collecte"
+        - "Événements locaux"
+pricingHead:
+  title: "Des tarifs simples\npour être trouvé."
+  titleEm:
+    - "pour"
+    - "être trouvé."
+  subtitle: "Une mise en place unique, puis un entretien mensuel léger."
+  footnote: "Prix indicatifs de départ, en dirhams. Chaque projet reçoit un devis ferme après un échange de quinze minutes, sans engagement."
+seo:
+  metaTitle: "Référencement Local & Google Maps au Maroc | WEVTEX"
+  metaDescription: "Référencement local au Maroc : fiche Google Business optimisée, top 3 sur Google Maps et avis clients. Mise en place dès 790 DH, suivi à 490 DH/mois."
+  keyword: "référencement local Google Maps Maroc"
+  noindex: false

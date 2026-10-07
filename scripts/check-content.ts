@@ -73,6 +73,17 @@ projects: ${frProjects.length} FR, ${enProjects.length} EN`);
     }
   }
 
+  // Services: one internal id each, present in both languages.
+  const frServices = await reader.collections.services.all();
+  const enServices = await reader.collections.servicesEn.all();
+  const ids = (list: typeof frServices) => list.map((e) => (e.entry as any).serviceId);
+  const frIds = new Set(ids(frServices));
+  const enIds = new Set(ids(enServices));
+  console.log(`
+services: ${frServices.length} FR, ${enServices.length} EN`);
+  for (const id of frIds) if (!enIds.has(id)) { console.log(`  ✗ "${id}" has no English version`); problems++; }
+  for (const id of enIds) if (!frIds.has(id)) { console.log(`  ✗ "${id}" has no French version`); problems++; }
+
   for (const name of ["reviews", "clients"] as const) {
     const all = await reader.collections[name].all();
     console.log(`\n${name}: ${all.length} entries`);

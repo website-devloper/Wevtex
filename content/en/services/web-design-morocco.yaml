@@ -1,0 +1,253 @@
+name: "Web design & development"
+serviceId: "website-creation"
+order: 0
+eyebrow: "Web design & development"
+keyword: "web design Morocco"
+h1: "Web design in Morocco,\nfast and built to sell."
+h1Em:
+  - "fast"
+  - "and"
+  - "built"
+  - "to"
+  - "sell."
+intro: "Your website has one job: turning a visitor into a call, a WhatsApp message or an order. We design it for that, fast on mobile, written for Google, and delivered in your name, code and domain included."
+tags:
+  - "Next.js"
+  - "React"
+  - "WordPress"
+  - "TypeScript"
+  - "SEO"
+includes:
+  - "A custom design, mobile-first, never a bought theme."
+  - "A structure ready for SEO: tags, sitemap, structured data."
+  - "A contact form connected to WhatsApp and your inbox."
+  - "A full handover: code, domain and logins in your name."
+outcomes:
+  -
+    h: "Fast by default"
+    p: "Core Web Vitals in the green: your pages load fast, Google notices, and your visitors stay."
+  -
+    h: "Built to convert"
+    p: "A clear hierarchy and calls to action placed where the decision is made."
+  -
+    h: "Easy to keep alive"
+    p: "You edit your text and images without calling us or breaking anything."
+faqs:
+  -
+    q: "How long does it take to build the website?"
+    a: "Two to four weeks for a business website, four to eight for an online store. The deadline is firm and written on the quote."
+  -
+    q: "Can I edit the content myself?"
+    a: "Yes. You get a simple interface for your text, images and pages, with a one-hour walkthrough."
+  -
+    q: "Do I really own the website?"
+    a: "Completely. Code, content, domain and hosting are put in your name and handed over at delivery."
+  -
+    q: "Next.js or WordPress?"
+    a: "Next.js for maximum speed and custom work; WordPress when you want a familiar admin and to publish without us. We advise based on your team and your budget, not on our preferences."
+  -
+    q: "What are website prices in Morocco at Wevtex?"
+    a: "A business website starts at MAD 1,899, a 15-page company website at MAD 2,999 and an online store at MAD 6,999. Every project gets a firm quote after a fifteen-minute call."
+  -
+    q: "Do you work with foreign companies and in English?"
+    a: "Yes. We work in English, French and Darija, with clients in Morocco and abroad. Calls happen by video, follow-up on WhatsApp, and quotes and invoices are in Moroccan dirhams."
+  -
+    q: "Can I build a website for free in Morocco?"
+    a: "Yes, with free tools such as Google Sites or the free plans of website builders. The site then sits on a subdomain, shows the platform's branding and stays with the platform. For a professional website in your name, on your domain and ready for Google, our package starts at MAD 1,899."
+  -
+    q: "How much does a Shopify or WordPress website cost?"
+    a: "The build follows our packages, from MAD 1,899 for a business website and MAD 6,999 for an online store. Shopify adds a monthly subscription paid directly to Shopify; WordPress has no license fee but needs hosting and regular updates."
+  -
+    q: "Business website or ecommerce website: which one?"
+    a: "A business website if the sale closes through a conversation (a quote, an appointment, advice). An online store if customers can choose, pay and receive a product on their own. It's not about company size but about how you sell today."
+  -
+    q: "Can you redesign my existing website?"
+    a: "Yes. We audit the current site, keep what works, redirect every old address and deliver a faster, better-ranked website on your current domain."
+  -
+    q: "Do you build websites in every city in Morocco?"
+    a: "Yes. From Casablanca we design websites for clients in Rabat, Marrakech, Tangier, Agadir, Fez and across Morocco, with video calls and follow-up on WhatsApp."
+whyUs:
+  title: "Why trust us\nwith your website."
+  titleEm:
+    - "your"
+    - "website."
+  subtitle: "What really changes compared with a bought theme or a provider who never picks up."
+  points:
+    -
+      h: "A fixed price, stated upfront"
+      p: "The quote is firm before we start. No add-ons along the way, no surprise at delivery."
+    -
+      h: "Delivered in weeks, not months"
+      p: "Two to four weeks for a business website, with a launch date committed to in the quote."
+    -
+      h: "You talk to the people who code"
+      p: "No project manager in between: you brief the people who build your website directly."
+    -
+      h: "Nothing locks you in"
+      p: "Code, domain, hosting and logins are yours. You can leave tomorrow without losing anything."
+demo:
+  title: ""
+  subtitle: ""
+  caption: ""
+featureSections:
+  -
+    eyebrow: "What you get"
+    title: "Four ways to\nwin customers."
+    titleEm:
+      - "win"
+      - "customers."
+    subtitle: "Depending on what you sell, your website doesn't work the same way."
+    cards:
+      -
+        title: "Business websites"
+        desc: "Your services, your proof and your number, where visitors look for them."
+        checks:
+          - "Custom design"
+          - "Mobile-first"
+          - "Structured copy"
+          - "One-click contact"
+      -
+        title: "Online stores"
+        desc: "Customers who choose, order and pay on their own, even at night."
+        checks:
+          - "CMI & Stripe payments"
+          - "Stock management"
+          - "Short checkout"
+          - "Order tracking"
+      -
+        title: "Performance"
+        desc: "Every second of loading saved keeps one more visitor."
+        checks:
+          - "Optimized images"
+          - "Static rendering"
+          - "CDN caching"
+          - "Lighthouse score 90+"
+      -
+        title: "Technical SEO"
+        desc: "Built to be understood and ranked by Google from day one."
+        checks:
+          - "Tags and headings"
+          - "Structured data"
+          - "Sitemap & robots"
+          - "Analytics connected"
+tech:
+  title: ""
+  titleEm: []
+  subtitle: ""
+  groups: []
+process:
+  title: "From the first call\nto a live website."
+  titleEm:
+    - "live"
+    - "website."
+  subtitle: "You approve each stage before the next. Nothing is ever sprung on you."
+  steps:
+    -
+      n: "01"
+      h: "Discovery"
+      d: "1–2 days"
+      checks:
+        - "Your goals"
+        - "Your competitors"
+        - "Scope and firm quote"
+    -
+      n: "02"
+      h: "Sitemap & copy"
+      d: "2–4 days"
+      checks:
+        - "Page plan"
+        - "Content outline"
+        - "Target keywords"
+    -
+      n: "03"
+      h: "Design"
+      d: "3–5 days"
+      checks:
+        - "Real mockups"
+        - "Your feedback"
+        - "Approval before code"
+    -
+      n: "04"
+      h: "Development"
+      d: "1–2 weeks"
+      checks:
+        - "Responsive build"
+        - "Speed optimization"
+        - "Forms and tracking"
+    -
+      n: "05"
+      h: "Launch"
+      d: "1–2 days"
+      checks:
+        - "Mobile testing"
+        - "SEO checked"
+        - "One-hour training"
+sectors:
+  title: "A website that speaks\nto your customers."
+  titleEm:
+    - "to"
+    - "your"
+    - "customers."
+  subtitle: "A hotelier and a lawyer don't need the same website. Here is what we put forward for yours."
+  groups:
+    -
+      label: "E-commerce & retail"
+      cases:
+        - "Catalog and product pages"
+        - "CMI and Stripe payments"
+        - "In-store pickup"
+    -
+      label: "Tourism & hospitality"
+      cases:
+        - "Direct booking"
+        - "Multilingual website"
+        - "Galleries and tours"
+    -
+      label: "Professional services"
+      cases:
+        - "Appointment booking"
+        - "References and proof"
+        - "Qualified form"
+    -
+      label: "Health & wellness"
+      cases:
+        - "Treatments presented"
+        - "Practitioner profiles"
+        - "Appointment booking"
+    -
+      label: "Industry & logistics"
+      cases:
+        - "Technical catalog"
+        - "B2B quote request"
+        - "Document area"
+    -
+      label: "Education & e-learning"
+      cases:
+        - "Programs presented"
+        - "Online enrollment"
+        - "Student area"
+    -
+      label: "Creative, media & tech"
+      cases:
+        - "Polished portfolio"
+        - "SaaS product pages"
+        - "Blog and news"
+    -
+      label: "Public sector & NGOs"
+      cases:
+        - "Accessible website (WCAG)"
+        - "Online donations"
+        - "News and appeals"
+pricingHead:
+  title: "Your website's price,\nwithout a meeting."
+  titleEm:
+    - "without"
+    - "a"
+    - "meeting."
+  subtitle: "Three packages on display. The final quote confirms the price, it doesn't inflate it."
+  footnote: "Indicative starting prices, in Moroccan dirhams (MAD). Every project gets a firm quote after a fifteen-minute call, with no commitment."
+seo:
+  metaTitle: "Web Design & Website Development in Morocco | WEVTEX"
+  metaDescription: "Web design in Morocco from MAD 1,899: business websites, online stores and custom sites, fast and ready for Google. Delivered in 2 to 4 weeks."
+  keyword: "web design Morocco"
+  noindex: false

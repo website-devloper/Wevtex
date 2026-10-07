@@ -1,0 +1,247 @@
+name: "SEO services"
+serviceId: "seo"
+order: 1
+eyebrow: "Search engine optimization"
+keyword: "SEO agency Morocco"
+h1: "SEO agency in Morocco,\nget found by those searching for you."
+h1Em:
+  - "get"
+  - "found"
+intro: "Your customers already type your trade into Google. The only question: do they land on you or on your competitor? We fix what's holding your website back, write the pages that answer their searches and build the authority that puts you ahead."
+tags:
+  - "Technical audit"
+  - "Keywords"
+  - "Content"
+  - "Link building"
+includes:
+  - "A full technical audit, with fixes applied, not just listed."
+  - "A keyword strategy based on buying intent, not raw volume."
+  - "Optimization of your existing pages and creation of the missing ones."
+  - "A readable monthly report: rankings, traffic, leads generated."
+outcomes:
+  -
+    h: "Traffic that lasts"
+    p: "A position won keeps bringing visitors months later, with no ad budget."
+  -
+    h: "Qualified visitors"
+    p: "We target searches close to buying, not the ones that inflate statistics."
+  -
+    h: "Measured progress"
+    p: "Every month you see what moved, what was done and what comes next."
+faqs:
+  -
+    q: "How long before we see results?"
+    a: "The first movements appear around the third month, significant gains between the sixth and the ninth. SEO is built, not bought."
+  -
+    q: "Do you guarantee first place?"
+    a: "No, and nobody seriously can. We commit to the work done and to full transparency, not to a position only Google decides."
+  -
+    q: "Do I need to rebuild my website?"
+    a: "Not necessarily. The audit tells whether your current website can be fixed or is better rebuilt, and we say so plainly."
+  -
+    q: "How much does an SEO agency cost in Morocco?"
+    a: "At Wevtex, from MAD 1,000 a month for 10 tracked keywords to MAD 2,500 a month for competitive markets, with a three-month minimum. The price depends mostly on the competition for your keywords."
+  -
+    q: "Is ranking on Google free?"
+    a: "Showing up in Google's organic results isn't paid to Google: rankings are earned by the quality of the site. The work to get there takes time or a provider. The ads at the top of the page are paid, that is Google Ads."
+  -
+    q: "How do I choose the best SEO agency in Morocco?"
+    a: "The best SEO agency or SEO expert in Morocco for you is the one that shows real rankings, explains what will be done each month and leaves you owner of your accounts. A serious SEO expert never promises a guaranteed first place."
+  -
+    q: "Should I choose SEO or Google Ads?"
+    a: "They work together. Google Ads brings enquiries from the first week but stops with the budget; SEO is slower but builds positions that stay. Many businesses run ads while SEO ramps up."
+  -
+    q: "Do you do SEO in English and French?"
+    a: "Yes. Each language gets its own pages, keywords and structure, so a French page ranks on French searches and an English page on English ones, instead of one translated page ranking for neither."
+  -
+    q: "Does SEO work with AI-generated answers?"
+    a: "Yes, as long as pages answer questions clearly, with verifiable facts and sections that stand alone. That is how Google AI Overviews, ChatGPT and Perplexity pick the sources they quote."
+  -
+    q: "Who owns the content and the accounts?"
+    a: "You do. The content we write, the Google Search Console and Analytics accounts, and your Google Business Profile are in your name. If you stop the service, everything stays in place."
+whyUs:
+  title: "Why trust us\nwith your SEO."
+  titleEm:
+    - "your"
+    - "SEO."
+  subtitle: "SEO attracts easy promises. Here is what we do differently."
+  points:
+    -
+      h: "We fix, not just advise"
+      p: "The audit doesn't leave you with a to-do list for someone else: we apply the fixes ourselves."
+    -
+      h: "No ranking promises"
+      p: "We commit to a precise, transparent amount of work, never to a position only Google decides."
+    -
+      h: "Reports you can understand"
+      p: "No unreadable dashboard: what was done, what it produced, what comes next. On one page."
+    -
+      h: "No long commitment"
+      p: "Three months minimum while the work takes effect, then month to month. Leave whenever you want, with everything."
+demo:
+  title: ""
+  subtitle: ""
+  caption: ""
+featureSections:
+  -
+    eyebrow: "What we work on"
+    title: "What puts you\nahead of competitors."
+    titleEm:
+      - "ahead"
+      - "of"
+      - "competitors."
+    subtitle: "None is enough alone. We work on them together, in this order."
+    cards:
+      -
+        title: "Technical"
+        desc: "What stops Google from reading your website, fixed by us."
+        checks:
+          - "Speed and Core Web Vitals"
+          - "Indexing and crawling"
+          - "Structured data"
+          - "Mobile version"
+      -
+        title: "Keywords"
+        desc: "What your customers actually type before buying."
+        checks:
+          - "Intent analysis"
+          - "Competitor research"
+          - "Long-tail queries"
+          - "Content plan"
+      -
+        title: "Content"
+        desc: "Pages that answer better than the ones already ranking."
+        checks:
+          - "Page optimization"
+          - "Missing pages created"
+          - "Internal linking"
+          - "Content in English and French"
+      -
+        title: "Authority"
+        desc: "The links and signals that put you ahead."
+        checks:
+          - "Quality link building"
+          - "Relevant directories"
+          - "Press relations"
+          - "Link monitoring"
+tech:
+  title: ""
+  titleEm: []
+  subtitle: ""
+  groups: []
+process:
+  title: "What happens,\nmonth after month."
+  titleEm:
+    - "month"
+    - "after"
+    - "month."
+  subtitle: "In the first month we reset everything. Then a monthly rhythm where you see every action."
+  steps:
+    -
+      n: "01"
+      h: "Audit"
+      d: "1 week"
+      checks:
+        - "Technical analysis"
+        - "Current rankings"
+        - "Competitor analysis"
+    -
+      n: "02"
+      h: "Strategy"
+      d: "3–5 days"
+      checks:
+        - "Priority keywords"
+        - "Content plan"
+        - "Measurable goals"
+    -
+      n: "03"
+      h: "Fixes"
+      d: "2–3 weeks"
+      checks:
+        - "Technical fixes"
+        - "Page optimization"
+        - "Internal linking"
+    -
+      n: "04"
+      h: "Content & links"
+      d: "ongoing"
+      checks:
+        - "New pages"
+        - "Link building"
+        - "Updates"
+    -
+      n: "05"
+      h: "Report"
+      d: "every month"
+      checks:
+        - "Rankings and traffic"
+        - "Actions taken"
+        - "Next month's priorities"
+sectors:
+  title: "Your customers' searches,\nnot ours."
+  titleEm:
+    - "not"
+    - "ours."
+  subtitle: "Queries, competition and buying cycles change from one trade to another."
+  groups:
+    -
+      label: "E-commerce & retail"
+      cases:
+        - "Category pages"
+        - "Product pages"
+        - "Brand queries"
+    -
+      label: "Tourism & hospitality"
+      cases:
+        - "Seasonal queries"
+        - "Destination pages"
+        - "Multilingual SEO"
+    -
+      label: "Professional services"
+      cases:
+        - "Trade queries"
+        - "Expertise content"
+        - "City pages"
+    -
+      label: "Health & wellness"
+      cases:
+        - "Symptom queries"
+        - "Specialty pages"
+        - "Sources and trust"
+    -
+      label: "Industry & logistics"
+      cases:
+        - "Technical queries"
+        - "Solution pages"
+        - "B2B long tail"
+    -
+      label: "Education & e-learning"
+      cases:
+        - "Course queries"
+        - "Educational content"
+        - "Degree pages"
+    -
+      label: "Creative, media & tech"
+      cases:
+        - "Product queries"
+        - "In-depth content"
+        - "Topical authority"
+    -
+      label: "Public sector & NGOs"
+      cases:
+        - "Information queries"
+        - "Technical accessibility"
+        - "Institutional content"
+pricingHead:
+  title: "SEO plans\nwith no long commitment."
+  titleEm:
+    - "no"
+    - "long"
+    - "commitment."
+  subtitle: "Three paces depending on the competition for your keywords. Three months minimum, then you're free."
+  footnote: "Indicative starting prices, in Moroccan dirhams (MAD). Every project gets a firm quote after a fifteen-minute call, with no commitment."
+seo:
+  metaTitle: "SEO Agency in Morocco | Google Rankings | WEVTEX"
+  metaDescription: "SEO agency in Morocco: audit, keywords, content and link building to climb Google and win customers. SEO services from MAD 1,000 a month."
+  keyword: "SEO agency Morocco"
+  noindex: false

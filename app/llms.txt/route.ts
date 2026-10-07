@@ -1,11 +1,10 @@
-import { SERVICES } from "@/lib/services-data";
+import { getServices } from "@/lib/content";
 import { CITIES } from "@/lib/cities-data";
 import { postPath } from "@/lib/blog-data";
 import { getPosts } from "@/lib/content";
 import { projectPath, projectPathEn } from "@/lib/projects-data";
 import { getProjects } from "@/lib/content";
 import { IA_META } from "@/lib/ia-page-data";
-import { SERVICES_EN } from "@/lib/en/services-data";
 import { CITIES_EN } from "@/lib/en/cities-data";
 import { IA_META_EN } from "@/lib/en/ia-page-data";
 import { localize } from "@/lib/i18n-paths";
@@ -28,6 +27,8 @@ export async function GET() {
   // The blog list comes from content/, written in the dashboard.
   const POSTS_ORDERED = await getPosts("fr");
   const POSTS_ORDERED_EN = await getPosts("en");
+  const SERVICES = await getServices("fr");
+  const SERVICES_EN = await getServices("en");
   const PROJECTS_ORDERED = await getProjects("fr");
   const PROJECTS_ORDERED_EN = await getProjects("en");
   const lines = [

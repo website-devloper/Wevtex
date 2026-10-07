@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { languageAlternates } from "@/lib/i18n-paths";
 import { PricingPageView } from "@/components/wevtex/PricingPageView";
-import { SERVICES } from "@/lib/services-data";
+import { getServices } from "@/lib/content";
 import { JsonLd, breadcrumb } from "@/components/seo/JsonLd";
 
 export const metadata: Metadata = {
@@ -25,11 +25,11 @@ export const metadata: Metadata = {
   },
 };
 
-export default function TarifsPage() {
+export default async function TarifsPage() {
   return (
     <>
       <JsonLd data={breadcrumb([{ name: "Tarifs", path: "/tarifs" }])} />
-      <PricingPageView services={SERVICES} />
+      <PricingPageView services={await getServices("fr")} />
     </>
   );
 }

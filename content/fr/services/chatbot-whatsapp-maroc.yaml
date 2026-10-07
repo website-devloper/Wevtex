@@ -1,0 +1,271 @@
+name: "Chatbots WhatsApp automatisés"
+serviceId: "whatsapp-bots"
+order: 7
+eyebrow: "Chatbots WhatsApp"
+keyword: "chatbot WhatsApp Maroc"
+h1: "Chatbot WhatsApp au Maroc,\nune réponse même à minuit."
+h1Em:
+  - "même"
+  - "à"
+  - "minuit."
+intro: "Au Maroc, vos clients écrivent sur WhatsApp et attendent une réponse tout de suite : le soir, le week-end, trente fois par jour la même question. Notre chatbot répond à leur place, en français et en darija, trie les demandes sérieuses et passe la main à votre équipe au bon moment."
+tags:
+  - "WhatsApp API"
+  - "Automatisation"
+  - "CRM"
+  - "Support"
+includes:
+  - "L'ouverture et la configuration de votre compte WhatsApp Business API."
+  - "Des scénarios de conversation écrits pour votre activité, en français et en darija."
+  - "La qualification des prospects et leur transmission à votre équipe."
+  - "La connexion à votre CRM, votre tableur ou votre boîte mail."
+outcomes:
+  -
+    h: "Aucune demande perdue"
+    p: "Les messages du soir et du week-end reçoivent une réponse au lieu d'attendre lundi."
+  -
+    h: "Des prospects triés"
+    p: "Votre équipe ne traite que les demandes sérieuses, déjà qualifiées par le bot."
+  -
+    h: "Du temps rendu"
+    p: "Les questions répétitives, horaires, prix, disponibilité, ne mobilisent plus personne."
+faqs:
+  -
+    q: "Est-ce le WhatsApp officiel ?"
+    a: "Oui. Nous utilisons l'API WhatsApp Business officielle de Meta, avec votre numéro vérifié. Aucun outil non officiel : ceux-là finissent bloqués."
+  -
+    q: "Le bot remplace-t-il mon équipe ?"
+    a: "Non, il la protège. Il traite les questions répétitives et passe la main dès qu'une demande sort du cadre prévu, avec tout l'historique."
+  -
+    q: "Parle-t-il darija ?"
+    a: "Oui. Les scénarios sont écrits en français et en darija, en tenant compte de la façon dont vos clients écrivent réellement."
+  -
+    q: "Existe-t-il un chatbot WhatsApp gratuit ?"
+    a: "L'application WhatsApp Business gratuite propose un message d'accueil et des réponses rapides, ce qui n'est pas un vrai chatbot. L'automatisation passe par l'API WhatsApp Business, dont les conversations sont facturées par Meta, en plus de la mise en place."
+  -
+    q: "Le chatbot comprend-il la darija ?"
+    a: "Oui, un bot WhatsApp en darija est tout à fait possible : les scénarios sont écrits en français et en darija, et la formule sur mesure comprend les messages formulés librement, y compris en darija écrite en lettres latines."
+  -
+    q: "Le chatbot peut-il prendre des rendez-vous ?"
+    a: "Oui, avec la formule Qualification : il propose des créneaux, confirme le rendez-vous et prévient votre équipe."
+  -
+    q: "Combien de temps pour mettre en place un chatbot WhatsApp ?"
+    a: "Une à trois semaines pour un assistant qui répond aux questions courantes. Un bot connecté à votre catalogue ou votre CRM demande davantage, car l'essentiel du travail est l'intégration."
+  -
+    q: "Puis-je garder mon numéro WhatsApp actuel ?"
+    a: "Dans la plupart des cas, oui : un numéro existant peut être migré vers WhatsApp Business API. Il doit simplement être libéré de l'application classique avant la migration."
+whyUs:
+  title: "Pourquoi nous confier\nvotre automatisation."
+  titleEm:
+    - "votre"
+    - "automatisation."
+  subtitle: "Beaucoup de bots agacent plus qu'ils n'aident. Voici comment nous l'évitons."
+  points:
+    -
+      h: "L'API officielle, jamais autre chose"
+      p: "Les solutions non officielles font bloquer votre numéro tôt ou tard, souvent au pire moment. Nous passons par Meta, avec votre numéro vérifié."
+    -
+      h: "Écrit à partir de vos vrais messages"
+      p: "Nous lisons vos conversations passées avant d'écrire quoi que ce soit. Les scénarios répondent aux questions réellement posées."
+    -
+      h: "La main passée au bon moment"
+      p: "Le bot sait reconnaître ce qu'il ne sait pas traiter et transmet à un humain avec tout l'historique, sans faire répéter le client."
+    -
+      h: "Réglé chaque mois"
+      p: "Nous relisons les conversations et corrigeons ce qui coince. Un bot qu'on n'entretient pas se dégrade en quelques semaines."
+demo:
+  title: "Le bot en action"
+  subtitle: "Une conversation type, de la question au rendez-vous pris."
+  caption: "Scénario WhatsApp : qualification puis transmission à un conseiller."
+featureSections:
+  -
+    eyebrow: "Ce que fait votre bot"
+    title: "Ce que sait faire\nun bot bien réglé."
+    titleEm:
+      - "un"
+      - "bot bien réglé."
+    subtitle: "Quatre usages qui couvrent la grande majorité des demandes reçues."
+    cards:
+      -
+        title: "Réponses instantanées"
+        desc: "Les questions posées vingt fois par jour, traitées seules."
+        checks:
+          - "Horaires et adresse"
+          - "Tarifs et prestations"
+          - "Disponibilités"
+          - "Questions fréquentes"
+      -
+        title: "Qualification"
+        desc: "Trier les curieux des clients avant d'y passer du temps."
+        checks:
+          - "Questions de cadrage"
+          - "Budget et délai"
+          - "Notation du prospect"
+          - "Transmission ciblée"
+      -
+        title: "Prise de rendez-vous"
+        desc: "Remplir l'agenda sans échanger dix messages."
+        checks:
+          - "Créneaux proposés"
+          - "Confirmation automatique"
+          - "Rappels la veille"
+          - "Report et annulation"
+      -
+        title: "Suivi & relance"
+        desc: "Reprendre contact au bon moment, sans y penser."
+        checks:
+          - "Suivi de commande"
+          - "Relance des devis"
+          - "Enquêtes de satisfaction"
+          - "Campagnes ciblées"
+tech:
+  title: "Les technologies\nde vos bots."
+  titleEm:
+    - "de"
+    - "vos bots."
+  subtitle: "L'API officielle, une automatisation robuste et une reprise humaine fluide."
+  groups:
+    -
+      label: "Messagerie"
+      desc: "Le canal officiel, avec votre numéro vérifié."
+      items:
+        - "WhatsApp Business API"
+        - "Meta Cloud API"
+        - "Templates validés"
+    -
+      label: "Automatisation"
+      desc: "Les scénarios et les règles qui pilotent la conversation."
+      items:
+        - "n8n"
+        - "Node.js"
+        - "Webhooks"
+    -
+      label: "Intelligence"
+      desc: "Comprendre une question formulée librement."
+      items:
+        - "Claude"
+        - "Recherche documentaire"
+        - "Darija & français"
+    -
+      label: "Connexion"
+      desc: "Faire arriver le prospect là où votre équipe travaille."
+      items:
+        - "CRM"
+        - "Google Sheets"
+        - "Email"
+        - "Agenda"
+process:
+  title: "Comment se met\nen place un bot."
+  titleEm:
+    - "en"
+    - "place un bot."
+  subtitle: "Trois à quatre semaines, dont l'essentiel passe à écrire les bonnes réponses."
+  steps:
+    -
+      n: "01"
+      h: "Analyse"
+      d: "3–5 jours"
+      checks:
+        - "Vos messages réels"
+        - "Questions récurrentes"
+        - "Cas à transmettre"
+    -
+      n: "02"
+      h: "Scénarios"
+      d: "1 semaine"
+      checks:
+        - "Arbre de conversation"
+        - "Rédaction FR et darija"
+        - "Règles de transmission"
+    -
+      n: "03"
+      h: "Configuration"
+      d: "3–5 jours"
+      checks:
+        - "Compte WhatsApp API"
+        - "Numéro vérifié"
+        - "Templates validés par Meta"
+    -
+      n: "04"
+      h: "Connexion"
+      d: "3–5 jours"
+      checks:
+        - "CRM ou tableur"
+        - "Notifications à l'équipe"
+        - "Tests bout en bout"
+    -
+      n: "05"
+      h: "Réglage"
+      d: "chaque mois"
+      checks:
+        - "Lecture des conversations"
+        - "Réponses affinées"
+        - "Nouveaux scénarios"
+sectors:
+  title: "Les questions que\nvos clients posent."
+  titleEm:
+    - "vos"
+    - "clients"
+    - "posent."
+  subtitle: "Les questions que reçoit un restaurant n'ont rien à voir avec celles d'une clinique."
+  groups:
+    -
+      label: "E-commerce & commerce de détail"
+      cases:
+        - "Suivi de commande"
+        - "Disponibilité produit"
+        - "Retours et échanges"
+    -
+      label: "Tourisme & hôtellerie"
+      cases:
+        - "Réservations"
+        - "Informations séjour"
+        - "Demandes spéciales"
+    -
+      label: "Services professionnels"
+      cases:
+        - "Qualification des demandes"
+        - "Prise de rendez-vous"
+        - "Envoi de documents"
+    -
+      label: "Santé & bien-être"
+      cases:
+        - "Rendez-vous et rappels"
+        - "Documents à apporter"
+        - "Horaires de garde"
+    -
+      label: "Industrie & logistique"
+      cases:
+        - "Suivi d'expédition"
+        - "Demandes de devis"
+        - "Contact commercial"
+    -
+      label: "Éducation & e-learning"
+      cases:
+        - "Informations inscriptions"
+        - "Rappels de cours"
+        - "Réponses aux parents"
+    -
+      label: "Création, médias & tech"
+      cases:
+        - "Support de premier niveau"
+        - "Essais et démos"
+        - "Collecte de retours"
+    -
+      label: "Secteur public & associations"
+      cases:
+        - "Informations pratiques"
+        - "Orientation des demandes"
+        - "Inscriptions aux actions"
+pricingHead:
+  title: "Combien coûte\nvotre chatbot."
+  titleEm:
+    - "votre"
+    - "chatbot."
+  subtitle: "Une mise en place unique, puis un abonnement pour l'entretien."
+  footnote: "Prix indicatifs de départ, en dirhams. Chaque projet reçoit un devis ferme après un échange de quinze minutes, sans engagement."
+seo:
+  metaTitle: "Chatbot WhatsApp pour Entreprise au Maroc | WEVTEX"
+  metaDescription: "Chatbot WhatsApp pour entreprise au Maroc : réponses 24h/24 en français et darija, qualification des prospects, prise de rendez-vous. Dès 2 400 DH."
+  keyword: "chatbot WhatsApp Maroc"
+  noindex: false

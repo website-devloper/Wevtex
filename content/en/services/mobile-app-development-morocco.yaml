@@ -1,0 +1,241 @@
+name: "Mobile app development"
+serviceId: "mobile-apps"
+order: 4
+eyebrow: "Mobile apps"
+keyword: "mobile app development Morocco"
+h1: "Mobile app development\nin Morocco, iOS and Android."
+h1Em:
+  - "iOS"
+  - "and"
+  - "Android."
+intro: "An app is only worth something if your customers open it. We design it around what they actually do, then build it with Flutter: one codebase for iOS and Android, half the budget, and App Store and Google Play publishing handled."
+tags:
+  - "Flutter"
+  - "iOS"
+  - "Android"
+  - "API"
+includes:
+  - "Screen designs before development, approved by you."
+  - "A native iOS and Android app from a single codebase."
+  - "Connection to your existing systems: website, stock, payments."
+  - "Publishing on the App Store and Google Play, accounts included."
+outcomes:
+  -
+    h: "Half the budget"
+    p: "One build instead of two, with a native feel on both platforms."
+  -
+    h: "On the home screen"
+    p: "An icon on your customers' phones beats a forgotten bookmark."
+  -
+    h: "Direct notifications"
+    p: "You reach your users without going through an algorithm or buying reach."
+faqs:
+  -
+    q: "Why Flutter rather than native?"
+    a: "One codebase for both platforms, with rendering and performance equivalent to native in the vast majority of cases. Budget and timelines are halved."
+  -
+    q: "Do you handle App Store and Google Play publishing?"
+    a: "Yes, end to end: developer accounts, listings, screenshots, compliance and submission. Allow one to two weeks of review on Apple's and Google's side."
+  -
+    q: "What happens after launch?"
+    a: "Three months of support are included. After that, a maintenance plan covers the updates iOS and Android require every year."
+  -
+    q: "Can I build a mobile app for free?"
+    a: "Free has its limits: no-code tools can produce a mockup or a very simple app. For an app published on the App Store and Google Play, with payments and customer accounts, you need real development: at Wevtex, from MAD 8,000."
+  -
+    q: "Flutter or native development?"
+    a: "Flutter for the vast majority of projects: one codebase produces a native app for iOS and Android, on a smaller budget. Separate native development is justified for very specific hardware needs, rare in business apps."
+  -
+    q: "Who publishes the app on the App Store and Google Play?"
+    a: "We do. Publishing, preparing the store listings and dealing with Apple and Google are part of the service. The developer accounts are opened in your name."
+  -
+    q: "How long does it take to develop a mobile app?"
+    a: "Four to six weeks for an essential app, eight to twelve weeks for a complete app with accounts and payments. The deadline is on the quote."
+whyUs:
+  title: "Why trust us\nwith your app."
+  titleEm:
+    - "your"
+    - "app."
+  subtitle: "Mobile is where projects most often go off the rails."
+  points:
+    -
+      h: "A firm quote before coding"
+      p: "The scope is written and priced. Changes along the way are priced separately, never imposed."
+    -
+      h: "A testable version halfway"
+      p: "You use the app before it's finished. Fixes cost far less at that stage."
+    -
+      h: "Publishing included"
+      p: "App Store rejections are frequent and confusing. We handle the submission and the back-and-forth until approval."
+    -
+      h: "The source code is yours"
+      p: "Delivered, documented and transferable. Another provider can take over without starting from scratch."
+demo:
+  title: ""
+  subtitle: ""
+  caption: ""
+featureSections:
+  -
+    eyebrow: "What we build in"
+    title: "The features that bring\nyour customers back."
+    titleEm:
+      - "your"
+      - "customers"
+      - "back."
+    subtitle: "The features most projects need, proven and ready."
+    cards:
+      -
+        title: "Accounts & profiles"
+        desc: "Sign-up, login and user management."
+        checks:
+          - "Email and phone"
+          - "Google and Apple sign-in"
+          - "Profiles and preferences"
+          - "Password reset"
+      -
+        title: "Payments"
+        desc: "Getting paid in the app, fully compliant."
+        checks:
+          - "Bank cards"
+          - "Subscriptions"
+          - "In-app purchases"
+          - "Payment history"
+      -
+        title: "Notifications"
+        desc: "Reaching the user at the right moment."
+        checks:
+          - "Push notifications"
+          - "Targeted messages"
+          - "Scheduling"
+          - "Open rates"
+      -
+        title: "Offline & data"
+        desc: "An app that stays useful without a network."
+        checks:
+          - "Offline mode"
+          - "Sync"
+          - "Local cache"
+          - "Geolocation"
+tech:
+  title: ""
+  titleEm: []
+  subtitle: ""
+  groups: []
+process:
+  title: "How your\napp comes to life."
+  titleEm:
+    - "comes"
+    - "to"
+    - "life."
+  subtitle: "From scoping to publishing, with a testable version halfway through."
+  steps:
+    -
+      n: "01"
+      h: "Scoping"
+      d: "1 week"
+      checks:
+        - "User journey"
+        - "Priority features"
+        - "Firm quote"
+    -
+      n: "02"
+      h: "Design"
+      d: "1–2 weeks"
+      checks:
+        - "All screens"
+        - "Clickable prototype"
+        - "Approval before code"
+    -
+      n: "03"
+      h: "Development"
+      d: "4–8 weeks"
+      checks:
+        - "Testable version"
+        - "Weekly check-ins"
+        - "Service connections"
+    -
+      n: "04"
+      h: "Testing"
+      d: "1–2 weeks"
+      checks:
+        - "Tests on real devices"
+        - "TestFlight beta"
+        - "Fixes"
+    -
+      n: "05"
+      h: "Publishing"
+      d: "1–2 weeks"
+      checks:
+        - "Store listings"
+        - "Submission"
+        - "Review follow-up"
+sectors:
+  title: "What your app\nshould do for you."
+  titleEm:
+    - "should"
+    - "do"
+    - "for"
+    - "you."
+  subtitle: "What the app should do depends entirely on your trade."
+  groups:
+    -
+      label: "E-commerce & retail"
+      cases:
+        - "Online ordering"
+        - "Loyalty points"
+        - "Delivery tracking"
+    -
+      label: "Tourism & hospitality"
+      cases:
+        - "Booking and stay"
+        - "Destination guide"
+        - "Room key"
+    -
+      label: "Professional services"
+      cases:
+        - "Client area"
+        - "Shared documents"
+        - "Appointment booking"
+    -
+      label: "Health & wellness"
+      cases:
+        - "Appointments and reminders"
+        - "Patient follow-up"
+        - "Session programs"
+    -
+      label: "Industry & logistics"
+      cases:
+        - "Fleet tracking"
+        - "Proof of delivery"
+        - "Route sheets"
+    -
+      label: "Education & e-learning"
+      cases:
+        - "Courses and videos"
+        - "Quizzes and progress"
+        - "Parent area"
+    -
+      label: "Creative, media & tech"
+      cases:
+        - "Product app"
+        - "Community"
+        - "Targeted notifications"
+    -
+      label: "Public sector & NGOs"
+      cases:
+        - "Citizen reports"
+        - "Mobile donations"
+        - "Events calendar"
+pricingHead:
+  title: "How much\nyour app costs."
+  titleEm:
+    - "your"
+    - "app"
+    - "costs."
+  subtitle: "Three levels of ambition, priced firmly after scoping."
+  footnote: "Indicative starting prices, in Moroccan dirhams (MAD). Every project gets a firm quote after a fifteen-minute call, with no commitment."
+seo:
+  metaTitle: "Mobile App Development Company in Morocco | WEVTEX"
+  metaDescription: "Mobile app development in Morocco: iOS and Android apps with Flutter, one codebase, App Store and Google Play publishing included. From MAD 8,000."
+  keyword: "mobile app development Morocco"
+  noindex: false

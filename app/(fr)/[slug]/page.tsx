@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { languageAlternates } from "@/lib/i18n-paths";
 import { notFound } from "next/navigation";
 import { CITIES, CITY_SLUGS } from "@/lib/cities-data";
-import { SERVICE_SLUGS, getService } from "@/lib/services-data";
+import { getService, getServiceSlugs } from "@/lib/content";
 import type { Service } from "@/lib/services-data";
 import { SERVICE_URLS, servicePath, serviceIdFromUrl } from "@/lib/site-links";
 import { CityView } from "@/components/wevtex/CityView";
@@ -35,18 +35,18 @@ if (clash.length) {
   throw new Error(`City and service pages share a URL: ${clash.join(", ")}`);
 }
 
-export function generateStaticParams() {
+export async function generateStaticParams() {
   return [
     ...CITY_SLUGS.map((slug) => ({ slug })),
-    ...SERVICE_SLUGS.map((id) => ({ slug: servicePath(id).slice(1) })),
+    ...(await getServiceSlugs("fr")).map((slug) => ({ slug })),
   ];
 }
 
-function resolve(slug: string) {
+async function resolve(slug: string) {
   const city = CITIES.find((c) => c.slug === slug);
   if (city) return { kind: "city" as const, city };
-  const id = serviceIdFromUrl(slug);
-  const service = id ? getService(id) : undefined;
+  // Looked up by the address in the URL, which is what the dashboard sets.
+  const service = await getService(slug, "fr");
   if (service) return { kind: "service" as const, service };
   return null;
 }
@@ -64,7 +64,7 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
   const { slug } = await params;
-  const page = resolve(slug);
+  const page = await resolve(slug);
   if (!page) return {};
 
   if (page.kind === "city") {
@@ -116,7 +116,7 @@ export default async function KeywordPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const page = resolve(slug);
+  const page = await resolve(slug);
   if (!page) notFound();
 
   if (page.kind === "city") {
