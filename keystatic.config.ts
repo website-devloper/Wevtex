@@ -362,10 +362,11 @@ const projects = collection({
     }),
     screenshot: fields.image({
       label: "Capture d'écran",
-      description: "La page d'accueil du site livré. WebP de préférence, moins de 200 Ko.",
+      description:
+        "La page d'accueil du site livré. WebP de préférence, moins de 200 Ko. " +
+        "Laissée vide, celle qui porte le nom de la page est utilisée.",
       directory: "public/images/work",
       publicPath: "/images/work",
-      validation: { isRequired: true },
     }),
     clientUrl: fields.text({ label: "Domaine du client", description: "Sans https://, par exemple exemple.ma" }),
     liveUrl: fields.url({ label: "Lien vers le site en ligne" }),

@@ -245,6 +245,9 @@ async function readProjects(locale: Locale): Promise<ProjectEntry[]> {
         slug,
         fr: slug,
         stack: [...(e.stack ?? [])],
+        // The screenshots are named after the page, so a cleared field can
+        // fall back rather than leaving a réalisation with no image.
+        screenshot: e.screenshot || `/images/work/${slug}.webp`,
         metaDescription: e.seo.metaDescription,
       } as ProjectEntry;
     });
@@ -271,7 +274,7 @@ async function readProjects(locale: Locale): Promise<ProjectEntry[]> {
       year: b.year,
       featured: b.featured,
       order: b.order,
-      screenshot: b.screenshot,
+      screenshot: b.screenshot || `/images/work/${base.slug}.webp`,
       // Translated copy.
       category: e.category,
       description: e.description,
