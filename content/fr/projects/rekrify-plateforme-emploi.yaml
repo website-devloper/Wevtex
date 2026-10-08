@@ -1,20 +1,26 @@
-title: "Rekrify"
-category: "Plateforme"
-description: "Plateforme de recrutement complète reliant candidats et employeurs marocains : offres vérifiées, matching intelligent, profils entreprises et messagerie recruteur en temps réel. Pensée pour la vitesse et la confiance, avec un parcours de candidature simplifié."
-screenshot: "/images/work/rekrify-plateforme-emploi/rekrify-plateforme-emploi.webp"
-clientUrl: "rekrify.ma"
-liveUrl: "https://rekrute-ma.vercel.app/"
-year: 2026
+title: Rekrify
+category: Plateforme
+description: >-
+  Plateforme de recrutement complète reliant candidats et employeurs marocains :
+  offres vérifiées, matching intelligent, profils entreprises et messagerie
+  recruteur en temps réel. Pensée pour la vitesse et la confiance, avec un
+  parcours de candidature simplifié.
+screenshot: /images/work/rekrify-plateforme-emploi/screenshot.webp
+clientUrl: rekrify.ma
+liveUrl: https://rekrute-ma.vercel.app/
+year: 2025
 order: 14
 featured: true
 stack:
-  - "Next.js"
-  - "React"
-  - "Tailwind"
-metricValue: "2 espaces"
-metricLabel: "candidats et employeurs, messagerie incluse"
+  - Next.js
+  - React
+  - Tailwind
+metricValue: 2 espaces
+metricLabel: candidats et employeurs, messagerie incluse
 seo:
-  metaTitle: "Rekrify"
-  metaDescription: "Développement d'un portail d'emploi moderne au Maroc, offres vérifiées et matching intelligent des candidats."
-  keyword: "rekrify plateforme emploi"
+  metaTitle: Rekrify
+  metaDescription: >-
+    Développement d'un portail d'emploi moderne au Maroc, offres vérifiées et
+    matching intelligent des candidats.
+  keyword: rekrify plateforme emploi
   noindex: false
