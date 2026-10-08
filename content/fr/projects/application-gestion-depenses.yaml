@@ -1,5 +1,5 @@
 title: Floussy
-category: Application  oo
+category: Application
 description: >-
   Application web de gestion de budget personnel et familial : suivi des
   dépenses par catégorie, marchand et mois, scan de reçus, catégorisation
@@ -15,8 +15,8 @@ stack:
   - Next.js
   - Dashboard
   - Auth sécurisée
-metricValue: 100 %
-metricLabel: des données cloisonnées par utilisateur
+metricValue: Hors ligne
+metricLabel: données privées, par utilisateur
 seo:
   metaTitle: Floussy
   metaDescription: >-
