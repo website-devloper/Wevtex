@@ -1,20 +1,26 @@
-title: "Studio Photo"
-category: "Portfolio"
-description: "Site portfolio pour un studio de photographie primé : galeries par spécialité (mariages, portraits, événements, commercial), mise en valeur visuelle plein écran et prise de contact simplifiée. Un écrin sobre où les images parlent d'elles-mêmes."
-screenshot: "/images/work/site-studio-photographie/site-studio-photographie.webp"
-clientUrl: "studiophoto.ma"
-liveUrl: "https://photographystudio-snowy.vercel.app/"
-year: 2026
+title: Studio Photo
+category: Portfolio
+description: >-
+  Site portfolio pour un studio de photographie primé : galeries par spécialité
+  (mariages, portraits, événements, commercial), mise en valeur visuelle plein
+  écran et prise de contact simplifiée. Un écrin sobre où les images parlent
+  d'elles-mêmes.
+screenshot: /images/work/site-studio-photographie/screenshot.webp
+clientUrl: studiophoto.ma
+liveUrl: https://photographystudio-snowy.vercel.app/
+year: 2025
 order: 13
 featured: false
 stack:
-  - "Galerie"
-  - "SEO"
-  - "Responsive"
-metricValue: "4 galeries"
-metricLabel: "mariages, portraits, événements, commercial"
+  - Galerie
+  - SEO
+  - Responsive
+metricValue: 4 galeries
+metricLabel: mariages, portraits, événements, commercial
 seo:
-  metaTitle: "Studio Photo"
-  metaDescription: "Site portfolio pour un studio de photographie professionnelle, mariages, portraits et événements."
-  keyword: "site studio photographie"
+  metaTitle: Studio Photo
+  metaDescription: >-
+    Site portfolio pour un studio de photographie professionnelle, mariages,
+    portraits et événements.
+  keyword: site studio photographie
   noindex: false
