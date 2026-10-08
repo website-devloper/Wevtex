@@ -742,8 +742,20 @@ if (STORAGE_OVERRIDE && !FORCE_GITHUB) {
     `[keystatic] KEYSTATIC_STORAGE is set to "${process.env.KEYSTATIC_STORAGE}", which is not "github", so the dashboard stays in local mode.`,
   );
 }
-const GITHUB_READY =
-  !!process.env.KEYSTATIC_GITHUB_CLIENT_ID && !!process.env.KEYSTATIC_GITHUB_CLIENT_SECRET;
+/*
+ * The switch has to be a NEXT_PUBLIC_ variable.
+ *
+ * This file is read twice: by the server, which serves the API, and by the
+ * browser, which runs the dashboard. Next only inlines NEXT_PUBLIC_ variables
+ * into the browser bundle, so keying this on the client id and secret — both
+ * server-only — left the browser believing storage was local while the server
+ * served GitHub. The dashboard then asked the server for the file tree, got
+ * 404 Not Found, and showed "Unable to load collection" on every screen.
+ *
+ * The app slug is public by design and arrives with the other three, so it is
+ * the one value both halves can agree on.
+ */
+const GITHUB_READY = !!process.env.NEXT_PUBLIC_KEYSTATIC_GITHUB_APP_SLUG;
 
 if (process.env.NODE_ENV !== "development" && !GITHUB_READY) {
   console.warn(
