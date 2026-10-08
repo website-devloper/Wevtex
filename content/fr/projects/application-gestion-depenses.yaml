@@ -6,6 +6,7 @@ description: >-
   automatique et questions en langage naturel sur son propre historique. Chaque
   donnée est cloisonnée par utilisateur, avec export et suppression à tout
   moment.
+screenshot: /images/work/application-gestion-depenses/screenshot.png
 clientUrl: floussy.app
 liveUrl: https://floussy-five.vercel.app/
 year: 2026
