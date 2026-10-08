@@ -1,7 +1,7 @@
 title: "Zina Beauty"
 category: "E-commerce"
 description: "Boutique de cosmétiques marocains dotée d'un assistant IA conversationnel : le client décrit sa peau, l'assistant recommande les produits, construit une routine et prend la commande dans le chat, en darija, français ou anglais, 24h/24. Une nouvelle façon d'acheter, guidée et instantanée."
-screenshot: "/images/work/ecommerce-cosmetiques-assistant-ia.webp"
+screenshot: "/images/work/ecommerce-cosmetiques-assistant-ia/ecommerce-cosmetiques-assistant-ia.webp"
 clientUrl: "zinabeauty.ma"
 liveUrl: "https://agent-ecommerce.vercel.app/"
 year: 2026

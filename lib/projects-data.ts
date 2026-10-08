@@ -6,7 +6,8 @@
  * type and the two URL helpers stay here, because the views and the pages both
  * depend on them.
  *
- * Screenshots live at /images/work/<slug>.webp; the dashboard uploads into the
+ * Screenshots live at /images/work/<slug>/<slug>.webp — Keystatic keeps an
+ * entry's assets in a folder named after it, and the dashboard uploads into the
  * same folder.
  */
 

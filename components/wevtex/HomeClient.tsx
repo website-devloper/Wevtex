@@ -303,7 +303,7 @@ type WorkItem = {
   metricLabel: string;
   /** Fallback gradient, kept for any entry without a screenshot yet. */
   shot: string;
-  /** The capture at /images/work/<French slug>.webp. */
+  /** The capture at /images/work/<French slug>/<French slug>.webp. */
   screenshot: string;
   capture?: boolean;
 };
