@@ -24,15 +24,37 @@ const T = {
   },
 };
 
+/** The ring is drawn as one circle; this is its length. */
+const RADIUS = 21;
+const CIRCUMFERENCE = 2 * Math.PI * RADIUS;
+
 export function FloatingActions() {
   const t = T[useLocale()];
   const [showTop, setShowTop] = useState(false);
+  /** 0 at the top of the page, 1 at the bottom. */
+  const [progress, setProgress] = useState(0);
 
   useEffect(() => {
-    const onScroll = () => setShowTop(window.scrollY > 700);
-    onScroll();
+    let frame = 0;
+    const read = () => {
+      frame = 0;
+      const scrolled = window.scrollY;
+      const furthest = document.documentElement.scrollHeight - window.innerHeight;
+      setShowTop(scrolled > 700);
+      setProgress(furthest > 0 ? Math.min(1, scrolled / furthest) : 0);
+    };
+    // One read per frame: scroll fires far more often than the screen redraws.
+    const onScroll = () => {
+      if (!frame) frame = requestAnimationFrame(read);
+    };
+    read();
     window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
+    window.addEventListener("resize", onScroll, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+      if (frame) cancelAnimationFrame(frame);
+    };
   }, []);
 
   return (
@@ -47,7 +69,21 @@ export function FloatingActions() {
         tabIndex={showTop ? 0 : -1}
         aria-hidden={!showTop}
       >
-        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+        {/* How far down the page you are, drawn around the button: the way
+            back is also a position. Decorative — the label already says what
+            the button does. */}
+        <svg className="float-top-ring" viewBox="0 0 48 48" width="48" height="48" aria-hidden>
+          <circle className="float-top-track" cx="24" cy="24" r={RADIUS} />
+          <circle
+            className="float-top-progress"
+            cx="24"
+            cy="24"
+            r={RADIUS}
+            strokeDasharray={CIRCUMFERENCE}
+            strokeDashoffset={CIRCUMFERENCE * (1 - progress)}
+          />
+        </svg>
+        <svg className="float-top-arrow" viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" strokeWidth="2.3" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
           <path d="M12 19V5M5 12l7-7 7 7" />
         </svg>
       </button>
