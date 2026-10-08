@@ -5640,6 +5640,12 @@ html.menu-open .cc-bar { visibility: hidden; }
 
 /* ---------------------------------------------------------------------------
    Floating actions: WhatsApp, and back to top once there is a way back.
+
+   The WhatsApp button keeps its own green — people recognise it before they
+   read anything — but it is a pill, not a bare disc: hovering slides out what
+   it actually does, which is the difference between "an icon" and an offer.
+   A short pulse runs three times on arrival and then stops, so it is noticed
+   once rather than blinking at the reader for the whole visit.
    ------------------------------------------------------------------------- */
 .wevtex .float-actions {
   position: fixed;
@@ -5648,131 +5654,123 @@ html.menu-open .cc-bar { visibility: hidden; }
   z-index: 60;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 10px;
+  align-items: flex-end;
+  gap: 12px;
 }
+
 .wevtex .float-btn {
-  display: inline-flex; align-items: center; justify-content: center;
-  border-radius: 999px; border: 0; cursor: pointer;
-  box-shadow: 0 14px 30px -14px rgba(28, 42, 8, 0.55);
-  transition: transform 180ms var(--ease-out), background 180ms var(--ease-out), opacity 180ms var(--ease-out);
-}
-.wevtex .float-btn:hover { transform: translateY(-2px); }
-.wevtex .float-wa {
-  width: 56px; height: 56px;
-  background: #25d366; color: #ffffff;
+  display: inline-flex;
+  align-items: center;
+  border: 0;
+  cursor: pointer;
+  border-radius: 999px;
   text-decoration: none;
+  transition:
+    transform 200ms var(--ease-out),
+    box-shadow 200ms var(--ease-out),
+    background 200ms var(--ease-out);
 }
-.wevtex .float-wa:hover { background: #1fb457; }
+
+/* ---- WhatsApp ---- */
+.wevtex .float-wa {
+  position: relative;
+  height: 58px;
+  padding: 0;
+  background: linear-gradient(160deg, #2ee06f 0%, #25d366 45%, #1cb355 100%);
+  color: #ffffff;
+  box-shadow:
+    0 10px 24px -10px rgba(28, 42, 8, 0.45),
+    0 2px 6px -2px rgba(0, 0, 0, 0.25);
+  /* The ring reads as a halo on the lime and on the deep green alike. */
+  outline: 3px solid rgba(255, 255, 255, 0.9);
+  outline-offset: -1px;
+}
+.wevtex .float-wa-icon {
+  flex: 0 0 58px;
+  display: grid;
+  place-items: center;
+  height: 58px;
+}
+.wevtex .float-wa-label {
+  max-width: 0;
+  opacity: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  font-size: 14.5px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  transition:
+    max-width 280ms var(--ease-out),
+    opacity 180ms var(--ease-out),
+    padding-right 280ms var(--ease-out);
+}
+.wevtex .float-wa:hover,
+.wevtex .float-wa:focus-visible {
+  transform: translateY(-2px);
+  box-shadow:
+    0 16px 34px -12px rgba(28, 42, 8, 0.55),
+    0 3px 10px -3px rgba(0, 0, 0, 0.3);
+}
+.wevtex .float-wa:hover .float-wa-label,
+.wevtex .float-wa:focus-visible .float-wa-label {
+  max-width: 260px;
+  opacity: 1;
+  padding-right: 22px;
+}
+
+/* Noticed once, then quiet. */
+.wevtex .float-wa::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 999px;
+  pointer-events: none;
+  animation: wa-pulse 2.4s var(--ease-out) 1.2s 3;
+}
+.wevtex .float-wa:hover::before { animation: none; }
+@keyframes wa-pulse {
+  0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.55); }
+  70% { box-shadow: 0 0 0 16px rgba(37, 211, 102, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+}
+
+/* ---- Back to top ---- */
 .wevtex .float-top {
-  width: 44px; height: 44px;
-  background: #1c2a08; color: #ffffff;
-  opacity: 0; visibility: hidden; transform: translateY(8px);
+  width: 44px;
+  height: 44px;
+  justify-content: center;
+  background: #1c2a08;
+  color: #ffffff;
+  box-shadow: 0 10px 22px -12px rgba(0, 0, 0, 0.6);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(8px);
   pointer-events: none;
 }
-.wevtex .float-top.is-in { opacity: 1; visibility: visible; transform: none; pointer-events: auto; }
-.wevtex .float-top:hover { background: #2a3d10; }
+.wevtex .float-top.is-in {
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+  pointer-events: auto;
+}
+.wevtex .float-top:hover {
+  background: #2a3d10;
+  transform: translateY(-2px);
+}
+
 @media (max-width: 600px) {
-  .wevtex .float-wa { width: 50px; height: 50px; }
+  .wevtex .float-wa { height: 52px; }
+  .wevtex .float-wa-icon { flex-basis: 52px; height: 52px; }
+  /* No room for the label, and no hover to reveal it with. */
+  .wevtex .float-wa-label { display: none; }
   .wevtex .float-top { width: 40px; height: 40px; }
 }
+
 @media (prefers-reduced-motion: reduce) {
   .wevtex .float-btn { transition: none; }
-}
-
-/* ---------------------------------------------------------------------------
-   /tarifs — every pack on one page, then the add-ons.
-   ------------------------------------------------------------------------- */
-.wevtex .tp-block { padding: clamp(46px, 6vh, 74px) 0; background: var(--bg-cream-2); }
-.wevtex .tp-block.tp-alt { background: var(--bg-paper); }
-.wevtex .tp-head {
-  display: flex; align-items: flex-end; justify-content: space-between;
-  gap: 24px; flex-wrap: wrap; margin-bottom: clamp(24px, 3vh, 36px);
-}
-.wevtex .tp-h { margin-top: 10px; font-size: clamp(22px, 2.3vw, 30px); }
-.wevtex .tp-see {
-  display: inline-flex; align-items: center; gap: 6px;
-  font-size: 14px; font-weight: 600; color: var(--ink-on-cream);
-  text-decoration: none; border-bottom: 1px solid var(--hairline-c-strong);
-  padding-bottom: 3px; transition: border-color 180ms var(--ease-out);
-}
-.wevtex .tp-see:hover { border-color: var(--ink-on-cream); }
-
-.wevtex .tp-addons { padding: clamp(54px, 8vh, 88px) 0; }
-.wevtex .addon-grid {
-  list-style: none; margin: clamp(30px, 4vh, 44px) 0 0; padding: 0;
-  display: grid; grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: clamp(12px, 1.4vw, 18px);
-}
-@media (max-width: 760px) { .wevtex .addon-grid { grid-template-columns: 1fr; } }
-.wevtex .addon-card {
-  background: var(--surface-d-1);
-  border: 1px solid var(--hairline-d);
-  border-radius: 12px;
-  padding: clamp(18px, 2vw, 24px);
-  transition: border-color 200ms var(--ease-out), background 200ms var(--ease-out);
-}
-.wevtex .addon-card:hover { border-color: var(--hairline-d-strong); background: var(--surface-d-2); }
-.wevtex .addon-top {
-  display: flex; align-items: baseline; justify-content: space-between;
-  gap: 16px; margin-bottom: 8px;
-}
-.wevtex .addon-h { font-size: 16.5px; font-weight: 700; color: var(--ink-on-dark); margin: 0; }
-.wevtex .addon-price {
-  font-size: 21px; font-weight: 700; color: var(--accent);
-  white-space: nowrap; font-variant-numeric: tabular-nums;
-}
-.wevtex .addon-price .cur { font-size: 0.6em; margin-left: 3px; }
-.wevtex .addon-unit {
-  display: block; font-size: 11px; font-weight: 600; letter-spacing: 0.06em;
-  text-transform: uppercase; color: var(--ink-on-dark-3); text-align: right; margin-top: 2px;
-}
-.wevtex .addon-p { margin: 0; font-size: 14.5px; line-height: 1.65; color: var(--ink-on-dark-2); }
-
-.wevtex .tp-foot {
-  margin-top: clamp(34px, 5vh, 52px);
-  display: flex; flex-direction: column; align-items: center; gap: 18px; text-align: center;
-}
-.wevtex .tp-foot p { margin: 0; color: var(--ink-on-dark-2); font-size: 15.5px; line-height: 1.7; }
-
-/* ---------------------------------------------------------------------------
-   "Pourquoi nous" cards (2026-09-28)
-   The cards were left on #191b1f with a #2a2d33 hairline, a cold neutral grey
-   from the old ink palette, so they read as black boxes dropped on the green.
-   They move into the same family as the ground: a lighter green surface, a
-   lime-tinted hairline, and a lift on hover instead of a colour change.
-   ------------------------------------------------------------------------- */
-.wevtex .ind-outcomes-ink .ind-outcome {
-  background: linear-gradient(158deg, rgba(198, 242, 78, 0.07), rgba(198, 242, 78, 0.02) 60%), #22330c;
-  border: 1px solid rgba(198, 242, 78, 0.16);
-  transition: transform 220ms var(--ease-out), border-color 220ms var(--ease-out), box-shadow 220ms var(--ease-out);
-}
-.wevtex .ind-outcomes-ink .ind-outcome:hover {
-  transform: translateY(-3px);
-  border-color: rgba(198, 242, 78, 0.42);
-  box-shadow: 0 20px 38px -26px rgba(0, 0, 0, 0.75);
-}
-.wevtex .ind-outcomes-ink .ind-outcome p { color: rgba(255, 255, 255, 0.76); }
-.wevtex .ind-outcomes-ink .eyebrow { color: rgba(255, 255, 255, 0.66); }
-@media (prefers-reduced-motion: reduce) {
-  .wevtex .ind-outcomes-ink .ind-outcome:hover { transform: none; }
-}
-
-/* Services opens the panel rather than going anywhere, so its label is a
-   button: it needs the browser's own chrome stripped to match the links. */
-.wevtex .site-header .nav-label-btn {
-  appearance: none;
-  background: none;
-  border: 0;
-  margin: 0;
-  /* padding stays as .nav-label sets it: the underline is inset from it. */
-  font: inherit;
-  font-size: 14px;
-  font-weight: 700;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  cursor: pointer;
-  text-align: left;
+  .wevtex .float-btn:hover { transform: none; }
+  .wevtex .float-wa::before { animation: none; }
+  .wevtex .float-wa-label { transition: none; }
 }
 
 /* A review can carry the client's photo; without one the initial stands in. */
@@ -5790,3 +5788,14 @@ html.menu-open .cc-bar { visibility: hidden; }
   .wevtex .testi-grid-1,
   .wevtex .testi-grid-2 { grid-template-columns: 1fr; }
 }
+
+/* The cookie bar is fixed to the bottom and sits above these, so until a
+   visitor answers it the WhatsApp button cannot be clicked at all. The bar
+   publishes its height (see AnalyticsConsent) and clears it once answered, so
+   the buttons rise above it and drop back to the corner by themselves. */
+.wevtex .float-actions {
+  --cc-gap: 0px;
+  bottom: calc(clamp(14px, 2vw, 24px) + env(safe-area-inset-bottom, 0px) + var(--cc-height, 0px) + var(--cc-gap));
+}
+/* Only add the gap when there is a bar to clear. */
+html:has(.cc-bar) .wevtex .float-actions { --cc-gap: 14px; }

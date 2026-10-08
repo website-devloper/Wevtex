@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import { useLocale, useLp } from "./locale";
 
@@ -59,6 +59,7 @@ export function AnalyticsConsent({ gaId }: { gaId?: string }) {
   // Nothing renders until we have read storage, so the banner never flashes
   // at someone who already answered.
   const [ready, setReady] = useState(false);
+  const barRef = useRef<HTMLDivElement | null>(null);
   const t = T[useLocale()];
   const lp = useLp();
 
@@ -66,6 +67,27 @@ export function AnalyticsConsent({ gaId }: { gaId?: string }) {
     setChoice(readChoice());
     setReady(true);
   }, []);
+
+  /* The bar is fixed to the bottom, over the floating WhatsApp button. It
+     publishes its height so the buttons can sit above it, and clears it once
+     answered. A height guessed in CSS would be wrong the moment the text wraps
+     differently — which it does, on a phone and in English. */
+  useEffect(() => {
+    const el = barRef.current;
+    const root = document.documentElement;
+    if (!el) {
+      root.style.removeProperty("--cc-height");
+      return;
+    }
+    const publish = () => root.style.setProperty("--cc-height", `${Math.round(el.offsetHeight)}px`);
+    publish();
+    const observer = new ResizeObserver(publish);
+    observer.observe(el);
+    return () => {
+      observer.disconnect();
+      root.style.removeProperty("--cc-height");
+    };
+  }, [choice, ready]);
 
   function decide(v: Choice) {
     writeChoice(v);
@@ -79,7 +101,7 @@ export function AnalyticsConsent({ gaId }: { gaId?: string }) {
       {gaId && choice === "granted" ? <GoogleAnalytics gaId={gaId} /> : null}
 
       {choice === null && (
-        <div className="cc-bar" role="dialog" aria-label={t.label}>
+        <div className="cc-bar" ref={barRef} role="dialog" aria-label={t.label}>
           <div className="cc-inner">
             <p className="cc-text">
               {t.text}{" "}
