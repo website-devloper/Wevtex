@@ -51,6 +51,38 @@ const CSP = [
   "frame-ancestors 'none'",
 ].join("; ");
 
+/* The content dashboard is a different kind of page: it runs in the browser
+ * and talks straight to GitHub — the API for the content, githubusercontent
+ * for avatars — which "connect-src 'self'" forbids. Rather than open the whole
+ * site up for one authenticated page, /keystatic gets its own policy and the
+ * strict one above stops matching it. Two CSP headers on one response are
+ * enforced as their intersection, so these must not overlap. */
+const DASHBOARD_CSP = [
+  "default-src 'self'",
+  `script-src 'self' 'unsafe-inline'${isProd ? "" : " 'unsafe-eval'"}`,
+  "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
+  "img-src 'self' data: blob: https://avatars.githubusercontent.com https://*.githubusercontent.com",
+  "font-src 'self' data: https://fonts.gstatic.com",
+  `connect-src 'self' https://api.github.com https://*.githubusercontent.com${isProd ? "" : " ws: wss:"}`,
+  "media-src 'self' blob:",
+  "worker-src 'self' blob:",
+  "manifest-src 'self'",
+  "frame-src 'none'",
+  "object-src 'none'",
+  "base-uri 'self'",
+  // Signing in posts to GitHub.
+  "form-action 'self' https://github.com",
+  "frame-ancestors 'none'",
+].join("; ");
+
+const DASHBOARD_HEADERS = [
+  { key: "Content-Security-Policy", value: DASHBOARD_CSP },
+  { key: "X-Content-Type-Options", value: "nosniff" },
+  { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
+  { key: "X-Frame-Options", value: "DENY" },
+  { key: "X-Robots-Tag", value: "noindex, nofollow" },
+];
+
 const SECURITY_HEADERS = [
   { key: "Content-Security-Policy", value: CSP },
   { key: "X-Content-Type-Options", value: "nosniff" },
@@ -129,8 +161,21 @@ const nextConfig = {
         ],
       },
       {
-        source: "/:path*",
+        // Everything except the dashboard, which has its own policy below.
+        source: "/((?!keystatic|api/keystatic).*)",
         headers: SECURITY_HEADERS,
+      },
+      {
+        source: "/keystatic/:path*",
+        headers: DASHBOARD_HEADERS,
+      },
+      {
+        source: "/keystatic",
+        headers: DASHBOARD_HEADERS,
+      },
+      {
+        source: "/api/keystatic/:path*",
+        headers: DASHBOARD_HEADERS,
       },
       {
         // Form responses are per request and must never be cached.
