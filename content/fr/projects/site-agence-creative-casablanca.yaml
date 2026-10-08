@@ -11,8 +11,8 @@ stack:
   - "Next.js"
   - "Portfolio"
   - "Vidéo"
-metricValue: "+58 %"
-metricLabel: "de demandes de devis"
+metricValue: "Portfolio filtrable"
+metricLabel: "identités, reels, pages services"
 seo:
   metaTitle: "Raiide Media"
   metaDescription: "Site portfolio pour une agence créative digitale à Casablanca, branding, vidéo et marketing."

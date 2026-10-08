@@ -11,8 +11,8 @@ stack:
   - "Next.js"
   - "Recherche avancée"
   - "SEO"
-metricValue: "+38 %"
-metricLabel: "de demandes qualifiées"
+metricValue: "4 filtres"
+metricLabel: "ville, type, budget, chambres"
 seo:
   metaTitle: "M2 Immobilier"
   metaDescription: "Développement d'une plateforme immobilière de prestige au Maroc, villas, riads et appartements haut de gamme."

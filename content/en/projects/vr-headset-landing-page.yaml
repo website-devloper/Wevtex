@@ -6,8 +6,8 @@ stack:
   - "Scroll animation"
   - "WebGL"
   - "Performance"
-metricValue: "2×"
-metricLabel: "time spent on page"
+metricValue: "3D"
+metricLabel: "spatial audio, animated scroll"
 seo:
   metaTitle: "VEIL"
   metaDescription: "Immersive, animated landing page for the launch of a virtual reality headset."

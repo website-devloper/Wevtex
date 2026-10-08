@@ -6,8 +6,8 @@ stack:
   - "E-commerce"
   - "Laravel"
   - "Multi-currency"
-metricValue: "+41%"
-metricLabel: "conversion rate"
+metricValue: "Paiement CMI"
+metricLabel: "online checkout, delivery in Morocco"
 seo:
   metaTitle: "Maison Couture"
   metaDescription: "Online store for luxury Moroccan kaftans, handmade in Marrakech."

@@ -6,8 +6,8 @@ stack:
   - "Next.js"
   - "Advanced search"
   - "SEO"
-metricValue: "+38%"
-metricLabel: "more qualified enquiries"
+metricValue: "4 filtres"
+metricLabel: "city, type, budget, bedrooms"
 seo:
   metaTitle: "M2 Immobilier"
   metaDescription: "Development of a luxury real estate platform in Morocco: villas, riads and high-end apartments."

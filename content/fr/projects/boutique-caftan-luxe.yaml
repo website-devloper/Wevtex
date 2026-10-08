@@ -11,8 +11,8 @@ stack:
   - "E-commerce"
   - "Laravel"
   - "Multi-devise"
-metricValue: "+41 %"
-metricLabel: "de taux de conversion"
+metricValue: "Paiement CMI"
+metricLabel: "commande en ligne, livraison Maroc"
 seo:
   metaTitle: "Maison Couture"
   metaDescription: "Création d'une boutique e-commerce de caftans marocains de luxe, faits main à Marrakech."

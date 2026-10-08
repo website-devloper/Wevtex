@@ -11,8 +11,8 @@ stack:
   - "HTML5"
   - "Prise de RDV"
   - "Responsive"
-metricValue: "+47 %"
-metricLabel: "de rendez-vous en ligne"
+metricValue: "3 spécialités"
+metricLabel: "implants, orthodontie, esthétique"
 seo:
   metaTitle: "Dentica"
   metaDescription: "Création d'un site de clinique dentaire avec réservation en ligne et présentation des soins."

@@ -11,8 +11,8 @@ stack:
   - "Next.js"
   - "Dashboard"
   - "Auth sécurisée"
-metricValue: "100 %"
-metricLabel: "des données cloisonnées par utilisateur"
+metricValue: "Hors ligne"
+metricLabel: "données privées, par utilisateur"
 seo:
   metaTitle: "Floussy"
   metaDescription: "Développement d'une application web de gestion des dépenses personnelles et familiales."

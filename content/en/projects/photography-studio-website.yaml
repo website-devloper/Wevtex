@@ -6,8 +6,8 @@ stack:
   - "Gallery"
   - "SEO"
   - "Responsive"
-metricValue: "+44%"
-metricLabel: "booking requests"
+metricValue: "4 galeries"
+metricLabel: "weddings, portraits, events, commercial"
 seo:
   metaTitle: "Studio Photo"
   metaDescription: "Portfolio website for a professional photography studio: weddings, portraits and events."

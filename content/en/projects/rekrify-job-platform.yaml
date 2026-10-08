@@ -6,8 +6,8 @@ stack:
   - "Next.js"
   - "React"
   - "Tailwind"
-metricValue: "+52%"
-metricLabel: "more completed applications"
+metricValue: "2 espaces"
+metricLabel: "candidates and employers, with messaging"
 seo:
   metaTitle: "Rekrify"
   metaDescription: "Development of a modern job board in Morocco with verified offers and smart candidate matching."

@@ -7,7 +7,7 @@ stack:
   - "Virtual try-on"
   - "E-commerce"
 metricValue: "+500"
-metricLabel: "models available online"
+metricLabel: "frames available online"
 seo:
   metaTitle: "Epoptique"
   metaDescription: "Online optician store in Morocco with virtual try-on, major brands and 24/48h delivery."

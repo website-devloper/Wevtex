@@ -6,8 +6,8 @@ stack:
   - "HTML5"
   - "Online booking"
   - "Responsive"
-metricValue: "+47%"
-metricLabel: "online appointments"
+metricValue: "3 spécialités"
+metricLabel: "implants, orthodontics, aesthetics"
 seo:
   metaTitle: "Dentica"
   metaDescription: "Dental clinic website with online booking and a clear presentation of treatments."

@@ -6,8 +6,8 @@ stack:
   - "Next.js"
   - "Dashboard"
   - "Secure auth"
-metricValue: "100%"
-metricLabel: "of data isolated per user"
+metricValue: "Hors ligne"
+metricLabel: "private data, per user"
 seo:
   metaTitle: "Floussy"
   metaDescription: "Development of a web app to track personal and family expenses."

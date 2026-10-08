@@ -11,8 +11,8 @@ stack:
   - "Next.js"
   - "React"
   - "Tailwind"
-metricValue: "+52 %"
-metricLabel: "de candidatures complétées"
+metricValue: "2 espaces"
+metricLabel: "candidats et employeurs, messagerie incluse"
 seo:
   metaTitle: "Rekrify"
   metaDescription: "Développement d'un portail d'emploi moderne au Maroc, offres vérifiées et matching intelligent des candidats."

@@ -11,8 +11,8 @@ stack:
   - "Next.js"
   - "SEO Local"
   - "Glovo"
-metricValue: "+63 %"
-metricLabel: "de recherches locales"
+metricValue: "Bilingue"
+metricLabel: "menu illustré et commande Glovo"
 seo:
   metaTitle: "Koffee Kuento"
   metaDescription: "Site vitrine et SEO local pour un café de spécialité à Casablanca, menu, avis Google et commande en ligne."
