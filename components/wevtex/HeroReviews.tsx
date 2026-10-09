@@ -10,10 +10,18 @@
 import { GOOGLE_REVIEWS_URL } from "@/lib/site-links";
 import { useLocale } from "./locale";
 
-/* Rating and count are shown to visitors — keep them matching the profile. */
+/* The score and the count come from the published reviews, not from this
+   file: written by hand they drift the moment a review is added, and a badge
+   that disagrees with the section below it costs more trust than it buys. */
 const T = {
-  fr: { aria: "Lire nos avis Google", count: "2 avis Google" },
-  en: { aria: "Read our Google reviews", count: "2 Google reviews" },
+  fr: {
+    aria: "Lire nos avis Google",
+    count: (n: number) => (n > 1 ? `${n} avis Google` : "1 avis Google"),
+  },
+  en: {
+    aria: "Read our Google reviews",
+    count: (n: number) => (n > 1 ? `${n} Google reviews` : "1 Google review"),
+  },
 };
 
 export function GoogleMark({ size = 18 }: { size?: number }) {
@@ -43,8 +51,13 @@ function Stars({ tone }: { tone: "gold" | "green" }) {
   return <span className={`rv-stars rv-stars-${tone}`}>★★★★★</span>;
 }
 
-export function HeroReviews() {
-  const t = T[useLocale()];
+export function HeroReviews({ count, rating }: { count: number; rating: number }) {
+  const locale = useLocale();
+  const t = T[locale];
+  /* No reviews, no badge: five stars over nothing is the kind of claim this
+     whole section exists to avoid. */
+  if (count < 1) return null;
+  const score = rating.toFixed(1).replace(".", locale === "fr" ? "," : ".");
   return (
     <div className="hero-reviews">
       <a
@@ -60,9 +73,9 @@ export function HeroReviews() {
         </span>
         <span className="rv-row">
           <Stars tone="gold" />
-          <strong>5.0</strong>
+          <strong>{score}</strong>
         </span>
-        <span className="rv-count">{t.count}</span>
+        <span className="rv-count">{t.count(count)}</span>
       </a>
 
     </div>

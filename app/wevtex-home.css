@@ -5868,3 +5868,33 @@ html:has(.cc-bar) .wevtex .float-actions { --cc-gap: 14px; }
   .wevtex .pi-head { flex-wrap: wrap; }
   .wevtex .pi-stars { margin-left: 55px; }
 }
+
+/* The fold. Three rows make the point; the rest are a click away, and the
+   button carries the total so nothing looks withheld. The last visible row
+   fades out, which is what tells you the list continues. */
+.wevtex .proof-list-folded .proof-item:nth-child(3) {
+  -webkit-mask-image: linear-gradient(180deg, #000 58%, rgba(0, 0, 0, 0.14) 100%);
+  mask-image: linear-gradient(180deg, #000 58%, rgba(0, 0, 0, 0.14) 100%);
+}
+.wevtex .proof-more { padding-top: 20px; }
+.wevtex .proof-more-btn {
+  display: inline-flex; align-items: center; gap: 9px;
+  padding: 11px 20px;
+  background: none;
+  border: 1px solid var(--hairline-c-strong);
+  border-radius: 999px;
+  font: inherit; font-size: 14px; font-weight: 650; letter-spacing: -0.012em;
+  line-height: 1;
+  color: var(--ink-on-cream);
+  cursor: pointer;
+  transition: border-color 0.18s ease, background 0.18s ease;
+}
+.wevtex .proof-more-btn:hover { border-color: var(--accent); background: var(--bg-cream-2); }
+.wevtex .proof-more-btn svg { flex: none; }
+
+/* With the list expanded the rail would otherwise sit against a tall empty
+   column. It follows instead, so the score and the link stay in reach while
+   you read. Only where there are two columns to speak of. */
+@media (min-width: 921px) {
+  .wevtex .proof-rail { position: sticky; top: clamp(96px, 13vh, 132px); }
+}

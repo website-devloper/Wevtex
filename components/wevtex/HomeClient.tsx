@@ -87,6 +87,8 @@ function fmtMonth(iso: string, locale: "fr" | "en"): string {
 }
 
 type Quote = {
+  /** The entry slug: unique where the author's name is not. */
+  id: string;
   q: string;
   name: string;
   role: string;
@@ -160,6 +162,8 @@ const T = {
     reviewCount: (n: number) => (n > 1 ? `${n} avis Google` : "1 avis Google"),
     readGoogle: "Voir la fiche Google",
     seeOnGoogle: "Lire cet avis sur Google",
+    moreReviews: (n: number) => `Voir les ${n} avis`,
+    fewerReviews: "Replier",
     checkLabel: "À vérifier aussi",
     checkWork: (n: number) => `Les ${n} sites livrés, en ligne aujourd'hui`,
     checkPrices: "Les prix, publics et en dirhams",
@@ -261,6 +265,8 @@ const T = {
     reviewCount: (n: number) => (n > 1 ? `${n} Google reviews` : "1 Google review"),
     readGoogle: "See the Google profile",
     seeOnGoogle: "Read this review on Google",
+    moreReviews: (n: number) => `See all ${n} reviews`,
+    fewerReviews: "Show fewer",
     checkLabel: "Check these too",
     checkWork: (n: number) => `The ${n} websites we delivered, live today`,
     checkPrices: "The prices, public and in dirhams",
@@ -352,6 +358,7 @@ export function HomeClient({
   /* Real reviews only. When none are published the section does not render:
      an empty band is better than invented praise. */
   const TPOOL: Quote[] = reviews.map((r) => ({
+    id: r.id,
     q: r.text,
     name: r.author,
     role: r.source === "google" ? t.viaGoogle : t.viaDirect,
@@ -361,6 +368,16 @@ export function HomeClient({
     date: r.date,
     url: r.sourceUrl,
   }));
+  /* One decimal, as Google shows it. */
+  const avgRating = TPOOL.length
+    ? TPOOL.reduce((sum, q) => sum + q.rating, 0) / TPOOL.length
+    : 0;
+
+  /* Reviews past the third are folded away: they are worth reading, but not
+     at the cost of pushing the rest of the page down for every visitor. */
+  const [allReviews, setAllReviews] = useState(false);
+  const shownReviews = allReviews ? TPOOL : TPOOL.slice(0, 3);
+
   const cities =
     locale === "en"
       ? CITY_LINKS_EN.map((c) => ({ slug: c.slug, name: c.name, href: `/en/${c.slug}`, img: cityImage(c) }))
@@ -641,7 +658,7 @@ export function HomeClient({
                 </a>
               </div>
 
-              <HeroReviews />
+              <HeroReviews count={TPOOL.length} rating={avgRating} />
 
               {/* Risk reversal: answers the question every visitor has before
                   they will consider getting in touch. */}
@@ -946,9 +963,9 @@ export function HomeClient({
               </a>
             </div>
 
-            <ul className="proof-list reveal">
-              {TPOOL.map((q) => (
-                <li className="proof-item" key={q.name}>
+            <ul className={allReviews || TPOOL.length <= 3 ? "proof-list reveal" : "proof-list proof-list-folded reveal"}>
+              {shownReviews.map((q) => (
+                <li className="proof-item" key={q.id}>
                   <div className="pi-head">
                     {q.avatar ? (
                       <Image className="pi-avatar pi-photo" src={q.avatar} alt="" width={96} height={96} />
@@ -986,6 +1003,17 @@ export function HomeClient({
                   </a>
                 </li>
               ))}
+
+              {TPOOL.length > 3 && (
+                <li className="proof-more">
+                  <button type="button" className="proof-more-btn" onClick={() => setAllReviews((v) => !v)}>
+                    {allReviews ? t.fewerReviews : t.moreReviews(TPOOL.length)}
+                    <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+                      <path d={allReviews ? "M18 15l-6-6-6 6" : "M6 9l6 6 6-6"} />
+                    </svg>
+                  </button>
+                </li>
+              )}
             </ul>
           </div>
 
