@@ -63,7 +63,7 @@ export default async function HomePage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: serializeJsonLd(faqJsonLd) }}
       />
-      <HomeClient projects={projects.slice(0, 6)} reviews={reviews} clients={clients} />
+      <HomeClient projects={projects.slice(0, 6)} projectCount={projects.length} reviews={reviews} clients={clients} />
     </>
   );
 }

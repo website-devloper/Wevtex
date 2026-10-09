@@ -43,7 +43,7 @@ export default async function EnglishHomePage() {
   return (
     <>
       <JsonLd data={faqSchema(FAQS_EN, "en")} />
-      <HomeClient projects={projects.slice(0, 6)} reviews={reviews} clients={clients} />
+      <HomeClient projects={projects.slice(0, 6)} projectCount={projects.length} reviews={reviews} clients={clients} />
     </>
   );
 }

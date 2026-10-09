@@ -18,7 +18,7 @@ import "../../app/wevtex-home.css";
 import { SiteHeader } from "./SiteHeader";
 import { SiteFooter } from "./SiteFooter";
 import { ScrollRevealText } from "./ScrollRevealText";
-import { HeroReviews } from "./HeroReviews";
+import { HeroReviews, GoogleMark } from "./HeroReviews";
 import { InkBackdrop } from "./primitives";
 import { CITY_LINKS, CITY_LINKS_EN, cityImage } from "@/lib/city-list";
 import { StickyCta } from "./StickyCta";
@@ -28,7 +28,7 @@ import type { Project } from "@/lib/projects-data";
 import type { Review, ClientLogo } from "@/lib/content";
 import { ServicesBento, SERVICE_ICONS } from "./SharedSections";
 /* Contact channels — one definition for the whole site, see lib/site-links.ts */
-import { WHATSAPP_URL, serviceWhatsAppUrl, GOOGLE_REVIEWS_URL, PORTFOLIO_URL, industryPath } from "@/lib/site-links";
+import { WHATSAPP_URL, serviceWhatsAppUrl, GOOGLE_REVIEWS_URL, PORTFOLIO_URL, PRICING_URL, industryPath } from "@/lib/site-links";
 
 /* Client logo wall. Each file is pre-normalised onto the same 400x170
    transparent canvas, sized by optical weight rather than raw height — a
@@ -71,17 +71,33 @@ const IC_ICONS = [
   <svg key="7" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>,
 ];
 
-/* Sample testimonials — placeholder content shown for layout only.
-   TODO: replace with real, attributed client reviews (name, company, photo) before launch. */
+/* A published review, as the section needs it: the words, who wrote them,
+   and the address where anyone can go and read the same thing. */
+/** "mars 2026" / "March 2026". Fixed time zone so the server and the browser
+    agree: a date rendered from the visitor's zone would flip at midnight and
+    trip hydration. */
+function fmtMonth(iso: string, locale: "fr" | "en"): string {
+  const d = new Date(`${iso}T12:00:00Z`);
+  if (Number.isNaN(d.getTime())) return "";
+  return new Intl.DateTimeFormat(locale === "fr" ? "fr-FR" : "en-GB", {
+    month: "long",
+    year: "numeric",
+    timeZone: "UTC",
+  }).format(d);
+}
+
 type Quote = {
   q: string;
-  em?: string;
   name: string;
   role: string;
   /** Initial, shown when there is no photo. */
   a: string;
   avatar?: string;
-  rating?: number;
+  rating: number;
+  /** ISO date from the dashboard; formatted at render. */
+  date?: string;
+  /** The review's own page, when the client gave one. */
+  url?: string;
 };
 
 const T = {
@@ -136,15 +152,19 @@ const T = {
     ],
     nextSite: "Le prochain site de cette liste peut être le vôtre.",
     testiEyebrow: "Avis clients",
-    testiA: "Ce que disent ceux qui ",
-    testiEm: "ont déjà signé.",
-    testiSub: "Leur avis compte plus que notre discours. Nos avis Google, eux, sont publics et vérifiables.",
-    rated: "Noté 5 sur 5",
-    prevReviews: "Avis précédents",
-    nextReviews: "Avis suivants",
-    readGoogle: "Lire nos avis sur Google",
+    testiA: "Nos avis, ",
+    testiEm: "en entier.",
+    testiSub:
+      "Peu nombreux, et tous vérifiables. Chacun est publié sous le nom de son auteur sur notre fiche Google, et s'ouvre en un clic. Nous préférons en afficher peu de vrais plutôt que beaucoup que nous aurions écrits.",
+    rated: (n: number) => `Noté ${n} sur 5`,
+    reviewCount: (n: number) => (n > 1 ? `${n} avis Google` : "1 avis Google"),
+    readGoogle: "Voir la fiche Google",
+    seeOnGoogle: "Lire cet avis sur Google",
+    checkLabel: "À vérifier aussi",
+    checkWork: (n: number) => `Les ${n} sites livrés, en ligne aujourd'hui`,
+    checkPrices: "Les prix, publics et en dirhams",
     viaGoogle: "Avis Google",
-    viaDirect: "Client Wevtex",
+    viaDirect: "Client vérifié",
     icEyebrow: "Votre secteur",
     icA: "Un riad ne vend pas comme ",
     icEm: "une clinique.",
@@ -233,15 +253,19 @@ const T = {
     ],
     nextSite: "The next website on this list could be yours.",
     testiEyebrow: "Client reviews",
-    testiA: "What clients say ",
-    testiEm: "after signing.",
-    testiSub: "Their word counts for more than ours. Our Google reviews are public and verifiable.",
-    rated: "Rated 5 out of 5",
-    prevReviews: "Previous reviews",
-    nextReviews: "Next reviews",
-    readGoogle: "Read our reviews on Google",
+    testiA: "Our reviews, ",
+    testiEm: "in full.",
+    testiSub:
+      "Few of them, and every one verifiable. Each is published under its author's name on our Google profile, one click away. We would rather show a handful of real ones than a wall we wrote ourselves.",
+    rated: (n: number) => `Rated ${n} out of 5`,
+    reviewCount: (n: number) => (n > 1 ? `${n} Google reviews` : "1 Google review"),
+    readGoogle: "See the Google profile",
+    seeOnGoogle: "Read this review on Google",
+    checkLabel: "Check these too",
+    checkWork: (n: number) => `The ${n} websites we delivered, live today`,
+    checkPrices: "The prices, public and in dirhams",
     viaGoogle: "Google review",
-    viaDirect: "Wevtex client",
+    viaDirect: "Verified client",
     icEyebrow: "Your industry",
     icA: "A riad doesn't sell like ",
     icEm: "a clinic.",
@@ -310,10 +334,14 @@ type WorkItem = {
 
 export function HomeClient({
   projects,
+  projectCount,
   reviews,
   clients,
 }: {
+  /** The six shown in the work section. */
   projects: Project[];
+  /** Every réalisation, which is what the proof strip counts. */
+  projectCount: number;
   reviews: Review[];
   clients: ClientLogo[];
 }) {
@@ -330,6 +358,8 @@ export function HomeClient({
     a: r.author.trim().slice(0, 1).toUpperCase(),
     avatar: r.avatar,
     rating: r.rating,
+    date: r.date,
+    url: r.sourceUrl,
   }));
   const cities =
     locale === "en"
@@ -352,16 +382,9 @@ export function HomeClient({
     capture: true,
   }));
 
-  const [ti, setTi] = useState(0);
   /* Work accordion — a single open index, so opening one closes the rest.
      Index 0 is open on load: a wall of closed rows reads as an empty section. */
   const [openWork, setOpenWork] = useState(0);
-
-  /* Auto-rotate testimonials. */
-  useEffect(() => {
-    const id = window.setInterval(() => setTi((p) => (p + 1) % TPOOL.length), 6000);
-    return () => clearInterval(id);
-  }, [TPOOL.length]);
 
   const rootRef = useRef<HTMLDivElement>(null);
 
@@ -883,80 +906,95 @@ export function HomeClient({
         </div>
       </section>
 
-      {/* ===================== TESTIMONIALS =====================
+      {/* ===================== AVIS CLIENTS =====================
+          Two real reviews will never fill a three-column quote grid, and a
+          grid with an empty column reads as a missing tooth. So the section
+          stops imitating a wall of praise: the position on the left, the
+          reviews quoted whole on the right, each one a click from the page it
+          was written on. The count is stated rather than hidden, because a
+          number you volunteer is worth more than one a visitor has to dig for.
+
           Fed by the Avis clients collection in the dashboard. No reviews
           published means no section: an invented quote is worse than none. */}
       {TPOOL.length > 0 && (
-      <section className="theme-paper testi-v2" id="testimonials">
+      <section className="theme-paper proof" id="testimonials">
         <div className="container">
-          <div className="ic-head ic-head-left reveal">
-            <span className="eyebrow line-eyebrow">{t.testiEyebrow}</span>
-            <h2 className="h-section" style={{ marginTop: 16 }}>
-              {t.testiA}<em className="hl-line">{t.testiEm}</em>
-            </h2>
-            <p className="ic-sub">
-              {t.testiSub}
-            </p>
-          </div>
+          <div className="proof-grid">
+            <div className="proof-rail reveal">
+              <span className="eyebrow line-eyebrow">{t.testiEyebrow}</span>
+              <h2 className="h-section" style={{ marginTop: 16 }}>
+                {t.testiA}<em className="hl-line">{t.testiEm}</em>
+              </h2>
+              <p className="ic-sub proof-lede">{t.testiSub}</p>
 
-          {/* Three equal columns, hairline-separated. The old layout made the
-              middle one a dark card and the outer two plain, so nothing lined
-              up and short quotes left a void under them. Uniform treatment
-              fixes both: a quote is content, not an object. */}
-          <div className={`testi-grid testi-grid-${Math.min(3, TPOOL.length)} reveal`}>
-            {Array.from({ length: Math.min(3, TPOOL.length) }, (_, off) => off).map((off) => {
-              const q = TPOOL[(ti + off) % TPOOL.length];
-              return (
-                <figure className="testi-col" key={off}>
-                  <blockquote className="testi-q">
-                    &ldquo;{q.q}{q.em ? <em className="hl-line">{q.em}</em> : null}&rdquo;
-                  </blockquote>
-                  <figcaption className="testi-person">
-                    {q.avatar ? (
-                      <Image className="testi-avatar testi-photo" src={q.avatar} alt="" width={96} height={96} />
-                    ) : (
-                      <span className="testi-avatar">{q.a}</span>
-                    )}
-                    <div>
-                      <div className="testi-name-row">
-                        <span className="testi-name">{q.name}</span>
-                        <span className="testi-stars" aria-label={t.rated}>
-                          {Array.from({ length: q.rating ?? 5 }, (_, n) => n).map((n) => (
-                            <svg key={n} viewBox="0 0 24 24" width="14" height="14" fill="currentColor" aria-hidden>
-                              <path d="M12 2l2.9 6.3 6.9.6-5.2 4.6 1.6 6.7L12 17.3 5.8 20.8l1.6-6.7L2.2 8.9l6.9-.6z" />
-                            </svg>
-                          ))}
-                        </span>
-                      </div>
-                      <div className="testi-role">{q.role}</div>
-                    </div>
-                  </figcaption>
-                </figure>
-              );
-            })}
-          </div>
-
-          {TPOOL.length > 3 && (
-          <div className="testi-controls reveal">
-            <button className="ic-arrow" aria-label={t.prevReviews} onClick={() => setTi((p) => (p - 1 + TPOOL.length) % TPOOL.length)}>
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M15 18l-6-6 6-6" /></svg>
-            </button>
-            <div className="ic-dots testi-dots">
-              {TPOOL.map((_, d) => (
-                <span key={d} className={d === ti ? "on" : ""} onClick={() => setTi(d)} role="button" aria-label={`Go to review ${d + 1}`}></span>
-              ))}
+              <a
+                className="proof-google"
+                href={GOOGLE_REVIEWS_URL}
+                target="_blank"
+                rel="noopener nofollow"
+              >
+                <span className="pg-top">
+                  <GoogleMark size={22} />
+                  <span className="pg-score">{locale === "fr" ? "5,0" : "5.0"}</span>
+                  <span className="rv-stars rv-stars-gold" aria-hidden>★★★★★</span>
+                </span>
+                <span className="pg-count">{t.reviewCount(TPOOL.length)}</span>
+                <span className="pg-link">
+                  {t.readGoogle}
+                  <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+                </span>
+              </a>
             </div>
-            <button className="ic-arrow" aria-label={t.nextReviews} onClick={() => setTi((p) => (p + 1) % TPOOL.length)}>
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M9 18l6-6-6-6" /></svg>
-            </button>
-          </div>
-          )}
 
-          <div className="testi-cta reveal">
-            <a href={GOOGLE_REVIEWS_URL} className="btn btn-outline" target="_blank" rel="noopener nofollow">
-              {t.readGoogle}
-              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden style={{ marginLeft: 4 }}><path d="M5 12h14M13 6l6 6-6 6" /></svg>
-            </a>
+            <ul className="proof-list reveal">
+              {TPOOL.map((q) => (
+                <li className="proof-item" key={q.name}>
+                  <div className="pi-head">
+                    {q.avatar ? (
+                      <Image className="pi-avatar pi-photo" src={q.avatar} alt="" width={96} height={96} />
+                    ) : (
+                      <span className="pi-avatar" aria-hidden>{q.a}</span>
+                    )}
+                    <span className="pi-id">
+                      <span className="pi-name">{q.name}</span>
+                      <span className="pi-meta">
+                        {q.role}
+                        {q.date ? <><span aria-hidden>·</span>{fmtMonth(q.date, locale)}</> : null}
+                      </span>
+                    </span>
+                    <span className="pi-stars" aria-label={t.rated(q.rating)}>
+                      {Array.from({ length: q.rating }, (_, n) => n).map((n) => (
+                        <svg key={n} viewBox="0 0 24 24" width="15" height="15" fill="currentColor" aria-hidden>
+                          <path d="M12 2l2.9 6.3 6.9.6-5.2 4.6 1.6 6.7L12 17.3 5.8 20.8l1.6-6.7L2.2 8.9l6.9-.6z" />
+                        </svg>
+                      ))}
+                    </span>
+                  </div>
+
+                  {/* Quoted whole, exactly as written: the heading promises
+                      "en entier", so no clamping and no ellipsis. */}
+                  <blockquote className="pi-text">{q.q}</blockquote>
+
+                  <a
+                    className="pi-link"
+                    href={q.url || GOOGLE_REVIEWS_URL}
+                    target="_blank"
+                    rel="noopener nofollow"
+                  >
+                    <GoogleMark size={14} />
+                    {t.seeOnGoogle}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* The reviews are one kind of evidence. These are the others, and
+              unlike an opinion they can be opened and checked. */}
+          <div className="proof-check reveal">
+            <span className="pc-label">{t.checkLabel}</span>
+            <a className="pc-link" href={lp(PORTFOLIO_URL)}>{t.checkWork(projectCount)}</a>
+            <a className="pc-link" href={lp(PRICING_URL)}>{t.checkPrices}</a>
           </div>
         </div>
       </section>
