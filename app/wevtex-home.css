@@ -5872,7 +5872,7 @@ html:has(.cc-bar) .wevtex .float-actions { --cc-gap: 14px; }
 /* The fold. Three rows make the point; the rest are a click away, and the
    button carries the total so nothing looks withheld. The last visible row
    fades out, which is what tells you the list continues. */
-.wevtex .proof-list-folded .proof-item:nth-child(3) {
+.wevtex .proof-list[data-folded] .proof-item:nth-child(3) {
   -webkit-mask-image: linear-gradient(180deg, #000 58%, rgba(0, 0, 0, 0.14) 100%);
   mask-image: linear-gradient(180deg, #000 58%, rgba(0, 0, 0, 0.14) 100%);
 }

@@ -963,7 +963,11 @@ export function HomeClient({
               </a>
             </div>
 
-            <ul className={allReviews || TPOOL.length <= 3 ? "proof-list reveal" : "proof-list proof-list-folded reveal"}>
+            {/* The fold lives in an attribute, never in className: useReveal
+                adds .in to every .reveal imperatively and then stops watching,
+                so re-rendering a different class string here would strip it
+                and drop the whole list back to opacity 0, for good. */}
+            <ul className="proof-list reveal" data-folded={allReviews || TPOOL.length <= 3 ? undefined : "true"}>
               {shownReviews.map((q) => (
                 <li className="proof-item" key={q.id}>
                   <div className="pi-head">
