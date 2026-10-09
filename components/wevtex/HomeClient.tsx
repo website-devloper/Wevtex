@@ -86,6 +86,10 @@ function fmtMonth(iso: string, locale: "fr" | "en"): string {
   }).format(d);
 }
 
+/** Reviews shown before the fold. The cards sit two abreast, so an even
+    number: three would leave a hole in the grid where the fourth belongs. */
+const FOLD_AT = 4;
+
 type Quote = {
   /** The entry slug: unique where the author's name is not. */
   id: string;
@@ -96,6 +100,8 @@ type Quote = {
   a: string;
   avatar?: string;
   rating: number;
+  /** True for a Google review, whose source the card's link already names. */
+  isGoogle: boolean;
   /** ISO date from the dashboard; formatted at render. */
   date?: string;
   /** The review's own page, when the client gave one. */
@@ -362,6 +368,7 @@ export function HomeClient({
     q: r.text,
     name: r.author,
     role: r.source === "google" ? t.viaGoogle : t.viaDirect,
+    isGoogle: r.source === "google",
     a: r.author.trim().slice(0, 1).toUpperCase(),
     avatar: r.avatar,
     rating: r.rating,
@@ -376,7 +383,7 @@ export function HomeClient({
   /* Reviews past the third are folded away: they are worth reading, but not
      at the cost of pushing the rest of the page down for every visitor. */
   const [allReviews, setAllReviews] = useState(false);
-  const shownReviews = allReviews ? TPOOL : TPOOL.slice(0, 3);
+  const shownReviews = allReviews ? TPOOL : TPOOL.slice(0, FOLD_AT);
 
   const cities =
     locale === "en"
@@ -967,7 +974,7 @@ export function HomeClient({
                 adds .in to every .reveal imperatively and then stops watching,
                 so re-rendering a different class string here would strip it
                 and drop the whole list back to opacity 0, for good. */}
-            <ul className="proof-list reveal" data-folded={allReviews || TPOOL.length <= 3 ? undefined : "true"}>
+            <ul className="proof-list reveal" data-folded={allReviews || TPOOL.length <= FOLD_AT ? undefined : "true"}>
               {shownReviews.map((q) => (
                 <li className="proof-item" key={q.id}>
                   <div className="pi-head">
@@ -979,8 +986,8 @@ export function HomeClient({
                     <span className="pi-id">
                       <span className="pi-name">{q.name}</span>
                       <span className="pi-meta">
-                        {q.role}
-                        {q.date ? <><span aria-hidden>·</span>{fmtMonth(q.date, locale)}</> : null}
+                        {q.isGoogle ? null : <>{q.role}{q.date ? <span aria-hidden>·</span> : null}</>}
+                        {q.date ? fmtMonth(q.date, locale) : null}
                       </span>
                     </span>
                     <span className="pi-stars" aria-label={t.rated(q.rating)}>
@@ -1008,7 +1015,7 @@ export function HomeClient({
                 </li>
               ))}
 
-              {TPOOL.length > 3 && (
+              {TPOOL.length > FOLD_AT && (
                 <li className="proof-more">
                   <button type="button" className="proof-more-btn" onClick={() => setAllReviews((v) => !v)}>
                     {allReviews ? t.fewerReviews : t.moreReviews(TPOOL.length)}
