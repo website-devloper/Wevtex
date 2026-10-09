@@ -20,7 +20,7 @@ import { SiteFooter } from "./SiteFooter";
 import { ProjectBriefForm } from "./ProjectBriefForm";
 import { useReveal } from "./useReveal";
 import { useLocale } from "./locale";
-import { EMAIL_URL, WHATSAPP_URL, auditWhatsAppUrl } from "@/lib/site-links";
+import { EMAIL, EMAIL_URL, WHATSAPP_URL, auditWhatsAppUrl } from "@/lib/site-links";
 import type { ContactFaq } from "@/lib/contact-content";
 
 const WHATSAPP = (
@@ -130,7 +130,7 @@ export function ContactView({ faqs }: { faqs: ContactFaq[] }) {
                   <span className="cs-chan-ic">
                     <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="5" width="18" height="14" rx="2" /><path d="M3 7l9 6 9-6" /></svg>
                   </span>
-                  <span className="cs-chan-tx"><b>hello@wevtex.com</b></span>
+                  <span className="cs-chan-tx"><b>{EMAIL}</b></span>
                   <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden><path d="M5 12h14M13 6l6 6-6 6" /></svg>
                 </a>
                 <a className="cs-chan" href="tel:+212783180806">

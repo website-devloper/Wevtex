@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { LegalPage } from "@/components/wevtex/LegalPage";
 import { languageAlternates } from "@/lib/i18n-paths";
+import { EMAIL, EMAIL_URL } from "@/lib/site-links";
 
 export const metadata: Metadata = {
   title: "Privacy policy",
@@ -25,7 +26,7 @@ export default function PrivacyPolicyPage() {
               <p>
                 Wevtex, a web agency established in Casablanca (Morocco), is responsible for processing the data collected
                 through this website. For any question about this policy, write to us at{" "}
-                <a href="mailto:hello@wevtex.com">hello@wevtex.com</a>.
+                <a href={EMAIL_URL}>{EMAIL}</a>.
               </p>
               <p>Company name and registration: [TO BE COMPLETED].</p>
             </>
@@ -110,7 +111,7 @@ export default function PrivacyPolicyPage() {
                 withdraw your consent to analytics at any time.
               </p>
               <p>
-                One address for all of this: <a href="mailto:hello@wevtex.com">hello@wevtex.com</a>. We answer within
+                One address for all of this: <a href={EMAIL_URL}>{EMAIL}</a>. We answer within
                 thirty days, in practice much faster.
               </p>
               <p>

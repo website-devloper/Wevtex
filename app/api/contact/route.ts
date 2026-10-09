@@ -23,7 +23,9 @@ import { leadNotificationEmail, newsletterEmail, autoReplyEmail } from "@/lib/em
  *
  * Required env vars (see .env.example):
  *   RESEND_API_KEY     – your Resend API key
- *   LEAD_NOTIFY_EMAIL  – inbox that receives new leads (e.g. leads@wevtex.com)
+ *   LEAD_NOTIFY_EMAIL  – inbox that receives new leads. It must be a mailbox
+ *                        that really accepts mail: wevtex.com has no MX record,
+ *                        so an address on it would silently bounce every lead.
  *   LEAD_FROM_EMAIL    – verified Resend sender, e.g. "Wevtex <hello@wevtex.com>"
  */
 
@@ -254,8 +256,9 @@ export async function POST(req: Request) {
           hasPhone: phone !== "" || !visitorIsEmail,
           locale,
         }),
-        // hello@wevtex.com has no MX record, so a client who hits Reply on this
-        // would be writing into a void. Point them at the inbox we actually read.
+        // The sender address is a Resend identity, not a mailbox: wevtex.com has
+        // no MX record, so a client who hits Reply on this would be writing into
+        // a void. Point them at the inbox we actually read.
         replyTo: notify,
       });
     } catch (err) {

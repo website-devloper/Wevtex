@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { LegalPage } from "@/components/wevtex/LegalPage";
 import { languageAlternates } from "@/lib/i18n-paths";
+import { EMAIL, EMAIL_URL } from "@/lib/site-links";
 
 export const metadata: Metadata = {
   title: "Legal notice",
@@ -41,7 +42,7 @@ export default function LegalNoticePage() {
               <p>
                 Phone: <a href="tel:+212783180806">+212 783 180 806</a>
                 <br />
-                Email: <a href="mailto:hello@wevtex.com">hello@wevtex.com</a>
+                Email: <a href={EMAIL_URL}>{EMAIL}</a>
               </p>
               <p>Publication director: [TO BE COMPLETED]</p>
             </>

@@ -6,7 +6,7 @@ import { AnalyticsConsent } from "@/components/wevtex/AnalyticsConsent";
 import { SmoothScroll } from "@/components/wevtex/SmoothScroll";
 import { SITE_URL, abs } from "@/lib/seo";
 import { PRICE_RANGE_EN } from "@/lib/pricing";
-import { servicePath } from "@/lib/site-links";
+import { EMAIL, servicePath } from "@/lib/site-links";
 import { localize } from "@/lib/i18n-paths";
 import { SERVICES_EN } from "@/components/wevtex/homeContent.en";
 
@@ -104,7 +104,7 @@ export default function EnglishRootLayout({ children }: Readonly<{ children: Rea
     description:
       "Web design and digital marketing agency based in Casablanca: business websites, online stores, mobile apps, SEO and automation for businesses in Morocco and abroad.",
     telephone: "+212783180806",
-    email: "hello@wevtex.com",
+    email: EMAIL,
     address: {
       "@type": "PostalAddress",
       addressLocality: "Casablanca",

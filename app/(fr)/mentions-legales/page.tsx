@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { languageAlternates } from "@/lib/i18n-paths";
 import { LegalPage } from "@/components/wevtex/LegalPage";
-import { CONTACT_URL } from "@/lib/site-links";
+import { CONTACT_URL, EMAIL, EMAIL_URL } from "@/lib/site-links";
 
 export const metadata: Metadata = {
   title: "Mentions légales",
@@ -45,7 +45,7 @@ export default function MentionsLegalesPage() {
               <p>
                 Téléphone&nbsp;: <a href="tel:+212783180806">+212 783 180 806</a>
                 <br />
-                E-mail&nbsp;: <a href="mailto:hello@wevtex.com">hello@wevtex.com</a>
+                E-mail&nbsp;: <a href={EMAIL_URL}>{EMAIL}</a>
               </p>
               <p>Directeur de la publication&nbsp;: [À COMPLÉTER]</p>
             </>

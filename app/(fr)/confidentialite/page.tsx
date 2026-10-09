@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { languageAlternates } from "@/lib/i18n-paths";
 import { LegalPage } from "@/components/wevtex/LegalPage";
-import { CONTACT_URL } from "@/lib/site-links";
+import { CONTACT_URL, EMAIL, EMAIL_URL } from "@/lib/site-links";
 
 export const metadata: Metadata = {
   title: "Politique de confidentialité",
@@ -88,7 +88,7 @@ export default function ConfidentialitePage() {
             <p>
               Vous avez le droit de supprimer vos données personnelles de notre base de
               données en envoyant un email à{" "}
-              <a href="mailto:hello@wevtex.com">hello@wevtex.com</a>.
+              <a href={EMAIL_URL}>{EMAIL}</a>.
             </p>
           ),
         },

@@ -6,7 +6,7 @@ import { AnalyticsConsent } from "@/components/wevtex/AnalyticsConsent";
 import { SmoothScroll } from "@/components/wevtex/SmoothScroll";
 import { SITE_URL, abs } from "@/lib/seo";
 import { PRICE_RANGE } from "@/lib/pricing";
-import { servicePath } from "@/lib/site-links";
+import { EMAIL, servicePath } from "@/lib/site-links";
 import { SERVICES } from "@/components/wevtex/homeContent";
 
 const GA_ID = process.env.NEXT_PUBLIC_GA_ID;
@@ -98,7 +98,7 @@ export default function RootLayout({
     description:
       "Agence web basée à Casablanca : sites vitrines, boutiques en ligne, applications, SEO et automatisation pour les entreprises au Maroc et à l'international.",
     telephone: "+212783180806",
-    email: "hello@wevtex.com",
+    email: EMAIL,
     address: {
       "@type": "PostalAddress",
       addressLocality: "Casablanca",
