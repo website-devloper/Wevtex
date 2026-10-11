@@ -23,9 +23,11 @@ import { leadNotificationEmail, newsletterEmail, autoReplyEmail } from "@/lib/em
  *
  * Required env vars (see .env.example):
  *   RESEND_API_KEY     – your Resend API key
- *   LEAD_NOTIFY_EMAIL  – inbox that receives new leads. It must be a mailbox
- *                        that really accepts mail: wevtex.com has no MX record,
- *                        so an address on it would silently bounce every lead.
+ *   LEAD_NOTIFY_EMAIL  – inbox that receives new leads. The domain's MX
+ *                        records point at Zoho, so hello@wevtex.com is a real
+ *                        mailbox. Any address here must be one that accepts
+ *                        mail: pointed at one that does not, every lead
+ *                        bounces and nothing in the app notices.
  *   LEAD_FROM_EMAIL    – verified Resend sender, e.g. "Wevtex <hello@wevtex.com>"
  */
 
@@ -256,9 +258,10 @@ export async function POST(req: Request) {
           hasPhone: phone !== "" || !visitorIsEmail,
           locale,
         }),
-        // The sender address is a Resend identity, not a mailbox: wevtex.com has
-        // no MX record, so a client who hits Reply on this would be writing into
-        // a void. Point them at the inbox we actually read.
+        // Reply-To is the inbox rather than the sender. The two happen to be
+        // the same address today, but LEAD_FROM_EMAIL is a Resend sending
+        // identity and LEAD_NOTIFY_EMAIL is where someone actually reads, and
+        // nothing keeps them in step. A reply should follow the reader.
         replyTo: notify,
       });
     } catch (err) {
