@@ -91,7 +91,7 @@ export function CityView({ city }: { city: City & { fr?: string } }) {
         {/* The city photo fades in from the right, as on the sector pages: the
             headline keeps a clean cream ground and its full contrast. */}
         <section
-          className="theme-cream sec-first ind-hero"
+          className="theme-cream sec-first ind-hero city-hero"
           style={{
             paddingBottom: "clamp(48px, 7vh, 80px)",
             ["--ind-hero-img" as string]: `url(${cityImage(city)})`,

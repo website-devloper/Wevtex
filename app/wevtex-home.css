@@ -3736,6 +3736,16 @@
   .wevtex .ind-hero-bg { display: none; }
 }
 
+/* The city pages put a map here, not a photograph. A flat shape at the
+   sector pages' weight reads as an object competing with the headline rather
+   than as a backdrop, so it is pulled back and held to the right third. */
+.wevtex .city-hero .ind-hero-bg {
+  opacity: 0.4;
+  filter: saturate(0.82);
+  -webkit-mask-image: linear-gradient(90deg, transparent 0%, rgba(0,0,0,0.28) 46%, #000 84%);
+  mask-image: linear-gradient(90deg, transparent 0%, rgba(0,0,0,0.28) 46%, #000 84%);
+}
+
 /* ===========================================================================
    DESIGN PRIMITIVES
    Section tone + rhythm, eyebrow, heading emphasis devices, surfaces, and the
@@ -4002,8 +4012,11 @@
   letter-spacing: -0.025em;
   max-width: 24ch;
 }
-.wevtex .inline-cta-ink .btn-outline { border-color: #3a3e46; color: #f4f5f2; }
-.wevtex .inline-cta-ink .btn-outline:hover { border-color: #f4f5f2; background: rgba(255, 255, 255, 0.06); }
+.wevtex .inline-cta-ink .btn-outline { border-color: rgba(198, 242, 78, 0.34); color: #f4f5f2; }
+.wevtex .inline-cta-ink .btn-outline:hover {
+  border-color: var(--accent); color: var(--accent);
+  background: rgba(198, 242, 78, 0.08);
+}
 
 
 /* ---------------------------------------------------------------------------
@@ -4307,8 +4320,11 @@
 .wevtex .founder-ink .eyebrow { color: rgba(244, 245, 242, 0.62); }
 .wevtex .founder-ink p,
 .wevtex .founder-ink .ic-sub { color: rgba(244, 245, 242, 0.78); }
-.wevtex .founder-ink .btn-outline { border-color: #3a3e46; color: #f4f5f2; }
-.wevtex .founder-ink .btn-outline:hover { border-color: #f4f5f2; background: rgba(255, 255, 255, 0.06); }
+.wevtex .founder-ink .btn-outline { border-color: rgba(198, 242, 78, 0.34); color: #f4f5f2; }
+.wevtex .founder-ink .btn-outline:hover {
+  border-color: var(--accent); color: var(--accent);
+  background: rgba(198, 242, 78, 0.08);
+}
 
 /* The split CTA is left-aligned throughout — the paragraph was still inheriting
    the centring from the band's previous centred layout. */
@@ -4326,11 +4342,43 @@
 .wevtex .ind-outcomes-ink { background: #1c2a08; color: #f4f5f2; position: relative; }
 .wevtex .ind-outcomes-ink .h-section { color: #f4f5f2; }
 .wevtex .ind-outcomes-ink .eyebrow { color: rgba(244, 245, 242, 0.62); }
+/* The cards were #191b1f on #1c2a08: two near-blacks of different hue, so
+   they read as grey patches dropped onto the green rather than as part of it.
+   They are a lighter step of the section's own green now, lifted off it by a
+   lime hairline and a highlight along the top edge. */
 .wevtex .ind-outcomes-ink .ind-outcome {
-  background: #191b1f; border-color: #2a2d33;
+  background: linear-gradient(180deg, #243209 0%, #1f2b08 100%);
+  border-color: rgba(198, 242, 78, 0.16);
+  box-shadow: inset 0 1px 0 rgba(198, 242, 78, 0.09);
+  transition: border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
 }
-.wevtex .ind-outcomes-ink .ind-outcome h3 { color: #f4f5f2; }
-.wevtex .ind-outcomes-ink .ind-outcome p { color: rgba(244, 245, 242, 0.78); }
+.wevtex .ind-outcomes-ink .ind-outcome:hover {
+  border-color: rgba(198, 242, 78, 0.42);
+  transform: translateY(-3px);
+  box-shadow: inset 0 1px 0 rgba(198, 242, 78, 0.16), 0 18px 34px -24px rgba(0, 0, 0, 0.8);
+}
+/* Two lines' worth of room whatever the title needs, so the lime rule and the
+   paragraph under it line up across the row. Without it a one-line title and
+   a two-line one put their rules at different heights and the row looks
+   accidental. */
+.wevtex .ind-outcomes-ink .ind-outcome h3 {
+  color: #f4f5f2;
+  min-height: calc(2em * 1.25);
+}
+.wevtex .ind-outcomes-ink .ind-outcome-rule {
+  width: 28px; height: 2px;
+  background: var(--accent);
+  box-shadow: 0 0 14px rgba(198, 242, 78, 0.45);
+}
+.wevtex .ind-outcomes-ink .ind-outcome p { color: rgba(244, 245, 242, 0.76); }
+
+@media (max-width: 700px) {
+  /* Stacked, each title gets the lines it needs and the reserve is wasted. */
+  .wevtex .ind-outcomes-ink .ind-outcome h3 { min-height: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .wevtex .ind-outcomes-ink .ind-outcome:hover { transform: none; }
+}
 
 /* ---------------------------------------------------------------------------
    Closing CTA — match the compact inline CTA
