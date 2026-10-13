@@ -244,12 +244,12 @@ packs:
           - Training for your team on handover
   - service: custom-solutions
     tiers:
-      - key: Cadrage
-        price: 6 000
+      - key: Entreprises
+        price: '6000'
         showFrom: true
         featured: false
-        nameFr: Cadrage
-        nameEn: Discovery
+        nameFr: Entreprise
+        nameEn: Entreprise
         noteFr: 2 à 3 semaines · livrable à vous
         noteEn: 2 to 3 weeks · the deliverable is yours
         featuresFr:
@@ -264,106 +264,68 @@ packs:
           - Data model
           - Priced scope
           - Deducted from the project if you continue
-      - key: Plateforme
-        price: 18 000
-        showFrom: true
-        featured: true
-        nameFr: Plateforme
-        nameEn: Platform
-        noteFr: À partir de · 8 à 12 semaines
-        noteEn: From · 8 to 12 weeks
-        featuresFr:
-          - Portail ou outil métier
-          - Comptes, rôles et permissions
-          - Tableaux de bord
-          - Une intégration incluse
-          - 6 mois d'accompagnement
-        featuresEn:
-          - Portal or business tool
-          - Accounts, roles and permissions
-          - Dashboards
-          - One integration included
-          - 6 months of support
-      - key: SaaS complet
-        price: 60 000
-        showFrom: true
-        featured: false
-        nameFr: SaaS complet
-        nameEn: Full SaaS
-        noteFr: À partir de · périmètre défini ensemble
-        noteEn: From · scope defined together
-        featuresFr:
-          - Architecture multi-entreprises
-          - Abonnements et facturation
-          - Intégrations multiples
-          - Tests de charge
-          - Accompagnement prioritaire
-        featuresEn:
-          - Multi-tenant architecture
-          - Subscriptions and billing
-          - Multiple integrations
-          - Load testing
-          - Priority support
   - service: whatsapp-bots
     tiers:
-      - key: Essentiel
-        price: 2 400
+      - key: Basic
+        price: '500'
         showFrom: true
         featured: false
-        nameFr: Essentiel
-        nameEn: Essential
-        noteFr: Mise en place · puis 390 DH par mois
-        noteEn: Setup · then MAD 390 a month
+        nameFr: Basic
+        nameEn: Basic
+        noteFr: Mise en place · puis 500 DH par mois
+        noteEn: Setup · then MAD 500 a month
         featuresFr:
           - Compte WhatsApp API
-          - Jusqu'à 10 scénarios
+          - 50 Chat / Mois
           - Réponses aux questions courantes
           - Transmission à votre équipe
           - Réglage mensuel
         featuresEn:
           - WhatsApp API account
-          - Up to 10 flows
+          - Up to 50 Chat / Month
           - Answers to common questions
           - Handover to your team
           - Monthly tuning
-      - key: Qualification
-        price: 5 900
+      - key: Standard
+        price: '1000'
         showFrom: true
         featured: true
-        nameFr: Qualification
-        nameEn: Qualification
-        noteFr: Mise en place · puis 690 DH par mois
-        noteEn: Setup · then MAD 690 a month
+        nameFr: Standard
+        nameEn: Standard
+        noteFr: Mise en place · puis 1000 DH par mois
+        noteEn: Setup · then MAD 1000 a month
         featuresFr:
           - Tout de la formule Essentiel
-          - Scénarios illimités
+          - 150 Chat / Mois
           - Qualification des prospects
           - Prise de rendez-vous
           - Connexion CRM
           - Rapports mensuels
         featuresEn:
           - Everything in Essential
-          - Unlimited flows
+          - Up to 150 Chat / Month
           - Lead qualification
           - Appointment booking
           - CRM connection
           - Monthly reports
-      - key: Sur mesure
-        price: 12 000
+      - key: Premium
+        price: '1500'
         showFrom: true
         featured: false
-        nameFr: Sur mesure
-        nameEn: Custom
+        nameFr: Premium
+        nameEn: Premium
         noteFr: À partir de · périmètre défini ensemble
         noteEn: From · scope defined together
         featuresFr:
           - Compréhension libre par IA
+          - 'Chat illimitée '
           - Plusieurs langues
           - Intégrations multiples
           - Campagnes sortantes
           - Accompagnement prioritaire
         featuresEn:
           - Free-text understanding by AI
+          - Unlimited Chat
           - Several languages
           - Multiple integrations
           - Outbound campaigns
