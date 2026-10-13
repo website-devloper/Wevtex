@@ -1,537 +1,462 @@
 packs:
-  -
-    service: "website-creation"
+  - service: website-creation
     tiers:
-      -
-        key: "Vitrine"
-        price: "1 899"
-        unit: null
+      - key: Vitrine
+        price: 1 899
         showFrom: false
         featured: false
-        nameFr: "Basic"
-        nameEn: "Basic"
-        noteFr: "Site vitrine front-end, livré en 5 à 7 jours"
-        noteEn: "Front-end brochure site, delivered in 5 to 7 days"
+        nameFr: Basic
+        nameEn: Basic
+        noteFr: Site vitrine front-end, livré en 5 à 7 jours
+        noteEn: Front-end brochure site, delivered in 5 to 7 days
         featuresFr:
-          - "Jusqu'à 5 pages : accueil, services, à propos, contact"
-          - "Design sur mesure, aux couleurs de votre marque"
-          - "Affichage parfait sur mobile, tablette et ordinateur"
-          - "Formulaire de contact relié à votre adresse e-mail"
-          - "Bouton WhatsApp et liens vers vos réseaux sociaux"
-          - "Nom de domaine et hébergement offerts la première année"
-          - "Pages statiques, sans espace d'administration"
+          - 'Jusqu''à 5 pages : accueil, services, à propos, contact'
+          - Design sur mesure, aux couleurs de votre marque
+          - Affichage parfait sur mobile, tablette et ordinateur
+          - Formulaire de contact relié à votre adresse e-mail
+          - Bouton WhatsApp et liens vers vos réseaux sociaux
+          - Nom de domaine et hébergement offerts la première année
+          - Pages statiques, sans espace d'administration
         featuresEn:
-          - "Up to 5 pages: home, services, about, contact"
-          - "Custom design in your brand's colours"
-          - "Reads perfectly on phone, tablet and desktop"
-          - "Contact form wired to your email address"
-          - "WhatsApp button and links to your social accounts"
-          - "Domain name and hosting free for the first year"
-          - "Static pages, no admin area"
-      -
-        key: "Business"
-        price: "2 999"
-        unit: null
+          - 'Up to 5 pages: home, services, about, contact'
+          - Custom design in your brand's colours
+          - Reads perfectly on phone, tablet and desktop
+          - Contact form wired to your email address
+          - WhatsApp button and links to your social accounts
+          - Domain name and hosting free for the first year
+          - Static pages, no admin area
+      - key: Business
+        price: 2 999
         showFrom: false
         featured: true
-        nameFr: "Standard"
-        nameEn: "Standard"
-        noteFr: "Front-end et back-end, livré en 2 à 3 semaines"
-        noteEn: "Front-end and back-end, delivered in 2 to 3 weeks"
+        nameFr: Standard
+        nameEn: Standard
+        noteFr: Front-end et back-end, livré en 2 à 3 semaines
+        noteEn: Front-end and back-end, delivered in 2 to 3 weeks
         featuresFr:
-          - "Tout ce que contient la formule Basic"
-          - "Jusqu'à 12 pages"
-          - "Back-end sur mesure, avec base de données"
-          - "Espace d'administration : vous changez vos textes et vos images"
-          - "Blog ou actualités, gérés depuis votre tableau de bord"
-          - "Formulaires enregistrés, avec alerte par e-mail"
-          - "Référencement de base : balises, sitemap, Search Console"
+          - Tout ce que contient la formule Basic
+          - Jusqu'à 12 pages
+          - Back-end sur mesure, avec base de données
+          - 'Espace d''administration : vous changez vos textes et vos images'
+          - Blog ou actualités, gérés depuis votre tableau de bord
+          - Formulaires enregistrés, avec alerte par e-mail
+          - 'Référencement de base : balises, sitemap, Search Console'
         featuresEn:
-          - "Everything in Basic"
-          - "Up to 12 pages"
-          - "Custom back-end with a database"
-          - "Admin area: change your own text and images"
-          - "Blog or news, managed from your dashboard"
-          - "Form submissions stored, with email alerts"
-          - "Baseline SEO: tags, sitemap, Search Console"
-      -
-        key: "Boutique"
-        price: "6 999"
-        unit: null
+          - Everything in Basic
+          - Up to 12 pages
+          - Custom back-end with a database
+          - 'Admin area: change your own text and images'
+          - Blog or news, managed from your dashboard
+          - Form submissions stored, with email alerts
+          - 'Baseline SEO: tags, sitemap, Search Console'
+      - key: Boutique
+        price: 6 999
         showFrom: false
         featured: false
-        nameFr: "Premium"
-        nameEn: "Premium"
-        noteFr: "Boutique en ligne et page admin, livrée en 4 à 6 semaines"
-        noteEn: "Online store with an admin page, delivered in 4 to 6 weeks"
+        nameFr: Premium
+        nameEn: Premium
+        noteFr: Boutique en ligne et page admin, livrée en 4 à 6 semaines
+        noteEn: Online store with an admin page, delivered in 4 to 6 weeks
         featuresFr:
-          - "Tout ce que contient la formule Standard"
-          - "Catalogue produits, variantes et gestion du stock"
-          - "Panier, commande et paiement en ligne"
-          - "Page admin : commandes, clients, stock, promotions"
-          - "Comptes clients et historique des commandes"
-          - "Frais de livraison paramétrables par ville"
-          - "Formation à la prise en main, une heure en visio"
+          - Tout ce que contient la formule Standard
+          - Catalogue produits, variantes et gestion du stock
+          - Panier, commande et paiement en ligne
+          - 'Page admin : commandes, clients, stock, promotions'
+          - Comptes clients et historique des commandes
+          - Frais de livraison paramétrables par ville
+          - Formation à la prise en main, une heure en visio
         featuresEn:
-          - "Everything in Standard"
-          - "Product catalogue, variants and stock control"
-          - "Cart, checkout and online payment"
-          - "Admin page: orders, customers, stock, promotions"
-          - "Customer accounts and order history"
-          - "Shipping costs configurable by city"
-          - "One hour of handover training over video"
-  -
-    service: "seo"
+          - Everything in Standard
+          - Product catalogue, variants and stock control
+          - Cart, checkout and online payment
+          - 'Admin page: orders, customers, stock, promotions'
+          - Customer accounts and order history
+          - Shipping costs configurable by city
+          - One hour of handover training over video
+  - service: seo
     tiers:
-      -
-        key: "Essentiel"
-        price: "1 000"
-        unit: null
+      - key: Essentiel
+        price: 1 000
         showFrom: false
         featured: false
-        nameFr: "Basic"
-        nameEn: "Basic"
-        noteFr: "Par mois, engagement de 3 mois"
-        noteEn: "Per month, 3-month minimum"
+        nameFr: Basic
+        nameEn: Basic
+        noteFr: Par mois, engagement de 3 mois
+        noteEn: Per month, 3-month minimum
         featuresFr:
-          - "Recherche des mots-clés de base de votre activité"
-          - "Optimisation des titres, méta-descriptions et balises"
-          - "Sitemap XML et robots.txt, envoyés à Google"
-          - "Search Console et Analytics installés et configurés"
-          - "Correction des erreurs techniques qui bloquent l'indexation"
-          - "Rapport mensuel de positions"
+          - Recherche des mots-clés de base de votre activité
+          - Optimisation des titres, méta-descriptions et balises
+          - Sitemap XML et robots.txt, envoyés à Google
+          - Search Console et Analytics installés et configurés
+          - Correction des erreurs techniques qui bloquent l'indexation
+          - Rapport mensuel de positions
         featuresEn:
-          - "Research on the core keywords of your trade"
-          - "Titles, meta descriptions and tags optimised"
-          - "XML sitemap and robots.txt, submitted to Google"
-          - "Search Console and Analytics installed and configured"
-          - "Technical errors blocking indexing fixed"
-          - "Monthly ranking report"
-      -
-        key: "Croissance"
-        price: "1 500"
-        unit: null
+          - Research on the core keywords of your trade
+          - Titles, meta descriptions and tags optimised
+          - XML sitemap and robots.txt, submitted to Google
+          - Search Console and Analytics installed and configured
+          - Technical errors blocking indexing fixed
+          - Monthly ranking report
+      - key: Croissance
+        price: 1 500
         showFrom: false
         featured: true
-        nameFr: "Intermédiaire"
-        nameEn: "Intermediate"
-        noteFr: "Par mois, engagement de 3 mois"
-        noteEn: "Per month, 3-month minimum"
+        nameFr: Intermédiaire
+        nameEn: Intermediate
+        noteFr: Par mois, engagement de 3 mois
+        noteEn: Per month, 3-month minimum
         featuresFr:
-          - "Tout ce que contient la formule Basic"
-          - "Fiche Google Maps optimisée, photos et publications"
-          - "Recherche de mots-clés assistée par IA, sur l'intention d'achat"
-          - "Réécriture de vos pages existantes pour ces mots-clés"
-          - "SEO local : pages villes et annuaires marocains"
-          - "Suivi des appels et des demandes venus de Google"
+          - Tout ce que contient la formule Basic
+          - Fiche Google Maps optimisée, photos et publications
+          - Recherche de mots-clés assistée par IA, sur l'intention d'achat
+          - Réécriture de vos pages existantes pour ces mots-clés
+          - 'SEO local : pages villes et annuaires marocains'
+          - Suivi des appels et des demandes venus de Google
         featuresEn:
-          - "Everything in Basic"
-          - "Google Maps profile optimised, photos and posts"
-          - "AI-assisted keyword research on buying intent"
-          - "Your existing pages rewritten for those keywords"
-          - "Local SEO: city pages and Moroccan directories"
-          - "Tracking of calls and enquiries coming from Google"
-      -
-        key: "Concurrentiel"
-        price: "2 500"
-        unit: null
+          - Everything in Basic
+          - Google Maps profile optimised, photos and posts
+          - AI-assisted keyword research on buying intent
+          - Your existing pages rewritten for those keywords
+          - 'Local SEO: city pages and Moroccan directories'
+          - Tracking of calls and enquiries coming from Google
+      - key: Concurrentiel
+        price: 2 500
         showFrom: false
         featured: false
-        nameFr: "Avancé"
-        nameEn: "Advanced"
-        noteFr: "Par mois, marchés disputés"
-        noteEn: "Per month, contested markets"
+        nameFr: Avancé
+        nameEn: Advanced
+        noteFr: Par mois, marchés disputés
+        noteEn: Per month, contested markets
         featuresFr:
-          - "Tout ce que contient la formule Intermédiaire"
-          - "Recherche de mots-clés avancée et analyse des concurrents"
-          - "Stratégie de contenu et rédaction d'articles optimisés"
-          - "Inscription sur Clutch, Sortlist et annuaires de référence"
-          - "Netlinking et citations pour asseoir votre autorité"
-          - "Optimisation technique poussée, vitesse et Core Web Vitals"
-          - "Objectif première page sur vos requêtes prioritaires"
+          - Tout ce que contient la formule Intermédiaire
+          - Recherche de mots-clés avancée et analyse des concurrents
+          - Stratégie de contenu et rédaction d'articles optimisés
+          - Inscription sur Clutch, Sortlist et annuaires de référence
+          - Netlinking et citations pour asseoir votre autorité
+          - Optimisation technique poussée, vitesse et Core Web Vitals
+          - Objectif première page sur vos requêtes prioritaires
         featuresEn:
-          - "Everything in Intermediate"
-          - "Advanced keyword research and competitor analysis"
-          - "Content strategy and optimised article writing"
-          - "Listings on Clutch, Sortlist and reference directories"
-          - "Link building and citations to build your authority"
-          - "Deep technical work, speed and Core Web Vitals"
-          - "Aiming for page one on your priority searches"
-  -
-    service: "local-seo"
+          - Everything in Intermediate
+          - Advanced keyword research and competitor analysis
+          - Content strategy and optimised article writing
+          - Listings on Clutch, Sortlist and reference directories
+          - Link building and citations to build your authority
+          - Deep technical work, speed and Core Web Vitals
+          - Aiming for page one on your priority searches
+  - service: local-seo
     tiers:
-      -
-        key: "Mise en place"
-        price: "790"
-        unit: null
-        showFrom: true
-        featured: false
-        nameFr: "Mise en place"
-        nameEn: "Setup"
-        noteFr: "Une fois · sous 2 semaines"
-        noteEn: "One-time · within 2 weeks"
-        featuresFr:
-          - "Création ou reprise de la fiche"
-          - "Catégories et zone optimisées"
-          - "Photos et services"
-          - "10 annuaires locaux"
-          - "Méthode de collecte d'avis"
-        featuresEn:
-          - "Profile created or taken over"
-          - "Categories and area optimized"
-          - "Photos and services"
-          - "10 local directories"
-          - "Review collection method"
-      -
-        key: "Entretien"
-        price: "490"
-        unit: null
-        showFrom: true
-        featured: true
-        nameFr: "Entretien"
-        nameEn: "Upkeep"
-        noteFr: "Par mois · sans engagement"
-        noteEn: "Per month · no commitment"
-        featuresFr:
-          - "Publications mensuelles"
-          - "Réponses aux avis"
-          - "Suivi de position"
-          - "Mise à jour des horaires"
-          - "Rapport mensuel"
-        featuresEn:
-          - "Monthly posts"
-          - "Review replies"
-          - "Rank tracking"
-          - "Hours kept up to date"
-          - "Monthly report"
-      -
-        key: "Multi-sites"
-        price: "1 900"
-        unit: null
-        showFrom: true
-        featured: false
-        nameFr: "Multi-sites"
-        nameEn: "Multi-location"
-        noteFr: "Par mois · à partir de 3 établissements"
-        noteEn: "Per month · from 3 locations"
-        featuresFr:
-          - "Toutes les fiches gérées"
-          - "Cohérence entre points de vente"
-          - "Suivi par établissement"
-          - "Avis centralisés"
-          - "Rapport consolidé"
-        featuresEn:
-          - "All profiles managed"
-          - "Consistency across locations"
-          - "Tracking per location"
-          - "Centralized reviews"
-          - "Consolidated report"
-  -
-    service: "ads"
-    tiers:
-      -
-        key: "Lancement"
-        price: "200"
-        unit: "/ jour"
+      - key: Mise en place
+        price: '300'
         showFrom: false
         featured: false
-        nameFr: "Gestion de campagnes"
-        nameEn: "Campaign management"
-        noteFr: "Frais de gestion, budget publicitaire non compris"
-        noteEn: "Management fee, ad budget not included"
+        nameFr: Mise en place
+        nameEn: Setup
+        noteFr: Une fois · sous 2 semaines
+        noteEn: One-time · within 2 weeks
         featuresFr:
-          - "Campagnes Google, Facebook et Instagram"
-          - "Création des visuels et rédaction des annonces"
-          - "Ciblage par ville, âge et centres d'intérêt"
-          - "Page d'atterrissage pensée pour la conversion"
-          - "Suivi des conversions : appels, WhatsApp, formulaires"
-          - "Enchères et budget ajustés en continu"
-          - "Rapport de performance chaque semaine"
+          - Création ou reprise de la fiche
+          - Catégories et zone optimisées
+          - Photos et services
+          - 10 annuaires locaux
         featuresEn:
-          - "Google, Facebook and Instagram campaigns"
-          - "Visuals designed and ad copy written"
-          - "Targeting by city, age and interests"
-          - "Landing page built to convert"
-          - "Conversion tracking: calls, WhatsApp, forms"
-          - "Bids and budget adjusted continuously"
-          - "Performance report every week"
-  -
-    service: "mobile-apps"
+          - Profile created or taken over
+          - Categories and area optimized
+          - Photos and services
+          - 10 local directories
+  - service: ads
     tiers:
-      -
-        key: "Essentielle"
-        price: "8 000"
-        unit: null
+      - key: Lancement
+        price: '200'
+        unit: / jour
+        showFrom: false
+        featured: false
+        nameFr: Gestion de campagnes
+        nameEn: Campaign management
+        noteFr: Frais de gestion, budget publicitaire non compris
+        noteEn: Management fee, ad budget not included
+        featuresFr:
+          - Campagnes Google, Facebook et Instagram
+          - Création des visuels et rédaction des annonces
+          - Ciblage par ville, âge et centres d'intérêt
+          - Page d'atterrissage pensée pour la conversion
+          - 'Suivi des conversions : appels, WhatsApp, formulaires'
+          - Enchères et budget ajustés en continu
+          - Rapport de performance chaque semaine
+        featuresEn:
+          - Google, Facebook and Instagram campaigns
+          - Visuals designed and ad copy written
+          - Targeting by city, age and interests
+          - Landing page built to convert
+          - 'Conversion tracking: calls, WhatsApp, forms'
+          - Bids and budget adjusted continuously
+          - Performance report every week
+  - service: mobile-apps
+    tiers:
+      - key: Essentielle
+        price: 8 000
         showFrom: true
         featured: false
-        nameFr: "Application iOS et Android"
-        nameEn: "iOS and Android app"
-        noteFr: "Périmètre défini ensemble avant de commencer"
-        noteEn: "Scope agreed together before we start"
+        nameFr: Application iOS et Android
+        nameEn: iOS and Android app
+        noteFr: Périmètre défini ensemble avant de commencer
+        noteEn: Scope agreed together before we start
         featuresFr:
-          - "Un seul code pour iOS et Android, avec Flutter"
-          - "Design d'interface sur mesure, écran par écran"
-          - "Comptes utilisateurs et notifications push"
-          - "Back-end, base de données et API"
-          - "Tableau de bord pour piloter vos contenus"
-          - "Publication sur l'App Store et Google Play"
-          - "Trois mois de corrections comprises après la mise en ligne"
+          - Un seul code pour iOS et Android, avec Flutter
+          - Design d'interface sur mesure, écran par écran
+          - Comptes utilisateurs et notifications push
+          - Back-end, base de données et API
+          - Tableau de bord pour piloter vos contenus
+          - Publication sur l'App Store et Google Play
+          - Trois mois de corrections comprises après la mise en ligne
         featuresEn:
-          - "One codebase for iOS and Android, with Flutter"
-          - "Custom interface design, screen by screen"
-          - "User accounts and push notifications"
-          - "Back-end, database and API"
-          - "Dashboard to manage your content"
-          - "Published to the App Store and Google Play"
-          - "Three months of fixes included after launch"
-  -
-    service: "desktop-apps"
+          - One codebase for iOS and Android, with Flutter
+          - Custom interface design, screen by screen
+          - User accounts and push notifications
+          - Back-end, database and API
+          - Dashboard to manage your content
+          - Published to the App Store and Google Play
+          - Three months of fixes included after launch
+  - service: desktop-apps
     tiers:
-      -
-        key: "Outil simple"
-        price: "4 999"
-        unit: null
+      - key: Outil simple
+        price: 4 999
         showFrom: true
         featured: false
-        nameFr: "Logiciel sur mesure"
-        nameEn: "Custom desktop software"
-        noteFr: "Périmètre défini ensemble avant de commencer"
-        noteEn: "Scope agreed together before we start"
+        nameFr: Logiciel sur mesure
+        nameEn: Custom desktop software
+        noteFr: Périmètre défini ensemble avant de commencer
+        noteEn: Scope agreed together before we start
         featuresFr:
-          - "Windows et macOS, utilisable hors connexion"
-          - "Gestion, facturation, stock ou production, selon votre métier"
-          - "Base de données locale ou partagée entre plusieurs postes"
-          - "Impression et export Excel et PDF"
-          - "Sauvegarde automatique de vos données"
-          - "Aucune licence mensuelle, le logiciel vous appartient"
-          - "Formation de vos équipes à la prise en main"
+          - Windows et macOS, utilisable hors connexion
+          - Gestion, facturation, stock ou production, selon votre métier
+          - Base de données locale ou partagée entre plusieurs postes
+          - Impression et export Excel et PDF
+          - Sauvegarde automatique de vos données
+          - Aucune licence mensuelle, le logiciel vous appartient
+          - Formation de vos équipes à la prise en main
         featuresEn:
-          - "Windows and macOS, works offline"
-          - "Management, invoicing, stock or production, to your trade"
-          - "Local database or shared across workstations"
-          - "Printing and Excel or PDF export"
-          - "Automatic backup of your data"
-          - "No monthly licence, the software is yours"
-          - "Training for your team on handover"
-  -
-    service: "custom-solutions"
+          - Windows and macOS, works offline
+          - Management, invoicing, stock or production, to your trade
+          - Local database or shared across workstations
+          - Printing and Excel or PDF export
+          - Automatic backup of your data
+          - No monthly licence, the software is yours
+          - Training for your team on handover
+  - service: custom-solutions
     tiers:
-      -
-        key: "Cadrage"
-        price: "6 000"
-        unit: null
+      - key: Cadrage
+        price: 6 000
         showFrom: true
         featured: false
-        nameFr: "Cadrage"
-        nameEn: "Discovery"
-        noteFr: "2 à 3 semaines · livrable à vous"
-        noteEn: "2 to 3 weeks · the deliverable is yours"
+        nameFr: Cadrage
+        nameEn: Discovery
+        noteFr: 2 à 3 semaines · livrable à vous
+        noteEn: 2 to 3 weeks · the deliverable is yours
         featuresFr:
-          - "Ateliers avec vos équipes"
-          - "Processus documentés"
-          - "Modèle de données"
-          - "Périmètre chiffré"
-          - "Déduit du projet si vous poursuivez"
+          - Ateliers avec vos équipes
+          - Processus documentés
+          - Modèle de données
+          - Périmètre chiffré
+          - Déduit du projet si vous poursuivez
         featuresEn:
-          - "Workshops with your teams"
-          - "Documented processes"
-          - "Data model"
-          - "Priced scope"
-          - "Deducted from the project if you continue"
-      -
-        key: "Plateforme"
-        price: "18 000"
-        unit: null
+          - Workshops with your teams
+          - Documented processes
+          - Data model
+          - Priced scope
+          - Deducted from the project if you continue
+      - key: Plateforme
+        price: 18 000
         showFrom: true
         featured: true
-        nameFr: "Plateforme"
-        nameEn: "Platform"
-        noteFr: "À partir de · 8 à 12 semaines"
-        noteEn: "From · 8 to 12 weeks"
+        nameFr: Plateforme
+        nameEn: Platform
+        noteFr: À partir de · 8 à 12 semaines
+        noteEn: From · 8 to 12 weeks
         featuresFr:
-          - "Portail ou outil métier"
-          - "Comptes, rôles et permissions"
-          - "Tableaux de bord"
-          - "Une intégration incluse"
-          - "6 mois d'accompagnement"
+          - Portail ou outil métier
+          - Comptes, rôles et permissions
+          - Tableaux de bord
+          - Une intégration incluse
+          - 6 mois d'accompagnement
         featuresEn:
-          - "Portal or business tool"
-          - "Accounts, roles and permissions"
-          - "Dashboards"
-          - "One integration included"
-          - "6 months of support"
-      -
-        key: "SaaS complet"
-        price: "60 000"
-        unit: null
+          - Portal or business tool
+          - Accounts, roles and permissions
+          - Dashboards
+          - One integration included
+          - 6 months of support
+      - key: SaaS complet
+        price: 60 000
         showFrom: true
         featured: false
-        nameFr: "SaaS complet"
-        nameEn: "Full SaaS"
-        noteFr: "À partir de · périmètre défini ensemble"
-        noteEn: "From · scope defined together"
+        nameFr: SaaS complet
+        nameEn: Full SaaS
+        noteFr: À partir de · périmètre défini ensemble
+        noteEn: From · scope defined together
         featuresFr:
-          - "Architecture multi-entreprises"
-          - "Abonnements et facturation"
-          - "Intégrations multiples"
-          - "Tests de charge"
-          - "Accompagnement prioritaire"
+          - Architecture multi-entreprises
+          - Abonnements et facturation
+          - Intégrations multiples
+          - Tests de charge
+          - Accompagnement prioritaire
         featuresEn:
-          - "Multi-tenant architecture"
-          - "Subscriptions and billing"
-          - "Multiple integrations"
-          - "Load testing"
-          - "Priority support"
-  -
-    service: "whatsapp-bots"
+          - Multi-tenant architecture
+          - Subscriptions and billing
+          - Multiple integrations
+          - Load testing
+          - Priority support
+  - service: whatsapp-bots
     tiers:
-      -
-        key: "Essentiel"
-        price: "2 400"
-        unit: null
+      - key: Essentiel
+        price: 2 400
         showFrom: true
         featured: false
-        nameFr: "Essentiel"
-        nameEn: "Essential"
-        noteFr: "Mise en place · puis 390 DH par mois"
-        noteEn: "Setup · then MAD 390 a month"
+        nameFr: Essentiel
+        nameEn: Essential
+        noteFr: Mise en place · puis 390 DH par mois
+        noteEn: Setup · then MAD 390 a month
         featuresFr:
-          - "Compte WhatsApp API"
-          - "Jusqu'à 10 scénarios"
-          - "Réponses aux questions courantes"
-          - "Transmission à votre équipe"
-          - "Réglage mensuel"
+          - Compte WhatsApp API
+          - Jusqu'à 10 scénarios
+          - Réponses aux questions courantes
+          - Transmission à votre équipe
+          - Réglage mensuel
         featuresEn:
-          - "WhatsApp API account"
-          - "Up to 10 flows"
-          - "Answers to common questions"
-          - "Handover to your team"
-          - "Monthly tuning"
-      -
-        key: "Qualification"
-        price: "5 900"
-        unit: null
+          - WhatsApp API account
+          - Up to 10 flows
+          - Answers to common questions
+          - Handover to your team
+          - Monthly tuning
+      - key: Qualification
+        price: 5 900
         showFrom: true
         featured: true
-        nameFr: "Qualification"
-        nameEn: "Qualification"
-        noteFr: "Mise en place · puis 690 DH par mois"
-        noteEn: "Setup · then MAD 690 a month"
+        nameFr: Qualification
+        nameEn: Qualification
+        noteFr: Mise en place · puis 690 DH par mois
+        noteEn: Setup · then MAD 690 a month
         featuresFr:
-          - "Tout de la formule Essentiel"
-          - "Scénarios illimités"
-          - "Qualification des prospects"
-          - "Prise de rendez-vous"
-          - "Connexion CRM"
-          - "Rapports mensuels"
+          - Tout de la formule Essentiel
+          - Scénarios illimités
+          - Qualification des prospects
+          - Prise de rendez-vous
+          - Connexion CRM
+          - Rapports mensuels
         featuresEn:
-          - "Everything in Essential"
-          - "Unlimited flows"
-          - "Lead qualification"
-          - "Appointment booking"
-          - "CRM connection"
-          - "Monthly reports"
-      -
-        key: "Sur mesure"
-        price: "12 000"
-        unit: null
+          - Everything in Essential
+          - Unlimited flows
+          - Lead qualification
+          - Appointment booking
+          - CRM connection
+          - Monthly reports
+      - key: Sur mesure
+        price: 12 000
         showFrom: true
         featured: false
-        nameFr: "Sur mesure"
-        nameEn: "Custom"
-        noteFr: "À partir de · périmètre défini ensemble"
-        noteEn: "From · scope defined together"
+        nameFr: Sur mesure
+        nameEn: Custom
+        noteFr: À partir de · périmètre défini ensemble
+        noteEn: From · scope defined together
         featuresFr:
-          - "Compréhension libre par IA"
-          - "Plusieurs langues"
-          - "Intégrations multiples"
-          - "Campagnes sortantes"
-          - "Accompagnement prioritaire"
+          - Compréhension libre par IA
+          - Plusieurs langues
+          - Intégrations multiples
+          - Campagnes sortantes
+          - Accompagnement prioritaire
         featuresEn:
-          - "Free-text understanding by AI"
-          - "Several languages"
-          - "Multiple integrations"
-          - "Outbound campaigns"
-          - "Priority support"
+          - Free-text understanding by AI
+          - Several languages
+          - Multiple integrations
+          - Outbound campaigns
+          - Priority support
 addons:
-  -
-    key: "extra-page"
-    price: "250"
-    unitFr: "par page"
-    unitEn: "per page"
-    titleFr: "Page supplémentaire"
-    titleEn: "Extra page"
-    descriptionFr: "Au-delà des pages comprises dans votre formule, mise en page et intégration comprises."
-    descriptionEn: "Beyond the pages included in your package, layout and build included."
-  -
-    key: "copywriting"
-    price: "200"
-    unitFr: "par page"
-    unitEn: "per page"
-    titleFr: "Rédaction du contenu"
-    titleEn: "Copywriting"
-    descriptionFr: "Nous écrivons vos textes, en français ou en anglais, pensés pour Google et pour vos clients."
-    descriptionEn: "We write your text, in French or English, for Google and for your customers."
-  -
-    key: "second-language"
-    price: "900"
-    unitFr: "par langue"
-    unitEn: "per language"
-    titleFr: "Deuxième langue"
-    titleEn: "Second language"
-    descriptionFr: "Votre site en anglais ou en arabe, avec le sélecteur de langue et les balises hreflang."
-    descriptionEn: "Your site in English or Arabic, with the language switch and hreflang tags."
-  -
-    key: "logo"
-    price: "900"
-    unitFr: "forfait"
-    unitEn: "one-off"
-    titleFr: "Logo et identité visuelle"
-    titleEn: "Logo and brand identity"
-    descriptionFr: "Trois pistes, une retenue, déclinée en fichiers vectoriels et en formats réseaux sociaux."
-    descriptionEn: "Three routes, one chosen, delivered as vector files and social formats."
-  -
-    key: "payment"
-    price: "900"
-    unitFr: "forfait"
-    unitEn: "one-off"
-    titleFr: "Paiement en ligne"
-    titleEn: "Online payment"
-    descriptionFr: "Intégration du paiement par carte (CMI) ou PayPal, tests de bout en bout compris."
-    descriptionEn: "Card payment (CMI) or PayPal integration, end-to-end testing included."
-  -
-    key: "maintenance"
-    price: "300"
-    unitFr: "par mois"
-    unitEn: "per month"
-    titleFr: "Maintenance"
-    titleEn: "Maintenance"
-    descriptionFr: "Mises à jour, sauvegardes, corrections et une heure de petites modifications par mois."
-    descriptionEn: "Updates, backups, fixes and one hour of small changes a month."
-  -
-    key: "hosting"
-    price: "600"
-    unitFr: "par an"
-    unitEn: "per year"
-    titleFr: "Hébergement et nom de domaine"
-    titleEn: "Hosting and domain"
-    descriptionFr: "À partir de la deuxième année : hébergement, domaine, certificat SSL et boîtes e-mail."
-    descriptionEn: "From the second year: hosting, domain, SSL certificate and mailboxes."
-  -
-    key: "training"
-    price: "300"
-    unitFr: "l'heure"
-    unitEn: "per hour"
-    titleFr: "Formation supplémentaire"
-    titleEn: "Extra training"
-    descriptionFr: "Prise en main de votre espace d'administration, en visio, enregistrée pour votre équipe."
-    descriptionEn: "A walkthrough of your admin area, over video, recorded for your team."
+  - key: extra-page
+    price: '250'
+    unitFr: par page
+    unitEn: per page
+    titleFr: Page supplémentaire
+    titleEn: Extra page
+    descriptionFr: >-
+      Au-delà des pages comprises dans votre formule, mise en page et
+      intégration comprises.
+    descriptionEn: Beyond the pages included in your package, layout and build included.
+  - key: copywriting
+    price: '200'
+    unitFr: par page
+    unitEn: per page
+    titleFr: Rédaction du contenu
+    titleEn: Copywriting
+    descriptionFr: >-
+      Nous écrivons vos textes, en français ou en anglais, pensés pour Google et
+      pour vos clients.
+    descriptionEn: >-
+      We write your text, in French or English, for Google and for your
+      customers.
+  - key: second-language
+    price: '900'
+    unitFr: par langue
+    unitEn: per language
+    titleFr: Deuxième langue
+    titleEn: Second language
+    descriptionFr: >-
+      Votre site en anglais ou en arabe, avec le sélecteur de langue et les
+      balises hreflang.
+    descriptionEn: >-
+      Your site in English or Arabic, with the language switch and hreflang
+      tags.
+  - key: logo
+    price: '900'
+    unitFr: forfait
+    unitEn: one-off
+    titleFr: Logo et identité visuelle
+    titleEn: Logo and brand identity
+    descriptionFr: >-
+      Trois pistes, une retenue, déclinée en fichiers vectoriels et en formats
+      réseaux sociaux.
+    descriptionEn: Three routes, one chosen, delivered as vector files and social formats.
+  - key: payment
+    price: '900'
+    unitFr: forfait
+    unitEn: one-off
+    titleFr: Paiement en ligne
+    titleEn: Online payment
+    descriptionFr: >-
+      Intégration du paiement par carte (CMI) ou PayPal, tests de bout en bout
+      compris.
+    descriptionEn: Card payment (CMI) or PayPal integration, end-to-end testing included.
+  - key: maintenance
+    price: '300'
+    unitFr: par mois
+    unitEn: per month
+    titleFr: Maintenance
+    titleEn: Maintenance
+    descriptionFr: >-
+      Mises à jour, sauvegardes, corrections et une heure de petites
+      modifications par mois.
+    descriptionEn: Updates, backups, fixes and one hour of small changes a month.
+  - key: hosting
+    price: '600'
+    unitFr: par an
+    unitEn: per year
+    titleFr: Hébergement et nom de domaine
+    titleEn: Hosting and domain
+    descriptionFr: >-
+      À partir de la deuxième année : hébergement, domaine, certificat SSL et
+      boîtes e-mail.
+    descriptionEn: 'From the second year: hosting, domain, SSL certificate and mailboxes.'
+  - key: training
+    price: '300'
+    unitFr: l'heure
+    unitEn: per hour
+    titleFr: Formation supplémentaire
+    titleEn: Extra training
+    descriptionFr: >-
+      Prise en main de votre espace d'administration, en visio, enregistrée pour
+      votre équipe.
+    descriptionEn: A walkthrough of your admin area, over video, recorded for your team.
 monthly:
-  -
-    service: "whatsapp-bots"
-    key: "Essentiel"
-    price: "390"
-  -
-    service: "whatsapp-bots"
-    key: "Qualification"
-    price: "690"
+  - service: whatsapp-bots
+    key: Essentiel
+    price: '390'
+  - service: whatsapp-bots
+    key: Qualification
+    price: '690'
