@@ -68,7 +68,7 @@ export const SERVICES_EN: Service[] = [
     short: "Calls from customers nearby",
     desc: "When someone searches “near me”, your listing comes up, with your reviews and your number.",
     price: en(PRICES["local-seo"]["Mise en place"]),
-    note: `Then MAD ${en(PRICES["local-seo"]["Entretien"])} a month`,
+    note: "One-time, within 2 weeks",
     features: [
       "Google Business Profile setup and optimization",
       "Ranking on Google Maps",
@@ -135,7 +135,7 @@ export const SERVICES_EN: Service[] = [
     name: "Custom web applications",
     short: "The tool the market doesn't sell",
     desc: "Client portal, business tool or SaaS: when nothing exists for your trade, we build it.",
-    price: en(PRICES["custom-solutions"]["Plateforme"]),
+    price: en(PRICES["custom-solutions"]["Entreprises"]),
     note: "Scope defined per project",
     features: [
       "Discovery and specification",
@@ -152,7 +152,7 @@ export const SERVICES_EN: Service[] = [
     name: "WhatsApp chatbots",
     short: "Every message answered, even at night",
     desc: "It answers, sorts leads and books appointments. Your team only handles real customers.",
-    price: en(PRICES["whatsapp-bots"]["Essentiel"]),
+    price: en(PRICES["whatsapp-bots"]["Basic"]),
     note: `Then MAD ${en(MONTHLY["whatsapp-bots"]["Essentiel"])} a month`,
     features: [
       "WhatsApp Business API setup",

@@ -11,9 +11,7 @@
       "Concurrentiel": "2 500"
     },
     "local-seo": {
-      "Mise en place": "790",
-      "Entretien": "490",
-      "Multi-sites": "1 900"
+      "Mise en place": "300"
     },
     "ads": {
       "Lancement": "200"
@@ -25,14 +23,12 @@
       "Outil simple": "4 999"
     },
     "custom-solutions": {
-      "Cadrage": "6 000",
-      "Plateforme": "18 000",
-      "SaaS complet": "60 000"
+      "Entreprises": "6000"
     },
     "whatsapp-bots": {
-      "Essentiel": "2 400",
-      "Qualification": "5 900",
-      "Sur mesure": "12 000"
+      "Basic": "500",
+      "Standard": "1000",
+      "Premium": "1500"
     }
   },
   "monthly": {
@@ -237,8 +233,8 @@
     "local-seo": [
       {
         "key": "Mise en place",
-        "price": "790",
-        "showFrom": true,
+        "price": "300",
+        "showFrom": false,
         "featured": false,
         "fr": {
           "name": "Mise en place",
@@ -247,8 +243,7 @@
             "Création ou reprise de la fiche",
             "Catégories et zone optimisées",
             "Photos et services",
-            "10 annuaires locaux",
-            "Méthode de collecte d'avis"
+            "10 annuaires locaux"
           ]
         },
         "en": {
@@ -258,64 +253,7 @@
             "Profile created or taken over",
             "Categories and area optimized",
             "Photos and services",
-            "10 local directories",
-            "Review collection method"
-          ]
-        }
-      },
-      {
-        "key": "Entretien",
-        "price": "490",
-        "showFrom": true,
-        "featured": true,
-        "fr": {
-          "name": "Entretien",
-          "note": "Par mois · sans engagement",
-          "features": [
-            "Publications mensuelles",
-            "Réponses aux avis",
-            "Suivi de position",
-            "Mise à jour des horaires",
-            "Rapport mensuel"
-          ]
-        },
-        "en": {
-          "name": "Upkeep",
-          "note": "Per month · no commitment",
-          "features": [
-            "Monthly posts",
-            "Review replies",
-            "Rank tracking",
-            "Hours kept up to date",
-            "Monthly report"
-          ]
-        }
-      },
-      {
-        "key": "Multi-sites",
-        "price": "1 900",
-        "showFrom": true,
-        "featured": false,
-        "fr": {
-          "name": "Multi-sites",
-          "note": "Par mois · à partir de 3 établissements",
-          "features": [
-            "Toutes les fiches gérées",
-            "Cohérence entre points de vente",
-            "Suivi par établissement",
-            "Avis centralisés",
-            "Rapport consolidé"
-          ]
-        },
-        "en": {
-          "name": "Multi-location",
-          "note": "Per month · from 3 locations",
-          "features": [
-            "All profiles managed",
-            "Consistency across locations",
-            "Tracking per location",
-            "Centralized reviews",
-            "Consolidated report"
+            "10 local directories"
           ]
         }
       }
@@ -425,12 +363,12 @@
     ],
     "custom-solutions": [
       {
-        "key": "Cadrage",
-        "price": "6 000",
+        "key": "Entreprises",
+        "price": "6000",
         "showFrom": true,
         "featured": false,
         "fr": {
-          "name": "Cadrage",
+          "name": "Entreprise",
           "note": "2 à 3 semaines · livrable à vous",
           "features": [
             "Ateliers avec vos équipes",
@@ -441,7 +379,7 @@
           ]
         },
         "en": {
-          "name": "Discovery",
+          "name": "Entreprise",
           "note": "2 to 3 weeks · the deliverable is yours",
           "features": [
             "Workshops with your teams",
@@ -451,87 +389,31 @@
             "Deducted from the project if you continue"
           ]
         }
-      },
-      {
-        "key": "Plateforme",
-        "price": "18 000",
-        "showFrom": true,
-        "featured": true,
-        "fr": {
-          "name": "Plateforme",
-          "note": "À partir de · 8 à 12 semaines",
-          "features": [
-            "Portail ou outil métier",
-            "Comptes, rôles et permissions",
-            "Tableaux de bord",
-            "Une intégration incluse",
-            "6 mois d'accompagnement"
-          ]
-        },
-        "en": {
-          "name": "Platform",
-          "note": "From · 8 to 12 weeks",
-          "features": [
-            "Portal or business tool",
-            "Accounts, roles and permissions",
-            "Dashboards",
-            "One integration included",
-            "6 months of support"
-          ]
-        }
-      },
-      {
-        "key": "SaaS complet",
-        "price": "60 000",
-        "showFrom": true,
-        "featured": false,
-        "fr": {
-          "name": "SaaS complet",
-          "note": "À partir de · périmètre défini ensemble",
-          "features": [
-            "Architecture multi-entreprises",
-            "Abonnements et facturation",
-            "Intégrations multiples",
-            "Tests de charge",
-            "Accompagnement prioritaire"
-          ]
-        },
-        "en": {
-          "name": "Full SaaS",
-          "note": "From · scope defined together",
-          "features": [
-            "Multi-tenant architecture",
-            "Subscriptions and billing",
-            "Multiple integrations",
-            "Load testing",
-            "Priority support"
-          ]
-        }
       }
     ],
     "whatsapp-bots": [
       {
-        "key": "Essentiel",
-        "price": "2 400",
+        "key": "Basic",
+        "price": "500",
         "showFrom": true,
         "featured": false,
         "fr": {
-          "name": "Essentiel",
-          "note": "Mise en place · puis 390 DH par mois",
+          "name": "Basic",
+          "note": "Mise en place · puis 500 DH par mois",
           "features": [
             "Compte WhatsApp API",
-            "Jusqu'à 10 scénarios",
+            "50 Chat / Mois",
             "Réponses aux questions courantes",
             "Transmission à votre équipe",
             "Réglage mensuel"
           ]
         },
         "en": {
-          "name": "Essential",
-          "note": "Setup · then MAD 390 a month",
+          "name": "Basic",
+          "note": "Setup · then MAD 500 a month",
           "features": [
             "WhatsApp API account",
-            "Up to 10 flows",
+            "Up to 50 Chat / Month",
             "Answers to common questions",
             "Handover to your team",
             "Monthly tuning"
@@ -539,16 +421,16 @@
         }
       },
       {
-        "key": "Qualification",
-        "price": "5 900",
+        "key": "Standard",
+        "price": "1000",
         "showFrom": true,
         "featured": true,
         "fr": {
-          "name": "Qualification",
-          "note": "Mise en place · puis 690 DH par mois",
+          "name": "Standard",
+          "note": "Mise en place · puis 1000 DH par mois",
           "features": [
             "Tout de la formule Essentiel",
-            "Scénarios illimités",
+            "150 Chat / Mois",
             "Qualification des prospects",
             "Prise de rendez-vous",
             "Connexion CRM",
@@ -556,11 +438,11 @@
           ]
         },
         "en": {
-          "name": "Qualification",
-          "note": "Setup · then MAD 690 a month",
+          "name": "Standard",
+          "note": "Setup · then MAD 1000 a month",
           "features": [
             "Everything in Essential",
-            "Unlimited flows",
+            "Up to 150 Chat / Month",
             "Lead qualification",
             "Appointment booking",
             "CRM connection",
@@ -569,15 +451,16 @@
         }
       },
       {
-        "key": "Sur mesure",
-        "price": "12 000",
+        "key": "Premium",
+        "price": "1500",
         "showFrom": true,
         "featured": false,
         "fr": {
-          "name": "Sur mesure",
+          "name": "Premium",
           "note": "À partir de · périmètre défini ensemble",
           "features": [
             "Compréhension libre par IA",
+            "Chat illimitée ",
             "Plusieurs langues",
             "Intégrations multiples",
             "Campagnes sortantes",
@@ -585,10 +468,11 @@
           ]
         },
         "en": {
-          "name": "Custom",
+          "name": "Premium",
           "note": "From · scope defined together",
           "features": [
             "Free-text understanding by AI",
+            "Unlimited Chat",
             "Several languages",
             "Multiple integrations",
             "Outbound campaigns",

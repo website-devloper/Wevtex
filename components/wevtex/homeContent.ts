@@ -94,7 +94,7 @@ export const SERVICES: Service[] = [
     short: "Les appels des clients du quartier",
     desc: "Quand on cherche « près de moi », c'est votre fiche qui sort, avec vos avis et votre numéro.",
     price: PRICES["local-seo"]["Mise en place"],
-    note: `Puis ${PRICES["local-seo"]["Entretien"]} DH par mois`,
+    note: "Une fois, sous 2 semaines",
     features: [
       "Création et optimisation de la fiche Google",
       "Positionnement sur Google Maps",
@@ -161,7 +161,7 @@ export const SERVICES: Service[] = [
     name: "Solutions digitales sur mesure",
     short: "L'outil que le marché ne vend pas",
     desc: "Portail client, outil métier ou SaaS : quand rien n'existe pour votre métier, nous le construisons.",
-    price: PRICES["custom-solutions"]["Plateforme"],
+    price: PRICES["custom-solutions"]["Entreprises"],
     note: "Périmètre défini par projet",
     features: [
       "Cadrage et cahier des charges",
@@ -178,7 +178,7 @@ export const SERVICES: Service[] = [
     name: "Chatbots WhatsApp automatisés",
     short: "Chaque message répondu, même la nuit",
     desc: "Il répond, trie les prospects et prend les rendez-vous. Votre équipe ne gère que les vrais clients.",
-    price: PRICES["whatsapp-bots"]["Essentiel"],
+    price: PRICES["whatsapp-bots"]["Basic"],
     note: `Puis ${MONTHLY["whatsapp-bots"]["Essentiel"]} DH par mois`,
     features: [
       "Mise en place de l'API WhatsApp Business",

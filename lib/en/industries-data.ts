@@ -195,7 +195,7 @@ export const INDUSTRIES_EN: Industry[] = fillPricesDeep(
         { q: "Can we sell courses online?", a: "Yes. We add enrollment and payment so you can sell your courses directly." },
         { q: "Do students get a certificate?", a: "Yes. We can build assessment and certification modules into the platform." },
         { q: "Do you build websites for private schools and training centers?", a: "Yes. A private school or training center website presents the institution, programs, online enrollment and a parent or student area. It is often the first contact families have with you." },
-        { q: "How much does an e-learning platform cost in Morocco?", a: "A custom e-learning platform in Morocco, with accounts, courses, tracking and payment, falls under our web platforms, from MAD {{prix:custom-solutions/Plateforme}}. A simpler educational website follows the price of a business website." },
+        { q: "How much does an e-learning platform cost in Morocco?", a: "A custom e-learning platform in Morocco, with accounts, courses, tracking and payment, falls under our custom solutions: discovery starts at MAD {{prix:custom-solutions/Entreprises}} and the build is priced on the scope it produces. A simpler educational website follows the price of a business website." },
       ],
     },
     {

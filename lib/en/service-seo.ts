@@ -286,7 +286,7 @@ export const SERVICE_SEO_EN: Record<string, ServiceSeo> = {
       {
         h2: "How much does local SEO on Google Maps cost?",
         paras: [
-          "Profile setup starts at MAD {{prix:local-seo/Mise en place}}, once, done within two weeks. Monthly upkeep (posts, review replies, rank tracking, opening hours) is MAD {{prix:local-seo/Entretien}} a month, with no commitment. For three locations or more, the Multi-location plan starts at MAD {{prix:local-seo/Multi-sites}} a month.",
+          "Profile setup starts at MAD {{prix:local-seo/Mise en place}}, once, done within two weeks. It covers creating or taking over the profile, categories and service area, photos and services, and listings on ten local directories. Monthly upkeep is priced on the number of locations to look after.",
         ],
         links: [
           { label: "SEO agency in Morocco", href: "/en/seo-agency-morocco" },
@@ -588,7 +588,7 @@ export const SERVICE_SEO_EN: Record<string, ServiceSeo> = {
       {
         h2: "How much does web application development cost?",
         paras: [
-          "Discovery starts at MAD {{prix:custom-solutions/Cadrage}}, in 2 to 3 weeks. A platform or business tool starts at MAD {{prix:custom-solutions/Plateforme}}, in 8 to 12 weeks, with one integration included. A complete multi-tenant SaaS with subscriptions and billing starts at MAD {{prix:custom-solutions/SaaS complet}}, on a scope defined together.",
+          "Discovery starts at MAD {{prix:custom-solutions/Entreprises}}, in 2 to 3 weeks: workshops with your teams, documented processes, a data model and a priced scope. The deliverable is yours, and its cost is deducted from the project if you continue. The platform, business tool or SaaS is then priced on that scope, firmly.",
         ],
         links: [
           { label: "AI automation agency in Morocco", href: "/en/ai-automation-agency-morocco" },
@@ -599,7 +599,7 @@ export const SERVICE_SEO_EN: Record<string, ServiceSeo> = {
     faqs: [
       {
         q: "What does a web developer cost in Morocco?",
-        a: "Rather than a daily rate, we price per project, so the price is firm: discovery from MAD {{prix:custom-solutions/Cadrage}}, a platform or business tool from MAD {{prix:custom-solutions/Plateforme}}, a complete SaaS from MAD {{prix:custom-solutions/SaaS complet}}.",
+        a: "Rather than a daily rate, we price per project, so the price is firm. It starts with discovery from MAD {{prix:custom-solutions/Entreprises}}, deducted from the project if you continue, which settles the scope. The build is priced on that scope, and the figure does not move.",
       },
       {
         q: "Do you work with companies outside Morocco?",
@@ -656,7 +656,7 @@ export const SERVICE_SEO_EN: Record<string, ServiceSeo> = {
       {
         h2: "How much does a WhatsApp chatbot cost in Morocco?",
         paras: [
-          "The Essential plan starts at MAD {{prix:whatsapp-bots/Essentiel}} for setup, then MAD {{mensuel:whatsapp-bots/Essentiel}} a month, for up to 10 flows. The Qualification plan, with unlimited flows, appointment booking and CRM connection, starts at MAD {{prix:whatsapp-bots/Qualification}} then MAD {{mensuel:whatsapp-bots/Qualification}} a month. A custom AI WhatsApp agent that understands freely worded messages starts at MAD {{prix:whatsapp-bots/Sur mesure}}.",
+          "The Basic plan starts at MAD {{prix:whatsapp-bots/Basic}} for setup, then MAD {{prix:whatsapp-bots/Basic}} a month, for 50 conversations a month. The Standard plan, with lead qualification, appointment booking and a CRM connection, starts at MAD {{prix:whatsapp-bots/Standard}} then MAD {{prix:whatsapp-bots/Standard}} a month, for 150 conversations. The Premium plan starts at MAD {{prix:whatsapp-bots/Premium}}, on a scope defined together.",
         ],
         links: [
           { label: "AI WhatsApp agents and automation", href: "/en/ai-automation-agency-morocco" },

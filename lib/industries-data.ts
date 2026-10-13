@@ -207,7 +207,7 @@ export const INDUSTRIES: Industry[] = fillPricesDeep([
       { q: "Peut-on vendre des formations en ligne ?", a: "Oui. Nous ajoutons l'inscription et le paiement pour vendre vos formations directement." },
       { q: "Les élèves reçoivent-ils un certificat ?", a: "Oui. Nous pouvons intégrer des modules d'évaluation et de certification à la plateforme." },
       { q: "Créez-vous des sites pour écoles privées et centres de formation ?", a: "Oui. Le site web d'une école privée ou d'une école de formation présente l'établissement, les programmes, les inscriptions en ligne et un espace parents ou élèves. C'est souvent le premier contact des familles." },
-      { q: "Combien coûte une plateforme e-learning au Maroc ?", a: "Une plateforme e-learning sur mesure au Maroc, avec comptes, cours, suivi et paiement, relève de nos plateformes web, à partir de {{prix:custom-solutions/Plateforme}} DH. Un site web éducatif plus simple suit le prix d'un site vitrine." },
+      { q: "Combien coûte une plateforme e-learning au Maroc ?", a: "Une plateforme e-learning sur mesure au Maroc, avec comptes, cours, suivi et paiement, relève de nos solutions sur mesure : le cadrage démarre à {{prix:custom-solutions/Entreprises}} DH et le développement est chiffré sur le périmètre qui en sort. Un site web éducatif plus simple suit le prix d'un site vitrine." },
     ],
   },
   {

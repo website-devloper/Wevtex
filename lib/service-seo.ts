@@ -362,7 +362,7 @@ export const SERVICE_SEO: Record<string, ServiceSeo> = {
       {
         h2: "Combien coûte le référencement local Google Maps ?",
         paras: [
-          "La mise en place de la fiche démarre à {{prix:local-seo/Mise en place}} DH, une fois, et se fait sous deux semaines. L'entretien mensuel (publications, réponses aux avis, suivi de position, mise à jour des horaires) est à {{prix:local-seo/Entretien}} DH par mois, sans engagement. Pour trois établissements ou plus, la formule Multi-sites démarre à {{prix:local-seo/Multi-sites}} DH par mois.",
+          "La mise en place de la fiche démarre à {{prix:local-seo/Mise en place}} DH, une fois, et se fait sous deux semaines. Elle comprend la création ou la reprise de la fiche, les catégories et la zone, les photos et les services, et l'inscription sur dix annuaires locaux. L'entretien mensuel se chiffre selon le nombre d'établissements à suivre.",
         ],
         links: [
           { label: "Agence SEO au Maroc", href: "/referencement-seo-maroc" },
@@ -679,7 +679,7 @@ export const SERVICE_SEO: Record<string, ServiceSeo> = {
       {
         h2: "Combien coûte le développement d'une application web ?",
         paras: [
-          "Le cadrage démarre à {{prix:custom-solutions/Cadrage}} DH, en 2 à 3 semaines. Une plateforme ou un outil métier démarre à {{prix:custom-solutions/Plateforme}} DH, en 8 à 12 semaines, avec une intégration incluse. Une solution SaaS complète au Maroc, multi-entreprises, avec abonnements et facturation, démarre à {{prix:custom-solutions/SaaS complet}} DH sur un périmètre défini ensemble.",
+          "Le cadrage démarre à {{prix:custom-solutions/Entreprises}} DH, en 2 à 3 semaines : ateliers avec vos équipes, processus documentés, modèle de données et périmètre chiffré. Le livrable est à vous, et son prix est déduit du projet si vous poursuivez. La plateforme, l'outil métier ou la solution SaaS est ensuite chiffrée sur ce périmètre, fermement.",
         ],
         links: [
           { label: "Agence développement IA au Maroc", href: "/agence-developpement-ia-maroc" },
@@ -690,7 +690,7 @@ export const SERVICE_SEO: Record<string, ServiceSeo> = {
     faqs: [
       {
         q: "Quel est le tarif d'un développeur web au Maroc ?",
-        a: "Plutôt qu'un prix de développeur web à la journée, nous chiffrons au projet, pour que le prix soit ferme : un cadrage à partir de {{prix:custom-solutions/Cadrage}} DH, une plateforme ou un outil métier à partir de {{prix:custom-solutions/Plateforme}} DH, un SaaS complet à partir de {{prix:custom-solutions/SaaS complet}} DH.",
+        a: "Plutôt qu'un prix de développeur web à la journée, nous chiffrons au projet, pour que le prix soit ferme. Cela commence par un cadrage à partir de {{prix:custom-solutions/Entreprises}} DH, déduit du projet si vous poursuivez, qui fixe le périmètre. Le développement est chiffré sur ce périmètre, et le chiffre ne bouge plus.",
       },
       {
         q: "Quelle différence entre un site web et une application web ?",
@@ -746,7 +746,7 @@ export const SERVICE_SEO: Record<string, ServiceSeo> = {
       {
         h2: "Combien coûte un chatbot WhatsApp au Maroc ?",
         paras: [
-          "La formule Essentiel démarre à {{prix:whatsapp-bots/Essentiel}} DH de mise en place, puis {{mensuel:whatsapp-bots/Essentiel}} DH par mois, pour jusqu'à 10 scénarios. La formule Qualification, avec scénarios illimités, prise de rendez-vous et connexion CRM, démarre à {{prix:whatsapp-bots/Qualification}} DH puis {{mensuel:whatsapp-bots/Qualification}} DH par mois. Un agent IA WhatsApp sur mesure, qui comprend les messages formulés librement, démarre à {{prix:whatsapp-bots/Sur mesure}} DH au Maroc.",
+          "La formule Basic démarre à {{prix:whatsapp-bots/Basic}} DH de mise en place, puis {{prix:whatsapp-bots/Basic}} DH par mois, pour 50 conversations mensuelles. La formule Standard, avec qualification des prospects, prise de rendez-vous et connexion CRM, démarre à {{prix:whatsapp-bots/Standard}} DH puis {{prix:whatsapp-bots/Standard}} DH par mois, pour 150 conversations. La formule Premium démarre à {{prix:whatsapp-bots/Premium}} DH, sur un périmètre défini ensemble.",
         ],
         links: [
           { label: "Agent IA WhatsApp et automatisation", href: "/agence-developpement-ia-maroc" },

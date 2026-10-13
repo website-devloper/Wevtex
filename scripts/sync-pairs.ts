@@ -11,8 +11,8 @@
  * components, which cannot read the filesystem.
  */
 
-import { writeFileSync } from "node:fs";
-import { join } from "node:path";
+import { readFileSync, readdirSync, statSync, writeFileSync } from "node:fs";
+import { join, relative } from "node:path";
 import { createReader } from "@keystatic/core/reader";
 import config from "../keystatic.config";
 
@@ -198,6 +198,70 @@ async function writePricing() {
   writeFileSync(out, JSON.stringify({ prices, monthly, packs, addons }, null, 2) + "\n", "utf8");
   const tiers = Object.values(packs).reduce((n, list) => n + list.length, 0);
   console.log(`lib/pricing.generated.json — ${tiers} formules, ${addons.length} options`);
+
+  checkPriceReferences(prices, monthly);
+}
+
+/**
+ * Every price quoted in the copy, checked against the formules that exist.
+ *
+ * Copy quotes a price two ways: a {{prix:service/Formule}} token, and a direct
+ * PRICES["service"]["Formule"] lookup in the content modules. Renaming or
+ * removing a formule in the dashboard breaks both, and until this check
+ * existed the build only fell over much later, inside page collection, with a
+ * stack trace that named no content file. Fail here instead, naming the file,
+ * the line and the formules that are actually available.
+ */
+function checkPriceReferences(prices: Record<string, Record<string, string>>, monthly: Record<string, Record<string, string>>) {
+  const roots = ["lib", "components", "content"];
+  const files: string[] = [];
+  const walk = (dir: string) => {
+    for (const name of readdirSync(dir)) {
+      const full = join(dir, name);
+      if (statSync(full).isDirectory()) walk(full);
+      else if (/\.(ts|tsx|yaml|mdoc)$/.test(name)) files.push(full);
+    }
+  };
+  for (const r of roots) walk(join(process.cwd(), r));
+
+  const problems: string[] = [];
+  /* The resolver's own doc comments use {{prix:service/Formule}} as an
+     example, so the file that defines the syntax is not checked against it. */
+  const skip = join(process.cwd(), "lib", "pricing.ts");
+
+  const token = /\{\{(prix|mensuel):([^}]+)\}\}/g;
+  const direct = /(PRICES|MONTHLY)\["([^"]+)"\]\["([^"]+)"\]/g;
+
+  for (const file of files) {
+    if (file === skip) continue;
+    const text = readFileSync(file, "utf8");
+    const lines = text.split("\n");
+    lines.forEach((line, i) => {
+      const where = `${relative(process.cwd(), file).replace(/\\/g, "/")}:${i + 1}`;
+      for (const m of line.matchAll(token)) {
+        const [service, tier] = m[2].trim().split("/");
+        const table = m[1] === "prix" ? prices : monthly;
+        if (tier && !table[service]?.[tier]) {
+          problems.push(`  ${where}\n      ${m[0]}\n      "${service}" has: ${Object.keys(table[service] ?? {}).join(", ") || "no formule at all"}`);
+        }
+      }
+      for (const m of line.matchAll(direct)) {
+        const table = m[1] === "PRICES" ? prices : monthly;
+        if (!table[m[2]]?.[m[3]]) {
+          problems.push(`  ${where}\n      ${m[0]}\n      "${m[2]}" has: ${Object.keys(table[m[2]] ?? {}).join(", ") || "no formule at all"}`);
+        }
+      }
+    });
+  }
+
+  if (problems.length) {
+    console.error("\nThe copy quotes formules that no longer exist in content/pricing.yaml.");
+    console.error("A formule was renamed or removed in the dashboard; these places still name the old one:\n");
+    console.error(problems.join("\n\n"));
+    console.error("\nEither restore the formule under Tarifs in the dashboard, or update the text above.\n");
+    process.exit(1);
+  }
+  console.log("price references — every formule quoted in the copy exists");
 }
 
 function writePairs(file: string, pairs: Record<string, string>, label: string) {
