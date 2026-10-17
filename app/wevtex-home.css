@@ -3373,7 +3373,14 @@
 
 /* First section on an inner page — clears the fixed two-tier header by the
    same amount as .hero-split on the homepage. */
-.wevtex .sec-first { padding-top: clamp(158px, 18vh, 200px); }
+/* Every page built on .sec-first gives its hero room underneath except the
+   one that never set any, where the buttons ended flush against the edge of
+   the dark band. A floor, not a fixed value: the pages that ask for more
+   still get it. */
+.wevtex .sec-first {
+  padding-top: clamp(158px, 18vh, 200px);
+  padding-bottom: clamp(48px, 7vh, 80px);
+}
 
 /* =====================================================================
    ABOUT — brand band, why-us grid, team photos
