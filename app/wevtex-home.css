@@ -5567,8 +5567,12 @@ html.menu-open .cc-bar { visibility: hidden; }
 
 /* A service sold as one pack: the card keeps a card's width instead of
    stretching across the three-column grid. */
-.wevtex .pr-grid-1 { grid-template-columns: minmax(0, 520px); justify-content: center; }
-.wevtex .pr-grid-2 { grid-template-columns: repeat(2, minmax(0, 440px)); justify-content: center; }
+/* A service with one or two formules keeps the three-column track, so its
+   card is exactly the width of a card in a three-up block and starts at the
+   same left edge. Centred and widened, a lone card read as a different
+   component from the ones above it. */
+.wevtex .pr-grid-1,
+.wevtex .pr-grid-2 { grid-template-columns: repeat(3, 1fr); justify-content: start; }
 .wevtex .pr-unit {
   font-size: 0.42em;
   font-weight: 600;
