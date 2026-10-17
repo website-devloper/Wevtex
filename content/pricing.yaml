@@ -146,7 +146,7 @@ packs:
   - service: local-seo
     tiers:
       - key: Mise en place
-        price: '500'
+        price: '600'
         showFrom: false
         featured: false
         nameFr: Mise en place
