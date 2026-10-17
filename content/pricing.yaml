@@ -146,7 +146,7 @@ packs:
   - service: local-seo
     tiers:
       - key: Mise en place
-        price: '300'
+        price: '500'
         showFrom: false
         featured: false
         nameFr: Mise en place
@@ -264,7 +264,7 @@ packs:
           - Data model
           - Priced scope
           - Deducted from the project if you continue
-  - service: whatsapp-bots
+  - service: local-seo
     tiers:
       - key: Basic
         price: '500'
@@ -286,50 +286,6 @@ packs:
           - Answers to common questions
           - Handover to your team
           - Monthly tuning
-      - key: Standard
-        price: '1000'
-        showFrom: true
-        featured: true
-        nameFr: Standard
-        nameEn: Standard
-        noteFr: Mise en place · puis 1000 DH par mois
-        noteEn: Setup · then MAD 1000 a month
-        featuresFr:
-          - Tout de la formule Essentiel
-          - 150 Chat / Mois
-          - Qualification des prospects
-          - Prise de rendez-vous
-          - Connexion CRM
-          - Rapports mensuels
-        featuresEn:
-          - Everything in Essential
-          - Up to 150 Chat / Month
-          - Lead qualification
-          - Appointment booking
-          - CRM connection
-          - Monthly reports
-      - key: Premium
-        price: '1500'
-        showFrom: true
-        featured: false
-        nameFr: Premium
-        nameEn: Premium
-        noteFr: À partir de · périmètre défini ensemble
-        noteEn: From · scope defined together
-        featuresFr:
-          - Compréhension libre par IA
-          - 'Chat illimitée '
-          - Plusieurs langues
-          - Intégrations multiples
-          - Campagnes sortantes
-          - Accompagnement prioritaire
-        featuresEn:
-          - Free-text understanding by AI
-          - Unlimited Chat
-          - Several languages
-          - Multiple integrations
-          - Outbound campaigns
-          - Priority support
 addons:
   - key: extra-page
     price: '250'
