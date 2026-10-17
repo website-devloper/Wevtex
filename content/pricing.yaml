@@ -300,7 +300,7 @@ addons:
       Your site in English or Arabic, with the language switch and hreflang
       tags.
   - key: logo
-    price: '900'
+    price: A partir de 500
     unitFr: forfait
     unitEn: one-off
     titleFr: Logo et identité visuelle
@@ -318,7 +318,7 @@ addons:
     descriptionFr: Intégration du paiement par PayPal, tests de bout en bout compris.
     descriptionEn: PayPal integration, end-to-end testing included.
   - key: maintenance
-    price: '300'
+    price: A partir de 400
     unitFr: par mois
     unitEn: per month
     titleFr: Maintenance
