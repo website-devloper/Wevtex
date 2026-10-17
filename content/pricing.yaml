@@ -266,7 +266,7 @@ packs:
           - Deducted from the project if you continue
 addons:
   - key: extra-page
-    price: '250'
+    price: '500'
     unitFr: par page
     unitEn: per page
     titleFr: Page supplémentaire
@@ -276,7 +276,7 @@ addons:
       intégration comprises.
     descriptionEn: Beyond the pages included in your package, layout and build included.
   - key: copywriting
-    price: '200'
+    price: A partir de 500
     unitFr: par page
     unitEn: per page
     titleFr: Rédaction du contenu
@@ -288,7 +288,7 @@ addons:
       We write your text, in French or English, for Google and for your
       customers.
   - key: second-language
-    price: '900'
+    price: '600'
     unitFr: par langue
     unitEn: per language
     titleFr: Deuxième langue
