@@ -310,15 +310,13 @@ addons:
       réseaux sociaux.
     descriptionEn: Three routes, one chosen, delivered as vector files and social formats.
   - key: payment
-    price: '900'
+    price: '1000'
     unitFr: forfait
     unitEn: one-off
     titleFr: Paiement en ligne
     titleEn: Online payment
-    descriptionFr: >-
-      Intégration du paiement par carte (CMI) ou PayPal, tests de bout en bout
-      compris.
-    descriptionEn: Card payment (CMI) or PayPal integration, end-to-end testing included.
+    descriptionFr: Intégration du paiement par PayPal, tests de bout en bout compris.
+    descriptionEn: PayPal integration, end-to-end testing included.
   - key: maintenance
     price: '300'
     unitFr: par mois
@@ -339,20 +337,4 @@ addons:
       À partir de la deuxième année : hébergement, domaine, certificat SSL et
       boîtes e-mail.
     descriptionEn: 'From the second year: hosting, domain, SSL certificate and mailboxes.'
-  - key: training
-    price: '300'
-    unitFr: l'heure
-    unitEn: per hour
-    titleFr: Formation supplémentaire
-    titleEn: Extra training
-    descriptionFr: >-
-      Prise en main de votre espace d'administration, en visio, enregistrée pour
-      votre équipe.
-    descriptionEn: A walkthrough of your admin area, over video, recorded for your team.
-monthly:
-  - service: whatsapp-bots
-    key: Essentiel
-    price: '390'
-  - service: whatsapp-bots
-    key: Qualification
-    price: '690'
+monthly: []
