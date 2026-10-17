@@ -186,9 +186,15 @@ export function PricingGrid({
                 </div>
               </div>
               <div className="pr-divider"></div>
-              <span className="pr-from">{t.from}</span>
-              <div className="pr-price">{sv.price}<span className="cur">{t.cur}</span></div>
-              <div className="pr-note">{sv.note}</div>
+              {/* A formule can be unpublished from the dashboard; the card
+                  then shows no price rather than "à partir de  DH". */}
+              {sv.price && (
+                <>
+                  <span className="pr-from">{t.from}</span>
+                  <div className="pr-price">{sv.price}<span className="cur">{t.cur}</span></div>
+                </>
+              )}
+              {sv.note && <div className="pr-note">{sv.note}</div>}
               <ul className="pr-feats">
                 {sv.features.map((f) => (
                   <li key={f}>

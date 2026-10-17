@@ -4,9 +4,14 @@
  * (no JSX) so it can be imported on the server.
  */
 
-import { PRICES, MONTHLY } from "@/lib/pricing";
+import { priceOf, monthlyOf, fillPricesDeep } from "@/lib/pricing";
 
-export const FAQS = [
+/** "Puis 390 DH par mois", or nothing when no monthly fee is published. */
+function monthlyNote(amount: string | undefined, before: string, after: string): string | undefined {
+  return amount ? `${before} ${amount} ${after}` : undefined;
+}
+
+export const FAQS = fillPricesDeep([
   { q: "En combien de temps mon site sera-t-il en ligne ?", a: "Une vitrine est en ligne en 2 à 4 semaines, une boutique en 4 à 8. La date est écrite sur le devis avant le démarrage, et c'est sur elle que nous nous engageons." },
   { q: "Dois-je tout payer d'avance ?", a: "Non. Le prix est fixe et payé par étapes : vous validez chaque étape avant qu'elle soit facturée. Rien n'est dû tant que le résultat ne vous convient pas." },
   { q: "Mes clients vont-ils me trouver sur Google ?", a: "Chaque site part en ligne prêt pour Google : vitesse, structure et balises. Pour passer devant vos concurrents sur des recherches disputées, notre accompagnement SEO et Google Maps prend le relais." },
@@ -14,9 +19,9 @@ export const FAQS = [
   { q: "Gérez-vous l'hébergement et le domaine ?", a: "Oui. Nous mettons en place un hébergement rapide et sécurisé et votre nom de domaine, puis nous les gérons pour vous. Si vous préférez, nous vous remettons simplement les clés." },
   { q: "Que se passe-t-il après la mise en ligne ?", a: "Vous n'êtes pas laissé seul. Un accompagnement après lancement est inclus dans chaque projet, puis une maintenance optionnelle s'occupe des mises à jour, des sauvegardes et de la surveillance." },
   { q: "Qu'est-ce qu'une agence de marketing digital, et que fait Wevtex ?", a: "Une agence de marketing digital, ou agence de marketing web, aide une entreprise à être trouvée et choisie en ligne. Wevtex est une agence digitale et de communication digitale au Maroc, basée à Casablanca : agence web et mobile, référencement SEO, publicité Google et Meta, et automatisation, réunis dans une seule équipe." },
-  { q: "Combien coûte une agence de marketing digital au Maroc ?", a: `Chez Wevtex, le tarif de chaque prestation est publié, avec un prix de départ : un site vitrine démarre à ${PRICES["website-creation"]["Vitrine"]} DH, l'accompagnement SEO à ${PRICES["seo"]["Essentiel"]} DH par mois et la gestion de publicité Google ou Meta à ${PRICES["ads"]["Lancement"]} DH par mois. Chaque projet reçoit un devis ferme.` },
+  { q: "Combien coûte une agence de marketing digital au Maroc ?", a: "Chez Wevtex, le tarif de chaque prestation est publié, avec un prix de départ : un site vitrine démarre à {{prix:website-creation/Vitrine}} DH, l'accompagnement SEO à {{prix:seo/Essentiel}} DH par mois et la gestion de publicité Google ou Meta à {{prix:ads/Lancement}} DH par mois. Chaque projet reçoit un devis ferme." },
   { q: "Comment choisir la meilleure agence web au Maroc ?", a: "La meilleure agence web au Maroc pour vous est celle qui montre des sites en ligne que vous pouvez tester, donne un devis détaillé ligne par ligne et vous laisse propriétaire du site, du code et des accès. Méfiez-vous de toute promesse de première place garantie sur Google." },
-] as const;
+]);
 
 /**
  * The eight services, in one place.
@@ -40,8 +45,9 @@ export type Service = {
   name: string;
   short: string;
   desc: string;
-  price: string;
-  note: string;
+  /** Absent when the formule behind it is not published. */
+  price?: string;
+  note?: string;
   /* Button label on the pricing card — specific to this service. */
   cta: string;
   /* Visuel de la prestation (WebP optimisé, 900px). */
@@ -58,7 +64,7 @@ export const SERVICES: Service[] = [
     name: "Création de sites web",
     short: "Un site qui fait appeler et acheter",
     desc: "Un site rapide, trouvé sur Google, qui transforme les visites en appels. Et il est à votre nom.",
-    price: PRICES["website-creation"]["Vitrine"],
+    price: priceOf("website-creation", "Vitrine"),
     note: "Formule Basic, livrée en 5 à 7 jours",
     featured: true,
     features: [
@@ -76,7 +82,7 @@ export const SERVICES: Service[] = [
     name: "Référencement naturel (SEO)",
     short: "Apparaître quand vos clients cherchent",
     desc: "Vos clients vous cherchent sur Google. Nous faisons en sorte qu'ils tombent sur vous.",
-    price: PRICES["seo"]["Essentiel"],
+    price: priceOf("seo", "Essentiel"),
     note: "Par mois · 3 mois minimum",
     features: [
       "Audit technique et corrections",
@@ -93,7 +99,7 @@ export const SERVICES: Service[] = [
     name: "Google Maps & SEO local",
     short: "Les appels des clients du quartier",
     desc: "Quand on cherche « près de moi », c'est votre fiche qui sort, avec vos avis et votre numéro.",
-    price: PRICES["local-seo"]["Mise en place"],
+    price: priceOf("local-seo", "Mise en place"),
     note: "Une fois, sous 2 semaines",
     features: [
       "Création et optimisation de la fiche Google",
@@ -110,7 +116,7 @@ export const SERVICES: Service[] = [
     name: "Création & gestion de publicités",
     short: "Des clients dès la première semaine",
     desc: "Google et Meta pilotés au coût par client : vous savez ce que rapporte chaque dirham.",
-    price: PRICES["ads"]["Lancement"],
+    price: priceOf("ads", "Lancement"),
     note: "Par jour · hors budget publicitaire",
     features: [
       "Google, Facebook et Instagram",
@@ -127,7 +133,7 @@ export const SERVICES: Service[] = [
     name: "Applications mobiles",
     short: "Votre service dans leur téléphone",
     desc: "Une icône sur l'écran de vos clients, sur iOS et Android, pour qu'ils reviennent d'eux-mêmes.",
-    price: PRICES["mobile-apps"]["Essentielle"],
+    price: priceOf("mobile-apps", "Essentielle"),
     note: "Périmètre défini par projet",
     features: [
       "iOS et Android depuis une seule base",
@@ -144,7 +150,7 @@ export const SERVICES: Service[] = [
     name: "Logiciels bureau",
     short: "Fini les tableaux Excel bricolés",
     desc: "Le logiciel qui suit votre façon de travailler, fonctionne sans internet et sans licence par poste.",
-    price: PRICES["desktop-apps"]["Outil simple"],
+    price: priceOf("desktop-apps", "Outil simple"),
     note: "Périmètre défini par projet",
     features: [
       "Versions Windows et macOS",
@@ -161,7 +167,7 @@ export const SERVICES: Service[] = [
     name: "Solutions digitales sur mesure",
     short: "L'outil que le marché ne vend pas",
     desc: "Portail client, outil métier ou SaaS : quand rien n'existe pour votre métier, nous le construisons.",
-    price: PRICES["custom-solutions"]["Entreprises"],
+    price: priceOf("custom-solutions", "Entreprises"),
     note: "Périmètre défini par projet",
     features: [
       "Cadrage et cahier des charges",
@@ -178,8 +184,8 @@ export const SERVICES: Service[] = [
     name: "Chatbots WhatsApp automatisés",
     short: "Chaque message répondu, même la nuit",
     desc: "Il répond, trie les prospects et prend les rendez-vous. Votre équipe ne gère que les vrais clients.",
-    price: PRICES["whatsapp-bots"]["Basic"],
-    note: `Puis ${MONTHLY["whatsapp-bots"]["Essentiel"]} DH par mois`,
+    price: priceOf("whatsapp-bots", "Basic"),
+    note: monthlyNote(monthlyOf("whatsapp-bots", "Essentiel"), "Puis", "DH par mois"),
     features: [
       "Mise en place de l'API WhatsApp Business",
       "Scénarios adaptés à votre activité",

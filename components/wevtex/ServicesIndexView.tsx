@@ -122,10 +122,14 @@ export function ServicesIndexView() {
                       {sv.features.slice(0, 4).map((f) => <li key={f}>{f}</li>)}
                     </ul>
 
+                    {/* A formule can be unpublished from the dashboard; the
+                        card then carries no price rather than an empty one. */}
+                    {sv.price && (
                     <div className="wk-metric">
                       <span className="wk-metric-n">{t.price(sv.price)}</span>
-                      <span className="wk-metric-l">{t.fromNote}{sv.note.toLowerCase()}</span>
+                      {sv.note && <span className="wk-metric-l">{t.fromNote}{sv.note.toLowerCase()}</span>}
                     </div>
+                    )}
 
                     <a href={lp(servicePath(sv.slug))} className="wk-view">
                       {t.included}

@@ -161,12 +161,20 @@ async function writePricing() {
   const monthly: Record<string, Record<string, string>> = {};
   const packs: Record<string, any[]> = {};
 
+  /* Two packs can end up on the same service by picking the wrong one in
+     the dashboard, and the second used to overwrite the first, losing its
+     formules without a word. They merge now, and the clash is reported. */
+  const seen = new Set<string>();
+  const duplicated: string[] = [];
   for (const pack of doc.packs ?? []) {
+    if (seen.has(pack.service)) duplicated.push(pack.service);
+    seen.add(pack.service);
     prices[pack.service] ??= {};
-    packs[pack.service] = [];
+    packs[pack.service] ??= [];
     for (const t of pack.tiers ?? []) {
       if (prices[pack.service][t.key]) {
-        throw new Error(`Two formules of "${pack.service}" share the internal key "${t.key}".`);
+        console.warn(`  ! two formules of "${pack.service}" share the key "${t.key}"; the second is ignored.`);
+        continue;
       }
       prices[pack.service][t.key] = t.price;
       packs[pack.service].push({
@@ -198,6 +206,13 @@ async function writePricing() {
   writeFileSync(out, JSON.stringify({ prices, monthly, packs, addons }, null, 2) + "\n", "utf8");
   const tiers = Object.values(packs).reduce((n, list) => n + list.length, 0);
   console.log(`lib/pricing.generated.json — ${tiers} formules, ${addons.length} options`);
+
+  if (duplicated.length) {
+    console.warn(`  ! more than one pack points at: ${[...new Set(duplicated)].join(", ")}`);
+    console.warn("    Their formules were merged. Open Tarifs and check the service of each pack.");
+  }
+  const empty = Object.keys(packs).filter((k) => packs[k].length === 0);
+  if (empty.length) console.warn(`  ! no formule published for: ${empty.join(", ")}`);
 
   checkPriceReferences(prices, monthly);
 }
@@ -255,11 +270,17 @@ function checkPriceReferences(prices: Record<string, Record<string, string>>, mo
   }
 
   if (problems.length) {
-    console.error("\nThe copy quotes formules that no longer exist in content/pricing.yaml.");
-    console.error("A formule was renamed or removed in the dashboard; these places still name the old one:\n");
-    console.error(problems.join("\n\n"));
-    console.error("\nEither restore the formule under Tarifs in the dashboard, or update the text above.\n");
-    process.exit(1);
+    /* A warning, not a failure. The price list is content: anyone editing it
+       in the dashboard can rename a formule, and that must never be able to
+       take the site down. Copy quoting a formule that has gone is dropped at
+       render (fillPricesDeep), and a card with no published price shows none,
+       so the pages stay correct, only shorter. This prints the gap into the
+       build log so it is not discovered on the page. */
+    console.warn("\n  ! The copy quotes formules that are not in content/pricing.yaml.");
+    console.warn("    These sentences and prices are left out of the pages:\n");
+    console.warn(problems.join("\n\n"));
+    console.warn("\n    Restore the formule under Tarifs, or update the text above.\n");
+    return;
   }
   console.log("price references — every formule quoted in the copy exists");
 }

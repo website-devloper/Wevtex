@@ -11,7 +11,8 @@
       "Concurrentiel": "2 500"
     },
     "local-seo": {
-      "Mise en place": "300"
+      "Mise en place": "600",
+      "Basic": "500"
     },
     "ads": {
       "Lancement": "200"
@@ -24,11 +25,6 @@
     },
     "custom-solutions": {
       "Entreprises": "6000"
-    },
-    "whatsapp-bots": {
-      "Basic": "500",
-      "Standard": "1000",
-      "Premium": "1500"
     }
   },
   "monthly": {
@@ -233,7 +229,7 @@
     "local-seo": [
       {
         "key": "Mise en place",
-        "price": "300",
+        "price": "600",
         "showFrom": false,
         "featured": false,
         "fr": {
@@ -254,6 +250,34 @@
             "Categories and area optimized",
             "Photos and services",
             "10 local directories"
+          ]
+        }
+      },
+      {
+        "key": "Basic",
+        "price": "500",
+        "showFrom": true,
+        "featured": false,
+        "fr": {
+          "name": "Basic",
+          "note": "Mise en place · puis 500 DH par mois",
+          "features": [
+            "Compte WhatsApp API",
+            "50 Chat / Mois",
+            "Réponses aux questions courantes",
+            "Transmission à votre équipe",
+            "Réglage mensuel"
+          ]
+        },
+        "en": {
+          "name": "Basic",
+          "note": "Setup · then MAD 500 a month",
+          "features": [
+            "WhatsApp API account",
+            "Up to 50 Chat / Month",
+            "Answers to common questions",
+            "Handover to your team",
+            "Monthly tuning"
           ]
         }
       }
@@ -387,96 +411,6 @@
             "Data model",
             "Priced scope",
             "Deducted from the project if you continue"
-          ]
-        }
-      }
-    ],
-    "whatsapp-bots": [
-      {
-        "key": "Basic",
-        "price": "500",
-        "showFrom": true,
-        "featured": false,
-        "fr": {
-          "name": "Basic",
-          "note": "Mise en place · puis 500 DH par mois",
-          "features": [
-            "Compte WhatsApp API",
-            "50 Chat / Mois",
-            "Réponses aux questions courantes",
-            "Transmission à votre équipe",
-            "Réglage mensuel"
-          ]
-        },
-        "en": {
-          "name": "Basic",
-          "note": "Setup · then MAD 500 a month",
-          "features": [
-            "WhatsApp API account",
-            "Up to 50 Chat / Month",
-            "Answers to common questions",
-            "Handover to your team",
-            "Monthly tuning"
-          ]
-        }
-      },
-      {
-        "key": "Standard",
-        "price": "1000",
-        "showFrom": true,
-        "featured": true,
-        "fr": {
-          "name": "Standard",
-          "note": "Mise en place · puis 1000 DH par mois",
-          "features": [
-            "Tout de la formule Essentiel",
-            "150 Chat / Mois",
-            "Qualification des prospects",
-            "Prise de rendez-vous",
-            "Connexion CRM",
-            "Rapports mensuels"
-          ]
-        },
-        "en": {
-          "name": "Standard",
-          "note": "Setup · then MAD 1000 a month",
-          "features": [
-            "Everything in Essential",
-            "Up to 150 Chat / Month",
-            "Lead qualification",
-            "Appointment booking",
-            "CRM connection",
-            "Monthly reports"
-          ]
-        }
-      },
-      {
-        "key": "Premium",
-        "price": "1500",
-        "showFrom": true,
-        "featured": false,
-        "fr": {
-          "name": "Premium",
-          "note": "À partir de · périmètre défini ensemble",
-          "features": [
-            "Compréhension libre par IA",
-            "Chat illimitée ",
-            "Plusieurs langues",
-            "Intégrations multiples",
-            "Campagnes sortantes",
-            "Accompagnement prioritaire"
-          ]
-        },
-        "en": {
-          "name": "Premium",
-          "note": "From · scope defined together",
-          "features": [
-            "Free-text understanding by AI",
-            "Unlimited Chat",
-            "Several languages",
-            "Multiple integrations",
-            "Outbound campaigns",
-            "Priority support"
           ]
         }
       }
