@@ -264,28 +264,6 @@ packs:
           - Data model
           - Priced scope
           - Deducted from the project if you continue
-  - service: local-seo
-    tiers:
-      - key: Basic
-        price: '500'
-        showFrom: true
-        featured: false
-        nameFr: Basic
-        nameEn: Basic
-        noteFr: Mise en place · puis 500 DH par mois
-        noteEn: Setup · then MAD 500 a month
-        featuresFr:
-          - Compte WhatsApp API
-          - 50 Chat / Mois
-          - Réponses aux questions courantes
-          - Transmission à votre équipe
-          - Réglage mensuel
-        featuresEn:
-          - WhatsApp API account
-          - Up to 50 Chat / Month
-          - Answers to common questions
-          - Handover to your team
-          - Monthly tuning
 addons:
   - key: extra-page
     price: '250'
