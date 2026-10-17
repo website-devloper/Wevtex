@@ -99,15 +99,34 @@ export function frPath(path: string): string | null {
 }
 
 /**
- * French path -> the same page in `locale`. Throws for a page with no English
- * version, so a link to one fails the build instead of shipping a wrong link.
- * External links, mailto:, tel: and "#anchor" pass through untouched.
+ * The section an untranslated page falls back to, longest prefix first.
+ *
+ * A post or a réalisation can exist in one language while the other is being
+ * written, which is a normal state for content edited in a dashboard. The
+ * link then goes to the English index of that section: the reader lands
+ * somewhere real and sees the rest of the section, instead of a 404 and
+ * instead of the whole build failing over one missing translation.
+ */
+const EN_FALLBACK: [string, string][] = [
+  ["/blog/", "/en/blog"],
+  ["/realisations/", "/en/portfolio"],
+  ["/industries/", "/en/industries"],
+];
+
+/**
+ * French path -> the same page in `locale`, or the English index of its
+ * section when that page has no English version. External links, mailto:,
+ * tel: and "#anchor" pass through untouched.
+ *
+ * scripts/sync-pairs.ts lists every page missing a translation in the build
+ * log, so a fallback taken here is visible there rather than silent.
  */
 export function localize(path: string, locale: Locale): string {
   if (locale === "fr") return path;
   const en = enPath(path);
-  if (en === null) throw new Error(`No English page for ${path} (lib/i18n-paths.ts).`);
-  return en;
+  if (en !== null) return en;
+  const [p] = split(path);
+  return EN_FALLBACK.find(([prefix]) => p.startsWith(prefix))?.[1] ?? "/en";
 }
 
 /** Where the language switch points from the page at `pathname`. */
@@ -117,5 +136,9 @@ export function switchPath(pathname: string, current: Locale): string {
 
 /** hreflang set for a page, given its French path: fr, en and x-default (French). */
 export function languageAlternates(fr: string) {
-  return { fr, en: localize(fr, "en"), "x-default": fr };
+  /* enPath, not localize: a link may fall back to the section index, but
+     hreflang may not. Claiming /en/blog is the English version of a post is
+     a false alternate, so an untranslated page simply declares none. */
+  const en = enPath(fr);
+  return en === null ? { fr, "x-default": fr } : { fr, en, "x-default": fr };
 }

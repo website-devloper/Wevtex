@@ -137,6 +137,18 @@ async function readPosts(locale: Locale): Promise<Post[]> {
 }
 
 /** Checked once per locale, because the dashboard can break these. */
+/**
+ * Content that is incomplete rather than wrong: said once, in the build log,
+ * and never thrown. Everything here is edited in the dashboard, where a half
+ * finished state is normal and must not be able to stop a deploy.
+ */
+const said = new Set<string>();
+function warn(message: string) {
+  if (said.has(message)) return;
+  said.add(message);
+  console.warn(`  ! content: ${message}`);
+}
+
 function assertSound(posts: (Post & { pairKey: string })[], locale: Locale) {
   const keywords = new Map<string, string>();
   const slugs = new Set<string>();
@@ -144,13 +156,15 @@ function assertSound(posts: (Post & { pairKey: string })[], locale: Locale) {
   for (const p of posts) {
     const clash = keywords.get(p.keyword);
     if (clash) {
-      throw new Error(
-        `Two ${locale.toUpperCase()} posts target the keyword "${p.keyword}": ${clash} and ${p.slug}. ` +
+      warn(
+        `two ${locale.toUpperCase()} posts target the keyword "${p.keyword}": ${clash} and ${p.slug}. ` +
           `Give one of them its own keyword — they compete with each other otherwise.`,
       );
     }
     keywords.set(p.keyword, p.slug);
 
+    // The dashboard will not let two entries share a slug, so this only ever
+    // catches a file edited by hand.
     if (slugs.has(p.slug)) throw new Error(`Duplicate ${locale} post slug: ${p.slug}`);
     slugs.add(p.slug);
   }
@@ -183,23 +197,29 @@ export async function getPostSlugs(locale: Locale = "fr") {
 
 /**
  * French slug -> English slug, built from the pairKey both versions carry.
- * Throws on an entry that exists in only one language, the same check the
- * hand-written map in lib/i18n-paths.ts used to make at build time.
+ *
+ * Only the posts that exist in both languages. A post written in one language
+ * is a normal state for a blog in progress: it publishes, it is listed, and
+ * the language switch on it simply falls back to the blog index rather than
+ * offering a translation that was never written.
  */
 export async function getPostPairs(): Promise<Record<string, string>> {
   const [fr, en] = await Promise.all([getPosts("fr"), getPosts("en")]);
   const byKey = new Map(en.map((p) => [p.pairKey, p.slug]));
 
   const pairs: Record<string, string> = {};
+  const lonely: string[] = [];
   for (const p of fr) {
     const match = byKey.get(p.pairKey);
-    if (!match) throw new Error(`The post "${p.slug}" has no English version (pairKey "${p.pairKey}").`);
+    if (!match) {
+      lonely.push(`FR post "${p.slug}" (clé "${p.pairKey}")`);
+      continue;
+    }
     pairs[p.slug] = match;
     byKey.delete(p.pairKey);
   }
-  for (const [key, slug] of byKey) {
-    throw new Error(`The English post "${slug}" has no French version (pairKey "${key}").`);
-  }
+  for (const [key, slug] of byKey) lonely.push(`EN post "${slug}" (key "${key}")`);
+  if (lonely.length) warn(`published in one language only: ${lonely.join(", ")}`);
   return pairs;
 }
 
@@ -254,14 +274,17 @@ async function readProjects(locale: Locale): Promise<ProjectEntry[]> {
   }
 
   const en = await reader.collections.projectsEn.all();
-  return en.map(({ slug, entry }) => {
+  return en.flatMap(({ slug, entry }) => {
     const e = entry as any;
     const base = byFrenchSlug.get(e.frenchProject);
     if (!base) {
-      throw new Error(
-        `The English project "${slug}" points at "${e.frenchProject}", which does not exist. ` +
-          `Open it in the dashboard and pick its French version again.`,
+      // Every structural field comes from the French twin, so without one
+      // there is no page to build. Left out rather than half-rendered.
+      warn(
+        `the English réalisation "${slug}" points at "${e.frenchProject}", which does not exist, ` +
+          `so it is not published. Open it in the dashboard and pick its French version again.`,
       );
+      return [];
     }
     const b = base.entry as any;
     return {
@@ -313,9 +336,8 @@ export async function getProjectPairs(): Promise<Record<string, string>> {
   const fr = await getProjects("fr");
   const pairs: Record<string, string> = {};
   for (const p of en) pairs[p.fr] = p.slug;
-  for (const p of fr) {
-    if (!pairs[p.slug]) throw new Error(`The project "${p.slug}" has no English version.`);
-  }
+  const lonely = fr.filter((p) => !pairs[p.slug]).map((p) => p.slug);
+  if (lonely.length) warn(`réalisations with no English version: ${lonely.join(", ")}`);
   return pairs;
 }
 

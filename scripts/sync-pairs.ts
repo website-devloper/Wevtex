@@ -40,10 +40,9 @@ async function main() {
   for (const [key, slug] of byKey) missing.push(`  "${slug}" (clé "${key}") has no French version`);
 
   if (missing.length) {
-    console.error("\nEvery post needs a version in both languages, paired by its translation key:\n");
-    console.error(missing.join("\n"));
-    console.error("\nOpen the post in the dashboard and set the same translation key on both.\n");
-    process.exit(1);
+    console.warn("  ! these posts exist in one language only, so they publish without a translation:");
+    console.warn(missing.join("\n"));
+    console.warn("    Set the same translation key on both to pair them.\n");
   }
 
   writePairs("post-pairs.json", pairs, "posts");
@@ -72,10 +71,9 @@ async function main() {
   }
 
   if (projectProblems.length) {
-    console.error("\nEvery réalisation needs a version in both languages:\n");
-    console.error(projectProblems.join("\n"));
-    console.error("\nOpen the English one in the dashboard and pick its French version.\n");
-    process.exit(1);
+    console.warn("  ! these réalisations exist in one language only, so they publish without a translation:");
+    console.warn(projectProblems.join("\n"));
+    console.warn("    Open the English one and pick its French version to pair them.\n");
   }
 
   writePairs("project-pairs.json", projectPairs, "projects");
@@ -102,8 +100,14 @@ async function writeServiceUrls() {
     const map: Record<string, string> = {};
     for (const { slug, entry } of entries) {
       const id = (entry as any).serviceId;
-      if (!id) throw new Error(`The ${label} service "${slug}" has no internal id.`);
-      if (map[id]) throw new Error(`Two ${label} services share the internal id "${id}".`);
+      if (!id) {
+        console.warn(`  ! the ${label} service "${slug}" has no internal id, so it is skipped.`);
+        continue;
+      }
+      if (map[id]) {
+        console.warn(`  ! two ${label} services share the internal id "${id}"; the second is skipped.`);
+        continue;
+      }
       map[id] = slug;
     }
     return map;
@@ -113,10 +117,10 @@ async function writeServiceUrls() {
   const enMap = build(en, "English");
 
   for (const id of Object.keys(frMap)) {
-    if (!enMap[id]) throw new Error(`The service "${id}" has no English version.`);
+    if (!enMap[id]) console.warn(`  ! the service "${id}" has no English version; its English pages are skipped.`);
   }
   for (const id of Object.keys(enMap)) {
-    if (!frMap[id]) throw new Error(`The English service "${id}" has no French version.`);
+    if (!frMap[id]) console.warn(`  ! the English service "${id}" has no French version; its French pages are skipped.`);
   }
 
   writePairs("service-urls.json", frMap, "services (FR)");
@@ -129,8 +133,8 @@ async function writeSettings() {
   if (!doc) throw new Error("content/settings.yaml is missing.");
 
   const digits = String(doc.phoneE164 ?? "").replace(/\D/g, "");
-  if (digits.length < 8) throw new Error(`The international phone number looks wrong: "${doc.phoneE164}".`);
-  if (!String(doc.email ?? "").includes("@")) throw new Error(`The e-mail address looks wrong: "${doc.email}".`);
+  if (digits.length < 8) console.warn(`  ! the phone number looks wrong: "${doc.phoneE164}". The call and WhatsApp links will not work.`);
+  if (!String(doc.email ?? "").includes("@")) console.warn(`  ! the e-mail address looks wrong: "${doc.email}".`);
 
   const out = {
     phoneDisplay: doc.phoneDisplay,
