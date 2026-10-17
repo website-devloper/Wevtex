@@ -8,6 +8,7 @@ import { useLocale, useLp } from "./locale";
 import { postPath, formatPostDate, type PostCard } from "@/lib/blog-utils";
 import { WHATSAPP_URL, CONTACT_URL } from "@/lib/site-links";
 import { frenchSpacing } from "@/lib/typo";
+import Image from "next/image";
 
 /**
  * /blog — the index.
@@ -86,6 +87,11 @@ export function BlogIndexView({ posts }: { posts: PostCard[] }) {
           <div className="container">
             {lead && (
               <a href={postPath(lead.slug, locale)} className="blog-lead reveal">
+                {lead.cover && (
+                  <span className="blog-lead-shot">
+                    <Image src={lead.cover.src} alt="" width={1200} height={675} sizes="(max-width: 900px) 100vw, 460px" priority />
+                  </span>
+                )}
                 <div className="blog-lead-body">
                   <span className="blog-meta">
                     <span className="blog-cat">{lead.category}</span>
@@ -106,6 +112,14 @@ export function BlogIndexView({ posts }: { posts: PostCard[] }) {
               {rest.map((p) => (
                 <article className="blog-card" key={p.slug}>
                   <a href={postPath(p.slug, locale)} className="blog-card-link">
+                    {/* Decorative here: the title beside it already says what
+                        the article is, so a repeat would only be noise to a
+                        screen reader. */}
+                    {p.cover && (
+                      <span className="blog-card-shot">
+                        <Image src={p.cover.src} alt="" width={800} height={450} sizes="(max-width: 700px) 100vw, 400px" />
+                      </span>
+                    )}
                     <span className="blog-meta">
                       <span className="blog-cat">{p.category}</span>
                       <span>{p.readingMinutes}{t.min}</span>

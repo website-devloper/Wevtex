@@ -175,6 +175,30 @@ const post = (locale: "fr" | "en") =>
               : "Suggested from the title. Once published, leave it alone: existing links would break.",
         },
       }),
+      cover: fields.object(
+        {
+          src: fields.image({
+            label: locale === "fr" ? "Image de couverture" : "Cover image",
+            description:
+              locale === "fr"
+                ? "Sur la carte du blog et en haut de l'article. Paysage, 1200 × 675 environ. Vide : la carte reste en texte."
+                : "On the blog card and at the top of the post. Landscape, around 1200 × 675. Empty: the card stays text only.",
+            directory: "public/images/uploads/blog",
+            publicPath: "/images/uploads/blog",
+          }),
+          alt: fields.text({
+            label: locale === "fr" ? "Description de l'image" : "Image description",
+            description:
+              locale === "fr"
+                ? "Ce que montre l'image, pour Google et pour les lecteurs qui ne la voient pas. Laissez vide si elle est purement décorative."
+                : "What the image shows, for Google and for readers who cannot see it. Leave empty if it is purely decorative.",
+          }),
+        },
+        {
+          label: locale === "fr" ? "Image de couverture" : "Cover image",
+          layout: [8, 4],
+        },
+      ),
       excerpt: fields.text({
         label: locale === "fr" ? "Résumé (carte du blog)" : "Excerpt (blog card)",
         description:

@@ -8,8 +8,9 @@ import { useLocale, useLp } from "./locale";
 import type { Post, PostBlock } from "@/lib/blog-data";
 import { postPath, formatPostDate, type PostCard } from "@/lib/blog-utils";
 import { useHomeContent } from "./useHomeContent";
-import { WHATSAPP_URL, CONTACT_URL, servicePath } from "@/lib/site-links";
+import { WHATSAPP_URL, CONTACT_URL, BLOG_URL, servicePath } from "@/lib/site-links";
 import { frenchSpacing } from "@/lib/typo";
+import Image from "next/image";
 
 /**
  * /blog/[slug] — one post.
@@ -34,6 +35,7 @@ const T = {
     quote: "Obtenir mon devis gratuit",
     brief: "Envoyer mon brief",
     nextEyebrow: "À lire ensuite",
+    allPosts: "Tous les articles",
     nextA: "Sur le même ",
     nextEm: "sujet.",
   },
@@ -50,6 +52,7 @@ const T = {
     quote: "Get my free quote",
     brief: "Send my brief",
     nextEyebrow: "Read next",
+    allPosts: "All posts",
     nextA: "On the same ",
     nextEm: "topic.",
   },
@@ -106,8 +109,25 @@ function Block({ block }: { block: PostBlock }) {
           </table>
         </div>
       );
-    default:
+    case "image":
+      return (
+        <figure className="post-figure">
+          <Image
+            src={block.src}
+            alt={block.alt}
+            width={1200}
+            height={675}
+            sizes="(max-width: 900px) 100vw, 760px"
+          />
+          {/* The description doubles as a caption when there is one: a reader
+              who can see the picture gets the same context as one who cannot. */}
+          {block.alt && <figcaption>{block.alt}</figcaption>}
+        </figure>
+      );
+    case "p":
       return <p>{block.text}</p>;
+    default:
+      return null;
   }
 }
 
@@ -145,6 +165,21 @@ export function BlogPostView({ post, related }: { post: Post; related: PostCard[
               {/* The answer-first paragraph: a self-contained reply, before any
                   build-up, so it survives being quoted on its own. */}
               <p className="post-answer">{post.answer}</p>
+
+              {/* Priority: on an article page this is the largest thing above
+                  the fold, so it is what the page is waiting on. */}
+              {post.cover && (
+                <figure className="post-cover">
+                  <Image
+                    src={post.cover.src}
+                    alt={post.cover.alt}
+                    width={1200}
+                    height={675}
+                    sizes="(max-width: 1100px) 100vw, 1040px"
+                    priority
+                  />
+                </figure>
+              )}
             </div>
           </div>
         </section>
@@ -152,6 +187,7 @@ export function BlogPostView({ post, related }: { post: Post; related: PostCard[
         {/* ===================== BODY ===================== */}
         <section className="theme-cream" style={{ padding: "clamp(16px, 3vh, 32px) 0 clamp(70px, 10vh, 110px)" }}>
           <div className="container">
+            <div className={related.length > 0 ? "post-layout" : "post-layout post-layout-wide"}>
             <article className="post-body reveal">
               {post.body.map((b, i) => <Block key={i} block={b} />)}
 
@@ -167,6 +203,40 @@ export function BlogPostView({ post, related }: { post: Post; related: PostCard[
                 </aside>
               )}
             </article>
+
+            {/* Beside the text rather than under it: a reader meets these
+                while there is still a reason to stay, not once they have
+                already decided to leave. It follows the scroll, so it is
+                there at the end of a long article too. */}
+            {related.length > 0 && (
+              <aside className="post-rail reveal">
+                <div className="post-rail-inner">
+                  <span className="eyebrow line-eyebrow">{t.nextEyebrow}</span>
+                  <ul className="rail-list">
+                    {related.map((r) => (
+                      <li key={r.slug}>
+                        <a href={postPath(r.slug, locale)} className="rail-item">
+                          {r.cover && (
+                            <span className="rail-shot">
+                              <Image src={r.cover.src} alt="" width={240} height={135} sizes="96px" />
+                            </span>
+                          )}
+                          <span className="rail-text">
+                            <span className="rail-meta">{r.category} · {r.readingMinutes}{t.min}</span>
+                            <span className="rail-title">{spacing(r.title)}</span>
+                          </span>
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                  <a href={lp(BLOG_URL)} className="rail-all">
+                    {t.allPosts}
+                    {ARROW}
+                  </a>
+                </div>
+              </aside>
+            )}
+            </div>
           </div>
         </section>
 
@@ -214,37 +284,6 @@ export function BlogPostView({ post, related }: { post: Post; related: PostCard[
           </div>
         </section>
 
-        {/* ===================== RELATED ===================== */}
-        {related.length > 0 && (
-          <section className="theme-cream" style={{ padding: "clamp(64px, 9vh, 100px) 0 clamp(80px, 12vh, 130px)" }}>
-            <div className="container">
-              <div className="reveal">
-                <span className="eyebrow line-eyebrow">{t.nextEyebrow}</span>
-                <h2 className="h-section" style={{ marginTop: 14 }}>
-                  {t.nextA}<em className="hl-line">{t.nextEm}</em>
-                </h2>
-              </div>
-              <div className="blog-grid reveal" style={{ marginTop: 36 }}>
-                {related.map((p) => (
-                  <article className="blog-card" key={p.slug}>
-                    <a href={postPath(p.slug, locale)} className="blog-card-link">
-                      <span className="blog-meta">
-                        <span className="blog-cat">{p.category}</span>
-                        <span>{p.readingMinutes}{t.min}</span>
-                      </span>
-                      <h3>{spacing(p.title)}</h3>
-                      <p>{p.excerpt}</p>
-                      <span className="blog-card-foot">
-                        <time dateTime={p.publishedAt}>{formatPostDate(p.publishedAt, locale)}</time>
-                        <span className="blog-card-arrow" aria-hidden>{ARROW}</span>
-                      </span>
-                    </a>
-                  </article>
-                ))}
-              </div>
-            </div>
-          </section>
-        )}
       </main>
 
       <SiteFooter />

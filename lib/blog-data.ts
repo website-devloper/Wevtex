@@ -23,7 +23,8 @@ export type PostBlock =
   | { type: "ol"; items: string[] }
   | { type: "note"; text: string }
   | { type: "table"; head: string[]; rows: string[][] }
-  | { type: "links"; items: { label: string; href: string }[] };
+  | { type: "links"; items: { label: string; href: string }[] }
+  | { type: "image"; src: string; alt: string };
 
 export type Post = {
   slug: string;
@@ -37,6 +38,8 @@ export type Post = {
   keyword: string;
   /** Card text on /blog. */
   excerpt: string;
+  /** Shown on the card and above the article. Absent on older posts. */
+  cover?: { src: string; alt: string };
   /** The answer-first opening, rendered as the lede and reused nowhere else. */
   answer: string;
   category: string;

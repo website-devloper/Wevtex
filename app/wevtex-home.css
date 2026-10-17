@@ -4609,7 +4609,7 @@
 @media (max-width: 620px) { .wevtex .blog-grid { grid-template-columns: 1fr; } }
 .wevtex .blog-card { border: 1px solid var(--hairline-c-strong); border-radius: var(--radius-md); background: var(--card); transition: border-color 240ms var(--ease-out), transform 240ms var(--ease-out); }
 .wevtex .blog-card:hover { border-color: var(--accent); transform: translateY(-3px); }
-.wevtex .blog-card-link { display: flex; flex-direction: column; height: 100%; padding: 26px; color: var(--ink-on-cream); text-decoration: none; }
+.wevtex .blog-card-link { --blog-card-pad: 26px; display: flex; flex-direction: column; height: 100%; padding: var(--blog-card-pad); color: var(--ink-on-cream); text-decoration: none; }
 .wevtex .blog-card h2, .wevtex .blog-card h3 { margin-top: 16px; font-size: 20px; line-height: 1.25; letter-spacing: -0.01em; font-weight: 600; }
 .wevtex .blog-card p { margin-top: 10px; font-size: 14.5px; line-height: 1.6; color: var(--ink-on-cream-2); flex: 1; }
 .wevtex .blog-card-foot { display: flex; justify-content: space-between; align-items: center; margin-top: 22px; padding-top: 16px; border-top: 1px solid var(--hairline-c); font-size: 13px; color: var(--ink-on-cream-3); }
@@ -4621,7 +4621,19 @@
 .wevtex .post-crumbs a:hover { color: var(--ink-on-cream); text-decoration: underline; }
 .wevtex .post-head { max-width: 820px; }
 .wevtex .post-head .h-section { font-size: clamp(32px, 4.4vw, 54px); }
-.wevtex .post-answer { margin-top: 24px; padding: 22px 24px; border-left: 4px solid var(--accent); background: var(--bg-cream-2); border-radius: 0 var(--radius-md) var(--radius-md) 0; font-size: clamp(17px, 1.5vw, 19px); line-height: 1.6; color: var(--ink-on-cream); }
+/* The answer sits in the dark hero, which rebinds --ink-on-cream to white
+   for its own text. This card brings its own white background, so taking the
+   colour from that token painted white on white: the paragraph was there, all
+   365 characters of it, and could not be seen. Literals, like every other
+   light surface on an ink ground. */
+.wevtex .post-answer {
+  margin-top: 24px; padding: 22px 24px;
+  border-left: 4px solid var(--accent);
+  background: #ffffff;
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  font-size: clamp(17px, 1.5vw, 19px); line-height: 1.6;
+  color: #101112;
+}
 
 .wevtex .post-body { max-width: 720px; font-size: 17px; line-height: 1.75; color: var(--ink-on-cream-2); }
 .wevtex .post-body > p { margin-top: 18px; }
@@ -6104,4 +6116,146 @@ html:has(.cc-bar) .wevtex .float-actions { --cc-gap: 14px; }
 }
 @media (prefers-reduced-motion: reduce) {
   .wevtex .addon-card:hover { transform: none; }
+}
+
+
+/* ===========================================================================
+   Blog images — the card thumbnail, the cover, the figures in the body
+   A post can be published without any of them, so every rule here styles an
+   element that is simply absent until someone sets a picture in the
+   dashboard. Nothing reserves space for a picture that is not there.
+   ========================================================================= */
+
+/* The card: a 16:9 band across the top, inside the card's own rounding. */
+.wevtex .blog-card-shot {
+  display: block; position: relative;
+  aspect-ratio: 16 / 9;
+  margin: calc(-1 * var(--blog-card-pad)) calc(-1 * var(--blog-card-pad)) 20px;
+  border-radius: var(--radius-md) var(--radius-md) 0 0;
+  overflow: hidden;
+  background: var(--bg-paper);
+}
+.wevtex .blog-card-shot img {
+  width: 100%; height: 100%; object-fit: cover; display: block;
+  transition: transform 0.5s var(--ease-out, ease);
+}
+.wevtex .blog-card:hover .blog-card-shot img { transform: scale(1.04); }
+
+/* The lead post: the picture takes a column beside the text, and stacks
+   under it once there is no room for two. */
+.wevtex .blog-lead-shot {
+  display: block; position: relative;
+  aspect-ratio: 16 / 10;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background: var(--bg-paper);
+}
+.wevtex .blog-lead-shot img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.wevtex .blog-lead:has(.blog-lead-shot) {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  gap: clamp(20px, 3vw, 40px);
+  align-items: center;
+}
+@media (max-width: 820px) {
+  .wevtex .blog-lead:has(.blog-lead-shot) { grid-template-columns: 1fr; }
+}
+
+/* The cover, under the article's opening answer. */
+.wevtex .post-cover {
+  margin: clamp(28px, 4vh, 44px) 0 0;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background: var(--bg-paper);
+}
+.wevtex .post-cover img { width: 100%; height: auto; display: block; }
+
+/* A picture placed in the body. It breaks the measure of the text column,
+   because a photograph held to 68ch reads as an afterthought. */
+.wevtex .post-figure {
+  margin: clamp(30px, 4.5vh, 44px) 0;
+  width: min(100%, 860px);
+}
+.wevtex .post-figure img {
+  width: 100%; height: auto; display: block;
+  border-radius: var(--radius-md);
+  background: var(--bg-paper);
+}
+.wevtex .post-figure figcaption {
+  margin-top: 10px;
+  font-size: 13.5px; line-height: 1.55;
+  color: var(--ink-on-cream-2);
+}
+
+
+/* ===========================================================================
+   Article layout — the text, and a rail of what to read next beside it
+   ========================================================================= */
+.wevtex .post-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 300px;
+  gap: clamp(32px, 4vw, 68px);
+  align-items: start;
+}
+/* No related posts, no rail, and the text keeps its own measure rather than
+   stretching to fill the width the rail would have taken. */
+.wevtex .post-layout-wide { grid-template-columns: minmax(0, 1fr); }
+
+.wevtex .post-rail { position: relative; }
+.wevtex .post-rail-inner {
+  position: sticky;
+  top: clamp(96px, 13vh, 132px);
+  padding: clamp(22px, 2.6vh, 28px) clamp(20px, 2vw, 24px);
+  background: var(--bg-cream-2);
+  border: 1px solid var(--hairline-c);
+  border-radius: var(--radius-md);
+}
+
+.wevtex .rail-list {
+  list-style: none; margin: 18px 0 0; padding: 0;
+  display: flex; flex-direction: column;
+}
+.wevtex .rail-list li + li {
+  margin-top: 14px; padding-top: 14px;
+  border-top: 1px solid var(--hairline-c);
+}
+.wevtex .rail-item {
+  display: flex; align-items: flex-start; gap: 12px;
+  text-decoration: none; color: inherit;
+}
+.wevtex .rail-shot {
+  flex: none; width: 76px; aspect-ratio: 16 / 10;
+  border-radius: 8px; overflow: hidden;
+  background: var(--bg-paper);
+}
+.wevtex .rail-shot img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.wevtex .rail-text { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+.wevtex .rail-meta {
+  font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--ink-on-cream-3);
+}
+.wevtex .rail-title {
+  font-size: 14.5px; font-weight: 600; line-height: 1.38; letter-spacing: -0.015em;
+  color: var(--ink-on-cream);
+}
+.wevtex .rail-item:hover .rail-title { color: var(--accent-text, var(--lime-ink)); }
+
+.wevtex .rail-all {
+  display: inline-flex; align-items: center; gap: 7px;
+  margin-top: 20px; padding-top: 16px;
+  border-top: 1px solid var(--hairline-c);
+  width: 100%;
+  font-size: 13.5px; font-weight: 650; letter-spacing: -0.012em;
+  color: var(--ink-on-cream); text-decoration: none;
+}
+.wevtex .rail-all svg { transition: transform 0.18s ease; }
+.wevtex .rail-all:hover svg { transform: translateX(3px); }
+
+@media (max-width: 980px) {
+  /* Under the article, and no longer following the scroll: on a narrow
+     screen a sticky block would eat the page. */
+  .wevtex .post-layout { grid-template-columns: minmax(0, 1fr); }
+  .wevtex .post-rail-inner { position: static; }
+  .wevtex .rail-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; }
+  .wevtex .rail-list li + li { margin-top: 0; padding-top: 0; border-top: 0; }
 }

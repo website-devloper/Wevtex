@@ -60,6 +60,28 @@ function tableBlock(tag: Node): PostBlock | null {
   };
 }
 
+/** An image node, if it carries a source worth rendering. */
+function imageBlock(node: Node): PostBlock | null {
+  const src = String(node.attributes?.src ?? "").trim();
+  if (!src) return null;
+  return { type: "image", src, alt: String(node.attributes?.alt ?? "").trim() };
+}
+
+/** Every image inside a node, at any depth. */
+function imagesIn(node: Node): PostBlock[] {
+  const out: PostBlock[] = [];
+  const walk = (n: Node) => {
+    if (n.type === "image") {
+      const block = imageBlock(n);
+      if (block) out.push(block);
+      return;
+    }
+    for (const child of n.children ?? []) walk(child);
+  };
+  walk(node);
+  return out;
+}
+
 /** Markdoc document -> the blocks BlogPostView renders. */
 function toBlocks(doc: Node): PostBlock[] {
   const out: PostBlock[] = [];
@@ -67,8 +89,21 @@ function toBlocks(doc: Node): PostBlock[] {
   for (const node of doc.children ?? []) {
     switch (node.type) {
       case "paragraph": {
+        // Markdoc wraps an image in a paragraph. textOf() finds no text in
+        // one, so the paragraph used to look empty and the picture was
+        // dropped on the floor.
+        const images = imagesIn(node);
+        if (images.length) {
+          out.push(...images);
+          break;
+        }
         const text = textOf(node).trim();
         if (text) out.push({ type: "p", text });
+        break;
+      }
+      case "image": {
+        const block = imageBlock(node);
+        if (block) out.push(block);
         break;
       }
       case "heading": {
@@ -114,6 +149,7 @@ async function readPosts(locale: Locale): Promise<Post[]> {
         metaDescription: e.seo.metaDescription,
         keyword: e.seo.keyword,
         excerpt: e.excerpt,
+        cover: e.cover?.src ? { src: e.cover.src, alt: e.cover.alt ?? "" } : undefined,
         answer: e.answer,
         category: e.category,
         publishedAt: e.publishedAt,

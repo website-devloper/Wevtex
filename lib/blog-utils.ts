@@ -21,7 +21,10 @@ export const formatPostDate = (iso: string, locale: Locale = "fr") =>
   });
 
 /** What a post card shows: no body, no FAQ. */
-export type PostCard = Pick<Post, "slug" | "title" | "excerpt" | "answer" | "category" | "readingMinutes" | "publishedAt">;
+export type PostCard = Pick<
+  Post,
+  "slug" | "title" | "excerpt" | "answer" | "category" | "readingMinutes" | "publishedAt" | "cover"
+>;
 
 export const toCard = (p: Post): PostCard => ({
   slug: p.slug,
@@ -31,4 +34,5 @@ export const toCard = (p: Post): PostCard => ({
   category: p.category,
   readingMinutes: p.readingMinutes,
   publishedAt: p.publishedAt,
+  cover: p.cover,
 });

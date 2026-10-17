@@ -47,6 +47,7 @@ export const HOME_URL = "/";
 /** Every published pack, on one page. */
 export const PRICING_URL = "/tarifs";
 export const PORTFOLIO_URL = "/portfolio";
+export const BLOG_URL = "/blog";
 
 /**
  * Public URL of each service, keyed by its internal id.
