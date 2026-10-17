@@ -2392,7 +2392,7 @@
 }
 
 /* The white slabs sitting on those ink grounds are light surfaces again. */
-.wevtex .pricing-ink .pr-card.featured,
+.wevtex .pricing-v2 .pr-card.featured,
 .wevtex .contact-split .cs-form-card {
   --hairline-d: var(--hairline-c);
   --ink-on-dark: var(--ink-on-cream);
@@ -2456,7 +2456,7 @@
 
 /* The popular tier is a white slab inside an ink section, so it has to opt
    back out of the section's bright-lime text binding. */
-.wevtex .pricing-ink .pr-card.featured { --accent-text: var(--lime-ink); }
+.wevtex .pricing-v2 .pr-card.featured { --accent-text: var(--lime-ink); }
 
 /* =====================================================================
    CONTACT — asymmetric split on ink
@@ -4026,41 +4026,41 @@
    to their light-mode equivalents and which left the ordinary tiers as a
    near-transparent wash over the ink.
    ------------------------------------------------------------------------- */
-.wevtex .pricing-ink .pr-card,
-.wevtex .pricing-ink .pr-card.featured {
+.wevtex .pricing-v2 .pr-card,
+.wevtex .pricing-v2 .pr-card.featured {
   background: #ffffff;
   color: #101112;
   border: 1px solid #e4e2dc;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05), 0 18px 40px -26px rgba(0, 0, 0, 0.5);
 }
 
-.wevtex .pricing-ink .pr-card .pr-name,
-.wevtex .pricing-ink .pr-card .pr-price,
-.wevtex .pricing-ink .pr-card.featured .pr-name,
-.wevtex .pricing-ink .pr-card.featured .pr-price { color: #101112; }
+.wevtex .pricing-v2 .pr-card .pr-name,
+.wevtex .pricing-v2 .pr-card .pr-price,
+.wevtex .pricing-v2 .pr-card.featured .pr-name,
+.wevtex .pricing-v2 .pr-card.featured .pr-price { color: #101112; }
 
-.wevtex .pricing-ink .pr-card .pr-sub,
-.wevtex .pricing-ink .pr-card.featured .pr-sub { color: #6c6c63; }
-.wevtex .pricing-ink .pr-card .pr-note,
-.wevtex .pricing-ink .pr-card.featured .pr-note { color: #6c6c63; }
-.wevtex .pricing-ink .pr-card .pr-feats li,
-.wevtex .pricing-ink .pr-card.featured .pr-feats li { color: #3a3a38; }
+.wevtex .pricing-v2 .pr-card .pr-sub,
+.wevtex .pricing-v2 .pr-card.featured .pr-sub { color: #6c6c63; }
+.wevtex .pricing-v2 .pr-card .pr-note,
+.wevtex .pricing-v2 .pr-card.featured .pr-note { color: #6c6c63; }
+.wevtex .pricing-v2 .pr-card .pr-feats li,
+.wevtex .pricing-v2 .pr-card.featured .pr-feats li { color: #3a3a38; }
 
-.wevtex .pricing-ink .pr-card .pr-price .cur,
-.wevtex .pricing-ink .pr-card.featured .pr-price .cur { color: var(--accent-deep); }
+.wevtex .pricing-v2 .pr-card .pr-price .cur,
+.wevtex .pricing-v2 .pr-card.featured .pr-price .cur { color: var(--accent-deep); }
 
-.wevtex .pricing-ink .pr-card .pr-feats li svg,
-.wevtex .pricing-ink .pr-card.featured .pr-feats li svg {
+.wevtex .pricing-v2 .pr-card .pr-feats li svg,
+.wevtex .pricing-v2 .pr-card.featured .pr-feats li svg {
   background: var(--accent-soft); color: var(--accent-deep);
 }
-.wevtex .pricing-ink .pr-card .pr-icon,
-.wevtex .pricing-ink .pr-card.featured .pr-icon {
+.wevtex .pricing-v2 .pr-card .pr-icon,
+.wevtex .pricing-v2 .pr-card.featured .pr-icon {
   background: var(--accent-soft); border-color: #e4e2dc; color: var(--accent-deep);
 }
-.wevtex .pricing-ink .pr-card .pr-divider::before,
-.wevtex .pricing-ink .pr-card .pr-divider::after,
-.wevtex .pricing-ink .pr-card.featured .pr-divider::before,
-.wevtex .pricing-ink .pr-card.featured .pr-divider::after { background: #e4e2dc; }
+.wevtex .pricing-v2 .pr-card .pr-divider::before,
+.wevtex .pricing-v2 .pr-card .pr-divider::after,
+.wevtex .pricing-v2 .pr-card.featured .pr-divider::before,
+.wevtex .pricing-v2 .pr-card.featured .pr-divider::after { background: #e4e2dc; }
 
 /* The popular tier is marked by its badge and its button, not by a dark slab. */
 .wevtex .pricing-ink .pr-card .pr-btn,
@@ -4200,28 +4200,28 @@
    PRICING — one card design everywhere
    The white-card rules were scoped to .pr-grid-8, which only the homepage uses;
    the service pages use .pr-grid-3 and were still rendering dark tiers. These
-   are scoped to .pricing-ink .pr-card so both grids get the same card.
+   are scoped to .pricing-v2 .pr-card so both grids get the same card.
    ========================================================================= */
-.wevtex .pricing-ink .pr-from,
-.wevtex .pricing-ink .pr-card.featured .pr-from {
+.wevtex .pricing-v2 .pr-from,
+.wevtex .pricing-v2 .pr-card.featured .pr-from {
   color: var(--accent-deep); font-weight: 700; font-size: 11px; letter-spacing: 0.15em;
 }
-.wevtex .pricing-ink .pr-name { font-size: 17px; font-weight: 700; letter-spacing: -0.02em; color: #101112; }
-.wevtex .pricing-ink .pr-sub { color: #56564e; font-size: 13px; }
-.wevtex .pricing-ink .pr-price { font-size: 40px; font-weight: 700; letter-spacing: -0.035em; color: #101112; }
-.wevtex .pricing-ink .pr-price .cur { font-size: 14px; font-weight: 700; color: var(--accent-deep); }
-.wevtex .pricing-ink .pr-note { color: #56564e; font-weight: 500; }
-.wevtex .pricing-ink .pr-feats li { color: #2f2f2d; font-size: 13.5px; font-weight: 500; align-items: flex-start; gap: 10px; line-height: 1.45; }
-.wevtex .pricing-ink .pr-feats li svg { margin-top: -1px; background: var(--accent-soft); color: var(--accent-deep); }
+.wevtex .pricing-v2 .pr-name { font-size: 17px; font-weight: 700; letter-spacing: -0.02em; color: #101112; }
+.wevtex .pricing-v2 .pr-sub { color: #56564e; font-size: 13px; }
+.wevtex .pricing-v2 .pr-price { font-size: 40px; font-weight: 700; letter-spacing: -0.035em; color: #101112; }
+.wevtex .pricing-v2 .pr-price .cur { font-size: 14px; font-weight: 700; color: var(--accent-deep); }
+.wevtex .pricing-v2 .pr-note { color: #56564e; font-weight: 500; }
+.wevtex .pricing-v2 .pr-feats li { color: #2f2f2d; font-size: 13.5px; font-weight: 500; align-items: flex-start; gap: 10px; line-height: 1.45; }
+.wevtex .pricing-v2 .pr-feats li svg { margin-top: -1px; background: var(--accent-soft); color: var(--accent-deep); }
 
-.wevtex .pricing-ink .pr-card:not(.featured) { background: #fbfaf7; }
-.wevtex .pricing-ink .pr-card.featured { background: #ffffff; border-color: var(--accent); }
+.wevtex .pricing-v2 .pr-card:not(.featured) { background: #fbfaf7; }
+.wevtex .pricing-v2 .pr-card.featured { background: #ffffff; border-color: var(--accent); }
 
 /* Hover stays on the button; the card holds still. */
-.wevtex .pricing-ink .pr-card:hover,
-.wevtex .pricing-ink .pr-card:not(.featured):hover { transform: none; border-color: #cfccc2; }
-.wevtex .pricing-ink .pr-card:hover .pr-icon { background: var(--accent-soft); color: var(--accent-deep); border-color: #e4e2dc; }
-.wevtex .pricing-ink .pr-card:hover .pr-btn { background: var(--accent); color: var(--on-lime); border-color: var(--accent); }
+.wevtex .pricing-v2 .pr-card:hover,
+.wevtex .pricing-v2 .pr-card:not(.featured):hover { transform: none; border-color: #cfccc2; }
+.wevtex .pricing-v2 .pr-card:hover .pr-icon { background: var(--accent-soft); color: var(--accent-deep); border-color: #e4e2dc; }
+.wevtex .pricing-v2 .pr-card:hover .pr-btn { background: var(--accent); color: var(--on-lime); border-color: var(--accent); }
 
 /* ===========================================================================
    SERVICE DETAIL — bring the page onto the homepage's language
